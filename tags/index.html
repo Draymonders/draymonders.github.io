@@ -43,7 +43,7 @@
           isArchive: false,
           isTag: false,
           isCategory: false,
-          open_in_new: false
+          open_in_new: true
       }
   </script>
 </head>
@@ -239,7 +239,7 @@
 
     <p class="count"></p>
     <div class="tags">
-        <a href="/tags/Css/" style="font-size: 16px; color: #808080">Css</a> <a href="/tags/Html/" style="font-size: 16px; color: #808080">Html</a> <a href="/tags/I-wanna-fly/" style="font-size: 16px; color: #808080">I wanna fly</a> <a href="/tags/Just-be-yourself/" style="font-size: 16px; color: #808080">Just be yourself</a>
+        <a href="/tags/Css/" style="font-size: 35px; color: #fff">Css</a> <a href="/tags/Html/" style="font-size: 35px; color: #fff">Html</a> <a href="/tags/I-wanna-fly/" style="font-size: 16px; color: #808080">I wanna fly</a> <a href="/tags/Just-be-yourself/" style="font-size: 16px; color: #808080">Just be yourself</a>
     </div>
     <style>
         .category-list li{
@@ -394,6 +394,27 @@ ga('send', 'pageview');
 	})();
 	</script>
 
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <div class="scroll" id="scroll">
