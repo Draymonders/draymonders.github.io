@@ -7,19 +7,19 @@
   
   
   
-  <title>Html学习Day 2 | Draymonder</title>
+  <title>51nod 1089 最长回文子串 V2（Manacher算法） | Draymonder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Html学习记录2-我想自己动手写一个好的blog">
-<meta name="keywords" content="Html,Css">
+  <meta name="description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta name="keywords" content="manacher,马拉车算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Html学习Day 2">
-<meta property="og:url" content="http://draymonder.me/2017/09/17/Html学习Day 2/index.html">
+<meta property="og:title" content="51nod 1089 最长回文子串 V2（Manacher算法）">
+<meta property="og:url" content="http://draymonder.me/2017/10/03/manacher 马拉车算法/index.html">
 <meta property="og:site_name" content="Draymonder">
-<meta property="og:description" content="Html学习记录2-我想自己动手写一个好的blog">
-<meta property="og:updated_time" content="2017-09-17T14:22:03.063Z">
+<meta property="og:description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta property="og:updated_time" content="2017-10-14T11:25:58.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Html学习Day 2">
-<meta name="twitter:description" content="Html学习记录2-我想自己动手写一个好的blog">
+<meta name="twitter:title" content="51nod 1089 最长回文子串 V2（Manacher算法）">
+<meta name="twitter:description" content="国庆没啥子事，刷刷题，动动脑子">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -163,11 +163,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Html学习Day 2" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-manacher 马拉车算法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2017/09/17/Html学习Day 2/" class="article-date">
-      <time datetime="2017-09-17T15:00:00.000Z" itemprop="datePublished">2017-09-17</time>
+      <a  href="/2017/10/03/manacher 马拉车算法/" class="article-date">
+      <time datetime="2017-10-03T13:20:00.000Z" itemprop="datePublished">2017-10-03</time>
 </a>
 
     </div>
@@ -181,7 +181,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Html学习Day 2
+      51nod 1089 最长回文子串 V2（Manacher算法）
     </h1>
   
 
@@ -193,7 +193,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/">Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html/">Html</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/manacher/">manacher</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/马拉车算法/">马拉车算法</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -203,11 +203,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="每日感想"><a href="#每日感想" class="headerlink" title="每日感想"></a>每日感想</h3><p style="color:red">&nbsp; &nbsp;这个年代，最大的风险是，你什么都没做。哪有什么运筹帷幄，都是一边交着学费骂自己傻逼，一边调整方向。<br>&nbsp; &nbsp;喜欢就去做，做了没有万无一失，但不做只有终生遗憾。</p>
-
-<h3 id="今日之事"><a href="#今日之事" class="headerlink" title="今日之事"></a>今日之事</h3><p>  &nbsp; &nbsp; 今天又打网络赛，半小时签完到，然后就开始了老年人挂机模式，很是痛苦，一方面感慨大佬们的强大，一方面斥责自己的水平不行。很是无奈啊。晚上又是啥也没干，好可怕懒惰的自己。</p>
-<h3 id="Html学习记录-Day-2"><a href="#Html学习记录-Day-2" class="headerlink" title="Html学习记录 - Day 2"></a>Html学习记录 - Day 2</h3><p>&nbsp; &nbsp; 学到了几个元素选择器 用的不是很熟练，不过好歹能了解一些style样式了<br><br><a href="https://pan.baidu.com/s/1o8BLA4q" target="_self">学习视频链接</a>&nbsp;&nbsp; 提取密码:igtw <br><br><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*color改变字体颜色*/</span></div><div class="line"><span class="attribute">color</span>: red;</div><div class="line"><span class="comment">/*background设置背景颜色*/</span></div><div class="line"><span class="attribute">background</span>: black;</div><div class="line"><span class="comment">/*width设置宽度*/</span></div><div class="line"><span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line"><span class="comment">/*height设置高度*/</span></div><div class="line"><span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line"><span class="comment">/*font-size设置字体大小*/</span></div><div class="line"><span class="attribute">font-size</span>: <span class="number">22px</span>;</div><div class="line"><span class="comment">/*font-family设置字体格式*/</span></div><div class="line"><span class="attribute">font-family</span>: 微软雅黑;</div><div class="line"><span class="comment">/*text-align设置字体对齐方式*/</span></div><div class="line"><span class="attribute">text-align</span>: center;</div></pre></td></tr></table></figure></p>
-
+        <h4 id="51nod-1089-最长回文子串-V2（Manacher算法）"><a href="#51nod-1089-最长回文子串-V2（Manacher算法）" class="headerlink" title="51nod 1089 最长回文子串 V2（Manacher算法）"></a>51nod 1089 最长回文子串 V2（Manacher算法）</h4><h5 id="算法讲解"><a href="#算法讲解" class="headerlink" title="算法讲解"></a>算法讲解</h5><p><a href="https://www.felix021.com/blog/read.php?2040" target="_blank" rel="external">https://www.felix021.com/blog/read.php?2040</a><br>好久之前，一直不懂 现在基本写了两下代码就懂了</p>
+<h5 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span>+<span class="number">100</span>;</div><div class="line"><span class="keyword">char</span> s1[maxn];</div><div class="line"><span class="keyword">char</span> s2[maxn&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> p[maxn&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> l;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">manacher</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>,id = <span class="number">0</span>;<span class="comment">//mx表示最大的右边界，id表示最大回文中心</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2</span>*l+<span class="number">2</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(mx &gt; i)</div><div class="line">        &#123;</div><div class="line">            p[i] = min(p[<span class="number">2</span>*id-i],mx-i);<span class="comment">// 具体看讲解吧  这里应该挺好懂的</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            p[i] = <span class="number">1</span>;</div><div class="line">        <span class="comment">//接着暴力匹配</span></div><div class="line">        <span class="keyword">while</span>(s2[i+p[i]] == s2[i-p[i]]) p[i]++;</div><div class="line">        <span class="keyword">if</span>(i + p[i] &gt; mx)</div><div class="line">        &#123;</div><div class="line">            mx = i+p[i];</div><div class="line">            id = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2</span>*l+<span class="number">2</span>;i++)</div><div class="line">    &#123;</div><div class="line">        mx = max(mx,p[i]<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; s1;</div><div class="line">    s2[<span class="number">0</span>] = <span class="string">'%'</span>;</div><div class="line">    s2[<span class="number">1</span>] = <span class="string">'#'</span>;</div><div class="line">    l = <span class="built_in">strlen</span>(s1);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)</div><div class="line">    &#123;</div><div class="line">        s2[i*<span class="number">2</span>+<span class="number">2</span>] = s1[i];</div><div class="line">        s2[i*<span class="number">2</span>+<span class="number">3</span>] = <span class="string">'#'</span>;</div><div class="line">    &#125;<span class="comment">//这样总长度就是2*l+1</span></div><div class="line">    manacher();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -215,13 +212,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2017/09/17/Html学习Day 2/">Html学习Day 2</a></p>
+        <p><span>本文标题:</span><a  href="/2017/10/03/manacher 马拉车算法/">51nod 1089 最长回文子串 V2（Manacher算法）</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Draymonder 的个人博客">Draymonder</a></p>
-        <p><span>发布时间:</span>2017年09月17日 - 23时00分</p>
-        <p><span>最后更新:</span>2017年09月17日 - 22时22分</p>
+        <p><span>发布时间:</span>2017年10月03日 - 21时20分</p>
+        <p><span>最后更新:</span>2017年10月14日 - 19时25分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/09/17/Html学习Day 2/" title="Html学习Day 2">http://draymonder.me/2017/09/17/Html学习Day 2/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://draymonder.me/2017/09/17/Html学习Day 2/　　作者: Draymonder" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/10/03/manacher 马拉车算法/" title="51nod 1089 最长回文子串 V2（Manacher算法）">http://draymonder.me/2017/10/03/manacher 马拉车算法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://draymonder.me/2017/10/03/manacher 马拉车算法/　　作者: Draymonder" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -232,18 +229,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2017/09/18/Html学习Day 3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2017/10/14/STL set/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Html学习Day 3
+          STL set
         
       </div>
     </a>
   
   
-    <a  href="/2017/09/16/Html学习Day 1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Html学习Day 1</div>
+    <a  href="/2017/10/03/中国剩余定理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">51nod 1079 中国剩余定理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -255,7 +252,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#每日感想"><span class="toc-number">1.</span> <span class="toc-text">每日感想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#今日之事"><span class="toc-number">2.</span> <span class="toc-text">今日之事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Html学习记录-Day-2"><span class="toc-number">3.</span> <span class="toc-text">Html学习记录 - Day 2</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#51nod-1089-最长回文子串-V2（Manacher算法）"><span class="toc-number">1.</span> <span class="toc-text">51nod 1089 最长回文子串 V2（Manacher算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#算法讲解"><span class="toc-number">1.1.</span> <span class="toc-text">算法讲解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AC代码"><span class="toc-number">1.2.</span> <span class="toc-text">AC代码</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -314,13 +311,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2017/09/18/Html学习Day 3/" title="上一篇: Html学习Day 3">
+            <a  href="/2017/10/14/STL set/" title="上一篇: STL set">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2017/09/16/Html学习Day 1/" title="下一篇: Html学习Day 1">
+            <a  href="/2017/10/03/中国剩余定理/" title="下一篇: 51nod 1079 中国剩余定理">
                 <i class="fa fa-angle-right"></i>
             </a>
         

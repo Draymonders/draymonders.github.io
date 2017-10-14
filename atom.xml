@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2017-10-02T15:24:53.454Z</updated>
+  <updated>2017-10-14T11:25:53.819Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,140 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STL set</title>
+    <link href="http://draymonder.me/2017/10/14/STL%20set/"/>
+    <id>http://draymonder.me/2017/10/14/STL set/</id>
+    <published>2017-10-14T15:20:00.000Z</published>
+    <updated>2017-10-14T11:25:53.819Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><h5 id="set讲解"><a href="#set讲解" class="headerlink" title="set讲解"></a>set讲解</h5><p>&nbsp;&nbsp;定义set对象的示例代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s;</div><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt; ss;</div></pre></td></tr></table></figure>
+<h5 id="set的基本操作"><a href="#set的基本操作" class="headerlink" title="set的基本操作"></a>set的基本操作</h5><figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">s</span><span class="selector-class">.begin</span>()       <span class="comment">//  返回指向第一个元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.clear</span>()       <span class="comment">//  清除所有元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.count</span>()       <span class="comment">//  返回某个值元素的个数</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.empty</span>()       <span class="comment">//  如果集合为空，返回true(真）</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.end</span>()         <span class="comment">//  返回指向最后一个元素之后的迭代器，不是最后一个元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.equal_range</span>() <span class="comment">//  返回集合中与给定值相等的上下限的两个迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.erase</span>()       <span class="comment">//  删除集合中的元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.find</span>()        <span class="comment">//  返回一个指向被查找到元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.get_allocator</span>()   <span class="comment">//  返回集合的分配器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.insert</span>()      <span class="comment">//  在集合中插入元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.lower_bound</span>() <span class="comment">//  返回指向大于（或等于）某值的第一个元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.key_comp</span>()    <span class="comment">//  返回一个用于元素间值比较的函数</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.max_size</span>()    <span class="comment">//  返回集合能容纳的元素的最大限值</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.rbegin</span>()      <span class="comment">//  返回指向集合中最后一个元素的反向迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.rend</span>()        <span class="comment">//  返回指向集合中第一个元素的反向迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.size</span>()        <span class="comment">//  集合中元素的数目</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.swap</span>()        <span class="comment">//  交换两个集合变量</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.upper_bound</span>() <span class="comment">//  返回大于某个值元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.value_comp</span>()  <span class="comment">//  返回一个用于比较元素间的值的函数</span></div></pre></td></tr></table></figure>
+<h4 id="Multiset"><a href="#Multiset" class="headerlink" title="Multiset"></a>Multiset</h4><p>&nbsp;&nbsp;multiset（多重集合）。多重集合与集合的区别在于集合中不能存在相同元素，而多重集合中可以存在。</p>
+<h5 id="Multiset-set异同点"><a href="#Multiset-set异同点" class="headerlink" title="Multiset set异同点"></a>Multiset set异同点</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">multiset</span>和<span class="built_in">set</span>的基本操作相似，需要注意的是，<span class="built_in">set</span>的count()能返回<span class="number">0</span>（无）或者<span class="number">1</span>（有），而<span class="built_in">multiset</span>是有多少个返回多少个。</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      Just going go~
+    
+    </summary>
+    
+    
+      <category term="STL" scheme="http://draymonder.me/tags/STL/"/>
+    
+      <category term="set" scheme="http://draymonder.me/tags/set/"/>
+    
+      <category term="模板" scheme="http://draymonder.me/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51nod 1089 最长回文子串 V2（Manacher算法）</title>
+    <link href="http://draymonder.me/2017/10/03/manacher%20%E9%A9%AC%E6%8B%89%E8%BD%A6%E7%AE%97%E6%B3%95/"/>
+    <id>http://draymonder.me/2017/10/03/manacher 马拉车算法/</id>
+    <published>2017-10-03T13:20:00.000Z</published>
+    <updated>2017-10-14T11:25:58.444Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="51nod-1089-最长回文子串-V2（Manacher算法）"><a href="#51nod-1089-最长回文子串-V2（Manacher算法）" class="headerlink" title="51nod 1089 最长回文子串 V2（Manacher算法）"></a>51nod 1089 最长回文子串 V2（Manacher算法）</h4><h5 id="算法讲解"><a href="#算法讲解" class="headerlink" title="算法讲解"></a>算法讲解</h5><p><a href="https://www.felix021.com/blog/read.php?2040" target="_blank" rel="external">https://www.felix021.com/blog/read.php?2040</a><br>好久之前，一直不懂 现在基本写了两下代码就懂了</p>
+<h5 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span>+<span class="number">100</span>;</div><div class="line"><span class="keyword">char</span> s1[maxn];</div><div class="line"><span class="keyword">char</span> s2[maxn&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> p[maxn&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> l;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">manacher</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>,id = <span class="number">0</span>;<span class="comment">//mx表示最大的右边界，id表示最大回文中心</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2</span>*l+<span class="number">2</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(mx &gt; i)</div><div class="line">        &#123;</div><div class="line">            p[i] = min(p[<span class="number">2</span>*id-i],mx-i);<span class="comment">// 具体看讲解吧  这里应该挺好懂的</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            p[i] = <span class="number">1</span>;</div><div class="line">        <span class="comment">//接着暴力匹配</span></div><div class="line">        <span class="keyword">while</span>(s2[i+p[i]] == s2[i-p[i]]) p[i]++;</div><div class="line">        <span class="keyword">if</span>(i + p[i] &gt; mx)</div><div class="line">        &#123;</div><div class="line">            mx = i+p[i];</div><div class="line">            id = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2</span>*l+<span class="number">2</span>;i++)</div><div class="line">    &#123;</div><div class="line">        mx = max(mx,p[i]<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; s1;</div><div class="line">    s2[<span class="number">0</span>] = <span class="string">'%'</span>;</div><div class="line">    s2[<span class="number">1</span>] = <span class="string">'#'</span>;</div><div class="line">    l = <span class="built_in">strlen</span>(s1);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)</div><div class="line">    &#123;</div><div class="line">        s2[i*<span class="number">2</span>+<span class="number">2</span>] = s1[i];</div><div class="line">        s2[i*<span class="number">2</span>+<span class="number">3</span>] = <span class="string">'#'</span>;</div><div class="line">    &#125;<span class="comment">//这样总长度就是2*l+1</span></div><div class="line">    manacher();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      国庆没啥子事，刷刷题，动动脑子
+    
+    </summary>
+    
+    
+      <category term="manacher" scheme="http://draymonder.me/tags/manacher/"/>
+    
+      <category term="马拉车算法" scheme="http://draymonder.me/tags/%E9%A9%AC%E6%8B%89%E8%BD%A6%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51nod 1079 中国剩余定理</title>
+    <link href="http://draymonder.me/2017/10/03/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/"/>
+    <id>http://draymonder.me/2017/10/03/中国剩余定理/</id>
+    <published>2017-10-03T12:30:00.000Z</published>
+    <updated>2017-10-14T11:26:02.858Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="51nod-1079-中国剩余定理"><a href="#51nod-1079-中国剩余定理" class="headerlink" title="51nod 1079 中国剩余定理"></a>51nod 1079 中国剩余定理</h4><h5 id="视频讲解"><a href="#视频讲解" class="headerlink" title="视频讲解"></a>视频讲解</h5><p>讲解一：<a href="https://www.youtube.com/watch?v=SVCbahPo2hU" target="_blank" rel="external">https://www.youtube.com/watch?v=SVCbahPo2hU</a><br>讲解二：<a href="https://www.youtube.com/watch?v=N68Yo9oyrM8" target="_blank" rel="external">https://www.youtube.com/watch?v=N68Yo9oyrM8</a><br>这个老师讲的特别好 听完就感觉了解了一下东西<br>好久之前，一直不懂 现在基本写了两下代码就懂了</p>
+<h5 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">15</span>;</div><div class="line"><span class="keyword">int</span> s[maxn],p[maxn];<span class="comment">//s代表模数 p代表余数</span></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll d = a;</div><div class="line">    <span class="keyword">if</span>(b)&#123;</div><div class="line">        d = exgcd(b,a%b,y,x);</div><div class="line">        y -= (a/b)*x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll cnt = <span class="number">1</span>,ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        cnt *= s[i];<span class="comment">//把模数都乘起来</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="comment">// 把最后的结果 分解成 x = k1*a1 + k2*a2 + k3*a3</span></div><div class="line">    &#123;</div><div class="line">        ll x,y;</div><div class="line">        ll si = cnt/s[i];</div><div class="line">        exgcd(si,s[i],x,y);<span class="comment">//求     |  si = 1 (mod s[i]) 所以就是 x*si -y*s[i] = 1</span></div><div class="line">        ans = (ans + x*p[i]*si)%cnt;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(ans &lt; <span class="number">0</span>)</div><div class="line">        <span class="built_in">cout</span>&lt;&lt; ans+cnt&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span>&lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; s[i] &gt;&gt; p[i];</div><div class="line">    &#125;</div><div class="line">    solve();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      国庆没啥子事，刷刷题，动动脑子
+    
+    </summary>
+    
+    
+      <category term="同余" scheme="http://draymonder.me/tags/%E5%90%8C%E4%BD%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51nod 1013 3的幂的和</title>
+    <link href="http://draymonder.me/2017/10/03/3%E7%9A%84%E5%B9%82%E7%9A%84%E5%92%8C%20/"/>
+    <id>http://draymonder.me/2017/10/03/3的幂的和 /</id>
+    <published>2017-10-03T09:00:00.000Z</published>
+    <updated>2017-10-03T08:50:07.901Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="51nod-1013-3的幂的和"><a href="#51nod-1013-3的幂的和" class="headerlink" title="51nod 1013 3的幂的和"></a>51nod 1013 3的幂的和</h4><pre><code>做题的时候感觉挺简单的  刚开始没考虑逆元，只是想用快速幂爆艹过去，不过交上去WA了5个样例吧
+后来发现可能是/（3-1）%mod 这里出了问题，就想到了逆元，本来中午就能看完的，太累了最近，下午睡个觉到现在。
+</code></pre><h5 id="逆元入门"><a href="#逆元入门" class="headerlink" title="逆元入门"></a>逆元入门</h5><pre><code>关于逆元的一些知识点：
+若对于数字A,C 存在X，使A * X = 1 (mod C) ,那么称X为 A 对C的乘法逆元。
+逆元的作用？让我们来看下面的例子:
+12 / 4 mod 7 = ? , 很显然结果是3
+我们现在对于数对 (4,7), 可以知道 X = 2是 4 对7的乘法逆元即2*4=1（mod 7)
+那么我们有(12 / 4) * (4 * 2 ) = (?) * (1) (mod 7)
+除法被完美地转化为了乘法
+理论依据:
+F / A mod C = ?
+如果存在 A*X = 1 (mod C)
+那么2边同时乘起来,得到 F * X = ? (mod C)
+成立条件
+(1) 模方程 A * X = 1(mod C) 存在解
+(2) A | F (F % A == 0)
+以下来百度百科：
+若ax=1 mod f 则称a关于模f的乘法逆元为x。也可表示为ax≡1(mod f)。
+</code></pre><h5 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"></div><div class="line"></div><div class="line">ll _pow(ll x,ll n)</div><div class="line">&#123;</div><div class="line">    ll res =<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>) res = res*x%mod;</div><div class="line">        x=x*x%mod;</div><div class="line">        n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll d= a;</div><div class="line">    <span class="keyword">if</span>(b)</div><div class="line">    &#123;</div><div class="line">        d= exgcd(b,a%b,y,x);</div><div class="line">        y -= (a/b)*x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll a,ll m)</span><span class="comment">//x 即为算出来的逆元 只不过需要再处理一下 可能是负数</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll x,y;</div><div class="line">    exgcd(a,m,x,y);</div><div class="line">    <span class="keyword">return</span> (x%mod+mod)%mod;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="comment">//cout&lt;&lt; _pow(3,n+1)-1&lt;&lt;endl;</span></div><div class="line">    ll res = (_pow(<span class="number">3</span>,n+<span class="number">1</span>)<span class="number">-1</span>)*inv(<span class="number">2</span>,mod)%mod;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; res &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      国庆没啥子事，刷刷题，动动脑子
+    
+    </summary>
+    
+    
+      <category term="乘法逆元" scheme="http://draymonder.me/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/"/>
+    
+      <category term="快速幂" scheme="http://draymonder.me/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>区间筛</title>
+    <link href="http://draymonder.me/2017/10/03/%E5%8C%BA%E9%97%B4%E7%AD%9B/"/>
+    <id>http://draymonder.me/2017/10/03/区间筛/</id>
+    <published>2017-10-03T04:00:00.000Z</published>
+    <updated>2017-10-03T04:00:07.758Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>照着挑战，敲了一下，记录一下 闲着也是闲着
+</code></pre><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e7</span>+<span class="number">100</span>;</div><div class="line"><span class="keyword">bool</span> is_prime[maxn];<span class="comment">//a的素数</span></div><div class="line"><span class="keyword">bool</span> is_prime_small[maxn];<span class="comment">//这个是处理 根号b以内的素数</span></div><div class="line"></div><div class="line"><span class="keyword">void</span> _seg(ll a, ll b)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;(ll)i*i&lt;b;i++) is_prime_small[i] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b-a;i++) is_prime[i] =<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;(ll)i*i &lt; b;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(is_prime_small[i])</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;(ll) j*j&lt;b;j+=i)</div><div class="line">                is_prime_small[j] =<span class="number">0</span>;</div><div class="line">            <span class="comment">//cout&lt;&lt; 2LL&lt;&lt;endl;</span></div><div class="line">            <span class="comment">//cout&lt;&lt; max(2LL,(a+i-1)/i)&lt;&lt;endl;</span></div><div class="line"></div><div class="line">            <span class="keyword">for</span>(ll j = max(<span class="number">2L</span>L,(a+i<span class="number">-1</span>)/i)*i;j&lt;b;j+=i)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(j &lt; a)<span class="comment">//这里是判断错误的</span></div><div class="line">                    <span class="built_in">cout</span>&lt;&lt; <span class="string">"NO"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">                is_prime[j-a] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll a,b ;</div><div class="line">    _seg(a,b);<span class="comment">//区间筛 函数</span></div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(ll i=a;i &lt; b;i++)</div><div class="line">        <span class="keyword">if</span>(is_prime[i-a])</div><div class="line">            sum++;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;sum &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      国庆没啥子事，刷刷题，动动脑子
+    
+    </summary>
+    
+    
+      <category term="区间筛法" scheme="http://draymonder.me/tags/%E5%8C%BA%E9%97%B4%E7%AD%9B%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>2017-10-02刷题记录</title>
