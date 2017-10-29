@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2017-10-14T11:25:53.819Z</updated>
+  <updated>2017-10-29T04:16:46.905Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>十月小总结</title>
+    <link href="http://draymonder.me/2017/10/29/%E5%8D%81%E6%9C%88%E6%80%BB%E7%BB%93/"/>
+    <id>http://draymonder.me/2017/10/29/十月总结/</id>
+    <published>2017-10-29T04:30:00.000Z</published>
+    <updated>2017-10-29T04:16:46.905Z</updated>
+    
+    <content type="html"><![CDATA[<script>
+    if("ixiaobing" == prompt("请输入密码"))
+    {
+    alert("欢迎查看博主大人的日记");
+    }
+    else
+    {
+        alert("错误");
+        location="http://draymonder.me"; 
+    }
+</script>
+
+
+
+
+<p>十月，不知不觉就这么过去了</p>
+<p>总结和反思蛮重要的吧。</p>
+<p>细细想，琐事真的是一堆接着一堆呢，从开始的喜欢训练，到后来的训练什么也不想干，再到现在，心态良好，补充着自己想要学的知识</p>
+<p>这月出现的问题还是有很多的。</p>
+<p>1.时间分配问题（很头疼，又想学技术，又要去上课，还TM点名，就让人很无奈，对吧，希望自己可以渐渐守住自己的内心，不浮不躁，耐心刷题，坚韧的学下去，总会找到自己的方向的）</p>
+<p>2.想学的东西太多了（可视化，html+css，java，acm都想学学呢，哪有那么多时间，只能找些时间，自己多锻炼锻炼了，别给自己那么多压力，一切不宜过快，也不能停滞不前）</p>
+<p>3.节操分（这个东西吧，别看那么重要吧，毕竟对找工作其实 一点儿用都没有，对吧，别光顾眼前，还要想想以后，也不要一味只顾以后，而不注重现在，兼容一下）</p>
+<p>4.心态（遇到不想干的事情，也不要太排斥，毕竟做任何事情，都需要和人打交道的，对吧，别一味吧自己封闭，好的吧）</p>
+<p>5.未完，待续~~~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      朋友们，虽然这个世界日益浮躁起来，只要能够为了当时纯粹的梦想和感动坚持努力下去，不管其它人怎么样，我们也能够保持自己的本色走下去。
+    
+    </summary>
+    
+    
+      <category term="日记" scheme="http://draymonder.me/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>STL set</title>
