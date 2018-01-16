@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Draymonder</title>
-  <subtitle>再见，不负遇见</subtitle>
+  <subtitle>随遇而安</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-01-06T11:30:24.999Z</updated>
+  <updated>2018-01-16T15:47:23.409Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>The conclusion about me</title>
+    <link href="http://draymonder.me/2018/01/16/the-diary-of-mine/"/>
+    <id>http://draymonder.me/2018/01/16/the-diary-of-mine/</id>
+    <published>2018-01-16T15:59:00.000Z</published>
+    <updated>2018-01-16T15:47:23.409Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近状态又开始低迷了，蜜汁懒，看了《最好的我们》，《再见路星河》，《琅琊榜》心情又是一如往常的暗淡，消极，颓丧。 每个人都有要忙的事情，我也不想打扰到你啊，可我就是好闲，无时无刻不在想着你啊，到底想你什么呢，我也不知道啊。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>  好多心里话，只是不知道怎么和你当面表达。或许是有些迷茫，或许是前途未卜，或许是青春的悸动，或许是不敢承担责任的怯懦吧。</p>
+<p>  我真的好害怕，也好担心，你有一天真的会离开我耶，那样我觉得我会无所适从好久好久呢，真的真的。 不知道为什么，我晚上总是有些稀奇古怪的想法，<font color="pink">比如，我在想你找到了男朋友呀，我考虑要退出啊，但是我总要体面的离开吧，我都想好了台词呢，谢谢你，让我坚持喜欢一个女孩这么这么久，这大概是我做过的最幸福的事情了。</font> </p>
+<p>  哈哈，是不是觉得我特无聊，特傻，特2B啊。突然发现自己好傻啊，写这么些东西，但是我就是想给你看，不论你觉得我是否靠谱了，是否可信赖了。</p>
+<p>  追剧追着发现琅琊榜里面的林奚和你好像，无论是外表还是我心目中的你耶，或许你会给与否认吧，但是我就是觉得你和她相似的地方蛮多的呢。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  果然，好多东西，表达出来会好很多，抱歉啊，浪费你这多时间来看我这没营养的东西。</p>
+<p>  <b>你只需耐着性子，一步步耐心往上走，往前走。时间，终将告诉你，你的选择是否正确。</b></p>
+<p>  最后不论怎么样啊，HR，希望你能平安喜乐，有一个好的人陪伴。<font color="black">I really really like you.But I will not disturb you. </font></p>
+<p>  (好了，从明天开始，我也要开始复习了。</p>
+<p><br></p>
+<p><img src="http://mp1.qiyipic.com/image/20180115/8e/69/ppu_261961480102_pp_601_690_690.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      小小的等待，小小的期盼，小小的悸动
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
+    
+  </entry>
   
   <entry>
     <title>开始我的hexo博客</title>
