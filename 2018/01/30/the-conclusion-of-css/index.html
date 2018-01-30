@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>对CSS布局的总结 | Draymonder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对Css布局，一些比较陌生的知识的总结">
+<meta name="keywords" content="Css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对CSS布局的总结">
+<meta property="og:url" content="http://draymonder.me/2018/01/30/the-conclusion-of-css/index.html">
+<meta property="og:site_name" content="Draymonder">
+<meta property="og:description" content="对Css布局，一些比较陌生的知识的总结">
+<meta property="og:updated_time" content="2018-01-30T13:49:06.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对CSS布局的总结">
+<meta name="twitter:description" content="对Css布局，一些比较陌生的知识的总结">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: false,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+      
+  </script>
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Draymonder</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">随遇而安</p>
+        
+        
+        
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/">我的主页</a></li>
+                        
+                            <li><a  href="/archives/">我的随笔</a></li>
+                        
+                            <li><a  href="/tags/">我的标签</a></li>
+                        
+                            <li><a  href="/about/">About Me</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl qq"  target="_blank" href="tencent://message/?uin=93958042&Site=im.qq.com&Menu=yes" title="qq">qq</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Draymonders" title="github">github</a>
+                            
+                                <a class="fl cnblogs"  target="_blank" href="http://www.cnblogs.com/Draymonder/" title="cnblogs">cnblogs</a>
+                            
+                                <a class="fl mail"  target="_blank" href="mailto:Draymonders@gmail.com" title="mail">mail</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">Draymonder,没有什么目标，就像丢失方向的鱼儿在互联网的大海中遨游，说不定那一天就找到了自己的所属~~~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Draymonder</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img src="/img/avatar.jpg" class="js-avatar" style="width: 100%; height: 100%; opacity: 1;">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Draymonder</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">随遇而安</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">我的主页</a></li>
+                
+                    <li><a href="/archives/">我的随笔</a></li>
+                
+                    <li><a href="/tags/">我的标签</a></li>
+                
+                    <li><a href="/about/">About Me</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="qq" target="_blank" href="tencent://message/?uin=93958042&Site=im.qq.com&Menu=yes" title="qq">qq</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Draymonders" title="github">github</a>
+                    
+                        <a class="cnblogs" target="_blank" href="http://www.cnblogs.com/Draymonder/" title="cnblogs">cnblogs</a>
+                    
+                        <a class="mail" target="_blank" href="mailto:Draymonders@gmail.com" title="mail">mail</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-the-conclusion-of-css" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/01/30/the-conclusion-of-css/" class="article-date">
+      <time datetime="2018-01-30T15:00:00.000Z" itemprop="datePublished">2018-01-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      对CSS布局的总结
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/">Css</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  今天，又在宿舍宅了一整天，看着php的基础语法，感觉好浪费时间，好像大概和C++语法相似很多,所以也没动手练习。<br>  突然想起来我html+css懵懵懂懂，而且js还没入门呢啊，调整一下小方向，最近先把长航学长暑假录的小视频好好看看，浓缩的都是精华啊，php那个视频也看了60讲了，但是感觉没什么长进，可能是还没入手项目吧，突然发现我可能业务逻辑方面很弱啊，没有明确的开发的想法和动手能力。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="attribute">margin</span></div><div class="line"><span class="attribute">border</span></div><div class="line"><span class="attribute">padding</span></div><div class="line"><span class="attribute">content</span></div><div class="line"><span class="attribute">box-sizing</span>:</div><div class="line">    <span class="attribute">content</span>-box 标准盒模型</div><div class="line">    <span class="attribute">border</span>-box  怪异盒模型</div><div class="line">    <span class="attribute">inherit</span> 继承</div></pre></td></tr></table></figure>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">id</span>元素器</div><div class="line"><span class="built_in">class</span>选取器</div><div class="line">元素选择器</div><div class="line">后代选择器</div><div class="line">伪类选择器</div></pre></td></tr></table></figure>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="attribute">inherit</span> 规定应该从父元素继承 <span class="attribute">display</span> 属性的值。</div><div class="line"><span class="attribute">none</span>    此元素不会被显示。</div><div class="line">block   此元素将显示为块级元素，此元素前后会带有换行符。</div><div class="line">inline  默认。此元素会被显示为内联元素，元素前后没有换行符。</div><div class="line">inline-block    行内块元素。视频day3中有讲解</div></pre></td></tr></table></figure>
+<h3 id="三栏布局"><a href="#三栏布局" class="headerlink" title="三栏布局"></a>三栏布局</h3><h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css">    <span class="selector-class">.container</span>&#123;</span></div><div class="line"><span class="undefined">        padding: 0 200px;</span></div><div class="line"><span class="css">        <span class="comment">/*内边距的左右边距设置成为两个200px*/</span></span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.middle</span>&#123;</span></div><div class="line"><span class="undefined">        width: 100%;</span></div><div class="line"><span class="undefined">        background: red;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="css">        <span class="comment">/*实现单词换行*/</span></span></div><div class="line"><span class="undefined">        word-break: break-all;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.left</span>&#123;</span></div><div class="line"><span class="undefined">        width: 200px;</span></div><div class="line"><span class="undefined">        background: green;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="undefined">        margin-left: -100%;</span></div><div class="line"><span class="css">        <span class="comment">/*相对定位，占据padding与border间距离*/</span></span></div><div class="line"><span class="undefined">        position: relative;</span></div><div class="line"><span class="css">        <span class="selector-tag">left</span><span class="selector-pseudo">:-200px</span>;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.right</span>&#123;</span></div><div class="line"><span class="undefined">        width: 200px;</span></div><div class="line"><span class="undefined">        background: blue;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="css">        <span class="selector-tag">margin-left</span><span class="selector-pseudo">:-200px</span>;</span></div><div class="line"><span class="undefined">        position: relative;</span></div><div class="line"><span class="undefined">        right: -200px;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.all</span>&#123;</span></div><div class="line"><span class="undefined">        height: 200px;</span></div><div class="line"><span class="css">        <span class="comment">/*border: 0px solid black;*/</span></span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle all"</span>&gt;</span></div><div class="line">        middle </div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left all"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right all"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css">    <span class="selector-class">.container</span>&#123;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.main</span>&#123;</span></div><div class="line"><span class="undefined">        width: 100%;</span></div><div class="line"><span class="undefined">        background: red;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.middle</span>&#123;</span></div><div class="line"><span class="css">        <span class="comment">/*middle离main空出来200px的外边距*/</span></span></div><div class="line"><span class="undefined">        margin: 0 200px;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.left</span>&#123;</span></div><div class="line"><span class="undefined">        width: 200px;</span></div><div class="line"><span class="undefined">        background: green;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="undefined">        margin-left: -100%;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.right</span>&#123;</span></div><div class="line"><span class="undefined">        width: 200px;</span></div><div class="line"><span class="undefined">        background: blue;</span></div><div class="line"><span class="undefined">        float: left;</span></div><div class="line"><span class="undefined">        margin-left: -200px;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    <span class="selector-class">.all</span>&#123;</span></div><div class="line"><span class="undefined">        height: 200px;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 和圣杯布局不同的地方 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"middle all"</span>&gt;</span></div><div class="line">            middle</div><div class="line">        <span class="tag">&lt;/<span class="name">section</span>&gt;</span>      </div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left all"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right all"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="知识梳理"><a href="#知识梳理" class="headerlink" title="知识梳理"></a>知识梳理</h3><h4 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h4><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line"><span class="keyword">text</span>-<span class="keyword">align</span>: center;</div></pre></td></tr></table></figure>
+<h4 id="多行文本垂直居中"><a href="#多行文本垂直居中" class="headerlink" title="多行文本垂直居中"></a>多行文本垂直居中</h4><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="keyword">display</span>: <span class="keyword">table</span>-cell;</div><div class="line">vertical-align: middle;</div></pre></td></tr></table></figure>
+<h4 id="div-块级元素-垂直居中"><a href="#div-块级元素-垂直居中" class="headerlink" title="div(块级元素)垂直居中"></a>div(块级元素)垂直居中</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        section&#123;</span></div><div class="line"><span class="undefined">            height: 400px;</span></div><div class="line"><span class="undefined">            width: 400px;</span></div><div class="line"><span class="undefined">            border: 1px solid red;</span></div><div class="line"><span class="undefined">            position: relative;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        div&#123;</span></div><div class="line"><span class="undefined">            height: 50px;</span></div><div class="line"><span class="undefined">            width: 50px;</span></div><div class="line"><span class="undefined">            border: 1px solid silver;</span></div><div class="line"><span class="undefined">            position: absolute;</span></div><div class="line"><span class="css">            <span class="selector-tag">top</span><span class="selector-pseudo">:50</span>%;</span></div><div class="line"><span class="css">            <span class="selector-tag">left</span><span class="selector-pseudo">:50</span>%;</span></div><div class="line"><span class="undefined">            /*第一种方法</span></div><div class="line"><span class="undefined">            margin-top: -40px;</span></div><div class="line"><span class="undefined">            margin-left: -40px;*/</span></div><div class="line"><span class="undefined">            /*第二种方法</span></div><div class="line"><span class="undefined">            transform: translateX(-50%) translateY(-50%);</span></div><div class="line"><span class="undefined">            */</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            div(块级元素)垂直居中</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>今天看电脑有些眼累呢，10点可以看一下琅琊榜，接着看看flex布局，然后洗个脚睡觉啦~ </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/01/30/the-conclusion-of-css/">对CSS布局的总结</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Draymonder 的个人博客">Draymonder</a></p>
+        <p><span>发布时间:</span>2018年01月30日 - 23时00分</p>
+        <p><span>最后更新:</span>2018年01月30日 - 21时49分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/01/30/the-conclusion-of-css/" title="对CSS布局的总结">http://draymonder.me/2018/01/30/the-conclusion-of-css/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://draymonder.me/2018/01/30/the-conclusion-of-css/　　作者: Draymonder" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2018/01/29/the skill of coding/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一些编程技巧和c++11语法特性的介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盒子模型"><span class="toc-number">2.1.</span> <span class="toc-text">盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">2.2.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#display"><span class="toc-number">2.3.</span> <span class="toc-text">display</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三栏布局"><span class="toc-number">2.4.</span> <span class="toc-text">三栏布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#圣杯布局"><span class="toc-number">2.4.1.</span> <span class="toc-text">圣杯布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双飞翼布局"><span class="toc-number">2.4.2.</span> <span class="toc-text">双飞翼布局</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识梳理"><span class="toc-number">2.5.</span> <span class="toc-text">知识梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文本对齐方式"><span class="toc-number">2.5.1.</span> <span class="toc-text">文本对齐方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多行文本垂直居中"><span class="toc-number">2.5.2.</span> <span class="toc-text">多行文本垂直居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#div-块级元素-垂直居中"><span class="toc-number">2.5.3.</span> <span class="toc-text">div(块级元素)垂直居中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">3.</span> <span class="toc-text">后记</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/01/29/the skill of coding/" title="下一篇: 一些编程技巧和c++11语法特性的介绍">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/30/the-conclusion-of-css/">对CSS布局的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/the skill of coding/">一些编程技巧和c++11语法特性的介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/16/the-diary-of-mine/">随遇而安</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/start-my-blog/">开始我的hexo博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Draymonder
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/draymonders" target="_blank">Blog</a> by Draymonder
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-105588332-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
