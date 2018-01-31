@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-01-30T15:53:47.061Z</updated>
+  <updated>2018-01-31T12:50:25.002Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS3特性和动画</title>
+    <link href="http://draymonder.me/2018/01/31/the%20use%20of%20css3/"/>
+    <id>http://draymonder.me/2018/01/31/the use of css3/</id>
+    <published>2018-01-31T10:00:00.000Z</published>
+    <updated>2018-01-31T12:50:25.002Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  &nbsp;&nbsp;&nbsp;&nbsp;昨天改hexo的主题，之前的主题代码高亮好丑，也找不到配置在哪里了，就改成了Next主题。然后乱码好头疼啊，文件改成utf-8格式，还是没用。<br>  &nbsp;&nbsp;&nbsp;&nbsp;后来上网搜，最后解决方案是hexo clean一下再hexo s 真的是头皮发麻，我还以为主题不兼容呢。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="CSS3部分特性"><a href="#CSS3部分特性" class="headerlink" title="CSS3部分特性"></a>CSS3部分特性</h3><h4 id="border-radius-圆角边框"><a href="#border-radius-圆角边框" class="headerlink" title="border-radius(圆角边框)"></a>border-radius(圆角边框)</h4><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*当值大于等于边长一半 就是圆形的*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line"><span class="comment">/*这个也可以变成圆形*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line"><span class="comment">/*每个角可以设置两个值，分别对应椭圆的a和b*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">40px</span> / <span class="number">20px</span>;</div></pre></td></tr></table></figure>
+<h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*第一个值是阴影颜色*/</span></div><div class="line"><span class="comment">/*第二和第三值分别是距离原点的右偏移量和下偏移量*/</span></div><div class="line"><span class="comment">/*第四个值是模糊程度*/</span></div><div class="line"><span class="comment">/*可以对应多个阴影*/</span></div><div class="line">text-<span class="keyword">shadow: </span>red <span class="number">2</span>px <span class="number">2</span>px <span class="number">2</span>px <span class="comment">;</span></div></pre></td></tr></table></figure>
+<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*同text-shadow相似*/</span></div><div class="line"><span class="comment">/*第一和第二值分别是距离原点的右偏移量和下偏移量*/</span></div><div class="line"><span class="comment">/*第三个值是模糊程度*/</span></div><div class="line"><span class="comment">/*可以对应多个阴影*/</span></div><div class="line"><span class="keyword">box-shadow: </span><span class="number">10</span>px <span class="number">10</span>px <span class="number">20</span>px deepskyblue<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h4 id="gradient-渐变"><a href="#gradient-渐变" class="headerlink" title="gradient(渐变)"></a>gradient(渐变)</h4><figure class="highlight processing"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*线性渐变 linear*/</span></div><div class="line"><span class="built_in">background</span>: -webkit-linear-gradient(top,<span class="built_in">red</span>,<span class="built_in">blue</span>);</div><div class="line"><span class="comment">/*可以有多种颜色*/</span></div><div class="line"><span class="built_in">background</span>: -webkit-linear-gradient(right,<span class="built_in">red</span> <span class="number">20</span>%,<span class="built_in">green</span> <span class="number">15</span>%,pink <span class="number">50</span>%);</div><div class="line"></div><div class="line"><span class="comment">/*径向渐变 radial*/</span></div><div class="line"><span class="built_in">background</span>: -webkit-radial-gradient(<span class="built_in">red</span>,<span class="built_in">blue</span>,<span class="built_in">green</span>,deepskyblue);</div></pre></td></tr></table></figure>
+<h3 id="CSS动画"><a href="#CSS动画" class="headerlink" title="CSS动画"></a>CSS动画</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*rotate 旋转元素*/</span></div><div class="line"><span class="attribute">transform</span>: rotate(<span class="number">270deg</span>, <span class="number">30deg</span>, <span class="number">40deg</span>);</div><div class="line"></div><div class="line"><span class="comment">/*scale 缩放元素 负数先旋转后放大*/</span></div><div class="line"><span class="attribute">transform</span>: scale(-<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">/*translate 移动元素*/</span></div><div class="line"><span class="attribute">transform</span>: translate(-<span class="number">20px</span>,-<span class="number">20px</span>);</div><div class="line"></div><div class="line"><span class="comment">/*skew 倾斜元素*/</span></div><div class="line"><span class="attribute">transform</span>: skew(<span class="number">0deg</span>,<span class="number">45deg</span>);</div><div class="line"></div><div class="line"><span class="comment">/*perspective 透视*/</span></div><div class="line"><span class="comment">/*使用时，写在父元素 作用在子元素*/</span></div><div class="line"><span class="attribute">perspective</span>: <span class="number">500px</span>;</div></pre></td></tr></table></figure>
+<h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*transition-duration   过渡时间*/</span></div><div class="line"><span class="attribute">transition-duration</span> : <span class="number">3s</span>;</div><div class="line"></div><div class="line"><span class="comment">/*transition-delay      延迟时间*/</span></div><div class="line"><span class="attribute">transition-delay</span>: <span class="number">0.5s</span>; </div><div class="line"></div><div class="line"><span class="comment">/*设置过渡起作用的地方*/</span></div><div class="line"><span class="attribute">transition</span>: <span class="number">2s</span>;</div><div class="line">-webkit-<span class="attribute">transition-property</span>: width;</div><div class="line"></div><div class="line"><span class="comment">/*过渡过程的行走方式*/</span></div><div class="line"><span class="attribute">transition-timing-function</span></div><div class="line">    linear：线性效果</div><div class="line">    ease-in：渐显效果</div><div class="line">    ease-out：渐隐效果</div><div class="line">    ease-in-out：渐显渐隐效果</div><div class="line">    cubic-bezier：特殊的立方贝塞尔曲线效果。</div></pre></td></tr></table></figure>
+<h4 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*定义动画*/</span></div><div class="line">@<span class="keyword">keyframes</span> summer&#123;</div><div class="line">    0%&#123;</div><div class="line">        <span class="attribute">background</span>: deepskyblue;</div><div class="line">    &#125;</div><div class="line">    100%&#123;</div><div class="line">        <span class="attribute">background</span>: red;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*infinite 无穷次数*/</span></div><div class="line"><span class="comment">/*动画函数 变换一次时间 延迟时间 变换的次数*/</span></div><div class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">summer</span> 1<span class="selector-tag">s</span> 3<span class="selector-tag">s</span> <span class="selector-tag">infinite</span>;</div></pre></td></tr></table></figure>
+<h3 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">3</span>D呈现</div><div class="line">flat | preserve<span class="number">-3</span>d</div><div class="line">flat：所有子元素在 <span class="number">2</span>D 平面呈现</div><div class="line">preserve<span class="number">-3</span>d：保留<span class="number">3</span>D空间</div></pre></td></tr></table></figure>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="http://draymonder.me/PHP-Practicing/2018-01-31/demo.html">demo演示</a></p>
+<p><a href="https://github.com/Draymonders/PHP-Practicing/blob/master/2018-01-31/demo.html" target="_blank" rel="external">demo源码</a></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;以后啊，少熬夜，熬一天，第二天真的挺难受的，又起得晚，中午还精神不好。<br>&nbsp;&nbsp;&nbsp;&nbsp;听说今天有百年不遇的月全食，歇会儿，等会出去看看。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      对css3部分特性和动画的学习与使用，并仿做了一个demo
+    
+    </summary>
+    
+    
+      <category term="Css" scheme="http://draymonder.me/tags/Css/"/>
+    
+  </entry>
   
   <entry>
     <title>对CSS布局的总结</title>
