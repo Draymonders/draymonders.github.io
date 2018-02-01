@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-01-31T12:50:25.002Z</updated>
+  <updated>2018-02-01T13:52:57.606Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,87 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript基础知识(1)</title>
+    <link href="http://draymonder.me/2018/02/01/the%20use%20of%20js1/"/>
+    <id>http://draymonder.me/2018/02/01/the use of js1/</id>
+    <published>2018-02-01T14:00:00.000Z</published>
+    <updated>2018-02-01T13:52:57.606Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么学习-Js"><a href="#为什么学习-Js" class="headerlink" title="为什么学习 Js"></a>为什么学习 Js</h3><p>HTML 定义了网页的内容<br>CSS 描述了网页的布局<br>JavaScript 网页的行为</p>
+<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.max</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.min</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.ceil</span>() 向上舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.floor</span>() 向下舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.round</span>() 标准舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.random</span>()  返回0和1之间的随机数，不包括0，1</div></pre></td></tr></table></figure>
+<h3 id="js闭包-未理解"><a href="#js闭包-未理解" class="headerlink" title="js闭包(未理解)"></a>js闭包(未理解)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*发现python,php,js都有闭包耶，连c++，java都有了</span></div><div class="line"><span class="comment">  这种东西真的恶心耶，先留着，以后解决*/</span></div><div class="line"><span class="comment">/*在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量</span></div><div class="line"><span class="comment">  利用闭包可以突破作用链域  */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        b++;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> t = a(); </div><div class="line">t(); <span class="comment">//2</span></div><div class="line">t(); <span class="comment">//3</span></div></pre></td></tr></table></figure>
+<h3 id="网页里面的一些小操作"><a href="#网页里面的一些小操作" class="headerlink" title="网页里面的一些小操作"></a>网页里面的一些小操作</h3><figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line">shift+enter  用来实现<span class="built_in">console</span>换行</div><div class="line">ctrl+l       用来对<span class="built_in">console</span>清空</div><div class="line">ctrl+滚轮    <span class="built_in">console</span>放大与缩小</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;哇，一个闭包倒腾了两个半小时，只了解了一丢丢。明天再看看吧</p>
+]]></content>
+    
+    <summary type="html">
+    
+      JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。
+    
+    </summary>
+    
+    
+      <category term="Js" scheme="http://draymonder.me/tags/Js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用媒体查询来响应式开发</title>
+    <link href="http://draymonder.me/2018/02/01/the%20use%20of%20viewport/"/>
+    <id>http://draymonder.me/2018/02/01/the use of viewport/</id>
+    <published>2018-02-01T08:00:00.000Z</published>
+    <updated>2018-02-01T09:20:49.034Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;今天大概就能把CSS学的大概了，(虽然还是菜鸡水平，不过还是很高兴自己能坚持下来，嘻嘻),今天的任务蛮轻的耶，只有三个视频。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="meta标签对viewport进行控制"><a href="#meta标签对viewport进行控制" class="headerlink" title="meta标签对viewport进行控制"></a>meta标签对viewport进行控制</h3><p>我们在开发移动设备的网站时，最常见的的一个动作就是把下面这个东西复制到我们的head标签中：<br><figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">&lt;meta <span class="attr">name="viewport"</span></div><div class="line">        <span class="attr">content="width=device-width,</span> <span class="attr">user-scalable=no,</span> <span class="attr">initial-scale=1.0,</span> <span class="attr">maximum-scale=1.0,</span> <span class="attr">minimum-scale=1.0"&gt;</span></div></pre></td></tr></table></figure></p>
+<p>该meta标签的作用是让当前viewport的宽度等于设备的宽度,用户不可手动缩放，初始缩放，最大缩放，最小缩放都是1，也就是固定了</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*媒体查询屏幕宽度*/</span></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">401px</span>) and (max-width: <span class="number">1199px</span>)&#123;</div><div class="line">    <span class="selector-tag">div</span>&#123;</div><div class="line">        <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">        <span class="attribute">background</span>: deepskyblue;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="https://draymonder.me/PHP-Practicing/2018-02-01/demo.html">demo演示</a><br><a href="https://github.com/Draymonders/PHP-Practicing/blob/master/2018-02-01/demo.html" target="_blank" rel="external">demo源码</a></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;<b>其实本可以过一种更健康的方式,用更好的状态来过好每一天。</b></p>
+]]></content>
+    
+    <summary type="html">
+    
+      响应式设计是一个新兴移动 Web设计和开发实践，为了使访问网站的访客有良好的体验。
+    
+    </summary>
+    
+    
+      <category term="Css" scheme="http://draymonder.me/tags/Css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>upper/lower_bound的用法</title>
+    <link href="http://draymonder.me/2018/01/31/upper%20compare%20to%20lower/"/>
+    <id>http://draymonder.me/2018/01/31/upper compare to lower/</id>
+    <published>2018-01-31T14:00:00.000Z</published>
+    <updated>2018-02-01T05:31:55.300Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
+<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
+]]></content>
+    
+    <summary type="html">
+    
+      听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
+    
+      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CSS3特性和动画</title>
     <link href="http://draymonder.me/2018/01/31/the%20use%20of%20css3/"/>
     <id>http://draymonder.me/2018/01/31/the use of css3/</id>
     <published>2018-01-31T10:00:00.000Z</published>
-    <updated>2018-01-31T12:50:25.002Z</updated>
+    <updated>2018-02-01T09:20:56.285Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  &nbsp;&nbsp;&nbsp;&nbsp;昨天改hexo的主题，之前的主题代码高亮好丑，也找不到配置在哪里了，就改成了Next主题。然后乱码好头疼啊，文件改成utf-8格式，还是没用。<br>  &nbsp;&nbsp;&nbsp;&nbsp;后来上网搜，最后解决方案是hexo clean一下再hexo s 真的是头皮发麻，我还以为主题不兼容呢。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="CSS3部分特性"><a href="#CSS3部分特性" class="headerlink" title="CSS3部分特性"></a>CSS3部分特性</h3><h4 id="border-radius-圆角边框"><a href="#border-radius-圆角边框" class="headerlink" title="border-radius(圆角边框)"></a>border-radius(圆角边框)</h4><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*当值大于等于边长一半 就是圆形的*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line"><span class="comment">/*这个也可以变成圆形*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line"><span class="comment">/*每个角可以设置两个值，分别对应椭圆的a和b*/</span></div><div class="line"><span class="attribute">border-radius</span>: <span class="number">40px</span> / <span class="number">20px</span>;</div></pre></td></tr></table></figure>
@@ -31,8 +107,7 @@
 <h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*transition-duration   过渡时间*/</span></div><div class="line"><span class="attribute">transition-duration</span> : <span class="number">3s</span>;</div><div class="line"></div><div class="line"><span class="comment">/*transition-delay      延迟时间*/</span></div><div class="line"><span class="attribute">transition-delay</span>: <span class="number">0.5s</span>; </div><div class="line"></div><div class="line"><span class="comment">/*设置过渡起作用的地方*/</span></div><div class="line"><span class="attribute">transition</span>: <span class="number">2s</span>;</div><div class="line">-webkit-<span class="attribute">transition-property</span>: width;</div><div class="line"></div><div class="line"><span class="comment">/*过渡过程的行走方式*/</span></div><div class="line"><span class="attribute">transition-timing-function</span></div><div class="line">    linear：线性效果</div><div class="line">    ease-in：渐显效果</div><div class="line">    ease-out：渐隐效果</div><div class="line">    ease-in-out：渐显渐隐效果</div><div class="line">    cubic-bezier：特殊的立方贝塞尔曲线效果。</div></pre></td></tr></table></figure>
 <h4 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*定义动画*/</span></div><div class="line">@<span class="keyword">keyframes</span> summer&#123;</div><div class="line">    0%&#123;</div><div class="line">        <span class="attribute">background</span>: deepskyblue;</div><div class="line">    &#125;</div><div class="line">    100%&#123;</div><div class="line">        <span class="attribute">background</span>: red;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*infinite 无穷次数*/</span></div><div class="line"><span class="comment">/*动画函数 变换一次时间 延迟时间 变换的次数*/</span></div><div class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">summer</span> 1<span class="selector-tag">s</span> 3<span class="selector-tag">s</span> <span class="selector-tag">infinite</span>;</div></pre></td></tr></table></figure>
 <h3 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">3</span>D呈现</div><div class="line">flat | preserve<span class="number">-3</span>d</div><div class="line">flat：所有子元素在 <span class="number">2</span>D 平面呈现</div><div class="line">preserve<span class="number">-3</span>d：保留<span class="number">3</span>D空间</div></pre></td></tr></table></figure>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="http://draymonder.me/PHP-Practicing/2018-01-31/demo.html">demo演示</a></p>
-<p><a href="https://github.com/Draymonders/PHP-Practicing/blob/master/2018-01-31/demo.html" target="_blank" rel="external">demo源码</a></p>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="http://draymonder.me/PHP-Practicing/2018-01-31/demo.html">demo演示</a><br><a href="https://github.com/Draymonders/PHP-Practicing/blob/master/2018-01-31/demo.html" target="_blank" rel="external">demo源码</a></p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;以后啊，少熬夜，熬一天，第二天真的挺难受的，又起得晚，中午还精神不好。<br>&nbsp;&nbsp;&nbsp;&nbsp;听说今天有百年不遇的月全食，歇会儿，等会出去看看。</p>
 ]]></content>
     
@@ -82,7 +157,7 @@
     <link href="http://draymonder.me/2018/01/29/the%20skill%20of%20coding/"/>
     <id>http://draymonder.me/2018/01/29/the skill of coding/</id>
     <published>2018-01-29T06:00:00.000Z</published>
-    <updated>2018-01-29T06:18:56.965Z</updated>
+    <updated>2018-02-01T09:20:54.288Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  好不容易等来了放假，所以啊，有时间去学习一些东西。<br>  现在我主要的方向是 算法和后端(PHP入门，昨天刚刚安装好apache服务器)。<br>  今天在实验室看到了绿书，准备看看这本书，从新系统巩固和学习一些新的知识吧</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>  Blog上只更新一些与自己有用的东西，因人而异吧。</p>
@@ -114,7 +189,7 @@
     </summary>
     
     
-      <category term="Coding" scheme="http://draymonder.me/tags/Coding/"/>
+      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
     
   </entry>
   
