@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Js," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Just going go~">
-<meta name="keywords" content="STL,set,模板">
-<meta property="og:type" content="website">
-<meta property="og:title" content="STL set">
-<meta property="og:url" content="http://draymonder.me/backup/STL set.html">
+<meta name="description" content="DOM（Document Object Model）文档对象模型">
+<meta name="keywords" content="Js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础知识(2)">
+<meta property="og:url" content="http://draymonder.me/2018/02/02/the use of js2/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="Just going go~">
+<meta property="og:description" content="DOM（Document Object Model）文档对象模型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-14T11:25:53.819Z">
+<meta property="og:updated_time" content="2018-02-02T10:55:51.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="STL set">
-<meta name="twitter:description" content="Just going go~">
+<meta name="twitter:title" content="JavaScript基础知识(2)">
+<meta name="twitter:description" content="DOM（Document Object Model）文档对象模型">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/backup/STL set.html"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/02/the use of js2/"/>
 
 
 
 
 
-  <title>STL set | Draymonder's Blog</title>
+  <title>JavaScript基础知识(2) | Draymonder's Blog</title>
   
 
 
@@ -250,42 +250,162 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/02/the use of js2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Draymonder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Draymonder's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">STL set</h1>
-
-
-	<div class="post-meta">
-		<div class="post-description">Just going go~</div>
-	</div>
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><h5 id="set讲解"><a href="#set讲解" class="headerlink" title="set讲解"></a>set讲解</h5><p>&nbsp;&nbsp;定义set对象的示例代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s;</div><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt; ss;</div></pre></td></tr></table></figure>
-<h5 id="set的基本操作"><a href="#set的基本操作" class="headerlink" title="set的基本操作"></a>set的基本操作</h5><figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">s</span><span class="selector-class">.begin</span>()       <span class="comment">//  返回指向第一个元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.clear</span>()       <span class="comment">//  清除所有元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.count</span>()       <span class="comment">//  返回某个值元素的个数</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.empty</span>()       <span class="comment">//  如果集合为空，返回true(真）</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.end</span>()         <span class="comment">//  返回指向最后一个元素之后的迭代器，不是最后一个元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.equal_range</span>() <span class="comment">//  返回集合中与给定值相等的上下限的两个迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.erase</span>()       <span class="comment">//  删除集合中的元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.find</span>()        <span class="comment">//  返回一个指向被查找到元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.get_allocator</span>()   <span class="comment">//  返回集合的分配器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.insert</span>()      <span class="comment">//  在集合中插入元素</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.lower_bound</span>() <span class="comment">//  返回指向大于（或等于）某值的第一个元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.key_comp</span>()    <span class="comment">//  返回一个用于元素间值比较的函数</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.max_size</span>()    <span class="comment">//  返回集合能容纳的元素的最大限值</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.rbegin</span>()      <span class="comment">//  返回指向集合中最后一个元素的反向迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.rend</span>()        <span class="comment">//  返回指向集合中第一个元素的反向迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.size</span>()        <span class="comment">//  集合中元素的数目</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.swap</span>()        <span class="comment">//  交换两个集合变量</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.upper_bound</span>() <span class="comment">//  返回大于某个值元素的迭代器</span></div><div class="line"><span class="selector-tag">s</span><span class="selector-class">.value_comp</span>()  <span class="comment">//  返回一个用于比较元素间的值的函数</span></div></pre></td></tr></table></figure>
-<h4 id="Multiset"><a href="#Multiset" class="headerlink" title="Multiset"></a>Multiset</h4><p>&nbsp;&nbsp;multiset（多重集合）。多重集合与集合的区别在于集合中不能存在相同元素，而多重集合中可以存在。</p>
-<h5 id="Multiset-set异同点"><a href="#Multiset-set异同点" class="headerlink" title="Multiset set异同点"></a>Multiset set异同点</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">multiset</span>和<span class="built_in">set</span>的基本操作相似，需要注意的是，<span class="built_in">set</span>的count()能返回<span class="number">0</span>（无）或者<span class="number">1</span>（有），而<span class="built_in">multiset</span>是有多少个返回多少个。</div></pre></td></tr></table></figure>
-
+          <h1 class="post-title" itemprop="name headline">JavaScript基础知识(2)</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T13:00:00+08:00">
+                2018-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  DOM（Document Object Model）文档对象模型
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  发现自己都只是浅显的了解html+css+js，不过以后会有用的吧，回家以后，自己写个项目，维护一下，就会很棒棒的吧。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一些常用的函数"><a href="#一些常用的函数" class="headerlink" title="一些常用的函数"></a>一些常用的函数</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">document.getElementById(<span class="string">"id"</span>)</div><div class="line">document.getElementsByTagName(<span class="string">"name"</span>)</div><div class="line">document.createElement(<span class="string">"name"</span>)</div><div class="line"><span class="keyword">Node</span>.<span class="title">appendChild</span>(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">Node</span>.insertBefore(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">element</span>.innerHTML</div><div class="line">element.innerText  //兼容性不好，推荐使用innerHTML</div><div class="line">element.style.*  //visibility用来设置是否显示</div><div class="line">element.setAttribute(<span class="string">"class"</span>,<span class="string">"com"</span>)</div><div class="line">element.getAttribute(<span class="string">"class"</span>)</div></pre></td></tr></table></figure>
+<h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><p><ul></ul></p>
+<p><li style="list-style:none;">当用户点击鼠标时 </li></p>
+<p><li style="list-style:none;">当网页已加载时 </li></p>
+<p><li style="list-style:none;">当图像已加载时 </li></p>
+<p><li style="list-style:none;">当鼠标移动到元素上时 </li></p>
+<p><li style="list-style:none;">当输入字段被改变时&lt; /li&gt;</li></p>
+<p><li style="list-style:none;">当提交 HTML 表单时 </li></p>
+<p><li style="list-style:none;">当用户触发按键时 </li><br><br><figure class="highlight hsp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">onclick</span> = <span class="string">"function(this)"</span> <span class="comment">//点击时</span></div><div class="line">onload      <span class="comment">//加载</span></div><div class="line">onunload    <span class="comment">//离开</span></div><div class="line">onchange    <span class="comment">//文字改变</span></div><div class="line">onmouseover <span class="comment">//鼠标在元素上</span></div><div class="line">onmouseout  <span class="comment">//鼠标离开元素</span></div><div class="line">onmousedown <span class="comment">//当点击鼠标按钮时</span></div><div class="line">onmouseup   <span class="comment">//当释放鼠标按钮时</span></div></pre></td></tr></table></figure></p>
+<h3 id="addEventListener-事件句柄"><a href="#addEventListener-事件句柄" class="headerlink" title="addEventListener 事件句柄"></a>addEventListener 事件句柄</h3><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">element.addEventListener(event, <span class="function"><span class="keyword">function</span>, <span class="title">useCapture</span>);  //添加事件句柄</span></div><div class="line">/*</div><div class="line">第一个参数是事件的类型 (如 <span class="string">"click"</span> 或 <span class="string">"mousedown"</span>).</div><div class="line">第二个参数是事件触发后调用的函数。</div><div class="line">第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。</div><div class="line"> */</div><div class="line"></div><div class="line">在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素</div><div class="line">即： <span class="symbol">&lt;p&gt;</span> 元素的点击事件先触发，然后会触发 <span class="symbol">&lt;div&gt;</span> 元素的点击事件。</div><div class="line"></div><div class="line">在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件</div><div class="line">即： <span class="symbol">&lt;div&gt;</span> 元素的点击事件先触发 ，然后再触发 <span class="symbol">&lt;p&gt;</span> 元素的点击事件。</div></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Js/" rel="tag"><i class="fa fa-tag"></i> Js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/the use of js1/" rel="next" title="JavaScript基础知识(1)">
+                <i class="fa fa-chevron-left"></i> JavaScript基础知识(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/02/the use of js3/" rel="prev" title="JavaScript基础知识(3)">
+                JavaScript基础知识(3) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -416,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#set"><span class="nav-number">1.</span> <span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#set讲解"><span class="nav-number">1.1.</span> <span class="nav-text">set讲解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#set的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">set的基本操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiset"><span class="nav-number">2.</span> <span class="nav-text">Multiset</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Multiset-set异同点"><span class="nav-number">2.1.</span> <span class="nav-text">Multiset set异同点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些常用的函数"><span class="nav-number">2.1.</span> <span class="nav-text">一些常用的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM事件"><span class="nav-number">2.2.</span> <span class="nav-text">DOM事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addEventListener-事件句柄"><span class="nav-number">2.3.</span> <span class="nav-text">addEventListener 事件句柄</span></a></li></ol></li></ol></div>
             
 
           </div>
