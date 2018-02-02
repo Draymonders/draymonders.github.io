@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-02T12:47:19.292Z</updated>
+  <updated>2018-02-02T13:49:50.862Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>C++ 过程中遇到的一些错误</title>
+    <link href="http://draymonder.me/2018/02/02/the-errors-in-c++/"/>
+    <id>http://draymonder.me/2018/02/02/the-errors-in-c++/</id>
+    <published>2018-02-02T15:59:00.000Z</published>
+    <updated>2018-02-02T13:49:50.862Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h2><p>  今天晚上没啥事干，就刷刷PAT Basic Level的水题，没想到写完题目了 突然没法编译<br>  我还以为自己的电脑中毒了？吓得我赶紧搜起了百度，改了配置，发现还是不能编译<br>  又重开软件，还是不行，后来终于发现自己，问题搜错了。搜到正确的答案，真是被自己蠢哭啊.</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>这个就用来记录自己平时犯得错误</p>
+<h3 id="undefined-reference-to-‘WinMain-16’"><a href="#undefined-reference-to-‘WinMain-16’" class="headerlink" title="undefined reference to ‘WinMain@16’"></a>undefined reference to ‘WinMain@16’</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line">检查一下自己是不是又把main 写成<span class="keyword">mian了</span></div><div class="line"><span class="keyword">哈哈~，好蠢</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>持续更新自己的错误，嘻嘻，挺不错的。就当错题本了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      更新自己在刷题过程中遇到的一些蠢蠢的小错误
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>杂文一记</title>
-    <link href="http://draymonder.me/2018/02/02/the%20diary02-02/"/>
-    <id>http://draymonder.me/2018/02/02/the diary02-02/</id>
+    <link href="http://draymonder.me/2018/02/02/the-diary-02-02/"/>
+    <id>http://draymonder.me/2018/02/02/the-diary-02-02/</id>
     <published>2018-02-02T13:00:00.000Z</published>
-    <updated>2018-02-02T12:47:19.292Z</updated>
+    <updated>2018-02-02T13:56:06.622Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  一个人，今天晚上歇会儿，明天继续训练。写写日记，不能一直写代码啊。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="琅琊榜-风起长林"><a href="#琅琊榜-风起长林" class="headerlink" title="琅琊榜:风起长林"></a>琅琊榜:风起长林</h3><p>我发现我好像就是一个肤浅的人耶，人家追剧追的是情节，我追的，貌似是女主耶。林奚给人的感觉是很单纯。<br>0.0，好了，我要正经一些，收集一些剧中我喜欢的文字吧。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你不要做自己将来会后悔的决定</div></pre></td></tr></table></figure></p>
@@ -42,14 +66,14 @@
     </summary>
     
     
-      <category term="diary" scheme="http://draymonder.me/tags/diary/"/>
+      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
     
   </entry>
   
   <entry>
     <title>电影资源网站</title>
-    <link href="http://draymonder.me/2018/02/02/the%20film%20web/"/>
-    <id>http://draymonder.me/2018/02/02/the film web/</id>
+    <link href="http://draymonder.me/2018/02/02/the-film-webs/"/>
+    <id>http://draymonder.me/2018/02/02/the-film-webs/</id>
     <published>2018-02-02T11:45:00.000Z</published>
     <updated>2018-02-02T11:33:52.272Z</updated>
     
@@ -74,10 +98,10 @@
   
   <entry>
     <title>JavaScript基础知识(3)</title>
-    <link href="http://draymonder.me/2018/02/02/the%20use%20of%20js3/"/>
-    <id>http://draymonder.me/2018/02/02/the use of js3/</id>
+    <link href="http://draymonder.me/2018/02/02/the-use-of-js3/"/>
+    <id>http://draymonder.me/2018/02/02/the-use-of-js3/</id>
     <published>2018-02-02T11:00:00.000Z</published>
-    <updated>2018-02-02T10:47:01.262Z</updated>
+    <updated>2018-02-02T13:54:58.408Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来今天的任务也不算特别多，就又浪了一天，一天下来也没怎么学，没怎么coding。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> winterCamp = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    winterCamp.name = <span class="string">"draymonder"</span>;</div><div class="line">    winterCamp.age = <span class="number">19</span>;</div><div class="line">    winterCamp.whichGroup = <span class="string">"FE"</span>;</div><div class="line">    winterCamp.saywhat =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.whichGroup+ <span class="string">" of "</span>+<span class="keyword">this</span>.name + <span class="string">" is "</span>+<span class="keyword">this</span>.age);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -100,8 +124,8 @@
   
   <entry>
     <title>JavaScript基础知识(2)</title>
-    <link href="http://draymonder.me/2018/02/02/the%20use%20of%20js2/"/>
-    <id>http://draymonder.me/2018/02/02/the use of js2/</id>
+    <link href="http://draymonder.me/2018/02/02/the-use-of-js2/"/>
+    <id>http://draymonder.me/2018/02/02/the-use-of-js2/</id>
     <published>2018-02-02T05:00:00.000Z</published>
     <updated>2018-02-02T10:55:51.608Z</updated>
     
@@ -131,8 +155,8 @@
   
   <entry>
     <title>JavaScript基础知识(1)</title>
-    <link href="http://draymonder.me/2018/02/01/the%20use%20of%20js1/"/>
-    <id>http://draymonder.me/2018/02/01/the use of js1/</id>
+    <link href="http://draymonder.me/2018/02/01/the-use-of-js1/"/>
+    <id>http://draymonder.me/2018/02/01/the-use-of-js1/</id>
     <published>2018-02-01T14:00:00.000Z</published>
     <updated>2018-02-01T13:54:19.855Z</updated>
     
@@ -156,8 +180,8 @@
   
   <entry>
     <title>利用媒体查询来响应式开发</title>
-    <link href="http://draymonder.me/2018/02/01/the%20use%20of%20viewport/"/>
-    <id>http://draymonder.me/2018/02/01/the use of viewport/</id>
+    <link href="http://draymonder.me/2018/02/01/the-use-of-viewport/"/>
+    <id>http://draymonder.me/2018/02/01/the-use-of-viewport/</id>
     <published>2018-02-01T08:00:00.000Z</published>
     <updated>2018-02-01T09:20:49.034Z</updated>
     
@@ -182,10 +206,10 @@
   
   <entry>
     <title>upper/lower_bound的用法</title>
-    <link href="http://draymonder.me/2018/01/31/upper%20compare%20to%20lower/"/>
-    <id>http://draymonder.me/2018/01/31/upper compare to lower/</id>
+    <link href="http://draymonder.me/2018/01/31/upper-compare-to-lower/"/>
+    <id>http://draymonder.me/2018/01/31/upper-compare-to-lower/</id>
     <published>2018-01-31T14:00:00.000Z</published>
-    <updated>2018-02-01T05:31:55.300Z</updated>
+    <updated>2018-02-02T13:56:28.329Z</updated>
     
     <content type="html"><![CDATA[<h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
@@ -207,8 +231,8 @@
   
   <entry>
     <title>CSS3特性和动画</title>
-    <link href="http://draymonder.me/2018/01/31/the%20use%20of%20css3/"/>
-    <id>http://draymonder.me/2018/01/31/the use of css3/</id>
+    <link href="http://draymonder.me/2018/01/31/the-use-of-css3/"/>
+    <id>http://draymonder.me/2018/01/31/the-use-of-css3/</id>
     <published>2018-01-31T10:00:00.000Z</published>
     <updated>2018-02-01T09:20:56.285Z</updated>
     
@@ -268,8 +292,8 @@
   
   <entry>
     <title>一些编程技巧和c++11语法特性的介绍</title>
-    <link href="http://draymonder.me/2018/01/29/the%20skill%20of%20coding/"/>
-    <id>http://draymonder.me/2018/01/29/the skill of coding/</id>
+    <link href="http://draymonder.me/2018/01/29/the-skill-of-coding/"/>
+    <id>http://draymonder.me/2018/01/29/the-skill-of-coding/</id>
     <published>2018-01-29T06:00:00.000Z</published>
     <updated>2018-02-01T09:20:54.288Z</updated>
     

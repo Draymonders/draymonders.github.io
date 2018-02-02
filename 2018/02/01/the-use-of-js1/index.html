@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="C++,PAT," />
+  <meta name="keywords" content="Js," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。">
-<meta name="keywords" content="C++,PAT">
+<meta name="description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
+<meta name="keywords" content="Js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="upper&#x2F;lower_bound的用法">
-<meta property="og:url" content="http://draymonder.me/2018/01/31/upper compare to lower/index.html">
+<meta property="og:title" content="JavaScript基础知识(1)">
+<meta property="og:url" content="http://draymonder.me/2018/02/01/the-use-of-js1/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。">
+<meta property="og:description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T05:31:55.300Z">
+<meta property="og:updated_time" content="2018-02-01T13:54:19.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="upper&#x2F;lower_bound的用法">
-<meta name="twitter:description" content="听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。">
+<meta name="twitter:title" content="JavaScript基础知识(1)">
+<meta name="twitter:description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/01/31/upper compare to lower/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/01/the-use-of-js1/"/>
 
 
 
 
 
-  <title>upper/lower_bound的用法 | Draymonder's Blog</title>
+  <title>JavaScript基础知识(1) | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/01/31/upper compare to lower/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/01/the-use-of-js1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">upper/lower_bound的用法</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript基础知识(1)</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T22:00:00+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T22:00:00+08:00">
+                2018-02-01
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。
+                  JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。
               </div>
           
 
@@ -333,9 +333,11 @@
       
 
       
-        <h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
-<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么学习-Js"><a href="#为什么学习-Js" class="headerlink" title="为什么学习 Js"></a>为什么学习 Js</h3><p>HTML 定义了网页的内容<br>CSS 描述了网页的布局<br>JavaScript 网页的行为</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.max</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.min</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.ceil</span>() 向上舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.floor</span>() 向下舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.round</span>() 标准舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.random</span>()  返回0和1之间的随机数，不包括0，1</div></pre></td></tr></table></figure>
+<h3 id="js闭包-未理解"><a href="#js闭包-未理解" class="headerlink" title="js闭包(未理解)"></a>js闭包(未理解)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*发现python,php,js都有闭包耶，连c++，java都有了</span></div><div class="line"><span class="comment">  这种东西真的恶心耶，先留着，以后解决*/</span></div><div class="line"><span class="comment">/*在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量</span></div><div class="line"><span class="comment">  利用闭包可以突破作用链域  */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        b++;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> t = a(); </div><div class="line">t(); <span class="comment">//2</span></div><div class="line">t(); <span class="comment">//3</span></div></pre></td></tr></table></figure>
+<h3 id="网页里面的一些小操作"><a href="#网页里面的一些小操作" class="headerlink" title="网页里面的一些小操作"></a>网页里面的一些小操作</h3><figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line">shift+enter  用来实现<span class="built_in">console</span>换行</div><div class="line">ctrl+l       用来对<span class="built_in">console</span>清空</div><div class="line">ctrl+滚轮    <span class="built_in">console</span>放大与缩小</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;哇，一个闭包倒腾了两个半小时，只了解了一丢丢。明天再看看吧</p>
 
       
     </div>
@@ -353,9 +355,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
-          
-            <a href="/tags/PAT/" rel="tag"><i class="fa fa-tag"></i> PAT</a>
+            <a href="/tags/Js/" rel="tag"><i class="fa fa-tag"></i> Js</a>
           
         </div>
       
@@ -368,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/31/the use of css3/" rel="next" title="CSS3特性和动画">
-                <i class="fa fa-chevron-left"></i> CSS3特性和动画
+              <a href="/2018/02/01/the-use-of-viewport/" rel="next" title="利用媒体查询来响应式开发">
+                <i class="fa fa-chevron-left"></i> 利用媒体查询来响应式开发
               </a>
             
           </div>
@@ -378,8 +378,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/01/the use of viewport/" rel="prev" title="利用媒体查询来响应式开发">
-                利用媒体查询来响应式开发 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/02/the-use-of-js2/" rel="prev" title="JavaScript基础知识(2)">
+                JavaScript基础知识(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -474,7 +474,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -530,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#upper-lower-bound的用法"><span class="nav-number">1.</span> <span class="nav-text">upper/lower_bound的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组是单调非递减"><span class="nav-number">1.1.</span> <span class="nav-text">数组是单调非递减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组是单调非递增的"><span class="nav-number">1.2.</span> <span class="nav-text">数组是单调非递增的</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么学习-Js"><span class="nav-number">1.1.</span> <span class="nav-text">为什么学习 Js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">2.1.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js闭包-未理解"><span class="nav-number">2.2.</span> <span class="nav-text">js闭包(未理解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页里面的一些小操作"><span class="nav-number">2.3.</span> <span class="nav-text">网页里面的一些小操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>

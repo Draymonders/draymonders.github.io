@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Js," />
+  <meta name="keywords" content="Diary," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="DOM（Document Object Model）文档对象模型">
-<meta name="keywords" content="Js">
+<meta name="description" content="分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话">
+<meta name="keywords" content="Diary">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript基础知识(2)">
-<meta property="og:url" content="http://draymonder.me/2018/02/02/the use of js2/index.html">
+<meta property="og:title" content="杂文一记">
+<meta property="og:url" content="http://draymonder.me/2018/02/02/the-diary-02-02/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="DOM（Document Object Model）文档对象模型">
+<meta property="og:description" content="分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-02T10:55:51.608Z">
+<meta property="og:updated_time" content="2018-02-02T13:56:06.622Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript基础知识(2)">
-<meta name="twitter:description" content="DOM（Document Object Model）文档对象模型">
+<meta name="twitter:title" content="杂文一记">
+<meta name="twitter:description" content="分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/02/the use of js2/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/02/the-diary-02-02/"/>
 
 
 
 
 
-  <title>JavaScript基础知识(2) | Draymonder's Blog</title>
+  <title>杂文一记 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/02/the use of js2/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/02/the-diary-02-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript基础知识(2)</h1>
+          <h1 class="post-title" itemprop="name headline">杂文一记</h1>
         
 
         <div class="post-meta">
@@ -291,7 +291,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T13:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T21:00:00+08:00">
                 2018-02-02
               </time>
             
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  DOM（Document Object Model）文档对象模型
+                  分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话
               </div>
           
 
@@ -333,17 +333,17 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  发现自己都只是浅显的了解html+css+js，不过以后会有用的吧，回家以后，自己写个项目，维护一下，就会很棒棒的吧。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一些常用的函数"><a href="#一些常用的函数" class="headerlink" title="一些常用的函数"></a>一些常用的函数</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">document.getElementById(<span class="string">"id"</span>)</div><div class="line">document.getElementsByTagName(<span class="string">"name"</span>)</div><div class="line">document.createElement(<span class="string">"name"</span>)</div><div class="line"><span class="keyword">Node</span>.<span class="title">appendChild</span>(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">Node</span>.insertBefore(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">element</span>.innerHTML</div><div class="line">element.innerText  //兼容性不好，推荐使用innerHTML</div><div class="line">element.style.*  //visibility用来设置是否显示</div><div class="line">element.setAttribute(<span class="string">"class"</span>,<span class="string">"com"</span>)</div><div class="line">element.getAttribute(<span class="string">"class"</span>)</div></pre></td></tr></table></figure>
-<h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><p><ul></ul></p>
-<p><li style="list-style:none;">当用户点击鼠标时 </li></p>
-<p><li style="list-style:none;">当网页已加载时 </li></p>
-<p><li style="list-style:none;">当图像已加载时 </li></p>
-<p><li style="list-style:none;">当鼠标移动到元素上时 </li></p>
-<p><li style="list-style:none;">当输入字段被改变时&lt; /li&gt;</li></p>
-<p><li style="list-style:none;">当提交 HTML 表单时 </li></p>
-<p><li style="list-style:none;">当用户触发按键时 </li><br><br><figure class="highlight hsp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">onclick</span> = <span class="string">"function(this)"</span> <span class="comment">//点击时</span></div><div class="line">onload      <span class="comment">//加载</span></div><div class="line">onunload    <span class="comment">//离开</span></div><div class="line">onchange    <span class="comment">//文字改变</span></div><div class="line">onmouseover <span class="comment">//鼠标在元素上</span></div><div class="line">onmouseout  <span class="comment">//鼠标离开元素</span></div><div class="line">onmousedown <span class="comment">//当点击鼠标按钮时</span></div><div class="line">onmouseup   <span class="comment">//当释放鼠标按钮时</span></div></pre></td></tr></table></figure></p>
-<h3 id="addEventListener-事件句柄"><a href="#addEventListener-事件句柄" class="headerlink" title="addEventListener 事件句柄"></a>addEventListener 事件句柄</h3><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">element.addEventListener(event, <span class="function"><span class="keyword">function</span>, <span class="title">useCapture</span>);  //添加事件句柄</span></div><div class="line">/*</div><div class="line">第一个参数是事件的类型 (如 <span class="string">"click"</span> 或 <span class="string">"mousedown"</span>).</div><div class="line">第二个参数是事件触发后调用的函数。</div><div class="line">第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。</div><div class="line"> */</div><div class="line"></div><div class="line">在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素</div><div class="line">即： <span class="symbol">&lt;p&gt;</span> 元素的点击事件先触发，然后会触发 <span class="symbol">&lt;div&gt;</span> 元素的点击事件。</div><div class="line"></div><div class="line">在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件</div><div class="line">即： <span class="symbol">&lt;div&gt;</span> 元素的点击事件先触发 ，然后再触发 <span class="symbol">&lt;p&gt;</span> 元素的点击事件。</div></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  一个人，今天晚上歇会儿，明天继续训练。写写日记，不能一直写代码啊。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="琅琊榜-风起长林"><a href="#琅琊榜-风起长林" class="headerlink" title="琅琊榜:风起长林"></a>琅琊榜:风起长林</h3><p>我发现我好像就是一个肤浅的人耶，人家追剧追的是情节，我追的，貌似是女主耶。林奚给人的感觉是很单纯。<br>0.0，好了，我要正经一些，收集一些剧中我喜欢的文字吧。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你不要做自己将来会后悔的决定</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">我无论做什么，都必须先考虑家人的感受。</div><div class="line">身为家人，最大的安慰，就是能够彼此分担。</div></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">我理解你的立场和做法，也从未想过改变你的念头。</div><div class="line">但是平旌，我希望你能明白：</div><div class="line">我也没有办法为了你，彻底改变我自己</div><div class="line">如果有一天，京城是你的归处。</div><div class="line">那么你我之间...</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">平旌,我的心会永远等着你。</div><div class="line">可是我的脚步，不能因为等你而停留。</div><div class="line">平旌，不管你走到哪里。都会找到我的</div><div class="line">就算最终我们无法见面，答应我。</div><div class="line">好好照顾自己，平安就好。</div></pre></td></tr></table></figure>
+<h3 id="《无问西东》"><a href="#《无问西东》" class="headerlink" title="《无问西东》"></a>《无问西东》</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">这个世界从来不缺完美的人</div><div class="line">缺的是从自己心底里给出的</div><div class="line">真实 正义 无畏 同情</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">身死名灭者如牛毛</div><div class="line">角立杰出者如芝草</div><div class="line">故不得以有学之贫贱</div><div class="line">比于无学之富贵也</div><div class="line"><span class="comment">/*我们不要用功名利禄，来评判人生的价值。</span></div><div class="line"><span class="comment">不要因为追求人生的幻光，从而失去生命。*/</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">立德立言</div><div class="line">无问西东</div><div class="line">    《清华大学校歌》</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">因为最好的学生都读实科</div><div class="line">我只知道，不管我将来做什么</div><div class="line">在这个年纪，读书，学习都是对的</div><div class="line">我何用管我学什么？</div><div class="line">每天把自己交给书本，就有种踏实</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">人把自己置身于忙碌当中，有一种麻木的踏实 </div><div class="line">但丧失了真实，你的青春也不过只有这些日子 </div><div class="line">什么是真实？ </div><div class="line">你看到什么，听到什么，做什么，和谁在一起 </div><div class="line">有一种从心灵深处，满溢出来的不懊悔 也不羞耻的平和与喜悦</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你的负担将变成礼物 你受的苦将照亮你的路</div><div class="line">                            ——泰戈尔《渡》</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -361,7 +361,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Js/" rel="tag"><i class="fa fa-tag"></i> Js</a>
+            <a href="/tags/Diary/" rel="tag"><i class="fa fa-tag"></i> Diary</a>
           
         </div>
       
@@ -374,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/01/the use of js1/" rel="next" title="JavaScript基础知识(1)">
-                <i class="fa fa-chevron-left"></i> JavaScript基础知识(1)
+              <a href="/2018/02/02/the-film-webs/" rel="next" title="电影资源网站">
+                <i class="fa fa-chevron-left"></i> 电影资源网站
               </a>
             
           </div>
@@ -384,8 +384,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/02/the use of js3/" rel="prev" title="JavaScript基础知识(3)">
-                JavaScript基础知识(3) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/02/the-errors-in-c++/" rel="prev" title="C++ 过程中遇到的一些错误">
+                C++ 过程中遇到的一些错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,7 +467,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -480,7 +480,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -536,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些常用的函数"><span class="nav-number">2.1.</span> <span class="nav-text">一些常用的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM事件"><span class="nav-number">2.2.</span> <span class="nav-text">DOM事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addEventListener-事件句柄"><span class="nav-number">2.3.</span> <span class="nav-text">addEventListener 事件句柄</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#琅琊榜-风起长林"><span class="nav-number">2.1.</span> <span class="nav-text">琅琊榜:风起长林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《无问西东》"><span class="nav-number">2.2.</span> <span class="nav-text">《无问西东》</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>

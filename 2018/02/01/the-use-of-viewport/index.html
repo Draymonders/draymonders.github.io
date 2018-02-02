@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Js," />
+  <meta name="keywords" content="Css," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
-<meta name="keywords" content="Js">
+<meta name="description" content="响应式设计是一个新兴移动 Web设计和开发实践，为了使访问网站的访客有良好的体验。">
+<meta name="keywords" content="Css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript基础知识(1)">
-<meta property="og:url" content="http://draymonder.me/2018/02/01/the use of js1/index.html">
+<meta property="og:title" content="利用媒体查询来响应式开发">
+<meta property="og:url" content="http://draymonder.me/2018/02/01/the-use-of-viewport/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
+<meta property="og:description" content="响应式设计是一个新兴移动 Web设计和开发实践，为了使访问网站的访客有良好的体验。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T13:54:19.855Z">
+<meta property="og:updated_time" content="2018-02-01T09:20:49.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript基础知识(1)">
-<meta name="twitter:description" content="JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。">
+<meta name="twitter:title" content="利用媒体查询来响应式开发">
+<meta name="twitter:description" content="响应式设计是一个新兴移动 Web设计和开发实践，为了使访问网站的访客有良好的体验。">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/01/the use of js1/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/01/the-use-of-viewport/"/>
 
 
 
 
 
-  <title>JavaScript基础知识(1) | Draymonder's Blog</title>
+  <title>利用媒体查询来响应式开发 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/01/the use of js1/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/01/the-use-of-viewport/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript基础知识(1)</h1>
+          <h1 class="post-title" itemprop="name headline">利用媒体查询来响应式开发</h1>
         
 
         <div class="post-meta">
@@ -291,7 +291,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T22:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T16:00:00+08:00">
                 2018-02-01
               </time>
             
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。
+                  响应式设计是一个新兴移动 Web设计和开发实践，为了使访问网站的访客有良好的体验。
               </div>
           
 
@@ -333,11 +333,12 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么学习-Js"><a href="#为什么学习-Js" class="headerlink" title="为什么学习 Js"></a>为什么学习 Js</h3><p>HTML 定义了网页的内容<br>CSS 描述了网页的布局<br>JavaScript 网页的行为</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.max</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.min</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.ceil</span>() 向上舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.floor</span>() 向下舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.round</span>() 标准舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.random</span>()  返回0和1之间的随机数，不包括0，1</div></pre></td></tr></table></figure>
-<h3 id="js闭包-未理解"><a href="#js闭包-未理解" class="headerlink" title="js闭包(未理解)"></a>js闭包(未理解)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*发现python,php,js都有闭包耶，连c++，java都有了</span></div><div class="line"><span class="comment">  这种东西真的恶心耶，先留着，以后解决*/</span></div><div class="line"><span class="comment">/*在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量</span></div><div class="line"><span class="comment">  利用闭包可以突破作用链域  */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        b++;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> t = a(); </div><div class="line">t(); <span class="comment">//2</span></div><div class="line">t(); <span class="comment">//3</span></div></pre></td></tr></table></figure>
-<h3 id="网页里面的一些小操作"><a href="#网页里面的一些小操作" class="headerlink" title="网页里面的一些小操作"></a>网页里面的一些小操作</h3><figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line">shift+enter  用来实现<span class="built_in">console</span>换行</div><div class="line">ctrl+l       用来对<span class="built_in">console</span>清空</div><div class="line">ctrl+滚轮    <span class="built_in">console</span>放大与缩小</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;哇，一个闭包倒腾了两个半小时，只了解了一丢丢。明天再看看吧</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;今天大概就能把CSS学的大概了，(虽然还是菜鸡水平，不过还是很高兴自己能坚持下来，嘻嘻),今天的任务蛮轻的耶，只有三个视频。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="meta标签对viewport进行控制"><a href="#meta标签对viewport进行控制" class="headerlink" title="meta标签对viewport进行控制"></a>meta标签对viewport进行控制</h3><p>我们在开发移动设备的网站时，最常见的的一个动作就是把下面这个东西复制到我们的head标签中：<br><figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">&lt;meta <span class="attr">name="viewport"</span></div><div class="line">        <span class="attr">content="width=device-width,</span> <span class="attr">user-scalable=no,</span> <span class="attr">initial-scale=1.0,</span> <span class="attr">maximum-scale=1.0,</span> <span class="attr">minimum-scale=1.0"&gt;</span></div></pre></td></tr></table></figure></p>
+<p>该meta标签的作用是让当前viewport的宽度等于设备的宽度,用户不可手动缩放，初始缩放，最大缩放，最小缩放都是1，也就是固定了</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*媒体查询屏幕宽度*/</span></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">401px</span>) and (max-width: <span class="number">1199px</span>)&#123;</div><div class="line">    <span class="selector-tag">div</span>&#123;</div><div class="line">        <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">        <span class="attribute">background</span>: deepskyblue;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="https://draymonder.me/PHP-Practicing/2018-02-01/demo.html">demo演示</a><br><a href="https://github.com/Draymonders/PHP-Practicing/blob/master/2018-02-01/demo.html" target="_blank" rel="external">demo源码</a></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;<b>其实本可以过一种更健康的方式,用更好的状态来过好每一天。</b></p>
 
       
     </div>
@@ -355,7 +356,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Js/" rel="tag"><i class="fa fa-tag"></i> Js</a>
+            <a href="/tags/Css/" rel="tag"><i class="fa fa-tag"></i> Css</a>
           
         </div>
       
@@ -368,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/01/the use of viewport/" rel="next" title="利用媒体查询来响应式开发">
-                <i class="fa fa-chevron-left"></i> 利用媒体查询来响应式开发
+              <a href="/2018/01/31/upper-compare-to-lower/" rel="next" title="upper/lower_bound的用法">
+                <i class="fa fa-chevron-left"></i> upper/lower_bound的用法
               </a>
             
           </div>
@@ -378,8 +379,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/02/the use of js2/" rel="prev" title="JavaScript基础知识(2)">
-                JavaScript基础知识(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/01/the-use-of-js1/" rel="prev" title="JavaScript基础知识(1)">
+                JavaScript基础知识(1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,7 +462,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -474,7 +475,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -530,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么学习-Js"><span class="nav-number">1.1.</span> <span class="nav-text">为什么学习 Js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">2.1.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js闭包-未理解"><span class="nav-number">2.2.</span> <span class="nav-text">js闭包(未理解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页里面的一些小操作"><span class="nav-number">2.3.</span> <span class="nav-text">网页里面的一些小操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#meta标签对viewport进行控制"><span class="nav-number">2.1.</span> <span class="nav-text">meta标签对viewport进行控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">2.3.</span> <span class="nav-text">demo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
