@@ -4,6 +4,74 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/02/04/the-perfect-series/</loc>
+    <lastmod>2018-02-04T12:58:05.423Z</lastmod>
+    <data>
+        <display>
+        <title>完美数列</title>
+        <pubTime>2018-02-04T12:40:00.000Z</pubTime>
+        
+        <tag>PAT</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/04/mergesort/</loc>
+    <lastmod>2018-02-04T12:52:23.187Z</lastmod>
+    <data>
+        <display>
+        <title>归并排序</title>
+        <pubTime>2018-02-04T03:00:00.000Z</pubTime>
+        
+        <tag>PAT</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</loc>
+    <lastmod>2018-02-04T12:52:17.194Z</lastmod>
+    <data>
+        <display>
+        <title>反转链表</title>
+        <pubTime>2018-02-04T12:40:00.000Z</pubTime>
+        
+        <tag>PAT</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-errors-in-c++/</loc>
+    <lastmod>2018-02-02T14:08:00.224Z</lastmod>
+    <data>
+        <display>
+        <title>写C++ 过程中遇到的一些错误</title>
+        <pubTime>2018-02-02T15:59:00.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://draymonder.me/2018/01/31/upper-compare-to-lower/</loc>
     <lastmod>2018-02-02T13:56:28.329Z</lastmod>
     <data>
@@ -11,9 +79,9 @@
         <title>upper/lower_bound的用法</title>
         <pubTime>2018-01-31T14:00:00.000Z</pubTime>
         
-        <tag>C++</tag>
-         
         <tag>PAT</tag>
+         
+        <tag>C++</tag>
          
          
            
@@ -48,23 +116,6 @@
         <pubTime>2018-02-02T11:00:00.000Z</pubTime>
         
         <tag>Js</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-errors-in-c++/</loc>
-    <lastmod>2018-02-02T13:49:50.862Z</lastmod>
-    <data>
-        <display>
-        <title>C++ 过程中遇到的一些错误</title>
-        <pubTime>2018-02-02T15:59:00.000Z</pubTime>
-        
-        <tag>C++</tag>
          
          
            

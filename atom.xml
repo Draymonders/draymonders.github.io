@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-02T13:49:50.862Z</updated>
+  <updated>2018-02-04T12:52:17.194Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>C++ 过程中遇到的一些错误</title>
+    <title>反转链表</title>
+    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
+    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-02-04T12:52:17.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道不错的模拟题，学到了新的套路
+    
+    </summary>
+    
+    
+      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完美数列</title>
+    <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
+    <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-02-04T12:58:05.423Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
+    
+    </summary>
+    
+    
+      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>归并排序</title>
+    <link href="http://draymonder.me/2018/02/04/mergesort/"/>
+    <id>http://draymonder.me/2018/02/04/mergesort/</id>
+    <published>2018-02-04T03:00:00.000Z</published>
+    <updated>2018-02-04T12:52:23.187Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>遇到的一个迭代的归并，和递归的没什么两样吧。<br>归并排序进行如下迭代操作：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>题目链接:<a href="https://www.nowcoder.net/pat/6/problem/4061" target="_blank" rel="external">插入与归并</a></p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">bool Merge()//递归，分治</div><div class="line">&#123;</div><div class="line">    //s[i]为待排序的数组</div><div class="line">    bool f = <span class="number">0</span>;</div><div class="line">    <span class="built_in">int</span> <span class="built_in">t</span>[<span class="number">110</span>];</div><div class="line">    for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)&#123;</div><div class="line">        <span class="built_in">t</span>[i] = s[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">int</span> i=<span class="number">2</span>;</div><div class="line">    while (i &lt;= <span class="built_in">n</span>)&#123;</div><div class="line">        //每次排相邻的i个元素</div><div class="line">        <span class="built_in">int</span> k[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</div><div class="line">        for(<span class="built_in">int</span> j=<span class="number">1</span>; j&lt;=<span class="built_in">n</span> ; j+=i) &#123;</div><div class="line">            //l到r之间的数排序</div><div class="line">            <span class="built_in">int</span> l =j , r =<span class="built_in">min</span>(j+i-<span class="number">1</span>,<span class="built_in">n</span>);</div><div class="line">            <span class="built_in">int</span> <span class="built_in">mid</span> = (l+r)/<span class="number">2</span>+<span class="number">1</span>;</div><div class="line">            <span class="built_in">int</span> pre=l,<span class="built_in">now</span>=<span class="built_in">mid</span>;</div><div class="line">            <span class="built_in">int</span> cnt = l;</div><div class="line">            while (pre &lt;= <span class="built_in">mid</span>-<span class="number">1</span> &amp;&amp; <span class="built_in">now</span> &lt;= r) &#123;</div><div class="line">                <span class="built_in">if</span>(<span class="built_in">t</span>[<span class="built_in">now</span>] &gt; <span class="built_in">t</span>[pre]) &#123;</div><div class="line">                    k[cnt++] = <span class="built_in">t</span>[pre];</div><div class="line">                    pre++;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    k[cnt++] = <span class="built_in">t</span>[<span class="built_in">now</span>];</div><div class="line">                    <span class="built_in">now</span>++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            //上面的可能有剩余</div><div class="line">            while(pre &lt; <span class="built_in">mid</span>)</div><div class="line">                k[cnt++] = <span class="built_in">t</span>[pre++];</div><div class="line">            <span class="built_in">if</span>(<span class="built_in">now</span> &lt;= r)</div><div class="line">                k[cnt++] = <span class="built_in">t</span>[<span class="built_in">now</span>++];</div><div class="line">        &#125;</div><div class="line">        //每次拍完序 再重新赋给k</div><div class="line">        for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)&#123;</div><div class="line">                <span class="built_in">t</span>[i] = k[i];</div><div class="line">        &#125;</div><div class="line">        /* 测试每次排序的结果</div><div class="line">        printf(<span class="string">"第%d次排序\n"</span>,++tt);</div><div class="line">        for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)</div><div class="line">            printf(<span class="string">"%d "</span>,<span class="built_in">t</span>[i]);</div><div class="line">        cout&lt;&lt;endl;</div><div class="line">        */</div><div class="line">    &#125;</div><div class="line">    return <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight aspectj"><table><tr><td class="code"><pre><div class="line"><span class="keyword">void</span> _merge(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(l == r)</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</div><div class="line">    _merge(l,mid);</div><div class="line">    _merge(mid+<span class="number">1</span>,r);</div><div class="line">    <span class="comment">//fuzhi</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=mid-l+<span class="number">1</span>;i++) L[i]=arr[l<span class="number">-1</span>+i];<span class="comment">//[l,mid]</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=r-mid;i++) R[i]=arr[mid+i];  <span class="comment">//[mid+1,r]</span></div><div class="line">    L[mid-l+<span class="number">2</span>] = R[r-mid+<span class="number">1</span>] = INF;</div><div class="line">    <span class="keyword">int</span> le=<span class="number">1</span>,ri=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(L[le] &gt; R[ri])</div><div class="line">            arr[i] = R[ri++];</div><div class="line">        <span class="keyword">else</span></div><div class="line">            arr[i] = L[le++];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>好像 时间复杂度和空间复杂度都是nlog(n)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      归并排序的两种写法
+    
+    </summary>
+    
+    
+      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写C++ 过程中遇到的一些错误</title>
     <link href="http://draymonder.me/2018/02/02/the-errors-in-c++/"/>
     <id>http://draymonder.me/2018/02/02/the-errors-in-c++/</id>
     <published>2018-02-02T15:59:00.000Z</published>
-    <updated>2018-02-02T13:49:50.862Z</updated>
+    <updated>2018-02-02T14:08:00.224Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h2><p>  今天晚上没啥事干，就刷刷PAT Basic Level的水题，没想到写完题目了 突然没法编译<br>  我还以为自己的电脑中毒了？吓得我赶紧搜起了百度，改了配置，发现还是不能编译<br>  又重开软件，还是不行，后来终于发现自己，问题搜错了。搜到正确的答案，真是被自己蠢哭啊.</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>这个就用来记录自己平时犯得错误</p>
@@ -223,9 +296,9 @@
     </summary>
     
     
-      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
-    
       <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+    
+      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
     
   </entry>
   

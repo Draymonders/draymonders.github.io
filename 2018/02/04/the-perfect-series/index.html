@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="," />
+  <meta name="keywords" content="PAT," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="国庆没啥子事，刷刷题，动动脑子">
-<meta name="keywords" content="同余">
-<meta property="og:type" content="website">
-<meta property="og:title" content="51nod 1079 中国剩余定理">
-<meta property="og:url" content="http://draymonder.me/backup/中国剩余定理.html">
+<meta name="description" content="一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧">
+<meta name="keywords" content="PAT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完美数列">
+<meta property="og:url" content="http://draymonder.me/2018/02/04/the-perfect-series/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta property="og:description" content="一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-14T11:26:02.858Z">
+<meta property="og:updated_time" content="2018-02-04T12:58:05.423Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="51nod 1079 中国剩余定理">
-<meta name="twitter:description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta name="twitter:title" content="完美数列">
+<meta name="twitter:description" content="一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/backup/中国剩余定理.html"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
 
 
 
 
 
-  <title>51nod 1079 中国剩余定理 | Draymonder's Blog</title>
+  <title>完美数列 | Draymonder's Blog</title>
   
 
 
@@ -250,38 +250,155 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/04/the-perfect-series/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Draymonder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Draymonder's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">51nod 1079 中国剩余定理</h1>
-
-
-	<div class="post-meta">
-		<div class="post-description">国庆没啥子事，刷刷题，动动脑子</div>
-	</div>
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h4 id="51nod-1079-中国剩余定理"><a href="#51nod-1079-中国剩余定理" class="headerlink" title="51nod 1079 中国剩余定理"></a>51nod 1079 中国剩余定理</h4><h5 id="视频讲解"><a href="#视频讲解" class="headerlink" title="视频讲解"></a>视频讲解</h5><p>讲解一：<a href="https://www.youtube.com/watch?v=SVCbahPo2hU" target="_blank" rel="external">https://www.youtube.com/watch?v=SVCbahPo2hU</a><br>讲解二：<a href="https://www.youtube.com/watch?v=N68Yo9oyrM8" target="_blank" rel="external">https://www.youtube.com/watch?v=N68Yo9oyrM8</a><br>这个老师讲的特别好 听完就感觉了解了一下东西<br>好久之前，一直不懂 现在基本写了两下代码就懂了</p>
-<h5 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">15</span>;</div><div class="line"><span class="keyword">int</span> s[maxn],p[maxn];<span class="comment">//s代表模数 p代表余数</span></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll d = a;</div><div class="line">    <span class="keyword">if</span>(b)&#123;</div><div class="line">        d = exgcd(b,a%b,y,x);</div><div class="line">        y -= (a/b)*x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll cnt = <span class="number">1</span>,ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        cnt *= s[i];<span class="comment">//把模数都乘起来</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="comment">// 把最后的结果 分解成 x = k1*a1 + k2*a2 + k3*a3</span></div><div class="line">    &#123;</div><div class="line">        ll x,y;</div><div class="line">        ll si = cnt/s[i];</div><div class="line">        exgcd(si,s[i],x,y);<span class="comment">//求     |  si = 1 (mod s[i]) 所以就是 x*si -y*s[i] = 1</span></div><div class="line">        ans = (ans + x*p[i]*si)%cnt;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(ans &lt; <span class="number">0</span>)</div><div class="line">        <span class="built_in">cout</span>&lt;&lt; ans+cnt&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span>&lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; s[i] &gt;&gt; p[i];</div><div class="line">    &#125;</div><div class="line">    solve();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 class="post-title" itemprop="name headline">完美数列</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T20:40:00+08:00">
+                2018-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PAT/" rel="tag"><i class="fa fa-tag"></i> PAT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/04/mergesort/" rel="next" title="归并排序">
+                <i class="fa fa-chevron-left"></i> 归并排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/04/the-reverse-of-nodes/" rel="prev" title="反转链表">
+                反转链表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -412,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1079-中国剩余定理"><span class="nav-number">1.</span> <span class="nav-text">51nod 1079 中国剩余定理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#视频讲解"><span class="nav-number">1.1.</span> <span class="nav-text">视频讲解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AC代码"><span class="nav-number">1.2.</span> <span class="nav-text">AC代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">2.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析及代码"><span class="nav-number">2.3.</span> <span class="nav-text">分析及代码</span></a></li></ol></li></ol></div>
             
 
           </div>
