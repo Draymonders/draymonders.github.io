@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-04T12:52:17.194Z</updated>
+  <updated>2018-02-05T15:12:50.401Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PHP 面向对象</title>
+    <link href="http://draymonder.me/2018/02/05/object-oriented-of-php/"/>
+    <id>http://draymonder.me/2018/02/05/object-oriented-of-php/</id>
+    <published>2018-02-05T10:00:00.000Z</published>
+    <updated>2018-02-05T15:12:50.401Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没有按照计划来进行合理的学习，有点儿小失误，但是觉得确实应该放松一下，就给自己放了两天小假(象征性的刷了一下Pat)<br>现在继续PHP的入门</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h3><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
+<p>不同于基本数据类型是按值传递(和C++类似的)<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$a = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($b)</span></span>&#123;</div><div class="line">    $b = <span class="number">5</span>;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"b"</span>.$b;</div><div class="line">&#125;</div><div class="line">test($a);</div><div class="line"><span class="keyword">echo</span> <span class="string">' a'</span>.$a;</div><div class="line"><span class="comment">/* 最后输出b5 a0; */</span></div><div class="line"></div><div class="line">$a = <span class="keyword">array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> <span class="params">($b)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>; $i &lt; sizeof($b); $i++)</div><div class="line">        $b[$i] = $b[$i] + <span class="number">1</span>;</div><div class="line">&#125;   </div><div class="line">test($a);</div><div class="line"><span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; sizeof($a); $i++)</div><div class="line">    <span class="keyword">echo</span> $a[$i].<span class="string">" "</span>;</div><div class="line"><span class="comment">/* 输出 0 1 2 3 4*/</span></div></pre></td></tr></table></figure></p>
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span> </span>&#123;</div><div class="line">        <span class="keyword">public</span> $name;</div><div class="line">        <span class="keyword">public</span> $age;</div><div class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fout</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">" "</span>.<span class="keyword">$this</span>-&gt;age;</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">            没有this的话,所以这里必须要访问成员的属性的话，必须加this</span></div><div class="line"><span class="comment">            1. $name会被认为是新的变量</span></div><div class="line"><span class="comment">            2. name会认为没有定义的常量</span></div><div class="line"><span class="comment">            */</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><figure class="highlight fortran"><table><tr><td class="code"><pre><div class="line">容易出错的地方</div><div class="line"><span class="number">1.</span>变量前 未用$</div><div class="line"><span class="number">2.</span><span class="function"><span class="keyword">function</span></span> 容易被携程funtion</div><div class="line"><span class="number">3.</span>对象无论是调用成员还是调用成员的方法 </div><div class="line">  都是用$obj-&gt;<span class="keyword">value</span>||$obj-&gt;<span class="function"><span class="keyword">function</span><span class="params">()</span></span>    </div><div class="line">  没有.这一用法</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      PHP中面向对象入门的一些知识
+    
+    </summary>
+    
+    
+      <category term="Php" scheme="http://draymonder.me/tags/Php/"/>
+    
+  </entry>
+  
+  <entry>
     <title>反转链表</title>
     <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
     <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
     <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-04T12:52:17.194Z</updated>
+    <updated>2018-02-05T07:36:53.952Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
@@ -35,7 +59,7 @@
     </summary>
     
     
-      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
     
   </entry>
   
@@ -44,7 +68,7 @@
     <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
     <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
     <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-04T12:58:05.423Z</updated>
+    <updated>2018-02-05T07:36:29.849Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
@@ -59,7 +83,7 @@
     </summary>
     
     
-      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
     
   </entry>
   
@@ -68,7 +92,7 @@
     <link href="http://draymonder.me/2018/02/04/mergesort/"/>
     <id>http://draymonder.me/2018/02/04/mergesort/</id>
     <published>2018-02-04T03:00:00.000Z</published>
-    <updated>2018-02-04T12:52:23.187Z</updated>
+    <updated>2018-02-05T07:36:59.719Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>遇到的一个迭代的归并，和递归的没什么两样吧。<br>归并排序进行如下迭代操作：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>题目链接:<a href="https://www.nowcoder.net/pat/6/problem/4061" target="_blank" rel="external">插入与归并</a></p>
@@ -84,7 +108,7 @@
     </summary>
     
     
-      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
     
   </entry>
   
@@ -282,7 +306,7 @@
     <link href="http://draymonder.me/2018/01/31/upper-compare-to-lower/"/>
     <id>http://draymonder.me/2018/01/31/upper-compare-to-lower/</id>
     <published>2018-01-31T14:00:00.000Z</published>
-    <updated>2018-02-02T13:56:28.329Z</updated>
+    <updated>2018-02-05T07:36:40.961Z</updated>
     
     <content type="html"><![CDATA[<h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
@@ -295,8 +319,6 @@
     
     </summary>
     
-    
-      <category term="PAT" scheme="http://draymonder.me/tags/PAT/"/>
     
       <category term="C++" scheme="http://draymonder.me/tags/C/"/>
     
