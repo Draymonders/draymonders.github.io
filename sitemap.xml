@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php/</loc>
+    <loc>http://draymonder.me/2018/02/07/object-oriented-of-php2/</loc>
     
-    <lastmod>2018-02-05T15:12:50.401Z</lastmod>
+    <lastmod>2018-02-07T14:47:58.504Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php1/</loc>
+    
+    <lastmod>2018-02-07T08:03:15.348Z</lastmod>
     
   </url>
   

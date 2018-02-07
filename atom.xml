@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-05T15:12:50.401Z</updated>
+  <updated>2018-02-07T14:47:58.504Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,16 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>PHP 面向对象</title>
-    <link href="http://draymonder.me/2018/02/05/object-oriented-of-php/"/>
-    <id>http://draymonder.me/2018/02/05/object-oriented-of-php/</id>
+    <title>PHP 面向对象(2)</title>
+    <link href="http://draymonder.me/2018/02/07/object-oriented-of-php2/"/>
+    <id>http://draymonder.me/2018/02/07/object-oriented-of-php2/</id>
+    <published>2018-02-07T14:00:00.000Z</published>
+    <updated>2018-02-07T14:47:58.504Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>终于回到家了，突然觉得生活平凡一些也挺好，有爱我的人爱着宠着，真的是一件幸福的事情</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>一个类有且只有一个构造方法(php不支持重载)</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">两种构造语法</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="comment">/*第一种构造方法，优先级高*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*第二种构造方法，与C++类似*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">person</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法什么时候被调用</span></div><div class="line"><span class="comment">//1.当程序(进程)退出时</span></div><div class="line"><span class="comment">//2.一旦一个对象是垃圾对象的时候，析构方法立即调用 </span></div><div class="line"></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = new person();</span></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = NULL;</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法主要用于销毁资源</span></div><div class="line"><span class="comment">//先创建的后销毁(栈的方式)</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"析构成功"</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个静态变量</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> $num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//类内部使用</span></div><div class="line"><span class="number">1.</span> <span class="keyword">self</span>::$num+=<span class="number">1</span>;</div><div class="line"><span class="number">2.</span> 类名::$num;</div><div class="line"></div><div class="line"><span class="comment">//类外部使用</span></div><div class="line">类名::$num;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
+]]></content>
+    
+    <summary type="html">
+    
+      PHP中面向对象入门的一些知识
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP 面向对象(1)</title>
+    <link href="http://draymonder.me/2018/02/05/object-oriented-of-php1/"/>
+    <id>http://draymonder.me/2018/02/05/object-oriented-of-php1/</id>
     <published>2018-02-05T10:00:00.000Z</published>
-    <updated>2018-02-05T15:12:50.401Z</updated>
+    <updated>2018-02-07T08:03:15.348Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没有按照计划来进行合理的学习，有点儿小失误，但是觉得确实应该放松一下，就给自己放了两天小假(象征性的刷了一下Pat)<br>现在继续PHP的入门</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h3><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
 <p>不同于基本数据类型是按值传递(和C++类似的)<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$a = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($b)</span></span>&#123;</div><div class="line">    $b = <span class="number">5</span>;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"b"</span>.$b;</div><div class="line">&#125;</div><div class="line">test($a);</div><div class="line"><span class="keyword">echo</span> <span class="string">' a'</span>.$a;</div><div class="line"><span class="comment">/* 最后输出b5 a0; */</span></div><div class="line"></div><div class="line">$a = <span class="keyword">array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> <span class="params">($b)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>; $i &lt; sizeof($b); $i++)</div><div class="line">        $b[$i] = $b[$i] + <span class="number">1</span>;</div><div class="line">&#125;   </div><div class="line">test($a);</div><div class="line"><span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; sizeof($a); $i++)</div><div class="line">    <span class="keyword">echo</span> $a[$i].<span class="string">" "</span>;</div><div class="line"><span class="comment">/* 输出 0 1 2 3 4*/</span></div></pre></td></tr></table></figure></p>
-<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span> </span>&#123;</div><div class="line">        <span class="keyword">public</span> $name;</div><div class="line">        <span class="keyword">public</span> $age;</div><div class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fout</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">" "</span>.<span class="keyword">$this</span>-&gt;age;</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">            没有this的话,所以这里必须要访问成员的属性的话，必须加this</span></div><div class="line"><span class="comment">            1. $name会被认为是新的变量</span></div><div class="line"><span class="comment">            2. name会认为没有定义的常量</span></div><div class="line"><span class="comment">            */</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fout</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">" "</span>.<span class="keyword">$this</span>-&gt;age;</div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">        没有this的话,所以这里必须要访问成员的属性的话，必须加this</span></div><div class="line"><span class="comment">        1. $name会被认为是新的变量</span></div><div class="line"><span class="comment">        2. name会认为没有定义的常量</span></div><div class="line"><span class="comment">        */</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><figure class="highlight fortran"><table><tr><td class="code"><pre><div class="line">容易出错的地方</div><div class="line"><span class="number">1.</span>变量前 未用$</div><div class="line"><span class="number">2.</span><span class="function"><span class="keyword">function</span></span> 容易被携程funtion</div><div class="line"><span class="number">3.</span>对象无论是调用成员还是调用成员的方法 </div><div class="line">  都是用$obj-&gt;<span class="keyword">value</span>||$obj-&gt;<span class="function"><span class="keyword">function</span><span class="params">()</span></span>    </div><div class="line">  没有.这一用法</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
@@ -35,7 +62,7 @@
     </summary>
     
     
-      <category term="Php" scheme="http://draymonder.me/tags/Php/"/>
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
     
   </entry>
   
