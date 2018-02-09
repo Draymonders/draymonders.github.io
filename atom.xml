@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-07T14:47:58.504Z</updated>
+  <updated>2018-02-09T10:17:38.162Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PHP 面向对象(4)</title>
+    <link href="http://draymonder.me/2018/02/09/object-oriented-of-php4/"/>
+    <id>http://draymonder.me/2018/02/09/object-oriented-of-php4/</id>
+    <published>2018-02-09T07:00:00.000Z</published>
+    <updated>2018-02-09T10:17:38.162Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继续补基础知识</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 用<span class="keyword">abstract</span> 修饰类，就是抽象类 </div><div class="line"></div><div class="line"><span class="number">2.</span> 如果一个方法用<span class="keyword">abstract</span>修饰，那么方法就不能实现</div><div class="line"></div><div class="line"><span class="number">3.</span> 抽象类不能被实例化, 可以没有抽象方法</div><div class="line"></div><div class="line"><span class="number">4.</span> 如果A类继承了抽象类B,则要求A实现B的所有的抽象方法</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    成员</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//软件工程中追求高内聚 低耦合</span></div><div class="line"></div><div class="line">类实现接口 类继承类</div><div class="line"></div><div class="line"><span class="number">1.</span> 接口不能被实例化</div><div class="line"></div><div class="line"><span class="number">2.</span> 接口中所有方法，都不能有主体,并且是<span class="keyword">public</span></div><div class="line"></div><div class="line"><span class="number">3.</span> 一个类可以实现多个接口</div><div class="line"></div><div class="line"><span class="number">4.</span> 接口可以有属性，必须是常量</div><div class="line"></div><div class="line"><span class="number">5.</span> 接口中属性可以使用 接口名::常量</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> 接口名</span>&#123;</div><div class="line">    <span class="keyword">const</span> 常量名;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法<span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> 接口名1, 接口名2</span>&#123;</div><div class="line">    对接口中的属性和方法的实现;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 使某些类，不被其他类所继承(出于安全性的考虑或者其他原因)</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    属性;</div><div class="line">    方法;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">2.</span> <span class="keyword">final</span> 修饰的方法是可以继承的，但是不可以被子类重写</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法名<span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h3><figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> 常量名 = 初值;</div><div class="line"><span class="keyword">const</span> 前不要加修饰符</div><div class="line">常量同样和+静态变量属于类本身，不属于对象本身</div><div class="line"></div><div class="line">使用: 类名::常量名  接口名::常量名</div><div class="line"><span class="comment">//尽量全部大写</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>今天突然看到一些鸡汤，又想写写日记了呢，嘿嘿，我会好好记录的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      抽象类,接口,final,const关键字
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP 面向对象(3)</title>
+    <link href="http://draymonder.me/2018/02/08/object-oriented-of-php3/"/>
+    <id>http://draymonder.me/2018/02/08/object-oriented-of-php3/</id>
+    <published>2018-02-08T15:00:00.000Z</published>
+    <updated>2018-02-09T01:34:57.082Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天争取把面向对象的基础知识了解一下，然后明天开始mysql的学习，进度条有点儿慢</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>方法之间可以互相调用,需要用$this调用<br><figure class="highlight lasso"><table><tr><td class="code"><pre><div class="line">访问控制修饰符</div><div class="line">    <span class="keyword">public</span> 类内部,外部,子类都可以访问</div><div class="line">    <span class="keyword">protected</span> 类内部,子类可以访问</div><div class="line">    <span class="keyword">private</span> 类内部可以访问</div><div class="line"></div><div class="line"><span class="keyword">protected</span> 和 <span class="keyword">private</span> 成员 </div><div class="line">用<span class="keyword">public</span>方法去访问或修改</div><div class="line"></div><div class="line">还有一种形式，用魔术方法</div><div class="line">__set($pro_name,$val)</div><div class="line">__get($pro_name)</div></pre></td></tr></table></figure></p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>为了提高代码的复用性<br><figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">子类</span> <span class="keyword">extends</span> <span class="title">父类</span></span>&#123;</div><div class="line">    <span class="comment">//自己的属性和方法</span></div><div class="line">&#125;</div><div class="line">只继承父类 public 和 <span class="keyword">protected</span></div><div class="line">public可以直接被子类和外部调用</div><div class="line"><span class="keyword">protected</span> 只能在子类中调用(调用$<span class="keyword">this</span>)</div><div class="line"></div><div class="line">一个子类只能有一个父类</div><div class="line"></div><div class="line">在创建某个子类对象时，默认情况下，不会调用父类的构造函数</div></pre></td></tr></table></figure></p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><figure class="highlight brainfuck"><table><tr><td class="code"><pre><div class="line"><span class="comment">本身是不可以向C</span><span class="literal">+</span><span class="literal">+</span><span class="comment">那样重载的</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">在网上学到的</span> <span class="comment">方法，我觉得比较好记的</span></div></pre></td></tr></table></figure>
+<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">子类会覆盖父类重名的方法</div><div class="line">访问修饰符 子类的范围 &gt;= 父类的范围</div><div class="line"></div><div class="line">如果子类想去调用父类的某个方法</div><div class="line">可以用类名::方法名 或者 parent::方法名</div></pre></td></tr></table></figure>
+<h4 id="可选参数，允许变量设置默认值"><a href="#可选参数，允许变量设置默认值" class="headerlink" title="可选参数，允许变量设置默认值"></a>可选参数，允许变量设置默认值</h4><figure class="highlight lasso"><table><tr><td class="code"><pre><div class="line">function <span class="keyword">sum</span>($var1,$var2,$var3=<span class="built_in">NULL</span>)&#123;<span class="comment">//$var3设置默认值</span></div><div class="line">    echo $var1+$var2+$var3;</div><div class="line">&#125;</div><div class="line"><span class="keyword">sum</span>(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//2</span></div><div class="line"><span class="keyword">sum</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//2.5</span></div></pre></td></tr></table></figure>
+<h4 id="使用魔术方法-call"><a href="#使用魔术方法-call" class="headerlink" title="使用魔术方法 __call()"></a>使用魔术方法 __call()</h4><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($method,$p)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>($method == <span class="string">"test"</span>)&#123;</div><div class="line">            <span class="keyword">switch</span> (count($p)) &#123;<span class="comment">//获得参数数组个数</span></div><div class="line">                <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                    <span class="keyword">$this</span>-&gt;test2($args[<span class="number">0</span>],$args[<span class="number">1</span>]);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">                    <span class="keyword">$this</span>-&gt;test3($args[<span class="number">0</span>],$args[<span class="number">1</span>],$args[<span class="number">2</span>]);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">test2</span><span class="params">($var1,$var2)</span></span>&#123;</div><div class="line">        <span class="comment">#code...</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">test3</span><span class="params">($var1,$var2,$var3)</span></span>&#123;</div><div class="line">        <span class="comment">#code...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用</span></div><div class="line">$obj = <span class="keyword">new</span> demo();</div><div class="line">$obj-&gt;test(<span class="string">"var1"</span>,<span class="string">"var2"</span>);</div><div class="line">$obj-&gt;test(<span class="string">"var1"</span>,<span class="string">"var2"</span>,<span class="string">"var3"</span>);</div></pre></td></tr></table></figure>
+<h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">魔术常量</div><div class="line"><span class="keyword">__FILE__</span>    当前文件的路径</div><div class="line"><span class="keyword">__DIR__</span>     文件所在的目录</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
+]]></content>
+    
+    <summary type="html">
+    
+      面向对象的三大特征 封装,继承,多态
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PHP 面向对象(2)</title>
     <link href="http://draymonder.me/2018/02/07/object-oriented-of-php2/"/>
     <id>http://draymonder.me/2018/02/07/object-oriented-of-php2/</id>
     <published>2018-02-07T14:00:00.000Z</published>
-    <updated>2018-02-07T14:47:58.504Z</updated>
+    <updated>2018-02-08T02:27:25.290Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>终于回到家了，突然觉得生活平凡一些也挺好，有爱我的人爱着宠着，真的是一件幸福的事情</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>一个类有且只有一个构造方法(php不支持重载)</p>
@@ -28,12 +83,13 @@
 <h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法什么时候被调用</span></div><div class="line"><span class="comment">//1.当程序(进程)退出时</span></div><div class="line"><span class="comment">//2.一旦一个对象是垃圾对象的时候，析构方法立即调用 </span></div><div class="line"></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = new person();</span></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = NULL;</span></div></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法主要用于销毁资源</span></div><div class="line"><span class="comment">//先创建的后销毁(栈的方式)</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"析构成功"</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个静态变量</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> $num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//类内部使用</span></div><div class="line"><span class="number">1.</span> <span class="keyword">self</span>::$num+=<span class="number">1</span>;</div><div class="line"><span class="number">2.</span> 类名::$num;</div><div class="line"></div><div class="line"><span class="comment">//类外部使用</span></div><div class="line">类名::$num;</div></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">静态方法是属于所有对象实例的</div><div class="line">在类外部: 类名::类方法名 或者 对象名-&gt;类方法名</div><div class="line">在类内部: self::类方法名 或者 类名::类方法名</div><div class="line"></div><div class="line">特点:</div><div class="line">静态方法操作静态变量，不操作非静态变量</div><div class="line">普通成员发放，既可以操作静态变量，也可以操作非静态变量</div><div class="line"></div><div class="line">顺序: static function</div></pre></td></tr></table></figure>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
 ]]></content>
     
     <summary type="html">
     
-      PHP中面向对象入门的一些知识
+      构造方法,析构方法,静态变量,静态方法
     
     </summary>
     
@@ -47,7 +103,7 @@
     <link href="http://draymonder.me/2018/02/05/object-oriented-of-php1/"/>
     <id>http://draymonder.me/2018/02/05/object-oriented-of-php1/</id>
     <published>2018-02-05T10:00:00.000Z</published>
-    <updated>2018-02-07T08:03:15.348Z</updated>
+    <updated>2018-02-09T01:34:45.177Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没有按照计划来进行合理的学习，有点儿小失误，但是觉得确实应该放松一下，就给自己放了两天小假(象征性的刷了一下Pat)<br>现在继续PHP的入门</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h3><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
@@ -57,7 +113,7 @@
     
     <summary type="html">
     
-      PHP中面向对象入门的一些知识
+      对象的传递,成员方法
     
     </summary>
     

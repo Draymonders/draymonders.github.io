@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="PHP中面向对象入门的一些知识">
+<meta name="description" content="构造方法,析构方法,静态变量,静态方法">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP 面向对象(2)">
 <meta property="og:url" content="http://draymonder.me/2018/02/07/object-oriented-of-php2/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="PHP中面向对象入门的一些知识">
+<meta property="og:description" content="构造方法,析构方法,静态变量,静态方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-07T14:47:58.504Z">
+<meta property="og:updated_time" content="2018-02-08T02:27:25.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP 面向对象(2)">
-<meta name="twitter:description" content="PHP中面向对象入门的一些知识">
+<meta name="twitter:description" content="构造方法,析构方法,静态变量,静态方法">
 
 
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  PHP中面向对象入门的一些知识
+                  构造方法,析构方法,静态变量,静态方法
               </div>
           
 
@@ -339,6 +339,7 @@
 <h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法什么时候被调用</span></div><div class="line"><span class="comment">//1.当程序(进程)退出时</span></div><div class="line"><span class="comment">//2.一旦一个对象是垃圾对象的时候，析构方法立即调用 </span></div><div class="line"></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = new person();</span></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = NULL;</span></div></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法主要用于销毁资源</span></div><div class="line"><span class="comment">//先创建的后销毁(栈的方式)</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"析构成功"</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个静态变量</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> $num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//类内部使用</span></div><div class="line"><span class="number">1.</span> <span class="keyword">self</span>::$num+=<span class="number">1</span>;</div><div class="line"><span class="number">2.</span> 类名::$num;</div><div class="line"></div><div class="line"><span class="comment">//类外部使用</span></div><div class="line">类名::$num;</div></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">静态方法是属于所有对象实例的</div><div class="line">在类外部: 类名::类方法名 或者 对象名-&gt;类方法名</div><div class="line">在类内部: self::类方法名 或者 类名::类方法名</div><div class="line"></div><div class="line">特点:</div><div class="line">静态方法操作静态变量，不操作非静态变量</div><div class="line">普通成员发放，既可以操作静态变量，也可以操作非静态变量</div><div class="line"></div><div class="line">顺序: static function</div></pre></td></tr></table></figure>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
 
       
@@ -379,6 +380,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/08/object-oriented-of-php3/" rel="prev" title="PHP 面向对象(3)">
+                PHP 面向对象(3) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -459,7 +464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构方法"><span class="nav-number">2.2.</span> <span class="nav-text">析构方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量"><span class="nav-number">2.3.</span> <span class="nav-text">静态变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构方法"><span class="nav-number">2.2.</span> <span class="nav-text">析构方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量"><span class="nav-number">2.3.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">2.4.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
