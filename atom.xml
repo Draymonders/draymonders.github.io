@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-09T10:17:38.162Z</updated>
+  <updated>2018-02-12T13:37:21.225Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Https协议及防盗链</title>
+    <link href="http://draymonder.me/2018/02/12/the-link-https/"/>
+    <id>http://draymonder.me/2018/02/12/the-link-https/</id>
+    <published>2018-02-12T08:00:00.000Z</published>
+    <updated>2018-02-12T13:37:21.225Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  更新https协议的一些入门知识</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>http协议是建立在tcp/ip协议基础上</div><div class="line"><span class="bullet">2. </span>我们的web开发数据的传输都是依赖于http协议</div><div class="line"><span class="bullet">3. </span>http协议全称是 超文本传输协议</div></pre></td></tr></table></figure>
+<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line">基本结构:</div><div class="line">  请求行  </div><div class="line">  消息头</div><div class="line">  消息体</div><div class="line"></div><div class="line"><span class="symbol">HTTP_HOST</span></div><div class="line"></div><div class="line"><span class="symbol">SERVER_NAME</span></div><div class="line"></div><div class="line"><span class="symbol">DOCUMENT_ROOT</span> 获取apache的主目录</div><div class="line"></div><div class="line"><span class="symbol">REMOTE_ADDR</span> 访问页面的<span class="built_in">ip</span></div><div class="line"></div><div class="line"><span class="symbol">REQUEST_URI</span> 请求的资源</div></pre></td></tr></table></figure>
+<h3 id="Get-和-Post"><a href="#Get-和-Post" class="headerlink" title="Get 和 Post"></a>Get 和 Post</h3><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 安全性<span class="built_in">get</span>请求的数据会显示在地址栏上</div><div class="line">   <span class="built_in">post</span>请求的数据,放在<span class="keyword">http</span>协议的消息体</div><div class="line"><span class="number">2.</span> 从可以提交数据的大小看</div><div class="line">   <span class="number">2.1</span> <span class="keyword">http</span>协议本身并没有限制数据大小</div><div class="line">   <span class="number">2.3</span> 浏览器在对<span class="built_in">get</span>和<span class="built_in">post</span>请求做限制</div><div class="line">   <span class="built_in">get</span>请求数据 (<span class="number">2</span>k+<span class="number">35</span>B),<span class="built_in">post</span>没有限制</div><div class="line"><span class="number">3.</span> <span class="built_in">get</span>请求可以更好的添加到收藏夹</div></pre></td></tr></table></figure>
+<h3 id="防盗链"><a href="#防盗链" class="headerlink" title="防盗链"></a>防盗链</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_REFERER'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span>(strpos($_SERVER[<span class="string">'HTTP_REFERER'</span>],<span class="string">"http://localhost/"</span>)==<span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Draymonder"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"访问路径非法"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"访问路径非法"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"Refresh: 3;url=http://www.xxx.com"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="页面缓存"><a href="#页面缓存" class="headerlink" title="页面缓存"></a>页面缓存</h3><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"Expires: -1"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Cache-Control: no_cache"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Pragma: no-cache"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$file_name</span> = <span class="string">"1.jpg"</span>;</div><div class="line"><span class="keyword">if</span>(!file_exists(<span class="variable">$file_name</span>) )&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"文件不存在"</span>;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$file_name</span>,<span class="string">"r"</span>);</div><div class="line">// <span class="variable">$file_size</span> = filesize(<span class="variable">$file_name</span>);</div><div class="line">// <span class="built_in">echo</span> <span class="variable">$file_size</span>;</div><div class="line">header(<span class="string">"Content-Type: application/octet-stream"</span>);</div><div class="line">header(<span class="string">"Accept-Ranges: bytes"</span>);</div><div class="line">header(<span class="string">"Accept-Length: "</span>.filesize(<span class="variable">$file_name</span>));</div><div class="line">header(<span class="string">"Content-Disposition: attachment; filename="</span>.<span class="variable">$file_name</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="variable">$buffer</span> = 1024;</div><div class="line"><span class="keyword">while</span> (!feof(<span class="variable">$fp</span>))&#123;</div><div class="line">    <span class="variable">$file_data</span>= fread(<span class="variable">$fp</span>,<span class="variable">$buffer</span>);</div><div class="line">    <span class="built_in">echo</span> <span class="variable">$file_data</span>;    </div><div class="line">&#125;</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line">具体用处自行搜索</div></pre></td></tr></table></figure>
+<h3 id="utf-8转码gb2312"><a href="#utf-8转码gb2312" class="headerlink" title="utf-8转码gb2312"></a>utf-8转码gb2312</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">file_name = iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$file_name</span>);</span></div></pre></td></tr></table></figure>
+<p>### </p>
+]]></content>
+    
+    <summary type="html">
+    
+      Https协议,请求,防盗链，网页缓存，文件下载，转码
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP错误和异常处理</title>
+    <link href="http://draymonder.me/2018/02/11/the-errors-in-php/"/>
+    <id>http://draymonder.me/2018/02/11/the-errors-in-php/</id>
+    <published>2018-02-11T06:00:00.000Z</published>
+    <updated>2018-02-11T04:13:01.736Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最后学一些，提高代码的健壮性和安全性</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="文件相对和绝对路径"><a href="#文件相对和绝对路径" class="headerlink" title="文件相对和绝对路径"></a>文件相对和绝对路径</h3><figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">相对路径</div><div class="line"><span class="comment">// ../代表上级文件</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"../../"</span>) </div><div class="line"></div><div class="line">绝对路径</div><div class="line"><span class="comment">// / 和 \\都可以</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"c:/Draymonder.txt"</span>);</div></pre></td></tr></table></figure>
+<h3 id="php处理错误的三种方法"><a href="#php处理错误的三种方法" class="headerlink" title="php处理错误的三种方法"></a>php处理错误的三种方法</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 使用简单的<span class="keyword">die</span>语句</div><div class="line"></div><div class="line"><span class="keyword">if</span>(!file_exists(<span class="string">"draymonder.txt"</span>)) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"文件不存在"</span>;</div><div class="line">    <span class="keyword">die</span>();</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//打开文件的操作</span></div><div class="line">&#125;</div><div class="line">或者</div><div class="line">file_exists(<span class="string">"draymonder.txt"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"文件不存在"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">2</span>. 自定义处理</div><div class="line"><span class="selector-tag">error_function</span>(error_level,error_message,</div><div class="line">error_file,error_line,error_context)</div><div class="line"></div><div class="line">错误处理程序设置</div><div class="line"><span class="selector-tag">set_error_handler</span>(<span class="string">"error_function"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="number">3</span>. 自定义触发器</div><div class="line"><span class="keyword">function</span> my_error(<span class="variable">$no</span>,<span class="variable">$mess</span>)&#123;</div><div class="line">    echo <span class="string">"错误号是"</span>.<span class="variable">$no</span>;</div><div class="line">&#125;</div><div class="line"><span class="regexp">//</span>这里可以设置 </div><div class="line"><span class="regexp">//</span>E_USER_WARNING</div><div class="line"><span class="regexp">//</span>E_USER_ERROR</div><div class="line"><span class="regexp">//</span>E_USER_NOTICE</div><div class="line">set_error_handler(<span class="string">"my_error"</span>,E_USER_WARNING);</div><div class="line"></div><div class="line"><span class="variable">$age</span> = <span class="number">120</span>;</div><div class="line"><span class="keyword">if</span>(<span class="variable">$age</span> &gt; <span class="number">110</span>) &#123;</div><div class="line">    trigger_error(<span class="string">"输入年龄过大"</span>,E_USER_WARNING);</div><div class="line">    <span class="keyword">exit</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="php中处理异常的方法"><a href="#php中处理异常的方法" class="headerlink" title="php中处理异常的方法"></a>php中处理异常的方法</h3><p><a href="http://www.php.net/manual/zh/class.exception.php" target="_blank">php Exception类</a><br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123; &#125;</div><div class="line"><span class="keyword">catch</span> (<span class="keyword">Exception</span> $e)&#123; &#125;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Message"</span>);</div><div class="line"></div><div class="line">当捕获到异常后，<span class="keyword">try</span>()后面的代码将不继续执行</div><div class="line"></div><div class="line"><span class="comment">//顶级异常处理器</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_exception</span><span class="params">($e)</span></span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"错误信息是"</span>.$e.getMessage();</div><div class="line">&#125;</div><div class="line">set_exception_handler(<span class="string">"my_exception"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="php错误日志"><a href="#php错误日志" class="headerlink" title="php错误日志"></a>php错误日志</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">//</span> \r\n是向文件输入一个换行</div><div class="line"><span class="regexp">//</span> &lt;br&gt;是向网页输出一个换行</div><div class="line"></div><div class="line"> </div><div class="line"><span class="keyword">function</span> my_error(<span class="variable">$no</span>,<span class="variable">$mess</span>)&#123;</div><div class="line">    <span class="variable">$err_info</span> = <span class="string">"错误号是:$no --- 错误信息是:$mess"</span>;</div><div class="line">    echo <span class="variable">$err_info</span>;</div><div class="line">    error_log(<span class="variable">$err_info</span>.<span class="string">"\r\n"</span>,<span class="number">3</span>,<span class="string">"my_error.txt"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">set_error_handler(<span class="string">"my_error"</span>,E_USER_WARNING);</div><div class="line"></div><div class="line"><span class="variable">$age</span> = <span class="number">120</span>;</div><div class="line"><span class="keyword">if</span>(<span class="variable">$age</span> &gt; <span class="number">110</span>) &#123;</div><div class="line">    trigger_error(<span class="string">"输入年龄过大"</span>,E_USER_WARNING);</div><div class="line">    <span class="keyword">exit</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="时间的调用"><a href="#时间的调用" class="headerlink" title="时间的调用"></a>时间的调用</h3><p><a href="https://www.cnblogs.com/caicaizi/p/6553419.html" target="_blank">PHP中设置时区方法小结</a><br><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">一些常用的时区标识符说明： </div><div class="line"></div><div class="line">Asia/Shanghai – 上海 </div><div class="line">Asia/Chongqing – 重庆 </div><div class="line">Asia/Urumqi – 乌鲁木齐 </div><div class="line">Asia/Hong_Kong – 香港 </div><div class="line">Asia/Macao – 澳门 </div><div class="line">Asia/Taipei – 台北 </div><div class="line">Asia/Singapore – 新加坡 </div><div class="line"></div><div class="line">date_default_timezone_set(<span class="string">"Asia/Shanghai"</span>)<span class="comment">;</span></div><div class="line">echo date(<span class="string">"Y-m-d G:i:s"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>]]></content>
+    
+    <summary type="html">
+    
+      文件相对和绝对路径,错误和异常处理,php错误日志,时间的调用
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP 面向对象(4)</title>
@@ -506,61 +564,6 @@
     
     
       <category term="C++" scheme="http://draymonder.me/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>随遇而安</title>
-    <link href="http://draymonder.me/2018/01/16/the-diary-of-mine/"/>
-    <id>http://draymonder.me/2018/01/16/the-diary-of-mine/</id>
-    <published>2018-01-16T15:59:00.000Z</published>
-    <updated>2018-01-30T16:50:11.995Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近状态又开始低迷了，蜜汁懒，看了《最好的我们》，《再见路星河》，《琅琊榜》心情又是一如往常的暗淡，消极，颓丧。 每个人都有要忙的事情，我也不想打扰到你啊，可我就是好闲，无时无刻不在想着你啊，到底想你什么呢，我也不知道啊。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>  好多心里话，只是不知道怎么和你当面表达。或许是有些迷茫，或许是前途未卜，或许是青春的悸动，或许是不敢承担责任的怯懦吧。</p>
-<p>  我真的好害怕，也好担心，你有一天真的会离开我耶，那样我觉得我会无所适从好久好久呢，真的真的。 不知道为什么，我晚上总是有些稀奇古怪的想法，<font color="pink">比如，我在想你找到了男朋友呀，我考虑要退出啊，但是我总要体面的离开吧，我都想好了台词呢，谢谢你，让我坚持喜欢一个女孩这么这么久，这大概是我做过的最幸福的事情了。</font> </p>
-<p>  哈哈，是不是觉得我特无聊，特傻，特2B啊。突然发现自己好傻啊，写这么些东西，但是我就是想给你看，不论你觉得我是否靠谱了，是否可信赖了。</p>
-<p>  追剧追着发现琅琊榜里面的林奚和你好像，无论是外表还是我心目中的你耶，或许你会给与否认吧，但是我就是觉得你和她相似的地方蛮多的呢。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  果然，好多东西，表达出来会好很多，抱歉啊，浪费你这多时间来看我这没营养的东西。</p>
-<p>  一句：“你只需耐着性子，一步步耐心往上走，往前走。时间，终将告诉你，你的选择是否正确。”共勉。</p>
-<p>  最后不论怎么样啊，HR，希望你能平安喜乐，有一个好的人陪伴。<font color="#FFFFFF">I really really like you.But I will not disturb you. </font></p>
-<p>  (好了，从明天开始，我也要开始复习了。我始终相信，你是我眼中最棒的那个女孩，没有之一。</p>
-<p><br></p>
-<p><center><img src="/img/Toyou.jpg" alt=""><center></center></center></p>
-]]></content>
-    
-    <summary type="html">
-    
-      小小的等待，小小的期盼，小小的悸动
-    
-    </summary>
-    
-    
-      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开始我的hexo博客</title>
-    <link href="http://draymonder.me/2018/01/06/start-my-blog/"/>
-    <id>http://draymonder.me/2018/01/06/start-my-blog/</id>
-    <published>2018-01-06T11:00:00.000Z</published>
-    <updated>2018-01-06T11:30:24.999Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>   今天听了一个来自百度的学长的讲座，觉得蛮有收获的呢，给我们讲了A(AI) B(Big Data) C(Cloud Computing),同时也分享了百度的一些先进的技术，以及人工智能来联系生活的一些关联吧，这个学长的口才还蛮不错的。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>   不知不觉，已经在大学度过了一年半的时间呢，不能说没有长进吧，只是觉得和当时想象的自己，多少有些出入吧。嘴上表达自己想学一些技术，但是一直也是浅尝辄止，没有真正坚持下来，包括这个博客，也是很久前搭的了，很久没有维护了，想在为数不多的大学时光里面做些自己真正想做的事情，并且用博客记录的形式来记录自己成长的点滴。<br>   新的一年，丢掉那些所谓的伪装与惆怅，Just be yourself. </p>
-]]></content>
-    
-    <summary type="html">
-    
-      今天听了一个来自百度的学长的讲座，觉得蛮有收获的呢，给我们讲了A(AI) B(Big Data) C(Cloud Computing),同时也分享了百度的一些先进的技术，以及人工智能来联系生活的一些关联吧，这个学长的口才还蛮不错的。
-    
-    </summary>
-    
-    
-      <category term="I wanna fly" scheme="http://draymonder.me/tags/I-wanna-fly/"/>
-    
-      <category term="Just be yourself" scheme="http://draymonder.me/tags/Just-be-yourself/"/>
     
   </entry>
   

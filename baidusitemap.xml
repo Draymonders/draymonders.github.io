@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/02/12/the-link-https/</loc>
+    <lastmod>2018-02-12T13:37:21.225Z</lastmod>
+    <data>
+        <display>
+        <title>Https协议及防盗链</title>
+        <pubTime>2018-02-12T08:00:00.000Z</pubTime>
+        
+        <tag>php</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
+    <lastmod>2018-02-11T04:13:01.736Z</lastmod>
+    <data>
+        <display>
+        <title>PHP错误和异常处理</title>
+        <pubTime>2018-02-11T06:00:00.000Z</pubTime>
+        
+        <tag>php</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://draymonder.me/2018/02/09/object-oriented-of-php4/</loc>
     <lastmod>2018-02-09T10:17:38.162Z</lastmod>
     <data>

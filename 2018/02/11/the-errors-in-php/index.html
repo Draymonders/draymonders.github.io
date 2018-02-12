@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="构造方法,析构方法,静态变量,静态方法">
+<meta name="description" content="文件相对和绝对路径,错误和异常处理,php错误日志,时间的调用">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP 面向对象(2)">
-<meta property="og:url" content="http://draymonder.me/2018/02/07/object-oriented-of-php2/index.html">
+<meta property="og:title" content="PHP错误和异常处理">
+<meta property="og:url" content="http://draymonder.me/2018/02/11/the-errors-in-php/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="构造方法,析构方法,静态变量,静态方法">
+<meta property="og:description" content="文件相对和绝对路径,错误和异常处理,php错误日志,时间的调用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-08T02:27:25.290Z">
+<meta property="og:updated_time" content="2018-02-11T04:13:01.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 面向对象(2)">
-<meta name="twitter:description" content="构造方法,析构方法,静态变量,静态方法">
+<meta name="twitter:title" content="PHP错误和异常处理">
+<meta name="twitter:description" content="文件相对和绝对路径,错误和异常处理,php错误日志,时间的调用">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/07/object-oriented-of-php2/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/11/the-errors-in-php/"/>
 
 
 
 
 
-  <title>PHP 面向对象(2) | Draymonder's Blog</title>
+  <title>PHP错误和异常处理 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/07/object-oriented-of-php2/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/11/the-errors-in-php/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PHP 面向对象(2)</h1>
+          <h1 class="post-title" itemprop="name headline">PHP错误和异常处理</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T22:00:00+08:00">
-                2018-02-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T14:00:00+08:00">
+                2018-02-11
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  构造方法,析构方法,静态变量,静态方法
+                  文件相对和绝对路径,错误和异常处理,php错误日志,时间的调用
               </div>
           
 
@@ -333,15 +333,15 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>终于回到家了，突然觉得生活平凡一些也挺好，有爱我的人爱着宠着，真的是一件幸福的事情</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>一个类有且只有一个构造方法(php不支持重载)</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">两种构造语法</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="comment">/*第一种构造方法，优先级高*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*第二种构造方法，与C++类似*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">person</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法什么时候被调用</span></div><div class="line"><span class="comment">//1.当程序(进程)退出时</span></div><div class="line"><span class="comment">//2.一旦一个对象是垃圾对象的时候，析构方法立即调用 </span></div><div class="line"></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = new person();</span></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = NULL;</span></div></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//析构方法主要用于销毁资源</span></div><div class="line"><span class="comment">//先创建的后销毁(栈的方式)</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"析构成功"</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个静态变量</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> $num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//类内部使用</span></div><div class="line"><span class="number">1.</span> <span class="keyword">self</span>::$num+=<span class="number">1</span>;</div><div class="line"><span class="number">2.</span> 类名::$num;</div><div class="line"></div><div class="line"><span class="comment">//类外部使用</span></div><div class="line">类名::$num;</div></pre></td></tr></table></figure>
-<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">静态方法是属于所有对象实例的</div><div class="line">在类外部: 类名::类方法名 或者 对象名-&gt;类方法名</div><div class="line">在类内部: self::类方法名 或者 类名::类方法名</div><div class="line"></div><div class="line">特点:</div><div class="line">静态方法操作静态变量，不操作非静态变量</div><div class="line">普通成员发放，既可以操作静态变量，也可以操作非静态变量</div><div class="line"></div><div class="line">顺序: static function</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最后学一些，提高代码的健壮性和安全性</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="文件相对和绝对路径"><a href="#文件相对和绝对路径" class="headerlink" title="文件相对和绝对路径"></a>文件相对和绝对路径</h3><figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">相对路径</div><div class="line"><span class="comment">// ../代表上级文件</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"../../"</span>) </div><div class="line"></div><div class="line">绝对路径</div><div class="line"><span class="comment">// / 和 \\都可以</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"c:/Draymonder.txt"</span>);</div></pre></td></tr></table></figure>
+<h3 id="php处理错误的三种方法"><a href="#php处理错误的三种方法" class="headerlink" title="php处理错误的三种方法"></a>php处理错误的三种方法</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 使用简单的<span class="keyword">die</span>语句</div><div class="line"></div><div class="line"><span class="keyword">if</span>(!file_exists(<span class="string">"draymonder.txt"</span>)) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"文件不存在"</span>;</div><div class="line">    <span class="keyword">die</span>();</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//打开文件的操作</span></div><div class="line">&#125;</div><div class="line">或者</div><div class="line">file_exists(<span class="string">"draymonder.txt"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"文件不存在"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">2</span>. 自定义处理</div><div class="line"><span class="selector-tag">error_function</span>(error_level,error_message,</div><div class="line">error_file,error_line,error_context)</div><div class="line"></div><div class="line">错误处理程序设置</div><div class="line"><span class="selector-tag">set_error_handler</span>(<span class="string">"error_function"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="number">3</span>. 自定义触发器</div><div class="line"><span class="keyword">function</span> my_error(<span class="variable">$no</span>,<span class="variable">$mess</span>)&#123;</div><div class="line">    echo <span class="string">"错误号是"</span>.<span class="variable">$no</span>;</div><div class="line">&#125;</div><div class="line"><span class="regexp">//</span>这里可以设置 </div><div class="line"><span class="regexp">//</span>E_USER_WARNING</div><div class="line"><span class="regexp">//</span>E_USER_ERROR</div><div class="line"><span class="regexp">//</span>E_USER_NOTICE</div><div class="line">set_error_handler(<span class="string">"my_error"</span>,E_USER_WARNING);</div><div class="line"></div><div class="line"><span class="variable">$age</span> = <span class="number">120</span>;</div><div class="line"><span class="keyword">if</span>(<span class="variable">$age</span> &gt; <span class="number">110</span>) &#123;</div><div class="line">    trigger_error(<span class="string">"输入年龄过大"</span>,E_USER_WARNING);</div><div class="line">    <span class="keyword">exit</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="php中处理异常的方法"><a href="#php中处理异常的方法" class="headerlink" title="php中处理异常的方法"></a>php中处理异常的方法</h3><p><a href="http://www.php.net/manual/zh/class.exception.php" target="_blank">php Exception类</a><br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123; &#125;</div><div class="line"><span class="keyword">catch</span> (<span class="keyword">Exception</span> $e)&#123; &#125;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Message"</span>);</div><div class="line"></div><div class="line">当捕获到异常后，<span class="keyword">try</span>()后面的代码将不继续执行</div><div class="line"></div><div class="line"><span class="comment">//顶级异常处理器</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_exception</span><span class="params">($e)</span></span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"错误信息是"</span>.$e.getMessage();</div><div class="line">&#125;</div><div class="line">set_exception_handler(<span class="string">"my_exception"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="php错误日志"><a href="#php错误日志" class="headerlink" title="php错误日志"></a>php错误日志</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">//</span> \r\n是向文件输入一个换行</div><div class="line"><span class="regexp">//</span> &lt;br&gt;是向网页输出一个换行</div><div class="line"></div><div class="line"> </div><div class="line"><span class="keyword">function</span> my_error(<span class="variable">$no</span>,<span class="variable">$mess</span>)&#123;</div><div class="line">    <span class="variable">$err_info</span> = <span class="string">"错误号是:$no --- 错误信息是:$mess"</span>;</div><div class="line">    echo <span class="variable">$err_info</span>;</div><div class="line">    error_log(<span class="variable">$err_info</span>.<span class="string">"\r\n"</span>,<span class="number">3</span>,<span class="string">"my_error.txt"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">set_error_handler(<span class="string">"my_error"</span>,E_USER_WARNING);</div><div class="line"></div><div class="line"><span class="variable">$age</span> = <span class="number">120</span>;</div><div class="line"><span class="keyword">if</span>(<span class="variable">$age</span> &gt; <span class="number">110</span>) &#123;</div><div class="line">    trigger_error(<span class="string">"输入年龄过大"</span>,E_USER_WARNING);</div><div class="line">    <span class="keyword">exit</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="时间的调用"><a href="#时间的调用" class="headerlink" title="时间的调用"></a>时间的调用</h3><p><a href="https://www.cnblogs.com/caicaizi/p/6553419.html" target="_blank">PHP中设置时区方法小结</a><br><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">一些常用的时区标识符说明： </div><div class="line"></div><div class="line">Asia/Shanghai – 上海 </div><div class="line">Asia/Chongqing – 重庆 </div><div class="line">Asia/Urumqi – 乌鲁木齐 </div><div class="line">Asia/Hong_Kong – 香港 </div><div class="line">Asia/Macao – 澳门 </div><div class="line">Asia/Taipei – 台北 </div><div class="line">Asia/Singapore – 新加坡 </div><div class="line"></div><div class="line">date_default_timezone_set(<span class="string">"Asia/Shanghai"</span>)<span class="comment">;</span></div><div class="line">echo date(<span class="string">"Y-m-d G:i:s"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
       
     </div>
     
@@ -371,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/object-oriented-of-php1/" rel="next" title="PHP 面向对象(1)">
-                <i class="fa fa-chevron-left"></i> PHP 面向对象(1)
+              <a href="/2018/02/09/object-oriented-of-php4/" rel="next" title="PHP 面向对象(4)">
+                <i class="fa fa-chevron-left"></i> PHP 面向对象(4)
               </a>
             
           </div>
@@ -381,8 +381,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/08/object-oriented-of-php3/" rel="prev" title="PHP 面向对象(3)">
-                PHP 面向对象(3) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/12/the-link-https/" rel="prev" title="Https协议及防盗链">
+                Https协议及防盗链 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构方法"><span class="nav-number">2.2.</span> <span class="nav-text">析构方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量"><span class="nav-number">2.3.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">2.4.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件相对和绝对路径"><span class="nav-number">2.1.</span> <span class="nav-text">文件相对和绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php处理错误的三种方法"><span class="nav-number">2.2.</span> <span class="nav-text">php处理错误的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php中处理异常的方法"><span class="nav-number">2.3.</span> <span class="nav-text">php中处理异常的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php错误日志"><span class="nav-number">2.4.</span> <span class="nav-text">php错误日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间的调用"><span class="nav-number">2.5.</span> <span class="nav-text">时间的调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
