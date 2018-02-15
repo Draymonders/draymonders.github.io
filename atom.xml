@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-12T13:37:21.225Z</updated>
+  <updated>2018-02-15T01:34:23.587Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mysql的部分操作</title>
+    <link href="http://draymonder.me/2018/02/14/the-link-mysql/"/>
+    <id>http://draymonder.me/2018/02/14/the-link-mysql/</id>
+    <published>2018-02-14T15:59:59.000Z</published>
+    <updated>2018-02-15T01:34:23.587Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想趁着今天情人节，给自己补补知识。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><p>仅仅是记录我学到的啊,待补充，因为我用的phpadmin,所以感觉有些弱智<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>; //查看mysql中所有的数据库</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名; //创建数据库</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 数据库名; //删除数据库</div></pre></td></tr></table></figure></p>
+<h3 id="数据表的基本操作"><a href="#数据表的基本操作" class="headerlink" title="数据表的基本操作"></a>数据表的基本操作</h3><p>mysql中保存了很多数据库、一个数据库中可以保存很多表</p>
+<h4 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h4><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">use</span> 数据库名; //使用数据库</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> student( //创建没有约束的student表</div><div class="line">    <span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>),</div><div class="line">    <span class="keyword">name</span> <span class="built_in">Varchar</span>(<span class="number">12</span>),</div><div class="line">     age <span class="built_in">INT</span> (<span class="number">11</span>),</div><div class="line">     passward <span class="built_in">INT</span>(<span class="number">11</span>)</div><div class="line">)</div><div class="line"></div><div class="line">//单字段主键约束</div><div class="line"><span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>) PRIMARY <span class="keyword">KEY</span></div><div class="line"> <span class="keyword">or</span></div><div class="line">PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</div><div class="line"></div><div class="line">//多字段主键约束(复合主键)复合主键中有一个不同就可以</div><div class="line"><span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>) PRIMARY <span class="keyword">KEY</span>,<span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">12</span>) PRIMARY <span class="keyword">KEY</span></div><div class="line"> <span class="keyword">or</span></div><div class="line"><span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>),<span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">12</span>),PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>,<span class="keyword">name</span>)</div><div class="line"></div><div class="line">//其他约束待补充</div></pre></td></tr></table></figure>
+<h4 id="查询表结构"><a href="#查询表结构" class="headerlink" title="查询表结构"></a>查询表结构</h4><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">DESCRIBE</span> 表名/<span class="keyword">DESC</span> 表名 //查看表基本结构语句</div><div class="line"></div><div class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名 //查看创建表的语句</div></pre></td></tr></table></figure>
+<h4 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h4><p>CHANGE和MODIFY的区别？<br>MODIFY只能修改数据类型，但是CHANGE能够修改数据类型和字段名<br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">ALTER TABLE <span class="params">&lt;旧表名&gt;</span> RENAME TO <span class="params">&lt;新表名&gt;</span> <span class="comment">//修改表名</span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名&gt;</span> CHANGE<span class="params">&lt;旧字段名&gt;</span><span class="params">&lt;新字段名&gt;</span><span class="params">&lt;新数据类型&gt;</span> <span class="comment">//修改表中的字段名 </span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名&gt;</span> MODIFY<span class="params">&lt;字段名&gt;</span><span class="params">&lt;数据类型&gt;</span>   <span class="comment">//修改表中的数据类型</span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名&gt;</span> MODIFY<span class="params">&lt;字段<span class="number">1</span>&gt;</span><span class="params">&lt;数据类型&gt;</span> FIRST|AFTER<span class="params">&lt;字段<span class="number">2</span>&gt;</span></div><div class="line"><span class="comment">//将字段1的位置放到第一，或者放到指定字段2的后面</span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名&gt;</span> CHANGE<span class="params">&lt;字段<span class="number">1</span>&gt;</span><span class="params">&lt;字段<span class="number">2</span>&gt;</span><span class="params">&lt;数据类型&gt;</span> FIRST|AFTER<span class="params">&lt;字段<span class="number">3</span>&gt;</span>　</div><div class="line"><span class="comment">//将字段2覆盖字段1，然后在进行排序</span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名称&gt;</span> ADD<span class="params">&lt;新字段名&gt;</span><span class="params">&lt;数据类型&gt;</span>[约束条件][FIRST|AFTER<span class="params">&lt;已存在的表名&gt;</span>]</div><div class="line"><span class="comment">//在一个特定位置增加一个新的字段，如果不指定位置，默认是最后一个。</span></div><div class="line"></div><div class="line">ALTER TABLE<span class="params">&lt;表名称&gt;</span> DROP<span class="params">&lt;字段名&gt;</span>; <span class="comment">//删除字段</span></div></pre></td></tr></table></figure></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>丢了最重要的人，慢慢提升自己吧。新的一年，老天对我好点儿。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      Mysql一些操作的基本语法
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="http://draymonder.me/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Https协议及防盗链</title>
     <link href="http://draymonder.me/2018/02/12/the-link-https/"/>
     <id>http://draymonder.me/2018/02/12/the-link-https/</id>
     <published>2018-02-12T08:00:00.000Z</published>
-    <updated>2018-02-12T13:37:21.225Z</updated>
+    <updated>2018-02-12T15:31:03.223Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  更新https协议的一些入门知识</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>http协议是建立在tcp/ip协议基础上</div><div class="line"><span class="bullet">2. </span>我们的web开发数据的传输都是依赖于http协议</div><div class="line"><span class="bullet">3. </span>http协议全称是 超文本传输协议</div></pre></td></tr></table></figure>
@@ -31,12 +58,11 @@
 <h3 id="页面缓存"><a href="#页面缓存" class="headerlink" title="页面缓存"></a>页面缓存</h3><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"Expires: -1"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Cache-Control: no_cache"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Pragma: no-cache"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
 <h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$file_name</span> = <span class="string">"1.jpg"</span>;</div><div class="line"><span class="keyword">if</span>(!file_exists(<span class="variable">$file_name</span>) )&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"文件不存在"</span>;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$file_name</span>,<span class="string">"r"</span>);</div><div class="line">// <span class="variable">$file_size</span> = filesize(<span class="variable">$file_name</span>);</div><div class="line">// <span class="built_in">echo</span> <span class="variable">$file_size</span>;</div><div class="line">header(<span class="string">"Content-Type: application/octet-stream"</span>);</div><div class="line">header(<span class="string">"Accept-Ranges: bytes"</span>);</div><div class="line">header(<span class="string">"Accept-Length: "</span>.filesize(<span class="variable">$file_name</span>));</div><div class="line">header(<span class="string">"Content-Disposition: attachment; filename="</span>.<span class="variable">$file_name</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="variable">$buffer</span> = 1024;</div><div class="line"><span class="keyword">while</span> (!feof(<span class="variable">$fp</span>))&#123;</div><div class="line">    <span class="variable">$file_data</span>= fread(<span class="variable">$fp</span>,<span class="variable">$buffer</span>);</div><div class="line">    <span class="built_in">echo</span> <span class="variable">$file_data</span>;    </div><div class="line">&#125;</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line">具体用处自行搜索</div></pre></td></tr></table></figure>
 <h3 id="utf-8转码gb2312"><a href="#utf-8转码gb2312" class="headerlink" title="utf-8转码gb2312"></a>utf-8转码gb2312</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">file_name = iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$file_name</span>);</span></div></pre></td></tr></table></figure>
-<p>### </p>
 ]]></content>
     
     <summary type="html">
     
-      Https协议,请求,防盗链，网页缓存，文件下载，转码
+      Https协议,请求,防盗链,网页缓存,文件下载,转码
     
     </summary>
     
@@ -523,47 +549,6 @@
     
     
       <category term="Css" scheme="http://draymonder.me/tags/Css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一些编程技巧和c++11语法特性的介绍</title>
-    <link href="http://draymonder.me/2018/01/29/the-skill-of-coding/"/>
-    <id>http://draymonder.me/2018/01/29/the-skill-of-coding/</id>
-    <published>2018-01-29T06:00:00.000Z</published>
-    <updated>2018-02-01T09:20:54.288Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  好不容易等来了放假，所以啊，有时间去学习一些东西。<br>  现在我主要的方向是 算法和后端(PHP入门，昨天刚刚安装好apache服务器)。<br>  今天在实验室看到了绿书，准备看看这本书，从新系统巩固和学习一些新的知识吧</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>  Blog上只更新一些与自己有用的东西，因人而异吧。</p>
-<h3 id="编程技巧"><a href="#编程技巧" class="headerlink" title="编程技巧"></a>编程技巧</h3><h4 id="整数输入"><a href="#整数输入" class="headerlink" title="整数输入"></a>整数输入</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">readint</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> x; sacnf(<span class="string">"%d"</span>,&amp;x); <span class="keyword">return</span> x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="循环宏定义"><a href="#循环宏定义" class="headerlink" title="循环宏定义"></a>循环宏定义</h4><figure class="highlight lisp"><table><tr><td class="code"><pre><div class="line"></div><div class="line">#define rep(<span class="name">i</span>,a,b) for(<span class="name">int</span> i=(<span class="name">a</span>)<span class="comment">; i&lt;=(b); ++i)</span></div></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="STL容器内容调试输出"><a href="#STL容器内容调试输出" class="headerlink" title="STL容器内容调试输出"></a>STL容器内容调试输出</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*vector输出*/</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line">ostream&amp; <span class="keyword">operator</span> &lt;&lt;(ostream &amp;os,<span class="keyword">const</span> <span class="built_in">vector</span>&lt;T&gt;&amp; v)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.size(); i++) os&lt;&lt;v[i]&lt;&lt;<span class="string">" "</span>;</div><div class="line">    <span class="keyword">return</span> os;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*set输出*/</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line">ostream&amp; <span class="keyword">operator</span> &lt;&lt;(ostream &amp;os,<span class="keyword">const</span> <span class="built_in">set</span>&lt;T&gt;&amp; v)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">typename</span> <span class="built_in">set</span>&lt;T&gt;::iterator it=v.begin(); it!=v.end(); it++)    </div><div class="line">    os&lt;&lt;*it&lt;&lt;<span class="string">" "</span>;</div><div class="line">    <span class="keyword">return</span> os;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><br></p>
-<h3 id="C-11语言特性"><a href="#C-11语言特性" class="headerlink" title="C++11语言特性"></a>C++11语言特性</h3><h4 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</div><div class="line">v.push_back(<span class="number">1</span>);</div><div class="line"><span class="keyword">auto</span> it = v.begin();</div><div class="line"><span class="built_in">cout</span>&lt;&lt; *it&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="容器内的for循环遍历"><a href="#容器内的for循环遍历" class="headerlink" title="容器内的for循环遍历"></a>容器内的for循环遍历</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</div><div class="line">v.push_back(<span class="number">1</span>), v.push_back(<span class="number">2</span>), v.push_back(<span class="number">3</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp;p : v)</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;p&lt;&lt;<span class="string">" "</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> arr[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>&amp; x:arr) x+=<span class="number">2</span>;</div></pre></td></tr></table></figure>
-<p><br></p>
-<h3 id="需要了解的知识（不太明白的）"><a href="#需要了解的知识（不太明白的）" class="headerlink" title="需要了解的知识（不太明白的）"></a>需要了解的知识（不太明白的）</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span>匿名函数<span class="comment">(lambda)</span></div><div class="line"><span class="number">2.</span>哈希容器<span class="comment">(这个哈希，真的一直没怎么接触)</span></div></pre></td></tr></table></figure>
-<p><br></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><font style="color:pink;"> 曾几何时，我希望有个人能陪我走下去，后来渐渐发现能陪自己走下去的只有自己 好的吧。努力，让平凡的生活多一些快乐<br></font>
-
-
-
-
-
-
-]]></content>
-    
-    <summary type="html">
-    
-      对编程技巧和编程语言语法的熟练掌握有助于提高编码速度和准确率
-    
-    </summary>
-    
-    
-      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
     
   </entry>
   

@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Https协议,请求,防盗链，网页缓存，文件下载，转码">
+<meta name="description" content="Https协议,请求,防盗链,网页缓存,文件下载,转码">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Https协议及防盗链">
 <meta property="og:url" content="http://draymonder.me/2018/02/12/the-link-https/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="Https协议,请求,防盗链，网页缓存，文件下载，转码">
+<meta property="og:description" content="Https协议,请求,防盗链,网页缓存,文件下载,转码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-12T13:37:21.225Z">
+<meta property="og:updated_time" content="2018-02-12T15:31:03.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Https协议及防盗链">
-<meta name="twitter:description" content="Https协议,请求,防盗链，网页缓存，文件下载，转码">
+<meta name="twitter:description" content="Https协议,请求,防盗链,网页缓存,文件下载,转码">
 
 
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  Https协议,请求,防盗链，网页缓存，文件下载，转码
+                  Https协议,请求,防盗链,网页缓存,文件下载,转码
               </div>
           
 
@@ -342,7 +342,6 @@
 <h3 id="页面缓存"><a href="#页面缓存" class="headerlink" title="页面缓存"></a>页面缓存</h3><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"Expires: -1"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Cache-Control: no_cache"</span>)<span class="comment">;</span></div><div class="line">header(<span class="string">"Pragma: no-cache"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
 <h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$file_name</span> = <span class="string">"1.jpg"</span>;</div><div class="line"><span class="keyword">if</span>(!file_exists(<span class="variable">$file_name</span>) )&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"文件不存在"</span>;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$file_name</span>,<span class="string">"r"</span>);</div><div class="line">// <span class="variable">$file_size</span> = filesize(<span class="variable">$file_name</span>);</div><div class="line">// <span class="built_in">echo</span> <span class="variable">$file_size</span>;</div><div class="line">header(<span class="string">"Content-Type: application/octet-stream"</span>);</div><div class="line">header(<span class="string">"Accept-Ranges: bytes"</span>);</div><div class="line">header(<span class="string">"Accept-Length: "</span>.filesize(<span class="variable">$file_name</span>));</div><div class="line">header(<span class="string">"Content-Disposition: attachment; filename="</span>.<span class="variable">$file_name</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="variable">$buffer</span> = 1024;</div><div class="line"><span class="keyword">while</span> (!feof(<span class="variable">$fp</span>))&#123;</div><div class="line">    <span class="variable">$file_data</span>= fread(<span class="variable">$fp</span>,<span class="variable">$buffer</span>);</div><div class="line">    <span class="built_in">echo</span> <span class="variable">$file_data</span>;    </div><div class="line">&#125;</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line">具体用处自行搜索</div></pre></td></tr></table></figure>
 <h3 id="utf-8转码gb2312"><a href="#utf-8转码gb2312" class="headerlink" title="utf-8转码gb2312"></a>utf-8转码gb2312</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">file_name = iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$file_name</span>);</span></div></pre></td></tr></table></figure>
-<p>### </p>
 
       
     </div>
@@ -382,6 +381,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/14/the-link-mysql/" rel="prev" title="Mysql的部分操作">
+                Mysql的部分操作 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -462,7 +465,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -475,7 +478,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
