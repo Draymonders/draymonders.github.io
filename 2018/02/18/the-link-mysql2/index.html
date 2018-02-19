@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="C++," />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="更新自己在刷题过程中遇到的一些蠢蠢的小错误">
-<meta name="keywords" content="C++">
+<meta name="description" content="Mysql中获取行数据,简易SqlTool类,mysql中文乱码解决,NULL 和 空字符串的比较">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写C++ 过程中遇到的一些错误">
-<meta property="og:url" content="http://draymonder.me/2018/02/02/the-errors-in-c++/index.html">
+<meta property="og:title" content="Mysql的部分问题">
+<meta property="og:url" content="http://draymonder.me/2018/02/18/the-link-mysql2/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="更新自己在刷题过程中遇到的一些蠢蠢的小错误">
+<meta property="og:description" content="Mysql中获取行数据,简易SqlTool类,mysql中文乱码解决,NULL 和 空字符串的比较">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-02T14:08:00.224Z">
+<meta property="og:updated_time" content="2018-02-19T02:33:24.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写C++ 过程中遇到的一些错误">
-<meta name="twitter:description" content="更新自己在刷题过程中遇到的一些蠢蠢的小错误">
+<meta name="twitter:title" content="Mysql的部分问题">
+<meta name="twitter:description" content="Mysql中获取行数据,简易SqlTool类,mysql中文乱码解决,NULL 和 空字符串的比较">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/02/the-errors-in-c++/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/18/the-link-mysql2/"/>
 
 
 
 
 
-  <title>写C++ 过程中遇到的一些错误 | Draymonder's Blog</title>
+  <title>Mysql的部分问题 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/02/the-errors-in-c++/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/18/the-link-mysql2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">写C++ 过程中遇到的一些错误</h1>
+          <h1 class="post-title" itemprop="name headline">Mysql的部分问题</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T23:59:00+08:00">
-                2018-02-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-18T23:59:59+08:00">
+                2018-02-18
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  更新自己在刷题过程中遇到的一些蠢蠢的小错误
+                  Mysql中获取行数据,简易SqlTool类,mysql中文乱码解决,NULL 和 空字符串的比较
               </div>
           
 
@@ -333,11 +333,13 @@
       
 
       
-        <h2 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h2><p>  今天晚上没啥事干，就刷刷PAT Basic Level的水题，没想到写完题目了 突然没法编译<br>  我还以为自己的电脑中毒了？吓得我赶紧搜起了百度，改了配置，发现还是不能编译<br>  又重开软件，还是不行，后来终于发现自己，问题搜错了。搜到正确的答案，真是被自己蠢哭啊.</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>这个就用来记录自己平时犯得错误</p>
-<h3 id="undefined-reference-to-‘WinMain-16’"><a href="#undefined-reference-to-‘WinMain-16’" class="headerlink" title="undefined reference to ‘WinMain@16’"></a>undefined reference to ‘WinMain@16’</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line">检查一下自己是不是又把main 写成<span class="keyword">mian了</span></div><div class="line"><span class="keyword">哈哈~，好蠢</span></div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>持续更新自己的错误，嘻嘻，挺不错的。就当错题本了</p>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大年初一，学点儿东西，美滋滋~~</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="fetch-获取行数据"><a href="#fetch-获取行数据" class="headerlink" title="fetch 获取行数据"></a>fetch 获取行数据</h3><figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">mysql_fetch_row(<span class="variable">$res</span>); <span class="regexp">//</span>返回索引数组 <span class="variable">$row</span>[<span class="number">1</span>]...</div><div class="line">mysql_fetch_assoc(<span class="variable">$res</span>); <span class="regexp">//</span>返回关联数组 <span class="variable">$row</span>[<span class="string">'id'</span>]</div><div class="line">mysql_fetch_array(<span class="variable">$res</span>); <span class="regexp">//</span>返回索引和关联数组</div><div class="line">mysql_fetch_object(<span class="variable">$res</span>); <span class="regexp">//</span>返回对象 <span class="variable">$row</span>-&gt;id</div></pre></td></tr></table></figure>
+<h3 id="简易SqlTool类"><a href="#简易SqlTool类" class="headerlink" title="简易SqlTool类"></a>简易SqlTool类</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SqlTool</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> $conn;</div><div class="line">    <span class="keyword">private</span> $host = <span class="string">"localhost"</span>;</div><div class="line">    <span class="keyword">private</span> $user = <span class="string">"root"</span>;</div><div class="line">    <span class="keyword">private</span> $password = <span class="string">""</span>;</div><div class="line">    <span class="keyword">private</span> $db = <span class="string">"test"</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">SqlTool</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;conn = mysql_connect(<span class="keyword">$this</span>-&gt;host,<span class="keyword">$this</span>-&gt;user,<span class="keyword">$this</span>-&gt;password);</div><div class="line">        <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;conn ) &#123;</div><div class="line">            <span class="keyword">die</span> (<span class="string">"连接数据库失败"</span>.mysql_error());</div><div class="line">        &#125;</div><div class="line">        mysql_select_db(<span class="keyword">$this</span>-&gt;db,<span class="keyword">$this</span>-&gt;conn);</div><div class="line">        mysql_query(<span class="string">"set names utf8"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//数据查询语言DQL SELECT FROM WHERE</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dql</span><span class="params">($sql)</span> </span>&#123;</div><div class="line">        $res = mysql_query($sql,<span class="keyword">$this</span>-&gt;conn);</div><div class="line">        <span class="keyword">return</span> $res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//数据操纵语言DML 创建,插入,更新,删除</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dml</span><span class="params">($sql)</span> </span>&#123;</div><div class="line">        $res =  mysql_query($sql,<span class="keyword">$this</span>-&gt;conn);</div><div class="line">        <span class="keyword">if</span>(!$res ) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 失败</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(mysql_affected_rows(<span class="keyword">$this</span>-&gt;conn) &gt; <span class="number">0</span> ) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 成功</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">2</span>; <span class="comment">// 操作无效</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="mysql中文乱码解决"><a href="#mysql中文乱码解决" class="headerlink" title="mysql中文乱码解决"></a>mysql中文乱码解决</h3><figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="comment">//首先查看mysql的环境配置</span></div><div class="line">show variables like <span class="string">"%char%"</span>  </div><div class="line"><span class="comment">//如果都是utf-8则已经配置好</span></div><div class="line"><span class="comment">//如果显示有其他的编码,打开mysql安装目录查找my.ini</span></div><div class="line"><span class="comment">//下面代码粘贴到my.ini中</span></div><div class="line"></div><div class="line">[<span class="meta">mysql</span>]</div><div class="line"><span class="keyword">default</span>-character-<span class="keyword">set</span>=utf8</div><div class="line">[<span class="meta">mysqld</span>]</div><div class="line">character-<span class="keyword">set</span>-server=utf8</div><div class="line"></div><div class="line"><span class="comment">//然后php文件中，添加如下代码</span></div><div class="line">header(<span class="string">"content-type:text/html;charset=utf-8"</span>);</div></pre></td></tr></table></figure>
+<h3 id="NULL-和-空字符串的比较"><a href="#NULL-和-空字符串的比较" class="headerlink" title="NULL 和 空字符串的比较"></a>NULL 和 空字符串的比较</h3><pre><code>null的类型是null，&quot;&quot;的类型是string。双等下看不出来，三等就能看出来了。
+另外有个形象的比喻，如果null代表你没交作业的话，&quot;&quot;代表你把本子交了上去但是啥都没写。
+</code></pre>
       
     </div>
     
@@ -354,7 +356,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
           
         </div>
       
@@ -367,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/02/the-diary-02-02/" rel="next" title="杂文一记">
-                <i class="fa fa-chevron-left"></i> 杂文一记
+              <a href="/2018/02/14/the-link-mysql1/" rel="next" title="Mysql的部分操作">
+                <i class="fa fa-chevron-left"></i> Mysql的部分操作
               </a>
             
           </div>
@@ -376,10 +378,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/04/mergesort/" rel="prev" title="归并排序">
-                归并排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前文"><span class="nav-number">1.</span> <span class="nav-text">前文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined-reference-to-‘WinMain-16’"><span class="nav-number">2.1.</span> <span class="nav-text">undefined reference to ‘WinMain@16’</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch-获取行数据"><span class="nav-number">2.1.</span> <span class="nav-text">fetch 获取行数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简易SqlTool类"><span class="nav-number">2.2.</span> <span class="nav-text">简易SqlTool类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql中文乱码解决"><span class="nav-number">2.3.</span> <span class="nav-text">mysql中文乱码解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NULL-和-空字符串的比较"><span class="nav-number">2.4.</span> <span class="nav-text">NULL 和 空字符串的比较</span></a></li></ol></li></ol></div>
             
 
           </div>

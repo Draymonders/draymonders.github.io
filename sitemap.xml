@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://draymonder.me/2018/02/14/the-link-mysql/</loc>
+    <loc>http://draymonder.me/2018/02/18/the-link-mysql2/</loc>
     
-    <lastmod>2018-02-15T01:34:23.587Z</lastmod>
+    <lastmod>2018-02-19T02:33:24.562Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-film-webs/</loc>
+    
+    <lastmod>2018-02-18T14:04:44.162Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-link-mysql1/</loc>
+    
+    <lastmod>2018-02-16T08:34:17.998Z</lastmod>
     
   </url>
   
@@ -96,13 +110,6 @@
     <loc>http://draymonder.me/2018/02/02/the-use-of-js3/</loc>
     
     <lastmod>2018-02-02T13:54:58.408Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-film-webs/</loc>
-    
-    <lastmod>2018-02-02T11:33:52.272Z</lastmod>
     
   </url>
   

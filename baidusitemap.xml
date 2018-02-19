@@ -4,8 +4,42 @@
 
     
   <url>
-    <loc>http://draymonder.me/2018/02/14/the-link-mysql/</loc>
-    <lastmod>2018-02-15T01:34:23.587Z</lastmod>
+    <loc>http://draymonder.me/2018/02/18/the-link-mysql2/</loc>
+    <lastmod>2018-02-19T02:33:24.562Z</lastmod>
+    <data>
+        <display>
+        <title>Mysql的部分问题</title>
+        <pubTime>2018-02-18T15:59:59.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-film-webs/</loc>
+    <lastmod>2018-02-18T14:04:44.162Z</lastmod>
+    <data>
+        <display>
+        <title>电影资源网站</title>
+        <pubTime>2018-02-02T11:45:00.000Z</pubTime>
+        
+        <tag>Film</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-link-mysql1/</loc>
+    <lastmod>2018-02-16T08:34:17.998Z</lastmod>
     <data>
         <display>
         <title>Mysql的部分操作</title>
@@ -233,23 +267,6 @@
         <pubTime>2018-02-02T11:00:00.000Z</pubTime>
         
         <tag>Js</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-film-webs/</loc>
-    <lastmod>2018-02-02T11:33:52.272Z</lastmod>
-    <data>
-        <display>
-        <title>电影资源网站</title>
-        <pubTime>2018-02-02T11:45:00.000Z</pubTime>
-        
-        <tag>Film</tag>
          
          
            
