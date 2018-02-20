@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-20T09:49:22.891Z</updated>
+  <updated>2018-02-20T14:44:54.235Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Mysql的部分操作</title>
+    <title>Mysql学习(4)</title>
+    <link href="http://draymonder.me/2018/02/20/the-link-mysql4/"/>
+    <id>http://draymonder.me/2018/02/20/the-link-mysql4/</id>
+    <published>2018-02-20T15:59:59.000Z</published>
+    <updated>2018-02-20T14:44:54.235Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>需要向mysql数据库添加100个用户，请问如何实现</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line">通常我们的一条sql在db接收到最终执行完毕返回可以分为下面三个过程：</div><div class="line"><span class="bullet">1. </span>词法和语义解析</div><div class="line"><span class="bullet">2. </span>优化sql语句，制定执行计划</div><div class="line"><span class="bullet">3. </span>执行并返回结果</div><div class="line"></div><div class="line">预编译语句的优势在于归纳为：一次编译、多次运行，省去了解析优化等过程；此外预编译语句能防止sql注入。</div></pre></td></tr></table></figure>
+<h3 id="dml数据操作语句"><a href="#dml数据操作语句" class="headerlink" title="dml数据操作语句"></a>dml数据操作语句</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//创建预编译对象</span></div><div class="line">$sql = <span class="string">"insert into stu(id,cost) values(?,?)"</span>;</div><div class="line">$mysql_stmt = $mysql-&gt;prepare($sql);</div><div class="line"><span class="comment">//绑定参数</span></div><div class="line">$id = <span class="number">3</span>;</div><div class="line">$cost = <span class="number">40</span>;</div><div class="line"><span class="comment">//给问号赋值</span></div><div class="line">$mysql_stmt-&gt;bind_param(<span class="string">"ii"</span>,$id,$cost);</div><div class="line"><span class="comment">//执行</span></div><div class="line">$res = $mysql_stmt-&gt;execute();</div><div class="line"><span class="keyword">if</span>(!$res) &#123;</div><div class="line">    <span class="keyword">die</span>(<span class="string">"操作失败"</span>.$mysql_stmt-&gt;error);</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"操作ok"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="dql数据查询语句"><a href="#dql数据查询语句" class="headerlink" title="dql数据查询语句"></a>dql数据查询语句</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//创建一个预定义的对象 ? 站位</span></div><div class="line">$sql = <span class="string">"select * from stu where id &gt; ?"</span>;</div><div class="line">$mysql_stmt = $mysql-&gt;prepare($sql);</div><div class="line">$id = <span class="number">1</span>;</div><div class="line"><span class="comment">//绑定参数</span></div><div class="line">$mysql_stmt-&gt;bind_param(<span class="string">"i"</span>,$id);</div><div class="line">$mysql_stmt-&gt;bind_result($id,$cost);</div><div class="line"><span class="comment">//执行</span></div><div class="line">$mysql_stmt-&gt;execute();</div><div class="line"><span class="comment">//取结果集</span></div><div class="line"><span class="keyword">while</span> ($mysql_stmt-&gt;fetch())&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$id $cost &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//资源关闭</span></div><div class="line">$mysql_stmt-&gt;free_result();</div><div class="line"><span class="comment">//预编译关闭</span></div><div class="line">$mysql_stmt-&gt;close();</div></pre></td></tr></table></figure>
+<h3 id="一些常用的mysqli函数"><a href="#一些常用的mysqli函数" class="headerlink" title="一些常用的mysqli函数"></a>一些常用的mysqli函数</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">mysqli_result类</div><div class="line">属性</div><div class="line">列 $field_count;</div><div class="line">行 $num_rows;</div><div class="line">方法</div><div class="line">fetch_fields() <span class="comment">//列信息</span></div><div class="line">被返回的对象的属性为</div><div class="line">    name - 列名</div><div class="line">    table - 该列所在的表名</div><div class="line">    max_length - 该列最大长度</div><div class="line">    not_null - <span class="number">1</span>，如果该列不能为 NULL</div><div class="line">    primary_key - <span class="number">1</span>，如果该列是 primary <span class="type">key</span></div><div class="line">    unique_key - <span class="number">1</span>，如果该列是 unique <span class="type">key</span></div><div class="line">    multiple_key - <span class="number">1</span>，如果该列是 non-unique <span class="type">key</span></div><div class="line">    numeric - <span class="number">1</span>，如果该列是 numeric</div><div class="line">    blob - <span class="number">1</span>，如果该列是 BLOB</div><div class="line">    type - 该列的类型</div><div class="line">    unsigned - <span class="number">1</span>，如果该列是无符号数</div><div class="line">    zerofill - <span class="number">1</span>，如果该列是 zero-filled</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      mysqli扩展库的预处理技术 mysqli_stmt以及其他常用的mysqli函数
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="http://draymonder.me/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql学习(3)</title>
     <link href="http://draymonder.me/2018/02/20/the-link-mysql3/"/>
     <id>http://draymonder.me/2018/02/20/the-link-mysql3/</id>
     <published>2018-02-20T06:30:00.000Z</published>
-    <updated>2018-02-20T09:49:22.891Z</updated>
+    <updated>2018-02-20T09:59:31.519Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  发现自己越来越大，却越来越害羞了，昨天下午和好多人玩了半天，虽然回来头晕晕的，不过还好的了。自己确实应该多接触接触人了呢。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="批量执行sql语句"><a href="#批量执行sql语句" class="headerlink" title="批量执行sql语句"></a>批量执行sql语句</h3><p>最好不要把dml和dql语句混用，这样不利于控制</p>
@@ -44,11 +68,11 @@
   </entry>
   
   <entry>
-    <title>Mysql的部分问题</title>
+    <title>Mysql学习(2)</title>
     <link href="http://draymonder.me/2018/02/18/the-link-mysql2/"/>
     <id>http://draymonder.me/2018/02/18/the-link-mysql2/</id>
     <published>2018-02-18T15:59:59.000Z</published>
-    <updated>2018-02-19T02:33:24.562Z</updated>
+    <updated>2018-02-20T09:59:19.073Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大年初一，学点儿东西，美滋滋~~</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="fetch-获取行数据"><a href="#fetch-获取行数据" class="headerlink" title="fetch 获取行数据"></a>fetch 获取行数据</h3><figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">mysql_fetch_row(<span class="variable">$res</span>); <span class="regexp">//</span>返回索引数组 <span class="variable">$row</span>[<span class="number">1</span>]...</div><div class="line">mysql_fetch_assoc(<span class="variable">$res</span>); <span class="regexp">//</span>返回关联数组 <span class="variable">$row</span>[<span class="string">'id'</span>]</div><div class="line">mysql_fetch_array(<span class="variable">$res</span>); <span class="regexp">//</span>返回索引和关联数组</div><div class="line">mysql_fetch_object(<span class="variable">$res</span>); <span class="regexp">//</span>返回对象 <span class="variable">$row</span>-&gt;id</div></pre></td></tr></table></figure>
@@ -70,11 +94,11 @@
   </entry>
   
   <entry>
-    <title>Mysql的部分操作</title>
+    <title>Mysql学习(1)</title>
     <link href="http://draymonder.me/2018/02/14/the-link-mysql1/"/>
     <id>http://draymonder.me/2018/02/14/the-link-mysql1/</id>
     <published>2018-02-14T15:59:59.000Z</published>
-    <updated>2018-02-20T09:52:20.363Z</updated>
+    <updated>2018-02-20T09:59:22.894Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想趁着今天情人节，给自己补补知识。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><p>仅仅是记录我学到的啊,待补充，因为我用的phpadmin,所以感觉有些弱智<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>; //查看mysql中所有的数据库</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名; //创建数据库</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 数据库名; //删除数据库</div></pre></td></tr></table></figure></p>
@@ -521,29 +545,6 @@
     
     
       <category term="Css" scheme="http://draymonder.me/tags/Css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>upper/lower_bound的用法</title>
-    <link href="http://draymonder.me/2018/01/31/upper-compare-to-lower/"/>
-    <id>http://draymonder.me/2018/01/31/upper-compare-to-lower/</id>
-    <published>2018-01-31T14:00:00.000Z</published>
-    <updated>2018-02-05T07:36:40.961Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
-<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
-]]></content>
-    
-    <summary type="html">
-    
-      听老师说快要3月末就PAT了，趁有时间，每天刷刷水题，动动脑子。
-    
-    </summary>
-    
-    
-      <category term="C++" scheme="http://draymonder.me/tags/C/"/>
     
   </entry>
   

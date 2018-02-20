@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://draymonder.me/2018/02/14/the-link-mysql1/</loc>
-    <lastmod>2018-02-20T09:52:20.363Z</lastmod>
+    <loc>http://draymonder.me/2018/02/20/the-link-mysql4/</loc>
+    <lastmod>2018-02-20T14:44:54.235Z</lastmod>
     <data>
         <display>
-        <title>Mysql的部分操作</title>
-        <pubTime>2018-02-14T15:59:59.000Z</pubTime>
+        <title>Mysql学习(4)</title>
+        <pubTime>2018-02-20T15:59:59.000Z</pubTime>
         
         <tag>mysql</tag>
          
@@ -22,11 +22,45 @@
     
   <url>
     <loc>http://draymonder.me/2018/02/20/the-link-mysql3/</loc>
-    <lastmod>2018-02-20T09:49:22.891Z</lastmod>
+    <lastmod>2018-02-20T09:59:31.519Z</lastmod>
     <data>
         <display>
-        <title>Mysql的部分操作</title>
+        <title>Mysql学习(3)</title>
         <pubTime>2018-02-20T06:30:00.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-link-mysql1/</loc>
+    <lastmod>2018-02-20T09:59:22.894Z</lastmod>
+    <data>
+        <display>
+        <title>Mysql学习(1)</title>
+        <pubTime>2018-02-14T15:59:59.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/18/the-link-mysql2/</loc>
+    <lastmod>2018-02-20T09:59:19.073Z</lastmod>
+    <data>
+        <display>
+        <title>Mysql学习(2)</title>
+        <pubTime>2018-02-18T15:59:59.000Z</pubTime>
         
         <tag>mysql</tag>
          
@@ -46,23 +80,6 @@
         <pubTime>2018-02-12T08:00:00.000Z</pubTime>
         
         <tag>php</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/18/the-link-mysql2/</loc>
-    <lastmod>2018-02-19T02:33:24.562Z</lastmod>
-    <data>
-        <display>
-        <title>Mysql的部分问题</title>
-        <pubTime>2018-02-18T15:59:59.000Z</pubTime>
-        
-        <tag>mysql</tag>
          
          
            
