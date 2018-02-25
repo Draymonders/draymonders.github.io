@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://draymonder.me/2018/02/22/the-global/</loc>
+    <loc>http://draymonder.me/2018/02/25/the-demo1/</loc>
     
-    <lastmod>2018-02-22T02:59:38.179Z</lastmod>
+    <lastmod>2018-02-25T12:11:48.362Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/24/the-diary-02-24/</loc>
+    
+    <lastmod>2018-02-24T08:40:54.286Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/21/the-global/</loc>
+    
+    <lastmod>2018-02-22T07:39:19.940Z</lastmod>
     
   </url>
   

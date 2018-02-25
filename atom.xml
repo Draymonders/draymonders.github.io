@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-22T02:59:38.179Z</updated>
+  <updated>2018-02-25T12:11:48.362Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,28 +16,137 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>预定义超全局数组</title>
-    <link href="http://draymonder.me/2018/02/22/the-global/"/>
-    <id>http://draymonder.me/2018/02/22/the-global/</id>
-    <published>2018-02-22T04:00:00.000Z</published>
-    <updated>2018-02-22T02:59:38.179Z</updated>
+    <title>雇员管理系统项目开发</title>
+    <link href="http://draymonder.me/2018/02/25/the-demo1/"/>
+    <id>http://draymonder.me/2018/02/25/the-demo1/</id>
+    <published>2018-02-25T15:59:59.000Z</published>
+    <updated>2018-02-25T12:11:48.362Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PHP设计者提供超全局数组的目的是为了让PHP程序员可以更方便快捷的编写程序</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">GLOBALS </span></div><div class="line"><span class="meta">$</span><span class="bash">_SERVER</span></div><div class="line"><span class="meta">$</span><span class="bash">_REQUEST</span></div><div class="line"><span class="meta">$</span><span class="bash">_POST</span></div><div class="line"><span class="meta">$</span><span class="bash">_GET</span></div><div class="line"><span class="meta">$</span><span class="bash">_ENV //获取环境变量，不要用</span></div><div class="line"><span class="meta">$</span><span class="bash">_FILES</span></div><div class="line"><span class="meta">$</span><span class="bash">_COOKIE</span></div><div class="line"><span class="meta">$</span><span class="bash">_SESSION</span></div></pre></td></tr></table></figure>
-<h3 id="GET-奇数中文乱码"><a href="#GET-奇数中文乱码" class="headerlink" title="$_GET 奇数中文乱码"></a>$_GET 奇数中文乱码</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">1. 给奇数中文加一个全角空格，然后用trim()去除末尾的空格</div><div class="line">2. 使用urlencode函数</div><div class="line"></div><div class="line">实例</div><div class="line">//test.php</div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"text/html"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php">	$str = urlencode(<span class="string">'中国好'</span>);</span></div><div class="line"><span class="php">	<span class="keyword">echo</span> <span class="string">"&lt;a href='a.php?city=$str&amp;name=draymonder'&gt;传送数据&lt;/a&gt;"</span>;</span></div><div class="line"><span class="php"> <span class="meta">?&gt;</span></span></div><div class="line"> </div><div class="line">//a.php</div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"text/html"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php">	var_dump($_GET);</span></div><div class="line"><span class="php"> <span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
-<h3 id="POST与GET提交的区别"><a href="#POST与GET提交的区别" class="headerlink" title="POST与GET提交的区别"></a>POST与GET提交的区别</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">安全性</div><div class="line">数据传输大小</div><div class="line">保存到收藏夹</div></pre></td></tr></table></figure>
-<h3 id="确认GET-POST请求"><a href="#确认GET-POST请求" class="headerlink" title="确认GET/POST请求"></a>确认GET/POST请求</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="variable">$_SERVER</span>[<span class="string">'REQUEST_METHOD'</span>] == <span class="string">"post"</span>) &#123;</div><div class="line">	<span class="regexp">//</span>post请求 </div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'REQUEST_METHOD'</span>] == <span class="string">"get"</span>) &#123;</div><div class="line">	<span class="regexp">//g</span>et请求</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="SERVER内容"><a href="#SERVER内容" class="headerlink" title="$_SERVER内容"></a>$_SERVER内容</h3><p><a href="https://www.cnblogs.com/rendd/p/6182918.html" target="_blank" rel="external">$_SERVER获取信息详解</a><br><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">1. 客户端浏览器信息</div><div class="line">2. 服务端信息</div><div class="line"></div><div class="line"><span class="meta">$</span><span class="bash">_SERVER[<span class="string">"REMOTE_ADDR"</span>]  浏览网页的用户ip</span></div><div class="line"><span class="meta">$</span><span class="bash">_SERVER[<span class="string">"SERVER_ADDR"</span>]  当前运行脚本的服务器的ip地址</span></div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  走一个雇员管理系统的开发，终于能实战演练一些东西了。<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">学习目标：</div><div class="line">    <span class="number">1.</span> 熟练编写规范的项目需求设计说明书</div><div class="line">    <span class="number">2.</span> 熟练编写项目数据库设计说明书</div><div class="line">    <span class="number">3.</span> 提升数据库建模设计能力</div><div class="line">    <span class="number">4.</span> 培养良好的沟通能力和团队合作精神</div><div class="line">    <span class="number">5.</span> 完全OOP设计思想</div><div class="line">    <span class="number">6.</span> 培养良好的编码习惯，代码编写规范。</div></pre></td></tr></table></figure></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="项目入门先知"><a href="#项目入门先知" class="headerlink" title="项目入门先知"></a>项目入门先知</h3><h4 id="phpstorm-设置默认编码"><a href="#phpstorm-设置默认编码" class="headerlink" title="phpstorm 设置默认编码"></a>phpstorm 设置默认编码</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">phpstorm默认编码格式为GBK</div><div class="line">可通过 File —&gt;<span class="built_in"> Settings </span>—&gt; Editor —&gt; File Encodings </div><div class="line">将文件/项目默认的编码改为UTF-8</div><div class="line">```  </div><div class="line"></div><div class="line"><span class="comment">#### phpstorm 代码提示功能</span></div></pre></td></tr></table></figure>
+<p>File —&gt; Power Save Mode<br>选择关闭即可<br><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line"></div><div class="line">#### phpstorm 常用快捷键</div></pre></td></tr></table></figure></p>
+<p>ctrl + d 复制当前行<br><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">#### phpstorm + xDebug环境配置</div><div class="line">&lt;a href=<span class="string">"https://my.oschina.net/u/940075/blog/534687"</span>&gt;调试环境配置&lt;/a&gt; </div><div class="line"></div><div class="line">#### 解决中文乱码</div></pre></td></tr></table></figure></p>
+<p>header(“content-type:text/html; charset=utf-8”);<br><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line"></div><div class="line">### 项目遇到的问题及解决方案</div><div class="line"></div><div class="line">#### 让div水平垂直居中的几种方法(需要多看)</div><div class="line">&lt;a href=<span class="string">"https://www.cnblogs.com/dushao/p/5999239.html"</span>&gt;让div水平垂直居中的几种方法&lt;/a&gt;</div><div class="line"></div><div class="line">#### 设置input搜索框的颜色</div></pre></td></tr></table></figure></p>
+<p>input{border:1px solid red;background-color:transparent;}<br><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line"></div><div class="line">#### 打印数据库内容</div></pre></td></tr></table></figure></p>
+<p>$mysql=new mysqli(“localhost”,”root”,”root”,”hr”);<br>if($mysql-&gt;connect_error){<br>    die(“数据库连接失败”).$mysql-&gt;connect_error;<br>}<br>echo “<table width="700px" border="1">“;<br>//打印表头<br>echo “<tr>“;<br>$sql = “select * from emp”;<br>$res = $mysql-&gt;query($sql);<br>while($col=$res-&gt;fetch_field() ) {<br>    echo “<th>{$col-&gt;name}</th>“;<br>}<br>echo “</tr>“;<br>while ($row = $res-&gt;fetch_row() ){<br>    echo “<tr>“;<br>    foreach ($row as $val){<br>        echo “<td>$val</td>“;<br>    }<br>    echo “</tr>“;<br>}<br>echo “</table>“;<br>$res-&gt;free();<br>$mysql-&gt;close();<br><figure class="highlight clean"><table><tr><td class="code"><pre><div class="line"></div><div class="line">#### 分页显示</div></pre></td></tr></table></figure></p>
+<p>分页中必须使用的变量<br>$pageNow –&gt; 当前页 用户输入<br>$pageCount –&gt; 总共有几页<br>$rowCount  –&gt; 总共有多少条记录 [数据库获取]<br>$pageSize –&gt; 每页显示几条记录 [程序员自己定]</p>
+<p>/<em>实例</em>/<br>$pageSize = 4; //每页有四条记录<br>$rowCount = $res-&gt;num_rows; //总共有多少条记录<br>//$pageNow = 1; //第一页 用户指定<br>if(isset($_GET[‘pageNow’])) {<br>    $pageNow = $_GET[‘pageNow’];<br>}else {<br>    $pageNow = 1;<br>}<br>$pageCount = ceil($rowCount/$pageSize);<br>$test = ($pageNow-1) <em> $pageSize;<br>$sql = “select </em> from emp limit $test,$pageSize”;<br>$res = $mysql-&gt;query($sql);</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><div class="line"></div><div class="line">#### 删除整个数据表内容</div></pre></td></tr></table></figure>
+<p>truncate table table_name; //效率高<br>delete * from table_name;  //需要写服务器log<br>```</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>一个项目,重构了好几次代码。 最主要的还是逻辑有些乱，直接上手代码，导致效率很低。<br>大概过程是 业务逻辑 -&gt;框架改进 -&gt; 代码重构 -&gt; 面向对象 -&gt; 安全性和拓展性考虑 -&gt; 优化算法 -&gt; 前端显示<br>使用M(Model)V(View)C(Controler)模式，把用户的输入，数据的处理，页面的显示分别处理,易于项目的维护和拓展。</p>
 ]]></content>
     
     <summary type="html">
     
-      预定义超全局数组
+      记录雇员管理系统(简易)项目开发的过程
     
     </summary>
     
     
       <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+      <category term="demo" scheme="http://draymonder.me/tags/demo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新的期待，新的向往</title>
+    <link href="http://draymonder.me/2018/02/24/the-diary-02-24/"/>
+    <id>http://draymonder.me/2018/02/24/the-diary-02-24/</id>
+    <published>2018-02-24T09:00:00.000Z</published>
+    <updated>2018-02-24T08:40:54.286Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  寒假就快过完了呢，给自己一个心情的整理，以及对未来的向往。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h3><h4 id="所做"><a href="#所做" class="headerlink" title="所做"></a>所做</h4><ol>
+<li>做完了PAT乙级真题30道。</li>
+<li>在学校吃了两星期的外卖!!! </li>
+<li>php, mysql的初步入门，并做了一个很 雇员管理系统 的项目，待优化。 </li>
+<li>看完了一本书《你就是想得太多》,一部视频老罗的《时间的朋友》。 </li>
+<li>认识了一些人，稍稍开放了自己，狼人杀基本会玩。 </li>
+<li>看了很多MV，喜欢一个人安安静静的。</li>
+<li>和初中同学聚会，一起放风筝。</li>
+<li>变得自信多了啊~(这是我这个假期收获最大的事情吧)</li>
+</ol>
+<h4 id="所思"><a href="#所思" class="headerlink" title="所思"></a>所思</h4><p>《你就是想的太多》 -小摘抄<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">  还有人，因为喜欢的人不理自己而不高兴。可是回头想，如果是你</div><div class="line">自己在忙的话，也会不怎么理别人。当然如果别人不喜欢你，不理你，</div><div class="line">那你就更没有必要不高兴了，因为你的喜欢本就是要让你能够有好的</div><div class="line">情绪的。</div><div class="line">  这看似有点儿无奈的边界，也的确是人生的一种境遇，人生的境遇</div><div class="line">本来就是常常发生变化，无论如何你都得保有乐观的心境。</div><div class="line">  有句“诸行无常”的佛语，其意思是说，时间的一切事物时刻都处于</div><div class="line">变化之中。</div><div class="line">  对于不喜欢你的人，要么你自己改变，变得让人家喜欢，要么你不</div><div class="line">如承认这是客观的存在，因为你也有不喜欢的人，何必太过勉强的去</div><div class="line">强人所难呢？“己所不欲勿施于人”这句流传几千年的话至今使用。</div><div class="line">  也就是说，对人生中所有的无常，变化，我们欣然接受就好了。</div><div class="line">即使是不利的，糟糕的，我们也应该避免让自己的情绪变坏。</div></pre></td></tr></table></figure></p>
+<p>感谢每一个给与我帮助的人 -小感悟<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">在<span class="number">2017</span> 年初定下的目标,完成了不少。其实毫无意义,因为</div><div class="line">错过了更重要的。</div><div class="line"></div><div class="line">其实本可以过一种更健康的方式,用更好的状态来过好每一天。</div><div class="line"></div><div class="line">我们谁也不知道自己能活多长时间，我也不知道，但是我感觉必须趁着</div><div class="line">自己年轻，多取得一些成就。</div></pre></td></tr></table></figure></p>
+<h3 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h3><h4 id="所想"><a href="#所想" class="headerlink" title="所想"></a>所想</h4><ol>
+<li>原谅我的人生格局太小，容不下那么多的人，那么多惊天动地的事。<br>我只想安安稳稳的过一辈子，有一个喜欢的女孩，买一套不大的房子，<br>过着普通但没有太大压力的生活。</li>
+<li>真希望我能快点儿遇到能让我心动的女孩啊，好看不好看无所谓的吧，<br>只要善良就够了。</li>
+</ol>
+<h4 id="期待"><a href="#期待" class="headerlink" title="期待"></a>期待</h4><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 语言再尝试一下Java, Python </div><div class="line">最后看爱好, 择一而用, 并且熟悉相应的框架</div><div class="line"><span class="number">2.</span> 数据库主选就mysql,然后稍稍看看 db, oracle 然后针对NoSQL了解一下</div><div class="line"><span class="number">3.</span> 操作系统选择Linux入门吧，搭建好Unbuntu了，入门了解一下指令以及操作。</div><div class="line"><span class="number">4.</span> 数据结构/编程方面还要深入。</div><div class="line"><span class="number">5.</span> 保养好身体，新的学期瘦个<span class="number">15</span>斤，对我来说So easy.</div><div class="line"><span class="number">6.</span> 今年想要看一场演唱会，体验那种feel</div><div class="line">待添加的了，说不定会有新的想法</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  珍惜时间，珍惜身边的人。<br>  一步步变得成熟，一步步靠近喜欢的人，一步步走向自己喜欢的样子，是多么幸福的一件事。<br>  END</p>
+]]></content>
+    
+    <summary type="html">
+    
+      一心向北，寻找自己的所属
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://draymonder.me/2018/02/21/the-global/"/>
+    <id>http://draymonder.me/2018/02/21/the-global/</id>
+    <published>2018-02-21T01:08:13.356Z</published>
+    <updated>2018-02-22T07:39:19.940Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: 预定义超全局数组<br>date: 2018-02-22 12:00:00<br>tags: [php] </p>
+<h2 id="description-预定义超全局数组"><a href="#description-预定义超全局数组" class="headerlink" title="description: 预定义超全局数组"></a>description: 预定义超全局数组</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PHP设计者提供超全局数组的目的是为了让PHP程序员可以更方便快捷的编写程序</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><pre><code>$GLOBALS 
+$_SERVER
+$_REQUEST
+$_POST
+$_GET
+$_ENV //获取环境变量，不要用
+$_FILES
+$_COOKIE
+$_SESSION
+</code></pre><h3 id="GET-奇数中文乱码"><a href="#GET-奇数中文乱码" class="headerlink" title="$_GET 奇数中文乱码"></a>$_GET 奇数中文乱码</h3><pre><code>1. 给奇数中文加一个全角空格，然后用trim()去除末尾的空格
+2. 使用urlencode函数
+
+实例
+//test.php
+&lt;meta content=&quot;text/html&quot; charset=&quot;utf-8&quot;&gt;
+&lt;?php 
+    $str = urlencode(&apos;中国好&apos;);
+    echo &quot;&lt;a href=&apos;a.php?city=$str&amp;name=draymonder&apos;&gt;传送数据&lt;/a&gt;&quot;;
+ ?&gt;
+
+//a.php
+&lt;meta content=&quot;text/html&quot; charset=&quot;utf-8&quot;&gt;
+&lt;?php 
+    var_dump($_GET);
+ ?&gt;
+</code></pre><h3 id="POST与GET提交的区别"><a href="#POST与GET提交的区别" class="headerlink" title="POST与GET提交的区别"></a>POST与GET提交的区别</h3><pre><code>安全性
+数据传输大小
+保存到收藏夹
+</code></pre><h3 id="确认GET-POST请求"><a href="#确认GET-POST请求" class="headerlink" title="确认GET/POST请求"></a>确认GET/POST请求</h3><pre><code>if($_SERVER[&apos;REQUEST_METHOD&apos;] == &quot;post&quot;) {
+    //post请求 
+}else if ($_SERVER[&apos;REQUEST_METHOD&apos;] == &quot;get&quot;) {
+    //get请求
+}
+</code></pre><h3 id="SERVER内容"><a href="#SERVER内容" class="headerlink" title="$_SERVER内容"></a>$_SERVER内容</h3><p><a href="https://www.cnblogs.com/rendd/p/6182918.html" target="_blank" rel="external">$_SERVER获取信息详解</a></p>
+<pre><code>1. 客户端浏览器信息
+2. 服务端信息
+
+$_SERVER[&quot;REMOTE_ADDR&quot;]  浏览网页的用户ip
+$_SERVER[&quot;SERVER_ADDR&quot;]  当前运行脚本的服务器的ip地址
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: 预定义超全局数组&lt;br&gt;date: 2018-02-22 12:00:00&lt;br&gt;tags: [php] &lt;/p&gt;
+&lt;h2 id=&quot;description-预定义超全局数组&quot;&gt;&lt;a href=&quot;#description-预定义超全局数组&quot; class
+    
+    </summary>
+    
     
   </entry>
   
@@ -313,30 +422,6 @@
   </entry>
   
   <entry>
-    <title>反转链表</title>
-    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
-    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
-    <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-05T07:36:53.952Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      一道不错的模拟题，学到了新的套路
-    
-    </summary>
-    
-    
-      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
-    
-  </entry>
-  
-  <entry>
     <title>完美数列</title>
     <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
     <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
@@ -352,6 +437,30 @@
     <summary type="html">
     
       一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
+    
+    </summary>
+    
+    
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反转链表</title>
+    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
+    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-02-05T07:36:53.952Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道不错的模拟题，学到了新的套路
     
     </summary>
     
@@ -484,62 +593,6 @@
     <summary type="html">
     
       JavaScript面向对象
-    
-    </summary>
-    
-    
-      <category term="Js" scheme="http://draymonder.me/tags/Js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript基础知识(2)</title>
-    <link href="http://draymonder.me/2018/02/02/the-use-of-js2/"/>
-    <id>http://draymonder.me/2018/02/02/the-use-of-js2/</id>
-    <published>2018-02-02T05:00:00.000Z</published>
-    <updated>2018-02-02T10:55:51.608Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  发现自己都只是浅显的了解html+css+js，不过以后会有用的吧，回家以后，自己写个项目，维护一下，就会很棒棒的吧。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一些常用的函数"><a href="#一些常用的函数" class="headerlink" title="一些常用的函数"></a>一些常用的函数</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">document.getElementById(<span class="string">"id"</span>)</div><div class="line">document.getElementsByTagName(<span class="string">"name"</span>)</div><div class="line">document.createElement(<span class="string">"name"</span>)</div><div class="line"><span class="keyword">Node</span>.<span class="title">appendChild</span>(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">Node</span>.insertBefore(<span class="keyword">node</span><span class="title">)</span></div><div class="line"><span class="title">element</span>.innerHTML</div><div class="line">element.innerText  //兼容性不好，推荐使用innerHTML</div><div class="line">element.style.*  //visibility用来设置是否显示</div><div class="line">element.setAttribute(<span class="string">"class"</span>,<span class="string">"com"</span>)</div><div class="line">element.getAttribute(<span class="string">"class"</span>)</div></pre></td></tr></table></figure>
-<h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><p><ul></ul></p>
-<p><li style="list-style:none;">当用户点击鼠标时 </li></p>
-<p><li style="list-style:none;">当网页已加载时 </li></p>
-<p><li style="list-style:none;">当图像已加载时 </li></p>
-<p><li style="list-style:none;">当鼠标移动到元素上时 </li></p>
-<p><li style="list-style:none;">当输入字段被改变时&lt; /li&gt;</li></p>
-<p><li style="list-style:none;">当提交 HTML 表单时 </li></p>
-<p><li style="list-style:none;">当用户触发按键时 </li><br><br><figure class="highlight hsp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">onclick</span> = <span class="string">"function(this)"</span> <span class="comment">//点击时</span></div><div class="line">onload      <span class="comment">//加载</span></div><div class="line">onunload    <span class="comment">//离开</span></div><div class="line">onchange    <span class="comment">//文字改变</span></div><div class="line">onmouseover <span class="comment">//鼠标在元素上</span></div><div class="line">onmouseout  <span class="comment">//鼠标离开元素</span></div><div class="line">onmousedown <span class="comment">//当点击鼠标按钮时</span></div><div class="line">onmouseup   <span class="comment">//当释放鼠标按钮时</span></div></pre></td></tr></table></figure></p>
-<h3 id="addEventListener-事件句柄"><a href="#addEventListener-事件句柄" class="headerlink" title="addEventListener 事件句柄"></a>addEventListener 事件句柄</h3><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">element.addEventListener(event, <span class="function"><span class="keyword">function</span>, <span class="title">useCapture</span>);  //添加事件句柄</span></div><div class="line">/*</div><div class="line">第一个参数是事件的类型 (如 <span class="string">"click"</span> 或 <span class="string">"mousedown"</span>).</div><div class="line">第二个参数是事件触发后调用的函数。</div><div class="line">第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。</div><div class="line"> */</div><div class="line"></div><div class="line">在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素</div><div class="line">即： <span class="symbol">&lt;p&gt;</span> 元素的点击事件先触发，然后会触发 <span class="symbol">&lt;div&gt;</span> 元素的点击事件。</div><div class="line"></div><div class="line">在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件</div><div class="line">即： <span class="symbol">&lt;div&gt;</span> 元素的点击事件先触发 ，然后再触发 <span class="symbol">&lt;p&gt;</span> 元素的点击事件。</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      DOM（Document Object Model）文档对象模型
-    
-    </summary>
-    
-    
-      <category term="Js" scheme="http://draymonder.me/tags/Js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript基础知识(1)</title>
-    <link href="http://draymonder.me/2018/02/01/the-use-of-js1/"/>
-    <id>http://draymonder.me/2018/02/01/the-use-of-js1/</id>
-    <published>2018-02-01T14:00:00.000Z</published>
-    <updated>2018-02-01T13:54:19.855Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么学习-Js"><a href="#为什么学习-Js" class="headerlink" title="为什么学习 Js"></a>为什么学习 Js</h3><p>HTML 定义了网页的内容<br>CSS 描述了网页的布局<br>JavaScript 网页的行为</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.max</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.min</span>()</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.ceil</span>() 向上舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.floor</span>() 向下舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.round</span>() 标准舍入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.random</span>()  返回0和1之间的随机数，不包括0，1</div></pre></td></tr></table></figure>
-<h3 id="js闭包-未理解"><a href="#js闭包-未理解" class="headerlink" title="js闭包(未理解)"></a>js闭包(未理解)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*发现python,php,js都有闭包耶，连c++，java都有了</span></div><div class="line"><span class="comment">  这种东西真的恶心耶，先留着，以后解决*/</span></div><div class="line"><span class="comment">/*在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量</span></div><div class="line"><span class="comment">  利用闭包可以突破作用链域  */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        b++;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> t = a(); </div><div class="line">t(); <span class="comment">//2</span></div><div class="line">t(); <span class="comment">//3</span></div></pre></td></tr></table></figure>
-<h3 id="网页里面的一些小操作"><a href="#网页里面的一些小操作" class="headerlink" title="网页里面的一些小操作"></a>网页里面的一些小操作</h3><figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line">shift+enter  用来实现<span class="built_in">console</span>换行</div><div class="line">ctrl+l       用来对<span class="built_in">console</span>清空</div><div class="line">ctrl+滚轮    <span class="built_in">console</span>放大与缩小</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;哇，一个闭包倒腾了两个半小时，只了解了一丢丢。明天再看看吧</p>
-]]></content>
-    
-    <summary type="html">
-    
-      JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。
     
     </summary>
     
