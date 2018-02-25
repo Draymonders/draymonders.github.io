@@ -4,13 +4,15 @@
 
     
   <url>
-    <loc>http://draymonder.me/2018/02/21/the-global/</loc>
-    <lastmod>2018-02-25T13:52:39.681Z</lastmod>
+    <loc>http://draymonder.me/2018/02/22/the-globalArray/</loc>
+    <lastmod>2018-02-25T14:49:23.409Z</lastmod>
     <data>
         <display>
-        <title></title>
-        <pubTime>2018-02-21T01:08:13.356Z</pubTime>
+        <title>预定义超全局数组</title>
+        <pubTime>2018-02-22T04:00:00.000Z</pubTime>
         
+        <tag>php</tag>
+         
          
            
         </display>
