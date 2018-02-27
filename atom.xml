@@ -386,30 +386,6 @@
   </entry>
   
   <entry>
-    <title>完美数列</title>
-    <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
-    <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
-    <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-05T07:36:29.849Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
-    
-    </summary>
-    
-    
-      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
-    
-  </entry>
-  
-  <entry>
     <title>反转链表</title>
     <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
     <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
@@ -425,6 +401,30 @@
     <summary type="html">
     
       一道不错的模拟题，学到了新的套路
+    
+    </summary>
+    
+    
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完美数列</title>
+    <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
+    <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-02-05T07:36:29.849Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
     
     </summary>
     
