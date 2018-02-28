@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-27T04:32:35.621Z</updated>
+  <updated>2018-02-28T05:43:45.544Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php 文件操作</title>
+    <link href="http://draymonder.me/2018/02/27/the-io/"/>
+    <id>http://draymonder.me/2018/02/27/the-io/</id>
+    <published>2018-02-27T10:00:00.000Z</published>
+    <updated>2018-02-28T05:43:45.544Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文件，保存数据（二进制数据，文本数据）<br>  文件在程序中是以流的形式来操作的</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">"PRC"</span>); </div><div class="line"><span class="variable">$path</span> = <span class="string">"test.txt"</span>;</div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$path</span>,<span class="string">"r"</span>); <span class="regexp">//</span>打开文件</div><div class="line"><span class="variable">$file_info</span> = fstat(<span class="variable">$fp</span>); <span class="regexp">//</span>读取资源信息</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;pre&gt;"</span>;</div><div class="line"><span class="regexp">//</span> var_dump(<span class="variable">$file_info</span>);</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">echo <span class="string">"&lt;br&gt;上次修改时间"</span>.date(<span class="string">"Y-m-d H:i:s"</span>,<span class="variable">$file_info</span>[<span class="string">'atime'</span>]);</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line"></div><div class="line">[atime] 文件上一次被访问的时间</div><div class="line">[mtime] 文件上一次内容被修改的时间</div><div class="line">[ctime] 文件上一次 文件所有者<span class="regexp">/文件所在组 修改/</span>change</div><div class="line">单用户可以认为是创建时间</div></pre></td></tr></table></figure>
+<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="keyword">fread</span>($fp, filesize($path));</div><div class="line">    $con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">    echo <span class="string">"$con"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">第二种方法</div><div class="line">$con = file_get_contents($path);</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">echo $con;</div><div class="line"></div><div class="line">第三种方法</div><div class="line">$buffer = <span class="number">1024</span>;</div><div class="line">$str = <span class="string">""</span>;</div><div class="line"><span class="keyword">while</span> (!<span class="keyword">feof</span>($fp))&#123;</div><div class="line">    $str.= <span class="keyword">fread</span>($fp,$buffer);</div><div class="line">&#125;</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$str);</div><div class="line">echo $con;</div></pre></td></tr></table></figure>
+<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="string">"你好"</span>;</div><div class="line">    <span class="keyword">fwrite</span>($fp, $con);</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">a: append w: write</div><div class="line"></div><div class="line">第二种方法(直接添加字符串)</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line">$con = <span class="string">"北京你好\r\n"</span>;</div><div class="line">file_put_contents($path, $con,FILE_APPEND);</div></pre></td></tr></table></figure>
+<h3 id="拷贝图片"><a href="#拷贝图片" class="headerlink" title="拷贝图片"></a>拷贝图片</h3><figure class="highlight autoit"><table><tr><td class="code"><pre><div class="line">$path = <span class="string">"C:\\Users\\ixiao\\Pictures\\Kyire\\kyire.jpeg"</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span>(!copy($path,<span class="string">"d:\\1.jpeg"</span>))&#123;</div><div class="line">    echo <span class="string">"error"</span><span class="comment">;</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    echo <span class="string">"ok"</span><span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">如果有中文路径，那么用</div><div class="line"><span class="built_in">string</span> iconv ( <span class="built_in">string</span> $in_charset , <span class="built_in">string</span> $out_charset </div><div class="line">    , <span class="built_in">string</span> $str )</div><div class="line">将字符串 str 从 in_charset 转换编码到 out_charset。</div></pre></td></tr></table></figure>
+<h3 id="创建-删除文件夹"><a href="#创建-删除文件夹" class="headerlink" title="创建/删除文件夹"></a>创建/删除文件夹</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">madir</span><span class="params">(dirname)</span></span></div><div class="line"><span class="function"><span class="title">rmdir</span><span class="params">(dirname)</span></span></div></pre></td></tr></table></figure>
+<h3 id="创建-删除文件"><a href="#创建-删除文件" class="headerlink" title="创建/删除文件"></a>创建/删除文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">$fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line"><span class="keyword">fwrite</span>($fp,$string);</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(is_file($path))&#123;</div><div class="line">    unlink($path);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="用form上传文件"><a href="#用form上传文件" class="headerlink" title="用form上传文件"></a>用form上传文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&lt;form action=<span class="string">""</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> name=<span class="string">"myfile"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">用<span class="variable">$_FILES</span>来记录上传的文件</div><div class="line"><span class="keyword">if</span>(is_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>]))&#123;</div><div class="line">    <span class="variable">$uploaded_file</span> = <span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>];</div><div class="line">    <span class="variable">$move_to_file</span> = <span class="variable">$_SERVER</span>[<span class="string">'DOCUMENT_ROOT'</span>].<span class="string">"file/"</span>.</div><div class="line">    iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'name'</span>]);</div><div class="line">    move_uploaded_file(<span class="variable">$uploaded_file</span>, <span class="variable">$move_to_file</span>);</div><div class="line">&#125;</div><div class="line">控制用户上传的类型，大小</div><div class="line">防止重名文件的覆盖，以及按照用户ID来建立文件夹</div><div class="line"></div><div class="line">数据库存放 文件的path，user，introduction</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      php 中对文件操作
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Cookie 和 Session</title>
@@ -541,32 +568,6 @@
     
     
       <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>电影资源网站</title>
-    <link href="http://draymonder.me/2018/02/02/the-film-webs/"/>
-    <id>http://draymonder.me/2018/02/02/the-film-webs/</id>
-    <published>2018-02-02T11:45:00.000Z</published>
-    <updated>2018-02-18T14:04:44.162Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然其来，想看《无问西东》，找资源好浪费时间，平时也没有看电影的习惯，所以找了半天的资源，正好做个整理，说不定以后用得上。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="电影资源下载"><a href="#电影资源下载" class="headerlink" title="电影资源下载"></a>电影资源下载</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">80</span>s电影网：<span class="string">http:</span><span class="comment">//www.80s.tw</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dytt8.net/</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dy2018.com</span></div><div class="line"></div><div class="line">BT天堂：<span class="string">http:</span><span class="comment">//www.bttiantang.org</span></div><div class="line"></div><div class="line">飘花电影网：<span class="string">http:</span><span class="comment">//www.piaohua.tv</span></div><div class="line"></div><div class="line">高清mp4：<span class="string">http:</span><span class="comment">//www.mp4pa.com</span></div><div class="line"></div><div class="line">电影首发站：<span class="string">http:</span><span class="comment">//www.dysfz.cc/ </span></div><div class="line"></div><div class="line">音范丝：<span class="string">http:</span><span class="comment">//www.yinfans.com/</span></div><div class="line"></div><div class="line">胖鸟电影：<span class="string">http:</span><span class="comment">//www.pniao.com</span></div></pre></td></tr></table></figure>
-<h3 id="在线观看美剧"><a href="#在线观看美剧" class="headerlink" title="在线观看美剧"></a>在线观看美剧</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">91</span>美剧  <span class="string">http:</span><span class="comment">//91mjw.com  </span></div><div class="line"></div><div class="line">追美剧网  <span class="string">http:</span><span class="comment">//www.zhuimj.cn/</span></div><div class="line"></div><div class="line">人人影视  <span class="string">http:</span><span class="comment">//www.zimuzu.tv</span></div></pre></td></tr></table></figure>
-<h3 id="在线影视"><a href="#在线影视" class="headerlink" title="在线影视"></a>在线影视</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">94</span>神马电影网 <span class="string">http:</span><span class="comment">//www.9rsm.com/</span></div><div class="line"></div><div class="line">在线之家 <span class="string">http:</span><span class="comment">//www.1993s.top</span></div><div class="line"></div><div class="line">骑士电影 <span class="string">http:</span><span class="comment">//www.74xw.com/</span></div><div class="line"></div><div class="line">看看屋 <span class="string">http:</span><span class="comment">//www.kankanwu.com</span></div><div class="line"></div><div class="line">我找大猫 <span class="string">http:</span><span class="comment">//www.5zdm.com</span></div><div class="line"></div><div class="line">NO视频 <span class="string">http:</span><span class="comment">//www.novipnoad.com/</span></div><div class="line"></div><div class="line">五杀影院 <span class="string">http:</span><span class="comment">//www.lol5s.com</span></div></pre></td></tr></table></figure>
-<h3 id="网盘在线搜索"><a href="#网盘在线搜索" class="headerlink" title="网盘在线搜索"></a>网盘在线搜索</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">盘多多  <span class="string">http:</span><span class="comment">//www.panduoduo.net/</span></div><div class="line"></div><div class="line">胖次  <span class="string">http:</span><span class="comment">//www.panc.cc/</span></div><div class="line"></div><div class="line">西林街   <span class="string">http:</span><span class="comment">//www.xilinjie.com/</span></div><div class="line"></div><div class="line">BDY搜  <span class="string">http:</span><span class="comment">//www.bdysou.com</span></div><div class="line"></div><div class="line">Bdsola资源站  <span class="string">http:</span><span class="comment">//www.3134.cc/</span></div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>因为我平时真的很少看电影（大概一个月才看一部或者更少吧，所以以上资源网站不一定能访问，或者有问题的，只是做个列举，便于下次找资源时的检索。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      收集了一些常用的电影资源网站，用来缓解无聊吧。
-    
-    </summary>
-    
-    
-      <category term="Film" scheme="http://draymonder.me/tags/Film/"/>
     
   </entry>
   
