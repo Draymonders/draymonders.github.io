@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
 <meta property="og:description" content="php绘图的基本原理和步骤">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-01T08:52:36.358Z">
+<meta property="og:updated_time" content="2018-03-01T08:56:28.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP 绘图技术">
 <meta name="twitter:description" content="php绘图的基本原理和步骤">
@@ -333,7 +333,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  学习矢量图片(验证码)，报表的绘制，生成。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
 <h3 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">gif 图片压缩率高，</div><div class="line">但是只能显示<span class="number">256</span>色可能造成颜色丢失，但可以显示动画</div><div class="line"></div><div class="line">jpg/jpeg 图片的压缩率高，可以用较小的文件来显示</div><div class="line">网页上用的比较多</div><div class="line"></div><div class="line">png，高仿真</div><div class="line">综合了gif和jpg的优势，但是不能显示动画</div></pre></td></tr></table></figure>
 <h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line"><span class="meta">$</span><span class="bash">img = imagecreatetruecolor(100,100);</span></div><div class="line"></div><div class="line">取色</div><div class="line"><span class="meta">$</span><span class="bash">red = imagecolorallocate(<span class="variable">$img</span>, 255, 0, 0);</span></div><div class="line"></div><div class="line">画图</div><div class="line">•imagefilledarc — 画一椭圆弧且填充</div><div class="line">•imagefilledellipse — 画一椭圆并填充</div><div class="line">•imagefilledpolygon — 画一多边形并填充</div><div class="line">•imagefilledrectangle — 画一矩形并填充</div><div class="line"></div><div class="line">输出到浏览器</div><div class="line">header("content-type: image/png");</div><div class="line"><span class="meta">imagepng($</span><span class="bash">img);</span></div><div class="line"></div><div class="line">销毁</div><div class="line"><span class="meta">imagedestroy($</span><span class="bash">img);</span></div></pre></td></tr></table></figure>
 <h3 id="图片到画布"><a href="#图片到画布" class="headerlink" title="图片到画布"></a>图片到画布</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span> = imagecreatefromgif(filename);</span></div><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span>_info = getimagesize(filename);</span></div><div class="line">imagecopy(dst_im, src_im, dst_x, dst_y, </div><div class="line">    src_x, src_y, src_w, src_h);</div><div class="line">具体参数含义 不懂看文档</div></pre></td></tr></table></figure>
