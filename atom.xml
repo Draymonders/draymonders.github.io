@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-02-28T05:43:45.544Z</updated>
+  <updated>2018-03-01T08:52:36.358Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP 绘图技术</title>
+    <link href="http://draymonder.me/2018/03/01/the-gd/"/>
+    <id>http://draymonder.me/2018/03/01/the-gd/</id>
+    <published>2018-03-01T08:00:00.000Z</published>
+    <updated>2018-03-01T08:52:36.358Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
+<h3 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">gif 图片压缩率高，</div><div class="line">但是只能显示<span class="number">256</span>色可能造成颜色丢失，但可以显示动画</div><div class="line"></div><div class="line">jpg/jpeg 图片的压缩率高，可以用较小的文件来显示</div><div class="line">网页上用的比较多</div><div class="line"></div><div class="line">png，高仿真</div><div class="line">综合了gif和jpg的优势，但是不能显示动画</div></pre></td></tr></table></figure>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line"><span class="meta">$</span><span class="bash">img = imagecreatetruecolor(100,100);</span></div><div class="line"></div><div class="line">取色</div><div class="line"><span class="meta">$</span><span class="bash">red = imagecolorallocate(<span class="variable">$img</span>, 255, 0, 0);</span></div><div class="line"></div><div class="line">画图</div><div class="line">•imagefilledarc — 画一椭圆弧且填充</div><div class="line">•imagefilledellipse — 画一椭圆并填充</div><div class="line">•imagefilledpolygon — 画一多边形并填充</div><div class="line">•imagefilledrectangle — 画一矩形并填充</div><div class="line"></div><div class="line">输出到浏览器</div><div class="line">header("content-type: image/png");</div><div class="line"><span class="meta">imagepng($</span><span class="bash">img);</span></div><div class="line"></div><div class="line">销毁</div><div class="line"><span class="meta">imagedestroy($</span><span class="bash">img);</span></div></pre></td></tr></table></figure>
+<h3 id="图片到画布"><a href="#图片到画布" class="headerlink" title="图片到画布"></a>图片到画布</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span> = imagecreatefromgif(filename);</span></div><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span>_info = getimagesize(filename);</span></div><div class="line">imagecopy(dst_im, src_im, dst_x, dst_y, </div><div class="line">    src_x, src_y, src_w, src_h);</div><div class="line">具体参数含义 不懂看文档</div></pre></td></tr></table></figure>
+<h3 id="写字"><a href="#写字" class="headerlink" title="写字"></a>写字</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">imagettftext(<span class="keyword">image</span>, <span class="keyword">size</span>, <span class="keyword">angle</span>, x, y, </div><div class="line">    <span class="keyword">color</span>, fontfile, <span class="keyword">text</span>)</div></pre></td></tr></table></figure>
+<h3 id="生成验证码"><a href="#生成验证码" class="headerlink" title="生成验证码"></a>生成验证码</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * Created by PhpStorm.</span></div><div class="line"><span class="comment">    * User: draymonder</span></div><div class="line"><span class="comment">    * Date: 2018/3/1</span></div><div class="line"><span class="comment">    * Time: 15:15</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    $checkcode =<span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">4</span>;$i++)&#123;</div><div class="line">        $checkcode.= dechex(<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">15</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $img = imagecreatetruecolor(<span class="number">200</span>,<span class="number">30</span>);</div><div class="line"></div><div class="line">    <span class="comment">//背景颜色</span></div><div class="line">    $bgcolor = imagecolorallocate($img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    imagefill($img,<span class="number">0</span>,<span class="number">0</span>,$bgcolor);</div><div class="line"></div><div class="line">    <span class="comment">//添加干扰线</span></div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">10</span>;$i++)&#123;</div><div class="line">        $color = imagecolorallocate($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>));</div><div class="line">        imageline($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),$color);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//白色，字体颜色</span></div><div class="line">    $white = imagecolorallocate($img,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);</div><div class="line">    <span class="comment">//添加字符串</span></div><div class="line">    imagestring($img,<span class="keyword">rand</span>(<span class="number">4</span>,<span class="number">6</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">180</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">20</span>),$checkcode,$white);</div><div class="line">    header(<span class="string">"content-type: image/png"</span>);</div><div class="line">    imagepng($img);</div><div class="line">    imagedestroy($img);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  从现在开始，一切都还不晚！前半生与后半生的分界线是在哪里？<br>答：此时此刻。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      php绘图的基本原理和步骤
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>php 文件操作</title>
@@ -444,30 +471,6 @@
   </entry>
   
   <entry>
-    <title>完美数列</title>
-    <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
-    <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
-    <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-05T07:36:29.849Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
-    
-    </summary>
-    
-    
-      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
-    
-  </entry>
-  
-  <entry>
     <title>反转链表</title>
     <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
     <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
@@ -483,6 +486,30 @@
     <summary type="html">
     
       一道不错的模拟题，学到了新的套路
+    
+    </summary>
+    
+    
+      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完美数列</title>
+    <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
+    <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-02-05T07:36:29.849Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight fix"><table><tr><td class="code"><pre><div class="line"><span class="attr">给定一个正整数数列，和正整数p，设这个数列中的最大值是M，最小值是m</span></div><div class="line"><span class="attr">如果M &lt;</span>=<span class="string"> m * p，则称这个数列是完美数列。</span></div><div class="line"><span class="string">现在给定参数p和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</span></div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">输入第一行给出两个正整数<span class="built_in">N</span>和p，其中<span class="built_in">N</span>（&lt;= <span class="number">1</span>e5）是输入的正整数的个数</div><div class="line">p（&lt;= <span class="number">1</span>e9）是给定的参数。</div><div class="line">第二行给出<span class="built_in">N</span>个正整数，每个数不超过<span class="number">1</span>e9。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//排序，然后枚举每个m ，利用m*p&lt;=M 找到不大于M的位置</span></div><div class="line"><span class="comment">//然后更新 mx = max(mx, Location(M)-Location(m)+1)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">100</span>;</div><div class="line">ll s[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n,p;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;p);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;s[i]);</div><div class="line">    sort(s,s+n);</div><div class="line">    s[n] = <span class="number">1e18</span>;</div><div class="line">    <span class="keyword">int</span> mx = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll m = s[i];</div><div class="line">        ll M = s[i]*p;</div><div class="line">        ll *t =lower_bound(s,s+n+<span class="number">1</span>,M);</div><div class="line">        <span class="keyword">if</span>(*t &gt; M)</div><div class="line">            t--;</div><div class="line">        <span class="keyword">int</span> ans = t - (s+i) +<span class="number">1</span>;</div><div class="line">        mx = max(mx,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt; mx &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
     
     </summary>
     
@@ -537,37 +564,6 @@
     
     
       <category term="C++" scheme="http://draymonder.me/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>杂文一记</title>
-    <link href="http://draymonder.me/2018/02/02/the-diary-02-02/"/>
-    <id>http://draymonder.me/2018/02/02/the-diary-02-02/</id>
-    <published>2018-02-02T13:00:00.000Z</published>
-    <updated>2018-02-02T13:56:06.622Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  一个人，今天晚上歇会儿，明天继续训练。写写日记，不能一直写代码啊。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="琅琊榜-风起长林"><a href="#琅琊榜-风起长林" class="headerlink" title="琅琊榜:风起长林"></a>琅琊榜:风起长林</h3><p>我发现我好像就是一个肤浅的人耶，人家追剧追的是情节，我追的，貌似是女主耶。林奚给人的感觉是很单纯。<br>0.0，好了，我要正经一些，收集一些剧中我喜欢的文字吧。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你不要做自己将来会后悔的决定</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">我无论做什么，都必须先考虑家人的感受。</div><div class="line">身为家人，最大的安慰，就是能够彼此分担。</div></pre></td></tr></table></figure>
-<figure class="highlight clean"><table><tr><td class="code"><pre><div class="line">我理解你的立场和做法，也从未想过改变你的念头。</div><div class="line">但是平旌，我希望你能明白：</div><div class="line">我也没有办法为了你，彻底改变我自己</div><div class="line">如果有一天，京城是你的归处。</div><div class="line">那么你我之间...</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">平旌,我的心会永远等着你。</div><div class="line">可是我的脚步，不能因为等你而停留。</div><div class="line">平旌，不管你走到哪里。都会找到我的</div><div class="line">就算最终我们无法见面，答应我。</div><div class="line">好好照顾自己，平安就好。</div></pre></td></tr></table></figure>
-<h3 id="《无问西东》"><a href="#《无问西东》" class="headerlink" title="《无问西东》"></a>《无问西东》</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">这个世界从来不缺完美的人</div><div class="line">缺的是从自己心底里给出的</div><div class="line">真实 正义 无畏 同情</div></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">身死名灭者如牛毛</div><div class="line">角立杰出者如芝草</div><div class="line">故不得以有学之贫贱</div><div class="line">比于无学之富贵也</div><div class="line"><span class="comment">/*我们不要用功名利禄，来评判人生的价值。</span></div><div class="line"><span class="comment">不要因为追求人生的幻光，从而失去生命。*/</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">立德立言</div><div class="line">无问西东</div><div class="line">    《清华大学校歌》</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">因为最好的学生都读实科</div><div class="line">我只知道，不管我将来做什么</div><div class="line">在这个年纪，读书，学习都是对的</div><div class="line">我何用管我学什么？</div><div class="line">每天把自己交给书本，就有种踏实</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">人把自己置身于忙碌当中，有一种麻木的踏实 </div><div class="line">但丧失了真实，你的青春也不过只有这些日子 </div><div class="line">什么是真实？ </div><div class="line">你看到什么，听到什么，做什么，和谁在一起 </div><div class="line">有一种从心灵深处，满溢出来的不懊悔 也不羞耻的平和与喜悦</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你的负担将变成礼物 你受的苦将照亮你的路</div><div class="line">                            ——泰戈尔《渡》</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话
-    
-    </summary>
-    
-    
-      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
     
   </entry>
   
