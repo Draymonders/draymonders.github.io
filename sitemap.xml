@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://draymonder.me/2018/03/03/the-xml/</loc>
+    
+    <lastmod>2018-03-06T06:30:22.653Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-use-of-js2/</loc>
+    
+    <lastmod>2018-03-03T04:26:55.351Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://draymonder.me/2018/03/01/the-gd/</loc>
     
     <lastmod>2018-03-01T08:56:28.327Z</lastmod>
@@ -166,13 +180,6 @@
     <loc>http://draymonder.me/2018/02/02/the-use-of-js3/</loc>
     
     <lastmod>2018-02-02T13:54:58.408Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-use-of-js2/</loc>
-    
-    <lastmod>2018-02-02T10:55:51.608Z</lastmod>
     
   </url>
   

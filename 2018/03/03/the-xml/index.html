@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="php 中对文件操作">
+<meta name="description" content="php 中xml编程操作">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php 文件操作">
-<meta property="og:url" content="http://draymonder.me/2018/02/27/the-io/index.html">
+<meta property="og:title" content="php xml操作">
+<meta property="og:url" content="http://draymonder.me/2018/03/03/the-xml/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="php 中对文件操作">
+<meta property="og:description" content="php 中xml编程操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-28T05:43:45.544Z">
+<meta property="og:updated_time" content="2018-03-06T06:30:22.653Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php 文件操作">
-<meta name="twitter:description" content="php 中对文件操作">
+<meta name="twitter:title" content="php xml操作">
+<meta name="twitter:description" content="php 中xml编程操作">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/27/the-io/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/03/03/the-xml/"/>
 
 
 
 
 
-  <title>php 文件操作 | Draymonder's Blog</title>
+  <title>php xml操作 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/27/the-io/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/03/03/the-xml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">php 文件操作</h1>
+          <h1 class="post-title" itemprop="name headline">php xml操作</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T18:00:00+08:00">
-                2018-02-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T23:59:59+08:00">
+                2018-03-03
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  php 中对文件操作
+                  php 中xml编程操作
               </div>
           
 
@@ -333,14 +333,15 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文件，保存数据（二进制数据，文本数据）<br>  文件在程序中是以流的形式来操作的</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">"PRC"</span>); </div><div class="line"><span class="variable">$path</span> = <span class="string">"test.txt"</span>;</div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$path</span>,<span class="string">"r"</span>); <span class="regexp">//</span>打开文件</div><div class="line"><span class="variable">$file_info</span> = fstat(<span class="variable">$fp</span>); <span class="regexp">//</span>读取资源信息</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;pre&gt;"</span>;</div><div class="line"><span class="regexp">//</span> var_dump(<span class="variable">$file_info</span>);</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">echo <span class="string">"&lt;br&gt;上次修改时间"</span>.date(<span class="string">"Y-m-d H:i:s"</span>,<span class="variable">$file_info</span>[<span class="string">'atime'</span>]);</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line"></div><div class="line">[atime] 文件上一次被访问的时间</div><div class="line">[mtime] 文件上一次内容被修改的时间</div><div class="line">[ctime] 文件上一次 文件所有者<span class="regexp">/文件所在组 修改/</span>change</div><div class="line">单用户可以认为是创建时间</div></pre></td></tr></table></figure>
-<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="keyword">fread</span>($fp, filesize($path));</div><div class="line">    $con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">    echo <span class="string">"$con"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">第二种方法</div><div class="line">$con = file_get_contents($path);</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">echo $con;</div><div class="line"></div><div class="line">第三种方法</div><div class="line">$buffer = <span class="number">1024</span>;</div><div class="line">$str = <span class="string">""</span>;</div><div class="line"><span class="keyword">while</span> (!<span class="keyword">feof</span>($fp))&#123;</div><div class="line">    $str.= <span class="keyword">fread</span>($fp,$buffer);</div><div class="line">&#125;</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$str);</div><div class="line">echo $con;</div></pre></td></tr></table></figure>
-<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="string">"你好"</span>;</div><div class="line">    <span class="keyword">fwrite</span>($fp, $con);</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">a: append w: write</div><div class="line"></div><div class="line">第二种方法(直接添加字符串)</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line">$con = <span class="string">"北京你好\r\n"</span>;</div><div class="line">file_put_contents($path, $con,FILE_APPEND);</div></pre></td></tr></table></figure>
-<h3 id="拷贝图片"><a href="#拷贝图片" class="headerlink" title="拷贝图片"></a>拷贝图片</h3><figure class="highlight autoit"><table><tr><td class="code"><pre><div class="line">$path = <span class="string">"C:\\Users\\ixiao\\Pictures\\Kyire\\kyire.jpeg"</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span>(!copy($path,<span class="string">"d:\\1.jpeg"</span>))&#123;</div><div class="line">    echo <span class="string">"error"</span><span class="comment">;</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    echo <span class="string">"ok"</span><span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">如果有中文路径，那么用</div><div class="line"><span class="built_in">string</span> iconv ( <span class="built_in">string</span> $in_charset , <span class="built_in">string</span> $out_charset </div><div class="line">    , <span class="built_in">string</span> $str )</div><div class="line">将字符串 str 从 in_charset 转换编码到 out_charset。</div></pre></td></tr></table></figure>
-<h3 id="创建-删除文件夹"><a href="#创建-删除文件夹" class="headerlink" title="创建/删除文件夹"></a>创建/删除文件夹</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">madir</span><span class="params">(dirname)</span></span></div><div class="line"><span class="function"><span class="title">rmdir</span><span class="params">(dirname)</span></span></div></pre></td></tr></table></figure>
-<h3 id="创建-删除文件"><a href="#创建-删除文件" class="headerlink" title="创建/删除文件"></a>创建/删除文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">$fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line"><span class="keyword">fwrite</span>($fp,$string);</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(is_file($path))&#123;</div><div class="line">    unlink($path);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="用form上传文件"><a href="#用form上传文件" class="headerlink" title="用form上传文件"></a>用form上传文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&lt;form action=<span class="string">""</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> name=<span class="string">"myfile"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">用<span class="variable">$_FILES</span>来记录上传的文件</div><div class="line"><span class="keyword">if</span>(is_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>]))&#123;</div><div class="line">    <span class="variable">$uploaded_file</span> = <span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>];</div><div class="line">    <span class="variable">$move_to_file</span> = <span class="variable">$_SERVER</span>[<span class="string">'DOCUMENT_ROOT'</span>].<span class="string">"file/"</span>.</div><div class="line">    iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'name'</span>]);</div><div class="line">    move_uploaded_file(<span class="variable">$uploaded_file</span>, <span class="variable">$move_to_file</span>);</div><div class="line">&#125;</div><div class="line">控制用户上传的类型，大小</div><div class="line">防止重名文件的覆盖，以及按照用户ID来建立文件夹</div><div class="line"></div><div class="line">数据库存放 文件的path，user，introduction</div></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">imgs</span>&gt;</span>&lt;![CDATA[$&lt;$$#@&gt;]]&gt;<span class="tag">&lt;/<span class="name">imgs</span>&gt;</span></div><div class="line"></div><div class="line">CDATA的基本语法</div><div class="line">&lt;![CDATA[内容]]&gt;</div><div class="line"></div><div class="line">面试题: 如何使用xml文件来传递，保存一个图片</div><div class="line">答: 使用程序先读入到内存</div><div class="line">然后保存到xml的&lt;![CDATA[文件内容]]&gt;中</div></pre></td></tr></table></figure>
+<h3 id="xml的PI处理指令"><a href="#xml的PI处理指令" class="headerlink" title="xml的PI处理指令"></a>xml的PI处理指令</h3><figure class="highlight processing"><table><tr><td class="code"><pre><div class="line">通过<span class="literal">PI</span>指令来引入CSS样式文件：</div><div class="line"></div><div class="line"><span class="literal">PI</span>指令的弊端：</div><div class="line">    只对英文的标签起作用，对中文的标签不起作用。 </div><div class="line"></div><div class="line"><span class="comment">//和html引用css大同小异</span></div><div class="line">&lt;?xml-stylesheet  type=<span class="string">"text/css"</span> href=<span class="string">"txt.css"</span>?&gt;  </div><div class="line"></div><div class="line"><span class="comment">//txt.css内容</span></div><div class="line">name&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">red</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">age&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">green</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="dtd-Document-Type-Definition"><a href="#dtd-Document-Type-Definition" class="headerlink" title="dtd (Document Type Definition"></a>dtd (Document Type Definition</h3><p>为了约束xml文件，使xml语义合法<br><a href="http://blog.csdn.net/gavin_john/article/details/51532756" target="_blank" rel="external">dtd详解</a><br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">基本语法</div><div class="line"><span class="params">&lt;!ELEMENT 元素名 类型&gt;</span> <span class="comment">//元素约束</span></div><div class="line"><span class="params">&lt;!ATTLIST 元素名&gt;</span> <span class="comment">//属性约束</span></div><div class="line"><span class="params">&lt;!ENTITY 元素名 "引用内容"&gt;</span> <span class="comment">//用元素名来表示引用的内容</span></div></pre></td></tr></table></figure></p>
+<h3 id="phpDom快速入门"><a href="#phpDom快速入门" class="headerlink" title="phpDom快速入门"></a>phpDom快速入门</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$xmldoc = <span class="keyword">new</span> DomDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line"><span class="comment">//读文件的时候用load方法</span></div><div class="line"><span class="comment">//读字符串的时候用 loadXML方法 </span></div><div class="line"><span class="comment">//eg: $xmldoc-&gt;loadXML('&lt;root&gt;&lt;node/&gt;&lt;/root&gt;');</span></div><div class="line"></div><div class="line"><span class="comment">//找到root节点</span></div><div class="line">$nodeLists=$xmldoc-&gt;getElementsByTagName(<span class="string">"stu"</span>); <span class="comment">//返回的是结果集合 </span></div><div class="line">$nodeList = $nodeLists-&gt;item(<span class="number">0</span>); </div><div class="line"><span class="comment">//上面直接就已经找到root节点了</span></div><div class="line"></div><div class="line"><span class="comment">//新增name节点</span></div><div class="line">$node_name = $xmldoc-&gt;createElement(<span class="string">"name"</span>);</div><div class="line">$node_name-&gt;nodeValue = <span class="string">"我喜欢你"</span>;</div><div class="line"></div><div class="line"><span class="comment">//新增age节点</span></div><div class="line">$node_age = $xmldoc-&gt;createElement(<span class="string">"age"</span>);</div><div class="line">$node_age-&gt;nodeValue = <span class="string">"20"</span>;</div><div class="line"></div><div class="line"><span class="comment">//root节点下挂载 name节点和age节点</span></div><div class="line">$root-&gt;appendChild($node_name); </div><div class="line">$root-&gt;appendChild($node_age);</div><div class="line"></div><div class="line"><span class="comment">//内存中修改完毕以后 还要保存文件内容</span></div><div class="line">$xmldoc-&gt;save(<span class="string">"test.xml"</span>);</div><div class="line"></div><div class="line"><span class="comment">//删除操作</span></div><div class="line">$test-&gt;parentNode-&gt;removeChild($test);</div><div class="line"></div><div class="line"><span class="comment">//更新操作</span></div><div class="line">找到那个需要修改的节点 直接改 nodeValue属性就可以</div><div class="line"></div><div class="line"><span class="comment">//设置属性</span></div><div class="line">setAttribute (string $name ,string $value) </div><div class="line">添加属性为$name 属性值$value的属性</div></pre></td></tr></table></figure>
+<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><p>php dom技术可以跨层取出，但是不能保持层次关系，使用xpath可以解决<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">这种技术相当于是知道节点所在的层级，然后通过层级关系来找相应的节点</div><div class="line">$xmldoc = <span class="keyword">new</span> DOMDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line">$xpath = <span class="keyword">new</span> DOMXPath($xmldoc);</div><div class="line">$node_list = $xpath-&gt;query(<span class="string">"/stu"</span>);</div><div class="line"><span class="keyword">echo</span> $node_list-&gt;length;</div></pre></td></tr></table></figure></p>
+<h3 id="SimpleXML"><a href="#SimpleXML" class="headerlink" title="SimpleXML"></a>SimpleXML</h3><p>以面向对象方式来操作xml文件<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//装载文件</span></div><div class="line">$stu = simplexml_load_file(<span class="string">"test.xml"</span>);</div><div class="line">$name  = $stu-&gt;name;</div><div class="line"></div><div class="line">var_dump($name);</div><div class="line"><span class="keyword">foreach</span> ($name <span class="keyword">as</span> $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$value &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//还有装载方式从DOM对象</span></div><div class="line">simplexml_import_dom</div><div class="line"></div><div class="line"><span class="comment">//装载字符串</span></div><div class="line">simplexml_load_string</div></pre></td></tr></table></figure></p>
+<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
       
     </div>
     
@@ -370,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/27/the-cookie-and-session/" rel="next" title="Cookie 和 Session">
-                <i class="fa fa-chevron-left"></i> Cookie 和 Session
+              <a href="/2018/03/01/the-gd/" rel="next" title="PHP 绘图技术">
+                <i class="fa fa-chevron-left"></i> PHP 绘图技术
               </a>
             
           </div>
@@ -379,10 +380,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/01/the-gd/" rel="prev" title="PHP 绘图技术">
-                PHP 绘图技术 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">2.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读文件"><span class="nav-number">2.2.</span> <span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写文件"><span class="nav-number">2.3.</span> <span class="nav-text">写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝图片"><span class="nav-number">2.4.</span> <span class="nav-text">拷贝图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-删除文件夹"><span class="nav-number">2.5.</span> <span class="nav-text">创建/删除文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-删除文件"><span class="nav-number">2.6.</span> <span class="nav-text">创建/删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用form上传文件"><span class="nav-number">2.7.</span> <span class="nav-text">用form上传文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#入门案例"><span class="nav-number">2.1.</span> <span class="nav-text">入门案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理特殊字符"><span class="nav-number">2.2.</span> <span class="nav-text">处理特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml的PI处理指令"><span class="nav-number">2.3.</span> <span class="nav-text">xml的PI处理指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dtd-Document-Type-Definition"><span class="nav-number">2.4.</span> <span class="nav-text">dtd (Document Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#phpDom快速入门"><span class="nav-number">2.5.</span> <span class="nav-text">phpDom快速入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xpath"><span class="nav-number">2.6.</span> <span class="nav-text">xpath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleXML"><span class="nav-number">2.7.</span> <span class="nav-text">SimpleXML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接统一打开问题"><span class="nav-number">2.8.</span> <span class="nav-text">超链接统一打开问题</span></a></li></ol></li></ol></div>
             
 
           </div>

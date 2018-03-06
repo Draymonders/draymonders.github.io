@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/03/03/the-xml/</loc>
+    <lastmod>2018-03-06T06:30:22.653Z</lastmod>
+    <data>
+        <display>
+        <title>php xml操作</title>
+        <pubTime>2018-03-03T15:59:59.000Z</pubTime>
+        
+        <tag>php</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-use-of-js2/</loc>
+    <lastmod>2018-03-03T04:26:55.351Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript基础知识(2)</title>
+        <pubTime>2018-02-02T08:00:00.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://draymonder.me/2018/03/01/the-gd/</loc>
     <lastmod>2018-03-01T08:56:28.327Z</lastmod>
     <data>
@@ -403,23 +437,6 @@
         <display>
         <title>JavaScript基础知识(3)</title>
         <pubTime>2018-02-02T11:00:00.000Z</pubTime>
-        
-        <tag>Js</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-use-of-js2/</loc>
-    <lastmod>2018-02-02T10:55:51.608Z</lastmod>
-    <data>
-        <display>
-        <title>JavaScript基础知识(2)</title>
-        <pubTime>2018-02-02T05:00:00.000Z</pubTime>
         
         <tag>Js</tag>
          
