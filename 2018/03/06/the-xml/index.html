@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="php," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Draymonder's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="php 中xml编程操作">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php xml操作">
+<meta property="og:url" content="http://draymonder.me/2018/03/06/the-xml/index.html">
+<meta property="og:site_name" content="Draymonder&#39;s Blog">
+<meta property="og:description" content="php 中xml编程操作">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-06T09:13:49.970Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php xml操作">
+<meta name="twitter:description" content="php 中xml编程操作">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://draymonder.me/2018/03/06/the-xml/"/>
+
+
+
+
+
+  <title>php xml操作 | Draymonder's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Draymonder's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">随遇而安</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/03/06/the-xml/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Draymonder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Draymonder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">php xml操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T15:20:20+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  php 中xml编程操作
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">imgs</span>&gt;</span>&lt;![CDATA[$&lt;$$#@&gt;]]&gt;<span class="tag">&lt;/<span class="name">imgs</span>&gt;</span></div><div class="line"></div><div class="line">CDATA的基本语法</div><div class="line">&lt;![CDATA[内容]]&gt;</div><div class="line"></div><div class="line">面试题: 如何使用xml文件来传递，保存一个图片</div><div class="line">答: 使用程序先读入到内存</div><div class="line">然后保存到xml的&lt;![CDATA[文件内容]]&gt;中</div></pre></td></tr></table></figure>
+<h3 id="xml的PI处理指令"><a href="#xml的PI处理指令" class="headerlink" title="xml的PI处理指令"></a>xml的PI处理指令</h3><figure class="highlight processing"><table><tr><td class="code"><pre><div class="line">通过<span class="literal">PI</span>指令来引入CSS样式文件：</div><div class="line"></div><div class="line"><span class="literal">PI</span>指令的弊端：</div><div class="line">    只对英文的标签起作用，对中文的标签不起作用。 </div><div class="line"></div><div class="line"><span class="comment">//和html引用css大同小异</span></div><div class="line">&lt;?xml-stylesheet  type=<span class="string">"text/css"</span> href=<span class="string">"txt.css"</span>?&gt;  </div><div class="line"></div><div class="line"><span class="comment">//txt.css内容</span></div><div class="line">name&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">red</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">age&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">green</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="dtd-Document-Type-Definition"><a href="#dtd-Document-Type-Definition" class="headerlink" title="dtd (Document Type Definition"></a>dtd (Document Type Definition</h3><p>为了约束xml文件，使xml语义合法<br><a href="http://blog.csdn.net/gavin_john/article/details/51532756" target="_blank" rel="external">dtd详解</a><br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">基本语法</div><div class="line"><span class="params">&lt;!ELEMENT 元素名 类型&gt;</span> <span class="comment">//元素约束</span></div><div class="line"><span class="params">&lt;!ATTLIST 元素名&gt;</span> <span class="comment">//属性约束</span></div><div class="line"><span class="params">&lt;!ENTITY 元素名 "引用内容"&gt;</span> <span class="comment">//用元素名来表示引用的内容</span></div></pre></td></tr></table></figure></p>
+<h3 id="phpDom快速入门"><a href="#phpDom快速入门" class="headerlink" title="phpDom快速入门"></a>phpDom快速入门</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$xmldoc = <span class="keyword">new</span> DomDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line"><span class="comment">//读文件的时候用load方法</span></div><div class="line"><span class="comment">//读字符串的时候用 loadXML方法 </span></div><div class="line"><span class="comment">//eg: $xmldoc-&gt;loadXML('&lt;root&gt;&lt;node/&gt;&lt;/root&gt;');</span></div><div class="line"></div><div class="line"><span class="comment">//找到root节点</span></div><div class="line">$nodeLists=$xmldoc-&gt;getElementsByTagName(<span class="string">"stu"</span>); <span class="comment">//返回的是结果集合 </span></div><div class="line">$nodeList = $nodeLists-&gt;item(<span class="number">0</span>); </div><div class="line"><span class="comment">//上面直接就已经找到root节点了</span></div><div class="line"></div><div class="line"><span class="comment">//新增name节点</span></div><div class="line">$node_name = $xmldoc-&gt;createElement(<span class="string">"name"</span>);</div><div class="line">$node_name-&gt;nodeValue = <span class="string">"我喜欢你"</span>;</div><div class="line"></div><div class="line"><span class="comment">//新增age节点</span></div><div class="line">$node_age = $xmldoc-&gt;createElement(<span class="string">"age"</span>);</div><div class="line">$node_age-&gt;nodeValue = <span class="string">"20"</span>;</div><div class="line"></div><div class="line"><span class="comment">//root节点下挂载 name节点和age节点</span></div><div class="line">$root-&gt;appendChild($node_name); </div><div class="line">$root-&gt;appendChild($node_age);</div><div class="line"></div><div class="line"><span class="comment">//内存中修改完毕以后 还要保存文件内容</span></div><div class="line">$xmldoc-&gt;save(<span class="string">"test.xml"</span>);</div><div class="line"></div><div class="line"><span class="comment">//删除操作</span></div><div class="line">$test-&gt;parentNode-&gt;removeChild($test);</div><div class="line"></div><div class="line"><span class="comment">//更新操作</span></div><div class="line">找到那个需要修改的节点 直接改 nodeValue属性就可以</div><div class="line"></div><div class="line"><span class="comment">//设置属性</span></div><div class="line">setAttribute (string $name ,string $value) </div><div class="line">添加属性为$name 属性值$value的属性</div></pre></td></tr></table></figure>
+<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><p>php dom技术可以跨层取出，但是不能保持层次关系，使用xpath可以解决<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">这种技术相当于是知道节点所在的层级，然后通过层级关系来找相应的节点</div><div class="line">$xmldoc = <span class="keyword">new</span> DOMDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line">$xpath = <span class="keyword">new</span> DOMXPath($xmldoc);</div><div class="line">$node_list = $xpath-&gt;query(<span class="string">"/stu"</span>);</div><div class="line"><span class="keyword">echo</span> $node_list-&gt;length;</div></pre></td></tr></table></figure></p>
+<h3 id="SimpleXML"><a href="#SimpleXML" class="headerlink" title="SimpleXML"></a>SimpleXML</h3><p>以面向对象方式来操作xml文件<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//装载文件</span></div><div class="line">$stu = simplexml_load_file(<span class="string">"test.xml"</span>);</div><div class="line">$name  = $stu-&gt;name;</div><div class="line"></div><div class="line">var_dump($name);</div><div class="line"><span class="keyword">foreach</span> ($name <span class="keyword">as</span> $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$value &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//还有装载方式从DOM对象</span></div><div class="line">simplexml_import_dom</div><div class="line"></div><div class="line"><span class="comment">//装载字符串</span></div><div class="line">simplexml_load_string</div></pre></td></tr></table></figure></p>
+<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>比预想的进度晚了好多，寒假也没有接触爬虫和Java,Linux也是空手而归..<br>新的学期还有好多好多的比赛，希望自己能坚持下去，Just do what you want to do.<br>没有那么多的约束，尽情去展现自己的水平吧。<br>To learn,to try.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/01/the-gd/" rel="next" title="PHP 绘图技术">
+                <i class="fa fa-chevron-left"></i> PHP 绘图技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Draymonder" />
+            
+              <p class="site-author-name" itemprop="name">Draymonder</p>
+              <p class="site-description motion-element" itemprop="description">不畏将来，不念过往</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Draymonders" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Draymonder/" target="_blank" title="cnblogs">
+                      
+                        <i class="fa fa-fw fa-globe"></i>cnblogs</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#入门案例"><span class="nav-number">2.1.</span> <span class="nav-text">入门案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理特殊字符"><span class="nav-number">2.2.</span> <span class="nav-text">处理特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml的PI处理指令"><span class="nav-number">2.3.</span> <span class="nav-text">xml的PI处理指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dtd-Document-Type-Definition"><span class="nav-number">2.4.</span> <span class="nav-text">dtd (Document Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#phpDom快速入门"><span class="nav-number">2.5.</span> <span class="nav-text">phpDom快速入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xpath"><span class="nav-number">2.6.</span> <span class="nav-text">xpath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleXML"><span class="nav-number">2.7.</span> <span class="nav-text">SimpleXML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接统一打开问题"><span class="nav-number">2.8.</span> <span class="nav-text">超链接统一打开问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Draymonder</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>

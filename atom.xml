@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-03-06T06:30:22.653Z</updated>
+  <updated>2018-03-06T09:13:49.970Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>php xml操作</title>
-    <link href="http://draymonder.me/2018/03/03/the-xml/"/>
-    <id>http://draymonder.me/2018/03/03/the-xml/</id>
-    <published>2018-03-03T15:59:59.000Z</published>
-    <updated>2018-03-06T06:30:22.653Z</updated>
+    <link href="http://draymonder.me/2018/03/06/the-xml/"/>
+    <id>http://draymonder.me/2018/03/06/the-xml/</id>
+    <published>2018-03-06T07:20:20.000Z</published>
+    <updated>2018-03-06T09:13:49.970Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -30,7 +30,9 @@
 <h3 id="phpDom快速入门"><a href="#phpDom快速入门" class="headerlink" title="phpDom快速入门"></a>phpDom快速入门</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$xmldoc = <span class="keyword">new</span> DomDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line"><span class="comment">//读文件的时候用load方法</span></div><div class="line"><span class="comment">//读字符串的时候用 loadXML方法 </span></div><div class="line"><span class="comment">//eg: $xmldoc-&gt;loadXML('&lt;root&gt;&lt;node/&gt;&lt;/root&gt;');</span></div><div class="line"></div><div class="line"><span class="comment">//找到root节点</span></div><div class="line">$nodeLists=$xmldoc-&gt;getElementsByTagName(<span class="string">"stu"</span>); <span class="comment">//返回的是结果集合 </span></div><div class="line">$nodeList = $nodeLists-&gt;item(<span class="number">0</span>); </div><div class="line"><span class="comment">//上面直接就已经找到root节点了</span></div><div class="line"></div><div class="line"><span class="comment">//新增name节点</span></div><div class="line">$node_name = $xmldoc-&gt;createElement(<span class="string">"name"</span>);</div><div class="line">$node_name-&gt;nodeValue = <span class="string">"我喜欢你"</span>;</div><div class="line"></div><div class="line"><span class="comment">//新增age节点</span></div><div class="line">$node_age = $xmldoc-&gt;createElement(<span class="string">"age"</span>);</div><div class="line">$node_age-&gt;nodeValue = <span class="string">"20"</span>;</div><div class="line"></div><div class="line"><span class="comment">//root节点下挂载 name节点和age节点</span></div><div class="line">$root-&gt;appendChild($node_name); </div><div class="line">$root-&gt;appendChild($node_age);</div><div class="line"></div><div class="line"><span class="comment">//内存中修改完毕以后 还要保存文件内容</span></div><div class="line">$xmldoc-&gt;save(<span class="string">"test.xml"</span>);</div><div class="line"></div><div class="line"><span class="comment">//删除操作</span></div><div class="line">$test-&gt;parentNode-&gt;removeChild($test);</div><div class="line"></div><div class="line"><span class="comment">//更新操作</span></div><div class="line">找到那个需要修改的节点 直接改 nodeValue属性就可以</div><div class="line"></div><div class="line"><span class="comment">//设置属性</span></div><div class="line">setAttribute (string $name ,string $value) </div><div class="line">添加属性为$name 属性值$value的属性</div></pre></td></tr></table></figure>
 <h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><p>php dom技术可以跨层取出，但是不能保持层次关系，使用xpath可以解决<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">这种技术相当于是知道节点所在的层级，然后通过层级关系来找相应的节点</div><div class="line">$xmldoc = <span class="keyword">new</span> DOMDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line">$xpath = <span class="keyword">new</span> DOMXPath($xmldoc);</div><div class="line">$node_list = $xpath-&gt;query(<span class="string">"/stu"</span>);</div><div class="line"><span class="keyword">echo</span> $node_list-&gt;length;</div></pre></td></tr></table></figure></p>
 <h3 id="SimpleXML"><a href="#SimpleXML" class="headerlink" title="SimpleXML"></a>SimpleXML</h3><p>以面向对象方式来操作xml文件<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//装载文件</span></div><div class="line">$stu = simplexml_load_file(<span class="string">"test.xml"</span>);</div><div class="line">$name  = $stu-&gt;name;</div><div class="line"></div><div class="line">var_dump($name);</div><div class="line"><span class="keyword">foreach</span> ($name <span class="keyword">as</span> $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$value &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//还有装载方式从DOM对象</span></div><div class="line">simplexml_import_dom</div><div class="line"></div><div class="line"><span class="comment">//装载字符串</span></div><div class="line">simplexml_load_string</div></pre></td></tr></table></figure></p>
-<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>]]></content>
+<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>比预想的进度晚了好多，寒假也没有接触爬虫和Java,Linux也是空手而归..<br>新的学期还有好多好多的比赛，希望自己能坚持下去，Just do what you want to do.<br>没有那么多的约束，尽情去展现自己的水平吧。<br>To learn,to try.</p>
+]]></content>
     
     <summary type="html">
     
@@ -48,7 +50,7 @@
     <link href="http://draymonder.me/2018/03/01/the-gd/"/>
     <id>http://draymonder.me/2018/03/01/the-gd/</id>
     <published>2018-03-01T08:00:00.000Z</published>
-    <updated>2018-03-01T08:56:28.327Z</updated>
+    <updated>2018-03-01T09:01:07.961Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  学习矢量图片(验证码)，报表的绘制，生成。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
