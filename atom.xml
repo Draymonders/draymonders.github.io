@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-03-06T09:13:49.970Z</updated>
+  <updated>2018-03-08T10:01:43.628Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java入门学习</title>
+    <link href="http://draymonder.me/2018/03/08/Java-learning/"/>
+    <id>http://draymonder.me/2018/03/08/Java-learning/</id>
+    <published>2018-03-08T15:59:59.000Z</published>
+    <updated>2018-03-08T10:01:43.628Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为想好自己以后的技术栈就是往Java方向学习了，所以try it.<br>不准备深入学习其他的语言了。深入一门就好了。</p>
+<h3 id="Eclipse配置"><a href="#Eclipse配置" class="headerlink" title="Eclipse配置"></a>Eclipse配置</h3><p><a href="http://blog.csdn.net/longshenlmj/article/details/52330106" target="_blank" rel="external">Eclipse配置</a></p>
+<h3 id="Scanner读入"><a href="#Scanner读入" class="headerlink" title="Scanner读入"></a>Scanner读入</h3><figure class="highlight d"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line">Scanner <span class="keyword">in</span> = <span class="keyword">new</span> Scanner(System.<span class="keyword">in</span>);</div><div class="line"><span class="keyword">int</span> a = <span class="keyword">in</span>.nextInt();</div><div class="line">System.<span class="keyword">out</span>.print(a);</div><div class="line"><span class="keyword">in</span>.close();</div></pre></td></tr></table></figure>
+<h3 id="foreach语句"><a href="#foreach语句" class="headerlink" title="foreach语句"></a>foreach语句</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="keyword">String</span> []learn = &#123;<span class="string">"c++"</span>,<span class="string">"php"</span>,<span class="string">"python"</span>,<span class="string">"java"</span>&#125;;</div><div class="line"><span class="built_in">for</span>(<span class="keyword">String</span> i:learn) &#123;</div><div class="line">    System.out.<span class="built_in">println</span>(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="String类方法"><a href="#String类方法" class="headerlink" title="String类方法"></a>String类方法</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="comment">//替换字符串内容</span></div><div class="line"><span class="function"><span class="title">replace</span><span class="params">(String oldChar,String new Char)</span></span></div><div class="line"><span class="comment">//参数是regex，即基于规则表达式的替换</span></div><div class="line"><span class="function"><span class="title">replaceFirst</span><span class="params">(String regex,String replacement)</span></span></div><div class="line"><span class="function"><span class="title">replaceAll</span><span class="params">(String regex,String replacement)</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="title">equals</span><span class="params">()</span></span>  <span class="comment">//判断是否相同</span></div><div class="line"><span class="function"><span class="title">equalsIgnoreCase</span><span class="params">()</span></span>  <span class="comment">//不区分大小写</span></div><div class="line"><span class="function"><span class="title">compareTo</span><span class="params">()</span></span>  </div><div class="line"><span class="comment">//按照字典序比较，str 位于 otherstr参数之前，会得到一个负整数</span></div><div class="line"><span class="comment">//str 位于 otherstr参数之后，会得到一个正整数 相等，结果为0</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">indexOf</span><span class="params">(value. int fromIndex)</span></span></div><div class="line"><span class="comment">//fromIndex 表示查找时的起始索引</span></div><div class="line"><span class="function"><span class="title">lastIndexOf</span><span class="params">(value. int fromIndex)</span></span></div><div class="line"><span class="comment">//从右往左查找</span></div></pre></td></tr></table></figure>
+<h3 id="字符串加密和解密"><a href="#字符串加密和解密" class="headerlink" title="字符串加密和解密"></a>字符串加密和解密</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> encrypAndDencrypt(<span class="keyword">String</span> value,<span class="keyword">char</span> secret) &#123;</div><div class="line">    <span class="keyword">byte</span>[] bt = value.getBytes();</div><div class="line">    <span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bt.length;i++) &#123;</div><div class="line">        bt[i] = (<span class="keyword">byte</span>)(bt[i] ^ (<span class="keyword">int</span>)secret);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">String</span> newResult = <span class="keyword">new</span> <span class="keyword">String</span> (bt,<span class="number">0</span>,bt.length);</div><div class="line">    <span class="built_in">return</span> newResult;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      Java入门学习,一些记录
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://draymonder.me/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>php xml操作</title>
@@ -541,31 +566,6 @@
     <summary type="html">
     
       一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
-    
-    </summary>
-    
-    
-      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>归并排序</title>
-    <link href="http://draymonder.me/2018/02/04/mergesort/"/>
-    <id>http://draymonder.me/2018/02/04/mergesort/</id>
-    <published>2018-02-04T03:00:00.000Z</published>
-    <updated>2018-02-05T07:36:59.719Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>遇到的一个迭代的归并，和递归的没什么两样吧。<br>归并排序进行如下迭代操作：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>题目链接:<a href="https://www.nowcoder.net/pat/6/problem/4061" target="_blank" rel="external">插入与归并</a></p>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">bool Merge()//递归，分治</div><div class="line">&#123;</div><div class="line">    //s[i]为待排序的数组</div><div class="line">    bool f = <span class="number">0</span>;</div><div class="line">    <span class="built_in">int</span> <span class="built_in">t</span>[<span class="number">110</span>];</div><div class="line">    for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)&#123;</div><div class="line">        <span class="built_in">t</span>[i] = s[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">int</span> i=<span class="number">2</span>;</div><div class="line">    while (i &lt;= <span class="built_in">n</span>)&#123;</div><div class="line">        //每次排相邻的i个元素</div><div class="line">        <span class="built_in">int</span> k[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</div><div class="line">        for(<span class="built_in">int</span> j=<span class="number">1</span>; j&lt;=<span class="built_in">n</span> ; j+=i) &#123;</div><div class="line">            //l到r之间的数排序</div><div class="line">            <span class="built_in">int</span> l =j , r =<span class="built_in">min</span>(j+i-<span class="number">1</span>,<span class="built_in">n</span>);</div><div class="line">            <span class="built_in">int</span> <span class="built_in">mid</span> = (l+r)/<span class="number">2</span>+<span class="number">1</span>;</div><div class="line">            <span class="built_in">int</span> pre=l,<span class="built_in">now</span>=<span class="built_in">mid</span>;</div><div class="line">            <span class="built_in">int</span> cnt = l;</div><div class="line">            while (pre &lt;= <span class="built_in">mid</span>-<span class="number">1</span> &amp;&amp; <span class="built_in">now</span> &lt;= r) &#123;</div><div class="line">                <span class="built_in">if</span>(<span class="built_in">t</span>[<span class="built_in">now</span>] &gt; <span class="built_in">t</span>[pre]) &#123;</div><div class="line">                    k[cnt++] = <span class="built_in">t</span>[pre];</div><div class="line">                    pre++;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    k[cnt++] = <span class="built_in">t</span>[<span class="built_in">now</span>];</div><div class="line">                    <span class="built_in">now</span>++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            //上面的可能有剩余</div><div class="line">            while(pre &lt; <span class="built_in">mid</span>)</div><div class="line">                k[cnt++] = <span class="built_in">t</span>[pre++];</div><div class="line">            <span class="built_in">if</span>(<span class="built_in">now</span> &lt;= r)</div><div class="line">                k[cnt++] = <span class="built_in">t</span>[<span class="built_in">now</span>++];</div><div class="line">        &#125;</div><div class="line">        //每次拍完序 再重新赋给k</div><div class="line">        for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)&#123;</div><div class="line">                <span class="built_in">t</span>[i] = k[i];</div><div class="line">        &#125;</div><div class="line">        /* 测试每次排序的结果</div><div class="line">        printf(<span class="string">"第%d次排序\n"</span>,++tt);</div><div class="line">        for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">n</span>;i++)</div><div class="line">            printf(<span class="string">"%d "</span>,<span class="built_in">t</span>[i]);</div><div class="line">        cout&lt;&lt;endl;</div><div class="line">        */</div><div class="line">    &#125;</div><div class="line">    return <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight aspectj"><table><tr><td class="code"><pre><div class="line"><span class="keyword">void</span> _merge(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(l == r)</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</div><div class="line">    _merge(l,mid);</div><div class="line">    _merge(mid+<span class="number">1</span>,r);</div><div class="line">    <span class="comment">//fuzhi</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=mid-l+<span class="number">1</span>;i++) L[i]=arr[l<span class="number">-1</span>+i];<span class="comment">//[l,mid]</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=r-mid;i++) R[i]=arr[mid+i];  <span class="comment">//[mid+1,r]</span></div><div class="line">    L[mid-l+<span class="number">2</span>] = R[r-mid+<span class="number">1</span>] = INF;</div><div class="line">    <span class="keyword">int</span> le=<span class="number">1</span>,ri=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(L[le] &gt; R[ri])</div><div class="line">            arr[i] = R[ri++];</div><div class="line">        <span class="keyword">else</span></div><div class="line">            arr[i] = L[le++];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>好像 时间复杂度和空间复杂度都是nlog(n)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      归并排序的两种写法
     
     </summary>
     
