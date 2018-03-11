@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="php," />
+  <meta name="keywords" content="Vps," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="抽象类,接口,final,const关键字">
-<meta name="keywords" content="php">
+<meta name="description" content="Digital Ocean 购买VPS搭建SS梯子">
+<meta name="keywords" content="Vps">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP 面向对象(4)">
-<meta property="og:url" content="http://draymonder.me/2018/02/09/object-oriented-of-php4/index.html">
+<meta property="og:title" content="Digital Ocean 购买VPS搭建SS">
+<meta property="og:url" content="http://draymonder.me/2018/03/11/Do-ss/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="抽象类,接口,final,const关键字">
+<meta property="og:description" content="Digital Ocean 购买VPS搭建SS梯子">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-09T10:17:38.162Z">
+<meta property="og:updated_time" content="2018-03-11T06:00:50.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 面向对象(4)">
-<meta name="twitter:description" content="抽象类,接口,final,const关键字">
+<meta name="twitter:title" content="Digital Ocean 购买VPS搭建SS">
+<meta name="twitter:description" content="Digital Ocean 购买VPS搭建SS梯子">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/09/object-oriented-of-php4/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/03/11/Do-ss/"/>
 
 
 
 
 
-  <title>PHP 面向对象(4) | Draymonder's Blog</title>
+  <title>Digital Ocean 购买VPS搭建SS | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/09/object-oriented-of-php4/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/03/11/Do-ss/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PHP 面向对象(4)</h1>
+          <h1 class="post-title" itemprop="name headline">Digital Ocean 购买VPS搭建SS</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T15:00:00+08:00">
-                2018-02-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T15:00:00+08:00">
+                2018-03-11
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  抽象类,接口,final,const关键字
+                  Digital Ocean 购买VPS搭建SS梯子
               </div>
           
 
@@ -333,12 +333,9 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继续补基础知识</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 用<span class="keyword">abstract</span> 修饰类，就是抽象类 </div><div class="line"></div><div class="line"><span class="number">2.</span> 如果一个方法用<span class="keyword">abstract</span>修饰，那么方法就不能实现</div><div class="line"></div><div class="line"><span class="number">3.</span> 抽象类不能被实例化, 可以没有抽象方法</div><div class="line"></div><div class="line"><span class="number">4.</span> 如果A类继承了抽象类B,则要求A实现B的所有的抽象方法</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    成员</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//软件工程中追求高内聚 低耦合</span></div><div class="line"></div><div class="line">类实现接口 类继承类</div><div class="line"></div><div class="line"><span class="number">1.</span> 接口不能被实例化</div><div class="line"></div><div class="line"><span class="number">2.</span> 接口中所有方法，都不能有主体,并且是<span class="keyword">public</span></div><div class="line"></div><div class="line"><span class="number">3.</span> 一个类可以实现多个接口</div><div class="line"></div><div class="line"><span class="number">4.</span> 接口可以有属性，必须是常量</div><div class="line"></div><div class="line"><span class="number">5.</span> 接口中属性可以使用 接口名::常量</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> 接口名</span>&#123;</div><div class="line">    <span class="keyword">const</span> 常量名;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法<span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> 接口名1, 接口名2</span>&#123;</div><div class="line">    对接口中的属性和方法的实现;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 使某些类，不被其他类所继承(出于安全性的考虑或者其他原因)</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    属性;</div><div class="line">    方法;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">2.</span> <span class="keyword">final</span> 修饰的方法是可以继承的，但是不可以被子类重写</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法名<span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h3><figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> 常量名 = 初值;</div><div class="line"><span class="keyword">const</span> 前不要加修饰符</div><div class="line">常量同样和+静态变量属于类本身，不属于对象本身</div><div class="line"></div><div class="line">使用: 类名::常量名  接口名::常量名</div><div class="line"><span class="comment">//尽量全部大写</span></div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>今天突然看到一些鸡汤，又想写写日记了呢，嘿嘿，我会好好记录的。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为要做项目，所以买了Vps<br>考虑到国内的备案问题，果断听从俺班妹子的意见买了Do的最便宜的VPS</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>首先要对机房测速，挨个测试<br>最后使用的旧金山的机房，Unbuntu的系统<br>接着按照 <a href="http://blog.csdn.net/Jayson_Leang/article/details/78243554?locationNum=6&fps=1" target="_blank" rel="external"> 搭建SS </a><br>顺利搭建了梯子，成功在YouTuBe上看起了1080p MV，美滋滋</p>
+<p>后续还会写php+mysql的环境配置</p>
 
       
     </div>
@@ -356,7 +353,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+            <a href="/tags/Vps/" rel="tag"><i class="fa fa-tag"></i> Vps</a>
           
         </div>
       
@@ -369,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/08/object-oriented-of-php3/" rel="next" title="PHP 面向对象(3)">
-                <i class="fa fa-chevron-left"></i> PHP 面向对象(3)
+              <a href="/2018/03/10/the-BinarySearch/" rel="next" title="校赛补题记录">
+                <i class="fa fa-chevron-left"></i> 校赛补题记录
               </a>
             
           </div>
@@ -378,10 +375,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/11/the-errors-in-php/" rel="prev" title="PHP错误和异常处理">
-                PHP错误和异常处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -531,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类"><span class="nav-number">2.1.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">2.2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final-关键字"><span class="nav-number">2.3.</span> <span class="nav-text">final 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const-关键字"><span class="nav-number">2.4.</span> <span class="nav-text">const 关键字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
             
 
           </div>
