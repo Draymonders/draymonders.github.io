@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content=",," />
+  <meta name="keywords" content="Draymonder" />
 
 
 
@@ -88,18 +88,16 @@
 
 
 
-<meta name="description" content="国庆没啥子事，刷刷题，动动脑子">
-<meta name="keywords" content="greedy,贪心">
+<meta name="description" content="不畏将来，不念过往">
 <meta property="og:type" content="website">
-<meta property="og:title" content="2017-10-02刷题记录">
-<meta property="og:url" content="http://draymonder.me/backup/2017-10-02刷题记录.html">
+<meta property="og:title" content="Draymonder&#39;s Blog">
+<meta property="og:url" content="http://draymonder.me/tags/Linux/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta property="og:description" content="不畏将来，不念过往">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-02T15:24:53.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017-10-02刷题记录">
-<meta name="twitter:description" content="国庆没啥子事，刷刷题，动动脑子">
+<meta name="twitter:title" content="Draymonder&#39;s Blog">
+<meta name="twitter:description" content="不畏将来，不念过往">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/backup/2017-10-02刷题记录.html"/>
+  <link rel="canonical" href="http://draymonder.me/tags/Linux/"/>
 
 
 
 
 
-  <title>2017-10-02刷题记录 | Draymonder's Blog</title>
+  <title>标签: Linux | Draymonder's Blog</title>
   
 
 
@@ -154,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,70 +246,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  
+  
+  
+  <div class="post-block tag">
 
-	<h1 class="post-title" itemprop="name headline">2017-10-02刷题记录</h1>
-
-
-	<div class="post-meta">
-		<div class="post-description">国庆没啥子事，刷刷题，动动脑子</div>
-	</div>
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <h3 id="每日感想"><a href="#每日感想" class="headerlink" title="每日感想"></a>每日感想</h3> <p style="color:red">&nbsp; &nbsp;  从我遇见你的那一天起 我就在心里恳求你 <br>&nbsp; &nbsp;&nbsp;如果生活是一条单行道 就请你从此走在我的前面 让我时时可以看见你<br> &nbsp;&nbsp; &nbsp;如果生活是一条双行道 就请你让我牵着你的手 穿行在人海茫茫里，永远不会丢<br></p>
-
-<h3 id="轻松Case"><a href="#轻松Case" class="headerlink" title="轻松Case"></a>轻松Case</h3><h4 id="51nod-1091-线段的重叠"><a href="#51nod-1091-线段的重叠" class="headerlink" title="51nod 1091 线段的重叠"></a>51nod 1091 线段的重叠</h4><pre><code>按照起点升序  终点降序 动态维护最后的终点
-</code></pre><h4 id="51nod-1133-不重叠的线段"><a href="#51nod-1133-不重叠的线段" class="headerlink" title="51nod 1133 不重叠的线段"></a>51nod 1133 不重叠的线段</h4><pre><code>终点升序 起点升序 先选终点靠前的 然后判断起点是否大于当前终点
-</code></pre><h4 id="51nod-1099-任务执行顺序"><a href="#51nod-1099-任务执行顺序" class="headerlink" title="51nod 1099 任务执行顺序"></a>51nod 1099 任务执行顺序</h4><pre><code>按照 占用空间-存储空间 降序 即每次剩余的空间最多
-然后模拟，分别记录 总空间 需要添加的空间 以及剩余的空间的情况  （最后别忘记了  还要总空间+需要添加的空间
-</code></pre><h4 id="51nod-1182-完美字符串"><a href="#51nod-1182-完美字符串" class="headerlink" title="51nod 1182 完美字符串"></a>51nod 1182 完美字符串</h4><pre><code>每个字母出现次数越多 付给的权值越高
-</code></pre><h4 id="51nod-1344-走格子"><a href="#51nod-1344-走格子" class="headerlink" title="51nod 1344 走格子"></a>51nod 1344 走格子</h4><pre><code>扫一遍 前缀和 然后找前缀和里面小于0 最小的  让他变成0 也就是-mn 就可以全部走过了
-</code></pre><h3 id="卡题"><a href="#卡题" class="headerlink" title="卡题"></a>卡题</h3><h4 id="51nod-1163-最高的奖励"><a href="#51nod-1163-最高的奖励" class="headerlink" title="51nod 1163 最高的奖励"></a>51nod 1163 最高的奖励</h4><pre><code>   被卡题了 三个小时  然后搜的网上的题解
-正解是建一个价值从小到大的堆 堆的大小就是所用的时间（因为每个活动只需要单位时间
-每次比较活动结束时间 是否大于 堆的大小 如果大于 直接压入
-否则 考虑当前活动的价值 是否大于堆顶的价值，如果大于 就替换
-</code></pre><h4 id="51nod-1428-活动安排问题"><a href="#51nod-1428-活动安排问题" class="headerlink" title="51nod 1428 活动安排问题"></a>51nod 1428 活动安排问题</h4><pre><code>做法一：按照起点升序 终点升序
-然后建立一个容器 装每个教室所占用的最末尾时间
-如果扫了容器一遍 没有能用的教室  就把当前活动放到一个新的教室里（这样好像是O（n2）的呢 不知道怎么就给过了
-做法二：按照起点升序 终点升序
-建立一个堆 维护结束时间最早的 然后当前活动的开始 是否比结束时间最早的结束时间要早 
-如果早 就添加一个教室  如果晚 把当前活动的结束时间压入堆中
-</code></pre><h4 id="51nod-1449-砝码称重"><a href="#51nod-1449-砝码称重" class="headerlink" title="51nod 1449 砝码称重"></a>51nod 1449 砝码称重</h4><pre><code>若没有天平，n这个数就是0 1组成的w进制的数
-若有天平，n这个数就是 两个 0 1 组成的数之差
-即只有下面四种情况：
-0-0=0   1-0=1    0-1=w-1（向高位借一后）  1-1=0
-分为三大类：
-第一大类：相应位数之差为0  1的就很明了
-第二大类：相应位数之差为w-1的，借位后的那一位在高位给加1   就好了（比如样例 3 7，7的三进制就是021，但是可以这样想  他可以变成 101 - 010 这样也符合题意..大概就是这样的意思
-第三大类：其余情况就是无解了
-</code></pre><h3 id="补题感想"><a href="#补题感想" class="headerlink" title="补题感想"></a>补题感想</h3><pre><code>队友都在尽心尽力的补题，我却反若一个坑壁，啥也不做，一心想着抱大腿，这样做是不是不太好。
-最主要的是 之前没机会的时候你不用心就算了 现在有机会了 你怎么还不珍惜呢。
-而且啊，大饼啊，别太看重结果，就过程就挺好的，有这样的两个队友，比你强，还比你努力，多好~
-最伟大的平凡才应该最珍惜    我的明天我依然会憧憬
-</code></pre>
-        
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Linux<small>标签</small>
+        </h1>
       </div>
+
       
-      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/03/25/linux/" itemprop="url">
+              
+                <span itemprop="name">Linux入门学习</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-03-25T23:59:59+08:00"
+              content="2018-03-25" >
+          03-25
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
       
     </div>
-    
-    
-    
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -319,10 +301,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -343,17 +321,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -431,22 +400,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#每日感想"><span class="nav-number">1.</span> <span class="nav-text">每日感想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轻松Case"><span class="nav-number">2.</span> <span class="nav-text">轻松Case</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1091-线段的重叠"><span class="nav-number">2.1.</span> <span class="nav-text">51nod 1091 线段的重叠</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1133-不重叠的线段"><span class="nav-number">2.2.</span> <span class="nav-text">51nod 1133 不重叠的线段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1099-任务执行顺序"><span class="nav-number">2.3.</span> <span class="nav-text">51nod 1099 任务执行顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1182-完美字符串"><span class="nav-number">2.4.</span> <span class="nav-text">51nod 1182 完美字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1344-走格子"><span class="nav-number">2.5.</span> <span class="nav-text">51nod 1344 走格子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡题"><span class="nav-number">3.</span> <span class="nav-text">卡题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1163-最高的奖励"><span class="nav-number">3.1.</span> <span class="nav-text">51nod 1163 最高的奖励</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1428-活动安排问题"><span class="nav-number">3.2.</span> <span class="nav-text">51nod 1428 活动安排问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51nod-1449-砝码称重"><span class="nav-number">3.3.</span> <span class="nav-text">51nod 1449 砝码称重</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补题感想"><span class="nav-number">4.</span> <span class="nav-text">补题感想</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -581,10 +534,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

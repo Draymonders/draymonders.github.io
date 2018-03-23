@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Draymonder's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="BinarySearchTree的插入，查找，删除操作">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉搜索树学习">
+<meta property="og:url" content="http://draymonder.me/2018/03/23/BinarySearchTree/index.html">
+<meta property="og:site_name" content="Draymonder&#39;s Blog">
+<meta property="og:description" content="BinarySearchTree的插入，查找，删除操作">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-23T11:48:29.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉搜索树学习">
+<meta name="twitter:description" content="BinarySearchTree的插入，查找，删除操作">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://draymonder.me/2018/03/23/BinarySearchTree/"/>
+
+
+
+
+
+  <title>二叉搜索树学习 | Draymonder's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Draymonder's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">梦在远方</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/03/23/BinarySearchTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Draymonder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Draymonder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">二叉搜索树学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T20:00:00+08:00">
+                2018-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  BinarySearchTree的插入，查找，删除操作
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Blog 好久没更新了，因为一方面忙着刷题，一方面搞大创(好浪费精力，不太想搞)</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>今天突然不知道怎么回事，想看看之前买的数据结构书(挑战程序设计竞赛-算法和数据结构)，<br>虽然整本书不太难，但是还是有很多不太明白的知识，光二叉搜索树就倒腾了一下午，怪我太菜了吧</p>
+<h3 id="BinarySearchTree"><a href="#BinarySearchTree" class="headerlink" title="BinarySearchTree"></a>BinarySearchTree</h3><figure class="highlight zephir"><table><tr><td class="code"><pre><div class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></div><div class="line">using <span class="keyword">namespace</span> <span class="title">std</span>;</div><div class="line"></div><div class="line">struct node &#123;</div><div class="line">    <span class="keyword">int</span> key;</div><div class="line">    <span class="comment">/*p是parent l是left r是right*/</span></div><div class="line">    node *p,*l,*r;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">node *root;</div><div class="line"></div><div class="line"><span class="comment">//插入操作</span></div><div class="line">void insert(<span class="keyword">int</span> k) &#123;</div><div class="line">    <span class="comment">//y是要找的节点的父节点</span></div><div class="line">    node *y = <span class="keyword">NULL</span>;</div><div class="line">    <span class="comment">//x用来寻找应该插入的位置</span></div><div class="line">    node *x = root;</div><div class="line">    node *z = <span class="keyword">new</span> node;</div><div class="line">    z-&gt;key = k;</div><div class="line">    z-&gt;l = <span class="keyword">NULL</span>;</div><div class="line">    z-&gt;r = <span class="keyword">NULL</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (x != <span class="keyword">NULL</span>) &#123;</div><div class="line">        y = x;</div><div class="line">        <span class="keyword">if</span>( z-&gt;key &lt; x-&gt;key)</div><div class="line">            x = x-&gt;l;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            x = x-&gt;r;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    z-&gt;p = y;</div><div class="line">    <span class="keyword">if</span>(y == <span class="keyword">NULL</span>)</div><div class="line">        root = z;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span>(z-&gt;key &lt; y-&gt;key)</div><div class="line">            y-&gt;l = z;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            y-&gt;r = z;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//查找操作</span></div><div class="line">node* find(node *u,<span class="keyword">int</span> k) &#123;</div><div class="line">    <span class="keyword">while</span> (u !=<span class="keyword">NULL</span> &amp;&amp; k != u-&gt;key) &#123;</div><div class="line">        <span class="keyword">if</span>(k &lt; u-&gt;key)</div><div class="line">            u = u-&gt;l;</div><div class="line">        <span class="keyword">else</span> u = u-&gt;r;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> u;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//寻找最左面的节点</span></div><div class="line">node* TreeMin(node *x) &#123;</div><div class="line">    <span class="keyword">while</span> (x-&gt;l != <span class="keyword">NULL</span>)</div><div class="line">        x = x-&gt;l;</div><div class="line">    <span class="keyword">return</span> x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用这个函数 就说明x下面肯定有右节点</span></div><div class="line">node* TreeNext(node *x) &#123;</div><div class="line">    <span class="keyword">if</span>(x-&gt;r != <span class="keyword">NULL</span>)</div><div class="line">        <span class="keyword">return</span> TreeMin(x-&gt;r);</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">    node *y = x-&gt;p;</span></div><div class="line"><span class="comment">    while (y!=NULL &amp;&amp; x == y-&gt;r) &#123;</span></div><div class="line"><span class="comment">        x = y;</span></div><div class="line"><span class="comment">        y = y-&gt;p;</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">    return y;</span></div><div class="line"><span class="comment">    */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//删除操作 ***慢慢理解</span></div><div class="line">void Delete(node *z) &#123;</div><div class="line">    <span class="comment">//y为要删除的对象 x为y子节点</span></div><div class="line">    node *y,*x;</div><div class="line"></div><div class="line">    <span class="comment">//z没有或只有一个子节点</span></div><div class="line">    <span class="keyword">if</span>(z-&gt;l == <span class="keyword">NULL</span> || z-&gt;r ==<span class="keyword">NULL</span>) y=z;</div><div class="line">    <span class="keyword">else</span> y=TreeNext(z);  <span class="comment">//肯定有两个子节点</span></div><div class="line"></div><div class="line">    <span class="comment">//确定y的子节点x</span></div><div class="line">    <span class="keyword">if</span>(y-&gt;l != <span class="keyword">NULL</span>) &#123;</div><div class="line">        x = y-&gt;l;</div><div class="line">    &#125;<span class="keyword">else</span> x = y-&gt;r;</div><div class="line"></div><div class="line">    <span class="comment">//删除y 就是 x 接到y的父节点上</span></div><div class="line">    <span class="keyword">if</span>(x != <span class="keyword">NULL</span>) &#123;</div><div class="line">        x-&gt;p = y-&gt;p;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(y-&gt;p == <span class="keyword">NULL</span>) &#123;</div><div class="line">        root = x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">//把x接到y的父节点下</span></div><div class="line">        <span class="keyword">if</span>(y == y-&gt;p-&gt;l)</div><div class="line">            y-&gt;p-&gt;l = x;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            y-&gt;p-&gt;r = x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(y != z)</div><div class="line">        z-&gt;key = y-&gt;key;</div><div class="line">    free(y);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//中序遍历</span></div><div class="line">void inorder(node *u) &#123;</div><div class="line">    <span class="keyword">if</span>(u == <span class="keyword">NULL</span>) <span class="keyword">return</span>;</div><div class="line">    inorder(u-&gt;l);</div><div class="line">    printf(<span class="string">" %d"</span>,u-&gt;key);</div><div class="line">    inorder(u-&gt;r);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//先序遍历</span></div><div class="line">void preorder(node *u) &#123;</div><div class="line">    <span class="keyword">if</span>(u == <span class="keyword">NULL</span>) <span class="keyword">return</span>;</div><div class="line">    printf(<span class="string">" %d"</span>,u-&gt;key);</div><div class="line">    preorder(u-&gt;l);</div><div class="line">    preorder(u-&gt;r);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">int</span> main ()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,i,x;</div><div class="line">    string com;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</div><div class="line">    &#123;</div><div class="line">        cin &gt;&gt; com;</div><div class="line">        <span class="keyword">if</span>(com == <span class="string">"insert"</span>) &#123;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;x);</div><div class="line">            insert(x);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(com == <span class="string">"find"</span>) &#123;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;x);</div><div class="line">            node *f = find(root,x);</div><div class="line">            <span class="keyword">if</span>(f != <span class="keyword">NULL</span>)</div><div class="line">                puts(<span class="string">"yes"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                puts(<span class="string">"no"</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(com == <span class="string">"delete"</span>) &#123;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;x);</div><div class="line">            Delete(find(root,x));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(com == <span class="string">"print"</span>) &#123;</div><div class="line">            inorder(root); puts(<span class="string">""</span>);</div><div class="line">            preorder(root); puts(<span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>下个月没什么特别多的事情，入门Java和Linux了，希望以后能用Java做题吧(熟悉一下Java，嘿嘿)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/Do-ss/" rel="next" title="Digital Ocean 购买VPS搭建SS">
+                <i class="fa fa-chevron-left"></i> Digital Ocean 购买VPS搭建SS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/25/linux/" rel="prev" title="Linux入门学习">
+                Linux入门学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Draymonder" />
+            
+              <p class="site-author-name" itemprop="name">Draymonder</p>
+              <p class="site-description motion-element" itemprop="description">不畏将来，不念过往</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Draymonders" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Draymonder/" target="_blank" title="cnblogs">
+                      
+                        <i class="fa fa-fw fa-globe"></i>cnblogs</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BinarySearchTree"><span class="nav-number">2.1.</span> <span class="nav-text">BinarySearchTree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Draymonder</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
