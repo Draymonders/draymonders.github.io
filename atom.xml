@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-03-23T11:48:12.710Z</updated>
+  <updated>2018-03-25T04:22:52.899Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,50 +16,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux入门学习</title>
+    <title>Linux学习</title>
     <link href="http://draymonder.me/2018/03/25/linux/"/>
     <id>http://draymonder.me/2018/03/25/linux/</id>
     <published>2018-03-25T15:59:59.000Z</published>
-    <updated>2018-03-23T11:48:12.710Z</updated>
+    <updated>2018-03-25T04:22:52.899Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  考虑到开发和别人所说的一些linux的便捷性，所以要学一下Linux<br>相关的操作。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="linux-特点"><a href="#linux-特点" class="headerlink" title="linux 特点"></a>linux 特点</h3><p>  1.免费/开源<br>  2.支持多线程/多用户<br>  3.安全性好<br>  4.对内存和文件管理优越。</p>
-<h3 id="Vim-使用"><a href="#Vim-使用" class="headerlink" title="Vim 使用"></a>Vim 使用</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">vim -文件名</div><div class="line"><span class="selector-tag">i</span> 插入模式</div><div class="line">ESC + :wq 退出并保存</div></pre></td></tr></table></figure>
+<h3 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h3><h4 id="Vim使用"><a href="#Vim使用" class="headerlink" title="Vim使用"></a>Vim使用</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">vim -文件名</div><div class="line"><span class="selector-tag">i</span> 插入模式</div><div class="line">ESC + :wq 退出并保存</div></pre></td></tr></table></figure>
 <h3 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">文件所有者，所在组和其他组</div><div class="line">groupadd 组名</div><div class="line">查看所有组的信息</div><div class="line">cat /etc/group</div><div class="line">useradd -g 组名 用户名</div><div class="line"></div><div class="line">查看所有用户信息</div><div class="line">cat /etc/passwd</div><div class="line"></div><div class="line">文件(-) 目录(d) 链接(l)</div><div class="line"></div><div class="line">操作权限</div><div class="line"> r可读 4表示 </div><div class="line"> w可写 2表示</div><div class="line"> x可执行 1表示</div><div class="line"></div><div class="line">chmod 777 文件名 改变文件权限 </div><div class="line">usermod -g 组名 用户名 改变某个用户所在的组</div><div class="line">chown 用户名 文件名</div><div class="line">chgrp 用户所在组 文件名</div></pre></td></tr></table></figure>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">root</span> 存放用户root的相关文件</div><div class="line"><span class="symbol">home</span> 存放普通用户的相关文件</div><div class="line"><span class="keyword">bin </span>存放常用命令的目录</div><div class="line"><span class="symbol">sbin</span> 存放具有一定权限的命令</div><div class="line"><span class="symbol">mnt</span> 挂载软驱和光驱的目录</div><div class="line"><span class="keyword">boot </span>存放引导相关的文件/ 一般不要删除目录下文件</div><div class="line"><span class="symbol">etc</span> 存放配置相关文件</div><div class="line"><span class="symbol">var</span> 存放经常变化的数据</div><div class="line"><span class="symbol">usr</span> 文件默认安装文件夹</div></pre></td></tr></table></figure>
 <h3 id="命令学习"><a href="#命令学习" class="headerlink" title="命令学习"></a>命令学习</h3><h4 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h4><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="built_in">shutdown</span> -h now 立即关机</div><div class="line"><span class="built_in">shutdown</span> -r now 现在重新启动计算机</div><div class="line">reboot     重启计算机</div></pre></td></tr></table></figure>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>pwd 显示当前路径
-cd 改变目录
-ls 列出文件和目录
- -a 显示全部文件
- -l 显示长列表格式
-
-mkdir 建立目录
-rmdir 删除空目录
-rm -rf 删除文件或者目录
- -r 删除目录 -f强制
-
-touch 建立空文件
-
-Ctrl+L 清屏
-
-cp [选项] [原文件或目录] [目标目录] 复制命令
-用来复制或者更改文件名的后缀
-
-mv [选项] [原文件或目录] [目标目录] 剪切命令
-目录重命名或者剪切
-
-| 管道命令
-
-grep 查找内容 文件名 在文本中查询内容
-
-&gt; 文件重定向(覆盖写)
-&gt;&gt; 追加写
-</code></pre>]]></content>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">pwd</span> 显示当前路径</div><div class="line"><span class="selector-tag">cd</span> 改变目录</div><div class="line"><span class="selector-tag">ls</span> 列出文件和目录</div><div class="line"> <span class="selector-tag">-a</span> 显示全部文件</div><div class="line"> <span class="selector-tag">-l</span> 显示长列表格式</div><div class="line"></div><div class="line"><span class="selector-tag">mkdir</span> 建立目录</div><div class="line"><span class="selector-tag">rmdir</span> 删除空目录 <span class="comment">//不怎么用</span></div><div class="line"></div><div class="line"><span class="selector-tag">rm</span> <span class="selector-tag">-rf</span> 删除文件或者目录</div><div class="line"> <span class="selector-tag">-r</span> 删除目录 <span class="selector-tag">-f</span>强制</div><div class="line"></div><div class="line"><span class="selector-tag">touch</span> 建立空文件</div><div class="line"></div><div class="line"><span class="selector-tag">Ctrl</span>+<span class="selector-tag">L</span> 清屏</div><div class="line"></div><div class="line"><span class="selector-tag">cp</span> <span class="selector-attr">[选项]</span> <span class="selector-attr">[原文件或目录]</span> <span class="selector-attr">[目标目录]</span> 复制命令</div><div class="line">用来复制或者更改文件名的后缀</div><div class="line"></div><div class="line"><span class="selector-tag">mv</span> <span class="selector-attr">[选项]</span> <span class="selector-attr">[原文件或目录]</span> <span class="selector-attr">[目标目录]</span> 剪切命令</div><div class="line">目录重命名或者剪切</div><div class="line"></div><div class="line">| 管道命令</div><div class="line"></div><div class="line"><span class="selector-tag">grep</span> 查找内容 文件名 在文本中查询内容</div><div class="line"></div><div class="line">&gt; 文件重定向(覆盖写)</div><div class="line">&gt;&gt; 追加写</div><div class="line"></div><div class="line">解压命令 <span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> ???<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
+<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><figure class="highlight gauss"><table><tr><td class="code"><pre><div class="line">root 存放用户root的相关文件</div><div class="line">home 存放普通用户的相关文件</div><div class="line">bin 存放常用命令的目录</div><div class="line">sbin 存放具有一定权限的命令(管理员)</div><div class="line">mnt 挂载软驱和光驱的目录</div><div class="line">boot 存放引导相关的文件 <span class="comment">// 一般不要删除目录下文件</span></div><div class="line">etc 存放配置相关文件</div><div class="line">var 存放经常变化的数据</div><div class="line">usr 文件默认安装文件夹</div><div class="line">opt 给主机额外安装软件所摆放的目录</div><div class="line"><span class="keyword">lib</span> 系统使用的函数库的目录</div><div class="line"><span class="function"><span class="keyword">proc</span> 目录下的数据都在内存中，如系统核心，外部设备，网络状态</span></div></pre></td></tr></table></figure>
+<h4 id="文件链接"><a href="#文件链接" class="headerlink" title="文件链接"></a>文件链接</h4><p>在Linux系统中，硬链接有两个局限性<br>第一： 只能给文件建立硬链接，而不能给目录建立硬链接<br>第二： 他们不能跨文件系统<br><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">经过测试</div><div class="line"><span class="built_in">ln</span> <span class="built_in">file</span> hfile </div><div class="line"><span class="built_in">ln</span> -s <span class="built_in">file</span> sfile </div><div class="line">显示hfile 为硬链接 和<span class="built_in">file</span>是相同的索引节点</div><div class="line">而sfile 则是符号链接，指向<span class="built_in">file</span>的节点，因此删除<span class="built_in">file</span> 那么sfile无效</div></pre></td></tr></table></figure></p>
+<h4 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h4><p>磁盘分区表示，IDE硬盘的设备名称是以/hdX表示，SATA硬盘的设备名称是以/sdX表示的<br>X可以是a~z的小写字母序列<br>在Windows操作系统中，磁盘分区是以盘符的形式表示的，如C:,D:,E:,F:,而在Linux系统中，<br>磁盘分区是以文件的形式表示的，如/dev/sda1,/dev/sda2<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">ll <span class="regexp">/dev/</span>sda*    <span class="regexp">//</span>ls -l</div></pre></td></tr></table></figure></p>
+<p>磁盘分区一般包括主分区和拓展分区，逻辑分区是拓展分区的磁盘分区类型。<br>一个磁盘中只能容纳4个主要分区，包括主分区和拓展分区<br>系统为主要分区预留了标识，预留了1~4的序号表示，所以逻辑分区的序号标识从5开始。<br><figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="comment">//查看所有磁盘分区情况</span></div><div class="line"><span class="selector-tag">fdisk</span> <span class="selector-tag">-l</span></div><div class="line"><span class="comment">//查磁盘使用情况</span></div><div class="line"><span class="selector-tag">df</span> <span class="selector-attr">[-参数]</span></div><div class="line">比如 <span class="selector-tag">df</span> <span class="selector-tag">-l</span></div><div class="line"><span class="comment">//查询目录在哪个分区</span></div><div class="line"><span class="selector-tag">df</span> <span class="selector-attr">[路径]</span></div></pre></td></tr></table></figure></p>
+<h3 id="Shell脚本编程"><a href="#Shell脚本编程" class="headerlink" title="Shell脚本编程"></a>Shell脚本编程</h3><h4 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h4><p>shell脚本文件的后缀可有可无，这是Linecho ux操作系统对文件访问的一个特点。为了让用户知道文件的类型，都会使用.sh作为Shell脚本文件的后缀<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">vim hello.sh</div><div class="line">chmod +x hello.sh</div><div class="line">./hello.sh</div><div class="line"></div><div class="line">hello.sh文件</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"Hello,World!"</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">"显示系统时间"</span>;</div><div class="line">date</div></pre></td></tr></table></figure></p>
+<p>变量<br><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">var=string</div><div class="line">计算命令</div><div class="line">expr 20 - 15 //操作符两端需要有空格</div><div class="line"></div><div class="line">预定义变量</div><div class="line"><span class="meta">  $</span><span class="bash"><span class="comment">#: 位置参数的数量</span></span></div><div class="line"><span class="meta">  $</span><span class="bash">*或<span class="variable">$@</span>: 所有位置参数的内容</span></div><div class="line"><span class="meta">  $</span><span class="bash">?: 命令执行后的返回值</span></div><div class="line"><span class="meta">  $</span><span class="bash">$: 当前进程的进程ID(PID)</span></div><div class="line"><span class="meta">  $</span><span class="bash">!: 最后一个后台运行进程的进程ID(PID)</span></div><div class="line"><span class="meta">  $</span><span class="bash">0: 当前执行的程序名</span></div><div class="line"></div><div class="line">//使用export命令设置环境变量</div><div class="line">export PATH=/home/draymond/shell:$PATH </div><div class="line"></div><div class="line">//一般值都被Shell看成是字符串</div></pre></td></tr></table></figure></p>
+<p>条件表达式<br><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line">文件比较</div><div class="line">    -e filename <span class="comment">//exist 文件存在为真</span></div><div class="line">    -d filename <span class="comment">//dir 目录存在为真</span></div><div class="line">    -f filename <span class="comment">//file 常规文件存在为真</span></div><div class="line">    -r/-w/-x filename <span class="comment">//可读，可写，可执行</span></div><div class="line">字符串比较</div><div class="line">    -z/-n string <span class="comment">//string长度为零/非零</span></div><div class="line">    string1=string2 <span class="comment">//string1与string2相同</span></div><div class="line">    string1!=string2 <span class="comment">//不同</span></div><div class="line">数值比较</div><div class="line">    num1 -<span class="keyword">eq</span> num2 <span class="comment">//num1==num2</span></div><div class="line">    num1 -<span class="keyword">ne</span> num2 <span class="comment">//num1!=num2</span></div><div class="line">    num1 -<span class="keyword">lt</span> num2 <span class="comment">//num1&lt;num2</span></div><div class="line">    num1 -<span class="keyword">le</span> num2 <span class="comment">//num1&lt;=num2</span></div><div class="line">    num1 -<span class="keyword">gt</span> num2 <span class="comment">//num1&gt;num2</span></div><div class="line">    num1 -<span class="keyword">ge</span> num2 <span class="comment">//num1&gt;=num2</span></div><div class="line">逻辑判断</div><div class="line">    exp1 -a exp2 <span class="comment">//逻辑与</span></div><div class="line">    exp1 -o exp2 <span class="comment">//逻辑或</span></div><div class="line">    ! exo1 <span class="comment">//取反</span></div></pre></td></tr></table></figure></p>
+<p>条件控制<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>判断</div><div class="line">    <span class="keyword">if</span> [ <span class="variable">$&#123;SHELL&#125;</span> != <span class="string">"/bin/bash"</span> ]</div><div class="line">    <span class="keyword">then</span> </div><div class="line">        <span class="built_in">echo</span> <span class="string">"I Love you"</span>;</div><div class="line">    <span class="keyword">elif</span> [ 1 -eq 1 ]</div><div class="line">    <span class="keyword">then</span> </div><div class="line">        <span class="built_in">echo</span> <span class="string">"Draymonder"</span>;</div><div class="line">    <span class="keyword">else</span> </div><div class="line">        <span class="built_in">echo</span> <span class="string">"I do not love you"</span>;</div><div class="line">    <span class="keyword">fi</span></div></pre></td></tr></table></figure></p>
+]]></content>
     
     <summary type="html">
     
-      Linux入门学习,一些记录
+      Linux学习,一些记录
     
     </summary>
     
