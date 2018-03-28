@@ -2,6 +2,125 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://draymonder.me/2018/02/01/the-use-of-viewport/</loc>
+    
+    <lastmod>2018-03-28T08:10:13.213Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/01/29/the-skill-of-coding/</loc>
+    
+    <lastmod>2018-03-28T08:09:43.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/03/10/the-cumtacm/</loc>
+    
+    <lastmod>2018-03-28T08:09:03.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/03/23/BinarySearchTree/</loc>
+    
+    <lastmod>2018-03-28T08:08:42.251Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/03/10/the-expectation/</loc>
+    
+    <lastmod>2018-03-28T08:05:24.118Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/24/the-diary-02-24/</loc>
+    
+    <lastmod>2018-03-28T08:04:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/25/the-demo1/</loc>
+    
+    <lastmod>2018-03-28T08:02:27.541Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-use-mysql/</loc>
+    
+    <lastmod>2018-03-28T08:01:45.190Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
+    
+    <lastmod>2018-03-28T08:00:08.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php/</loc>
+    
+    <lastmod>2018-03-28T07:59:25.771Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/04/the-perfect-series/</loc>
+    
+    <lastmod>2018-03-28T07:56:12.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/04/mergesort/</loc>
+    
+    <lastmod>2018-03-28T07:54:45.967Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-diary-02-02/</loc>
+    
+    <lastmod>2018-03-28T07:53:16.354Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/02/the-films/</loc>
+    
+    <lastmod>2018-03-28T07:52:16.564Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/01/the-use-of-js/</loc>
+    
+    <lastmod>2018-03-28T07:51:18.587Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/01/31/upper-compare-to-lower/</loc>
+    
+    <lastmod>2018-03-28T07:45:34.899Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/01/31/the-conclusion-of-css/</loc>
+    
+    <lastmod>2018-03-28T07:43:44.914Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://draymonder.me/tags/index.html</loc>
     
     <lastmod>2018-03-28T07:25:09.527Z</lastmod>
@@ -9,16 +128,9 @@
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/03/25/linux/</loc>
+    <loc>http://draymonder.me/2018/03/25/the-linux/</loc>
     
     <lastmod>2018-03-26T15:51:06.815Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/03/23/BinarySearchTree/</loc>
-    
-    <lastmod>2018-03-24T00:25:10.862Z</lastmod>
     
   </url>
   
@@ -30,23 +142,9 @@
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/03/10/the-BinarySearch/</loc>
-    
-    <lastmod>2018-03-10T10:56:07.500Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://draymonder.me/2018/03/06/the-xml/</loc>
     
     <lastmod>2018-03-06T09:13:49.970Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-use-of-js2/</loc>
-    
-    <lastmod>2018-03-03T04:26:55.351Z</lastmod>
     
   </url>
   
@@ -72,51 +170,9 @@
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/02/24/the-diary-02-24/</loc>
-    
-    <lastmod>2018-02-27T02:40:56.538Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://draymonder.me/2018/02/22/the-globalArray/</loc>
     
     <lastmod>2018-02-25T14:49:23.409Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/25/the-demo1/</loc>
-    
-    <lastmod>2018-02-25T12:47:20.309Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/20/the-link-mysql4/</loc>
-    
-    <lastmod>2018-02-20T14:44:54.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/20/the-link-mysql3/</loc>
-    
-    <lastmod>2018-02-20T09:59:31.519Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/14/the-link-mysql1/</loc>
-    
-    <lastmod>2018-02-20T09:59:22.894Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/18/the-link-mysql2/</loc>
-    
-    <lastmod>2018-02-20T09:59:19.073Z</lastmod>
     
   </url>
   
@@ -128,135 +184,9 @@
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/02/02/the-film-webs/</loc>
-    
-    <lastmod>2018-02-18T14:04:44.162Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
-    
-    <lastmod>2018-02-11T04:13:01.736Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/09/object-oriented-of-php4/</loc>
-    
-    <lastmod>2018-02-09T10:17:38.162Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/08/object-oriented-of-php3/</loc>
-    
-    <lastmod>2018-02-09T01:34:57.082Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php1/</loc>
-    
-    <lastmod>2018-02-09T01:34:45.177Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/07/object-oriented-of-php2/</loc>
-    
-    <lastmod>2018-02-08T02:27:25.290Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/04/mergesort/</loc>
-    
-    <lastmod>2018-02-05T07:36:59.719Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</loc>
     
     <lastmod>2018-02-05T07:36:53.952Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/01/31/upper-compare-to-lower/</loc>
-    
-    <lastmod>2018-02-05T07:36:40.961Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/04/the-perfect-series/</loc>
-    
-    <lastmod>2018-02-05T07:36:29.849Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-errors-in-c++/</loc>
-    
-    <lastmod>2018-02-02T14:08:00.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-diary-02-02/</loc>
-    
-    <lastmod>2018-02-02T13:56:06.622Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/02/the-use-of-js3/</loc>
-    
-    <lastmod>2018-02-02T13:54:58.408Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/01/the-use-of-js1/</loc>
-    
-    <lastmod>2018-02-01T13:54:19.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/01/31/the-use-of-css3/</loc>
-    
-    <lastmod>2018-02-01T09:20:56.285Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/01/29/the-skill-of-coding/</loc>
-    
-    <lastmod>2018-02-01T09:20:54.288Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/01/the-use-of-viewport/</loc>
-    
-    <lastmod>2018-02-01T09:20:49.034Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/01/16/the-diary-of-mine/</loc>
-    
-    <lastmod>2018-01-30T16:50:11.995Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/01/30/the-conclusion-of-css/</loc>
-    
-    <lastmod>2018-01-30T15:53:47.061Z</lastmod>
     
   </url>
   

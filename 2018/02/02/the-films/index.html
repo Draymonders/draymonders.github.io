@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Pat," />
+  <meta name="keywords" content="film," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="一道不错的模拟题，学到了新的套路">
-<meta name="keywords" content="Pat">
+<meta name="description" content="收集了一些常用的电影资源网站。">
+<meta name="keywords" content="film">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反转链表">
-<meta property="og:url" content="http://draymonder.me/2018/02/04/the-reverse-of-nodes/index.html">
+<meta property="og:title" content="电影资源网站">
+<meta property="og:url" content="http://draymonder.me/2018/02/02/the-films/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="一道不错的模拟题，学到了新的套路">
+<meta property="og:description" content="收集了一些常用的电影资源网站。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-05T07:36:53.952Z">
+<meta property="og:updated_time" content="2018-03-28T07:52:16.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="反转链表">
-<meta name="twitter:description" content="一道不错的模拟题，学到了新的套路">
+<meta name="twitter:title" content="电影资源网站">
+<meta name="twitter:description" content="收集了一些常用的电影资源网站。">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/02/02/the-films/"/>
 
 
 
 
 
-  <title>反转链表 | Draymonder's Blog</title>
+  <title>电影资源网站 | Draymonder's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/02/02/the-films/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">反转链表</h1>
+          <h1 class="post-title" itemprop="name headline">电影资源网站</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T20:40:00+08:00">
-                2018-02-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T19:45:00+08:00">
+                2018-02-02
               </time>
             
 
@@ -316,7 +316,7 @@
 
           
               <div class="post-description">
-                  一道不错的模拟题，学到了新的套路
+                  收集了一些常用的电影资源网站。
               </div>
           
 
@@ -333,11 +333,13 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然其来，想看《无问西东》，找资源好浪费时间，平时也没有看电影的习惯，所以找了半天的资源，正好做个整理，说不定以后用得上。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="电影资源下载"><a href="#电影资源下载" class="headerlink" title="电影资源下载"></a>电影资源下载</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">80</span>s电影网：<span class="string">http:</span><span class="comment">//www.80s.tw</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dytt8.net/</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dy2018.com</span></div><div class="line"></div><div class="line">BT天堂：<span class="string">http:</span><span class="comment">//www.bttiantang.org</span></div><div class="line"></div><div class="line">飘花电影网：<span class="string">http:</span><span class="comment">//www.piaohua.tv</span></div><div class="line"></div><div class="line">高清mp4：<span class="string">http:</span><span class="comment">//www.mp4pa.com</span></div><div class="line"></div><div class="line">电影首发站：<span class="string">http:</span><span class="comment">//www.dysfz.cc/ </span></div><div class="line"></div><div class="line">音范丝：<span class="string">http:</span><span class="comment">//www.yinfans.com/</span></div><div class="line"></div><div class="line">胖鸟电影：<span class="string">http:</span><span class="comment">//www.pniao.com</span></div></pre></td></tr></table></figure>
+<h3 id="在线观看美剧"><a href="#在线观看美剧" class="headerlink" title="在线观看美剧"></a>在线观看美剧</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">91</span>美剧  <span class="string">http:</span><span class="comment">//91mjw.com  </span></div><div class="line"></div><div class="line">追美剧网  <span class="string">http:</span><span class="comment">//www.zhuimj.cn/</span></div><div class="line"></div><div class="line">人人影视  <span class="string">http:</span><span class="comment">//www.zimuzu.tv</span></div></pre></td></tr></table></figure>
+<h3 id="在线影视"><a href="#在线影视" class="headerlink" title="在线影视"></a>在线影视</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">94</span>神马电影网 <span class="string">http:</span><span class="comment">//www.9rsm.com/</span></div><div class="line"></div><div class="line">在线之家 <span class="string">http:</span><span class="comment">//www.1993s.top</span></div><div class="line"></div><div class="line">骑士电影 <span class="string">http:</span><span class="comment">//www.74xw.com/</span></div><div class="line"></div><div class="line">看看屋 <span class="string">http:</span><span class="comment">//www.kankanwu.com</span></div><div class="line"></div><div class="line">我找大猫 <span class="string">http:</span><span class="comment">//www.5zdm.com</span></div><div class="line"></div><div class="line">NO视频 <span class="string">http:</span><span class="comment">//www.novipnoad.com/</span></div><div class="line"></div><div class="line">五杀影院 <span class="string">http:</span><span class="comment">//www.lol5s.com</span></div></pre></td></tr></table></figure>
+<h3 id="网盘在线搜索"><a href="#网盘在线搜索" class="headerlink" title="网盘在线搜索"></a>网盘在线搜索</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">盘多多  <span class="string">http:</span><span class="comment">//www.panduoduo.net/</span></div><div class="line"></div><div class="line">胖次  <span class="string">http:</span><span class="comment">//www.panc.cc/</span></div><div class="line"></div><div class="line">西林街   <span class="string">http:</span><span class="comment">//www.xilinjie.com/</span></div><div class="line"></div><div class="line">BDY搜  <span class="string">http:</span><span class="comment">//www.bdysou.com</span></div><div class="line"></div><div class="line">Bdsola资源站  <span class="string">http:</span><span class="comment">//www.3134.cc/</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>因为我平时真的很少看电影（大概一个月才看一部或者更少吧，所以以上资源网站不一定能访问，或者有问题的，只是做个列举，便于下次找资源时的检索。</p>
+
       
     </div>
     
@@ -354,7 +356,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Pat/" rel="tag"><i class="fa fa-tag"></i> Pat</a>
+            <a href="/tags/film/" rel="tag"><i class="fa fa-tag"></i> film</a>
           
         </div>
       
@@ -367,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/04/the-perfect-series/" rel="next" title="完美数列">
-                <i class="fa fa-chevron-left"></i> 完美数列
+              <a href="/2018/02/01/the-use-of-js/" rel="next" title="JavaScript基础知识">
+                <i class="fa fa-chevron-left"></i> JavaScript基础知识
               </a>
             
           </div>
@@ -377,8 +379,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/05/object-oriented-of-php/" rel="prev" title="PHP 面向对象学习">
-                PHP 面向对象学习 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/02/the-diary-02-02/" rel="prev" title="杂文一记">
+                杂文一记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -529,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">2.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析及代码"><span class="nav-number">2.3.</span> <span class="nav-text">分析及代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#电影资源下载"><span class="nav-number">2.1.</span> <span class="nav-text">电影资源下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线观看美剧"><span class="nav-number">2.2.</span> <span class="nav-text">在线观看美剧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线影视"><span class="nav-number">2.3.</span> <span class="nav-text">在线影视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网盘在线搜索"><span class="nav-number">2.4.</span> <span class="nav-text">网盘在线搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
