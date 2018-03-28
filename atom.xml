@@ -345,7 +345,7 @@
     <link href="http://draymonder.me/2018/02/14/the-use-mysql/"/>
     <id>http://draymonder.me/2018/02/14/the-use-mysql/</id>
     <published>2018-02-14T15:59:59.000Z</published>
-    <updated>2018-03-28T09:19:35.264Z</updated>
+    <updated>2018-03-28T09:26:21.133Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想趁着今天情人节，给自己补补知识。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><p>仅仅是记录我学到的啊,待补充，因为我用的phpadmin,所以感觉有些弱智<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>; //查看mysql中所有的数据库</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名; //创建数据库</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 数据库名; //删除数据库</div></pre></td></tr></table></figure></p>
@@ -395,7 +395,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="mysql" scheme="http://draymonder.me/tags/mysql/"/>
+      <category term="MySql学习" scheme="http://draymonder.me/tags/MySql%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -435,7 +435,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/11/the-errors-in-php/"/>
     <id>http://draymonder.me/2018/02/11/the-errors-in-php/</id>
     <published>2018-02-11T06:00:00.000Z</published>
-    <updated>2018-03-28T09:09:09.838Z</updated>
+    <updated>2018-03-28T09:27:56.581Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>php异常处理，以及错误日志的使用</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="文件相对和绝对路径"><a href="#文件相对和绝对路径" class="headerlink" title="文件相对和绝对路径"></a>文件相对和绝对路径</h3><figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">相对路径</div><div class="line"><span class="comment">// ../代表上级文件</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"../../"</span>) </div><div class="line"></div><div class="line">绝对路径</div><div class="line"><span class="comment">// / 和 \\都可以</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"c:/Draymonder.txt"</span>);</div></pre></td></tr></table></figure>
@@ -454,7 +454,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -501,30 +501,6 @@ fetch_fields() //列信息
   </entry>
   
   <entry>
-    <title>反转链表</title>
-    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
-    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
-    <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-03-28T09:10:35.965Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      一道不错的模拟题，学到了新的套路
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
     <title>完美数列</title>
     <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
     <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
@@ -540,6 +516,30 @@ fetch_fields() //列信息
     <summary type="html">
     
       一道裸的二分，顺带纪念一下自己PAT(Basic Level)合格了吧
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反转链表</title>
+    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
+    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
+    <published>2018-02-04T12:40:00.000Z</published>
+    <updated>2018-03-28T09:10:35.965Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
+<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      一道不错的模拟题，学到了新的套路
     
     </summary>
     

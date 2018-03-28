@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
+    <lastmod>2018-03-28T09:27:56.581Z</lastmod>
+    <data>
+        <display>
+        <title>PHP错误和异常处理</title>
+        <pubTime>2018-02-11T06:00:00.000Z</pubTime>
+        
+        <tag>PHP学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-use-mysql/</loc>
+    <lastmod>2018-03-28T09:26:21.133Z</lastmod>
+    <data>
+        <display>
+        <title>Mysql学习</title>
+        <pubTime>2018-02-14T15:59:59.000Z</pubTime>
+        
+        <tag>MySql学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://draymonder.me/2018/02/12/the-link-https/</loc>
     <lastmod>2018-03-28T09:20:23.628Z</lastmod>
     <data>
@@ -114,23 +148,6 @@
         <pubTime>2018-02-05T10:00:00.000Z</pubTime>
         
         <tag>PHP学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/14/the-use-mysql/</loc>
-    <lastmod>2018-03-28T09:19:35.264Z</lastmod>
-    <data>
-        <display>
-        <title>Mysql学习</title>
-        <pubTime>2018-02-14T15:59:59.000Z</pubTime>
-        
-        <tag>mysql</tag>
          
          
            
@@ -285,23 +302,6 @@
         <pubTime>2018-02-04T12:40:00.000Z</pubTime>
         
         <tag>Algorithm</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
-    <lastmod>2018-03-28T09:09:09.838Z</lastmod>
-    <data>
-        <display>
-        <title>PHP错误和异常处理</title>
-        <pubTime>2018-02-11T06:00:00.000Z</pubTime>
-        
-        <tag>PHP</tag>
          
          
            
