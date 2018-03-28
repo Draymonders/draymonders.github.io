@@ -55,7 +55,7 @@
     <link href="http://draymonder.me/2018/03/23/BinarySearchTree/"/>
     <id>http://draymonder.me/2018/03/23/BinarySearchTree/</id>
     <published>2018-03-23T12:00:00.000Z</published>
-    <updated>2018-03-28T08:08:42.251Z</updated>
+    <updated>2018-03-28T09:08:45.950Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Blog 好久没更新了，因为一方面忙着刷题，一方面搞大创(好浪费精力，不太想搞)</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>今天突然不知道怎么回事，想看看之前买的数据结构书(挑战程序设计竞赛-算法和数据结构)，<br>虽然整本书不太难，但是还是有很多不太明白的知识，光二叉搜索树就倒腾了一下午，怪我太菜了吧</p>
@@ -73,7 +73,7 @@
     </summary>
     
     
-      <category term="algorithm" scheme="http://draymonder.me/tags/algorithm/"/>
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
@@ -105,7 +105,7 @@
     <link href="http://draymonder.me/2018/03/10/the-cumtacm/"/>
     <id>http://draymonder.me/2018/03/10/the-cumtacm/</id>
     <published>2018-03-10T15:59:59.000Z</published>
-    <updated>2018-03-28T08:09:03.442Z</updated>
+    <updated>2018-03-28T09:08:41.755Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  好久没写过算法题了，然后抱着水水的态度去参加了校赛，整体难度还可以，<br>  可能是我太菜了，很多简单题，我都没能顺利地ac掉。<br>  不过心态还是好的，继续努力加油吧。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一起来数数字"><a href="#一起来数数字" class="headerlink" title="一起来数数字"></a>一起来数数字</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>把人排成一排，从左到右从1开始报数，选择三个不同的数字x，y，z。从1开始报数，遇到x的倍数，y的倍数，z的倍数就跳过。比如x=2，y=3，z=5，第一个人报1，第二个人跳过2,3,4,5,6，报7，第三个人跳过8,9,10，报11。<br>给出一个n，问你第n个人报的数字是多少。 </p>
@@ -123,7 +123,7 @@
     </summary>
     
     
-      <category term="algorithm" scheme="http://draymonder.me/tags/algorithm/"/>
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
@@ -132,196 +132,7 @@
     <link href="http://draymonder.me/2018/03/10/the-expectation/"/>
     <id>http://draymonder.me/2018/03/10/the-expectation/</id>
     <published>2018-03-10T09:00:00.000Z</published>
-    <updated>2018-03-28T08:05:24.118Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  寒假就快过完了呢，给自己一个心情的整理，以及对未来的向往。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h3><h4 id="所做"><a href="#所做" class="headerlink" title="所做"></a>所做</h4><ol>
-<li>做完了PAT乙级真题30道。</li>
-<li>在学校吃了两星期的外卖!!! </li>
-<li>php, mysql的初步入门，并做了一个 雇员管理系统 的项目，蛮low的。 </li>
-<li>看完了一本书《你就是想得太多》,一部视频老罗的《时间的朋友》。 </li>
-<li>认识了一些人，稍稍开放了自己。 </li>
-<li>看了很多MV，喜欢一个人安安静静的。</li>
-<li>和初中同学聚会，一起放风筝。</li>
-<li>变得自信多了啊~(这是我这个假期收获最大的事情吧)</li>
-</ol>
-<h4 id="所思"><a href="#所思" class="headerlink" title="所思"></a>所思</h4><p>《你就是想的太多》 -小摘抄<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">  还有人，因为喜欢的人不理自己而不高兴。可是回头想，如果是你</div><div class="line">自己在忙的话，也会不怎么理别人。当然如果别人不喜欢你，不理你，</div><div class="line">那你就更没有必要不高兴了，因为你的喜欢本就是要让你能够有好的</div><div class="line">情绪的。</div><div class="line">  这看似有点儿无奈的边界，也的确是人生的一种境遇，人生的境遇</div><div class="line">本来就是常常发生变化，无论如何你都得保有乐观的心境。</div><div class="line">  有句“诸行无常”的佛语，其意思是说，时间的一切事物时刻都处于</div><div class="line">变化之中。</div><div class="line">  对于不喜欢你的人，要么你自己改变，变得让人家喜欢，要么你不</div><div class="line">如承认这是客观的存在，因为你也有不喜欢的人，何必太过勉强的去</div><div class="line">强人所难呢？“己所不欲勿施于人”这句流传几千年的话至今使用。</div><div class="line">  也就是说，对人生中所有的无常，变化，我们欣然接受就好了。</div><div class="line">即使是不利的，糟糕的，我们也应该避免让自己的情绪变坏。</div></pre></td></tr></table></figure></p>
-<p>感谢每一个给与我帮助的人 -小感悟<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">在<span class="number">2017</span> 年初定下的目标,完成了不少。其实毫无意义,因为</div><div class="line">错过了更重要的。</div><div class="line"></div><div class="line">其实本可以过一种更健康的方式,用更好的状态来过好每一天。</div><div class="line"></div><div class="line">我们谁也不知道自己能活多长时间，我也不知道，但是我感觉必须趁着</div><div class="line">自己年轻，多取得一些成就。</div></pre></td></tr></table></figure></p>
-<h3 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h3><h4 id="所想"><a href="#所想" class="headerlink" title="所想"></a>所想</h4><ol>
-<li>原谅我的人生格局太小，容不下那么多的人，那么多惊天动地的事。<br>我只想安安稳稳的过一辈子，有一个喜欢的女孩，买一套不大的房子，<br>过着普通但没有太大压力的生活。</li>
-<li><del>真希望我能快点儿遇到能让我心动的女孩啊，好看不好看无所谓的吧，<br>只要善良就够了。</del> 我已经遇到我想要保护的人了啊。</li>
-</ol>
-<h4 id="期待"><a href="#期待" class="headerlink" title="期待"></a>期待</h4><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 语言再尝试一下Java, Python </div><div class="line">最后看爱好, 择一而用, 并且熟悉相应的框架</div><div class="line"><span class="number">2.</span> 数据库主选就mysql,然后稍稍看看 db, oracle 然后针对NoSQL了解一下</div><div class="line"><span class="number">3.</span> 操作系统选择Linux入门吧，搭建好Unbuntu了，入门了解一下指令以及操作。</div><div class="line"><span class="number">4.</span> 数据结构/编程方面还要深入。</div><div class="line"><span class="number">5.</span> 保养好身体，新的学期瘦个<span class="number">15</span>斤，对我来说So easy.</div><div class="line"><span class="number">6.</span> 今年想要看一场演唱会，体验那种feel</div><div class="line">待添加的了，说不定会有新的想法</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  珍惜时间，珍惜身边的人。<br>  一步步变得成熟，一步步靠近喜欢的人，一步步走向自己喜欢的样子，是多么幸福的一件事。<br>  END</p>
-]]></content>
-    
-    <summary type="html">
-    
-      一心向北，寻找自己的所属
-    
-    </summary>
-    
-    
-      <category term="diary" scheme="http://draymonder.me/tags/diary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php xml操作</title>
-    <link href="http://draymonder.me/2018/03/06/the-xml/"/>
-    <id>http://draymonder.me/2018/03/06/the-xml/</id>
-    <published>2018-03-06T07:20:20.000Z</published>
-    <updated>2018-03-06T09:13:49.970Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">imgs</span>&gt;</span>&lt;![CDATA[$&lt;$$#@&gt;]]&gt;<span class="tag">&lt;/<span class="name">imgs</span>&gt;</span></div><div class="line"></div><div class="line">CDATA的基本语法</div><div class="line">&lt;![CDATA[内容]]&gt;</div><div class="line"></div><div class="line">面试题: 如何使用xml文件来传递，保存一个图片</div><div class="line">答: 使用程序先读入到内存</div><div class="line">然后保存到xml的&lt;![CDATA[文件内容]]&gt;中</div></pre></td></tr></table></figure>
-<h3 id="xml的PI处理指令"><a href="#xml的PI处理指令" class="headerlink" title="xml的PI处理指令"></a>xml的PI处理指令</h3><figure class="highlight processing"><table><tr><td class="code"><pre><div class="line">通过<span class="literal">PI</span>指令来引入CSS样式文件：</div><div class="line"></div><div class="line"><span class="literal">PI</span>指令的弊端：</div><div class="line">    只对英文的标签起作用，对中文的标签不起作用。 </div><div class="line"></div><div class="line"><span class="comment">//和html引用css大同小异</span></div><div class="line">&lt;?xml-stylesheet  type=<span class="string">"text/css"</span> href=<span class="string">"txt.css"</span>?&gt;  </div><div class="line"></div><div class="line"><span class="comment">//txt.css内容</span></div><div class="line">name&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">red</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">age&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">green</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="dtd-Document-Type-Definition"><a href="#dtd-Document-Type-Definition" class="headerlink" title="dtd (Document Type Definition"></a>dtd (Document Type Definition</h3><p>为了约束xml文件，使xml语义合法<br><a href="http://blog.csdn.net/gavin_john/article/details/51532756" target="_blank" rel="external">dtd详解</a><br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">基本语法</div><div class="line"><span class="params">&lt;!ELEMENT 元素名 类型&gt;</span> <span class="comment">//元素约束</span></div><div class="line"><span class="params">&lt;!ATTLIST 元素名&gt;</span> <span class="comment">//属性约束</span></div><div class="line"><span class="params">&lt;!ENTITY 元素名 "引用内容"&gt;</span> <span class="comment">//用元素名来表示引用的内容</span></div></pre></td></tr></table></figure></p>
-<h3 id="phpDom快速入门"><a href="#phpDom快速入门" class="headerlink" title="phpDom快速入门"></a>phpDom快速入门</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$xmldoc = <span class="keyword">new</span> DomDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line"><span class="comment">//读文件的时候用load方法</span></div><div class="line"><span class="comment">//读字符串的时候用 loadXML方法 </span></div><div class="line"><span class="comment">//eg: $xmldoc-&gt;loadXML('&lt;root&gt;&lt;node/&gt;&lt;/root&gt;');</span></div><div class="line"></div><div class="line"><span class="comment">//找到root节点</span></div><div class="line">$nodeLists=$xmldoc-&gt;getElementsByTagName(<span class="string">"stu"</span>); <span class="comment">//返回的是结果集合 </span></div><div class="line">$nodeList = $nodeLists-&gt;item(<span class="number">0</span>); </div><div class="line"><span class="comment">//上面直接就已经找到root节点了</span></div><div class="line"></div><div class="line"><span class="comment">//新增name节点</span></div><div class="line">$node_name = $xmldoc-&gt;createElement(<span class="string">"name"</span>);</div><div class="line">$node_name-&gt;nodeValue = <span class="string">"我喜欢你"</span>;</div><div class="line"></div><div class="line"><span class="comment">//新增age节点</span></div><div class="line">$node_age = $xmldoc-&gt;createElement(<span class="string">"age"</span>);</div><div class="line">$node_age-&gt;nodeValue = <span class="string">"20"</span>;</div><div class="line"></div><div class="line"><span class="comment">//root节点下挂载 name节点和age节点</span></div><div class="line">$root-&gt;appendChild($node_name); </div><div class="line">$root-&gt;appendChild($node_age);</div><div class="line"></div><div class="line"><span class="comment">//内存中修改完毕以后 还要保存文件内容</span></div><div class="line">$xmldoc-&gt;save(<span class="string">"test.xml"</span>);</div><div class="line"></div><div class="line"><span class="comment">//删除操作</span></div><div class="line">$test-&gt;parentNode-&gt;removeChild($test);</div><div class="line"></div><div class="line"><span class="comment">//更新操作</span></div><div class="line">找到那个需要修改的节点 直接改 nodeValue属性就可以</div><div class="line"></div><div class="line"><span class="comment">//设置属性</span></div><div class="line">setAttribute (string $name ,string $value) </div><div class="line">添加属性为$name 属性值$value的属性</div></pre></td></tr></table></figure>
-<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><p>php dom技术可以跨层取出，但是不能保持层次关系，使用xpath可以解决<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">这种技术相当于是知道节点所在的层级，然后通过层级关系来找相应的节点</div><div class="line">$xmldoc = <span class="keyword">new</span> DOMDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line">$xpath = <span class="keyword">new</span> DOMXPath($xmldoc);</div><div class="line">$node_list = $xpath-&gt;query(<span class="string">"/stu"</span>);</div><div class="line"><span class="keyword">echo</span> $node_list-&gt;length;</div></pre></td></tr></table></figure></p>
-<h3 id="SimpleXML"><a href="#SimpleXML" class="headerlink" title="SimpleXML"></a>SimpleXML</h3><p>以面向对象方式来操作xml文件<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//装载文件</span></div><div class="line">$stu = simplexml_load_file(<span class="string">"test.xml"</span>);</div><div class="line">$name  = $stu-&gt;name;</div><div class="line"></div><div class="line">var_dump($name);</div><div class="line"><span class="keyword">foreach</span> ($name <span class="keyword">as</span> $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$value &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//还有装载方式从DOM对象</span></div><div class="line">simplexml_import_dom</div><div class="line"></div><div class="line"><span class="comment">//装载字符串</span></div><div class="line">simplexml_load_string</div></pre></td></tr></table></figure></p>
-<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>比预想的进度晚了好多，寒假也没有接触爬虫和Java,Linux也是空手而归..<br>新的学期还有好多好多的比赛，希望自己能坚持下去，Just do what you want to do.<br>没有那么多的约束，尽情去展现自己的水平吧。<br>To learn,to try.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      php 中xml编程操作
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP 绘图技术</title>
-    <link href="http://draymonder.me/2018/03/01/the-gd/"/>
-    <id>http://draymonder.me/2018/03/01/the-gd/</id>
-    <published>2018-03-01T08:00:00.000Z</published>
-    <updated>2018-03-01T09:01:07.961Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  学习矢量图片(验证码)，报表的绘制，生成。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
-<h3 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">gif 图片压缩率高，</div><div class="line">但是只能显示<span class="number">256</span>色可能造成颜色丢失，但可以显示动画</div><div class="line"></div><div class="line">jpg/jpeg 图片的压缩率高，可以用较小的文件来显示</div><div class="line">网页上用的比较多</div><div class="line"></div><div class="line">png，高仿真</div><div class="line">综合了gif和jpg的优势，但是不能显示动画</div></pre></td></tr></table></figure>
-<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line"><span class="meta">$</span><span class="bash">img = imagecreatetruecolor(100,100);</span></div><div class="line"></div><div class="line">取色</div><div class="line"><span class="meta">$</span><span class="bash">red = imagecolorallocate(<span class="variable">$img</span>, 255, 0, 0);</span></div><div class="line"></div><div class="line">画图</div><div class="line">•imagefilledarc — 画一椭圆弧且填充</div><div class="line">•imagefilledellipse — 画一椭圆并填充</div><div class="line">•imagefilledpolygon — 画一多边形并填充</div><div class="line">•imagefilledrectangle — 画一矩形并填充</div><div class="line"></div><div class="line">输出到浏览器</div><div class="line">header("content-type: image/png");</div><div class="line"><span class="meta">imagepng($</span><span class="bash">img);</span></div><div class="line"></div><div class="line">销毁</div><div class="line"><span class="meta">imagedestroy($</span><span class="bash">img);</span></div></pre></td></tr></table></figure>
-<h3 id="图片到画布"><a href="#图片到画布" class="headerlink" title="图片到画布"></a>图片到画布</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span> = imagecreatefromgif(filename);</span></div><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span>_info = getimagesize(filename);</span></div><div class="line">imagecopy(dst_im, src_im, dst_x, dst_y, </div><div class="line">    src_x, src_y, src_w, src_h);</div><div class="line">具体参数含义 不懂看文档</div></pre></td></tr></table></figure>
-<h3 id="写字"><a href="#写字" class="headerlink" title="写字"></a>写字</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">imagettftext(<span class="keyword">image</span>, <span class="keyword">size</span>, <span class="keyword">angle</span>, x, y, </div><div class="line">    <span class="keyword">color</span>, fontfile, <span class="keyword">text</span>)</div></pre></td></tr></table></figure>
-<h3 id="生成验证码"><a href="#生成验证码" class="headerlink" title="生成验证码"></a>生成验证码</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * Created by PhpStorm.</span></div><div class="line"><span class="comment">    * User: draymonder</span></div><div class="line"><span class="comment">    * Date: 2018/3/1</span></div><div class="line"><span class="comment">    * Time: 15:15</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    $checkcode =<span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">4</span>;$i++)&#123;</div><div class="line">        $checkcode.= dechex(<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">15</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $img = imagecreatetruecolor(<span class="number">200</span>,<span class="number">30</span>);</div><div class="line"></div><div class="line">    <span class="comment">//背景颜色</span></div><div class="line">    $bgcolor = imagecolorallocate($img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    imagefill($img,<span class="number">0</span>,<span class="number">0</span>,$bgcolor);</div><div class="line"></div><div class="line">    <span class="comment">//添加干扰线</span></div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">10</span>;$i++)&#123;</div><div class="line">        $color = imagecolorallocate($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>));</div><div class="line">        imageline($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),$color);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//白色，字体颜色</span></div><div class="line">    $white = imagecolorallocate($img,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);</div><div class="line">    <span class="comment">//添加字符串</span></div><div class="line">    imagestring($img,<span class="keyword">rand</span>(<span class="number">4</span>,<span class="number">6</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">180</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">20</span>),$checkcode,$white);</div><div class="line">    header(<span class="string">"content-type: image/png"</span>);</div><div class="line">    imagepng($img);</div><div class="line">    imagedestroy($img);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  从现在开始，一切都还不晚！前半生与后半生的分界线是在哪里？<br>答：此时此刻。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      php绘图的基本原理和步骤
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php 文件操作</title>
-    <link href="http://draymonder.me/2018/02/27/the-io/"/>
-    <id>http://draymonder.me/2018/02/27/the-io/</id>
-    <published>2018-02-27T10:00:00.000Z</published>
-    <updated>2018-02-28T05:43:45.544Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文件，保存数据（二进制数据，文本数据）<br>  文件在程序中是以流的形式来操作的</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">"PRC"</span>); </div><div class="line"><span class="variable">$path</span> = <span class="string">"test.txt"</span>;</div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$path</span>,<span class="string">"r"</span>); <span class="regexp">//</span>打开文件</div><div class="line"><span class="variable">$file_info</span> = fstat(<span class="variable">$fp</span>); <span class="regexp">//</span>读取资源信息</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;pre&gt;"</span>;</div><div class="line"><span class="regexp">//</span> var_dump(<span class="variable">$file_info</span>);</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">echo <span class="string">"&lt;br&gt;上次修改时间"</span>.date(<span class="string">"Y-m-d H:i:s"</span>,<span class="variable">$file_info</span>[<span class="string">'atime'</span>]);</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line"></div><div class="line">[atime] 文件上一次被访问的时间</div><div class="line">[mtime] 文件上一次内容被修改的时间</div><div class="line">[ctime] 文件上一次 文件所有者<span class="regexp">/文件所在组 修改/</span>change</div><div class="line">单用户可以认为是创建时间</div></pre></td></tr></table></figure>
-<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="keyword">fread</span>($fp, filesize($path));</div><div class="line">    $con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">    echo <span class="string">"$con"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">第二种方法</div><div class="line">$con = file_get_contents($path);</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">echo $con;</div><div class="line"></div><div class="line">第三种方法</div><div class="line">$buffer = <span class="number">1024</span>;</div><div class="line">$str = <span class="string">""</span>;</div><div class="line"><span class="keyword">while</span> (!<span class="keyword">feof</span>($fp))&#123;</div><div class="line">    $str.= <span class="keyword">fread</span>($fp,$buffer);</div><div class="line">&#125;</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$str);</div><div class="line">echo $con;</div></pre></td></tr></table></figure>
-<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="string">"你好"</span>;</div><div class="line">    <span class="keyword">fwrite</span>($fp, $con);</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">a: append w: write</div><div class="line"></div><div class="line">第二种方法(直接添加字符串)</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line">$con = <span class="string">"北京你好\r\n"</span>;</div><div class="line">file_put_contents($path, $con,FILE_APPEND);</div></pre></td></tr></table></figure>
-<h3 id="拷贝图片"><a href="#拷贝图片" class="headerlink" title="拷贝图片"></a>拷贝图片</h3><figure class="highlight autoit"><table><tr><td class="code"><pre><div class="line">$path = <span class="string">"C:\\Users\\ixiao\\Pictures\\Kyire\\kyire.jpeg"</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span>(!copy($path,<span class="string">"d:\\1.jpeg"</span>))&#123;</div><div class="line">    echo <span class="string">"error"</span><span class="comment">;</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    echo <span class="string">"ok"</span><span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">如果有中文路径，那么用</div><div class="line"><span class="built_in">string</span> iconv ( <span class="built_in">string</span> $in_charset , <span class="built_in">string</span> $out_charset </div><div class="line">    , <span class="built_in">string</span> $str )</div><div class="line">将字符串 str 从 in_charset 转换编码到 out_charset。</div></pre></td></tr></table></figure>
-<h3 id="创建-删除文件夹"><a href="#创建-删除文件夹" class="headerlink" title="创建/删除文件夹"></a>创建/删除文件夹</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">madir</span><span class="params">(dirname)</span></span></div><div class="line"><span class="function"><span class="title">rmdir</span><span class="params">(dirname)</span></span></div></pre></td></tr></table></figure>
-<h3 id="创建-删除文件"><a href="#创建-删除文件" class="headerlink" title="创建/删除文件"></a>创建/删除文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">$fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line"><span class="keyword">fwrite</span>($fp,$string);</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(is_file($path))&#123;</div><div class="line">    unlink($path);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="用form上传文件"><a href="#用form上传文件" class="headerlink" title="用form上传文件"></a>用form上传文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&lt;form action=<span class="string">""</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> name=<span class="string">"myfile"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">用<span class="variable">$_FILES</span>来记录上传的文件</div><div class="line"><span class="keyword">if</span>(is_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>]))&#123;</div><div class="line">    <span class="variable">$uploaded_file</span> = <span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>];</div><div class="line">    <span class="variable">$move_to_file</span> = <span class="variable">$_SERVER</span>[<span class="string">'DOCUMENT_ROOT'</span>].<span class="string">"file/"</span>.</div><div class="line">    iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'name'</span>]);</div><div class="line">    move_uploaded_file(<span class="variable">$uploaded_file</span>, <span class="variable">$move_to_file</span>);</div><div class="line">&#125;</div><div class="line">控制用户上传的类型，大小</div><div class="line">防止重名文件的覆盖，以及按照用户ID来建立文件夹</div><div class="line"></div><div class="line">数据库存放 文件的path，user，introduction</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      php 中对文件操作
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cookie 和 Session</title>
-    <link href="http://draymonder.me/2018/02/27/the-cookie-and-session/"/>
-    <id>http://draymonder.me/2018/02/27/the-cookie-and-session/</id>
-    <published>2018-02-27T08:00:00.000Z</published>
-    <updated>2018-02-27T04:32:35.621Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>会话支持在 PHP 中是在并发访问时由一个方法来保存某些数据.从而使你能够构建更多的定制程序 从而提高你的 web 网站的吸引力.<br>cookie 是一种在远程浏览器端储存数据并以此来跟踪和识别用户的机制。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="Setting-new-cookie"><a href="#Setting-new-cookie" class="headerlink" title="Setting new cookie"></a>Setting new cookie</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line">&lt;?php </div><div class="line"> setcookie(<span class="string">"name"</span>,<span class="string">"value"</span>,<span class="built_in">time</span>()+$int);</div><div class="line">/*<span class="built_in">name</span> <span class="keyword">is</span> your cookie's <span class="built_in">name</span></div><div class="line"> value <span class="keyword">is</span> cookie's value</div><div class="line"> $int <span class="keyword">is</span> <span class="built_in">time</span> <span class="keyword">of</span> cookie expires*/</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<h4 id="Getting-Cookie"><a href="#Getting-Cookie" class="headerlink" title="Getting Cookie"></a>Getting Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"><span class="keyword">echo</span> $_COOKIE[<span class="string">"your cookie name"</span>];</span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
-<h4 id="Updating-Cookie"><a href="#Updating-Cookie" class="headerlink" title="Updating Cookie"></a>Updating Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"> setcookie(<span class="string">"color"</span>,<span class="string">"red"</span>);</span></div><div class="line"><span class="php"> <span class="keyword">echo</span> $_COOKIE[<span class="string">"color"</span>];</span></div><div class="line"><span class="php"><span class="comment">/*color is red*/</span></span></div><div class="line"><span class="php"> <span class="comment">/* your codes and functions*/</span></span></div><div class="line"><span class="php">setcookie(<span class="string">"color"</span>,<span class="string">"blue"</span>);</span></div><div class="line"><span class="php"> <span class="keyword">echo</span> $_COOKIE[<span class="string">"color"</span>];</span></div><div class="line"><span class="php"><span class="comment">/*new color is blue*/</span></span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
-<h4 id="Deleting-Cookie"><a href="#Deleting-Cookie" class="headerlink" title="Deleting Cookie"></a>Deleting Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> ==============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"><span class="keyword">unset</span>($_COOKIE[<span class="string">"yourcookie"</span>]);</span></div><div class="line"><span class="php"><span class="comment">/*Or*/</span></span></div><div class="line"><span class="php">setcookie(<span class="string">"yourcookie"</span>,<span class="string">"yourvalue"</span>,time()<span class="number">-1</span>);</span></div><div class="line"><span class="php"><span class="comment">/*it expired so it's deleted*/</span></span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
-<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建</div><div class="line">session_start();</div><div class="line"><span class="meta">$</span><span class="bash">_SESSION[<span class="string">'name'</span>] = <span class="string">"draymonder"</span>;</span></div><div class="line"></div><div class="line">如果要取出对象，则需要实现申明一下类的定义信息</div><div class="line"></div><div class="line">删除</div><div class="line"><span class="meta">unset($</span><span class="bash">_SESSION[<span class="string">'name'</span>]);</span></div><div class="line"></div><div class="line">使用时候要开启</div><div class="line">session_start();</div></pre></td></tr></table></figure>
-<h4 id="session-unset-和-session-destroy之间的区别"><a href="#session-unset-和-session-destroy之间的区别" class="headerlink" title="session_unset 和 session_destroy之间的区别"></a>session_unset 和 session_destroy之间的区别</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><div class="line">  session_<span class="keyword">unset</span>只是清除sesison的使用。 会话仍在用户计算机上。 请注意，通过使用session_<span class="keyword">unset</span>，该变量仍然存在。</div><div class="line"></div><div class="line">  然而，使用session_<span class="keyword">unset</span>与session_destroy一起使用，实际上是清除数据的更有效方法。 正如上面的例子所述，这个工作非常好，跨浏览器：</div><div class="line"></div><div class="line"> session_<span class="keyword">unset</span>（）;</div><div class="line"> session_destroy（）;</div></pre></td></tr></table></figure>
-<h4 id="如果客户端禁用Cookie-怎么实现session共享多个页面？"><a href="#如果客户端禁用Cookie-怎么实现session共享多个页面？" class="headerlink" title="如果客户端禁用Cookie 怎么实现session共享多个页面？"></a>如果客户端禁用Cookie 怎么实现session共享多个页面？</h4><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">一、 利用http协议传送SSID=sessinId()</div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'SSID'</span>])) &#123;</div><div class="line">    <span class="comment">//设置session_id</span></div><div class="line">    session_id($_GET[<span class="string">'SSID'</span>]);</div><div class="line">&#125;</div><div class="line">session_start();</div><div class="line"></div><div class="line">二、 利用常量SID来传送</div><div class="line">    session_start();</div><div class="line">    <span class="keyword">echo</span> SID;</div><div class="line">经过测试 </div><div class="line">SID是第一次访问站点的时候有的内容</div><div class="line">再次访问的时候为空</div></pre></td></tr></table></figure>
-<h4 id="demo中控制非法入侵"><a href="#demo中控制非法入侵" class="headerlink" title="demo中控制非法入侵"></a>demo中控制非法入侵</h4><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">在loginProcess.php中</div><div class="line">判断账号密码正确的操作中 设置Session</div><div class="line">然后在后台页面依次验证</div><div class="line"></div><div class="line">然后考虑退出的时候（暂时只想到了手动点击退出页面</div><div class="line">&lt;a href=<span class="string">"empProcess.php"</span> &gt;安全退出&lt;/a&gt;</div><div class="line">然后empProcss.php中如果没有接收到flag就说明是退出操作  </div><div class="line">退出就清除Session</div><div class="line">session_unset()<span class="comment">;</span></div><div class="line">session_destroy()<span class="comment">;</span></div></pre></td></tr></table></figure>
-<h3 id="Cookie-和-Session"><a href="#Cookie-和-Session" class="headerlink" title="Cookie 和 Session"></a>Cookie 和 Session</h3><h4 id="php-ini-中的设置"><a href="#php-ini-中的设置" class="headerlink" title="php.ini 中的设置"></a>php.ini 中的设置</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">session_name</div><div class="line">设置session的名字</div><div class="line"></div><div class="line">session<span class="selector-class">.save_path</span> = 路径</div><div class="line">网站session目录文件</div><div class="line"></div><div class="line">session<span class="selector-class">.gc_maxlifetime</span> = <span class="number">1440</span> </div><div class="line">最大生命周期</div><div class="line">session<span class="selector-class">.gc_probability</span> = <span class="number">1</span></div><div class="line">session<span class="selector-class">.gc_divisor</span> = <span class="number">1000</span></div><div class="line">一定概率垃圾回收</div><div class="line"></div><div class="line">session<span class="selector-class">.cookie_lifetime</span> = <span class="number">0</span></div><div class="line">cookie默认生命周期，默认是<span class="number">0</span> </div><div class="line">当关闭浏览器后，该cookies生效</div><div class="line"></div><div class="line">session_set_save_handler </div><div class="line">( callable <span class="variable">$open</span> , callable <span class="variable">$close</span> , callable <span class="variable">$read</span> , </div><div class="line">callable <span class="variable">$write</span> , callable <span class="variable">$destroy</span> , callable <span class="variable">$gc</span> [, callable <span class="variable">$create_sid</span> ] )</div><div class="line">可自定义 <span class="variable">$open</span> <span class="variable">$close</span> <span class="variable">$read</span> <span class="variable">$write</span> <span class="variable">$destroy</span> <span class="variable">$gc</span></div></pre></td></tr></table></figure>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Cookie是传送给客户端的</div><div class="line">Session是写到服务端的，并且创建Session时候传回的一个Cookie-SID</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      对Cookie 和 Session的知识总结
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>雇员管理系统项目开发</title>
-    <link href="http://draymonder.me/2018/02/25/the-demo1/"/>
-    <id>http://draymonder.me/2018/02/25/the-demo1/</id>
-    <published>2018-02-25T15:59:59.000Z</published>
-    <updated>2018-03-28T08:02:27.541Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  走一个雇员管理系统的开发，终于能实战演练一些东西了。<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">学习目标：</div><div class="line">    <span class="number">1.</span> 熟练编写规范的项目需求设计说明书</div><div class="line">    <span class="number">2.</span> 熟练编写项目数据库设计说明书</div><div class="line">    <span class="number">3.</span> 提升数据库建模设计能力</div><div class="line">    <span class="number">4.</span> 培养良好的沟通能力和团队合作精神</div><div class="line">    <span class="number">5.</span> 完全OOP设计思想</div><div class="line">    <span class="number">6.</span> 培养良好的编码习惯，代码编写规范。</div></pre></td></tr></table></figure></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="项目入门先知"><a href="#项目入门先知" class="headerlink" title="项目入门先知"></a>项目入门先知</h3><h4 id="phpstorm-设置默认编码"><a href="#phpstorm-设置默认编码" class="headerlink" title="phpstorm 设置默认编码"></a>phpstorm 设置默认编码</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">phpstorm默认编码格式为GBK</div><div class="line">可通过 File —&gt;<span class="built_in"> Settings </span>—&gt; Editor —&gt; File Encodings </div><div class="line">将文件/项目默认的编码改为UTF-8</div></pre></td></tr></table></figure>
-<h4 id="phpstorm-代码提示功能"><a href="#phpstorm-代码提示功能" class="headerlink" title="phpstorm 代码提示功能"></a>phpstorm 代码提示功能</h4><figure class="highlight mathematica"><table><tr><td class="code"><pre><div class="line"><span class="keyword">File</span> —&gt; <span class="keyword">Power</span> <span class="keyword">Save</span> <span class="keyword">Mode</span> </div><div class="line">选择关闭即可</div></pre></td></tr></table></figure>
-<h4 id="phpstorm-常用快捷键"><a href="#phpstorm-常用快捷键" class="headerlink" title="phpstorm 常用快捷键"></a>phpstorm 常用快捷键</h4><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">ctrl</span> + d 复制当前行</div></pre></td></tr></table></figure>
-<h4 id="phpstorm-xDebug环境配置"><a href="#phpstorm-xDebug环境配置" class="headerlink" title="phpstorm + xDebug环境配置"></a>phpstorm + xDebug环境配置</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://my.oschina.net/u/940075/blog/534687"</span>&gt;</span>调试环境配置<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="解决中文乱码"><a href="#解决中文乱码" class="headerlink" title="解决中文乱码"></a>解决中文乱码</h4><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"content-type:text/html; charset=utf-8"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
-<h3 id="项目遇到的问题及解决方案"><a href="#项目遇到的问题及解决方案" class="headerlink" title="项目遇到的问题及解决方案"></a>项目遇到的问题及解决方案</h3><h4 id="让div水平垂直居中的几种方法-需要多看"><a href="#让div水平垂直居中的几种方法-需要多看" class="headerlink" title="让div水平垂直居中的几种方法(需要多看)"></a>让div水平垂直居中的几种方法(需要多看)</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">&lt;<span class="keyword">a</span> href=<span class="string">"https://www.cnblogs.com/dushao/p/5999239.html"</span>&gt;让<span class="keyword">div</span>水平垂直居中的几种方法&lt;/<span class="keyword">a</span>&gt;</div></pre></td></tr></table></figure>
-<h4 id="设置input搜索框的颜色"><a href="#设置input搜索框的颜色" class="headerlink" title="设置input搜索框的颜色"></a>设置input搜索框的颜色</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">input</span>&#123;<span class="attribute">border</span>:<span class="number">1px</span> solid red;<span class="attribute">background-color</span>:transparent;&#125;</div></pre></td></tr></table></figure>
-<h4 id="打印数据库内容"><a href="#打印数据库内容" class="headerlink" title="打印数据库内容"></a>打印数据库内容</h4><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$mysql=<span class="keyword">new</span> mysqli(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>,<span class="string">"hr"</span>);</div><div class="line"><span class="keyword">if</span>($mysql-&gt;connect_error)&#123;</div><div class="line">    <span class="keyword">die</span>(<span class="string">"数据库连接失败"</span>).$mysql-&gt;connect_error;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;table width='700px' border='1' &gt;"</span>;</div><div class="line"><span class="comment">//打印表头</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</div><div class="line">$sql = <span class="string">"select * from emp"</span>;</div><div class="line">$res = $mysql-&gt;query($sql);</div><div class="line"><span class="keyword">while</span>($col=$res-&gt;fetch_field() ) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;th&gt;&#123;$col-&gt;name&#125;&lt;/th&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</div><div class="line"><span class="keyword">while</span> ($row = $res-&gt;fetch_row() )&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</div><div class="line">    <span class="keyword">foreach</span> ($row <span class="keyword">as</span> $val)&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;td&gt;$val&lt;/td&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;/table&gt;"</span>;</div><div class="line">$res-&gt;free();</div><div class="line">$mysql-&gt;close();</div></pre></td></tr></table></figure>
-<h4 id="分页显示"><a href="#分页显示" class="headerlink" title="分页显示"></a>分页显示</h4><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">分页中必须使用的变量</div><div class="line"><span class="meta">$</span><span class="bash">pageNow --&gt; 当前页 用户输入</span></div><div class="line"><span class="meta">$</span><span class="bash">pageCount --&gt; 总共有几页</span></div><div class="line"><span class="meta">$</span><span class="bash">rowCount  --&gt; 总共有多少条记录 [数据库获取]</span></div><div class="line"><span class="meta">$</span><span class="bash">pageSize --&gt; 每页显示几条记录 [程序员自己定]</span></div><div class="line"></div><div class="line">/*实例*/</div><div class="line"><span class="meta">$</span><span class="bash">pageSize = 4; //每页有四条记录</span></div><div class="line"><span class="meta">$</span><span class="bash">rowCount = <span class="variable">$res</span>-&gt;num_rows; //总共有多少条记录</span></div><div class="line">//$pageNow = 1; //第一页 用户指定</div><div class="line"><span class="meta">if(isset($</span><span class="bash">_GET[<span class="string">'pageNow'</span>])) &#123;</span></div><div class="line">    $pageNow = $_GET['pageNow'];</div><div class="line">&#125;else &#123;</div><div class="line">    $pageNow = 1;</div><div class="line">&#125;</div><div class="line"><span class="meta">$</span><span class="bash">pageCount = ceil(<span class="variable">$rowCount</span>/<span class="variable">$pageSize</span>);</span></div><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">test</span> = (<span class="variable">$pageNow</span>-1) * <span class="variable">$pageSize</span>;</span></div><div class="line"><span class="meta">$</span><span class="bash">sql = <span class="string">"select * from emp limit <span class="variable">$test</span>,<span class="variable">$pageSize</span>"</span>;</span></div><div class="line"><span class="meta">$</span><span class="bash">res = <span class="variable">$mysql</span>-&gt;query(<span class="variable">$sql</span>);</span></div></pre></td></tr></table></figure>
-<h4 id="删除整个数据表内容"><a href="#删除整个数据表内容" class="headerlink" title="删除整个数据表内容"></a>删除整个数据表内容</h4><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name; //效率高</div><div class="line"><span class="keyword">delete</span> * <span class="keyword">from</span> table_name;  //需要写服务器log</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>一个项目,重构了好几次代码。 最主要的还是逻辑有些乱，直接上手代码，导致效率很低。<br>大概过程是 业务逻辑 -&gt;框架改进 -&gt; 代码重构 -&gt; 面向对象 -&gt; 安全性和拓展性考虑 -&gt; 优化算法 -&gt; 前端显示<br>使用M(Model)V(View)C(Controler)模式，把用户的输入，数据的处理，页面的显示分别处理,易于项目的维护和拓展。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      记录雇员管理系统(简易)项目开发的过程
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
-    
-      <category term="demo" scheme="http://draymonder.me/tags/demo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新的期待，新的向往</title>
-    <link href="http://draymonder.me/2018/02/24/the-diary-02-24/"/>
-    <id>http://draymonder.me/2018/02/24/the-diary-02-24/</id>
-    <published>2018-02-24T09:00:00.000Z</published>
-    <updated>2018-03-28T08:04:47.043Z</updated>
+    <updated>2018-03-28T09:08:50.227Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  寒假就快过完了呢，给自己一个心情的整理，以及对未来的向往。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h3><h4 id="所做"><a href="#所做" class="headerlink" title="所做"></a>所做</h4><ol>
@@ -356,11 +167,159 @@
   </entry>
   
   <entry>
+    <title>php xml操作</title>
+    <link href="http://draymonder.me/2018/03/06/the-xml/"/>
+    <id>http://draymonder.me/2018/03/06/the-xml/</id>
+    <published>2018-03-06T07:20:20.000Z</published>
+    <updated>2018-03-28T09:10:04.710Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">imgs</span>&gt;</span>&lt;![CDATA[$&lt;$$#@&gt;]]&gt;<span class="tag">&lt;/<span class="name">imgs</span>&gt;</span></div><div class="line"></div><div class="line">CDATA的基本语法</div><div class="line">&lt;![CDATA[内容]]&gt;</div><div class="line"></div><div class="line">面试题: 如何使用xml文件来传递，保存一个图片</div><div class="line">答: 使用程序先读入到内存</div><div class="line">然后保存到xml的&lt;![CDATA[文件内容]]&gt;中</div></pre></td></tr></table></figure>
+<h3 id="xml的PI处理指令"><a href="#xml的PI处理指令" class="headerlink" title="xml的PI处理指令"></a>xml的PI处理指令</h3><figure class="highlight processing"><table><tr><td class="code"><pre><div class="line">通过<span class="literal">PI</span>指令来引入CSS样式文件：</div><div class="line"></div><div class="line"><span class="literal">PI</span>指令的弊端：</div><div class="line">    只对英文的标签起作用，对中文的标签不起作用。 </div><div class="line"></div><div class="line"><span class="comment">//和html引用css大同小异</span></div><div class="line">&lt;?xml-stylesheet  type=<span class="string">"text/css"</span> href=<span class="string">"txt.css"</span>?&gt;  </div><div class="line"></div><div class="line"><span class="comment">//txt.css内容</span></div><div class="line">name&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">red</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">age&#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>:<span class="built_in">green</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="dtd-Document-Type-Definition"><a href="#dtd-Document-Type-Definition" class="headerlink" title="dtd (Document Type Definition"></a>dtd (Document Type Definition</h3><p>为了约束xml文件，使xml语义合法<br><a href="http://blog.csdn.net/gavin_john/article/details/51532756" target="_blank" rel="external">dtd详解</a><br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">基本语法</div><div class="line"><span class="params">&lt;!ELEMENT 元素名 类型&gt;</span> <span class="comment">//元素约束</span></div><div class="line"><span class="params">&lt;!ATTLIST 元素名&gt;</span> <span class="comment">//属性约束</span></div><div class="line"><span class="params">&lt;!ENTITY 元素名 "引用内容"&gt;</span> <span class="comment">//用元素名来表示引用的内容</span></div></pre></td></tr></table></figure></p>
+<h3 id="phpDom快速入门"><a href="#phpDom快速入门" class="headerlink" title="phpDom快速入门"></a>phpDom快速入门</h3><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$xmldoc = <span class="keyword">new</span> DomDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line"><span class="comment">//读文件的时候用load方法</span></div><div class="line"><span class="comment">//读字符串的时候用 loadXML方法 </span></div><div class="line"><span class="comment">//eg: $xmldoc-&gt;loadXML('&lt;root&gt;&lt;node/&gt;&lt;/root&gt;');</span></div><div class="line"></div><div class="line"><span class="comment">//找到root节点</span></div><div class="line">$nodeLists=$xmldoc-&gt;getElementsByTagName(<span class="string">"stu"</span>); <span class="comment">//返回的是结果集合 </span></div><div class="line">$nodeList = $nodeLists-&gt;item(<span class="number">0</span>); </div><div class="line"><span class="comment">//上面直接就已经找到root节点了</span></div><div class="line"></div><div class="line"><span class="comment">//新增name节点</span></div><div class="line">$node_name = $xmldoc-&gt;createElement(<span class="string">"name"</span>);</div><div class="line">$node_name-&gt;nodeValue = <span class="string">"我喜欢你"</span>;</div><div class="line"></div><div class="line"><span class="comment">//新增age节点</span></div><div class="line">$node_age = $xmldoc-&gt;createElement(<span class="string">"age"</span>);</div><div class="line">$node_age-&gt;nodeValue = <span class="string">"20"</span>;</div><div class="line"></div><div class="line"><span class="comment">//root节点下挂载 name节点和age节点</span></div><div class="line">$root-&gt;appendChild($node_name); </div><div class="line">$root-&gt;appendChild($node_age);</div><div class="line"></div><div class="line"><span class="comment">//内存中修改完毕以后 还要保存文件内容</span></div><div class="line">$xmldoc-&gt;save(<span class="string">"test.xml"</span>);</div><div class="line"></div><div class="line"><span class="comment">//删除操作</span></div><div class="line">$test-&gt;parentNode-&gt;removeChild($test);</div><div class="line"></div><div class="line"><span class="comment">//更新操作</span></div><div class="line">找到那个需要修改的节点 直接改 nodeValue属性就可以</div><div class="line"></div><div class="line"><span class="comment">//设置属性</span></div><div class="line">setAttribute (string $name ,string $value) </div><div class="line">添加属性为$name 属性值$value的属性</div></pre></td></tr></table></figure>
+<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><p>php dom技术可以跨层取出，但是不能保持层次关系，使用xpath可以解决<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">这种技术相当于是知道节点所在的层级，然后通过层级关系来找相应的节点</div><div class="line">$xmldoc = <span class="keyword">new</span> DOMDocument();</div><div class="line">$xmldoc-&gt;load(<span class="string">"test.xml"</span>);</div><div class="line">$xpath = <span class="keyword">new</span> DOMXPath($xmldoc);</div><div class="line">$node_list = $xpath-&gt;query(<span class="string">"/stu"</span>);</div><div class="line"><span class="keyword">echo</span> $node_list-&gt;length;</div></pre></td></tr></table></figure></p>
+<h3 id="SimpleXML"><a href="#SimpleXML" class="headerlink" title="SimpleXML"></a>SimpleXML</h3><p>以面向对象方式来操作xml文件<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//装载文件</span></div><div class="line">$stu = simplexml_load_file(<span class="string">"test.xml"</span>);</div><div class="line">$name  = $stu-&gt;name;</div><div class="line"></div><div class="line">var_dump($name);</div><div class="line"><span class="keyword">foreach</span> ($name <span class="keyword">as</span> $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"$value &lt;br&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//还有装载方式从DOM对象</span></div><div class="line">simplexml_import_dom</div><div class="line"></div><div class="line"><span class="comment">//装载字符串</span></div><div class="line">simplexml_load_string</div></pre></td></tr></table></figure></p>
+<h3 id="超链接统一打开问题"><a href="#超链接统一打开问题" class="headerlink" title="超链接统一打开问题"></a>超链接统一打开问题</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>比预想的进度晚了好多，寒假也没有接触爬虫和Java,Linux也是空手而归..<br>新的学期还有好多好多的比赛，希望自己能坚持下去，Just do what you want to do.<br>没有那么多的约束，尽情去展现自己的水平吧。<br>To learn,to try.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      php 中xml编程操作
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP 绘图技术</title>
+    <link href="http://draymonder.me/2018/03/01/the-gd/"/>
+    <id>http://draymonder.me/2018/03/01/the-gd/</id>
+    <published>2018-03-01T08:00:00.000Z</published>
+    <updated>2018-03-28T09:10:09.923Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  学习矢量图片(验证码)，报表的绘制，生成。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
+<h3 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">gif 图片压缩率高，</div><div class="line">但是只能显示<span class="number">256</span>色可能造成颜色丢失，但可以显示动画</div><div class="line"></div><div class="line">jpg/jpeg 图片的压缩率高，可以用较小的文件来显示</div><div class="line">网页上用的比较多</div><div class="line"></div><div class="line">png，高仿真</div><div class="line">综合了gif和jpg的优势，但是不能显示动画</div></pre></td></tr></table></figure>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line"><span class="meta">$</span><span class="bash">img = imagecreatetruecolor(100,100);</span></div><div class="line"></div><div class="line">取色</div><div class="line"><span class="meta">$</span><span class="bash">red = imagecolorallocate(<span class="variable">$img</span>, 255, 0, 0);</span></div><div class="line"></div><div class="line">画图</div><div class="line">•imagefilledarc — 画一椭圆弧且填充</div><div class="line">•imagefilledellipse — 画一椭圆并填充</div><div class="line">•imagefilledpolygon — 画一多边形并填充</div><div class="line">•imagefilledrectangle — 画一矩形并填充</div><div class="line"></div><div class="line">输出到浏览器</div><div class="line">header("content-type: image/png");</div><div class="line"><span class="meta">imagepng($</span><span class="bash">img);</span></div><div class="line"></div><div class="line">销毁</div><div class="line"><span class="meta">imagedestroy($</span><span class="bash">img);</span></div></pre></td></tr></table></figure>
+<h3 id="图片到画布"><a href="#图片到画布" class="headerlink" title="图片到画布"></a>图片到画布</h3><figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span> = imagecreatefromgif(filename);</span></div><div class="line"><span class="meta"><span class="meta-keyword">$srcImage</span>_info = getimagesize(filename);</span></div><div class="line">imagecopy(dst_im, src_im, dst_x, dst_y, </div><div class="line">    src_x, src_y, src_w, src_h);</div><div class="line">具体参数含义 不懂看文档</div></pre></td></tr></table></figure>
+<h3 id="写字"><a href="#写字" class="headerlink" title="写字"></a>写字</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">imagettftext(<span class="keyword">image</span>, <span class="keyword">size</span>, <span class="keyword">angle</span>, x, y, </div><div class="line">    <span class="keyword">color</span>, fontfile, <span class="keyword">text</span>)</div></pre></td></tr></table></figure>
+<h3 id="生成验证码"><a href="#生成验证码" class="headerlink" title="生成验证码"></a>生成验证码</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * Created by PhpStorm.</span></div><div class="line"><span class="comment">    * User: draymonder</span></div><div class="line"><span class="comment">    * Date: 2018/3/1</span></div><div class="line"><span class="comment">    * Time: 15:15</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    $checkcode =<span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">4</span>;$i++)&#123;</div><div class="line">        $checkcode.= dechex(<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">15</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $img = imagecreatetruecolor(<span class="number">200</span>,<span class="number">30</span>);</div><div class="line"></div><div class="line">    <span class="comment">//背景颜色</span></div><div class="line">    $bgcolor = imagecolorallocate($img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    imagefill($img,<span class="number">0</span>,<span class="number">0</span>,$bgcolor);</div><div class="line"></div><div class="line">    <span class="comment">//添加干扰线</span></div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">10</span>;$i++)&#123;</div><div class="line">        $color = imagecolorallocate($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">255</span>));</div><div class="line">        imageline($img,<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">200</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">30</span>),$color);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//白色，字体颜色</span></div><div class="line">    $white = imagecolorallocate($img,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);</div><div class="line">    <span class="comment">//添加字符串</span></div><div class="line">    imagestring($img,<span class="keyword">rand</span>(<span class="number">4</span>,<span class="number">6</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">180</span>),<span class="keyword">rand</span>(<span class="number">0</span>,<span class="number">20</span>),$checkcode,$white);</div><div class="line">    header(<span class="string">"content-type: image/png"</span>);</div><div class="line">    imagepng($img);</div><div class="line">    imagedestroy($img);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  从现在开始，一切都还不晚！前半生与后半生的分界线是在哪里？<br>答：此时此刻。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      php绘图的基本原理和步骤
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php 文件操作</title>
+    <link href="http://draymonder.me/2018/02/27/the-io/"/>
+    <id>http://draymonder.me/2018/02/27/the-io/</id>
+    <published>2018-02-27T10:00:00.000Z</published>
+    <updated>2018-03-28T09:10:15.724Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文件，保存数据（二进制数据，文本数据）<br>  文件在程序中是以流的形式来操作的</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">"PRC"</span>); </div><div class="line"><span class="variable">$path</span> = <span class="string">"test.txt"</span>;</div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$path</span>,<span class="string">"r"</span>); <span class="regexp">//</span>打开文件</div><div class="line"><span class="variable">$file_info</span> = fstat(<span class="variable">$fp</span>); <span class="regexp">//</span>读取资源信息</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;pre&gt;"</span>;</div><div class="line"><span class="regexp">//</span> var_dump(<span class="variable">$file_info</span>);</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">echo <span class="string">"&lt;br&gt;上次修改时间"</span>.date(<span class="string">"Y-m-d H:i:s"</span>,<span class="variable">$file_info</span>[<span class="string">'atime'</span>]);</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line"></div><div class="line">[atime] 文件上一次被访问的时间</div><div class="line">[mtime] 文件上一次内容被修改的时间</div><div class="line">[ctime] 文件上一次 文件所有者<span class="regexp">/文件所在组 修改/</span>change</div><div class="line">单用户可以认为是创建时间</div></pre></td></tr></table></figure>
+<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="keyword">fread</span>($fp, filesize($path));</div><div class="line">    $con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">    echo <span class="string">"$con"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">第二种方法</div><div class="line">$con = file_get_contents($path);</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$con);</div><div class="line">echo $con;</div><div class="line"></div><div class="line">第三种方法</div><div class="line">$buffer = <span class="number">1024</span>;</div><div class="line">$str = <span class="string">""</span>;</div><div class="line"><span class="keyword">while</span> (!<span class="keyword">feof</span>($fp))&#123;</div><div class="line">    $str.= <span class="keyword">fread</span>($fp,$buffer);</div><div class="line">&#125;</div><div class="line">$con = str_ireplace(<span class="string">"\r\n"</span>,<span class="string">"&lt;br&gt;"</span>,$str);</div><div class="line">echo $con;</div></pre></td></tr></table></figure>
+<h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">第一种方法</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line"><span class="keyword">if</span>(file_exists($path))&#123;</div><div class="line">    $fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line">    $con = <span class="string">"你好"</span>;</div><div class="line">    <span class="keyword">fwrite</span>($fp, $con);</div><div class="line">&#125;</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line">a: append w: write</div><div class="line"></div><div class="line">第二种方法(直接添加字符串)</div><div class="line">$path = <span class="string">"test.txt"</span>;</div><div class="line">$con = <span class="string">"北京你好\r\n"</span>;</div><div class="line">file_put_contents($path, $con,FILE_APPEND);</div></pre></td></tr></table></figure>
+<h3 id="拷贝图片"><a href="#拷贝图片" class="headerlink" title="拷贝图片"></a>拷贝图片</h3><figure class="highlight autoit"><table><tr><td class="code"><pre><div class="line">$path = <span class="string">"C:\\Users\\ixiao\\Pictures\\Kyire\\kyire.jpeg"</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span>(!copy($path,<span class="string">"d:\\1.jpeg"</span>))&#123;</div><div class="line">    echo <span class="string">"error"</span><span class="comment">;</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    echo <span class="string">"ok"</span><span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">如果有中文路径，那么用</div><div class="line"><span class="built_in">string</span> iconv ( <span class="built_in">string</span> $in_charset , <span class="built_in">string</span> $out_charset </div><div class="line">    , <span class="built_in">string</span> $str )</div><div class="line">将字符串 str 从 in_charset 转换编码到 out_charset。</div></pre></td></tr></table></figure>
+<h3 id="创建-删除文件夹"><a href="#创建-删除文件夹" class="headerlink" title="创建/删除文件夹"></a>创建/删除文件夹</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">madir</span><span class="params">(dirname)</span></span></div><div class="line"><span class="function"><span class="title">rmdir</span><span class="params">(dirname)</span></span></div></pre></td></tr></table></figure>
+<h3 id="创建-删除文件"><a href="#创建-删除文件" class="headerlink" title="创建/删除文件"></a>创建/删除文件</h3><figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">$fp = <span class="keyword">fopen</span>($path,<span class="string">"a+"</span>);</div><div class="line"><span class="keyword">fwrite</span>($fp,$string);</div><div class="line"><span class="keyword">fclose</span>($fp);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(is_file($path))&#123;</div><div class="line">    unlink($path);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="用form上传文件"><a href="#用form上传文件" class="headerlink" title="用form上传文件"></a>用form上传文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&lt;form action=<span class="string">""</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> name=<span class="string">"myfile"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">用<span class="variable">$_FILES</span>来记录上传的文件</div><div class="line"><span class="keyword">if</span>(is_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>]))&#123;</div><div class="line">    <span class="variable">$uploaded_file</span> = <span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'tmp_name'</span>];</div><div class="line">    <span class="variable">$move_to_file</span> = <span class="variable">$_SERVER</span>[<span class="string">'DOCUMENT_ROOT'</span>].<span class="string">"file/"</span>.</div><div class="line">    iconv(<span class="string">"utf-8"</span>,<span class="string">"gb2312"</span>,<span class="variable">$_FILES</span>[<span class="string">'myfile'</span>][<span class="string">'name'</span>]);</div><div class="line">    move_uploaded_file(<span class="variable">$uploaded_file</span>, <span class="variable">$move_to_file</span>);</div><div class="line">&#125;</div><div class="line">控制用户上传的类型，大小</div><div class="line">防止重名文件的覆盖，以及按照用户ID来建立文件夹</div><div class="line"></div><div class="line">数据库存放 文件的path，user，introduction</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      php 中对文件操作
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cookie 和 Session</title>
+    <link href="http://draymonder.me/2018/02/27/the-cookie-and-session/"/>
+    <id>http://draymonder.me/2018/02/27/the-cookie-and-session/</id>
+    <published>2018-02-27T08:00:00.000Z</published>
+    <updated>2018-03-28T09:10:20.021Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>会话支持在 PHP 中是在并发访问时由一个方法来保存某些数据.从而使你能够构建更多的定制程序 从而提高你的 web 网站的吸引力.<br>cookie 是一种在远程浏览器端储存数据并以此来跟踪和识别用户的机制。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="Setting-new-cookie"><a href="#Setting-new-cookie" class="headerlink" title="Setting new cookie"></a>Setting new cookie</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line">&lt;?php </div><div class="line"> setcookie(<span class="string">"name"</span>,<span class="string">"value"</span>,<span class="built_in">time</span>()+$int);</div><div class="line">/*<span class="built_in">name</span> <span class="keyword">is</span> your cookie's <span class="built_in">name</span></div><div class="line"> value <span class="keyword">is</span> cookie's value</div><div class="line"> $int <span class="keyword">is</span> <span class="built_in">time</span> <span class="keyword">of</span> cookie expires*/</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h4 id="Getting-Cookie"><a href="#Getting-Cookie" class="headerlink" title="Getting Cookie"></a>Getting Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"><span class="keyword">echo</span> $_COOKIE[<span class="string">"your cookie name"</span>];</span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
+<h4 id="Updating-Cookie"><a href="#Updating-Cookie" class="headerlink" title="Updating Cookie"></a>Updating Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"> setcookie(<span class="string">"color"</span>,<span class="string">"red"</span>);</span></div><div class="line"><span class="php"> <span class="keyword">echo</span> $_COOKIE[<span class="string">"color"</span>];</span></div><div class="line"><span class="php"><span class="comment">/*color is red*/</span></span></div><div class="line"><span class="php"> <span class="comment">/* your codes and functions*/</span></span></div><div class="line"><span class="php">setcookie(<span class="string">"color"</span>,<span class="string">"blue"</span>);</span></div><div class="line"><span class="php"> <span class="keyword">echo</span> $_COOKIE[<span class="string">"color"</span>];</span></div><div class="line"><span class="php"><span class="comment">/*new color is blue*/</span></span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
+<h4 id="Deleting-Cookie"><a href="#Deleting-Cookie" class="headerlink" title="Deleting Cookie"></a>Deleting Cookie</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> ==============================</div><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line"><span class="php"><span class="keyword">unset</span>($_COOKIE[<span class="string">"yourcookie"</span>]);</span></div><div class="line"><span class="php"><span class="comment">/*Or*/</span></span></div><div class="line"><span class="php">setcookie(<span class="string">"yourcookie"</span>,<span class="string">"yourvalue"</span>,time()<span class="number">-1</span>);</span></div><div class="line"><span class="php"><span class="comment">/*it expired so it's deleted*/</span></span></div><div class="line"><span class="php"><span class="meta">?&gt;</span></span></div></pre></td></tr></table></figure>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">创建</div><div class="line">session_start();</div><div class="line"><span class="meta">$</span><span class="bash">_SESSION[<span class="string">'name'</span>] = <span class="string">"draymonder"</span>;</span></div><div class="line"></div><div class="line">如果要取出对象，则需要实现申明一下类的定义信息</div><div class="line"></div><div class="line">删除</div><div class="line"><span class="meta">unset($</span><span class="bash">_SESSION[<span class="string">'name'</span>]);</span></div><div class="line"></div><div class="line">使用时候要开启</div><div class="line">session_start();</div></pre></td></tr></table></figure>
+<h4 id="session-unset-和-session-destroy之间的区别"><a href="#session-unset-和-session-destroy之间的区别" class="headerlink" title="session_unset 和 session_destroy之间的区别"></a>session_unset 和 session_destroy之间的区别</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><div class="line">  session_<span class="keyword">unset</span>只是清除sesison的使用。 会话仍在用户计算机上。 请注意，通过使用session_<span class="keyword">unset</span>，该变量仍然存在。</div><div class="line"></div><div class="line">  然而，使用session_<span class="keyword">unset</span>与session_destroy一起使用，实际上是清除数据的更有效方法。 正如上面的例子所述，这个工作非常好，跨浏览器：</div><div class="line"></div><div class="line"> session_<span class="keyword">unset</span>（）;</div><div class="line"> session_destroy（）;</div></pre></td></tr></table></figure>
+<h4 id="如果客户端禁用Cookie-怎么实现session共享多个页面？"><a href="#如果客户端禁用Cookie-怎么实现session共享多个页面？" class="headerlink" title="如果客户端禁用Cookie 怎么实现session共享多个页面？"></a>如果客户端禁用Cookie 怎么实现session共享多个页面？</h4><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">一、 利用http协议传送SSID=sessinId()</div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'SSID'</span>])) &#123;</div><div class="line">    <span class="comment">//设置session_id</span></div><div class="line">    session_id($_GET[<span class="string">'SSID'</span>]);</div><div class="line">&#125;</div><div class="line">session_start();</div><div class="line"></div><div class="line">二、 利用常量SID来传送</div><div class="line">    session_start();</div><div class="line">    <span class="keyword">echo</span> SID;</div><div class="line">经过测试 </div><div class="line">SID是第一次访问站点的时候有的内容</div><div class="line">再次访问的时候为空</div></pre></td></tr></table></figure>
+<h4 id="demo中控制非法入侵"><a href="#demo中控制非法入侵" class="headerlink" title="demo中控制非法入侵"></a>demo中控制非法入侵</h4><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">在loginProcess.php中</div><div class="line">判断账号密码正确的操作中 设置Session</div><div class="line">然后在后台页面依次验证</div><div class="line"></div><div class="line">然后考虑退出的时候（暂时只想到了手动点击退出页面</div><div class="line">&lt;a href=<span class="string">"empProcess.php"</span> &gt;安全退出&lt;/a&gt;</div><div class="line">然后empProcss.php中如果没有接收到flag就说明是退出操作  </div><div class="line">退出就清除Session</div><div class="line">session_unset()<span class="comment">;</span></div><div class="line">session_destroy()<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="Cookie-和-Session"><a href="#Cookie-和-Session" class="headerlink" title="Cookie 和 Session"></a>Cookie 和 Session</h3><h4 id="php-ini-中的设置"><a href="#php-ini-中的设置" class="headerlink" title="php.ini 中的设置"></a>php.ini 中的设置</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">session_name</div><div class="line">设置session的名字</div><div class="line"></div><div class="line">session<span class="selector-class">.save_path</span> = 路径</div><div class="line">网站session目录文件</div><div class="line"></div><div class="line">session<span class="selector-class">.gc_maxlifetime</span> = <span class="number">1440</span> </div><div class="line">最大生命周期</div><div class="line">session<span class="selector-class">.gc_probability</span> = <span class="number">1</span></div><div class="line">session<span class="selector-class">.gc_divisor</span> = <span class="number">1000</span></div><div class="line">一定概率垃圾回收</div><div class="line"></div><div class="line">session<span class="selector-class">.cookie_lifetime</span> = <span class="number">0</span></div><div class="line">cookie默认生命周期，默认是<span class="number">0</span> </div><div class="line">当关闭浏览器后，该cookies生效</div><div class="line"></div><div class="line">session_set_save_handler </div><div class="line">( callable <span class="variable">$open</span> , callable <span class="variable">$close</span> , callable <span class="variable">$read</span> , </div><div class="line">callable <span class="variable">$write</span> , callable <span class="variable">$destroy</span> , callable <span class="variable">$gc</span> [, callable <span class="variable">$create_sid</span> ] )</div><div class="line">可自定义 <span class="variable">$open</span> <span class="variable">$close</span> <span class="variable">$read</span> <span class="variable">$write</span> <span class="variable">$destroy</span> <span class="variable">$gc</span></div></pre></td></tr></table></figure>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Cookie是传送给客户端的</div><div class="line">Session是写到服务端的，并且创建Session时候传回的一个Cookie-SID</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      对Cookie 和 Session的知识总结
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>雇员管理系统项目开发</title>
+    <link href="http://draymonder.me/2018/02/25/the-demo1/"/>
+    <id>http://draymonder.me/2018/02/25/the-demo1/</id>
+    <published>2018-02-25T15:59:59.000Z</published>
+    <updated>2018-03-28T09:08:58.457Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  走一个雇员管理系统的开发，终于能实战演练一些东西了。<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">学习目标：</div><div class="line">    <span class="number">1.</span> 熟练编写规范的项目需求设计说明书</div><div class="line">    <span class="number">2.</span> 熟练编写项目数据库设计说明书</div><div class="line">    <span class="number">3.</span> 提升数据库建模设计能力</div><div class="line">    <span class="number">4.</span> 培养良好的沟通能力和团队合作精神</div><div class="line">    <span class="number">5.</span> 完全OOP设计思想</div><div class="line">    <span class="number">6.</span> 培养良好的编码习惯，代码编写规范。</div></pre></td></tr></table></figure></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="项目入门先知"><a href="#项目入门先知" class="headerlink" title="项目入门先知"></a>项目入门先知</h3><h4 id="phpstorm-设置默认编码"><a href="#phpstorm-设置默认编码" class="headerlink" title="phpstorm 设置默认编码"></a>phpstorm 设置默认编码</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">phpstorm默认编码格式为GBK</div><div class="line">可通过 File —&gt;<span class="built_in"> Settings </span>—&gt; Editor —&gt; File Encodings </div><div class="line">将文件/项目默认的编码改为UTF-8</div></pre></td></tr></table></figure>
+<h4 id="phpstorm-代码提示功能"><a href="#phpstorm-代码提示功能" class="headerlink" title="phpstorm 代码提示功能"></a>phpstorm 代码提示功能</h4><figure class="highlight mathematica"><table><tr><td class="code"><pre><div class="line"><span class="keyword">File</span> —&gt; <span class="keyword">Power</span> <span class="keyword">Save</span> <span class="keyword">Mode</span> </div><div class="line">选择关闭即可</div></pre></td></tr></table></figure>
+<h4 id="phpstorm-常用快捷键"><a href="#phpstorm-常用快捷键" class="headerlink" title="phpstorm 常用快捷键"></a>phpstorm 常用快捷键</h4><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">ctrl</span> + d 复制当前行</div></pre></td></tr></table></figure>
+<h4 id="phpstorm-xDebug环境配置"><a href="#phpstorm-xDebug环境配置" class="headerlink" title="phpstorm + xDebug环境配置"></a>phpstorm + xDebug环境配置</h4><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://my.oschina.net/u/940075/blog/534687"</span>&gt;</span>调试环境配置<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="解决中文乱码"><a href="#解决中文乱码" class="headerlink" title="解决中文乱码"></a>解决中文乱码</h4><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">header(<span class="string">"content-type:text/html; charset=utf-8"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="项目遇到的问题及解决方案"><a href="#项目遇到的问题及解决方案" class="headerlink" title="项目遇到的问题及解决方案"></a>项目遇到的问题及解决方案</h3><h4 id="让div水平垂直居中的几种方法-需要多看"><a href="#让div水平垂直居中的几种方法-需要多看" class="headerlink" title="让div水平垂直居中的几种方法(需要多看)"></a>让div水平垂直居中的几种方法(需要多看)</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">&lt;<span class="keyword">a</span> href=<span class="string">"https://www.cnblogs.com/dushao/p/5999239.html"</span>&gt;让<span class="keyword">div</span>水平垂直居中的几种方法&lt;/<span class="keyword">a</span>&gt;</div></pre></td></tr></table></figure>
+<h4 id="设置input搜索框的颜色"><a href="#设置input搜索框的颜色" class="headerlink" title="设置input搜索框的颜色"></a>设置input搜索框的颜色</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">input</span>&#123;<span class="attribute">border</span>:<span class="number">1px</span> solid red;<span class="attribute">background-color</span>:transparent;&#125;</div></pre></td></tr></table></figure>
+<h4 id="打印数据库内容"><a href="#打印数据库内容" class="headerlink" title="打印数据库内容"></a>打印数据库内容</h4><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$mysql=<span class="keyword">new</span> mysqli(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>,<span class="string">"hr"</span>);</div><div class="line"><span class="keyword">if</span>($mysql-&gt;connect_error)&#123;</div><div class="line">    <span class="keyword">die</span>(<span class="string">"数据库连接失败"</span>).$mysql-&gt;connect_error;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;table width='700px' border='1' &gt;"</span>;</div><div class="line"><span class="comment">//打印表头</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</div><div class="line">$sql = <span class="string">"select * from emp"</span>;</div><div class="line">$res = $mysql-&gt;query($sql);</div><div class="line"><span class="keyword">while</span>($col=$res-&gt;fetch_field() ) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;th&gt;&#123;$col-&gt;name&#125;&lt;/th&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</div><div class="line"><span class="keyword">while</span> ($row = $res-&gt;fetch_row() )&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</div><div class="line">    <span class="keyword">foreach</span> ($row <span class="keyword">as</span> $val)&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;td&gt;$val&lt;/td&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;/table&gt;"</span>;</div><div class="line">$res-&gt;free();</div><div class="line">$mysql-&gt;close();</div></pre></td></tr></table></figure>
+<h4 id="分页显示"><a href="#分页显示" class="headerlink" title="分页显示"></a>分页显示</h4><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">分页中必须使用的变量</div><div class="line"><span class="meta">$</span><span class="bash">pageNow --&gt; 当前页 用户输入</span></div><div class="line"><span class="meta">$</span><span class="bash">pageCount --&gt; 总共有几页</span></div><div class="line"><span class="meta">$</span><span class="bash">rowCount  --&gt; 总共有多少条记录 [数据库获取]</span></div><div class="line"><span class="meta">$</span><span class="bash">pageSize --&gt; 每页显示几条记录 [程序员自己定]</span></div><div class="line"></div><div class="line">/*实例*/</div><div class="line"><span class="meta">$</span><span class="bash">pageSize = 4; //每页有四条记录</span></div><div class="line"><span class="meta">$</span><span class="bash">rowCount = <span class="variable">$res</span>-&gt;num_rows; //总共有多少条记录</span></div><div class="line">//$pageNow = 1; //第一页 用户指定</div><div class="line"><span class="meta">if(isset($</span><span class="bash">_GET[<span class="string">'pageNow'</span>])) &#123;</span></div><div class="line">    $pageNow = $_GET['pageNow'];</div><div class="line">&#125;else &#123;</div><div class="line">    $pageNow = 1;</div><div class="line">&#125;</div><div class="line"><span class="meta">$</span><span class="bash">pageCount = ceil(<span class="variable">$rowCount</span>/<span class="variable">$pageSize</span>);</span></div><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">test</span> = (<span class="variable">$pageNow</span>-1) * <span class="variable">$pageSize</span>;</span></div><div class="line"><span class="meta">$</span><span class="bash">sql = <span class="string">"select * from emp limit <span class="variable">$test</span>,<span class="variable">$pageSize</span>"</span>;</span></div><div class="line"><span class="meta">$</span><span class="bash">res = <span class="variable">$mysql</span>-&gt;query(<span class="variable">$sql</span>);</span></div></pre></td></tr></table></figure>
+<h4 id="删除整个数据表内容"><a href="#删除整个数据表内容" class="headerlink" title="删除整个数据表内容"></a>删除整个数据表内容</h4><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name; //效率高</div><div class="line"><span class="keyword">delete</span> * <span class="keyword">from</span> table_name;  //需要写服务器log</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>一个项目,重构了好几次代码。 最主要的还是逻辑有些乱，直接上手代码，导致效率很低。<br>大概过程是 业务逻辑 -&gt;框架改进 -&gt; 代码重构 -&gt; 面向对象 -&gt; 安全性和拓展性考虑 -&gt; 优化算法 -&gt; 前端显示<br>使用M(Model)V(View)C(Controler)模式，把用户的输入，数据的处理，页面的显示分别处理,易于项目的维护和拓展。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      记录雇员管理系统(简易)项目开发的过程
+    
+    </summary>
+    
+    
+      <category term="Demo" scheme="http://draymonder.me/tags/Demo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>预定义超全局数组</title>
     <link href="http://draymonder.me/2018/02/22/the-globalArray/"/>
     <id>http://draymonder.me/2018/02/22/the-globalArray/</id>
     <published>2018-02-22T04:00:00.000Z</published>
-    <updated>2018-02-25T14:49:23.409Z</updated>
+    <updated>2018-03-28T09:10:23.720Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PHP设计者提供超全局数组的目的是为了让PHP程序员可以更方便快捷的编写程序</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">GLOBALS </span></div><div class="line"><span class="meta">$</span><span class="bash">_SERVER</span></div><div class="line"><span class="meta">$</span><span class="bash">_REQUEST</span></div><div class="line"><span class="meta">$</span><span class="bash">_POST</span></div><div class="line"><span class="meta">$</span><span class="bash">_GET</span></div><div class="line"><span class="meta">$</span><span class="bash">_ENV //获取环境变量，不要用</span></div><div class="line"><span class="meta">$</span><span class="bash">_FILES</span></div><div class="line"><span class="meta">$</span><span class="bash">_COOKIE</span></div><div class="line"><span class="meta">$</span><span class="bash">_SESSION</span></div></pre></td></tr></table></figure>
@@ -377,7 +336,7 @@
     </summary>
     
     
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
     
   </entry>
   
@@ -386,7 +345,7 @@
     <link href="http://draymonder.me/2018/02/14/the-use-mysql/"/>
     <id>http://draymonder.me/2018/02/14/the-use-mysql/</id>
     <published>2018-02-14T15:59:59.000Z</published>
-    <updated>2018-03-28T08:01:45.190Z</updated>
+    <updated>2018-03-28T09:09:03.238Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想趁着今天情人节，给自己补补知识。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><p>仅仅是记录我学到的啊,待补充，因为我用的phpadmin,所以感觉有些弱智<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>; //查看mysql中所有的数据库</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名; //创建数据库</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 数据库名; //删除数据库</div></pre></td></tr></table></figure></p>
@@ -436,7 +395,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="mysql" scheme="http://draymonder.me/tags/mysql/"/>
+      <category term="Mysql" scheme="http://draymonder.me/tags/Mysql/"/>
     
   </entry>
   
@@ -445,7 +404,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/12/the-link-https/"/>
     <id>http://draymonder.me/2018/02/12/the-link-https/</id>
     <published>2018-02-12T08:00:00.000Z</published>
-    <updated>2018-02-20T08:14:09.674Z</updated>
+    <updated>2018-03-28T09:10:28.479Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  更新https协议的一些入门知识</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>http协议是建立在tcp/ip协议基础上</div><div class="line"><span class="bullet">2. </span>我们的web开发数据的传输都是依赖于http协议</div><div class="line"><span class="bullet">3. </span>http协议全称是 超文本传输协议</div></pre></td></tr></table></figure>
@@ -467,7 +426,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
     
   </entry>
   
@@ -476,7 +435,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/11/the-errors-in-php/"/>
     <id>http://draymonder.me/2018/02/11/the-errors-in-php/</id>
     <published>2018-02-11T06:00:00.000Z</published>
-    <updated>2018-03-28T08:00:08.800Z</updated>
+    <updated>2018-03-28T09:09:09.838Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>php异常处理，以及错误日志的使用</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="文件相对和绝对路径"><a href="#文件相对和绝对路径" class="headerlink" title="文件相对和绝对路径"></a>文件相对和绝对路径</h3><figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">相对路径</div><div class="line"><span class="comment">// ../代表上级文件</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"../../"</span>) </div><div class="line"></div><div class="line">绝对路径</div><div class="line"><span class="comment">// / 和 \\都可以</span></div><div class="line">file<span class="number">_</span><span class="keyword">exists</span>(<span class="string">"c:/Draymonder.txt"</span>);</div></pre></td></tr></table></figure>
@@ -495,7 +454,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
     
   </entry>
   
@@ -504,7 +463,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/05/object-oriented-of-php/"/>
     <id>http://draymonder.me/2018/02/05/object-oriented-of-php/</id>
     <published>2018-02-05T10:00:00.000Z</published>
-    <updated>2018-03-28T07:59:25.771Z</updated>
+    <updated>2018-03-28T09:09:22.071Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>php面向对象入门</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h2><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
@@ -537,7 +496,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="php" scheme="http://draymonder.me/tags/php/"/>
+      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
     
   </entry>
   
@@ -546,7 +505,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
     <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
     <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-02-05T07:36:53.952Z</updated>
+    <updated>2018-03-28T09:10:35.965Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
@@ -561,7 +520,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="Pat" scheme="http://draymonder.me/tags/Pat/"/>
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
@@ -570,7 +529,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/04/the-perfect-series/"/>
     <id>http://draymonder.me/2018/02/04/the-perfect-series/</id>
     <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-03-28T07:56:12.470Z</updated>
+    <updated>2018-03-28T09:09:25.376Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p> 本来觉得这个题很难的，给自己一晚上的时间来想。后来发现..好像确实不难</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4056" target="_blank" rel="external">完美数列</a><br></p>
@@ -585,7 +544,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="algorithm" scheme="http://draymonder.me/tags/algorithm/"/>
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
@@ -594,7 +553,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/04/mergesort/"/>
     <id>http://draymonder.me/2018/02/04/mergesort/</id>
     <published>2018-02-04T03:00:00.000Z</published>
-    <updated>2018-03-28T07:54:45.967Z</updated>
+    <updated>2018-03-28T09:09:29.098Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>遇到的一个迭代的归并，和递归的没什么两样吧。<br>归并排序进行如下迭代操作：首先将原始序列看成N个只包含1个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下1个有序的序列。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>题目链接:<a href="https://www.nowcoder.net/pat/6/problem/4061" target="_blank" rel="external">插入与归并</a></p>
@@ -610,7 +569,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="algorithm" scheme="http://draymonder.me/tags/algorithm/"/>
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
@@ -619,7 +578,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/02/the-diary-02-02/"/>
     <id>http://draymonder.me/2018/02/02/the-diary-02-02/</id>
     <published>2018-02-02T13:00:00.000Z</published>
-    <updated>2018-03-28T07:53:16.354Z</updated>
+    <updated>2018-03-28T09:09:33.973Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  分享一下最近追的《琅琊榜:风起长林》和《无畏西东》的一些话。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="琅琊榜-风起长林"><a href="#琅琊榜-风起长林" class="headerlink" title="琅琊榜:风起长林"></a>琅琊榜:风起长林</h3><p>我发现我好像就是一个肤浅的人耶，人家追剧追的是情节，我追的，貌似是女主耶。林奚给人的感觉是很单纯。<br>0.0，好了，我要正经一些，收集一些剧中我喜欢的文字吧。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">你不要做自己将来会后悔的决定</div></pre></td></tr></table></figure></p>
@@ -641,7 +600,33 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="diary" scheme="http://draymonder.me/tags/diary/"/>
+      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电影资源网站</title>
+    <link href="http://draymonder.me/2018/02/02/the-films/"/>
+    <id>http://draymonder.me/2018/02/02/the-films/</id>
+    <published>2018-02-02T11:45:00.000Z</published>
+    <updated>2018-03-28T09:09:38.651Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然其来，想看《无问西东》，找资源好浪费时间，平时也没有看电影的习惯，所以找了半天的资源，正好做个整理，说不定以后用得上。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="电影资源下载"><a href="#电影资源下载" class="headerlink" title="电影资源下载"></a>电影资源下载</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">80</span>s电影网：<span class="string">http:</span><span class="comment">//www.80s.tw</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dytt8.net/</span></div><div class="line"></div><div class="line">电影天堂：<span class="string">http:</span><span class="comment">//www.dy2018.com</span></div><div class="line"></div><div class="line">BT天堂：<span class="string">http:</span><span class="comment">//www.bttiantang.org</span></div><div class="line"></div><div class="line">飘花电影网：<span class="string">http:</span><span class="comment">//www.piaohua.tv</span></div><div class="line"></div><div class="line">高清mp4：<span class="string">http:</span><span class="comment">//www.mp4pa.com</span></div><div class="line"></div><div class="line">电影首发站：<span class="string">http:</span><span class="comment">//www.dysfz.cc/ </span></div><div class="line"></div><div class="line">音范丝：<span class="string">http:</span><span class="comment">//www.yinfans.com/</span></div><div class="line"></div><div class="line">胖鸟电影：<span class="string">http:</span><span class="comment">//www.pniao.com</span></div></pre></td></tr></table></figure>
+<h3 id="在线观看美剧"><a href="#在线观看美剧" class="headerlink" title="在线观看美剧"></a>在线观看美剧</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">91</span>美剧  <span class="string">http:</span><span class="comment">//91mjw.com  </span></div><div class="line"></div><div class="line">追美剧网  <span class="string">http:</span><span class="comment">//www.zhuimj.cn/</span></div><div class="line"></div><div class="line">人人影视  <span class="string">http:</span><span class="comment">//www.zimuzu.tv</span></div></pre></td></tr></table></figure>
+<h3 id="在线影视"><a href="#在线影视" class="headerlink" title="在线影视"></a>在线影视</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="number">94</span>神马电影网 <span class="string">http:</span><span class="comment">//www.9rsm.com/</span></div><div class="line"></div><div class="line">在线之家 <span class="string">http:</span><span class="comment">//www.1993s.top</span></div><div class="line"></div><div class="line">骑士电影 <span class="string">http:</span><span class="comment">//www.74xw.com/</span></div><div class="line"></div><div class="line">看看屋 <span class="string">http:</span><span class="comment">//www.kankanwu.com</span></div><div class="line"></div><div class="line">我找大猫 <span class="string">http:</span><span class="comment">//www.5zdm.com</span></div><div class="line"></div><div class="line">NO视频 <span class="string">http:</span><span class="comment">//www.novipnoad.com/</span></div><div class="line"></div><div class="line">五杀影院 <span class="string">http:</span><span class="comment">//www.lol5s.com</span></div></pre></td></tr></table></figure>
+<h3 id="网盘在线搜索"><a href="#网盘在线搜索" class="headerlink" title="网盘在线搜索"></a>网盘在线搜索</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">盘多多  <span class="string">http:</span><span class="comment">//www.panduoduo.net/</span></div><div class="line"></div><div class="line">胖次  <span class="string">http:</span><span class="comment">//www.panc.cc/</span></div><div class="line"></div><div class="line">西林街   <span class="string">http:</span><span class="comment">//www.xilinjie.com/</span></div><div class="line"></div><div class="line">BDY搜  <span class="string">http:</span><span class="comment">//www.bdysou.com</span></div><div class="line"></div><div class="line">Bdsola资源站  <span class="string">http:</span><span class="comment">//www.3134.cc/</span></div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>因为我平时真的很少看电影（大概一个月才看一部或者更少吧，所以以上资源网站不一定能访问，或者有问题的，只是做个列举，便于下次找资源时的检索。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      收集了一些常用的电影资源网站。
+    
+    </summary>
+    
+    
+      <category term="Film" scheme="http://draymonder.me/tags/Film/"/>
     
   </entry>
   
