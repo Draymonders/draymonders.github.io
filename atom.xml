@@ -171,7 +171,7 @@
     <link href="http://draymonder.me/2018/03/06/the-xml/"/>
     <id>http://draymonder.me/2018/03/06/the-xml/</id>
     <published>2018-03-06T07:20:20.000Z</published>
-    <updated>2018-03-28T09:10:04.710Z</updated>
+    <updated>2018-03-28T09:20:09.004Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>xml大多用来存储数据  </p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">stu</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>draymonder<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">stu</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -192,7 +192,7 @@
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -201,7 +201,7 @@
     <link href="http://draymonder.me/2018/03/01/the-gd/"/>
     <id>http://draymonder.me/2018/03/01/the-gd/</id>
     <published>2018-03-01T08:00:00.000Z</published>
-    <updated>2018-03-28T09:10:09.923Z</updated>
+    <updated>2018-03-28T09:20:12.509Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  学习矢量图片(验证码)，报表的绘制，生成。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">创建画布</div><div class="line">会只需要的各种图形<span class="comment">(圆，直线，矩形，弧线，扇形)</span></div><div class="line">输出图像到网页，也可以另存</div><div class="line">销毁图片<span class="comment">(释放内存)</span></div></pre></td></tr></table></figure>
@@ -220,7 +220,7 @@
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -229,7 +229,7 @@
     <link href="http://draymonder.me/2018/02/27/the-io/"/>
     <id>http://draymonder.me/2018/02/27/the-io/</id>
     <published>2018-02-27T10:00:00.000Z</published>
-    <updated>2018-03-28T09:10:15.724Z</updated>
+    <updated>2018-03-28T09:20:15.211Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  文件，保存数据（二进制数据，文本数据）<br>  文件在程序中是以流的形式来操作的</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">"PRC"</span>); </div><div class="line"><span class="variable">$path</span> = <span class="string">"test.txt"</span>;</div><div class="line"><span class="variable">$fp</span> = fopen(<span class="variable">$path</span>,<span class="string">"r"</span>); <span class="regexp">//</span>打开文件</div><div class="line"><span class="variable">$file_info</span> = fstat(<span class="variable">$fp</span>); <span class="regexp">//</span>读取资源信息</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;pre&gt;"</span>;</div><div class="line"><span class="regexp">//</span> var_dump(<span class="variable">$file_info</span>);</div><div class="line"><span class="regexp">//</span> echo <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">echo <span class="string">"&lt;br&gt;上次修改时间"</span>.date(<span class="string">"Y-m-d H:i:s"</span>,<span class="variable">$file_info</span>[<span class="string">'atime'</span>]);</div><div class="line">fclose(<span class="variable">$fp</span>);</div><div class="line"></div><div class="line">[atime] 文件上一次被访问的时间</div><div class="line">[mtime] 文件上一次内容被修改的时间</div><div class="line">[ctime] 文件上一次 文件所有者<span class="regexp">/文件所在组 修改/</span>change</div><div class="line">单用户可以认为是创建时间</div></pre></td></tr></table></figure>
@@ -247,7 +247,7 @@
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -256,7 +256,7 @@
     <link href="http://draymonder.me/2018/02/27/the-cookie-and-session/"/>
     <id>http://draymonder.me/2018/02/27/the-cookie-and-session/</id>
     <published>2018-02-27T08:00:00.000Z</published>
-    <updated>2018-03-28T09:10:20.021Z</updated>
+    <updated>2018-03-28T09:20:18.180Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>会话支持在 PHP 中是在并发访问时由一个方法来保存某些数据.从而使你能够构建更多的定制程序 从而提高你的 web 网站的吸引力.<br>cookie 是一种在远程浏览器端储存数据并以此来跟踪和识别用户的机制。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="Setting-new-cookie"><a href="#Setting-new-cookie" class="headerlink" title="Setting new cookie"></a>Setting new cookie</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line"> =============================</div><div class="line">&lt;?php </div><div class="line"> setcookie(<span class="string">"name"</span>,<span class="string">"value"</span>,<span class="built_in">time</span>()+$int);</div><div class="line">/*<span class="built_in">name</span> <span class="keyword">is</span> your cookie's <span class="built_in">name</span></div><div class="line"> value <span class="keyword">is</span> cookie's value</div><div class="line"> $int <span class="keyword">is</span> <span class="built_in">time</span> <span class="keyword">of</span> cookie expires*/</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -287,7 +287,7 @@
     <link href="http://draymonder.me/2018/02/25/the-demo1/"/>
     <id>http://draymonder.me/2018/02/25/the-demo1/</id>
     <published>2018-02-25T15:59:59.000Z</published>
-    <updated>2018-03-28T09:08:58.457Z</updated>
+    <updated>2018-03-28T09:19:27.558Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  走一个雇员管理系统的开发，终于能实战演练一些东西了。<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">学习目标：</div><div class="line">    <span class="number">1.</span> 熟练编写规范的项目需求设计说明书</div><div class="line">    <span class="number">2.</span> 熟练编写项目数据库设计说明书</div><div class="line">    <span class="number">3.</span> 提升数据库建模设计能力</div><div class="line">    <span class="number">4.</span> 培养良好的沟通能力和团队合作精神</div><div class="line">    <span class="number">5.</span> 完全OOP设计思想</div><div class="line">    <span class="number">6.</span> 培养良好的编码习惯，代码编写规范。</div></pre></td></tr></table></figure></p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="项目入门先知"><a href="#项目入门先知" class="headerlink" title="项目入门先知"></a>项目入门先知</h3><h4 id="phpstorm-设置默认编码"><a href="#phpstorm-设置默认编码" class="headerlink" title="phpstorm 设置默认编码"></a>phpstorm 设置默认编码</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">phpstorm默认编码格式为GBK</div><div class="line">可通过 File —&gt;<span class="built_in"> Settings </span>—&gt; Editor —&gt; File Encodings </div><div class="line">将文件/项目默认的编码改为UTF-8</div></pre></td></tr></table></figure>
@@ -310,7 +310,7 @@
     </summary>
     
     
-      <category term="Demo" scheme="http://draymonder.me/tags/Demo/"/>
+      <category term="demo" scheme="http://draymonder.me/tags/demo/"/>
     
   </entry>
   
@@ -319,7 +319,7 @@
     <link href="http://draymonder.me/2018/02/22/the-globalArray/"/>
     <id>http://draymonder.me/2018/02/22/the-globalArray/</id>
     <published>2018-02-22T04:00:00.000Z</published>
-    <updated>2018-03-28T09:10:23.720Z</updated>
+    <updated>2018-03-28T09:20:20.790Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PHP设计者提供超全局数组的目的是为了让PHP程序员可以更方便快捷的编写程序</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">GLOBALS </span></div><div class="line"><span class="meta">$</span><span class="bash">_SERVER</span></div><div class="line"><span class="meta">$</span><span class="bash">_REQUEST</span></div><div class="line"><span class="meta">$</span><span class="bash">_POST</span></div><div class="line"><span class="meta">$</span><span class="bash">_GET</span></div><div class="line"><span class="meta">$</span><span class="bash">_ENV //获取环境变量，不要用</span></div><div class="line"><span class="meta">$</span><span class="bash">_FILES</span></div><div class="line"><span class="meta">$</span><span class="bash">_COOKIE</span></div><div class="line"><span class="meta">$</span><span class="bash">_SESSION</span></div></pre></td></tr></table></figure>
@@ -336,7 +336,7 @@
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -345,7 +345,7 @@
     <link href="http://draymonder.me/2018/02/14/the-use-mysql/"/>
     <id>http://draymonder.me/2018/02/14/the-use-mysql/</id>
     <published>2018-02-14T15:59:59.000Z</published>
-    <updated>2018-03-28T09:09:03.238Z</updated>
+    <updated>2018-03-28T09:19:35.264Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想趁着今天情人节，给自己补补知识。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><p>仅仅是记录我学到的啊,待补充，因为我用的phpadmin,所以感觉有些弱智<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>; //查看mysql中所有的数据库</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名; //创建数据库</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 数据库名; //删除数据库</div></pre></td></tr></table></figure></p>
@@ -395,7 +395,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="Mysql" scheme="http://draymonder.me/tags/Mysql/"/>
+      <category term="mysql" scheme="http://draymonder.me/tags/mysql/"/>
     
   </entry>
   
@@ -404,7 +404,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/12/the-link-https/"/>
     <id>http://draymonder.me/2018/02/12/the-link-https/</id>
     <published>2018-02-12T08:00:00.000Z</published>
-    <updated>2018-03-28T09:10:28.479Z</updated>
+    <updated>2018-03-28T09:20:23.628Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  更新https协议的一些入门知识</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>http协议是建立在tcp/ip协议基础上</div><div class="line"><span class="bullet">2. </span>我们的web开发数据的传输都是依赖于http协议</div><div class="line"><span class="bullet">3. </span>http协议全称是 超文本传输协议</div></pre></td></tr></table></figure>
@@ -426,7 +426,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -463,7 +463,7 @@ fetch_fields() //列信息
     <link href="http://draymonder.me/2018/02/05/object-oriented-of-php/"/>
     <id>http://draymonder.me/2018/02/05/object-oriented-of-php/</id>
     <published>2018-02-05T10:00:00.000Z</published>
-    <updated>2018-03-28T09:09:22.071Z</updated>
+    <updated>2018-03-28T09:19:54.437Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>php面向对象入门</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h2><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
@@ -496,7 +496,7 @@ fetch_fields() //列信息
     </summary>
     
     
-      <category term="PHP" scheme="http://draymonder.me/tags/PHP/"/>
+      <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

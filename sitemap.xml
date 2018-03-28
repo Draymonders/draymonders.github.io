@@ -2,51 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</loc>
-    
-    <lastmod>2018-03-28T09:10:35.965Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://draymonder.me/2018/02/12/the-link-https/</loc>
     
-    <lastmod>2018-03-28T09:10:28.479Z</lastmod>
+    <lastmod>2018-03-28T09:20:23.628Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://draymonder.me/2018/02/22/the-globalArray/</loc>
     
-    <lastmod>2018-03-28T09:10:23.720Z</lastmod>
+    <lastmod>2018-03-28T09:20:20.790Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://draymonder.me/2018/02/27/the-cookie-and-session/</loc>
     
-    <lastmod>2018-03-28T09:10:20.021Z</lastmod>
+    <lastmod>2018-03-28T09:20:18.180Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://draymonder.me/2018/02/27/the-io/</loc>
     
-    <lastmod>2018-03-28T09:10:15.724Z</lastmod>
+    <lastmod>2018-03-28T09:20:15.211Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://draymonder.me/2018/03/01/the-gd/</loc>
     
-    <lastmod>2018-03-28T09:10:09.923Z</lastmod>
+    <lastmod>2018-03-28T09:20:12.509Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://draymonder.me/2018/03/06/the-xml/</loc>
     
-    <lastmod>2018-03-28T09:10:04.710Z</lastmod>
+    <lastmod>2018-03-28T09:20:09.004Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php/</loc>
+    
+    <lastmod>2018-03-28T09:19:54.437Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/14/the-use-mysql/</loc>
+    
+    <lastmod>2018-03-28T09:19:35.264Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/25/the-demo1/</loc>
+    
+    <lastmod>2018-03-28T09:19:27.558Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/tags/index.html</loc>
+    
+    <lastmod>2018-03-28T09:15:49.966Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</loc>
+    
+    <lastmod>2018-03-28T09:10:35.965Z</lastmod>
     
   </url>
   
@@ -100,30 +128,9 @@
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/02/05/object-oriented-of-php/</loc>
-    
-    <lastmod>2018-03-28T09:09:22.071Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
     
     <lastmod>2018-03-28T09:09:09.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/14/the-use-mysql/</loc>
-    
-    <lastmod>2018-03-28T09:09:03.238Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/02/25/the-demo1/</loc>
-    
-    <lastmod>2018-03-28T09:08:58.457Z</lastmod>
     
   </url>
   
@@ -166,13 +173,6 @@
     <loc>http://draymonder.me/2018/01/06/start-my-blog/</loc>
     
     <lastmod>2018-03-28T08:56:13.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/tags/index.html</loc>
-    
-    <lastmod>2018-03-28T07:25:09.527Z</lastmod>
     
   </url>
   
