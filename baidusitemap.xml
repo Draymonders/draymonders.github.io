@@ -4,6 +4,41 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/04/02/the-linux/</loc>
+    <lastmod>2018-04-02T12:49:24.374Z</lastmod>
+    <data>
+        <display>
+        <title>Linux学习</title>
+        <pubTime>2018-04-02T15:59:59.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://draymonder.me/2018/04/15/javase-learning/</loc>
+    <lastmod>2018-04-01T09:20:23.031Z</lastmod>
+    <data>
+        <display>
+        <title>JavaSE学习</title>
+        <pubTime>2018-04-15T12:00:00.000Z</pubTime>
+        
+        <tag>JavaSE</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://draymonder.me/2018/02/11/the-errors-in-php/</loc>
     <lastmod>2018-03-28T09:27:56.581Z</lastmod>
     <data>
@@ -413,23 +448,6 @@
 
     
   <url>
-    <loc>http://draymonder.me/2018/03/25/the-linux/</loc>
-    <lastmod>2018-03-26T15:51:06.815Z</lastmod>
-    <data>
-        <display>
-        <title>Linux学习</title>
-        <pubTime>2018-03-25T15:59:59.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://draymonder.me/2018/03/11/Do-ss/</loc>
     <lastmod>2018-03-11T06:00:50.246Z</lastmod>
     <data>
@@ -445,7 +463,6 @@
     </data>
     </url>
 
-    
     
     
 </urlset>
