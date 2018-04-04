@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-04-01T09:20:23.031Z</updated>
+  <updated>2018-04-04T09:12:08.734Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JavaSE学习</title>
-    <link href="http://draymonder.me/2018/04/15/javase-learning/"/>
-    <id>http://draymonder.me/2018/04/15/javase-learning/</id>
-    <published>2018-04-15T12:00:00.000Z</published>
-    <updated>2018-04-01T09:20:23.031Z</updated>
+    <title>JavaSE的基础语法</title>
+    <link href="http://draymonder.me/2018/04/04/javase-learning/"/>
+    <id>http://draymonder.me/2018/04/04/javase-learning/</id>
+    <published>2018-04-04T09:00:00.000Z</published>
+    <updated>2018-04-04T09:12:08.734Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  终于下定决心要好好攻克Java这个难题了，希望以后自己能坚持下来呢。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Java语言概述"><a href="#Java语言概述" class="headerlink" title="Java语言概述"></a>Java语言概述</h2><p> Java语言是跨平台的，JVM不是跨平台的<br>    JavaSE      –桌面开发<br>    JavaME      –安卓开发<br>    JavaEE      –Web开发<br>    JVM：保证Java语言跨平台<br>    JRE：Java程序的运行环境 (JVM+类库<br>    JDK：Java程序的开发环境 (JRE+工具</p>
@@ -48,11 +48,16 @@ System.out.println(5+5+&quot;=5+5&quot;); //10=5+5
 </li>
 </ol>
 <h3 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h3><p>JDK7以后可以 枚举,字符串,byte,short,int,char类型或变量，不能long<br>if,switch,for,while,do while,continue,break 大概没什么好写的</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>A:方法不调用不执行<br>B:方法之间是平级关系，不能嵌套定义<br>C:方法定义的时候，参数是用，隔开的<br>D:方法在调用的时候，不用在传递数据类型<br>E:支持方法的重载 即在同一个类中，方法名相同，参数列表不同。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h3><p>栈：<br>    数据使用完毕，就消失。<br>堆：<br>    A.每一个new出来的东西都有地址<br>    B.每一个变量都有默认值<br>        byte,short,int,long 0<br>        float,double 0.0<br>        char ‘\u0000’<br>        boolean false<br>        引用类型 null<br>    C.数据使用完毕后，在垃圾回收器空闲的时候回收。</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight nimrod"><table><tr><td class="code"><pre><div class="line">一维数组:</div><div class="line">    <span class="built_in">int</span> []arr = new <span class="built_in">int</span> [<span class="number">30</span>];</div><div class="line">    <span class="built_in">int</span> []arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line">二维数组:</div><div class="line">    A:数据类型[][] 数组名 = new 数据类型[m][n];</div><div class="line">    B:数据类型[][] 数组名 = new 数据类型[m][];</div><div class="line">    C:数据类型[][] 数组名 = &#123;<span class="meta">&#123;...&#125;</span>,<span class="meta">&#123;...&#125;</span>,<span class="meta">&#123;...&#125;</span>&#125;;</div></pre></td></tr></table></figure>
+<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><p>Java中只有值传递。<br>    基本类型：形式参数的改变不影响实际参数<br>    引用类型：形式参数的改变直接影响实际参数</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>  这几天也和队友，zc聚聚聊了一下，觉得自己思想上确实还有出入。<br>  当然了我也发现自己可能真的方向太散了，很容易被外界打动，而很难去坚持一些事情，当然了<br>这是我的问题，我应该反思的。<br>  zc聚聚说可能我还不够有信心吧，既然在一起了，就说明大家水平都差不多的嘛。<br>  最后怎么样，应该就是努力+运气吧，当然了，成绩也很重要的吧，都不能放下的吧。</p>
 ]]></content>
     
     <summary type="html">
     
-      JavaSE的学习，以及自己不太懂的知识点儿的汇总
+      JavaSE基础语法的学习
     
     </summary>
     
