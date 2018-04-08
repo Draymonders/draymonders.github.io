@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://draymonder.me/"/>
-  <updated>2018-04-07T15:23:29.605Z</updated>
+  <updated>2018-04-08T12:25:26.006Z</updated>
   <id>http://draymonder.me/</id>
   
   <author>
@@ -16,11 +16,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>51Nod四级题小计</title>
+    <link href="http://draymonder.me/2018/09/01/51nod-fourth-Level/"/>
+    <id>http://draymonder.me/2018/09/01/51nod-fourth-Level/</id>
+    <published>2018-09-01T09:00:00.000Z</published>
+    <updated>2018-04-08T12:25:26.006Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  感觉自己确实还不够踏实，一直在做水题，没有什么突破。 所以以后尽量每天一道四级题。<br>  重在记录自己做题时候的思路。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1051-最大子矩阵和"><a href="#1051-最大子矩阵和" class="headerlink" title="1051 最大子矩阵和"></a>1051 最大子矩阵和</h2><p>题意：给一个矩阵，求子矩阵的和最大的数<br>思路：类似<code>最大字段和</code>，给定第i行和第j行 然后用sum数组记录每列的前缀和。<br>      接着第i行到第j行的每列求和，从第1列到第m列作最大字段和处理</p>
+<h2 id="1086-背包问题-V2"><a href="#1086-背包问题-V2" class="headerlink" title="1086 背包问题 V2"></a>1086 背包问题 V2</h2><p>题意：给n个物品，背包最大为W 给出n个物品的体积，数量，价值<br>思路：如果第i个物品 体积x数量 &gt; W  那说明这个物品足够，可以用完全背包处理，不需要考虑数量问题<br>否则 就按照 01背包处理(二进制优化一下更好的吧)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      51Nod四级题的刷题记录，持续更新
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaSE的常用API</title>
     <link href="http://draymonder.me/2018/04/08/javase-api/"/>
     <id>http://draymonder.me/2018/04/08/javase-api/</id>
     <published>2018-04-08T09:00:00.000Z</published>
-    <updated>2018-04-07T15:23:29.605Z</updated>
+    <updated>2018-04-08T11:41:38.837Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习JDK中提供的各种功能的Java类,API(Application Programming Interface)</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode"></a>hashCode</h3><figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">A:</span>返回该对象的哈希码值。默认情况下，该方法会根据对象的地址来计算。</div><div class="line"><span class="symbol">B:</span>不同对象的，hashCode()一般来说不会相同。</div><div class="line">  但是，同一个对象的hashCode()值肯定相同。</div></pre></td></tr></table></figure>
@@ -34,7 +57,7 @@
 <h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h3 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"><span class="keyword">import</span> java.util.Collections;</div><div class="line"><span class="keyword">import</span> java.util.Comparator;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> o2 - o1;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Integer[] arr = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;;</div><div class="line">        <span class="comment">// 第一种方法，直接用Collections的reverseOrder方法</span></div><div class="line">        <span class="comment">// Arrays.sort(arr, Collections.reverseOrder());</span></div><div class="line"></div><div class="line">        <span class="comment">// 第二种方法，自定义类重写Comparator接口的compare方法</span></div><div class="line">        Arrays.sort(arr, <span class="keyword">new</span> MyComparator());</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</div><div class="line">            System.out.print(i + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><h3 id="基本类型与包装类的对应"><a href="#基本类型与包装类的对应" class="headerlink" title="基本类型与包装类的对应"></a>基本类型与包装类的对应</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">基本类型    包装类</div><div class="line"><span class="keyword">byte</span>        <span class="keyword">Byte</span></div><div class="line"><span class="keyword">short</span>       <span class="keyword">Short</span></div><div class="line"><span class="keyword">int</span>         Integer</div><div class="line"><span class="keyword">long</span>        <span class="keyword">Long</span></div><div class="line"><span class="keyword">float</span>       <span class="keyword">Float</span></div><div class="line"><span class="keyword">double</span>      <span class="keyword">Double</span></div><div class="line"><span class="keyword">char</span>        Character</div><div class="line"><span class="keyword">boolean</span>     <span class="keyword">Boolean</span></div></pre></td></tr></table></figure>
 <h3 id="String-和-int-的相互转换"><a href="#String-和-int-的相互转换" class="headerlink" title="String 和 int 的相互转换"></a>String 和 int 的相互转换</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">A:<span class="keyword">String</span> -- <span class="keyword">int</span></div><div class="line">    Integer.<span class="built_in">parseInt</span>(<span class="string">"100"</span>);</div><div class="line">B:<span class="keyword">int</span> -- <span class="keyword">String</span></div><div class="line">    <span class="keyword">String</span>.valueOf(<span class="number">100</span>);</div></pre></td></tr></table></figure>
-<h3 id="数据缓冲池"><a href="#数据缓冲池" class="headerlink" title="数据缓冲池"></a>数据缓冲池</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">-<span class="number">128</span>到<span class="number">127</span>之间的数据缓冲池问题</div><div class="line"></div><div class="line">Integer <span class="built_in">s1</span> = <span class="number">122</span><span class="comment">;</span></div><div class="line">Integer <span class="built_in">s2</span> = <span class="number">122</span><span class="comment">;</span></div><div class="line">System.out.println(<span class="built_in">s1</span> == <span class="built_in">s2</span>)<span class="comment">; //返回true</span></div></pre></td></tr></table></figure>
+<h3 id="数据缓冲池"><a href="#数据缓冲池" class="headerlink" title="数据缓冲池"></a>数据缓冲池</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">-128</span>到<span class="number">127</span>之间的数据缓冲池问题</div><div class="line"><span class="comment">//byte以内的数据有常量池</span></div><div class="line"></div><div class="line">Integer s1 = <span class="number">122</span>;</div><div class="line">Integer s2 = <span class="number">122</span>;</div><div class="line">System.out.println(s1 == s2); <span class="comment">//返回true</span></div></pre></td></tr></table></figure>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/woshifano/article/details/43937597" target="_blank" rel="external">next()和nextLine()的区别</a><br><a href="https://www.cnblogs.com/woshimrf/p/5263018.html" target="_blank" rel="external">java传参的注意事项</a><br><a href="http://blog.leanote.com/post/github-chemist0086/Java%E9%80%9A%E8%BF%87%E5%AE%9E%E7%8E%B0Comparator%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%AE%9A%E4%B9%89Arrays.sort-%E6%8E%92%E5%BA%8F" target="_blank" rel="external">sort降序排列</a><br><a href="https://bbs.csdn.net/topics/360084214" target="_blank" rel="external">sort降序排列</a></p>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Java编辑器 格式化 Ctrl+Shift+F </p>
 ]]></content>
@@ -640,30 +663,6 @@ fetch_fields() //列信息
     
     
       <category term="PHP学习" scheme="http://draymonder.me/tags/PHP%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反转链表</title>
-    <link href="http://draymonder.me/2018/02/04/the-reverse-of-nodes/"/>
-    <id>http://draymonder.me/2018/02/04/the-reverse-of-nodes/</id>
-    <published>2018-02-04T12:40:00.000Z</published>
-    <updated>2018-03-28T09:10:35.965Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  PAT(<a href="https://www.nowcoder.net/pat/6/problems" target="_blank" rel="external">Basic Level真题</a>)<br>还剩下两道，一道模拟(原谅我懒，不想写这种臭模拟了，浪费时间)当然了,一堆水题，唯一有价值的三道题，我都会做记录。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p> 题目链接: <a href="https://www.nowcoder.net/pat/6/problem/4051" target="_blank" rel="external">反转链表</a><br></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。</div><div class="line">例如：给定L为<span class="number">1</span>→<span class="number">2</span>→<span class="number">3</span>→<span class="number">4</span>→<span class="number">5</span>→<span class="number">6</span>，K为<span class="number">3</span>，则输出应该为<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">6</span>→<span class="number">5</span>→<span class="number">4</span>；</div><div class="line">如果K为<span class="number">4</span>，则输出应该为<span class="number">4</span>→<span class="number">3</span>→<span class="number">2</span>→<span class="number">1</span>→<span class="number">5</span>→<span class="number">6</span>，即最后不到K个元素不反转。</div></pre></td></tr></table></figure>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">每个输入包含1个测试用例。</div><div class="line">每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、</div><div class="line">以及正整数K(&lt;=N)即要求反转的子链结点的个数。</div><div class="line">结点的地址是5位非负整数，<span class="literal">NULL</span>地址用-1表示。</div><div class="line"></div><div class="line">接下来有N行，每行格式为：</div><div class="line">Address Data Next</div><div class="line">其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。</div></pre></td></tr></table></figure>
-<h3 id="分析及代码"><a href="#分析及代码" class="headerlink" title="分析及代码"></a>分析及代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//很遗憾，这道题，我只会暴力，但是不知道如何调换链表间的指向关系</span></div><div class="line"><span class="comment">//从网上看的题解是，按照原来的链存到vector中</span></div><div class="line"><span class="comment">//然后暴力将每k个结点转置 ** 这里才是重点，其他都是次要的</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;nxt;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;keys;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s;</div><div class="line"></div><div class="line"><span class="comment">/*这里是重点*/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> t = s[l];</div><div class="line">        s[l] = s[r];</div><div class="line">        s[r] = t;</div><div class="line">        l++, r--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> head,n,k;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;head, &amp;n, &amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> add,key,Nxt;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;add, &amp;key, &amp;Nxt);</div><div class="line">        nxt[add] = Nxt;</div><div class="line">        keys[add] = key;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (head != <span class="number">-1</span>)&#123;</div><div class="line">        s.push_back(head);</div><div class="line">        head = nxt[head];</div><div class="line">    &#125;</div><div class="line">    n = s.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i+=k) &#123;</div><div class="line">        <span class="keyword">if</span>(i+k &lt;= n) &#123;</div><div class="line">            reverse(i,i+k<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    s.push_back(<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%05d %d"</span>, s[i], keys[s[i]]);</div><div class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == <span class="number">-1</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" -1\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %05d\n"</span>, s[i+<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      一道不错的模拟题，学到了新的套路
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
     
   </entry>
   
