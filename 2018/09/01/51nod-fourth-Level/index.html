@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
 <meta property="og:description" content="51Nod四级题的刷题记录，持续更新">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-08T12:25:26.006Z">
+<meta property="og:updated_time" content="2018-04-09T12:20:51.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="51Nod四级题小计">
 <meta name="twitter:description" content="51Nod四级题的刷题记录，持续更新">
@@ -291,7 +291,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>231 字</span>
+                <span>305 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -337,6 +337,7 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  感觉自己确实还不够踏实，一直在做水题，没有什么突破。 所以以后尽量每天一道四级题。<br>  重在记录自己做题时候的思路。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1051-最大子矩阵和"><a href="#1051-最大子矩阵和" class="headerlink" title="1051 最大子矩阵和"></a>1051 最大子矩阵和</h2><p>题意：给一个矩阵，求子矩阵的和最大的数<br>思路：类似<code>最大字段和</code>，给定第i行和第j行 然后用sum数组记录每列的前缀和。<br>      接着第i行到第j行的每列求和，从第1列到第m列作最大字段和处理</p>
 <h2 id="1086-背包问题-V2"><a href="#1086-背包问题-V2" class="headerlink" title="1086 背包问题 V2"></a>1086 背包问题 V2</h2><p>题意：给n个物品，背包最大为W 给出n个物品的体积，数量，价值<br>思路：如果第i个物品 体积x数量 &gt; W  那说明这个物品足够，可以用完全背包处理，不需要考虑数量问题<br>否则 就按照 01背包处理(二进制优化一下更好的吧)</p>
+<h2 id="1151-回文串划分"><a href="#1151-回文串划分" class="headerlink" title="1151 回文串划分"></a>1151 回文串划分</h2><p>题意：给一个字符串，求字符串最少可以被划分为多少个回文串<br>思路：dp[i]表示以i为结尾的最小字符串划分 dp[i] = min(dp[i],dp[j-1]+1) (j &lt; i 且<br>字符串从j到i是个回文串</p>
 
       
     </div>
@@ -532,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1051-最大子矩阵和"><span class="nav-number">2.1.</span> <span class="nav-text">1051 最大子矩阵和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1086-背包问题-V2"><span class="nav-number">2.2.</span> <span class="nav-text">1086 背包问题 V2</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1051-最大子矩阵和"><span class="nav-number">2.1.</span> <span class="nav-text">1051 最大子矩阵和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1086-背包问题-V2"><span class="nav-number">2.2.</span> <span class="nav-text">1086 背包问题 V2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1151-回文串划分"><span class="nav-number">2.3.</span> <span class="nav-text">1151 回文串划分</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -571,7 +572,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.0k字</span>
+  <span class="post-count">博客全站共21.1k字</span>
 </div>
         
 
