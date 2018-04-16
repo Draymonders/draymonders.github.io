@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="记录校赛里面没能完成的题目">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="Git学习，了解 以及使用">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="校赛补题记录">
-<meta property="og:url" content="http://draymonder.me/2018/03/10/the-cumtacm/index.html">
+<meta property="og:title" content="Git学习">
+<meta property="og:url" content="http://draymonder.me/2018/04/16/git-learing/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="记录校赛里面没能完成的题目">
+<meta property="og:description" content="Git学习，了解 以及使用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-28T09:08:41.755Z">
+<meta property="og:updated_time" content="2018-04-16T15:23:06.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="校赛补题记录">
-<meta name="twitter:description" content="记录校赛里面没能完成的题目">
+<meta name="twitter:title" content="Git学习">
+<meta name="twitter:description" content="Git学习，了解 以及使用">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/03/10/the-cumtacm/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/04/16/git-learing/"/>
 
 
 
 
 
-  <title>校赛补题记录 | Draymonder's Blog</title>
+  <title>Git学习 | Draymonder's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/03/10/the-cumtacm/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/04/16/git-learing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">校赛补题记录</h1>
+          <h1 class="post-title" itemprop="name headline">Git学习</h1>
         
 
         <div class="post-meta">
@@ -283,17 +283,17 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T23:59:59+08:00">
-                2018-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T23:30:00+08:00">
+                2018-04-16
               </time>
             
 
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>494 字</span>
+                <span>1,216 字</span>
                 &nbsp; | &nbsp;
-                <span>2 min</span>
+                <span>5 min</span>
               </span>
             
 
@@ -317,7 +317,7 @@
 
           
               <div class="post-description">
-                  记录校赛里面没能完成的题目
+                  Git学习，了解 以及使用
               </div>
           
 
@@ -334,14 +334,29 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  好久没写过算法题了，然后抱着水水的态度去参加了校赛，整体难度还可以，<br>  可能是我太菜了，很多简单题，我都没能顺利地ac掉。<br>  不过心态还是好的，继续努力加油吧。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一起来数数字"><a href="#一起来数数字" class="headerlink" title="一起来数数字"></a>一起来数数字</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>把人排成一排，从左到右从1开始报数，选择三个不同的数字x，y，z。从1开始报数，遇到x的倍数，y的倍数，z的倍数就跳过。比如x=2，y=3，z=5，第一个人报1，第二个人跳过2,3,4,5,6，报7，第三个人跳过8,9,10，报11。<br>给出一个n，问你第n个人报的数字是多少。 </p>
-<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行给出一个T（T≤300），代表样例组数，每组样例给出一个正整数n（n≤1e9）。接下来T行，每行输入四个数字x，y，z，n(其中x,y,z大于1且小于200000),代表题目描述中的意思</p>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>输出第n个人报的数字</p>
-<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="number">2</span></div><div class="line"><span class="symbol">2 </span><span class="number">3</span> <span class="number">5</span> <span class="number">2</span></div><div class="line"><span class="symbol">6 </span><span class="number">2</span> <span class="number">4</span> <span class="number">10000</span></div></pre></td></tr></table></figure>
-<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">7</span></div><div class="line"><span class="number">19999</span></div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>刚开始以为是规律题，不做（太菜了，后来发现是之前遇到过的容斥。<br>然后手写容斥+二分，然而一直WA.<br>比赛完，问队友，才知道自己容斥的不对,果然还是自己太菜了。</p>
-<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line">ll x,y,z,n;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> b==<span class="number">0</span>? a: gcd(b,a%b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll b)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll ans1 = b/x + b/y + b/z;</div><div class="line"></div><div class="line">    ll xy = (x*y)/gcd(x,y);</div><div class="line">    ll xz = (x*z)/gcd(x,z);</div><div class="line">    ll yz = (y*z)/gcd(y,z);</div><div class="line">    ll ans2 = b/xy + b/yz + b/xz;</div><div class="line"></div><div class="line">    ll xyz=xy*z/gcd(xy,z);</div><div class="line">    ll ans3 = b / xyz;</div><div class="line">    <span class="keyword">return</span> ans1 -ans2 + ans3;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">while</span> (t--) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld %lld %lld %lld"</span>,&amp;x,&amp;y,&amp;z,&amp;n);</div><div class="line">        ll l=<span class="number">1</span>,r=<span class="number">1e18</span>;</div><div class="line">        ll ans = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= r)</div><div class="line">        &#123;</div><div class="line">            ll mid = (l+r)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(mid - solve(mid) &gt;= n)&#123;</div><div class="line">                ans = mid ,r =mid<span class="number">-1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                l = mid +<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听到大佬说我太菜了.没办法啊，确实蛮菜的，需要学习很多东西吧,就很难受。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure>
+<p><code>--global</code>是指这台机器上所有的Git仓库都会使用这个配置</p>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>先<code>mkdir</code>建立一个空目录<br>然后，用<code>git init</code>初始化当前目录Git可以管理的仓库</p>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>用命令<code>git add ***</code>把文件添加到仓库<br>接着用<code>git commit -m &quot;***&quot;</code>把文件提交到仓库</p>
+<h3 id="文件改动"><a href="#文件改动" class="headerlink" title="文件改动"></a>文件改动</h3><p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，readme.txt被修改过了，但还没有准备提交的修改。<br><code>git diff</code>顾名思义就是查看difference，显示的格式正是Unix通用的diff格式<br><code>git log</code>命令显示从最近到最远的提交日志</p>
+<p>Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，往上100个版本写成<code>HEAD~100</code>。</p>
+<p>把当前版本回退到上一个版本，就可以使用<code>git reset --hard HEAD^</code>,经尝试,命令在<code>Bash</code><br>下运行无错，在<code>cmder</code>下会有出现More的提示，只需要再写一下HEAD后面的<code>^</code>就可以了</p>
+<p>如果真的返回上一个版本了，还想撤回本次操作，那么可以使用<code>git reflog</code>命令，来记录你的每一次命令。接着用<code>git reset --hard commit_id</code>命令回到操作前的状态</p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>当发现文件改动后，准备提交前，发现文件有问题，可以用<code>git checkout -- file</code>可以丢弃工作区的修改<br>命令<code>git checkout -- git学习</code> 意思就是，把git学习文件在工作区的修改全部撤销，这里有两种情况：<br>一种是 git学习 自修改后还没有被放到暂存区，现在，<code>撤销修改就回到和版本库一模一样的状态</code><br>一种是 git学习 已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态</p>
+<p>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
+<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code><br>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD file</code>，就回到了场景1，第二步按场景1操作。</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>当你在工作区删除文件后，你有两个选择<br>一是确实要从版本库中删除该文件，那就用命令<code>git rm file</code>删掉，并且<code>git commit</code><br>另一种情况是删错了，<code>git checkout -- file</code></p>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><h3 id="分布式优点"><a href="#分布式优点" class="headerlink" title="分布式优点"></a>分布式优点</h3><p>可以利用ssh 添加多个Key，假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了</p>
+<h3 id="推送到远程库"><a href="#推送到远程库" class="headerlink" title="推送到远程库"></a>推送到远程库</h3><p>关联远程库<br><code>git remote add origin https://github.com/Draymonders/git-learning.git</code><br>第一次推送master分支的所有内容<br><code>git push -u origin master</code><br>以后就可以用<br><code>git push origin master</code></p>
+<p>使用<code>https</code>除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放<br><code>http</code>端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p><code>git checkout -b dev</code> 表示创建并切换<br>相当于<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">git branch <span class="built_in">dev</span> <span class="comment">//创建dev分支</span></div><div class="line">git checkout <span class="built_in">dev</span> <span class="comment">//使用dev分支</span></div></pre></td></tr></table></figure></p>
+<p><code>git branch</code> 命令会列出所有分支，当前分支前面会标一个*号</p>
+<p>然后修改文件 接着<code>git add</code> and <code>git commit</code><br>接着回到master分支下 <code>git checkout master</code><br>把<code>dev</code>分支合并到<code>master</code>下,用<code>git merge dev</code><br>合并完成就可以删除<code>dev</code>分支了，用<code>git branch -d dev</code></p>
+<p>分支语句汇总<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">查看分支：git branch</div><div class="line"></div><div class="line">创建分支：git branch &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">切换分支：git checkout &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">创建+切换分支：git checkout -b &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">合并某分支到当前分支：git merge &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">删除分支：git branch -d &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">分支合并图：git <span class="built_in">log</span> <span class="comment">--graph</span></div></pre></td></tr></table></figure></p>
+<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。<br><code>git merge --no-ff -m &quot;merge with no-ff&quot; beta</code></p>
+<p>master是稳定版本，最好不要轻易动<br>然后下面建立一个beta测试版本，用来汇总代码和测试<br>最后建立每个人的分支，汇总到beta分支下。</p>
+
       
     </div>
     
@@ -358,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
           
         </div>
       
@@ -371,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/10/the-expectation/" rel="next" title="新的期待，新的向往">
-                <i class="fa fa-chevron-left"></i> 新的期待，新的向往
+              <a href="/2018/04/15/javase-dataStructure/" rel="next" title="JavaSE的Data Stucture">
+                <i class="fa fa-chevron-left"></i> JavaSE的Data Stucture
               </a>
             
           </div>
@@ -381,8 +396,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/11/Do-ss/" rel="prev" title="Digital Ocean 购买VPS搭建SS">
-                Digital Ocean 购买VPS搭建SS <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/01/51nod-fourth-Level/" rel="prev" title="51Nod四级题小计">
+                51Nod四级题小计 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一起来数数字"><span class="nav-number">2.1.</span> <span class="nav-text">一起来数数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">2.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入"><span class="nav-number">2.1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">2.1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输入"><span class="nav-number">2.1.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输出"><span class="nav-number">2.1.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.1.6.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码"><span class="nav-number">2.1.7.</span> <span class="nav-text">AC代码</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">2.2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">2.3.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件改动"><span class="nav-number">2.3.2.</span> <span class="nav-text">文件改动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">2.3.3.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">2.3.4.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库"><span class="nav-number">2.4.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式优点"><span class="nav-number">2.4.1.</span> <span class="nav-text">分布式优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送到远程库"><span class="nav-number">2.4.2.</span> <span class="nav-text">推送到远程库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">2.5.</span> <span class="nav-text">分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">2.5.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">2.5.2.</span> <span class="nav-text">分支管理策略</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
