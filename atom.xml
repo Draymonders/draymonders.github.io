@@ -45,7 +45,7 @@
     <link href="http://draymonder.me/2018/04/16/git-learing/"/>
     <id>http://draymonder.me/2018/04/16/git-learing/</id>
     <published>2018-04-16T15:30:00.000Z</published>
-    <updated>2018-04-16T15:23:06.216Z</updated>
+    <updated>2018-04-17T09:24:59.418Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听到大佬说我太菜了.没办法啊，确实蛮菜的，需要学习很多东西吧,就很难受。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure>
@@ -69,6 +69,16 @@
 <p>分支语句汇总<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">查看分支：git branch</div><div class="line"></div><div class="line">创建分支：git branch &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">切换分支：git checkout &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">创建+切换分支：git checkout -b &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">合并某分支到当前分支：git merge &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">删除分支：git branch -d &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">分支合并图：git <span class="built_in">log</span> <span class="comment">--graph</span></div></pre></td></tr></table></figure></p>
 <h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。<br><code>git merge --no-ff -m &quot;merge with no-ff&quot; beta</code></p>
 <p>master是稳定版本，最好不要轻易动<br>然后下面建立一个beta测试版本，用来汇总代码和测试<br>最后建立每个人的分支，汇总到beta分支下。</p>
+<h3 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h3><p>在项目中，先添加<code>beta</code>分支<br><code>git clone</code>后接着用<code>git branch</code> 显示只有<code>master</code>分支<br>如果想要在<code>beta</code>分支上开发,就需要在本地创建beta分支和远程库的beta分支关联<br><code>git checkout -b beta origin/beta</code><br>最后上传的时候用<code>git push origin beta</code></p>
+<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>如果找之前的版本用commit_id比较麻烦，那么可以用标签来绑定对应的commit_id，标签一旦生成就不能改变</p>
+<p>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为HEAD，也可以指定一个commit id；</p>
+<p><code>git tag -a &lt;tagname&gt; -m &quot;***&quot;</code>可以指定标签信息；</p>
+<p><code>git tag</code>可以查看所有标签。</p>
+<p><code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</p>
+<p><code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
+<p><code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
+<p><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a><br><a href="https://www.cnblogs.com/schaepher/p/4933873.html" target="_blank" rel="external">GitHub团队项目合作流程</a></p>
 ]]></content>
     
     <summary type="html">

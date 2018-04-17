@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
 <meta property="og:description" content="Git学习，了解 以及使用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-16T15:23:06.216Z">
+<meta property="og:updated_time" content="2018-04-17T09:24:59.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习">
 <meta name="twitter:description" content="Git学习，了解 以及使用">
@@ -291,9 +291,9 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>1,216 字</span>
+                <span>1,466 字</span>
                 &nbsp; | &nbsp;
-                <span>5 min</span>
+                <span>6 min</span>
               </span>
             
 
@@ -356,6 +356,16 @@
 <p>分支语句汇总<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">查看分支：git branch</div><div class="line"></div><div class="line">创建分支：git branch &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">切换分支：git checkout &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">创建+切换分支：git checkout -b &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">合并某分支到当前分支：git merge &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">删除分支：git branch -d &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">分支合并图：git <span class="built_in">log</span> <span class="comment">--graph</span></div></pre></td></tr></table></figure></p>
 <h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。<br><code>git merge --no-ff -m &quot;merge with no-ff&quot; beta</code></p>
 <p>master是稳定版本，最好不要轻易动<br>然后下面建立一个beta测试版本，用来汇总代码和测试<br>最后建立每个人的分支，汇总到beta分支下。</p>
+<h3 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h3><p>在项目中，先添加<code>beta</code>分支<br><code>git clone</code>后接着用<code>git branch</code> 显示只有<code>master</code>分支<br>如果想要在<code>beta</code>分支上开发,就需要在本地创建beta分支和远程库的beta分支关联<br><code>git checkout -b beta origin/beta</code><br>最后上传的时候用<code>git push origin beta</code></p>
+<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>如果找之前的版本用commit_id比较麻烦，那么可以用标签来绑定对应的commit_id，标签一旦生成就不能改变</p>
+<p>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为HEAD，也可以指定一个commit id；</p>
+<p><code>git tag -a &lt;tagname&gt; -m &quot;***&quot;</code>可以指定标签信息；</p>
+<p><code>git tag</code>可以查看所有标签。</p>
+<p><code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</p>
+<p><code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
+<p><code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
+<p><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a><br><a href="https://www.cnblogs.com/schaepher/p/4933873.html" target="_blank" rel="external">GitHub团队项目合作流程</a></p>
 
       
     </div>
@@ -555,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">2.2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">2.3.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件改动"><span class="nav-number">2.3.2.</span> <span class="nav-text">文件改动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">2.3.3.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">2.3.4.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库"><span class="nav-number">2.4.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式优点"><span class="nav-number">2.4.1.</span> <span class="nav-text">分布式优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送到远程库"><span class="nav-number">2.4.2.</span> <span class="nav-text">推送到远程库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">2.5.</span> <span class="nav-text">分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">2.5.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">2.5.2.</span> <span class="nav-text">分支管理策略</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">2.2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">2.3.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件改动"><span class="nav-number">2.3.2.</span> <span class="nav-text">文件改动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">2.3.3.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">2.3.4.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库"><span class="nav-number">2.4.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式优点"><span class="nav-number">2.4.1.</span> <span class="nav-text">分布式优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送到远程库"><span class="nav-number">2.4.2.</span> <span class="nav-text">推送到远程库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">2.5.</span> <span class="nav-text">分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">2.5.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">2.5.2.</span> <span class="nav-text">分支管理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#团队协作"><span class="nav-number">2.5.3.</span> <span class="nav-text">团队协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签管理"><span class="nav-number">2.6.</span> <span class="nav-text">标签管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
@@ -594,7 +604,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共23.2k字</span>
+  <span class="post-count">博客全站共23.4k字</span>
 </div>
         
 
