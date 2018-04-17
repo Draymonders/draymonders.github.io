@@ -45,7 +45,7 @@
     <link href="http://draymonder.me/2018/04/16/git-learing/"/>
     <id>http://draymonder.me/2018/04/16/git-learing/</id>
     <published>2018-04-16T15:30:00.000Z</published>
-    <updated>2018-04-17T09:24:59.418Z</updated>
+    <updated>2018-04-17T12:48:32.805Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听到大佬说我太菜了.没办法啊，确实蛮菜的，需要学习很多东西吧,就很难受。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure>
@@ -79,6 +79,7 @@
 <p><code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
 <p><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a><br><a href="https://www.cnblogs.com/schaepher/p/4933873.html" target="_blank" rel="external">GitHub团队项目合作流程</a></p>
+<p>感觉发现了一个学长<a href="http://www.cnblogs.com/schaepher" target="_blank" rel="external">schaepher</a>解决了一下我的迷茫呢,嘿嘿，看了他的很多博文,蛮有营养，想做什么就做什么好了，顾虑那么多干嘛。</p>
 ]]></content>
     
     <summary type="html">
