@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://draymonder.me/2018/04/15/javase-CollectionAndMap/</loc>
+    <lastmod>2018-04-30T10:26:23.622Z</lastmod>
+    <data>
+        <display>
+        <title>JavaSE的Collection 和 Map</title>
+        <pubTime>2018-04-15T15:00:00.000Z</pubTime>
+        
+        <tag>JavaSE</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://draymonder.me/2018/04/10/javase-api/</loc>
-    <lastmod>2018-04-29T13:47:27.154Z</lastmod>
+    <lastmod>2018-04-30T03:51:05.336Z</lastmod>
     <data>
         <display>
         <title>JavaSE的常用API</title>
@@ -98,23 +115,6 @@
         <pubTime>2018-04-16T15:30:00.000Z</pubTime>
         
         <tag>Git</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://draymonder.me/2018/04/15/javase-dataStructure/</loc>
-    <lastmod>2018-04-13T09:26:07.541Z</lastmod>
-    <data>
-        <display>
-        <title>JavaSE的Data Stucture</title>
-        <pubTime>2018-04-15T15:00:00.000Z</pubTime>
-        
-        <tag>JavaSE</tag>
          
          
            
