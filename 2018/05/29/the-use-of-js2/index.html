@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Js使用中的一些trick">
+<meta name="description" content="Js BOM对象模型 以及 其他一些小知识点">
 <meta name="keywords" content="Js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript一些trick">
+<meta property="og:title" content="JavaScript BOM对象模型">
 <meta property="og:url" content="http://draymonder.me/2018/05/29/the-use-of-js2/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="Js使用中的一些trick">
+<meta property="og:description" content="Js BOM对象模型 以及 其他一些小知识点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-29T09:39:30.545Z">
+<meta property="og:updated_time" content="2018-06-02T06:58:23.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript一些trick">
-<meta name="twitter:description" content="Js使用中的一些trick">
+<meta name="twitter:title" content="JavaScript BOM对象模型">
+<meta name="twitter:description" content="Js BOM对象模型 以及 其他一些小知识点">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>JavaScript一些trick | Draymonder's Blog</title>
+  <title>JavaScript BOM对象模型 | Draymonder's Blog</title>
   
 
 
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript一些trick</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript BOM对象模型</h1>
         
 
         <div class="post-meta">
@@ -291,7 +291,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>185 字</span>
+                <span>330 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -317,7 +317,7 @@
 
           
               <div class="post-description">
-                  Js使用中的一些trick
+                  Js BOM对象模型 以及 其他一些小知识点
               </div>
           
 
@@ -334,9 +334,7 @@
       
 
       
-        <h1 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;js不存在方法重载，调用的都是最后一个方法名的方法体<br><figure class="highlight oxygene"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a, b)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">function</span> <span class="title">add</span><span class="params">(a, b, c)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b + c;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">alert</span><span class="params">( <span class="keyword">add</span>(1,2)</span> );</span> <span class="comment">//返回NaN</span></div><div class="line">alert( <span class="keyword">add</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) ); <span class="comment">//返回NaN</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a, b, c, d)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b + c + d;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">alert</span><span class="params">( <span class="keyword">add</span>(1,2,3,4)</span> );</span> <span class="comment">//返回10</span></div></pre></td></tr></table></figure></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;但是我们可以模拟出重载<br>js中 用 <code>arguments</code>数组来记录传递的参数</p>
-<h1 id="BOM对象模型-Browser-Object-Model"><a href="#BOM对象模型-Browser-Object-Model" class="headerlink" title="BOM对象模型(Browser Object Model)"></a>BOM对象模型(Browser Object Model)</h1><ul>
+        <h1 id="BOM对象模型-Browser-Object-Model"><a href="#BOM对象模型-Browser-Object-Model" class="headerlink" title="BOM对象模型(Browser Object Model)"></a>BOM对象模型(Browser Object Model)</h1><ul>
 <li>navigator</li>
 <li>screen</li>
 <li>location</li>
@@ -348,6 +346,10 @@
 </li>
 </ul>
 <p>set()方法传递参数有两个 ， 第一个是code，即方法的代码，第二个是时间，单位是毫秒<br>setInterval() 是周期性的执行代码<br>setTimeout() 是只在给定的时间时 执行代码(一次)<br><br><br>参考文档:&nbsp;&nbsp;<a href="https://itbilu.com/javascript/js/4k9JcnZRl.html" target="_blank" rel="external">JavaScript BOM对象</a></p>
+<h1 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;js不存在方法重载，调用的都是最后一个方法名的方法体<br><figure class="highlight oxygene"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a, b)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">function</span> <span class="title">add</span><span class="params">(a, b, c)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b + c;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">alert</span><span class="params">( <span class="keyword">add</span>(1,2)</span> );</span> <span class="comment">//返回NaN</span></div><div class="line">alert( <span class="keyword">add</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) ); <span class="comment">//返回NaN</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a, b, c, d)</span> <span class="comment">&#123;</span></span></div><div class="line"><span class="function"><span class="comment">    return a + b + c + d;</span></span></div><div class="line"><span class="function"><span class="comment">&#125;</span></span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function"><span class="title">alert</span><span class="params">( <span class="keyword">add</span>(1,2,3,4)</span> );</span> <span class="comment">//返回10</span></div></pre></td></tr></table></figure></p>
+<p>但是我们可以模拟出重载<br>js中 用 <code>arguments</code>数组来记录传递的参数</p>
+<h1 id="onclick传函数问题"><a href="#onclick传函数问题" class="headerlink" title="onclick传函数问题"></a>onclick传函数问题</h1><p>直接上代码<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.draymonder.me"</span> <span class="attr">onclick</span>=<span class="string">"f()"</span>&gt;</span>draymonder博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.draymonder.me"</span> <span class="attr">onclick</span>=<span class="string">"return f()"</span>&gt;</span>draymonder博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span></div><div class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="literal">false</span>;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>根据上面的代码  一个<code>onclick=&quot;f()&quot;</code> 另外一个<code>return f()</code><br><code>onclick=&quot;function()&quot;</code> 表示只会执行 function , 但是不会传回 function 中之回传值<br><code>onclick = &quot;return function()&quot;</code> 则是 执行 function 并传回 function 中之回传值<br>所以第二个a标签  无论怎么点击都不会发生跳转，而第一个标签由于f()仅仅执行，不返回结果，所以能正常跳转的把</p>
 
       
     </div>
@@ -547,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法重载"><span class="nav-number">1.</span> <span class="nav-text">方法重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM对象模型-Browser-Object-Model"><span class="nav-number">2.</span> <span class="nav-text">BOM对象模型(Browser Object Model)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM对象模型-Browser-Object-Model"><span class="nav-number">1.</span> <span class="nav-text">BOM对象模型(Browser Object Model)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法重载"><span class="nav-number">2.</span> <span class="nav-text">方法重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#onclick传函数问题"><span class="nav-number">3.</span> <span class="nav-text">onclick传函数问题</span></a></li></ol></div>
             
 
           </div>
@@ -586,7 +588,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.6k字</span>
+  <span class="post-count">博客全站共29.7k字</span>
 </div>
         
 
