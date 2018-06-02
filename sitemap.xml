@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://draymonder.me/2018/07/01/documents/</loc>
+    
+    <lastmod>2018-06-02T07:13:04.791Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://draymonder.me/2018/05/29/the-use-of-js2/</loc>
     
     <lastmod>2018-06-02T06:58:23.795Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://draymonder.me/2018/05/28/nth-element/</loc>
     
     <lastmod>2018-05-28T10:50:48.510Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://draymonder.me/2018/07/01/documents/</loc>
-    
-    <lastmod>2018-05-22T15:03:57.462Z</lastmod>
     
   </url>
   
