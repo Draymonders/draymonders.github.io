@@ -51,13 +51,15 @@
     <link href="http://draymonder.me/2018/07/01/documents/"/>
     <id>http://draymonder.me/2018/07/01/documents/</id>
     <published>2018-07-01T15:00:00.000Z</published>
-    <updated>2018-06-02T07:13:04.791Z</updated>
+    <updated>2018-06-14T11:49:49.605Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&nbsp;&nbsp;&nbsp;&nbsp; 贴一下经常使用的文档及网站，省的一直要收藏夹</p>
 <h2 id="学院课件下载"><a href="#学院课件下载" class="headerlink" title="学院课件下载"></a>学院课件下载</h2><p><a href="https://ppt.atcumt.com/" target="_blank" rel="external">学院的课程ppt以及复习资料汇总</a> </p>
+<h2 id="Java学习"><a href="#Java学习" class="headerlink" title="Java学习"></a>Java学习</h2><p><a href="https://www.cnblogs.com/fqfanqi/p/6187085.html" target="_blank" rel="external">Java遍历Map对象的四种方式</a><br><a href="https://www.cnblogs.com/xdp-gacl/p/3855702.html" target="_blank" rel="external">Session学习</a></p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p><a href="https://blog.csdn.net/enchanted_zhouh/article/details/76094308" target="_blank" rel="external">浅析C/S、B/S与P2P架构</a></p>
+<h2 id="微机原理"><a href="#微机原理" class="headerlink" title="微机原理"></a>微机原理</h2><p><a href="https://blog.csdn.net/dh0144298/article/details/51511386" target="_blank" rel="external">使8253输出1S的方波，使通道外接的发光二极管亮1S，暗1S</a><br><a href="https://blog.csdn.net/u013007900/article/details/50408903" target="_blank" rel="external">可编程定时/计数器 8253/8254</a></p>
 <h2 id="markDown语法"><a href="#markDown语法" class="headerlink" title="markDown语法"></a>markDown语法</h2><p><a href="https://www.appinn.com/markdown/index.html" target="_blank" rel="external">Markdown 语法说明</a></p>
 <h2 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h2><p><a href="http://www.ypppt.com/" target="_blank" rel="external">ppt模板下载</a></p>
-<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p><a href="https://blog.csdn.net/enchanted_zhouh/article/details/76094308" target="_blank" rel="external">浅析C/S、B/S与P2P架构</a></p>
 <h2 id="Linux学习"><a href="#Linux学习" class="headerlink" title="Linux学习"></a>Linux学习</h2><p><a href="https://www.bilibili.com/video/av12996446/?from=search&amp;seid=16236444443709215734" target="_blank" rel="external">韩顺平.linux视频教程</a></p>
 <h2 id="hexo的Next主题配置"><a href="#hexo的Next主题配置" class="headerlink" title="hexo的Next主题配置"></a>hexo的Next主题配置</h2><p>[Next主题 文章置顶]<a href="https://blog.csdn.net/qwerty200696/article/details/79010629" target="_blank" rel="external">https://blog.csdn.net/qwerty200696/article/details/79010629</a></p>
 ]]></content>
@@ -74,17 +76,67 @@
   </entry>
   
   <entry>
+    <title>JavaWeb初步入门学习</title>
+    <link href="http://draymonder.me/2018/06/14/javaee-init/"/>
+    <id>http://draymonder.me/2018/06/14/javaee-init/</id>
+    <published>2018-06-14T15:00:00.000Z</published>
+    <updated>2018-06-12T14:27:54.128Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="中文字符设置"><a href="#中文字符设置" class="headerlink" title="中文字符设置"></a>中文字符设置</h1><figure class="highlight less"><table><tr><td class="code"><pre><div class="line">方式一:</div><div class="line">    <span class="comment">//设置服务端的字节编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setCharacterEncoding</span>(<span class="string">"utf-8"</span>); </div><div class="line">    <span class="comment">//设置返回页面的文件头编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setHeader</span>(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=utf-8"</span>); </div><div class="line">   </div><div class="line">方式二:</div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setContentType</span>(<span class="string">"text/html;charset=utf-8"</span>);</div></pre></td></tr></table></figure>
+<p>另外由于tomcat的默认编码是iso的，在<code>%TOMCATE_HOME%/conf</code>的<code>server.xml</code>中<br>添加<br><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"80"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span>    <span class="attribute">redirectPort</span>=<span class="string">"8443"</span>  <span class="attribute">URIEncoding</span>=<span class="string">"utf-8"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure></p>
+<p>而POST请求则需要手动代码中将request转换成utf-8码<br><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      JavaEE 入门学习记录
+    
+    </summary>
+    
+    
+      <category term="JavaEE" scheme="http://draymonder.me/tags/JavaEE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>20岁的感想</title>
+    <link href="http://draymonder.me/2018/06/14/the-20years/"/>
+    <id>http://draymonder.me/2018/06/14/the-20years/</id>
+    <published>2018-06-13T16:00:00.000Z</published>
+    <updated>2018-06-14T11:50:01.369Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>  20岁说来就来了，时间真的是个无情的东西呢，悄无声息，又无处可拦。<br><br>  终于没能实现自己的目标，没能变成自己想要的样子。<br><br>  终日沉浸在鸡汤中，始终没有大的改变。<br></p>
+<p>  或许，我一开始的动机，已经成为此刻阻碍我前进的拦路虎。<br><br>  或许，我可以尝试着慢下来自己前进的脚步。<br><br>  此处，风景独好，为何偏要欣赏他处美景。<br></p>
+<p>  让自己慢下来，让自己学有所获，让自己踏实，而不是流于形式。<br><br>  O ever youthful, O ever weeping<br><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMuQS.jpg" alt="永远年轻，永远热泪盈眶"><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMKsg.jpg" alt="聊天记录"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      20岁~ 迷茫与理想相交织
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
+    
+  </entry>
+  
+  <entry>
     <title>二叉树打印</title>
     <link href="http://draymonder.me/2018/06/05/BinaryTreeBFS/"/>
     <id>http://draymonder.me/2018/06/05/BinaryTreeBFS/</id>
     <published>2018-06-05T14:00:00.000Z</published>
-    <updated>2018-06-05T12:04:19.355Z</updated>
+    <updated>2018-06-05T12:46:00.656Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="二叉树打印"><a href="#二叉树打印" class="headerlink" title="二叉树打印"></a>二叉树打印</h1><hr>
-<p>题目:<br><br>有一棵二叉树，请设计一个算法，按照层次打印这棵二叉树。</p>
+    <content type="html"><![CDATA[<h1 id="二叉树打印"><a href="#二叉树打印" class="headerlink" title="二叉树打印"></a>二叉树打印</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>有一棵二叉树，请设计一个算法，按照层次打印这棵二叉树。</p>
 <p>给定二叉树的根结点root，请返回打印结果，结果按照每一层一个数组进行储存，所有数组的顺序按照层数从上往下，且每一层的数组内元素按照从左往右排列。保证结点数小于等于500。</p>
-<h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><p>思路：<br><br>    用nlast记录当前访问的节点<br>    用last记录每层的最后一个点(初始化为root)<br>    然后用队列BFS,每访问一个节点就用新的节点更新nlast<br>    每当遇到 last以后 就更新 last=nlast</p>
-<h2 id="—-1"><a href="#—-1" class="headerlink" title="—"></a>—</h2><p>参考代码<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">  * 二叉树层序打印</span></div><div class="line"><span class="comment">  * source : https://www.nowcoder.com/courses/1/1/2</span></div><div class="line"><span class="comment">  */</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">struct TreeNode &#123;</span></div><div class="line"><span class="comment">    int val;</span></div><div class="line"><span class="comment">    struct TreeNode *left;</span></div><div class="line"><span class="comment">    struct TreeNode *right;</span></div><div class="line"><span class="comment">    TreeNode(int x) :</span></div><div class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">&#125;;*/</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreePrinter</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; printTree(TreeNode* root) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; res;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span> res;</div><div class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</div><div class="line">        q.push(root);</div><div class="line">        TreeNode* nlast = root, *last = root;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; row;</div><div class="line">        <span class="keyword">while</span> (q.size()) &#123;</div><div class="line">            TreeNode * ans = q.front();</div><div class="line">            q.pop();</div><div class="line">            <span class="keyword">if</span>(ans-&gt;left != <span class="literal">NULL</span>) &#123;</div><div class="line">                q.push(ans-&gt;left);</div><div class="line">                nlast = ans-&gt;left;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(ans-&gt;right != <span class="literal">NULL</span>) &#123;</div><div class="line">                q.push(ans-&gt;right);</div><div class="line">                nlast = ans-&gt;right;</div><div class="line">            &#125;</div><div class="line">            row.push_back(ans-&gt;val);</div><div class="line">            <span class="keyword">if</span>(ans == last) &#123;</div><div class="line">                res.push_back(row);</div><div class="line">                row.clear();</div><div class="line">                last = nlast;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>用nlast记录当前访问的节点
+用last记录每层的最后一个点(初始化为root)
+然后用队列BFS,每访问一个节点就用新的节点更新nlast
+每当遇到 last以后 就更新 last=nlast
+</code></pre><hr>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">  * 二叉树层序打印</span></div><div class="line"><span class="comment">  * source : https://www.nowcoder.com/courses/1/1/2</span></div><div class="line"><span class="comment">  */</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">struct TreeNode &#123;</span></div><div class="line"><span class="comment">    int val;</span></div><div class="line"><span class="comment">    struct TreeNode *left;</span></div><div class="line"><span class="comment">    struct TreeNode *right;</span></div><div class="line"><span class="comment">    TreeNode(int x) :</span></div><div class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">&#125;;*/</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreePrinter</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; printTree(TreeNode* root) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; res;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span> res;</div><div class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</div><div class="line">        q.push(root);</div><div class="line">        TreeNode* nlast = root, *last = root;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; row;</div><div class="line">        <span class="keyword">while</span> (q.size()) &#123;</div><div class="line">            TreeNode * ans = q.front();</div><div class="line">            q.pop();</div><div class="line">            <span class="keyword">if</span>(ans-&gt;left != <span class="literal">NULL</span>) &#123;</div><div class="line">                q.push(ans-&gt;left);</div><div class="line">                nlast = ans-&gt;left;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(ans-&gt;right != <span class="literal">NULL</span>) &#123;</div><div class="line">                q.push(ans-&gt;right);</div><div class="line">                nlast = ans-&gt;right;</div><div class="line">            &#125;</div><div class="line">            row.push_back(ans-&gt;val);</div><div class="line">            <span class="keyword">if</span>(ans == last) &#123;</div><div class="line">                res.push_back(row);</div><div class="line">                row.clear();</div><div class="line">                last = nlast;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <hr>
 ]]></content>
     
@@ -664,72 +716,6 @@ System.out.println(5+5+&quot;=5+5&quot;); //10=5+5
     
     
       <category term="Vps" scheme="http://draymonder.me/tags/Vps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>校赛补题记录</title>
-    <link href="http://draymonder.me/2018/03/10/the-cumtacm/"/>
-    <id>http://draymonder.me/2018/03/10/the-cumtacm/</id>
-    <published>2018-03-10T15:59:59.000Z</published>
-    <updated>2018-03-28T09:08:41.755Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  好久没写过算法题了，然后抱着水水的态度去参加了校赛，整体难度还可以，<br>  可能是我太菜了，很多简单题，我都没能顺利地ac掉。<br>  不过心态还是好的，继续努力加油吧。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一起来数数字"><a href="#一起来数数字" class="headerlink" title="一起来数数字"></a>一起来数数字</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>把人排成一排，从左到右从1开始报数，选择三个不同的数字x，y，z。从1开始报数，遇到x的倍数，y的倍数，z的倍数就跳过。比如x=2，y=3，z=5，第一个人报1，第二个人跳过2,3,4,5,6，报7，第三个人跳过8,9,10，报11。<br>给出一个n，问你第n个人报的数字是多少。 </p>
-<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行给出一个T（T≤300），代表样例组数，每组样例给出一个正整数n（n≤1e9）。接下来T行，每行输入四个数字x，y，z，n(其中x,y,z大于1且小于200000),代表题目描述中的意思</p>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>输出第n个人报的数字</p>
-<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="number">2</span></div><div class="line"><span class="symbol">2 </span><span class="number">3</span> <span class="number">5</span> <span class="number">2</span></div><div class="line"><span class="symbol">6 </span><span class="number">2</span> <span class="number">4</span> <span class="number">10000</span></div></pre></td></tr></table></figure>
-<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">7</span></div><div class="line"><span class="number">19999</span></div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>刚开始以为是规律题，不做（太菜了，后来发现是之前遇到过的容斥。<br>然后手写容斥+二分，然而一直WA.<br>比赛完，问队友，才知道自己容斥的不对,果然还是自己太菜了。</p>
-<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line">ll x,y,z,n;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> b==<span class="number">0</span>? a: gcd(b,a%b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll b)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    ll ans1 = b/x + b/y + b/z;</div><div class="line"></div><div class="line">    ll xy = (x*y)/gcd(x,y);</div><div class="line">    ll xz = (x*z)/gcd(x,z);</div><div class="line">    ll yz = (y*z)/gcd(y,z);</div><div class="line">    ll ans2 = b/xy + b/yz + b/xz;</div><div class="line"></div><div class="line">    ll xyz=xy*z/gcd(xy,z);</div><div class="line">    ll ans3 = b / xyz;</div><div class="line">    <span class="keyword">return</span> ans1 -ans2 + ans3;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">while</span> (t--) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld %lld %lld %lld"</span>,&amp;x,&amp;y,&amp;z,&amp;n);</div><div class="line">        ll l=<span class="number">1</span>,r=<span class="number">1e18</span>;</div><div class="line">        ll ans = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= r)</div><div class="line">        &#123;</div><div class="line">            ll mid = (l+r)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(mid - solve(mid) &gt;= n)&#123;</div><div class="line">                ans = mid ,r =mid<span class="number">-1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                l = mid +<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      记录校赛里面没能完成的题目
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://draymonder.me/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新的期待，新的向往</title>
-    <link href="http://draymonder.me/2018/03/10/the-expectation/"/>
-    <id>http://draymonder.me/2018/03/10/the-expectation/</id>
-    <published>2018-03-10T09:00:00.000Z</published>
-    <updated>2018-03-28T09:08:50.227Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  寒假就快过完了呢，给自己一个心情的整理，以及对未来的向往。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h3><h4 id="所做"><a href="#所做" class="headerlink" title="所做"></a>所做</h4><ol>
-<li>做完了PAT乙级真题30道。</li>
-<li>在学校吃了两星期的外卖!!! </li>
-<li>php, mysql的初步入门，并做了一个 雇员管理系统 的项目，蛮low的。 </li>
-<li>看完了一本书《你就是想得太多》,一部视频老罗的《时间的朋友》。 </li>
-<li>认识了一些人，稍稍开放了自己。 </li>
-<li>看了很多MV，喜欢一个人安安静静的。</li>
-<li>和初中同学聚会，一起放风筝。</li>
-<li>变得自信多了啊~(这是我这个假期收获最大的事情吧)</li>
-</ol>
-<h4 id="所思"><a href="#所思" class="headerlink" title="所思"></a>所思</h4><p>《你就是想的太多》 -小摘抄<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">  还有人，因为喜欢的人不理自己而不高兴。可是回头想，如果是你</div><div class="line">自己在忙的话，也会不怎么理别人。当然如果别人不喜欢你，不理你，</div><div class="line">那你就更没有必要不高兴了，因为你的喜欢本就是要让你能够有好的</div><div class="line">情绪的。</div><div class="line">  这看似有点儿无奈的边界，也的确是人生的一种境遇，人生的境遇</div><div class="line">本来就是常常发生变化，无论如何你都得保有乐观的心境。</div><div class="line">  有句“诸行无常”的佛语，其意思是说，时间的一切事物时刻都处于</div><div class="line">变化之中。</div><div class="line">  对于不喜欢你的人，要么你自己改变，变得让人家喜欢，要么你不</div><div class="line">如承认这是客观的存在，因为你也有不喜欢的人，何必太过勉强的去</div><div class="line">强人所难呢？“己所不欲勿施于人”这句流传几千年的话至今使用。</div><div class="line">  也就是说，对人生中所有的无常，变化，我们欣然接受就好了。</div><div class="line">即使是不利的，糟糕的，我们也应该避免让自己的情绪变坏。</div></pre></td></tr></table></figure></p>
-<p>感谢每一个给与我帮助的人 -小感悟<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">在<span class="number">2017</span> 年初定下的目标,完成了不少。其实毫无意义,因为</div><div class="line">错过了更重要的。</div><div class="line"></div><div class="line">其实本可以过一种更健康的方式,用更好的状态来过好每一天。</div><div class="line"></div><div class="line">我们谁也不知道自己能活多长时间，我也不知道，但是我感觉必须趁着</div><div class="line">自己年轻，多取得一些成就。</div></pre></td></tr></table></figure></p>
-<h3 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h3><h4 id="所想"><a href="#所想" class="headerlink" title="所想"></a>所想</h4><ol>
-<li>原谅我的人生格局太小，容不下那么多的人，那么多惊天动地的事。<br>我只想安安稳稳的过一辈子，有一个喜欢的女孩，买一套不大的房子，<br>过着普通但没有太大压力的生活。</li>
-<li><del>真希望我能快点儿遇到能让我心动的女孩啊，好看不好看无所谓的吧，<br>只要善良就够了。</del> 我已经遇到我想要保护的人了啊。</li>
-</ol>
-<h4 id="期待"><a href="#期待" class="headerlink" title="期待"></a>期待</h4><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 语言再尝试一下Java, Python </div><div class="line">最后看爱好, 择一而用, 并且熟悉相应的框架</div><div class="line"><span class="number">2.</span> 数据库主选就mysql,然后稍稍看看 db, oracle 然后针对NoSQL了解一下</div><div class="line"><span class="number">3.</span> 操作系统选择Linux入门吧，搭建好Unbuntu了，入门了解一下指令以及操作。</div><div class="line"><span class="number">4.</span> 数据结构/编程方面还要深入。</div><div class="line"><span class="number">5.</span> 保养好身体，新的学期瘦个<span class="number">15</span>斤，对我来说So easy.</div><div class="line"><span class="number">6.</span> 今年想要看一场演唱会，体验那种feel</div><div class="line">待添加的了，说不定会有新的想法</div></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>  珍惜时间，珍惜身边的人。<br>  一步步变得成熟，一步步靠近喜欢的人，一步步走向自己喜欢的样子，是多么幸福的一件事。<br>  END</p>
-]]></content>
-    
-    <summary type="html">
-    
-      一心向北，寻找自己的所属
-    
-    </summary>
-    
-    
-      <category term="Diary" scheme="http://draymonder.me/tags/Diary/"/>
     
   </entry>
   
