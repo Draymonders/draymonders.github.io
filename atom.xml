@@ -80,12 +80,12 @@
     <link href="http://draymonder.me/2018/06/14/javaee-init/"/>
     <id>http://draymonder.me/2018/06/14/javaee-init/</id>
     <published>2018-06-14T15:00:00.000Z</published>
-    <updated>2018-06-12T14:27:54.128Z</updated>
+    <updated>2018-06-17T12:15:49.381Z</updated>
     
     <content type="html"><![CDATA[<h1 id="中文字符设置"><a href="#中文字符设置" class="headerlink" title="中文字符设置"></a>中文字符设置</h1><figure class="highlight less"><table><tr><td class="code"><pre><div class="line">方式一:</div><div class="line">    <span class="comment">//设置服务端的字节编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setCharacterEncoding</span>(<span class="string">"utf-8"</span>); </div><div class="line">    <span class="comment">//设置返回页面的文件头编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setHeader</span>(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=utf-8"</span>); </div><div class="line">   </div><div class="line">方式二:</div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setContentType</span>(<span class="string">"text/html;charset=utf-8"</span>);</div></pre></td></tr></table></figure>
 <p>另外由于tomcat的默认编码是iso的，在<code>%TOMCATE_HOME%/conf</code>的<code>server.xml</code>中<br>添加<br><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"80"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span>    <span class="attribute">redirectPort</span>=<span class="string">"8443"</span>  <span class="attribute">URIEncoding</span>=<span class="string">"utf-8"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure></p>
 <p>而POST请求则需要手动代码中将request转换成utf-8码<br><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
-]]></content>
+<h1 id="JSP四大域"><a href="#JSP四大域" class="headerlink" title="JSP四大域"></a>JSP四大域</h1><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">所谓域，就是可以setAttribute，getAttribute，removeAttribute</div><div class="line"><span class="meta">&gt;</span><span class="bash">ServletContext 整个应用程序</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">session 整个会话</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">request 一个请求链</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">pageContext 一个jsp页面，这个域是在当前jsp页面和当前jsp页面中共享数据</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -103,11 +103,11 @@
     <link href="http://draymonder.me/2018/06/14/the-20years/"/>
     <id>http://draymonder.me/2018/06/14/the-20years/</id>
     <published>2018-06-13T16:00:00.000Z</published>
-    <updated>2018-06-14T11:50:01.369Z</updated>
+    <updated>2018-06-18T14:12:44.014Z</updated>
     
     <content type="html"><![CDATA[<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>  20岁说来就来了，时间真的是个无情的东西呢，悄无声息，又无处可拦。<br><br>  终于没能实现自己的目标，没能变成自己想要的样子。<br><br>  终日沉浸在鸡汤中，始终没有大的改变。<br></p>
 <p>  或许，我一开始的动机，已经成为此刻阻碍我前进的拦路虎。<br><br>  或许，我可以尝试着慢下来自己前进的脚步。<br><br>  此处，风景独好，为何偏要欣赏他处美景。<br></p>
-<p>  让自己慢下来，让自己学有所获，让自己踏实，而不是流于形式。<br><br>  O ever youthful, O ever weeping<br><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMuQS.jpg" alt="永远年轻，永远热泪盈眶"><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMKsg.jpg" alt="聊天记录"></p>
+<p>  让自己慢下来，让自己学有所获，让自己踏实，而不是流于形式。<br><br>  请从此刻开始去追寻自己内心中真正的挚热，而绝非要人云亦云，在追寻梦想的道路上，人云亦云将会是你最大的敌人<br><br>  O ever youthful, O ever weeping<br><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMuQS.jpg" alt="永远年轻，永远热泪盈眶"><br>  <img src="https://s1.ax1x.com/2018/06/13/CXMKsg.jpg" alt="聊天记录"><br>  端午回家以后一些新的感想<br><br>  我是家里的宝贝，我是独一无二的我，因为没有达到自己的目标就放弃自己的人，那是真正的懦弱<br><br>  人生漫漫路，不在意彼时的得失，朝着自己的方向，静心修养。<br><br>  愿你不负来路，不畏前程<br></p>
 ]]></content>
     
     <summary type="html">

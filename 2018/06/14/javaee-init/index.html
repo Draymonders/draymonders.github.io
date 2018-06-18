@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
 <meta property="og:description" content="JavaEE 入门学习记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-12T14:27:54.128Z">
+<meta property="og:updated_time" content="2018-06-17T12:15:49.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaWeb初步入门学习">
 <meta name="twitter:description" content="JavaEE 入门学习记录">
@@ -292,7 +292,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>116 字</span>
+                <span>174 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -338,7 +338,7 @@
         <h1 id="中文字符设置"><a href="#中文字符设置" class="headerlink" title="中文字符设置"></a>中文字符设置</h1><figure class="highlight less"><table><tr><td class="code"><pre><div class="line">方式一:</div><div class="line">    <span class="comment">//设置服务端的字节编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setCharacterEncoding</span>(<span class="string">"utf-8"</span>); </div><div class="line">    <span class="comment">//设置返回页面的文件头编码为utf-8</span></div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setHeader</span>(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=utf-8"</span>); </div><div class="line">   </div><div class="line">方式二:</div><div class="line">    <span class="selector-tag">response</span><span class="selector-class">.setContentType</span>(<span class="string">"text/html;charset=utf-8"</span>);</div></pre></td></tr></table></figure>
 <p>另外由于tomcat的默认编码是iso的，在<code>%TOMCATE_HOME%/conf</code>的<code>server.xml</code>中<br>添加<br><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"80"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span>    <span class="attribute">redirectPort</span>=<span class="string">"8443"</span>  <span class="attribute">URIEncoding</span>=<span class="string">"utf-8"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure></p>
 <p>而POST请求则需要手动代码中将request转换成utf-8码<br><figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
-
+<h1 id="JSP四大域"><a href="#JSP四大域" class="headerlink" title="JSP四大域"></a>JSP四大域</h1><figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">所谓域，就是可以setAttribute，getAttribute，removeAttribute</div><div class="line"><span class="meta">&gt;</span><span class="bash">ServletContext 整个应用程序</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">session 整个会话</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">request 一个请求链</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">pageContext 一个jsp页面，这个域是在当前jsp页面和当前jsp页面中共享数据</span></div></pre></td></tr></table></figure>
       
     </div>
     
@@ -537,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中文字符设置"><span class="nav-number">1.</span> <span class="nav-text">中文字符设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中文字符设置"><span class="nav-number">1.</span> <span class="nav-text">中文字符设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP四大域"><span class="nav-number">2.</span> <span class="nav-text">JSP四大域</span></a></li></ol></div>
             
 
           </div>
@@ -576,7 +576,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.4k字</span>
+  <span class="post-count">博客全站共30.6k字</span>
 </div>
         
 
