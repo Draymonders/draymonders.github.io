@@ -292,7 +292,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>1,517 字</span>
+                <span>1,520 字</span>
                 &nbsp; | &nbsp;
                 <span>6 min</span>
               </span>
@@ -336,7 +336,7 @@
 
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听到大佬说我太菜了.没办法啊，确实蛮菜的，需要学习很多东西吧,就很难受。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure>
 <p><code>--global</code>是指这台机器上所有的Git仓库都会使用这个配置</p>
 <h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>先<code>mkdir</code>建立一个空目录<br>然后，用<code>git init</code>初始化当前目录Git可以管理的仓库</p>
 <h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>用命令<code>git add ***</code>把文件添加到仓库<br>接着用<code>git commit -m &quot;***&quot;</code>把文件提交到仓库</p>
@@ -351,10 +351,10 @@
 <h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><h3 id="分布式优点"><a href="#分布式优点" class="headerlink" title="分布式优点"></a>分布式优点</h3><p>可以利用ssh 添加多个Key，假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了</p>
 <h3 id="推送到远程库"><a href="#推送到远程库" class="headerlink" title="推送到远程库"></a>推送到远程库</h3><p>关联远程库<br><code>git remote add origin https://github.com/Draymonders/git-learning.git</code><br>第一次推送master分支的所有内容<br><code>git push -u origin master</code><br>以后就可以用<br><code>git push origin master</code></p>
 <p>使用<code>https</code>除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放<br><code>http</code>端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p><code>git checkout -b dev</code> 表示创建并切换<br>相当于<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">git branch <span class="built_in">dev</span> <span class="comment">//创建dev分支</span></div><div class="line">git checkout <span class="built_in">dev</span> <span class="comment">//使用dev分支</span></div></pre></td></tr></table></figure></p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p><code>git checkout -b dev</code> 表示创建并切换<br>相当于<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch <span class="built_in">dev</span> <span class="comment">//创建dev分支</span></div><div class="line">git checkout <span class="built_in">dev</span> <span class="comment">//使用dev分支</span></div></pre></td></tr></table></figure></p>
 <p><code>git branch</code> 命令会列出所有分支，当前分支前面会标一个*号</p>
 <p>然后修改文件 接着<code>git add</code> and <code>git commit</code><br>接着回到master分支下 <code>git checkout master</code><br>把<code>dev</code>分支合并到<code>master</code>下,用<code>git merge dev</code><br>合并完成就可以删除<code>dev</code>分支了，用<code>git branch -d dev</code></p>
-<p>分支语句汇总<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">查看分支：git branch</div><div class="line"></div><div class="line">创建分支：git branch &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">切换分支：git checkout &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">创建+切换分支：git checkout -b &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">合并某分支到当前分支：git merge &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">删除分支：git branch -d &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">分支合并图：git <span class="built_in">log</span> <span class="comment">--graph</span></div></pre></td></tr></table></figure></p>
+<p>分支语句汇总<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">查看分支：git branch</div><div class="line"></div><div class="line">创建分支：git branch &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">切换分支：git checkout &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">创建+切换分支：git checkout -b &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">合并某分支到当前分支：git merge &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">删除分支：git branch -d &lt;<span class="built_in">name</span>&gt;</div><div class="line"></div><div class="line">分支合并图：git <span class="built_in">log</span> <span class="comment">--graph</span></div></pre></td></tr></table></figure></p>
 <h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。<br><code>git merge --no-ff -m &quot;merge with no-ff&quot; beta</code></p>
 <p>master是稳定版本，最好不要轻易动<br>然后下面建立一个beta测试版本，用来汇总代码和测试<br>最后建立每个人的分支，汇总到beta分支下。</p>
 <h3 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h3><p>在项目中，先添加<code>beta</code>分支<br><code>git clone</code>后接着用<code>git branch</code> 显示只有<code>master</code>分支<br>如果想要在<code>beta</code>分支上开发,就需要在本地创建beta分支和远程库的beta分支关联<br><code>git checkout -b beta origin/beta</code><br>最后上传的时候用<code>git push origin beta</code></p>
@@ -498,7 +498,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -511,7 +511,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -606,7 +606,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.6k字</span>
+  <span class="post-count">博客全站共31.5k字</span>
 </div>
         
 

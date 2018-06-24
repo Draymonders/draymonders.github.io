@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://draymonder.me/2018/06/14/the-20years/</loc>
+    <loc>http://draymonder.me/2018/06/14/jdbc-init/</loc>
     
-    <lastmod>2018-06-18T14:12:44.014Z</lastmod>
+    <lastmod>2018-06-24T07:08:35.082Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://draymonder.me/2018/06/14/javaee-init/</loc>
+    <loc>http://draymonder.me/2018/05/11/quickSort/</loc>
     
-    <lastmod>2018-06-17T12:15:49.381Z</lastmod>
+    <lastmod>2018-06-23T10:08:59.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/06/23/twoStackToQueue/</loc>
+    
+    <lastmod>2018-06-23T06:33:04.416Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/06/23/reBuildBinaryTree/</loc>
+    
+    <lastmod>2018-06-23T06:06:32.953Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/06/25/javase-practice/</loc>
+    
+    <lastmod>2018-06-22T14:30:30.343Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://draymonder.me/2018/06/14/the-20years/</loc>
+    
+    <lastmod>2018-06-21T14:15:18.621Z</lastmod>
     
   </url>
   

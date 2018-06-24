@@ -292,7 +292,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>1,372 字</span>
+                <span>1,374 字</span>
                 &nbsp; | &nbsp;
                 <span>5 min</span>
               </span>
@@ -344,8 +344,8 @@
 <h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><h3 id="POJ-3061-尺取法"><a href="#POJ-3061-尺取法" class="headerlink" title="POJ 3061(尺取法)"></a>POJ 3061(尺取法)</h3><p>题意：<br>长度n的数列(元素均大于0) 以及 S 求总和不小于S的连续子序列的长度的最小值。<br>思路：<br>对于As开始总和最初大于S时的连续子序列<code>As+...+At</code><br>必定 <code>As+1+...+At-1 &lt; As+...+At-1 &lt; S</code>,<br>所以只要找到As开始,At结尾的连续子序列和&gt;S,As+1开始的连续子序列和&gt;S的结尾必定是At及At的以后，不能是之前</p>
 <h3 id="反转-开关问题"><a href="#反转-开关问题" class="headerlink" title="反转(开关问题)"></a>反转(开关问题)</h3><p>题意：<br>N头牛排成一列，每头牛或者向前或者向后。 求为了让所有的牛都能面向前方需要的最少操作的次数M和对应的区间操作长度K<br>思路：<br>枚举每个K，然后对每个相应的区间进行反转，复杂度O(n3)，会T，然后针对区间反转，可以利用dp[N]表示 [i,i+k-1]这个区间是否被反转，反转为1  所以对于相应的i，只需要判断<code>dp[i-k+1]+...dp[i-1]+dir[i]</code>是否为0，如果为0，需要反转。<br>最后判断[n-k+1,n)的区间里面是否所有的数都不需要反转就可以了</p>
 <h2 id="上海金马五校赛"><a href="#上海金马五校赛" class="headerlink" title="上海金马五校赛"></a>上海金马五校赛</h2><h3 id="Wasserstein-Distance"><a href="#Wasserstein-Distance" class="headerlink" title="Wasserstein Distance"></a>Wasserstein Distance</h3><p>题意：<br>有两堆泥土，每一堆有n个位置，第一堆泥土的第i个位置有ai克泥土，第二堆泥土的第i个位置有bi克泥土。小埃可以在第一堆泥土中任意移挪动泥土，具体地从第i个位置移动k克泥土到第j个位置，但是会消耗 <code>k*|i-j|</code> 的体力。小埃的最终目的是通过在第一堆中挪动泥土，使得第一堆泥土最终的形态和第二堆相同，也就是ai=bi (1&lt;=i&lt;=n), 但是要求所花费的体力最小<br>思路：<br>贪心的处理，使得每临近的位置互相交换泥土(这样是局部最优解，但不知道怎么也是全局最优解)然后遍历一遍数组用ans加和|Ai-Bi|，并更新Ai+1加和Ai-Bi(表示从Ai+1移动土堆到Ai了</p>
-<h3 id="K序列"><a href="#K序列" class="headerlink" title="K序列"></a>K序列</h3><p>题意：<br>给一个数组 a，长度为 n，若某个子序列中的和为 K 的倍数，那么这个序列被称为“K 序列”。现在要你 对数组 a 求出最长的子序列的长度，满足这个序列是 K 序列。<br>思路：<br>这个题，貌似出的不大好，因为序列没说是不是连续的。<br>如果是<code>连续</code>的，用前缀和记录，对于每个sum[i]%k的结果p,总会有最大的位置，<br>和最小的位置，那么直接遍历从0-k，p最后的位置 - p开始的位置就可以了<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">for(int i=<span class="number">1</span><span class="comment">;i&lt;=n;i++) &#123;</span></div><div class="line">    <span class="built_in">s1</span>[sum[i]] = i<span class="comment">;</span></div><div class="line">    if(<span class="built_in">s2</span>[sum[i]] == <span class="number">0</span> &amp;&amp; sum[i] != <span class="number">0</span>)</div><div class="line">        <span class="built_in">s2</span>[sum[i]] = i<span class="comment">;</span></div><div class="line">&#125;</div><div class="line">int mx = <span class="number">0</span><span class="comment">;</span></div><div class="line">for(int i=<span class="number">0</span><span class="comment">;i&lt;N*100;i++) &#123;</span></div><div class="line">    if(<span class="built_in">s2</span>[i] != -<span class="number">1</span>)</div><div class="line">        mx = max(mx,<span class="built_in">s1</span>[i]-<span class="built_in">s2</span>[i])<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果是<code>不连续</code>的，用dp,复杂度为n*k<br><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line">int last = 0;</div><div class="line">dp[<span class="string">last</span>][<span class="symbol">s[1</span>]] = 1;//dp[<span class="string">0</span>][<span class="symbol">i</span>] 表示加和对k取余为i的最长序列长度</div><div class="line">for(int i=2; i<span class="xml"><span class="tag">&lt;<span class="name">=n;</span> <span class="attr">i</span>++)</span></span></div><div class="line"><span class="xml">&#123;</span></div><div class="line"><span class="xml">    last = 1 - last;</span></div><div class="line"><span class="xml">    for(int j=0; j<span class="tag">&lt;<span class="name">k;</span> <span class="attr">j</span>++)</span></span></div><div class="line"><span class="xml">    &#123;</span></div><div class="line"><span class="xml">        if(dp[1-last][j] !=0)</span></div><div class="line"><span class="xml">            dp[last][ (j+s[i])%k] = max(dp[1-last][ (j+s[i])%k],dp[1-last][j]+1);</span></div><div class="line"><span class="xml">        else</span></div><div class="line"><span class="xml">            dp[last][(j+s[i])%k ] =dp[1-last][ (j+s[i])%k];</span></div><div class="line"><span class="xml">    &#125;</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure></p>
+<h3 id="K序列"><a href="#K序列" class="headerlink" title="K序列"></a>K序列</h3><p>题意：<br>给一个数组 a，长度为 n，若某个子序列中的和为 K 的倍数，那么这个序列被称为“K 序列”。现在要你 对数组 a 求出最长的子序列的长度，满足这个序列是 K 序列。<br>思路：<br>这个题，貌似出的不大好，因为序列没说是不是连续的。<br>如果是<code>连续</code>的，用前缀和记录，对于每个sum[i]%k的结果p,总会有最大的位置，<br>和最小的位置，那么直接遍历从0-k，p最后的位置 - p开始的位置就可以了<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">for(int i=<span class="number">1</span><span class="comment">;i&lt;=n;i++) &#123;</span></div><div class="line">    <span class="built_in">s1</span>[sum[i]] = i<span class="comment">;</span></div><div class="line">    if(<span class="built_in">s2</span>[sum[i]] == <span class="number">0</span> &amp;&amp; sum[i] != <span class="number">0</span>)</div><div class="line">        <span class="built_in">s2</span>[sum[i]] = i<span class="comment">;</span></div><div class="line">&#125;</div><div class="line">int mx = <span class="number">0</span><span class="comment">;</span></div><div class="line">for(int i=<span class="number">0</span><span class="comment">;i&lt;N*100;i++) &#123;</span></div><div class="line">    if(<span class="built_in">s2</span>[i] != -<span class="number">1</span>)</div><div class="line">        mx = max(mx,<span class="built_in">s1</span>[i]-<span class="built_in">s2</span>[i])<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是<code>不连续</code>的，用dp,复杂度为n*k<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">int last = 0;</div><div class="line">dp[<span class="string">last</span>][<span class="symbol">s[1</span>]] = 1;//dp[<span class="string">0</span>][<span class="symbol">i</span>] 表示加和对k取余为i的最长序列长度</div><div class="line">for(int i=2; i<span class="xml"><span class="tag">&lt;<span class="name">=n;</span> <span class="attr">i</span>++)</span></span></div><div class="line"><span class="xml">&#123;</span></div><div class="line"><span class="xml">    last = 1 - last;</span></div><div class="line"><span class="xml">    for(int j=0; j<span class="tag">&lt;<span class="name">k;</span> <span class="attr">j</span>++)</span></span></div><div class="line"><span class="xml">    &#123;</span></div><div class="line"><span class="xml">        if(dp[1-last][j] !=0)</span></div><div class="line"><span class="xml">            dp[last][ (j+s[i])%k] = max(dp[1-last][ (j+s[i])%k],dp[1-last][j]+1);</span></div><div class="line"><span class="xml">        else</span></div><div class="line"><span class="xml">            dp[last][(j+s[i])%k ] =dp[1-last][ (j+s[i])%k];</span></div><div class="line"><span class="xml">    &#125;</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -472,7 +472,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -485,7 +485,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -580,7 +580,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.6k字</span>
+  <span class="post-count">博客全站共31.5k字</span>
 </div>
         
 

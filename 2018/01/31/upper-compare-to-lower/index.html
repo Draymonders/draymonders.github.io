@@ -292,7 +292,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>266 字</span>
+                <span>268 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -336,8 +336,8 @@
 
       
         <h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
-<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
+<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
 
       
     </div>
@@ -468,7 +468,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -481,7 +481,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -576,7 +576,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.6k字</span>
+  <span class="post-count">博客全站共31.5k字</span>
 </div>
         
 
