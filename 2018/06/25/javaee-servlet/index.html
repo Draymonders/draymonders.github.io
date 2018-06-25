@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Diary," />
+  <meta name="keywords" content="JavaEE," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="咸鱼的我，想要调整一下状态">
-<meta name="keywords" content="Diary">
+<meta name="description" content="Java Web中实现Servlet的方式">
+<meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="心情小扎">
-<meta property="og:url" content="http://draymonder.me/2018/05/15/the-diary-05-15/index.html">
+<meta property="og:title" content="Java Web中实现Servlet的方式">
+<meta property="og:url" content="http://draymonder.me/2018/06/25/javaee-servlet/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="咸鱼的我，想要调整一下状态">
+<meta property="og:description" content="Java Web中实现Servlet的方式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T15:00:58.356Z">
+<meta property="og:updated_time" content="2018-06-25T07:40:18.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="心情小扎">
-<meta name="twitter:description" content="咸鱼的我，想要调整一下状态">
+<meta name="twitter:title" content="Java Web中实现Servlet的方式">
+<meta name="twitter:description" content="Java Web中实现Servlet的方式">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://draymonder.me/2018/05/15/the-diary-05-15/"/>
+  <link rel="canonical" href="http://draymonder.me/2018/06/25/javaee-servlet/"/>
 
 
 
 
 
-  <title>心情小扎 | Draymonder's Blog</title>
+  <title>Java Web中实现Servlet的方式 | Draymonder's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/05/15/the-diary-05-15/">
+    <link itemprop="mainEntityOfPage" href="http://draymonder.me/2018/06/25/javaee-servlet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">心情小扎</h1>
+          <h1 class="post-title" itemprop="name headline">Java Web中实现Servlet的方式</h1>
         
 
         <div class="post-meta">
@@ -284,15 +284,15 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T23:30:00+08:00">
-                2018-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-25T17:00:00+08:00">
+                2018-06-25
               </time>
             
 
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>274 字</span>
+                <span>161 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -318,7 +318,7 @@
 
           
               <div class="post-description">
-                  咸鱼的我，想要调整一下状态
+                  Java Web中实现Servlet的方式
               </div>
           
 
@@ -335,14 +335,33 @@
       
 
       
-        <h1 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;已经大二下学期过去半个学期了，想想这个学期颓废的状态，真的好痛心，虽然取得了一些小成绩,但是凭心而论，那都是靠别人的努力所获得的，这样的荣誉或者证书其实真的对自己的成长没有太大的作用，反而会助长自己的骄傲的小情绪呢吧。<br>&nbsp;&nbsp;&nbsp;&nbsp;悟已往之不谏，知来者之可追。<br>&nbsp;&nbsp;&nbsp;&nbsp;上周末去南京打了省赛，真的，整个队，神迷离，题目看不懂，枚举，暴力，排序简单的trick题目都Wa了很多次，痛心棘手啊。<br>&nbsp;&nbsp;&nbsp;&nbsp;昨天考完了操作系统，发现自己真的是好菜的呢，不好好看书，也不好好刷题，考试的时候一脸懵逼的看着不会做的题目，着实心痛。</p>
-<h1 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h1><ul>
-<li>减肥的了，控制在130斤左右吧，太胖了有种自卑感</li>
-<li>每周写<code>leetcode</code> 5道题</li>
-<li>JavaSE学完，以后技术栈就偏向Java了，然后开始JavaEE的学习</li>
-<li>每周多陪陪人家嘛</li>
-<li>未完待续…</li>
+        <h1 id="Servlet是什么"><a href="#Servlet是什么" class="headerlink" title="Servlet是什么?"></a>Servlet是什么?</h1><p>Servlet是Java Web三大组件之一，它属于动态资源。Servlet的作用是处理请求，服务器会把接收到的请求交给Servlet来处理，在Servlet中通常需要:</p>
+<ul>
+<li>接受数据请求</li>
+<li>处理请求</li>
+<li>完成响应</li>
 </ul>
+<h1 id="实现Servlet的方式"><a href="#实现Servlet的方式" class="headerlink" title="实现Servlet的方式"></a>实现Servlet的方式</h1><ul>
+<li>实现javax.servlet.Servlet接口</li>
+<li>继承javax.servlet.GenericServlet类</li>
+<li>继承javax.servlet.http.HttpServlet类</li>
+</ul>
+<h1 id="什么是域对象"><a href="#什么是域对象" class="headerlink" title="什么是域对象?"></a>什么是域对象?</h1><p>域对象所具有的特点是:</p>
+<ul>
+<li>能够存数据 setAttribute()</li>
+<li>能够取数据 getAttribute()</li>
+</ul>
+<h2 id="JavaWeb-四大域对象"><a href="#JavaWeb-四大域对象" class="headerlink" title="JavaWeb 四大域对象"></a>JavaWeb 四大域对象</h2><ul>
+<li>PageContext</li>
+<li>ServletRequest</li>
+<li>HttpSession</li>
+<li>ServletContext<h2 id="Servlet类-三大域对象"><a href="#Servlet类-三大域对象" class="headerlink" title="Servlet类 三大域对象"></a>Servlet类 三大域对象</h2></li>
+<li>request</li>
+<li>session</li>
+<li>application</li>
+</ul>
+<h1 id="参考博文"><a href="#参考博文" class="headerlink" title="参考博文"></a>参考博文</h1><p><a href="http://codingxiaxw.cn/2016/09/24/6-java-web%E5%AE%9E%E7%8E%B0Servlet%E7%9A%84%E6%96%B9%E5%BC%8F/" target="_blank" rel="external">Java Web中实现Servlet的方式</a></p>
+<p><a href="https://blog.csdn.net/BeauXie/article/details/52280165" target="_blank" rel="external">JavaWeb的四大域对象总结</a></p>
 
       
     </div>
@@ -360,7 +379,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Diary/" rel="tag"><i class="fa fa-tag"></i> Diary</a>
+            <a href="/tags/JavaEE/" rel="tag"><i class="fa fa-tag"></i> JavaEE</a>
           
         </div>
       
@@ -373,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/11/quickSort/" rel="next" title="快排简单实现">
-                <i class="fa fa-chevron-left"></i> 快排简单实现
+              <a href="/2018/06/23/reBuildBinaryTree/" rel="next" title="剑指offer 重建二叉树">
+                <i class="fa fa-chevron-left"></i> 剑指offer 重建二叉树
               </a>
             
           </div>
@@ -383,8 +402,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/21/the-network1/" rel="prev" title="TCP/IP、Http、Socket的区别">
-                TCP/IP、Http、Socket的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/25/java-importClassError/" rel="prev" title="Jsp中导入类出错">
+                Jsp中导入类出错 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反思"><span class="nav-number">1.</span> <span class="nav-text">反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flag"><span class="nav-number">2.</span> <span class="nav-text">Flag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet是什么"><span class="nav-number">1.</span> <span class="nav-text">Servlet是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现Servlet的方式"><span class="nav-number">2.</span> <span class="nav-text">实现Servlet的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是域对象"><span class="nav-number">3.</span> <span class="nav-text">什么是域对象?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaWeb-四大域对象"><span class="nav-number">3.1.</span> <span class="nav-text">JavaWeb 四大域对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet类-三大域对象"><span class="nav-number">3.2.</span> <span class="nav-text">Servlet类 三大域对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考博文"><span class="nav-number">4.</span> <span class="nav-text">参考博文</span></a></li></ol></div>
             
 
           </div>
