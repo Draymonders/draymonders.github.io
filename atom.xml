@@ -451,6 +451,30 @@
   </entry>
   
   <entry>
+    <title>快排简单实现</title>
+    <link href="http://www.draymonder.site/quickSort/"/>
+    <id>http://www.draymonder.site/quickSort/</id>
+    <published>2018-05-11T15:30:00.000Z</published>
+    <updated>2018-06-23T10:08:59.955Z</updated>
+    
+    <content type="html"><![CDATA[<p>平均算法复杂度为O(nlogn)<br>最坏算法复杂度O(n2) {当需要排序的数组 本身已经排好序时，递归由普通二叉树退化成单向的一条链}<br><figure class="highlight stan"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Partition 划分函数</span></div><div class="line"><span class="comment"> * @Param (data[], start, ed)</span></div><div class="line"><span class="comment"> * @return (中间基准)</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="selector-tag">int</span> Partition(<span class="selector-tag">int</span> <span class="title">data</span>[], <span class="selector-tag">int</span> start, <span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="name">if</span>(<span class="title">data</span> == NULL || start &lt; <span class="number">0</span>) &#123;</div><div class="line">        cout &lt;&lt; "Invalid Input" &lt;&lt;endl;</div><div class="line">        return -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-tag">int</span> key = <span class="title">data</span>[start];</div><div class="line">    <span class="selector-tag">int</span> i = start, j = ed-<span class="number">1</span>;</div><div class="line">    <span class="name">while</span> (i &lt; j) &#123;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[j] &gt;= key &amp;&amp; i &lt; j)</div><div class="line">            j--;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[i] &lt;= key &amp;&amp; i &lt; j)</div><div class="line">            i++;</div><div class="line">        <span class="name">if</span>(i &lt; j) swap(<span class="title">data</span>[i],<span class="title">data</span>[j]);</div><div class="line">    &#125;</div><div class="line">    <span class="title">data</span>[start] = <span class="title">data</span>[i];</div><div class="line">    <span class="title">data</span>[i] = key;</div><div class="line">    return i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * quickSort 快排函数</span></div><div class="line"><span class="comment"> * @param(data,0,n)</span></div><div class="line"><span class="comment"> */</span></div><div class="line">void quickSort(<span class="selector-tag">int</span> <span class="title">data</span>[],<span class="selector-tag">int</span> st,<span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="selector-tag">int</span> index = Partition(<span class="title">data</span>,st,ed);</div><div class="line">    <span class="name">if</span>(index &gt; st)</div><div class="line">        quickSort(<span class="title">data</span>,st,index);</div><div class="line">    <span class="name">if</span>(index &lt; ed)</div><div class="line">        quickSort(<span class="title">data</span>,index+<span class="number">1</span>,ed);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://developer.51cto.com/art/201403/430986.htm" target="_blank" rel="external">参考链接</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      快速排序的简单实现
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
+    
+      <category term="sort" scheme="http://www.draymonder.site/tags/sort/"/>
+    
+  </entry>
+  
+  <entry>
     <title>操作系统复习汇总</title>
     <link href="http://www.draymonder.site/os/"/>
     <id>http://www.draymonder.site/os/</id>
@@ -491,30 +515,6 @@
     
     
       <category term="os" scheme="http://www.draymonder.site/tags/os/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>快排简单实现</title>
-    <link href="http://www.draymonder.site/quickSort/"/>
-    <id>http://www.draymonder.site/quickSort/</id>
-    <published>2018-05-11T15:30:00.000Z</published>
-    <updated>2018-06-23T10:08:59.955Z</updated>
-    
-    <content type="html"><![CDATA[<p>平均算法复杂度为O(nlogn)<br>最坏算法复杂度O(n2) {当需要排序的数组 本身已经排好序时，递归由普通二叉树退化成单向的一条链}<br><figure class="highlight stan"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Partition 划分函数</span></div><div class="line"><span class="comment"> * @Param (data[], start, ed)</span></div><div class="line"><span class="comment"> * @return (中间基准)</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="selector-tag">int</span> Partition(<span class="selector-tag">int</span> <span class="title">data</span>[], <span class="selector-tag">int</span> start, <span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="name">if</span>(<span class="title">data</span> == NULL || start &lt; <span class="number">0</span>) &#123;</div><div class="line">        cout &lt;&lt; "Invalid Input" &lt;&lt;endl;</div><div class="line">        return -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-tag">int</span> key = <span class="title">data</span>[start];</div><div class="line">    <span class="selector-tag">int</span> i = start, j = ed-<span class="number">1</span>;</div><div class="line">    <span class="name">while</span> (i &lt; j) &#123;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[j] &gt;= key &amp;&amp; i &lt; j)</div><div class="line">            j--;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[i] &lt;= key &amp;&amp; i &lt; j)</div><div class="line">            i++;</div><div class="line">        <span class="name">if</span>(i &lt; j) swap(<span class="title">data</span>[i],<span class="title">data</span>[j]);</div><div class="line">    &#125;</div><div class="line">    <span class="title">data</span>[start] = <span class="title">data</span>[i];</div><div class="line">    <span class="title">data</span>[i] = key;</div><div class="line">    return i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * quickSort 快排函数</span></div><div class="line"><span class="comment"> * @param(data,0,n)</span></div><div class="line"><span class="comment"> */</span></div><div class="line">void quickSort(<span class="selector-tag">int</span> <span class="title">data</span>[],<span class="selector-tag">int</span> st,<span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="selector-tag">int</span> index = Partition(<span class="title">data</span>,st,ed);</div><div class="line">    <span class="name">if</span>(index &gt; st)</div><div class="line">        quickSort(<span class="title">data</span>,st,index);</div><div class="line">    <span class="name">if</span>(index &lt; ed)</div><div class="line">        quickSort(<span class="title">data</span>,index+<span class="number">1</span>,ed);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><a href="http://developer.51cto.com/art/201403/430986.htm" target="_blank" rel="external">参考链接</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      快速排序的简单实现
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
-    
-      <category term="sort" scheme="http://www.draymonder.site/tags/sort/"/>
     
   </entry>
   

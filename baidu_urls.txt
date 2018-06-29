@@ -13,8 +13,8 @@ http://www.draymonder.site/the-use-of-js2/
 http://www.draymonder.site/nth-element/
 http://www.draymonder.site/the-network1/
 http://www.draymonder.site/the-diary-05-15/
-http://www.draymonder.site/os/
 http://www.draymonder.site/quickSort/
+http://www.draymonder.site/os/
 http://www.draymonder.site/javase-io/
 http://www.draymonder.site/javase-import/
 http://www.draymonder.site/git-learing/
