@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.draymonder.site/"/>
-  <updated>2018-12-03T02:28:34.492Z</updated>
+  <updated>2018-12-03T10:27:38.952Z</updated>
   <id>http://www.draymonder.site/</id>
   
   <author>
@@ -17,10 +17,409 @@
   
   <entry>
     <title>SSM到Spring Boot从零开发校园商铺平台</title>
+    <link href="http://www.draymonder.site/ssm/tableAndEntity/"/>
+    <id>http://www.draymonder.site/ssm/tableAndEntity/</id>
+    <published>2018-12-02T16:00:00.000Z</published>
+    <updated>2018-12-03T10:27:38.952Z</updated>
+    
+    <content type="html"><![CDATA[<p>话不多说，下面表格是项目开发中用到的实体集以及表格Name<br><a href="https://github.com/Draymonders/ssm/tree/master/src/main/java/com/cumt/entity" target="_blank" rel="external">实体创建</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Draymonders/ssm/blob/master/table_create.txt" target="_blank" rel="external">表格创建</a></p>
+<h1 id="Area-区域"><a href="#Area-区域" class="headerlink" title="Area 区域"></a>Area 区域</h1><table>
+<thead>
+<tr>
+<th>Area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>areaId</td>
+<td>areaName</td>
+<td>priority</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>area_id</td>
+<td>area_name</td>
+<td>priority</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="HeadLine-头条-用做首页滚动"><a href="#HeadLine-头条-用做首页滚动" class="headerlink" title="HeadLine 头条 (用做首页滚动"></a>HeadLine 头条 (用做首页滚动</h1><table>
+<thead>
+<tr>
+<th>HeadLine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>lineId</td>
+<td>lineName</td>
+<td>lineLink</td>
+<td>lineImg</td>
+<td>priority</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>line_id</td>
+<td>line_name</td>
+<td>line_link</td>
+<td>line_img</td>
+<td>priority</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>enableStatus</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>enable_status</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="PersonInfo-个人信息"><a href="#PersonInfo-个人信息" class="headerlink" title="PersonInfo 个人信息"></a>PersonInfo 个人信息</h1><table>
+<thead>
+<tr>
+<th>PersonInfo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>userId</td>
+<td>name</td>
+<td>profileImg</td>
+<td>email</td>
+<td>gender</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>user_id</td>
+<td>name</td>
+<td>profile_img</td>
+<td>email</td>
+<td>gender</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>enableStatus</td>
+<td>userType</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>enable_status</td>
+<td>user_type</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h2 id="LocalAuth-本地用户"><a href="#LocalAuth-本地用户" class="headerlink" title="LocalAuth 本地用户"></a>LocalAuth 本地用户</h2><table>
+<thead>
+<tr>
+<th>LocalAuth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>localAuthId</td>
+<td>personInfo</td>
+<td>username</td>
+<td>password</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>local_auth_id</td>
+<td>user_id</td>
+<td>username</td>
+<td>password</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h2 id="WechatAuth-微信用户"><a href="#WechatAuth-微信用户" class="headerlink" title="WechatAuth 微信用户"></a>WechatAuth 微信用户</h2><table>
+<thead>
+<tr>
+<th>WechatAuth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>wechatAuthId</td>
+<td>personInfo</td>
+<td>openId</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>wechat_auth_id</td>
+<td>user_id</td>
+<td>open_id</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ShopCategory-店铺类别"><a href="#ShopCategory-店铺类别" class="headerlink" title="ShopCategory 店铺类别"></a>ShopCategory 店铺类别</h1><table>
+<thead>
+<tr>
+<th>ShopCategory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopCategoryId</td>
+<td>shopCategoryName</td>
+<td>shopCategoryDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_category_id</td>
+<td>shop_category_name</td>
+<td>shop_category_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>shopCategoryImg</td>
+<td>priority</td>
+<td>parent</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_category_img</td>
+<td>priority</td>
+<td>parent_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Shop-商铺"><a href="#Shop-商铺" class="headerlink" title="Shop 商铺"></a>Shop 商铺</h1><table>
+<thead>
+<tr>
+<th>Shop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopId</td>
+<td>shopName</td>
+<td>shopDesc</td>
+<td>area</td>
+<td>enableStatus</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_id</td>
+<td>shop_name</td>
+<td>shop_desc</td>
+<td>area_id</td>
+<td>enable_status</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>shopAddr</td>
+<td>phone</td>
+<td>shopImg</td>
+<td>priority</td>
+<td>shopCategory_id</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_addr</td>
+<td>phone</td>
+<td>shop_img</td>
+<td>priority</td>
+<td>shop_category_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+<td>advice</td>
+<td>owner</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+<td>advice</td>
+<td>owner_id</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ProductCategory-商品种类"><a href="#ProductCategory-商品种类" class="headerlink" title="ProductCategory 商品种类"></a>ProductCategory 商品种类</h1><table>
+<thead>
+<tr>
+<th>商品种类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopId</td>
+<td>productCategoryId</td>
+<td>productCategoryName</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_id</td>
+<td>product_category_id</td>
+<td>product_category_name</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Product-商品"><a href="#Product-商品" class="headerlink" title="Product 商品"></a>Product 商品</h1><table>
+<thead>
+<tr>
+<th>商品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>productId</td>
+<td>shop</td>
+<td>productName</td>
+<td>productDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>product_id</td>
+<td>shop_id</td>
+<td>product_name</td>
+<td>product_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>imgAddr</td>
+<td>normalPrice</td>
+<td>promotionPrice</td>
+<td>productCategory</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>img_addr</td>
+<td>normal_price</td>
+<td>promotion_price</td>
+<td>product_category_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+<td>enableStatus</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+<td>enable_status</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>productImgList</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>一对多</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ProductImg-商品图片"><a href="#ProductImg-商品图片" class="headerlink" title="ProductImg 商品图片"></a>ProductImg 商品图片</h2><table>
+<thead>
+<tr>
+<th>商品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>productImgId</td>
+<td>productId</td>
+<td>imgAddr</td>
+<td>imgDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>product_img_id</td>
+<td>product_id</td>
+<td>img_addr</td>
+<td>img_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      本次记录ssm项目开发中的实体定义以及MySQL表格设计
+    
+    </summary>
+    
+    
+      <category term="SSM" scheme="http://www.draymonder.site/tags/SSM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSM到Spring Boot从零开发校园商铺平台</title>
     <link href="http://www.draymonder.site/ssm/init/"/>
     <id>http://www.draymonder.site/ssm/init/</id>
     <published>2018-11-30T16:00:00.000Z</published>
-    <updated>2018-12-03T02:28:34.492Z</updated>
+    <updated>2018-12-03T03:18:19.142Z</updated>
     
     <content type="html"><![CDATA[<h1 id="项目目的"><a href="#项目目的" class="headerlink" title="项目目的"></a>项目目的</h1><p>emmm, 已经大三了，手上还没有一个可以拿得出手的项目。或许，不能算合格的计算机专业的学生。<br>改掉过往懒惰的习惯，做个项目，熟悉项目的流程，学习框架，了解框架的使用。<br></p>
 <p>如果可以的话，要多深入框架底层的东西。</p>
@@ -32,10 +431,12 @@
 <li>进行代码开发</li>
 </ol>
 <h2 id="Maven管理项目依赖"><a href="#Maven管理项目依赖" class="headerlink" title="Maven管理项目依赖"></a>Maven管理项目依赖</h2><p>在此之前，我甚至都没用过Maven… <br><br>Maven从我现在的感觉，就是你只需要写某个jar包的版本，他会从代理服务器下载相关的jar包，并自己关联到项目本身，所以不用到处找包了。<br><br>但是还是 你要知道你所需要的jar包。（这貌似就需要很多的项目经历了</p>
-<h3 id="pom-xml配置"><a href="#pom-xml配置" class="headerlink" title="pom.xml配置"></a>pom.xml配置</h3><p>Maven依赖的配置<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div></pre></td><td class="code"><pre><div class="line"><span class="params">&lt;project xmlns="http://maven.apache.org/POM/<span class="number">4.0</span><span class="number">.0</span>" xmlns:xsi="http://www.w3.org/<span class="number">2001</span>/XMLSchema-instance"</span></div><div class="line"><span class="params">  xsi:schemaLocation="http://maven.apache.org/POM/<span class="number">4.0</span><span class="number">.0</span> http://maven.apache.org/maven-v4_0_0.xsd"&gt;</span></div><div class="line">  <span class="params">&lt;modelVersion&gt;</span><span class="number">4.0</span><span class="number">.0</span><span class="params">&lt;/modelVersion&gt;</span></div><div class="line">  <span class="params">&lt;groupId&gt;</span>com<span class="params">&lt;/groupId&gt;</span></div><div class="line">  <span class="params">&lt;artifactId&gt;</span>ssm<span class="params">&lt;/artifactId&gt;</span></div><div class="line">  <span class="params">&lt;packaging&gt;</span>war<span class="params">&lt;/packaging&gt;</span></div><div class="line">  <span class="params">&lt;version&gt;</span><span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT<span class="params">&lt;/version&gt;</span></div><div class="line">  <span class="params">&lt;name&gt;</span>ssm Maven Webapp<span class="params">&lt;/name&gt;</span></div><div class="line">  <span class="params">&lt;url&gt;</span>http:<span class="comment">//maven.apache.org&lt;/url&gt;</span></div><div class="line">  <span class="params">&lt;properties&gt;</span></div><div class="line">        <span class="params">&lt;spring.version&gt;</span><span class="number">4.3</span><span class="number">.7</span>.RELEASE<span class="params">&lt;/spring.version&gt;</span></div><div class="line">    <span class="params">&lt;/properties&gt;</span></div><div class="line">  <span class="params">&lt;dependencies&gt;</span></div><div class="line">        <span class="comment">// junit 用作单元测试</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>junit<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>junit<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">4.12</span><span class="params">&lt;/version&gt;</span></div><div class="line">            <span class="params">&lt;scope&gt;</span>test<span class="params">&lt;/scope&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// logback 用作日志记录</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>ch.qos.logback<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>logback-classic<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.2</span><span class="number">.3</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// spring核心</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-core<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-beans<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-context<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Spring Dao层</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-jdbc<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-tx<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// Spring web</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-web<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-webmvc<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Spring test</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-test<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">            <span class="params">&lt;scope&gt;</span>test<span class="params">&lt;/scope&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// servlet</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>javax.servlet<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>javax.servlet-api<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.1</span><span class="number">.0</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Map工具类</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>commons-collections<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>commons-collections<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// mybatis</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.mybatis<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mybatis<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.4</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.mybatis<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mybatis-spring<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.3</span><span class="number">.1</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// mysql</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>mysql<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mysql-connector-java<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">5.1</span><span class="number">.37</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 数据库连接池</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>c3p0<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>c3p0<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">0.9</span><span class="number">.1</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="comment">// 图片处理 </span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>net.coobird<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>thumbnailator<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">0.4</span><span class="number">.8</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 文件处理</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.apache.directory.studio<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>org.apache.commons.io<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.4</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// jackson 用来json与对象之间的转换</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>jackson-databind<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.9</span><span class="number">.7</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// kaptcha验证码功能</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>com.github.penggle<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>kaptcha<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.3</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 文件上传</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>commons-fileupload<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>commons-fileupload<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.3</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span>   </div><div class="line">    <span class="params">&lt;/dependencies&gt;</span></div><div class="line">  <span class="params">&lt;build&gt;</span></div><div class="line">        <span class="params">&lt;finalName&gt;</span>ssm<span class="params">&lt;/finalName&gt;</span></div><div class="line">        <span class="comment">// maven-compiler-plugin插件可以指定项目源码的jdk版本，编译后的jdk版本，以及编码</span></div><div class="line">        <span class="params">&lt;plugins&gt;</span></div><div class="line">            <span class="params">&lt;plugin&gt;</span></div><div class="line">                <span class="params">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="params">&lt;/groupId&gt;</span></div><div class="line">                <span class="params">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="params">&lt;/artifactId&gt;</span></div><div class="line">                <span class="params">&lt;version&gt;</span><span class="number">3.8</span><span class="number">.0</span><span class="params">&lt;/version&gt;</span></div><div class="line">                <span class="params">&lt;configuration&gt;</span></div><div class="line">                    <span class="params">&lt;source&gt;</span><span class="number">1.8</span><span class="params">&lt;/source&gt;</span></div><div class="line">                    <span class="params">&lt;target&gt;</span><span class="number">1.8</span><span class="params">&lt;/target&gt;</span></div><div class="line">                    <span class="params">&lt;encoding&gt;</span>UTF8<span class="params">&lt;/encoding&gt;</span></div><div class="line">                <span class="params">&lt;/configuration&gt;</span></div><div class="line">            <span class="params">&lt;/plugin&gt;</span></div><div class="line">        <span class="params">&lt;/plugins&gt;</span></div><div class="line">    <span class="params">&lt;/build&gt;</span></div><div class="line"><span class="params">&lt;/project&gt;</span></div><div class="line"></div><div class="line">写完了 别忘了右键项目-&gt; Maven -&gt; Update Project</div></pre></td></tr></table></figure></p>
+<h3 id="pom-xml配置"><a href="#pom-xml配置" class="headerlink" title="pom.xml配置"></a>pom.xml配置</h3><p>Maven依赖的配置</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div></pre></td><td class="code"><pre><div class="line"><span class="params">&lt;project xmlns="http://maven.apache.org/POM/<span class="number">4.0</span><span class="number">.0</span>" xmlns:xsi="http://www.w3.org/<span class="number">2001</span>/XMLSchema-instance"</span></div><div class="line"><span class="params">  xsi:schemaLocation="http://maven.apache.org/POM/<span class="number">4.0</span><span class="number">.0</span> http://maven.apache.org/maven-v4_0_0.xsd"&gt;</span></div><div class="line">  <span class="params">&lt;modelVersion&gt;</span><span class="number">4.0</span><span class="number">.0</span><span class="params">&lt;/modelVersion&gt;</span></div><div class="line">  <span class="params">&lt;groupId&gt;</span>com<span class="params">&lt;/groupId&gt;</span></div><div class="line">  <span class="params">&lt;artifactId&gt;</span>ssm<span class="params">&lt;/artifactId&gt;</span></div><div class="line">  <span class="params">&lt;packaging&gt;</span>war<span class="params">&lt;/packaging&gt;</span></div><div class="line">  <span class="params">&lt;version&gt;</span><span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT<span class="params">&lt;/version&gt;</span></div><div class="line">  <span class="params">&lt;name&gt;</span>ssm Maven Webapp<span class="params">&lt;/name&gt;</span></div><div class="line">  <span class="params">&lt;url&gt;</span>http:<span class="comment">//maven.apache.org&lt;/url&gt;</span></div><div class="line">  <span class="params">&lt;properties&gt;</span></div><div class="line">        <span class="params">&lt;spring.version&gt;</span><span class="number">4.3</span><span class="number">.7</span>.RELEASE<span class="params">&lt;/spring.version&gt;</span></div><div class="line">    <span class="params">&lt;/properties&gt;</span></div><div class="line">  <span class="params">&lt;dependencies&gt;</span></div><div class="line">        <span class="comment">// junit 用作单元测试</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>junit<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>junit<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">4.12</span><span class="params">&lt;/version&gt;</span></div><div class="line">            <span class="params">&lt;scope&gt;</span>test<span class="params">&lt;/scope&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// logback 用作日志记录</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>ch.qos.logback<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>logback-classic<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.2</span><span class="number">.3</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// spring核心</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-core<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-beans<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-context<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Spring Dao层</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-jdbc<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-tx<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// Spring web</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-web<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-webmvc<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Spring test</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.springframework<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>spring-test<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span>$&#123;spring.version&#125;<span class="params">&lt;/version&gt;</span></div><div class="line">            <span class="params">&lt;scope&gt;</span>test<span class="params">&lt;/scope&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// servlet</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>javax.servlet<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>javax.servlet-api<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.1</span><span class="number">.0</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// Map工具类</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>commons-collections<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>commons-collections<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// mybatis</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.mybatis<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mybatis<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">3.4</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.mybatis<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mybatis-spring<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.3</span><span class="number">.1</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// mysql</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>mysql<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>mysql-connector-java<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">5.1</span><span class="number">.37</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 数据库连接池</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>c3p0<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>c3p0<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">0.9</span><span class="number">.1</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        <span class="comment">// 图片处理 </span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>net.coobird<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>thumbnailator<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">0.4</span><span class="number">.8</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 文件处理</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>org.apache.directory.studio<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>org.apache.commons.io<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.4</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// jackson 用来json与对象之间的转换</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>jackson-databind<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.9</span><span class="number">.7</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line">        </div><div class="line">        <span class="comment">// kaptcha验证码功能</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>com.github.penggle<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>kaptcha<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">2.3</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">// 文件上传</span></div><div class="line">        <span class="params">&lt;dependency&gt;</span></div><div class="line">            <span class="params">&lt;groupId&gt;</span>commons-fileupload<span class="params">&lt;/groupId&gt;</span></div><div class="line">            <span class="params">&lt;artifactId&gt;</span>commons-fileupload<span class="params">&lt;/artifactId&gt;</span></div><div class="line">            <span class="params">&lt;version&gt;</span><span class="number">1.3</span><span class="number">.2</span><span class="params">&lt;/version&gt;</span></div><div class="line">        <span class="params">&lt;/dependency&gt;</span>   </div><div class="line">    <span class="params">&lt;/dependencies&gt;</span></div><div class="line">  <span class="params">&lt;build&gt;</span></div><div class="line">        <span class="params">&lt;finalName&gt;</span>ssm<span class="params">&lt;/finalName&gt;</span></div><div class="line">        <span class="comment">// maven-compiler-plugin插件可以指定项目源码的jdk版本，编译后的jdk版本，以及编码</span></div><div class="line">        <span class="params">&lt;plugins&gt;</span></div><div class="line">            <span class="params">&lt;plugin&gt;</span></div><div class="line">                <span class="params">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="params">&lt;/groupId&gt;</span></div><div class="line">                <span class="params">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="params">&lt;/artifactId&gt;</span></div><div class="line">                <span class="params">&lt;version&gt;</span><span class="number">3.8</span><span class="number">.0</span><span class="params">&lt;/version&gt;</span></div><div class="line">                <span class="params">&lt;configuration&gt;</span></div><div class="line">                    <span class="params">&lt;source&gt;</span><span class="number">1.8</span><span class="params">&lt;/source&gt;</span></div><div class="line">                    <span class="params">&lt;target&gt;</span><span class="number">1.8</span><span class="params">&lt;/target&gt;</span></div><div class="line">                    <span class="params">&lt;encoding&gt;</span>UTF8<span class="params">&lt;/encoding&gt;</span></div><div class="line">                <span class="params">&lt;/configuration&gt;</span></div><div class="line">            <span class="params">&lt;/plugin&gt;</span></div><div class="line">        <span class="params">&lt;/plugins&gt;</span></div><div class="line">    <span class="params">&lt;/build&gt;</span></div><div class="line"><span class="params">&lt;/project&gt;</span></div><div class="line"></div><div class="line">写完了 别忘了右键项目-&gt; Maven -&gt; Update Project</div></pre></td></tr></table></figure>
 <h2 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h2><p>web项目的核心配置文件，主要配置了SSM的前置控制器DispatcherServlet，主要负责流程的控制</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring-dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 配置springMVC需要加载的配置文件 spring-dao.xml,spring-service.xml,spring-web.xml </span></div><div class="line"><span class="comment">        Mybatis - &gt; spring -&gt; springmvc --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/spring-*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring-dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 默认匹配所有的请求 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="jdbc-properties"><a href="#jdbc-properties" class="headerlink" title="jdbc.properties"></a>jdbc.properties</h2><p>数据库本身数据封装<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.<span class="attribute">driver</span>=com.mysql.jdbc.Driver</div><div class="line">jdbc.<span class="attribute">url</span>=jdbc:mysql://localhost:3306/o2o?useUnicode=true&amp;characterEncoding=utf8</div><div class="line">jdbc.<span class="attribute">username</span>=root</div><div class="line">jdbc.<span class="attribute">password</span>=admin</div></pre></td></tr></table></figure></p>
+<h2 id="jdbc-properties"><a href="#jdbc-properties" class="headerlink" title="jdbc.properties"></a>jdbc.properties</h2><p>数据库本身数据封装</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.<span class="attribute">driver</span>=com.mysql.jdbc.Driver</div><div class="line">jdbc.<span class="attribute">url</span>=jdbc:mysql://localhost:3306/o2o?useUnicode=true&amp;characterEncoding=utf8</div><div class="line">jdbc.<span class="attribute">username</span>=root</div><div class="line">jdbc.<span class="attribute">password</span>=admin</div></pre></td></tr></table></figure>
 <h2 id="spring-web-xml"><a href="#spring-web-xml" class="headerlink" title="spring-web.xml"></a>spring-web.xml</h2><p>主要配置SpringMVC：</p>
 <ol>
 <li>启用注解驱动</li>
@@ -50,9 +451,9 @@
 <ol>
 <li>扫描service相关的bean</li>
 <li>配置事务管理器</li>
-<li>配置基于注解的声明式事务；<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>  </div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>   </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/beans/spring-beans.xsd  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context/spring-context.xsd  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/tx  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/tx/spring-tx.xsd"</span>&gt;</span>  </div><div class="line">    <span class="comment">&lt;!-- 扫描service包下所有使用注解的类型 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.cumt.service"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">    <span class="comment">&lt;!-- 配置事务管理器 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionManager"</span>  </span></div><div class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 注入数据库连接池 --&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </div><div class="line">  </div><div class="line">    <span class="comment">&lt;!-- 配置基于注解的声明式事务 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span> /&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
+<li>配置基于注解的声明式事务；</li>
 </ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>  </div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>   </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/beans/spring-beans.xsd  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context/spring-context.xsd  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/tx  </span></span></div><div class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/tx/spring-tx.xsd"</span>&gt;</span>  </div><div class="line">    <span class="comment">&lt;!-- 扫描service包下所有使用注解的类型 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.cumt.service"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">    <span class="comment">&lt;!-- 配置事务管理器 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionManager"</span>  </span></div><div class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 注入数据库连接池 --&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </div><div class="line">  </div><div class="line">    <span class="comment">&lt;!-- 配置基于注解的声明式事务 --&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span> /&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="spring-dao-xml"><a href="#spring-dao-xml" class="headerlink" title="spring-dao.xml"></a>spring-dao.xml</h2><p>配置整合mybatis过程：</p>
 <ol>
 <li>配置数据库相关参数</li>
@@ -66,9 +467,9 @@
 <li>配置数据库相关参数</li>
 <li>配置数据库连接池</li>
 <li>配置SqlSessionFactory对象</li>
-<li>配置扫描Dao接口包，并注入；<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span></div><div class="line"><span class="xml">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 使用jdbc获取自增主键值 --&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"useGeneratedKeys"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span> </span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 列标签替换列别名 --&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"useColumnLabel"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 驼峰命名转换  Table</span></span><span class="template-variable">&#123;create_time&#125;</span><span class="xml"><span class="comment"> -&gt; Entity</span></span><span class="template-variable">&#123;createTime&#125;</span><span class="xml"><span class="comment">--&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span></div></pre></td></tr></table></figure>
-</li>
+<li>配置扫描Dao接口包，并注入；</li>
 </ol>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span></div><div class="line"><span class="xml">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 使用jdbc获取自增主键值 --&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"useGeneratedKeys"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span> </span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 列标签替换列别名 --&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"useColumnLabel"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span></div><div class="line"><span class="xml">     <span class="comment">&lt;!-- 驼峰命名转换  Table</span></span><span class="template-variable">&#123;create_time&#125;</span><span class="xml"><span class="comment"> -&gt; Entity</span></span><span class="template-variable">&#123;createTime&#125;</span><span class="xml"><span class="comment">--&gt;</span></span></div><div class="line"><span class="xml">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <h2 id="BaseTest测试配置"><a href="#BaseTest测试配置" class="headerlink" title="BaseTest测试配置"></a>BaseTest测试配置</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.cumt.dao;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</div><div class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</div><div class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 配置spring和junit整合，junit启动时加载springIOC</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></div><div class="line"><span class="meta">@ContextConfiguration(&#123;<span class="meta-string">"classpath:spring/spring-dao.xml"</span>, <span class="meta-string">"classpath:spring/spring-service.xml"</span>&#125;)</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseTest</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h1><blockquote>
 <p>链接: <a href="https://pan.baidu.com/s/1htuUYqw" target="_blank" rel="external">https://pan.baidu.com/s/1htuUYqw</a> 密码: j1am<br>如果失效，请E-mail Me. 我看到会尽快给你新的地址</p>
@@ -261,28 +662,6 @@
   </entry>
   
   <entry>
-    <title>剑指offer 用两个栈实现队列</title>
-    <link href="http://www.draymonder.site/algorithm/twoStackToQueue/"/>
-    <id>http://www.draymonder.site/algorithm/twoStackToQueue/</id>
-    <published>2018-06-23T07:00:00.000Z</published>
-    <updated>2018-06-23T06:33:04.416Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&amp;tqId=11158&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="external">题目链接</a></p>
-<p>每次push的时候 就从stack2取回数据到stack1 然后push(val)<br>每次pop的时候  就从stack1取回数据到stack2 然后pop<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">void</span> <span class="keyword">push</span>(<span class="keyword">int</span> node) &#123;</div><div class="line">       <span class="keyword">while</span>(stack2.<span class="keyword">size</span>()) &#123;</div><div class="line">           <span class="keyword">int</span> ans = stack2.top();</div><div class="line">            stack1.<span class="keyword">push</span>(ans);</div><div class="line">            stack2.<span class="keyword">pop</span>();</div><div class="line">       &#125;</div><div class="line">       stack1.<span class="keyword">push</span>(node); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> <span class="keyword">pop</span>() &#123;</div><div class="line">        <span class="keyword">while</span> (stack1.<span class="keyword">size</span>()) &#123;</div><div class="line">            <span class="keyword">int</span> ans = stack1.top();</div><div class="line">            stack2.<span class="keyword">push</span>(ans);</div><div class="line">            stack1.<span class="keyword">pop</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(stack2.<span class="keyword">size</span>() ==<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = stack2.top();</div><div class="line">        stack2.<span class="keyword">pop</span>();</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack1;</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      剑指offer 用两个栈实现队列
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
     <title>剑指offer 重建二叉树</title>
     <link href="http://www.draymonder.site/algorithm/reBuildBinaryTree/"/>
     <id>http://www.draymonder.site/algorithm/reBuildBinaryTree/</id>
@@ -303,6 +682,28 @@
       <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
     
       <category term="BinaryTree" scheme="http://www.draymonder.site/tags/BinaryTree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 用两个栈实现队列</title>
+    <link href="http://www.draymonder.site/algorithm/twoStackToQueue/"/>
+    <id>http://www.draymonder.site/algorithm/twoStackToQueue/</id>
+    <published>2018-06-23T07:00:00.000Z</published>
+    <updated>2018-06-23T06:33:04.416Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&amp;tqId=11158&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="external">题目链接</a></p>
+<p>每次push的时候 就从stack2取回数据到stack1 然后push(val)<br>每次pop的时候  就从stack1取回数据到stack2 然后pop<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">void</span> <span class="keyword">push</span>(<span class="keyword">int</span> node) &#123;</div><div class="line">       <span class="keyword">while</span>(stack2.<span class="keyword">size</span>()) &#123;</div><div class="line">           <span class="keyword">int</span> ans = stack2.top();</div><div class="line">            stack1.<span class="keyword">push</span>(ans);</div><div class="line">            stack2.<span class="keyword">pop</span>();</div><div class="line">       &#125;</div><div class="line">       stack1.<span class="keyword">push</span>(node); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> <span class="keyword">pop</span>() &#123;</div><div class="line">        <span class="keyword">while</span> (stack1.<span class="keyword">size</span>()) &#123;</div><div class="line">            <span class="keyword">int</span> ans = stack1.top();</div><div class="line">            stack2.<span class="keyword">push</span>(ans);</div><div class="line">            stack1.<span class="keyword">pop</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(stack2.<span class="keyword">size</span>() ==<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = stack2.top();</div><div class="line">        stack2.<span class="keyword">pop</span>();</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack1;</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      剑指offer 用两个栈实现队列
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
     
   </entry>
   
@@ -638,32 +1039,6 @@
     <summary type="html">
     
       JavaSE的IO流学习
-    
-    </summary>
-    
-    
-      <category term="JavaSE" scheme="http://www.draymonder.site/tags/JavaSE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Eclipse 导入工程</title>
-    <link href="http://www.draymonder.site/javase/javase-import/"/>
-    <id>http://www.draymonder.site/javase/javase-import/</id>
-    <published>2018-04-26T10:00:00.000Z</published>
-    <updated>2018-05-09T09:14:11.416Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;因为觉得看视频，进度挺慢，而且看完以后，并没有很好的掌握，但是单纯找每个类文件也很麻烦，所以就学习一下导入工程的方法，这样就可以看着代码学习了。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>1.在项目区域右键找到import</p>
-<p>2.找到General，展开，并找到 Existing Projects into Workspace</p>
-<p>3.点击next,然后选择你要导入的项目（注意：这里选择的是项目名称</p>
-<p>因为还没有找到合适的图床，暂时没法分享图文<br><a href="https://blog.csdn.net/bing1926/article/details/80097334" target="_blank" rel="external">Eclipse 导入工程 有图版</a></p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;经过上面三步 就可以轻松的看项目里面的代码了，也可以自己动手去看着敲代码了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      JavaSE的project导入
     
     </summary>
     

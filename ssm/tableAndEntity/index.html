@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm," />
+  <meta name="keywords" content="SSM," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="upper/lower_bound的使用">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
+<meta name="keywords" content="SSM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="upper&#x2F;lower_bound的比较">
-<meta property="og:url" content="http://www.draymonder.site/algorithm/upper-compare-to-lower/index.html">
+<meta property="og:title" content="SSM到Spring Boot从零开发校园商铺平台">
+<meta property="og:url" content="http://www.draymonder.site/ssm/tableAndEntity/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="upper/lower_bound的使用">
+<meta property="og:description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-28T09:09:47.768Z">
+<meta property="og:updated_time" content="2018-12-03T10:27:38.952Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="upper&#x2F;lower_bound的比较">
-<meta name="twitter:description" content="upper/lower_bound的使用">
+<meta name="twitter:title" content="SSM到Spring Boot从零开发校园商铺平台">
+<meta name="twitter:description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.draymonder.site/algorithm/upper-compare-to-lower/"/>
+  <link rel="canonical" href="http://www.draymonder.site/ssm/tableAndEntity/"/>
 
 
 
 
 
-  <title>upper/lower_bound的比较 | Draymonder's Blog</title>
+  <title>SSM到Spring Boot从零开发校园商铺平台 | Draymonder's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/algorithm/upper-compare-to-lower/">
+    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/ssm/tableAndEntity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">upper/lower_bound的比较</h1>
+          <h1 class="post-title" itemprop="name headline">SSM到Spring Boot从零开发校园商铺平台</h1>
         
 
         <div class="post-meta">
@@ -284,15 +284,15 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T22:00:00+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T00:00:00+08:00">
+                2018-12-03
               </time>
             
 
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>268 字</span>
+                <span>181 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -318,7 +318,7 @@
 
           
               <div class="post-description">
-                  upper/lower_bound的使用
+                  本次记录ssm项目开发中的实体定义以及MySQL表格设计
               </div>
           
 
@@ -335,9 +335,385 @@
       
 
       
-        <h2 id="upper-lower-bound的用法"><a href="#upper-lower-bound的用法" class="headerlink" title="upper/lower_bound的用法"></a>upper/lower_bound的用法</h2><h3 id="数组是单调非递减"><a href="#数组是单调非递减" class="headerlink" title="数组是单调非递减"></a>数组是单调非递减</h3><p>两个函数的用法类似，在一个左闭右开的有序区间里进行二分查找，需要查找的值由第三个参数给出。<br><br>对于upper_bound来说，返回的是被查序列中第一个大于查找值的指针，也就是返回指向被查值&gt;查找值的最小指针<br><br><br>lower_bound则是返回的是被查序列中第一个大于等于查找值的指针，也就是返回指向被查值&gt;=查找值的最小指针。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*pri数组存储的是素数*/</span></div><div class="line"><span class="keyword">int</span> l = lower_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="keyword">int</span> r = upper_bound(pri,pri+cnt,n) - pri;</div><div class="line"><span class="built_in">cout</span>&lt;&lt; pri[l] &lt;&lt;<span class="string">" "</span>&lt;&lt; pri[r]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">/*n=2 时候 pri[l]=2 pri[r]=3*/</span></div></pre></td></tr></table></figure>
-<h3 id="数组是单调非递增的"><a href="#数组是单调非递增的" class="headerlink" title="数组是单调非递增的"></a>数组是单调非递增的</h3><p>如果第四个参数传入greater<type>()，其中Type改成对应类型，那么upper_bound则返回指向被查值&lt;查找值的最小指针，lower_bound则返回指向被查值&lt;=查找值的最小指针。<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> l = lower_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div><div class="line"><span class="built_in">int</span> r = upper_bound(pri,pri+cnt,<span class="built_in">n</span>,greater&lt;<span class="built_in">int</span>&gt;() ) - pri;</div></pre></td></tr></table></figure></type></p>
+        <p>话不多说，下面表格是项目开发中用到的实体集以及表格Name<br><a href="https://github.com/Draymonders/ssm/tree/master/src/main/java/com/cumt/entity" target="_blank" rel="external">实体创建</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Draymonders/ssm/blob/master/table_create.txt" target="_blank" rel="external">表格创建</a></p>
+<h1 id="Area-区域"><a href="#Area-区域" class="headerlink" title="Area 区域"></a>Area 区域</h1><table>
+<thead>
+<tr>
+<th>Area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>areaId</td>
+<td>areaName</td>
+<td>priority</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>area_id</td>
+<td>area_name</td>
+<td>priority</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="HeadLine-头条-用做首页滚动"><a href="#HeadLine-头条-用做首页滚动" class="headerlink" title="HeadLine 头条 (用做首页滚动"></a>HeadLine 头条 (用做首页滚动</h1><table>
+<thead>
+<tr>
+<th>HeadLine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>lineId</td>
+<td>lineName</td>
+<td>lineLink</td>
+<td>lineImg</td>
+<td>priority</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>line_id</td>
+<td>line_name</td>
+<td>line_link</td>
+<td>line_img</td>
+<td>priority</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>enableStatus</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>enable_status</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="PersonInfo-个人信息"><a href="#PersonInfo-个人信息" class="headerlink" title="PersonInfo 个人信息"></a>PersonInfo 个人信息</h1><table>
+<thead>
+<tr>
+<th>PersonInfo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>userId</td>
+<td>name</td>
+<td>profileImg</td>
+<td>email</td>
+<td>gender</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>user_id</td>
+<td>name</td>
+<td>profile_img</td>
+<td>email</td>
+<td>gender</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>enableStatus</td>
+<td>userType</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>enable_status</td>
+<td>user_type</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h2 id="LocalAuth-本地用户"><a href="#LocalAuth-本地用户" class="headerlink" title="LocalAuth 本地用户"></a>LocalAuth 本地用户</h2><table>
+<thead>
+<tr>
+<th>LocalAuth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>localAuthId</td>
+<td>personInfo</td>
+<td>username</td>
+<td>password</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>local_auth_id</td>
+<td>user_id</td>
+<td>username</td>
+<td>password</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h2 id="WechatAuth-微信用户"><a href="#WechatAuth-微信用户" class="headerlink" title="WechatAuth 微信用户"></a>WechatAuth 微信用户</h2><table>
+<thead>
+<tr>
+<th>WechatAuth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>wechatAuthId</td>
+<td>personInfo</td>
+<td>openId</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>wechat_auth_id</td>
+<td>user_id</td>
+<td>open_id</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ShopCategory-店铺类别"><a href="#ShopCategory-店铺类别" class="headerlink" title="ShopCategory 店铺类别"></a>ShopCategory 店铺类别</h1><table>
+<thead>
+<tr>
+<th>ShopCategory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopCategoryId</td>
+<td>shopCategoryName</td>
+<td>shopCategoryDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_category_id</td>
+<td>shop_category_name</td>
+<td>shop_category_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>shopCategoryImg</td>
+<td>priority</td>
+<td>parent</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_category_img</td>
+<td>priority</td>
+<td>parent_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Shop-商铺"><a href="#Shop-商铺" class="headerlink" title="Shop 商铺"></a>Shop 商铺</h1><table>
+<thead>
+<tr>
+<th>Shop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopId</td>
+<td>shopName</td>
+<td>shopDesc</td>
+<td>area</td>
+<td>enableStatus</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_id</td>
+<td>shop_name</td>
+<td>shop_desc</td>
+<td>area_id</td>
+<td>enable_status</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>shopAddr</td>
+<td>phone</td>
+<td>shopImg</td>
+<td>priority</td>
+<td>shopCategory_id</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_addr</td>
+<td>phone</td>
+<td>shop_img</td>
+<td>priority</td>
+<td>shop_category_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+<td>advice</td>
+<td>owner</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+<td>advice</td>
+<td>owner_id</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ProductCategory-商品种类"><a href="#ProductCategory-商品种类" class="headerlink" title="ProductCategory 商品种类"></a>ProductCategory 商品种类</h1><table>
+<thead>
+<tr>
+<th>商品种类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>shopId</td>
+<td>productCategoryId</td>
+<td>productCategoryName</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>shop_id</td>
+<td>product_category_id</td>
+<td>product_category_name</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Product-商品"><a href="#Product-商品" class="headerlink" title="Product 商品"></a>Product 商品</h1><table>
+<thead>
+<tr>
+<th>商品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>productId</td>
+<td>shop</td>
+<td>productName</td>
+<td>productDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>product_id</td>
+<td>shop_id</td>
+<td>product_name</td>
+<td>product_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>imgAddr</td>
+<td>normalPrice</td>
+<td>promotionPrice</td>
+<td>productCategory</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>img_addr</td>
+<td>normal_price</td>
+<td>promotion_price</td>
+<td>product_category_id</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+<td>lastEditTime</td>
+<td>enableStatus</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+<td>last_edit_time</td>
+<td>enable_status</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>productImgList</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>一对多</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ProductImg-商品图片"><a href="#ProductImg-商品图片" class="headerlink" title="ProductImg 商品图片"></a>ProductImg 商品图片</h2><table>
+<thead>
+<tr>
+<th>商品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体</td>
+<td>productImgId</td>
+<td>productId</td>
+<td>imgAddr</td>
+<td>imgDesc</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>product_img_id</td>
+<td>product_id</td>
+<td>img_addr</td>
+<td>img_desc</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>priority</td>
+<td>createTime</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>priority</td>
+<td>create_time</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -355,7 +731,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
           
         </div>
       
@@ -368,8 +744,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/frontend/the-conclusion-of-css/" rel="next" title="对CSS的总结">
-                <i class="fa fa-chevron-left"></i> 对CSS的总结
+              <a href="/ssm/init/" rel="next" title="SSM到Spring Boot从零开发校园商铺平台">
+                <i class="fa fa-chevron-left"></i> SSM到Spring Boot从零开发校园商铺平台
               </a>
             
           </div>
@@ -377,10 +753,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/frontend/the-use-of-viewport/" rel="prev" title="利用媒体查询来响应式开发">
-                利用媒体查询来响应式开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +909,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#upper-lower-bound的用法"><span class="nav-number">1.</span> <span class="nav-text">upper/lower_bound的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组是单调非递减"><span class="nav-number">1.1.</span> <span class="nav-text">数组是单调非递减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组是单调非递增的"><span class="nav-number">1.2.</span> <span class="nav-text">数组是单调非递增的</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Area-区域"><span class="nav-number">1.</span> <span class="nav-text">Area 区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HeadLine-头条-用做首页滚动"><span class="nav-number">2.</span> <span class="nav-text">HeadLine 头条 (用做首页滚动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PersonInfo-个人信息"><span class="nav-number">3.</span> <span class="nav-text">PersonInfo 个人信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LocalAuth-本地用户"><span class="nav-number">3.1.</span> <span class="nav-text">LocalAuth 本地用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WechatAuth-微信用户"><span class="nav-number">3.2.</span> <span class="nav-text">WechatAuth 微信用户</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ShopCategory-店铺类别"><span class="nav-number">4.</span> <span class="nav-text">ShopCategory 店铺类别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shop-商铺"><span class="nav-number">5.</span> <span class="nav-text">Shop 商铺</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ProductCategory-商品种类"><span class="nav-number">6.</span> <span class="nav-text">ProductCategory 商品种类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Product-商品"><span class="nav-number">7.</span> <span class="nav-text">Product 商品</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ProductImg-商品图片"><span class="nav-number">7.1.</span> <span class="nav-text">ProductImg 商品图片</span></a></li></ol></li></ol></div>
             
 
           </div>
