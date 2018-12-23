@@ -72,7 +72,7 @@
     <link href="http://www.draymonder.site/ssm/tableAndEntity/"/>
     <id>http://www.draymonder.site/ssm/tableAndEntity/</id>
     <published>2018-12-02T16:00:00.000Z</published>
-    <updated>2018-12-03T10:27:38.952Z</updated>
+    <updated>2018-12-03T10:30:22.150Z</updated>
     
     <content type="html"><![CDATA[<p>话不多说，下面表格是项目开发中用到的实体集以及表格Name<br><a href="https://github.com/Draymonders/ssm/tree/master/src/main/java/com/cumt/entity" target="_blank" rel="external">实体创建</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Draymonders/ssm/blob/master/table_create.txt" target="_blank" rel="external">表格创建</a></p>
 <h1 id="Area-区域"><a href="#Area-区域" class="headerlink" title="Area 区域"></a>Area 区域</h1><table>
@@ -992,46 +992,26 @@
   </entry>
   
   <entry>
-    <title>操作系统复习汇总</title>
-    <link href="http://www.draymonder.site/os/os/"/>
-    <id>http://www.draymonder.site/os/os/</id>
+    <title>快排简单实现</title>
+    <link href="http://www.draymonder.site/algorithm/quickSort/"/>
+    <id>http://www.draymonder.site/algorithm/quickSort/</id>
     <published>2018-05-11T15:30:00.000Z</published>
-    <updated>2018-05-11T15:20:47.335Z</updated>
+    <updated>2018-06-23T10:08:59.955Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="第一章-操作系统绪论"><a href="#第一章-操作系统绪论" class="headerlink" title="第一章 操作系统绪论"></a>第一章 操作系统绪论</h1><ol>
-<li>在操作系统中，处理机负责对进程进行管理和调度，对系统中的信息进行管理的部分通常称为<br><code>文件系统</code></li>
-</ol>
-<h1 id="第二章-进程控制和同步"><a href="#第二章-进程控制和同步" class="headerlink" title="第二章 进程控制和同步"></a>第二章 进程控制和同步</h1><ol>
-<li>临界区是<code>一段程序</code></li>
-<li>信箱通信是一种<code>间接</code>通信方式</li>
-<li>一个进程被唤醒意味着<code>进程变为就绪状态</code></li>
-<li>进程由<code>PCB</code>、<code>程序段</code>和<code>数据段</code>三部分组成，其中<code>PCB</code>是进程存在的唯一标志。而<code>程序段</code>部分也可以为其它进程共享</li>
-<li><code>同步</code>指进程间具有的一定逻辑关系；<code>互斥</code>是指进程间在使用共享资源方面的约束关系。</li>
-<li>产生死锁的四个必要条件是：<code>互斥、请求与保持、循环等待和不可剥夺</code>。</li>
-<li>银行家算法在解决死锁问题中是用于<code>避免死锁</code>的。</li>
-</ol>
-<h1 id="第三章-存储管理"><a href="#第三章-存储管理" class="headerlink" title="第三章 存储管理"></a>第三章 存储管理</h1><ol>
-<li>采用<code>分段式存储管理</code>不会产生内部碎片</li>
-</ol>
-<h1 id="第四章-设备管理"><a href="#第四章-设备管理" class="headerlink" title="第四章 设备管理"></a>第四章 设备管理</h1><ol>
-<li>在采用SPOOLING 技术的系统中，用户的打印结果首先被送到<code>磁盘固定区域</code></li>
-<li>进行设备分配时所需的数据表格主要有<code>系统设备表</code>，<code>设备控制表</code>，<code>通道控制表</code>和<br><code>控制器控制表</code></li>
-<li>逻辑设备表的主要功能是<code>实现设备独立性</code>和<code>实现设备分配灵活性</code></li>
-<li>SPOOLING系统是由磁盘中的<code>输入井</code>、<code>输出井</code>、内存中的<code>输入缓冲区</code>、<code>输出缓冲区</code>，以及<code>输入进程</code>和<code>输出进程</code>组成的。</li>
-</ol>
-<h1 id="第五章-文件管理"><a href="#第五章-文件管理" class="headerlink" title="第五章 文件管理"></a>第五章 文件管理</h1><ol>
-<li>文件的物理组织有<code>顺序</code>、<code>链接</code>和<code>索引</code>。</li>
-</ol>
+    <content type="html"><![CDATA[<p>平均算法复杂度为O(nlogn)<br>最坏算法复杂度O(n2) {当需要排序的数组 本身已经排好序时，递归由普通二叉树退化成单向的一条链}<br><figure class="highlight stan"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Partition 划分函数</span></div><div class="line"><span class="comment"> * @Param (data[], start, ed)</span></div><div class="line"><span class="comment"> * @return (中间基准)</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="selector-tag">int</span> Partition(<span class="selector-tag">int</span> <span class="title">data</span>[], <span class="selector-tag">int</span> start, <span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="name">if</span>(<span class="title">data</span> == NULL || start &lt; <span class="number">0</span>) &#123;</div><div class="line">        cout &lt;&lt; "Invalid Input" &lt;&lt;endl;</div><div class="line">        return -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-tag">int</span> key = <span class="title">data</span>[start];</div><div class="line">    <span class="selector-tag">int</span> i = start, j = ed-<span class="number">1</span>;</div><div class="line">    <span class="name">while</span> (i &lt; j) &#123;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[j] &gt;= key &amp;&amp; i &lt; j)</div><div class="line">            j--;</div><div class="line">        <span class="name">while</span> (<span class="title">data</span>[i] &lt;= key &amp;&amp; i &lt; j)</div><div class="line">            i++;</div><div class="line">        <span class="name">if</span>(i &lt; j) swap(<span class="title">data</span>[i],<span class="title">data</span>[j]);</div><div class="line">    &#125;</div><div class="line">    <span class="title">data</span>[start] = <span class="title">data</span>[i];</div><div class="line">    <span class="title">data</span>[i] = key;</div><div class="line">    return i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * quickSort 快排函数</span></div><div class="line"><span class="comment"> * @param(data,0,n)</span></div><div class="line"><span class="comment"> */</span></div><div class="line">void quickSort(<span class="selector-tag">int</span> <span class="title">data</span>[],<span class="selector-tag">int</span> st,<span class="selector-tag">int</span> ed) &#123;</div><div class="line">    <span class="selector-tag">int</span> index = Partition(<span class="title">data</span>,st,ed);</div><div class="line">    <span class="name">if</span>(index &gt; st)</div><div class="line">        quickSort(<span class="title">data</span>,st,index);</div><div class="line">    <span class="name">if</span>(index &lt; ed)</div><div class="line">        quickSort(<span class="title">data</span>,index+<span class="number">1</span>,ed);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://developer.51cto.com/art/201403/430986.htm" target="_blank" rel="external">参考链接</a></p>
 ]]></content>
     
     <summary type="html">
     
-      考试前复习一些选择题
+      快速排序的简单实现
     
     </summary>
     
     
-      <category term="os" scheme="http://www.draymonder.site/tags/os/"/>
+      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
+    
+      <category term="sort" scheme="http://www.draymonder.site/tags/sort/"/>
     
   </entry>
   

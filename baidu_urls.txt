@@ -17,8 +17,8 @@ http://www.draymonder.site/frontend/the-use-of-js2/
 http://www.draymonder.site/algorithm/nth-element/
 http://www.draymonder.site/network/the-network1/
 http://www.draymonder.site/diary/the-diary-05-15/
-http://www.draymonder.site/os/os/
 http://www.draymonder.site/algorithm/quickSort/
+http://www.draymonder.site/os/os/
 http://www.draymonder.site/javase/javase-io/
 http://www.draymonder.site/javase/javase-import/
 http://www.draymonder.site/tool/git-learing/
@@ -41,8 +41,8 @@ http://www.draymonder.site/php/the-use-mysql/
 http://www.draymonder.site/php/the-link-https/
 http://www.draymonder.site/php/the-errors-in-php/
 http://www.draymonder.site/php/object-oriented-of-php/
-http://www.draymonder.site/algorithm/the-perfect-series/
 http://www.draymonder.site/algorithm/the-reverse-of-nodes/
+http://www.draymonder.site/algorithm/the-perfect-series/
 http://www.draymonder.site/algorithm/mergesort/
 http://www.draymonder.site/diary/the-diary-02-02/
 http://www.draymonder.site/diary/the-films/
