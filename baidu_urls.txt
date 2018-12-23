@@ -1,3 +1,5 @@
+http://www.draymonder.site/ssm/getIncludeChinese/
+http://www.draymonder.site/ssm/arraylist/
 http://www.draymonder.site/ssm/tableAndEntity/
 http://www.draymonder.site/ssm/init/
 http://www.draymonder.site/documents/
@@ -39,8 +41,8 @@ http://www.draymonder.site/php/the-use-mysql/
 http://www.draymonder.site/php/the-link-https/
 http://www.draymonder.site/php/the-errors-in-php/
 http://www.draymonder.site/php/object-oriented-of-php/
-http://www.draymonder.site/algorithm/the-reverse-of-nodes/
 http://www.draymonder.site/algorithm/the-perfect-series/
+http://www.draymonder.site/algorithm/the-reverse-of-nodes/
 http://www.draymonder.site/algorithm/mergesort/
 http://www.draymonder.site/diary/the-diary-02-02/
 http://www.draymonder.site/diary/the-films/

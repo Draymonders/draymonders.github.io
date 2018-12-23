@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
+<meta name="description" content="ArrayList添加对象的有趣经历">
 <meta name="keywords" content="SSM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSM到Spring Boot从零开发校园商铺平台">
-<meta property="og:url" content="http://www.draymonder.site/ssm/tableAndEntity/index.html">
+<meta property="og:title" content="记录项目开发中 一次有趣的debug经历">
+<meta property="og:url" content="http://www.draymonder.site/ssm/arraylist/index.html">
 <meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
+<meta property="og:description" content="ArrayList添加对象的有趣经历">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-03T10:27:38.952Z">
+<meta property="og:updated_time" content="2018-12-23T04:07:56.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSM到Spring Boot从零开发校园商铺平台">
-<meta name="twitter:description" content="本次记录ssm项目开发中的实体定义以及MySQL表格设计">
+<meta name="twitter:title" content="记录项目开发中 一次有趣的debug经历">
+<meta name="twitter:description" content="ArrayList添加对象的有趣经历">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.draymonder.site/ssm/tableAndEntity/"/>
+  <link rel="canonical" href="http://www.draymonder.site/ssm/arraylist/"/>
 
 
 
 
 
-  <title>SSM到Spring Boot从零开发校园商铺平台 | Draymonder's Blog</title>
+  <title>记录项目开发中 一次有趣的debug经历 | Draymonder's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/ssm/tableAndEntity/">
+    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/ssm/arraylist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SSM到Spring Boot从零开发校园商铺平台</h1>
+          <h1 class="post-title" itemprop="name headline">记录项目开发中 一次有趣的debug经历</h1>
         
 
         <div class="post-meta">
@@ -284,17 +284,17 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T00:00:00+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T00:00:00+08:00">
+                2018-12-10
               </time>
             
 
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>181 字</span>
+                <span>366 字</span>
                 &nbsp; | &nbsp;
-                <span>1 min</span>
+                <span>2 min</span>
               </span>
             
 
@@ -318,7 +318,7 @@
 
           
               <div class="post-description">
-                  本次记录ssm项目开发中的实体定义以及MySQL表格设计
+                  ArrayList添加对象的有趣经历
               </div>
           
 
@@ -335,385 +335,12 @@
       
 
       
-        <p>话不多说，下面表格是项目开发中用到的实体集以及表格Name<br><a href="https://github.com/Draymonders/ssm/tree/master/src/main/java/com/cumt/entity" target="_blank" rel="external">实体创建</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Draymonders/ssm/blob/master/table_create.txt" target="_blank" rel="external">表格创建</a></p>
-<h1 id="Area-区域"><a href="#Area-区域" class="headerlink" title="Area 区域"></a>Area 区域</h1><table>
-<thead>
-<tr>
-<th>Area</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>areaId</td>
-<td>areaName</td>
-<td>priority</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>area_id</td>
-<td>area_name</td>
-<td>priority</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-</tr>
-</tbody>
-</table>
-<h1 id="HeadLine-头条-用做首页滚动"><a href="#HeadLine-头条-用做首页滚动" class="headerlink" title="HeadLine 头条 (用做首页滚动"></a>HeadLine 头条 (用做首页滚动</h1><table>
-<thead>
-<tr>
-<th>HeadLine</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>lineId</td>
-<td>lineName</td>
-<td>lineLink</td>
-<td>lineImg</td>
-<td>priority</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>line_id</td>
-<td>line_name</td>
-<td>line_link</td>
-<td>line_img</td>
-<td>priority</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>enableStatus</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>enable_status</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-</tr>
-</tbody>
-</table>
-<h1 id="PersonInfo-个人信息"><a href="#PersonInfo-个人信息" class="headerlink" title="PersonInfo 个人信息"></a>PersonInfo 个人信息</h1><table>
-<thead>
-<tr>
-<th>PersonInfo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>userId</td>
-<td>name</td>
-<td>profileImg</td>
-<td>email</td>
-<td>gender</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>user_id</td>
-<td>name</td>
-<td>profile_img</td>
-<td>email</td>
-<td>gender</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>enableStatus</td>
-<td>userType</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>enable_status</td>
-<td>user_type</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-</tr>
-</tbody>
-</table>
-<h2 id="LocalAuth-本地用户"><a href="#LocalAuth-本地用户" class="headerlink" title="LocalAuth 本地用户"></a>LocalAuth 本地用户</h2><table>
-<thead>
-<tr>
-<th>LocalAuth</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>localAuthId</td>
-<td>personInfo</td>
-<td>username</td>
-<td>password</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>local_auth_id</td>
-<td>user_id</td>
-<td>username</td>
-<td>password</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-</tr>
-</tbody>
-</table>
-<h2 id="WechatAuth-微信用户"><a href="#WechatAuth-微信用户" class="headerlink" title="WechatAuth 微信用户"></a>WechatAuth 微信用户</h2><table>
-<thead>
-<tr>
-<th>WechatAuth</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>wechatAuthId</td>
-<td>personInfo</td>
-<td>openId</td>
-<td>createTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>wechat_auth_id</td>
-<td>user_id</td>
-<td>open_id</td>
-<td>create_time</td>
-</tr>
-</tbody>
-</table>
-<h1 id="ShopCategory-店铺类别"><a href="#ShopCategory-店铺类别" class="headerlink" title="ShopCategory 店铺类别"></a>ShopCategory 店铺类别</h1><table>
-<thead>
-<tr>
-<th>ShopCategory</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>shopCategoryId</td>
-<td>shopCategoryName</td>
-<td>shopCategoryDesc</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>shop_category_id</td>
-<td>shop_category_name</td>
-<td>shop_category_desc</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>shopCategoryImg</td>
-<td>priority</td>
-<td>parent</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>shop_category_img</td>
-<td>priority</td>
-<td>parent_id</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Shop-商铺"><a href="#Shop-商铺" class="headerlink" title="Shop 商铺"></a>Shop 商铺</h1><table>
-<thead>
-<tr>
-<th>Shop</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>shopId</td>
-<td>shopName</td>
-<td>shopDesc</td>
-<td>area</td>
-<td>enableStatus</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>shop_id</td>
-<td>shop_name</td>
-<td>shop_desc</td>
-<td>area_id</td>
-<td>enable_status</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>shopAddr</td>
-<td>phone</td>
-<td>shopImg</td>
-<td>priority</td>
-<td>shopCategory_id</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>shop_addr</td>
-<td>phone</td>
-<td>shop_img</td>
-<td>priority</td>
-<td>shop_category_id</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-<td>advice</td>
-<td>owner</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-<td>advice</td>
-<td>owner_id</td>
-</tr>
-</tbody>
-</table>
-<h1 id="ProductCategory-商品种类"><a href="#ProductCategory-商品种类" class="headerlink" title="ProductCategory 商品种类"></a>ProductCategory 商品种类</h1><table>
-<thead>
-<tr>
-<th>商品种类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>shopId</td>
-<td>productCategoryId</td>
-<td>productCategoryName</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>shop_id</td>
-<td>product_category_id</td>
-<td>product_category_name</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>priority</td>
-<td>createTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>priority</td>
-<td>create_time</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Product-商品"><a href="#Product-商品" class="headerlink" title="Product 商品"></a>Product 商品</h1><table>
-<thead>
-<tr>
-<th>商品</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>productId</td>
-<td>shop</td>
-<td>productName</td>
-<td>productDesc</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>product_id</td>
-<td>shop_id</td>
-<td>product_name</td>
-<td>product_desc</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>imgAddr</td>
-<td>normalPrice</td>
-<td>promotionPrice</td>
-<td>productCategory</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>img_addr</td>
-<td>normal_price</td>
-<td>promotion_price</td>
-<td>product_category_id</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>priority</td>
-<td>createTime</td>
-<td>lastEditTime</td>
-<td>enableStatus</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>priority</td>
-<td>create_time</td>
-<td>last_edit_time</td>
-<td>enable_status</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>productImgList</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>一对多</td>
-</tr>
-</tbody>
-</table>
-<h2 id="ProductImg-商品图片"><a href="#ProductImg-商品图片" class="headerlink" title="ProductImg 商品图片"></a>ProductImg 商品图片</h2><table>
-<thead>
-<tr>
-<th>商品</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实体</td>
-<td>productImgId</td>
-<td>productId</td>
-<td>imgAddr</td>
-<td>imgDesc</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>product_img_id</td>
-<td>product_id</td>
-<td>img_addr</td>
-<td>img_desc</td>
-</tr>
-<tr>
-<td>实体</td>
-<td>priority</td>
-<td>createTime</td>
-</tr>
-<tr>
-<td>表格</td>
-<td>priority</td>
-<td>create_time</td>
-</tr>
-</tbody>
-</table>
+        <h1 id="记录项目开发中-一次有趣的debug经历"><a href="#记录项目开发中-一次有趣的debug经历" class="headerlink" title="记录项目开发中 一次有趣的debug经历"></a>记录项目开发中 一次有趣的debug经历</h1><p>本来是在做单元测试的，但是发现如下代码 有问题..<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ProductCategory p = new ProductCategory()<span class="comment">;</span></div><div class="line">for (<span class="name">int</span> i = <span class="number">1</span><span class="comment">; i &lt;= 5; i++) &#123;</span></div><div class="line">    p.setCreateTime(<span class="name">new</span> Date())<span class="comment">;</span></div><div class="line">    p.setPriority(<span class="name">i</span>)<span class="comment">;</span></div><div class="line">        p.setShopId((<span class="name">long</span>)(<span class="name">i</span>))<span class="comment">;</span></div><div class="line">    p.setProductCategoryName(<span class="string">"测试店铺种类"</span>+(<span class="name">i+3</span>))<span class="comment">;</span></div><div class="line">    list.add(<span class="name">p</span>)<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打印list里面对象的ProductCategoryName<br>发现如下<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">测试店铺种类<span class="number">8</span></div><div class="line">测试店铺种类<span class="number">8</span></div><div class="line">测试店铺种类<span class="number">8</span></div><div class="line">测试店铺种类<span class="number">8</span></div><div class="line">测试店铺种类<span class="number">8</span></div></pre></td></tr></table></figure></p>
+<p>我甚至还以为是ArrayList的add函数会去重 (人工智障)，看了一下源码<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="built_in">boolean</span> <span class="built_in">add</span>(E e) &#123;</div><div class="line">        ensureCapacityInternal(<span class="built_in">size</span> + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></div><div class="line">        elementData[<span class="built_in">size</span>++] = e;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>发现没什么不妥。<br>多测试了几下 发现 list 每次增加对象的时候 list是单纯把相应index赋值为对象。<br>因此我上面对象 看似存了5次，但其实，最后打印的时候 打印的是同一个对象， 即最后一次的修改信息<br>所以有 5个<code>测试店铺种类8</code></p>
+<h1 id="正确写法"><a href="#正确写法" class="headerlink" title="正确写法"></a>正确写法</h1><p>每次new一个新的对象 加入到list中<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for (<span class="name">int</span> i = <span class="number">1</span><span class="comment">; i &lt;= 5; i++) &#123;</span></div><div class="line">    p = new ProductCategory(<span class="name">null</span>,(<span class="name">long</span>)i,<span class="string">"test"</span>+i+10,i,new Date())<span class="comment">;</span></div><div class="line">    //p.setCreateTime(<span class="name">new</span> Date())<span class="comment">;</span></div><div class="line">    //p.setPriority(<span class="name">i</span>)<span class="comment">;</span></div><div class="line">    //p.setShopId((<span class="name">long</span>)(<span class="name">i</span>))<span class="comment">;</span></div><div class="line">    //p.setProductCategoryName(<span class="string">"测试店铺种类"</span>+(<span class="name">i+3</span>))<span class="comment">;</span></div><div class="line">    list.add(<span class="name">p</span>)<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h1><p>本身那么创建一个对象,目的是为了减少内存开销<br>但是这样做的结果就是list中存储的对象都是用一个<br>特此标注一下 谨防以后再犯错</p>
 
       
     </div>
@@ -744,7 +371,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ssm/init/" rel="next" title="SSM到Spring Boot从零开发校园商铺平台">
+              <a href="/ssm/tableAndEntity/" rel="next" title="SSM到Spring Boot从零开发校园商铺平台">
                 <i class="fa fa-chevron-left"></i> SSM到Spring Boot从零开发校园商铺平台
               </a>
             
@@ -754,8 +381,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ssm/arraylist/" rel="prev" title="记录项目开发中 一次有趣的debug经历">
-                记录项目开发中 一次有趣的debug经历 <i class="fa fa-chevron-right"></i>
+              <a href="/ssm/getIncludeChinese/" rel="prev" title="SSM项目问题中遇到 GET请求中有中文的情况">
+                SSM项目问题中遇到 GET请求中有中文的情况 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -913,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Area-区域"><span class="nav-number">1.</span> <span class="nav-text">Area 区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HeadLine-头条-用做首页滚动"><span class="nav-number">2.</span> <span class="nav-text">HeadLine 头条 (用做首页滚动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PersonInfo-个人信息"><span class="nav-number">3.</span> <span class="nav-text">PersonInfo 个人信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LocalAuth-本地用户"><span class="nav-number">3.1.</span> <span class="nav-text">LocalAuth 本地用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WechatAuth-微信用户"><span class="nav-number">3.2.</span> <span class="nav-text">WechatAuth 微信用户</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ShopCategory-店铺类别"><span class="nav-number">4.</span> <span class="nav-text">ShopCategory 店铺类别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shop-商铺"><span class="nav-number">5.</span> <span class="nav-text">Shop 商铺</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ProductCategory-商品种类"><span class="nav-number">6.</span> <span class="nav-text">ProductCategory 商品种类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Product-商品"><span class="nav-number">7.</span> <span class="nav-text">Product 商品</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ProductImg-商品图片"><span class="nav-number">7.1.</span> <span class="nav-text">ProductImg 商品图片</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录项目开发中-一次有趣的debug经历"><span class="nav-number">1.</span> <span class="nav-text">记录项目开发中 一次有趣的debug经历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正确写法"><span class="nav-number">2.</span> <span class="nav-text">正确写法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感悟"><span class="nav-number">3.</span> <span class="nav-text">感悟</span></a></li></ol></div>
             
 
           </div>
