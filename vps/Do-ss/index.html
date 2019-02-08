@@ -75,31 +75,31 @@
 
 
 
-  <meta name="keywords" content="Vps," />
+  <meta name="keywords" content="vps," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Draymonder's Blog" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Draymonder" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="Digital Ocean 购买VPS搭建SS梯子">
-<meta name="keywords" content="Vps">
+<meta name="description" content="Digital Ocean 购买VPS搭建SS">
+<meta name="keywords" content="vps">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Digital Ocean 购买VPS搭建SS">
-<meta property="og:url" content="http://www.draymonder.site/vps/Do-ss/index.html">
-<meta property="og:site_name" content="Draymonder&#39;s Blog">
-<meta property="og:description" content="Digital Ocean 购买VPS搭建SS梯子">
+<meta property="og:url" content="http://www.draymonder.site/vps/do-ss/index.html">
+<meta property="og:site_name" content="Draymonder">
+<meta property="og:description" content="Digital Ocean 购买VPS搭建SS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-20T03:00:59.915Z">
+<meta property="og:updated_time" content="2019-02-08T14:08:00.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Digital Ocean 购买VPS搭建SS">
-<meta name="twitter:description" content="Digital Ocean 购买VPS搭建SS梯子">
+<meta name="twitter:description" content="Digital Ocean 购买VPS搭建SS">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.draymonder.site/vps/Do-ss/"/>
+  <link rel="canonical" href="http://www.draymonder.site/vps/do-ss/"/>
 
 
 
 
 
-  <title>Digital Ocean 购买VPS搭建SS | Draymonder's Blog</title>
+  <title>Digital Ocean 购买VPS搭建SS | Draymonder</title>
   
 
 
@@ -165,12 +165,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Draymonder's Blog</span>
+        <span class="site-title">Draymonder</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">梦在远方</p>
+        <p class="site-subtitle">想去远方</p>
       
   </div>
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/vps/Do-ss/">
+    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/vps/do-ss/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -263,7 +263,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Draymonder's Blog">
+      <meta itemprop="name" content="Draymonder">
     </span>
 
     
@@ -292,7 +292,7 @@
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>110 字</span>
+                <span>192 字</span>
                 &nbsp; | &nbsp;
                 <span>1 min</span>
               </span>
@@ -318,7 +318,7 @@
 
           
               <div class="post-description">
-                  Digital Ocean 购买VPS搭建SS梯子
+                  Digital Ocean 购买VPS搭建SS
               </div>
           
 
@@ -336,9 +336,8 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为要做项目，所以买了Do的最便宜的VPS</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>首先要对机房测速，挨个测试<br>最后使用的旧金山的机房，Unbuntu的系统<br>配置SS的过程，百度应该都有，中间还更换了一下服务器的位置</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>首先要对机房测速，挨个测试<br>最后使用的旧金山的机房，Unbuntu的系统<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">1  apt-get update</div><div class="line">2  apt-get install python-pip</div><div class="line">3  pip install <span class="params">--upgrade</span> pip</div><div class="line">4  apt-get install git</div><div class="line">5  pip install git</div><div class="line">6  sudo pip install  git+https:<span class="string">//github.com/shadowsocks/shadowsocks.git</span>@master</div><div class="line">7  apt-get install build-essential</div><div class="line">8  wget https:<span class="string">//github.com/jedisct1/libsodium/releases/download/1.0.8/libsodium-1.0.8.tar.gz</span></div><div class="line">9  tar xf libsodium-1.0.8.tar.gz &amp;&amp; <span class="keyword">cd</span> libsodium-1.0.8</div><div class="line">10 <span class="string">./configure</span> &amp;&amp; make -j2</div><div class="line">11 make install</div><div class="line">12 ldconfig</div><div class="line">13  touch <span class="string">/etc/shadowsocks.json</span></div><div class="line">14  <span class="keyword">echo</span> '&#123;<span class="string">"server"</span>:<span class="string">"::"</span>, <span class="string">"server_port"</span><span class="function">:8388</span>, <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, <span class="string">"local_port"</span><span class="function">:1080</span>, <span class="string">"password"</span>:<span class="string">"draymonder"</span>, <span class="string">"timeout"</span><span class="function">:300</span>, <span class="string">"method"</span>:<span class="string">"chacha20"</span>, <span class="string">"fast_open"</span>: <span class="literal">false</span> &#125;' &gt; <span class="string">/etc/shadowsocks.json</span></div><div class="line">15  ssserver -c <span class="string">/etc/shadowsocks.json</span> -d start</div><div class="line"><span class="string">//</span> 想要关闭的话</div><div class="line">16  ssserver -c <span class="string">/etc/shadowsocks.json</span> -d stop</div></pre></td></tr></table></figure></p>
 <p>修改配置命令如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/shadowsocks.json</div><div class="line">ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d start</div><div class="line">ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d stop</div></pre></td></tr></table></figure></p>
-<p>后续还会写php+mysql的环境配置</p>
 
       
     </div>
@@ -356,7 +355,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vps/" rel="tag"><i class="fa fa-tag"></i> Vps</a>
+            <a href="/tags/vps/" rel="tag"><i class="fa fa-tag"></i> vps</a>
           
         </div>
       
@@ -469,7 +468,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -482,7 +481,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -509,9 +508,9 @@
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://blog.csdn.net/BING1926" target="_blank" title="CSDN">
+                    <a href="https://www.cnblogs.com/Draymonder/" target="_blank" title="Cnblogs">
                       
-                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                        <i class="fa fa-fw fa-globe"></i>Cnblogs</a>
                   </span>
                 
             </div>
@@ -558,7 +557,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -577,7 +576,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.2k字</span>
+  <span class="post-count">博客全站共42.9k字</span>
 </div>
         
 
