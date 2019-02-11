@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="PHP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Draymonder" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对象的传递,成员方法">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 面向对象学习">
+<meta property="og:url" content="http://www.draymonder.site/backend/php/object-oriented-of-php/index.html">
+<meta property="og:site_name" content="Draymonder">
+<meta property="og:description" content="对象的传递,成员方法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-08T13:59:29.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP 面向对象学习">
+<meta name="twitter:description" content="对象的传递,成员方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.draymonder.site/backend/php/object-oriented-of-php/"/>
+
+
+
+
+
+  <title>PHP 面向对象学习 | Draymonder</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Draymonder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">想去远方</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/backend/php/object-oriented-of-php/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Draymonder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Draymonder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP 面向对象学习</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T18:00:00+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+              <span class="post-letters-count">
+                &nbsp; | &nbsp;
+                <span>1,304 字</span>
+                &nbsp; | &nbsp;
+                <span>5 min</span>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  对象的传递,成员方法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>php面向对象入门</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="对象的传递"><a href="#对象的传递" class="headerlink" title="对象的传递"></a>对象的传递</h2><p>php中对象 都是引用传值的<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> $color;</div><div class="line">&#125;   </div><div class="line">$cat1 = <span class="keyword">new</span> Cat();</div><div class="line">$cat2 = $cat1;</div><div class="line">$cat1-&gt;name = <span class="string">"Draymonder"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">     $cat1和$cat2的name都变成了"Draymonder"</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
+<p>不同于基本数据类型是按值传递(和C++类似的)<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($b)</span></span>&#123;</div><div class="line">    $b = <span class="number">5</span>;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"b"</span>.$b;</div><div class="line">&#125;</div><div class="line">test($a);</div><div class="line"><span class="keyword">echo</span> <span class="string">' a'</span>.$a;</div><div class="line"><span class="comment">/* 最后输出b5 a0; */</span></div><div class="line"></div><div class="line">$a = <span class="keyword">array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> <span class="params">($b)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>; $i &lt; sizeof($b); $i++)</div><div class="line">        $b[$i] = $b[$i] + <span class="number">1</span>;</div><div class="line">&#125;   </div><div class="line">test($a);</div><div class="line"><span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; sizeof($a); $i++)</div><div class="line">    <span class="keyword">echo</span> $a[$i].<span class="string">" "</span>;</div><div class="line"><span class="comment">/* 输出 0 1 2 3 4*/</span></div></pre></td></tr></table></figure></p>
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fout</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">" "</span>.<span class="keyword">$this</span>-&gt;age;</div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">        没有this的话,所以这里必须要访问成员的属性的话，必须加this</span></div><div class="line"><span class="comment">        1. $name会被认为是新的变量</span></div><div class="line"><span class="comment">        2. name会认为没有定义的常量</span></div><div class="line"><span class="comment">        */</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>一个类有且只有一个构造方法(php不支持重载)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">两种构造语法</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $name;</div><div class="line">    <span class="keyword">public</span> $age;</div><div class="line">    <span class="comment">/*第一种构造方法，优先级高*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*第二种构造方法，与C++类似*/</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">person</span><span class="params">($Name,$Age)</span> </span>&#123;</div><div class="line">        <span class="comment">//echo "构造成功";</span></div><div class="line">        <span class="keyword">$this</span>-&gt;name=$Name;</div><div class="line">        <span class="keyword">$this</span>-&gt;age =$Age;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//析构方法什么时候被调用</span></div><div class="line"><span class="comment">//1.当程序(进程)退出时</span></div><div class="line"><span class="comment">//2.一旦一个对象是垃圾对象的时候，析构方法立即调用 </span></div><div class="line"></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = new person();</span></div><div class="line"><span class="meta"><span class="meta-keyword">$p1</span> = NULL;</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//析构方法主要用于销毁资源</span></div><div class="line"><span class="comment">//先创建的后销毁(栈的方式)</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"析构成功"</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个静态变量</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> $num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//类内部使用</span></div><div class="line"><span class="number">1.</span> <span class="keyword">self</span>::$num+=<span class="number">1</span>;</div><div class="line"><span class="number">2.</span> 类名::$num;</div><div class="line"></div><div class="line"><span class="comment">//类外部使用</span></div><div class="line">类名::$num;</div></pre></td></tr></table></figure>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">静态方法是属于所有对象实例的</div><div class="line">在类外部: 类名::类方法名 或者 对象名-&gt;类方法名</div><div class="line">在类内部: self::类方法名 或者 类名::类方法名</div><div class="line"></div><div class="line">特点:</div><div class="line">静态方法操作静态变量，不操作非静态变量</div><div class="line">普通成员发放，既可以操作静态变量，也可以操作非静态变量</div><div class="line"></div><div class="line">顺序: static function</div></pre></td></tr></table></figure>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>方法之间可以互相调用,需要用$this调用<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">访问控制修饰符</div><div class="line">    <span class="keyword">public</span> 类内部,外部,子类都可以访问</div><div class="line">    <span class="keyword">protected</span> 类内部,子类可以访问</div><div class="line">    <span class="keyword">private</span> 类内部可以访问</div><div class="line"></div><div class="line"><span class="keyword">protected</span> 和 <span class="keyword">private</span> 成员 </div><div class="line">用<span class="keyword">public</span>方法去访问或修改</div><div class="line"></div><div class="line">还有一种形式，用魔术方法</div><div class="line">__set($pro_name,$val)</div><div class="line">__get($pro_name)</div></pre></td></tr></table></figure></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>为了提高代码的复用性<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">子类</span> <span class="keyword">extends</span> <span class="title">父类</span></span>&#123;</div><div class="line">    <span class="comment">//自己的属性和方法</span></div><div class="line">&#125;</div><div class="line">只继承父类 public 和 <span class="keyword">protected</span></div><div class="line">public可以直接被子类和外部调用</div><div class="line"><span class="keyword">protected</span> 只能在子类中调用(调用$<span class="keyword">this</span>)</div><div class="line"></div><div class="line">一个子类只能有一个父类</div><div class="line"></div><div class="line">在创建某个子类对象时，默认情况下，不会调用父类的构造函数</div></pre></td></tr></table></figure></p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">本身是不可以向C</span><span class="literal">+</span><span class="literal">+</span><span class="comment">那样重载的</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">在网上学到的</span> <span class="comment">方法，我觉得比较好记的</span></div></pre></td></tr></table></figure>
+<h3 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">子类会覆盖父类重名的方法</div><div class="line">访问修饰符 子类的范围 &gt;= 父类的范围</div><div class="line"></div><div class="line">如果子类想去调用父类的某个方法</div><div class="line">可以用类名::方法名 或者 parent::方法名</div></pre></td></tr></table></figure>
+<h3 id="可选参数，允许变量设置默认值"><a href="#可选参数，允许变量设置默认值" class="headerlink" title="可选参数，允许变量设置默认值"></a>可选参数，允许变量设置默认值</h3><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function <span class="keyword">sum</span>($var1,$var2,$var3=<span class="built_in">NULL</span>)&#123;<span class="comment">//$var3设置默认值</span></div><div class="line">    echo $var1+$var2+$var3;</div><div class="line">&#125;</div><div class="line"><span class="keyword">sum</span>(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//2</span></div><div class="line"><span class="keyword">sum</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//2.5</span></div></pre></td></tr></table></figure>
+<h3 id="使用魔术方法-call"><a href="#使用魔术方法-call" class="headerlink" title="使用魔术方法 __call()"></a>使用魔术方法 __call()</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($method,$p)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>($method == <span class="string">"test"</span>)&#123;</div><div class="line">            <span class="keyword">switch</span> (count($p)) &#123;<span class="comment">//获得参数数组个数</span></div><div class="line">                <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                    <span class="keyword">$this</span>-&gt;test2($args[<span class="number">0</span>],$args[<span class="number">1</span>]);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">                    <span class="keyword">$this</span>-&gt;test3($args[<span class="number">0</span>],$args[<span class="number">1</span>],$args[<span class="number">2</span>]);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">test2</span><span class="params">($var1,$var2)</span></span>&#123;</div><div class="line">        <span class="comment">#code...</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">test3</span><span class="params">($var1,$var2,$var3)</span></span>&#123;</div><div class="line">        <span class="comment">#code...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用</span></div><div class="line">$obj = <span class="keyword">new</span> demo();</div><div class="line">$obj-&gt;test(<span class="string">"var1"</span>,<span class="string">"var2"</span>);</div><div class="line">$obj-&gt;test(<span class="string">"var1"</span>,<span class="string">"var2"</span>,<span class="string">"var3"</span>);</div></pre></td></tr></table></figure>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">魔术常量</div><div class="line"><span class="keyword">__FILE__</span>    当前文件的路径</div><div class="line"><span class="keyword">__DIR__</span>     文件所在的目录</div></pre></td></tr></table></figure>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 用<span class="keyword">abstract</span> 修饰类，就是抽象类 </div><div class="line"></div><div class="line"><span class="number">2.</span> 如果一个方法用<span class="keyword">abstract</span>修饰，那么方法就不能实现</div><div class="line"></div><div class="line"><span class="number">3.</span> 抽象类不能被实例化, 可以没有抽象方法</div><div class="line"></div><div class="line"><span class="number">4.</span> 如果A类继承了抽象类B,则要求A实现B的所有的抽象方法</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    成员</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//软件工程中追求高内聚 低耦合</span></div><div class="line"></div><div class="line">类实现接口 类继承类</div><div class="line"></div><div class="line"><span class="number">1.</span> 接口不能被实例化</div><div class="line"></div><div class="line"><span class="number">2.</span> 接口中所有方法，都不能有主体,并且是<span class="keyword">public</span></div><div class="line"></div><div class="line"><span class="number">3.</span> 一个类可以实现多个接口</div><div class="line"></div><div class="line"><span class="number">4.</span> 接口可以有属性，必须是常量</div><div class="line"></div><div class="line"><span class="number">5.</span> 接口中属性可以使用 接口名::常量</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> 接口名</span>&#123;</div><div class="line">    <span class="keyword">const</span> 常量名;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法<span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> 接口名1, 接口名2</span>&#123;</div><div class="line">    对接口中的属性和方法的实现;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 使某些类，不被其他类所继承(出于安全性的考虑或者其他原因)</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    属性;</div><div class="line">    方法;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">2.</span> <span class="keyword">final</span> 修饰的方法是可以继承的，但是不可以被子类重写</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> 类名</span>&#123;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 方法名<span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> 常量名 = 初值;</div><div class="line"><span class="keyword">const</span> 前不要加修饰符</div><div class="line">常量同样和+静态变量属于类本身，不属于对象本身</div><div class="line"></div><div class="line">使用: 类名::常量名  接口名::常量名</div><div class="line"><span class="comment">//尽量全部大写</span></div></pre></td></tr></table></figure>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>你的负担将变成礼物 你受的苦将照亮你的路</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/algorithm/the-reverse-of-nodes/" rel="next" title="反转链表">
+                <i class="fa fa-chevron-left"></i> 反转链表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/backend/php/the-errors-in-php/" rel="prev" title="PHP错误和异常处理">
+                PHP错误和异常处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+
+
+      
+
+    </footer>
+  </div>
+  
+
+  
+  
+  
+  </article>
+
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Draymonder" />
+            
+              <p class="site-author-name" itemprop="name">Draymonder</p>
+              <p class="site-description motion-element" itemprop="description">O ever youthful, O ever weeping</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Draymonders" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/Draymonder/" target="_blank" title="Cnblogs">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Cnblogs</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的传递"><span class="nav-number">2.1.</span> <span class="nav-text">对象的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员方法"><span class="nav-number">2.2.</span> <span class="nav-text">成员方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法"><span class="nav-number">2.3.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#析构方法"><span class="nav-number">2.4.</span> <span class="nav-text">析构方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态变量"><span class="nav-number">2.5.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法"><span class="nav-number">2.6.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">2.7.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.8.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">2.9.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重写"><span class="nav-number">2.9.1.</span> <span class="nav-text">重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选参数，允许变量设置默认值"><span class="nav-number">2.9.2.</span> <span class="nav-text">可选参数，允许变量设置默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用魔术方法-call"><span class="nav-number">2.9.3.</span> <span class="nav-text">使用魔术方法 __call()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#魔术方法"><span class="nav-number">2.10.</span> <span class="nav-text">魔术方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">2.11.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.12.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final-关键字"><span class="nav-number">2.13.</span> <span class="nav-text">final 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-关键字"><span class="nav-number">2.14.</span> <span class="nav-text">const 关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Draymonder</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.draymonder.site/"/>
-  <updated>2019-02-08T14:36:36.468Z</updated>
+  <updated>2019-02-11T04:25:04.850Z</updated>
   <id>http://www.draymonder.site/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序算法总结</title>
+    <link href="http://www.draymonder.site/algorithm/sort-about/"/>
+    <id>http://www.draymonder.site/algorithm/sort-about/</id>
+    <published>2019-02-11T09:00:00.000Z</published>
+    <updated>2019-02-11T04:25:04.850Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 朴素冒泡</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort_1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="comment">// 总共需要排序 n-1轮</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(s[j] &gt; s[j+<span class="number">1</span>])</div><div class="line">                swap(s[j], s[j+<span class="number">1</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 带优化的冒泡</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort_2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</div><div class="line">        <span class="comment">// 标记是否有序</span></div><div class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(s[j] &gt; s[j+<span class="number">1</span>])</div><div class="line">                swap(s[j], s[j+<span class="number">1</span>]), f=<span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 说明没有发生交换</span></div><div class="line">        <span class="keyword">if</span>(!f) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. 快速排序</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> quick_sort(<span class="built_in">int</span> l, <span class="built_in">int</span> r) &#123;</div><div class="line">    <span class="keyword">if</span>(l &gt;= r)</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    <span class="built_in">int</span> i=l, j=r;</div><div class="line">    <span class="built_in">int</span> <span class="built_in">num</span> = s[l];</div><div class="line">    <span class="keyword">while</span>(i &lt; j) &#123;</div><div class="line">        <span class="comment">// 从右面找比num小的</span></div><div class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; s[j] &gt; <span class="built_in">num</span>) j--;</div><div class="line">        <span class="comment">// 从左面找比num大的</span></div><div class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; s[i] &lt; <span class="built_in">num</span>) i++;</div><div class="line">        <span class="comment">// 交换</span></div><div class="line">        <span class="keyword">if</span>(i &lt; j)</div><div class="line">            swap(s[i], s[j]);</div><div class="line">    &#125;</div><div class="line">    quick_sort(l, j<span class="number">-1</span>);</div><div class="line">    quick_sort(j+<span class="number">1</span>, r);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-插入排序"><a href="#3-插入排序" class="headerlink" title="3. 插入排序"></a>3. 插入排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="comment">// s[0]已经排序排好了</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n<span class="number">-1</span>; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = i<span class="number">-1</span>;</div><div class="line">        <span class="comment">// j+1 即为要插的位置</span></div><div class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; s[j] &gt; s[i])</div><div class="line">            j--;</div><div class="line">        <span class="keyword">int</span> tmp = s[i];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=i<span class="number">-1</span>; k&gt;=j+<span class="number">1</span>; k--)</div><div class="line">            s[k+<span class="number">1</span>] = s[k];</div><div class="line">        s[j+<span class="number">1</span>] = tmp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 代码优化版本</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="comment">// s[0]已经排序排好了</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n<span class="number">-1</span>; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = i<span class="number">-1</span>;</div><div class="line">        <span class="comment">// j+1 即为要插的位置</span></div><div class="line">        <span class="keyword">int</span> tmp = s[i];</div><div class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; s[j] &gt; tmp) &#123;</div><div class="line">            s[j+<span class="number">1</span>] = s[j];</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        s[j+<span class="number">1</span>] = tmp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-希尔排序"><a href="#4-希尔排序" class="headerlink" title="4. 希尔排序"></a>4. 希尔排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shell_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> gap = (n&gt;&gt;<span class="number">1</span>); gap; gap&gt;&gt;=<span class="number">1</span>) &#123;</div><div class="line">        <span class="comment">// 共分gap个组</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;gap; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+gap; j&lt;n; j+=gap) &#123;</div><div class="line">                <span class="keyword">int</span> k = j - gap;</div><div class="line">                <span class="keyword">int</span> tmp = s[j];</div><div class="line">                <span class="keyword">while</span>(k &gt;= i &amp;&amp; s[k] &gt; tmp) &#123;</div><div class="line">                    s[k+gap] = s[k];</div><div class="line">                    k-=gap;</div><div class="line">                &#125;</div><div class="line">                s[k+gap] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-选择排序"><a href="#5-选择排序" class="headerlink" title="5. 选择排序"></a>5. 选择排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">select_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="comment">// 共n-1轮次</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> mn_pos = i;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(s[j] &lt; s[mn_pos]) &#123;</div><div class="line">                mn_pos = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(i != mn_pos)</div><div class="line">            swap(s[mn_pos], s[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-堆排序"><a href="#6-堆排序" class="headerlink" title="6. 堆排序"></a>6. 堆排序</h2><p>这里比较trick的点就是,就是比如小根堆，根节点是最小的，因此呢，在排序的时候，s[0]和s[n]交换一下，排序结果就是从大到小的。<br>想要从小到大的排序结果，需要用大根堆。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 对堆从st调整， 数组元素为n</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">heap_down</span><span class="params">(<span class="keyword">int</span> st, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> c = st;</div><div class="line">    <span class="comment">// 有左儿子</span></div><div class="line">    <span class="keyword">while</span>(<span class="number">2</span>*c+<span class="number">1</span> &lt;= n) &#123;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">2</span>*c+<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> mn = c;</div><div class="line">        <span class="keyword">if</span>(s[mn] &gt; s[l])</div><div class="line">            mn = l;</div><div class="line">        <span class="keyword">if</span>(l+<span class="number">1</span> &lt;= n &amp;&amp; s[mn] &gt; s[l+<span class="number">1</span>])</div><div class="line">            mn = l+<span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(mn == c)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        swap(s[c], s[mn]);</div><div class="line">        c = mn;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">heap_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n/<span class="number">2</span>; i&gt;=<span class="number">0</span>; i--)</div><div class="line">        heap_down(i,n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n; i&gt;<span class="number">0</span>; i--) &#123;</div><div class="line">        swap(s[i], s[<span class="number">0</span>]);</div><div class="line">        heap_down(<span class="number">0</span>, i<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="7-归并排序"><a href="#7-归并排序" class="headerlink" title="7. 归并排序"></a>7. 归并排序</h2><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">void merge_sort(<span class="built_in">int</span> l,<span class="built_in">int</span> r) &#123;</div><div class="line">    <span class="keyword">if</span>(l &gt;= r)</div><div class="line">        return ;</div><div class="line">    <span class="built_in">int</span> <span class="built_in">mid</span> = (l+r)/<span class="number">2</span>;</div><div class="line">    merge_sort(l, <span class="built_in">mid</span>);</div><div class="line">    merge_sort(<span class="built_in">mid</span>+<span class="number">1</span>, r);</div><div class="line">    <span class="built_in">int</span> l1=l, l2=<span class="built_in">mid</span>+<span class="number">1</span>;</div><div class="line">    <span class="built_in">int</span> k = l;</div><div class="line">    <span class="keyword">while</span>(l1 &lt;= <span class="built_in">mid</span> &amp;&amp; l2 &lt;= r) &#123;</div><div class="line">        <span class="keyword">if</span>(s[l1] &gt; s[l2])</div><div class="line">            t[k++] = s[l2++];</div><div class="line">        <span class="keyword">else</span></div><div class="line">            t[k++] = s[l1++];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(l1 &lt;= <span class="built_in">mid</span>)</div><div class="line">        t[k++] = s[l1++];</div><div class="line">    <span class="keyword">while</span>(l2 &lt;= r)</div><div class="line">        t[k++] = s[l2++];</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=l; i&lt;=r; i++)</div><div class="line">        s[i] = t[i];</div><div class="line">    return ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-分桶排序"><a href="#8-分桶排序" class="headerlink" title="8. 分桶排序"></a>8. 分桶排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        t[s[i]]++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; i++) &#123;</div><div class="line">        <span class="keyword">while</span>(t[i]) &#123;</div><div class="line">            s[k++] = i;</div><div class="line">            t[i]--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="9-基数排序"><a href="#9-基数排序" class="headerlink" title="9. 基数排序"></a>9. 基数排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_max</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> mx = INT_MIN;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</div><div class="line">        mx = max(mx, s[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> mx;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 对数组按照"某个位数"进行排序(桶排序)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">count_sort</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> <span class="built_in">exp</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> output[n+<span class="number">5</span>];</div><div class="line">    <span class="keyword">int</span> bucket[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</div><div class="line">        bucket[ (s[i]/<span class="built_in">exp</span>)%<span class="number">10</span>] ++;</div><div class="line">    <span class="comment">// bucket[i] 现在存.. 当前位数为i的最后一个位置</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)</div><div class="line">        bucket[i] += bucket[i<span class="number">-1</span>];</div><div class="line">    <span class="comment">// 从后面开始排是因为，每个在后面的数， 总有比他小的，所以在后面的先排</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--) &#123;</div><div class="line">        output[bucket[(s[i]/<span class="built_in">exp</span>)%<span class="number">10</span>]<span class="number">-1</span>] = s[i];</div><div class="line">        bucket[(s[i]/<span class="built_in">exp</span>)%<span class="number">10</span>]--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</div><div class="line">        s[i] = output[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> mx = get_max(n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> <span class="built_in">exp</span>=<span class="number">1</span>; mx /<span class="built_in">exp</span> &gt; <span class="number">0</span>; <span class="built_in">exp</span> *= <span class="number">10</span>) &#123;</div><div class="line">        count_sort(n,<span class="built_in">exp</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://www.cnblogs.com/skywang12345/p/3603935.html" target="_blank" rel="external">数据结构解析</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      9个排序算法的总结
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络复习重点</title>
@@ -256,8 +286,8 @@
   
   <entry>
     <title>JVM垃圾回收机制</title>
-    <link href="http://www.draymonder.site/java/jvm/gc/"/>
-    <id>http://www.draymonder.site/java/jvm/gc/</id>
+    <link href="http://www.draymonder.site/backend/java/jvm/gc/"/>
+    <id>http://www.draymonder.site/backend/java/jvm/gc/</id>
     <published>2018-12-27T14:00:00.000Z</published>
     <updated>2018-12-27T07:42:59.943Z</updated>
     
@@ -286,8 +316,8 @@
   
   <entry>
     <title>JDK源码学习笔记 Object</title>
-    <link href="http://www.draymonder.site/java/javase/Object/"/>
-    <id>http://www.draymonder.site/java/javase/Object/</id>
+    <link href="http://www.draymonder.site/backend/java/javase/Object/"/>
+    <id>http://www.draymonder.site/backend/java/javase/Object/</id>
     <published>2018-12-27T13:00:00.000Z</published>
     <updated>2018-12-27T06:20:31.889Z</updated>
     
@@ -310,8 +340,8 @@
   
   <entry>
     <title>JDK源码学习笔记 String</title>
-    <link href="http://www.draymonder.site/java/javase/String/"/>
-    <id>http://www.draymonder.site/java/javase/String/</id>
+    <link href="http://www.draymonder.site/backend/java/javase/String/"/>
+    <id>http://www.draymonder.site/backend/java/javase/String/</id>
     <published>2018-12-26T13:00:00.000Z</published>
     <updated>2018-12-26T13:43:51.959Z</updated>
     
@@ -338,8 +368,8 @@
   
   <entry>
     <title>SSM项目问题中遇到 GET请求中有中文的情况</title>
-    <link href="http://www.draymonder.site/project/ssm/getIncludeChinese/"/>
-    <id>http://www.draymonder.site/project/ssm/getIncludeChinese/</id>
+    <link href="http://www.draymonder.site/backend/project/ssm/getIncludeChinese/"/>
+    <id>http://www.draymonder.site/backend/project/ssm/getIncludeChinese/</id>
     <published>2018-12-21T16:00:00.000Z</published>
     <updated>2019-02-08T14:26:07.682Z</updated>
     
@@ -366,8 +396,8 @@
   
   <entry>
     <title>记录项目开发中 一次有趣的debug经历</title>
-    <link href="http://www.draymonder.site/project/ssm/arraylist/"/>
-    <id>http://www.draymonder.site/project/ssm/arraylist/</id>
+    <link href="http://www.draymonder.site/backend/project/ssm/arraylist/"/>
+    <id>http://www.draymonder.site/backend/project/ssm/arraylist/</id>
     <published>2018-12-09T16:00:00.000Z</published>
     <updated>2019-02-08T14:26:00.589Z</updated>
     
@@ -394,8 +424,8 @@
   
   <entry>
     <title>SSM从零开发校园商铺平台的MySQL表格设计</title>
-    <link href="http://www.draymonder.site/project/ssm/tableAndEntity/"/>
-    <id>http://www.draymonder.site/project/ssm/tableAndEntity/</id>
+    <link href="http://www.draymonder.site/backend/project/ssm/tableAndEntity/"/>
+    <id>http://www.draymonder.site/backend/project/ssm/tableAndEntity/</id>
     <published>2018-12-02T16:00:00.000Z</published>
     <updated>2019-02-08T14:26:19.140Z</updated>
     
@@ -795,8 +825,8 @@
   
   <entry>
     <title>SSM到Spring Boot从零开发校园商铺平台</title>
-    <link href="http://www.draymonder.site/project/ssm/init/"/>
-    <id>http://www.draymonder.site/project/ssm/init/</id>
+    <link href="http://www.draymonder.site/backend/project/ssm/init/"/>
+    <id>http://www.draymonder.site/backend/project/ssm/init/</id>
     <published>2018-11-30T16:00:00.000Z</published>
     <updated>2019-02-08T14:26:13.973Z</updated>
     
@@ -907,8 +937,8 @@
   
   <entry>
     <title>Jsp中导入类出错</title>
-    <link href="http://www.draymonder.site/java/javaweb/java-importClassError/"/>
-    <id>http://www.draymonder.site/java/javaweb/java-importClassError/</id>
+    <link href="http://www.draymonder.site/backend/java/javaweb/java-importClassError/"/>
+    <id>http://www.draymonder.site/backend/java/javaweb/java-importClassError/</id>
     <published>2018-06-25T13:00:00.000Z</published>
     <updated>2019-02-08T14:27:03.118Z</updated>
     
@@ -929,8 +959,8 @@
   
   <entry>
     <title>Java Web中实现Servlet的方式</title>
-    <link href="http://www.draymonder.site/java/javaweb/javaweb-servlet/"/>
-    <id>http://www.draymonder.site/java/javaweb/javaweb-servlet/</id>
+    <link href="http://www.draymonder.site/backend/java/javaweb/javaweb-servlet/"/>
+    <id>http://www.draymonder.site/backend/java/javaweb/javaweb-servlet/</id>
     <published>2018-06-25T09:00:00.000Z</published>
     <updated>2019-02-08T14:27:08.253Z</updated>
     
@@ -976,8 +1006,8 @@
   
   <entry>
     <title>JavaSE 重拾基础</title>
-    <link href="http://www.draymonder.site/java/javase/javase-practice/"/>
-    <id>http://www.draymonder.site/java/javase/javase-practice/</id>
+    <link href="http://www.draymonder.site/backend/java/javase/javase-practice/"/>
+    <id>http://www.draymonder.site/backend/java/javase/javase-practice/</id>
     <published>2018-06-23T15:00:00.000Z</published>
     <updated>2018-07-25T02:05:46.281Z</updated>
     
@@ -1061,8 +1091,8 @@
   
   <entry>
     <title>Jdbc入门学习</title>
-    <link href="http://www.draymonder.site/java/javaweb/jdbc-init/"/>
-    <id>http://www.draymonder.site/java/javaweb/jdbc-init/</id>
+    <link href="http://www.draymonder.site/backend/java/javaweb/jdbc-init/"/>
+    <id>http://www.draymonder.site/backend/java/javaweb/jdbc-init/</id>
     <published>2018-06-14T15:00:00.000Z</published>
     <updated>2019-02-08T14:27:14.069Z</updated>
     
@@ -1202,29 +1232,6 @@
     
     
       <category term="Js" scheme="http://www.draymonder.site/tags/Js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nth_element的使用</title>
-    <link href="http://www.draymonder.site/algorithm/nth-element/"/>
-    <id>http://www.draymonder.site/algorithm/nth-element/</id>
-    <published>2018-05-28T15:00:00.000Z</published>
-    <updated>2018-05-28T10:50:48.510Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="方法使用"><a href="#方法使用" class="headerlink" title="方法使用"></a>方法使用</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;nth_element(first, nth, last, compare) 使得第n大元素处于第n位置（从0开始,其位置是下标为<br>n的元素），并且比这个元素小的元素都排在这个元素之前，比这个元素大的元素都排在这个元素之后，但不能保证他们是有序的</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n = <span class="number">50</span>;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</div><div class="line">        v[i] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 随机置换</span></div><div class="line">    random_shuffle(v.begin(),v.end());</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    nth_element(v.begin(),v.begin()+<span class="number">5</span>,v.end());</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>看文章 大概都是 二分划分 然后插排 //平均复杂度 O(n)<br>当然 也可以建立一个大小为n的最大堆，然后每次比较其他的数 //平均复杂度 O( N * log(k) )<br><a href="https://www.felix021.com/blog/read.php?1653" target="_blank" rel="external">参考文章</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      nth_element的使用
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
     
   </entry>
   
