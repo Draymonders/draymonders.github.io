@@ -11,8 +11,8 @@ http://www.draymonder.site/network/wireshark/
 http://www.draymonder.site/backend/java/javaweb/java-importClassError/
 http://www.draymonder.site/backend/java/javaweb/javaweb-servlet/
 http://www.draymonder.site/backend/java/javase/javase-practice/
-http://www.draymonder.site/algorithm/reBuildBinaryTree/
 http://www.draymonder.site/algorithm/twoStackToQueue/
+http://www.draymonder.site/algorithm/reBuildBinaryTree/
 http://www.draymonder.site/backend/java/javaweb/jdbc-init/
 http://www.draymonder.site/diary/the-20years/
 http://www.draymonder.site/algorithm/BinaryTreeBFS/
@@ -45,8 +45,8 @@ http://www.draymonder.site/backend/php/the-use-mysql/
 http://www.draymonder.site/backend/php/the-link-https/
 http://www.draymonder.site/backend/php/the-errors-in-php/
 http://www.draymonder.site/backend/php/object-oriented-of-php/
-http://www.draymonder.site/algorithm/the-reverse-of-nodes/
 http://www.draymonder.site/algorithm/the-perfect-series/
+http://www.draymonder.site/algorithm/the-reverse-of-nodes/
 http://www.draymonder.site/algorithm/mergesort/
 http://www.draymonder.site/diary/the-diary-02-02/
 http://www.draymonder.site/diary/the-films/
