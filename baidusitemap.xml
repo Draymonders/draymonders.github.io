@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://www.draymonder.site/backend/java/thread/SimpleThreadPool/</loc>
+    <lastmod>2019-02-16T02:56:17.403Z</lastmod>
+    <data>
+        <display>
+        <title>实现一个简易线程池</title>
+        <pubTime>2019-02-15T15:59:00.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.draymonder.site/backend/java/thread/thread-learn-day2/</loc>
-    <lastmod>2019-02-14T16:20:35.276Z</lastmod>
+    <lastmod>2019-02-14T16:24:29.446Z</lastmod>
     <data>
         <display>
         <title>多线程学习 day2</title>
