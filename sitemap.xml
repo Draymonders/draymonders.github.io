@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.draymonder.site/backend/java/thread/Singleton/</loc>
+    
+    <lastmod>2019-02-20T07:21:58.020Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.draymonder.site/backend/java/thread/thread-learn-day3/</loc>
+    
+    <lastmod>2019-02-20T07:20:26.313Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.draymonder.site/backend/java/thread/SimpleThreadPool/</loc>
     
-    <lastmod>2019-02-16T02:56:17.403Z</lastmod>
+    <lastmod>2019-02-16T06:03:13.169Z</lastmod>
     
   </url>
   

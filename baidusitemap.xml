@@ -4,8 +4,44 @@
 
     
   <url>
+    <loc>http://www.draymonder.site/backend/java/thread/Singleton/</loc>
+    <lastmod>2019-02-20T07:21:58.020Z</lastmod>
+    <data>
+        <display>
+        <title>Java中的七种单例模式</title>
+        <pubTime>2019-02-16T04:00:00.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.draymonder.site/backend/java/thread/thread-learn-day3/</loc>
+    <lastmod>2019-02-20T07:20:26.313Z</lastmod>
+    <data>
+        <display>
+        <title>多线程学习 day3</title>
+        <pubTime>2019-02-16T15:59:00.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.draymonder.site/backend/java/thread/SimpleThreadPool/</loc>
-    <lastmod>2019-02-16T02:56:17.403Z</lastmod>
+    <lastmod>2019-02-16T06:03:13.169Z</lastmod>
     <data>
         <display>
         <title>实现一个简易线程池</title>

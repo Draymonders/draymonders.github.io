@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="vps," />
+  <meta name="keywords" content="多线程," />
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Digital Ocean 购买VPS搭建SS">
-<meta name="keywords" content="vps">
+<meta name="description" content="等待队列，volatile, 缓存一致性，happens-before原则，不可变对象，ThreadLocal等多线程基础知识">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Digital Ocean 购买VPS搭建SS">
-<meta property="og:url" content="http://www.draymonder.site/backend/vps/do-ss/index.html">
+<meta property="og:title" content="多线程学习 day3">
+<meta property="og:url" content="http://www.draymonder.site/backend/java/thread/thread-learn-day3/index.html">
 <meta property="og:site_name" content="Draymonder">
-<meta property="og:description" content="Digital Ocean 购买VPS搭建SS">
+<meta property="og:description" content="等待队列，volatile, 缓存一致性，happens-before原则，不可变对象，ThreadLocal等多线程基础知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-08T14:08:00.144Z">
+<meta property="og:updated_time" content="2019-02-20T07:20:26.313Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Digital Ocean 购买VPS搭建SS">
-<meta name="twitter:description" content="Digital Ocean 购买VPS搭建SS">
+<meta name="twitter:title" content="多线程学习 day3">
+<meta name="twitter:description" content="等待队列，volatile, 缓存一致性，happens-before原则，不可变对象，ThreadLocal等多线程基础知识">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.draymonder.site/backend/vps/do-ss/"/>
+  <link rel="canonical" href="http://www.draymonder.site/backend/java/thread/thread-learn-day3/"/>
 
 
 
 
 
-  <title>Digital Ocean 购买VPS搭建SS | Draymonder</title>
+  <title>多线程学习 day3 | Draymonder</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/backend/vps/do-ss/">
+    <link itemprop="mainEntityOfPage" href="http://www.draymonder.site/backend/java/thread/thread-learn-day3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Draymonder">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Digital Ocean 购买VPS搭建SS</h1>
+          <h1 class="post-title" itemprop="name headline">多线程学习 day3</h1>
         
 
         <div class="post-meta">
@@ -284,17 +284,17 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T15:00:00+08:00">
-                2018-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T23:59:00+08:00">
+                2019-02-16
               </time>
             
 
             
               <span class="post-letters-count">
                 &nbsp; | &nbsp;
-                <span>192 字</span>
+                <span>594 字</span>
                 &nbsp; | &nbsp;
-                <span>1 min</span>
+                <span>2 min</span>
               </span>
             
 
@@ -318,7 +318,7 @@
 
           
               <div class="post-description">
-                  Digital Ocean 购买VPS搭建SS
+                  等待队列，volatile, 缓存一致性，happens-before原则，不可变对象，ThreadLocal等多线程基础知识
               </div>
           
 
@@ -335,9 +335,48 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为要做项目，所以买了Do的最便宜的VPS</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>首先要对机房测速，挨个测试<br>最后使用的旧金山的机房，Unbuntu的系统<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">1  apt-get update</div><div class="line">2  apt-get install python-pip</div><div class="line">3  pip install <span class="params">--upgrade</span> pip</div><div class="line">4  apt-get install git</div><div class="line">5  pip install git</div><div class="line">6  sudo pip install  git+https:<span class="string">//github.com/shadowsocks/shadowsocks.git</span>@master</div><div class="line">7  apt-get install build-essential</div><div class="line">8  wget https:<span class="string">//github.com/jedisct1/libsodium/releases/download/1.0.8/libsodium-1.0.8.tar.gz</span></div><div class="line">9  tar xf libsodium-1.0.8.tar.gz &amp;&amp; <span class="keyword">cd</span> libsodium-1.0.8</div><div class="line">10 <span class="string">./configure</span> &amp;&amp; make -j2</div><div class="line">11 make install</div><div class="line">12 ldconfig</div><div class="line">13  touch <span class="string">/etc/shadowsocks.json</span></div><div class="line">14  <span class="keyword">echo</span> '&#123;<span class="string">"server"</span>:<span class="string">"::"</span>, <span class="string">"server_port"</span><span class="function">:8388</span>, <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, <span class="string">"local_port"</span><span class="function">:1080</span>, <span class="string">"password"</span>:<span class="string">"draymonder"</span>, <span class="string">"timeout"</span><span class="function">:300</span>, <span class="string">"method"</span>:<span class="string">"chacha20"</span>, <span class="string">"fast_open"</span>: <span class="literal">false</span> &#125;' &gt; <span class="string">/etc/shadowsocks.json</span></div><div class="line">15  ssserver -c <span class="string">/etc/shadowsocks.json</span> -d start</div><div class="line"><span class="string">//</span> 想要关闭的话</div><div class="line">16  ssserver -c <span class="string">/etc/shadowsocks.json</span> -d stop</div></pre></td></tr></table></figure></p>
-<p>修改配置命令如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/shadowsocks.json</div><div class="line">ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d start</div><div class="line">ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d stop</div></pre></td></tr></table></figure></p>
+        <h2 id="wait-set-也可以理解为等待队列"><a href="#wait-set-也可以理解为等待队列" class="headerlink" title="wait set(也可以理解为等待队列)"></a>wait set(也可以理解为等待队列)</h2><p>1.所有的对象都会有一个wait set,用来存放调用了该对象wait方法之后进入block状态线程<br>2.线程被notify之后，不一定立即得到执行<br>3.线程从wait set中被唤醒顺序不一定是FIFO.<br>4.线程被唤醒后，必须重新获取锁</p>
+<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>验证volatile内存可见性和有序性.<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">package concurencyv2.chapter2;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">VolatileTest</span> &#123;</span></div><div class="line"></div><div class="line">    private static volatile int initValue = <span class="number">0</span>;</div><div class="line"></div><div class="line">    private static final int MAX = <span class="number">5</span>;</div><div class="line"></div><div class="line">    public static <span class="literal">void</span> main(String[] args) &#123;</div><div class="line">        <span class="keyword">new</span> Thread<span class="function"><span class="params">(()-&gt; &#123;</span></span></div><div class="line"><span class="function"><span class="params">            int localValue = initValue;</span></span></div><div class="line"><span class="function"><span class="params">            <span class="keyword">while</span>(localValue &lt; MAX) &#123;</span></span></div><div class="line"><span class="function"><span class="params">                <span class="keyword">if</span>(localValue != initValue) &#123;</span></span></div><div class="line"><span class="function"><span class="params">                    System.out.printf(<span class="string">"read the initValue is [%d]\n"</span>, initValue);</span></span></div><div class="line"><span class="function"><span class="params">                    localValue = initValue;</span></span></div><div class="line"><span class="function"><span class="params">                &#125;</span></span></div><div class="line"><span class="function"><span class="params"></span></span></div><div class="line"><span class="function"><span class="params">            &#125;</span></span></div><div class="line"><span class="function"><span class="params">        &#125;, <span class="string">"reader"</span>)</span>.<span class="title">start</span><span class="params">()</span>;</span></div><div class="line"><span class="function"></span></div><div class="line"><span class="function">        <span class="title">new</span> <span class="title">Thread</span><span class="params">(()-&gt; &#123;</span></span></div><div class="line"><span class="function"><span class="params">            <span class="keyword">while</span>(initValue &lt; MAX) &#123;</span></span></div><div class="line"><span class="function"><span class="params">                System.out.printf(<span class="string">"writer update the initValue to [%d]\n"</span>, ++initValue);</span></span></div><div class="line"><span class="function"><span class="params">                <span class="keyword">try</span> &#123;</span></span></div><div class="line"><span class="function"><span class="params">                    Thread.sleep(<span class="number">500</span>);</span></span></div><div class="line"><span class="function"><span class="params">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span></span></div><div class="line"><span class="function"><span class="params">                    e.printStackTrace();</span></span></div><div class="line"><span class="function"><span class="params">                &#125;</span></span></div><div class="line"><span class="function"><span class="params">            &#125;</span></span></div><div class="line"><span class="function"><span class="params">        &#125;, <span class="string">"writer"</span>)</span>.<span class="title">start</span><span class="params">()</span>;</span></div><div class="line"><span class="function">    &#125;</span></div><div class="line"><span class="function">&#125;</span></div></pre></td></tr></table></figure></p>
+<h2 id="解决缓存一致性问题"><a href="#解决缓存一致性问题" class="headerlink" title="解决缓存一致性问题"></a>解决缓存一致性问题</h2><ol>
+<li>给总线加锁(数据总线，指令总线，控制总线)</li>
+<li>缓存一致性协议.(进行update操作时候，发现其他cpu/cache有副本，则会发通知给其他cpu/cache失效)</li>
+</ol>
+<h2 id="并发编程-三个重要的概念"><a href="#并发编程-三个重要的概念" class="headerlink" title="并发编程 三个重要的概念"></a>并发编程 三个重要的概念</h2><ol>
+<li>原子性(atomic)</li>
+<li>可见性(visible)</li>
+<li>有序性(order)</li>
+</ol>
+<h2 id="happens-before-relationship"><a href="#happens-before-relationship" class="headerlink" title="happens-before relationship"></a>happens-before relationship</h2><ol>
+<li>程序顺序原则： 一个线程内保证语义的串行性</li>
+<li>volatile：volatile的写，先发生于读</li>
+<li>锁规则：unlock 必然发生在随后的lock前</li>
+<li>A先于B，B先于C，那么A必然先于C</li>
+<li>线程的start()方法先于它的每一个动作</li>
+<li>线程的所有操作优先于线程的终结(Thread.join())</li>
+<li>线程的中断(interrupt) 先于被中断线程的代码</li>
+<li>对象构造函数执行，先于finalize()方法</li>
+</ol>
+<h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><p>一旦一个共享变量被volatile修饰，具备两层语义</p>
+<ol>
+<li>保证了不同线程间的可见性</li>
+<li>禁止对其进行重排序，保证有序性</li>
+<li>并未保证原子性</li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>状态标记</li>
+<li>屏障前后的一致性</li>
+</ol>
+<h2 id="不可变对象"><a href="#不可变对象" class="headerlink" title="不可变对象"></a>不可变对象</h2><ol>
+<li>不可变对象一定是线程安全的</li>
+<li>可变对象不一定是线程不安全的</li>
+</ol>
+<h3 id="如何保证不可变对象"><a href="#如何保证不可变对象" class="headerlink" title="如何保证不可变对象"></a>如何保证不可变对象</h3><ol>
+<li>变量都是<code>private final</code>修饰的</li>
+<li>类不可被继承 即<code>class</code>被<code>final</code>修饰</li>
+<li>不提供<code>set</code>接口.</li>
+<li>成员变量是引用类型的,要使用<code>get</code>,要么用<code>Collections.unmodify</code>转为不可变，要么<code>clone</code>方法，拷贝一个</li>
+</ol>
+<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><p>其实就是一个线程对应一个map</p>
 
       
     </div>
@@ -355,7 +394,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vps/" rel="tag"><i class="fa fa-tag"></i> vps</a>
+            <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
           
         </div>
       
@@ -368,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/the-cumtacm/" rel="next" title="校赛补题记录">
-                <i class="fa fa-chevron-left"></i> 校赛补题记录
+              <a href="/backend/java/thread/Singleton/" rel="next" title="Java中的七种单例模式">
+                <i class="fa fa-chevron-left"></i> Java中的七种单例模式
               </a>
             
           </div>
@@ -377,10 +416,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/algorithm/BinarySearchTree/" rel="prev" title="二叉搜索树，二叉堆学习">
-                二叉搜索树，二叉堆学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wait-set-也可以理解为等待队列"><span class="nav-number">1.</span> <span class="nav-text">wait set(也可以理解为等待队列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile"><span class="nav-number">2.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决缓存一致性问题"><span class="nav-number">3.</span> <span class="nav-text">解决缓存一致性问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程-三个重要的概念"><span class="nav-number">4.</span> <span class="nav-text">并发编程 三个重要的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before-relationship"><span class="nav-number">5.</span> <span class="nav-text">happens-before relationship</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile关键字"><span class="nav-number">6.</span> <span class="nav-text">volatile关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">6.1.</span> <span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变对象"><span class="nav-number">7.</span> <span class="nav-text">不可变对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保证不可变对象"><span class="nav-number">7.1.</span> <span class="nav-text">如何保证不可变对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">8.</span> <span class="nav-text">ThreadLocal</span></a></li></ol></div>
             
 
           </div>
