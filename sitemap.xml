@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.draymonder.site/backend/java/javase/try-finally/</loc>
+    
+    <lastmod>2019-02-25T09:21:02.318Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.draymonder.site/backend/java/thread/classLoader/</loc>
+    
+    <lastmod>2019-02-21T06:35:49.920Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.draymonder.site/backend/java/thread/Singleton/</loc>
     
     <lastmod>2019-02-20T07:21:58.020Z</lastmod>

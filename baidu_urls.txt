@@ -1,3 +1,5 @@
+http://www.draymonder.site/backend/java/javase/try-finally/
+http://www.draymonder.site/backend/java/thread/classLoader/
 http://www.draymonder.site/backend/java/thread/thread-learn-day3/
 http://www.draymonder.site/backend/java/thread/Singleton/
 http://www.draymonder.site/backend/java/thread/SimpleThreadPool/

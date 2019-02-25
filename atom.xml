@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.draymonder.site/"/>
-  <updated>2019-02-20T07:20:26.313Z</updated>
+  <updated>2019-02-25T09:21:02.318Z</updated>
   <id>http://www.draymonder.site/</id>
   
   <author>
@@ -14,6 +14,156 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>try finally 执行顺序问题</title>
+    <link href="http://www.draymonder.site/backend/java/javase/try-finally/"/>
+    <id>http://www.draymonder.site/backend/java/javase/try-finally/</id>
+    <published>2019-02-25T15:00:00.000Z</published>
+    <updated>2019-02-25T09:21:02.318Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="有return的情况下try-catch-finally的执行顺序"><a href="#有return的情况下try-catch-finally的执行顺序" class="headerlink" title="有return的情况下try catch finally的执行顺序"></a>有return的情况下try catch finally的执行顺序</h2><ol>
+<li>在遇到Exception 并且没有catch的情况下<code>finally</code>语句块没有执行</li>
+<li><code>System.exit(0)</code>，终止了 Java 虚拟机的运行， <code>finally</code>语句块没有执行</li>
+</ol>
+<h3 id="理解一下finally"><a href="#理解一下finally" class="headerlink" title="理解一下finally"></a>理解一下finally</h3><blockquote>
+<p>The finally Block<br>The finally block always executes when the try block exits. This ensures that the finally block is executed even if an unexpected exception occurs. But finally is useful for more than just exception handling — it allows the programmer to avoid having cleanup code accidentally bypassed by a return,continue, or break. Putting cleanup code in a finally block is always a good practice, even when no exceptions are anticipated.<br>Note: If the JVM exits while the try or catch code is being executed, then the finally block may not execute. Likewise, if the thread executing the try or catch code is interrupted or killed, the finally block may not execute even though the application as a whole continues.</p>
+</blockquote>
+<p>它允许程序员避免因返回，继续或中断而意外绕过清理代码。 将清理代码放在finally块中始终是一种很好的做法，即使没有预期的例外情况也是如此。</p>
+<p>注意：如果在执行try或catch代码时JVM退出，则finally块可能无法执行。 同样，如果执行try或catch代码的线程被中断或终止，则即使应用程序作为一个整体继续，finally块也可能无法执行。</p>
+<h3 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h3><h4 id="finally-语句块在-try-语句块中的-return-语句之前执行"><a href="#finally-语句块在-try-语句块中的-return-语句之前执行" class="headerlink" title="finally 语句块在 try 语句块中的 return 语句之前执行"></a>finally 语句块在 try 语句块中的 return 语句之前执行</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinallyTest</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line"></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> FinallyTest().test());</div><div class="line">        ;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> x = <span class="number">1</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"try"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Finally"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span></div><div class="line"><span class="keyword">Finally</span></div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure></p>
+<p>说明 finally 语句块在 try 语句块中的 return 语句之前执行。</p>
+<h4 id="finally-语句块在-catch-语句块中的-return-语句之前执行"><a href="#finally-语句块在-catch-语句块中的-return-语句之前执行" class="headerlink" title="finally 语句块在 catch 语句块中的 return 语句之前执行"></a>finally 语句块在 catch 语句块中的 return 语句之前执行</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinallyTest</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line"></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> FinallyTest().test());</div><div class="line">        ;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> x = <span class="number">1</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"try"</span>);</div><div class="line">            x /= <span class="number">0</span>;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"catch"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Finally"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span></div><div class="line"><span class="keyword">catch</span></div><div class="line"><span class="keyword">Finally</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure></p>
+<h4 id="看一下trick"><a href="#看一下trick" class="headerlink" title="看一下trick"></a>看一下trick</h4><p>code1<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>code2<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>实际上，Java 虚拟机会把 finally 语句块作为 subroutine（对于这个 subroutine 不知该如何翻译为好，干脆就不翻译了，免得产生歧义和误解。）直接插入到 try 语句块或者 catch 语句块的控制转移语句之前。但是，还有另外一个不可忽视的因素，那就是在执行 subroutine（也就是 finally 语句块）之前，try 或者 catch 语句块会保留其返回值到本地变量表（Local Variable Table）中。待 subroutine 执行完毕之后，再恢复保留的返回值到操作数栈中，然后通过 return 或者 throw 语句将其返回给该方法的调用者（invoker）。请注意，前文中我们曾经提到过 return、throw 和 break、continue 的区别，对于这条规则（保留返回值），只适用于 return 和 throw 语句，不适用于 break 和 continue 语句，因为它们根本就没有返回值。</p>
+<h4 id="经典案例必看"><a href="#经典案例必看" class="headerlink" title="经典案例必看"></a>经典案例必看</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinallyTest</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> FinallyTest().test());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"try"</span>);</div><div class="line">            <span class="keyword">return</span> test1();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"finally"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"test1()"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="string">"return test"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span></div><div class="line">test1()</div><div class="line"><span class="keyword">finally</span></div><div class="line"><span class="keyword">return</span> test</div></pre></td></tr></table></figure></p>
+<p>为什么会这样执行呢?<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> test1();</div><div class="line">可以拆分成两个</div><div class="line">String temp = test1();</div><div class="line"><span class="keyword">return</span> temp;</div></pre></td></tr></table></figure></p>
+<p>因此呢会先将try 代码块中的return放到局部变量表里，入栈，接着执行finally代码块的内容,最后return try中的内容</p>
+<h4 id="更经典的案例"><a href="#更经典的案例" class="headerlink" title="更经典的案例"></a>更经典的案例</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinallyTest</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> FinallyTest().test());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"try"</span>);</div><div class="line">            <span class="keyword">return</span> test1();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"finally"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="string">"finally end"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"test1()"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="string">"return test"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span></div><div class="line">test1()</div><div class="line"><span class="keyword">finally</span></div><div class="line"><span class="keyword">finally</span> <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>因此可以分析</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先将try 代码块中的return的变量放到局部变量表里，操作数栈入栈，接着执行finally代码块的内容,(如果finally没有return语句的话，最后操作数栈出栈return try中的内容) (如果finally有return语句的话，最后return finally中的内容)</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-finally/index.html" target="_blank" rel="external">关于 Java 中 finally 语句块的深度辨析</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      try finally 执行顺序问题
+    
+    </summary>
+    
+    
+      <category term="JavaSE" scheme="http://www.draymonder.site/tags/JavaSE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中的类加载器</title>
+    <link href="http://www.draymonder.site/backend/java/thread/classLoader/"/>
+    <id>http://www.draymonder.site/backend/java/thread/classLoader/</id>
+    <published>2019-02-20T15:59:00.000Z</published>
+    <updated>2019-02-21T06:35:49.920Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="类加载的三个阶段"><a href="#类加载的三个阶段" class="headerlink" title="类加载的三个阶段"></a>类加载的三个阶段</h2><ol>
+<li>加载(Loading)： 查找并加载类的二进制数据</li>
+<li>链接(Linking):<ul>
+<li>验证(Verifying)：确保被加载类的正确性（防止恶意文件被JVM加载</li>
+<li>准备(Preparing)：为类的静态变量分配内存，并将其初始化为默认值</li>
+<li>解析(Resolving)：把类中的符号引用转换为直接引用</li>
+</ul>
+</li>
+<li>初始化：为类的静态变量赋予正确的初始值</li>
+</ol>
+<h2 id="主动使用的分类"><a href="#主动使用的分类" class="headerlink" title="主动使用的分类"></a>主动使用的分类</h2><ol>
+<li><code>new</code>,直接使用</li>
+<li>访问某个类或接口的静态变量，或者对该静态变量进行赋值操作</li>
+<li>调用静态方法</li>
+<li>反射某个类</li>
+<li>初始化一个子类</li>
+<li>启动类, 比如 <code>java HelloWorld</code></li>
+</ol>
+<h2 id="加载类的方式"><a href="#加载类的方式" class="headerlink" title="加载类的方式"></a>加载类的方式</h2><ol>
+<li>本地磁盘中直接加载</li>
+<li>内存中直接加载</li>
+<li>通过网络加载.class</li>
+<li>从zip,jar等归档文件中加载.class</li>
+<li>数据库中提取.class文件</li>
+<li>动态编译</li>
+</ol>
+<h2 id="剖析类加载的过程"><a href="#剖析类加载的过程" class="headerlink" title="剖析类加载的过程"></a>剖析类加载的过程</h2><h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>加载的最终产物是位于堆区的Class对象</p>
+<p><strong>类的二进制文件存储在方法区中(数据结构)，然后再堆区中创建一个Class对象，这个对象作为程序访问方法区中这些数据结构的外部接口</strong></p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><ol>
+<li>魔术因子 <code>0xCAFEBABY</code></li>
+<li>主从版本号(当前虚拟机能否支持启动这个类)</li>
+<li>常量池中的常量类型</li>
+<li>元数据验证<ul>
+<li>是否有父类</li>
+<li>父类是不是允许继承</li>
+<li>是否实现了抽象方法</li>
+<li>是否覆盖了父类的<code>final</code>字段</li>
+<li>其他的语义检查</li>
+</ul>
+</li>
+<li>字节码验证</li>
+<li>符号引用验证</li>
+</ol>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>准备阶段就是给<code>类变量</code>分配内存，并初始化默认值</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><ul>
+<li>类或者接口的解析</li>
+<li>字段解析</li>
+<li>类方法解析</li>
+<li>接口方法解析</li>
+</ul>
+<p>在这一步会将符号引用转换为直接引用<br>比如调用<code>System.out.println()</code> 会生成<code>get stack system.out</code>类似的字眼</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>执行构造函数<code>&lt;clinit&gt;()</code><br><strong>虚拟机保证初始化对象时是线程安全的</strong>, 即一个类有两个线程同时初始化对象，只有一个线程能进</p>
+<h2 id="JVM类加载器介绍"><a href="#JVM类加载器介绍" class="headerlink" title="JVM类加载器介绍"></a>JVM类加载器介绍</h2><p><img src="https://s2.ax1x.com/2019/02/20/k2rK6x.jpg" alt="k2rK6x.jpg"></p>
+<h3 id="根类加载器"><a href="#根类加载器" class="headerlink" title="根类加载器"></a>根类加载器</h3><p>获取核心类库<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>(<span class="selector-tag">System</span><span class="selector-class">.getProperty</span>("<span class="selector-tag">sun</span><span class="selector-class">.boot</span><span class="selector-class">.class</span><span class="selector-class">.path</span>"));</div></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">resources</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">rt</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">sunrsasign</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">jsse</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">jce</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">charsets</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">jfr</span>.<span class="title">jar</span>;</span><span class="symbol">D:</span>\Java\jdk\jre\classes</div></pre></td></tr></table></figure></p>
+<h3 id="扩展类加载器"><a href="#扩展类加载器" class="headerlink" title="扩展类加载器"></a>扩展类加载器</h3><p>获取扩展类库<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>(<span class="selector-tag">System</span><span class="selector-class">.getProperty</span>("<span class="selector-tag">java</span><span class="selector-class">.ext</span><span class="selector-class">.dirs</span>"));</div></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">D:</span>\Java\jdk\jre\<span class="class"><span class="keyword">lib</span>\<span class="title">ext</span>;</span><span class="symbol">C:</span>\WINDOWS\Sun\Java\<span class="class"><span class="keyword">lib</span>\<span class="title">ext</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a>双亲委派机制</h2><ol>
+<li>父子类加载器之间的真实关系- 包装关系</li>
+<li>父委托机制的优点就是能够提高系统的安全性，在此机制下，用户自定义的类加载器不可能加载 <strong>应该由父加载器的可靠类</strong>，因此可以防止恶意的代码代替父加载器的可靠代码</li>
+</ol>
+<h3 id="看源码知过程"><a href="#看源码知过程" class="headerlink" title="看源码知过程"></a>看源码知过程</h3><ol>
+<li>首先检查当前类加载器是否已经缓存过类</li>
+<li>发现父加载器，则递归进行加载</li>
+<li>如果当前不存在父加载器，直接调用根加载器对类进行加载</li>
+<li>如果当前所有父类都没加载成功，那么直接调用当前的类加载器进行加载</li>
+<li>如果类被成功加载，做一些性能数据的统计</li>
+</ol>
+<h3 id="如何改变赴委托机制"><a href="#如何改变赴委托机制" class="headerlink" title="如何改变赴委托机制"></a>如何改变赴委托机制</h3><p>重写<code>loadClass()</code>方法<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line"><span class="keyword">protected</span> <span class="keyword">Class</span>&lt;?&gt; loadClass(String name, <span class="keyword">boolean</span> resolve)</div><div class="line">        <span class="keyword">throws</span> ClassNotFoundException &#123;</div><div class="line">    <span class="keyword">Class</span>&lt;?&gt; clazz = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (name.startsWith(<span class="string">"java."</span>)) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">                ClassLoader system = ClassLoader.getSystemClassLoader();</div><div class="line">            clazz = system.loadClass(name);</div><div class="line">            <span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (resolve)</div><div class="line">                    resolveClass(clazz);</div><div class="line">                <span class="keyword">return</span> clazz;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="comment">//ignore</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        clazz = findClass(name);</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (clazz == <span class="keyword">null</span> &amp;&amp; getParent() != <span class="keyword">null</span>) &#123;</div><div class="line">        getParent().loadClass(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> clazz;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="双亲委托机制好处"><a href="#双亲委托机制好处" class="headerlink" title="双亲委托机制好处"></a>双亲委托机制好处</h3><ol>
+<li>保护正常系统类的安全性</li>
+<li>避免有些类被重复加载</li>
+</ol>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>命名空间是由该加载器以及所有父加载器所加载的类构成的。</p>
+<h2 id="运行时包"><a href="#运行时包" class="headerlink" title="运行时包"></a>运行时包</h2><p>由同一类加载器加载的属于相同包的类组成了运行时包。(包+类加载器) 只有属于同一运行时包的类间才能相互访问可见。</p>
+<p>由于<code>java.lang.TestCase</code>和核心类库<code>java.lang.*</code>由不同的类加载器加载，他们属于不同的运行时包，所以，<code>java.lang.TestCase</code>不能访问<code>java.lang</code>包中的包可见成员。</p>
+<h2 id="类卸载"><a href="#类卸载" class="headerlink" title="类卸载"></a>类卸载</h2><p>满足下面三个条件才会被GC</p>
+<ol>
+<li>该类的所有实例都已经被GC</li>
+<li>加载该类的ClassLoader实例被回收</li>
+<li>该类的class实例没有在其他地方被引用</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      介绍类加载器的作用，以及双亲委派机制
+    
+    </summary>
+    
+    
+      <category term="多线程" scheme="http://www.draymonder.site/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>多线程学习 day3</title>
@@ -1267,52 +1417,6 @@
     
     
       <category term="JavaSE" scheme="http://www.draymonder.site/tags/JavaSE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 重建二叉树</title>
-    <link href="http://www.draymonder.site/algorithm/reBuildBinaryTree/"/>
-    <id>http://www.draymonder.site/algorithm/reBuildBinaryTree/</id>
-    <published>2018-06-23T07:00:00.000Z</published>
-    <updated>2018-06-23T06:06:32.953Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6?tpId=13&amp;tqId=11157&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="external">题目链接</a></p>
-<p>利用递归 不断重构出左儿子和右儿子<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for binary tree</span></div><div class="line"><span class="comment"> * struct TreeNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     TreeNode *left;</span></div><div class="line"><span class="comment"> *     TreeNode *right;</span></div><div class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></div><div class="line"><span class="comment"> * &#125;;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">//@param 先序遍历，start，end，中序遍历，start，end</span></div><div class="line">    <span class="function">TreeNode* <span class="title">buildBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pre, <span class="keyword">int</span> st1, <span class="keyword">int</span> ed1,</span></span></div><div class="line"><span class="function"><span class="params">                                   <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vin, <span class="keyword">int</span> st2, <span class="keyword">int</span> ed2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(st1 &gt; ed1 || st2 &gt; ed2) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        TreeNode *root = <span class="keyword">new</span> TreeNode(pre[st1]);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=st2; i&lt;=ed2; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(vin[i] == pre[st1]) &#123;</div><div class="line">                root-&gt;left = buildBinaryTree(pre, st1+<span class="number">1</span>, st1+i-st2, vin, st2, i<span class="number">-1</span>);</div><div class="line">                root-&gt;right = buildBinaryTree(pre, st1+i-st2+<span class="number">1</span>, ed1, vin, i+<span class="number">1</span>,ed2);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">TreeNode* <span class="title">reConstructBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pre,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vin)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(pre.size() == <span class="number">0</span> &amp;&amp; vin.size() ==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        <span class="keyword">if</span>(pre.size() != vin.size()) <span class="keyword">return</span> <span class="literal">NULL</span>;    </div><div class="line">        <span class="keyword">return</span> buildBinaryTree(pre, <span class="number">0</span>, pre.size()<span class="number">-1</span>, vin, <span class="number">0</span>, vin.size()<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      给出先序和中序遍历，还原原来的二叉树
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
-    
-      <category term="BinaryTree" scheme="http://www.draymonder.site/tags/BinaryTree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 用两个栈实现队列</title>
-    <link href="http://www.draymonder.site/algorithm/twoStackToQueue/"/>
-    <id>http://www.draymonder.site/algorithm/twoStackToQueue/</id>
-    <published>2018-06-23T07:00:00.000Z</published>
-    <updated>2018-06-23T06:33:04.416Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&amp;tqId=11158&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="external">题目链接</a></p>
-<p>每次push的时候 就从stack2取回数据到stack1 然后push(val)<br>每次pop的时候  就从stack1取回数据到stack2 然后pop<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">void</span> <span class="keyword">push</span>(<span class="keyword">int</span> node) &#123;</div><div class="line">       <span class="keyword">while</span>(stack2.<span class="keyword">size</span>()) &#123;</div><div class="line">           <span class="keyword">int</span> ans = stack2.top();</div><div class="line">            stack1.<span class="keyword">push</span>(ans);</div><div class="line">            stack2.<span class="keyword">pop</span>();</div><div class="line">       &#125;</div><div class="line">       stack1.<span class="keyword">push</span>(node); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> <span class="keyword">pop</span>() &#123;</div><div class="line">        <span class="keyword">while</span> (stack1.<span class="keyword">size</span>()) &#123;</div><div class="line">            <span class="keyword">int</span> ans = stack1.top();</div><div class="line">            stack2.<span class="keyword">push</span>(ans);</div><div class="line">            stack1.<span class="keyword">pop</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(stack2.<span class="keyword">size</span>() ==<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = stack2.top();</div><div class="line">        stack2.<span class="keyword">pop</span>();</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack1;</div><div class="line">    stack&lt;<span class="keyword">int</span>&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      剑指offer 用两个栈实现队列
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://www.draymonder.site/tags/Algorithm/"/>
     
   </entry>
   
