@@ -1,0 +1,6 @@
+site_name: Draymonder Docs
+nav:
+    - Home: index.md
+    - Mysql: mysql.md
+    - About: about.md
+theme: readthedocs
