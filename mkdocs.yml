@@ -6,21 +6,22 @@ copyright: Copyright © 2021 Draymonder
 
 
 nav:
-    - 主页: index.md
-    - 算法: algorithm.md
+    - Index: index.md
+    - Algorithm: algorithm.md
     - Java: java.md
-    - 数据库:
+    - Database:
       - Mysql: mysql.md
       - Mongo: mongo.md
-    - 中间件:
+    - Middlewares:
       - Kafka: kafka.md
-    - 网络: network.md
+    - Network: network.md
+    - Linux: linux.md
     
 plugins:
     - search
 
 markdown_extentions:
-  - admonition
+    - admonition
 
 theme: 
   name: readthedocs

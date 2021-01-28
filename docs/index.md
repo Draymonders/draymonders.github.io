@@ -1,7 +1,5 @@
 # Welcome to Draymonder Docs
 
-
-
 ## Commands
 
 * `mkdocs serve` - Start the live-reloading docs server.
