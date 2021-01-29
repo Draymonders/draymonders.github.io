@@ -10,3 +10,6 @@
 
 - 查询socket状态 `sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'`
 
+## 截屏
+
+- 截图 `ctrl shift PrtSc`
