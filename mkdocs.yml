@@ -9,6 +9,7 @@ nav:
     - Index: index.md
     - Java: 
       - Collection: java/collection.md
+      - Synchronized: java/multi-thread/synchronized.md
     #   - Exception: java/exception.md
     #   - MultiThread: java/multi-thread.md
     # - Middlewares:
