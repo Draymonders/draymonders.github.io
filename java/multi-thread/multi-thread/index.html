@@ -7,24 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/algorithm/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>问题汇总 - Draymonder Docs</title>
+  <link rel="canonical" href="https://draymonders.github.io/java/multi-thread/multi-thread/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Multi thread - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u95ee\u9898\u6c47\u603b";
-    var mkdocs_page_input_path = "algorithm/algorithm.md";
-    var mkdocs_page_url = "/algorithm/algorithm/";
+    var mkdocs_page_name = "Multi thread";
+    var mkdocs_page_input_path = "java/multi-thread/multi-thread.md";
+    var mkdocs_page_url = "/java/multi-thread/multi-thread/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -38,9 +38,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -48,14 +48,14 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/collection/">Collection</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../collection/">Collection</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/synchronized/">Synchronized</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../synchronized/">Synchronized</a>
                     </li>
                 </ul>
       </div>
@@ -67,7 +67,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Draymonder Docs</a>
+        <a href="../../..">Draymonder Docs</a>
       </nav>
 
       
@@ -75,11 +75,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="../../..">Docs</a> &raquo;</li>
     
       
     
-    <li>问题汇总</li>
+    <li>Multi thread</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -90,21 +90,17 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">问题汇总</h1>
-<p>注意审题</p>
-<ul>
-<li>快排，寻找第k大</li>
-<li>组合，排列</li>
-<li>二叉树先序，中序，后序遍历(递归，迭代)</li>
-<li>LRU, LFU</li>
-<li>
-<p>动态规划</p>
-</li>
-<li>
-<p>寻找两个正序数组的中位数 (二分和递归都搞一下)</p>
-</li>
-<li>最长回文子串 (manacher)</li>
-</ul>
+                <h2 id="_1">多线程</h2>
+<h3 id="_2">上下文切换</h3>
+<p>多线程并不一定是要在多核处理器才支持的，就算是单核也是可以支持多线程的。</p>
+<p>CPU 通过给每个线程分配一定的时间片，由于时间非常短通常是几十毫秒，所以 CPU 可以不停的切换线程执行任务从而达到了多线程的效果。</p>
+<blockquote>
+<p>上下文切换是非常耗效率的。</p>
+</blockquote>
+<p>通常有以下解决方案:
+- 采用无锁编程，比如将数据按照 <code>Hash(id)</code> 进行取模分段，每个线程处理各自分段的数据，从而避免使用锁。
+- 采用 CAS(compare and swap) 算法，如 <code>Atomic</code> 包就是采用 CAS 算法。
+- 合理的创建线程，避免创建了一些线程但其中大部分都是处于 <code>waiting</code> 状态，因为每当从 <code>waiting</code> 状态切换到 <code>running</code> 状态都是一次上下文切换。</p>
               
             </div>
           </div>
@@ -137,9 +133,9 @@
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
