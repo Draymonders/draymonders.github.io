@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/java/collection/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Collection - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Collection";
+    var mkdocs_page_input_path = "java/collection.md";
+    var mkdocs_page_url = "/java/collection/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Collection</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#list">List</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#map">Map</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set">Set</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#queue">Queue</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Collection</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">集合</h2>
+<h3 id="list">List</h3>
+<ul>
+<li>ArrayList<ul>
+<li><code>DEFAULT_CAPACITY = 10</code></li>
+<li><code>int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</code></li>
+<li><code>ConcurrentModificationException</code>，固定5张的实时抓拍图场景</li>
+</ul>
+</li>
+<li>LinkdedList<ul>
+<li>双向循环链表</li>
+</ul>
+</li>
+<li>Vector<ul>
+<li><code>initialCapacity = 10</code></li>
+<li><code>int newCapacity = 2 * oldCapacity;</code></li>
+</ul>
+</li>
+<li>CopyOnWriteArrayList<ul>
+<li>需要clone整个数组(所以峰值内存会double，适合写少读多的场景)</li>
+</ul>
+</li>
+</ul>
+<h3 id="map">Map</h3>
+<ul>
+<li><a href="https://tech.meituan.com/2016/06/24/java-hashmap.html">HashMap</a><ul>
+<li>只允许一条记录的键为null，允许多条记录的值为null。</li>
+<li>当链表长度&gt;=8且桶大小&gt;=64时转红黑树</li>
+<li>线程不安全(遍历的时候增加新key或者删除已有的key，报错<code>ConcurrentModificationException</code>,本质上还是modCount变化)</li>
+</ul>
+</li>
+<li><a href="https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/">ConcurrentHashMap</a><ul>
+<li>key和null都不能为null</li>
+<li>JDK7<ul>
+<li>理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量) 的线程并发</li>
+<li>可以理解为JDK7是两层hash，一层segment(<code>ReentrantLock</code>)，一层table</li>
+<li>缺点是遍历比较复杂</li>
+</ul>
+</li>
+<li>JDK8<ul>
+<li>put先<code>initTable</code>, 然后cas拿到链表第一个节点的锁，然后synchronized插值</li>
+</ul>
+</li>
+<li>1.8 在 1.7 的数据结构上做了大的改动，采用红黑树之后可以保证查询效率（O(logn)），甚至取消了 ReentrantLock 改为了 synchronized，这样可以看出在新版的 JDK 中对 synchronized 优化是很到位的。</li>
+</ul>
+</li>
+<li>TreeMap<ul>
+<li>红黑树，必须实现<code>Comparable&lt;K&gt;</code>接口 或者传入 <code>Comparator&lt;K&gt;</code> 的实现类</li>
+</ul>
+</li>
+<li>LinkedHashMap<ul>
+<li>继承自<code>HashMap</code>，线程不安全</li>
+<li>队首是最老的元素，队尾是最新的元素</li>
+<li>如何保证有序<ul>
+<li>新建Node，会调用<code>linkNodeLast</code>方法将当前的节点放置到双向链表的末尾</li>
+<li>更新完，会执行<code>afterNodeAccess(newNode)</code>方法，会将当前操作的节点从链表中移动到<strong>末尾</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="set">Set</h3>
+<ul>
+<li>HashSet<ul>
+<li>内部套的 HashMap，key为待添加的元素，value为一个<code>static final Object</code></li>
+<li>put方法 <code>this.map.put(e, PRESENT) == null;</code> 第一次插入返回值是null</li>
+<li>get方法 <code>this.map.remove(o) == PRESENT;</code> 删除时候判断是否存在</li>
+</ul>
+</li>
+<li>TreeSet<ul>
+<li>内部套的 TreeMap，其他同HashSet一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="queue">Queue</h3>
+<ul>
+<li>AbstractQueue<ul>
+<li><code>offer</code>是放元素到队列里面，<code>pull</code>是从队列里面拉数据</li>
+<li><code>add</code>方法调用<code>offer</code>方法，如果没法增加元素到队列，会抛异常</li>
+<li><code>remove</code>方法调用<code>poll</code>方法，如果队列为空，会抛异常</li>
+</ul>
+</li>
+<li>Deque（双端队列）<ul>
+<li>有<code>addFirst</code>, <code>addLast</code>, <code>removeFirst</code>, <code>removeLast</code></li>
+<li>ArrayDeque<ul>
+<li>线程不安全，性能比较拉跨(自我感觉)</li>
+</ul>
+</li>
+<li>LinkedList<ul>
+<li>实现了Deque接口，最好还是用这个</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>PriorityQueue</p>
+<ul>
+<li>线程不安全</li>
+<li>底层实现是Object数组</li>
+<li><strong>TODO</strong> 堆排序</li>
+</ul>
+</li>
+<li>
+<p>ArrayBlockingQueue</p>
+<ul>
+<li>线程安全，使用<code>ReentrantLock</code>和<code>Condition</code></li>
+<li><strong>有一个锁</strong></li>
+<li><code>put</code>方法会阻塞等<code>NotFull</code></li>
+<li><code>take</code>方法会阻塞等<code>NotEmpty</code></li>
+<li><code>peek</code>方法会拿锁去读数据，当然可能读出来<code>null</code></li>
+<li><code>drainTo(Collection c)</code>会将队列里面的数据推给集合<code>c</code></li>
+</ul>
+</li>
+<li>
+<p>LinkedBlockingQueue</p>
+<ul>
+<li>线程安全，使用 <code>ReentrantLock</code> 和 <code>Condition</code></li>
+<li>实现方式为单链表, <code>head</code>节点是一个虚节点，value为null</li>
+<li><strong>有两个锁</strong>，<code>takeLock</code> 和 <code>putLock</code>，并且存一个<code>AtomicInteger count</code>，这样就可以分离<code>offer</code>和<code>poll</code>操作。</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
