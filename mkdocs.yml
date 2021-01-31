@@ -7,15 +7,19 @@ copyright: Copyright © 2021 Draymonder
 
 nav:
     - Index: index.md
-    - Algorithm: algorithm.md
-    - Java: java.md
-    - Database:
-      - Mysql: mysql.md
-      - Mongo: mongo.md
-    - Middlewares:
-      - Kafka: kafka.md
-    - Network: network.md
-    - Linux: linux.md
+    - Java: 
+      - Collection: java/collection.md
+    #   - Exception: java/exception.md
+    #   - MultiThread: java/multi-thread.md
+    # - Middlewares:
+    #   - Kafka: middleware/kafka.md
+    #   - Mysql: middleware/mysql.md
+    #   - Mongo: middleware/mongo.md
+    # - Network:
+    #   - Network: network/network.md
+    # - Linux: linux.md
+    # - Algorithm: 
+    #   - Algorithm: algorithm/algorithm.md
     
 plugins:
     - search
