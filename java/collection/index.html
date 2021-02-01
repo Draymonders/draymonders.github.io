@@ -203,7 +203,8 @@
 <ul>
 <li>线程不安全</li>
 <li>底层实现是Object数组</li>
-<li><strong>TODO</strong> 堆排序</li>
+<li><code>offer</code>把节点加入到数组最后，然后向上更新<code>siftUp</code>最小根</li>
+<li><code>poll</code>会返回<code>queue[0]</code>，然后将<code>queue[0]</code>和<code>queue[sz-1]</code>做交换，再向下更新<code>siftDown</code>最小根</li>
 </ul>
 </li>
 <li>
