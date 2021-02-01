@@ -62,7 +62,8 @@
 - PriorityQueue
     * 线程不安全
     * 底层实现是Object数组
-    * **TODO** 堆排序
+    * `offer`把节点加入到数组最后，然后向上更新`siftUp`最小根
+    * `poll`会返回`queue[0]`，然后将`queue[0]`和`queue[sz-1]`做交换，再向下更新`siftDown`最小根
 
 - ArrayBlockingQueue
     * 线程安全，使用`ReentrantLock`和`Condition`
