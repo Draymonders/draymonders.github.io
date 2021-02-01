@@ -217,13 +217,18 @@ Java虚拟机在JIT编译时(可以简单理解为当某段代码即将第一次
 > 如果某个锁自旋很少成功获得，那么下一次就会减少自旋。
 
 
+### 对象头实际存储
+
+- 无锁	对象的hashCode、对象分代年龄、是否是偏向锁（0）
+- 偏向锁	**偏向线程ID**、偏向时间戳、对象分代年龄、是否是偏向锁（1）
+- 轻量级锁	指向**栈中锁记录的指针**
+- 重量级锁	指向互斥量（重量级锁）的指针
+
 ## Synchronized 和 ReentrantLock 比较
 
-**TODO**
-
-- `ReentrantLock` 支持 公平/非公平, Synchronized 非公平
+- `ReentrantLock` 支持 公平/非公平, `Synchronized` 非公平
 - `ReentrantLock` 可以设置超时
-
+- `ReentrantLock` 实现原理为 `AQS`, `Synchronized` 实现原理为 `汇编指令` 和 `Monitor` 对象
 
 # Reference
 - [Java并发——Synchronized关键字和锁升级，详细分析偏向锁和轻量级锁的升级](https://blog.csdn.net/tongdanping/article/details/79647337)
