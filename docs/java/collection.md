@@ -5,7 +5,7 @@
 - ArrayList
     * `DEFAULT_CAPACITY = 10`
     * `int newCapacity = oldCapacity + (oldCapacity >> 1);`
-    * `ConcurrentModificationException`，固定5张的实时抓拍图场景
+    * 会遇到`ConcurrentModificationException`，比如固定返回5张实时抓拍图的场景
 - LinkdedList
     * 双向循环链表
 - Vector
@@ -27,10 +27,10 @@
         * 可以理解为JDK7是两层hash，一层segment(`ReentrantLock`)，一层table
         * 缺点是遍历比较复杂
     * JDK8
-        * put先`initTable`, 然后cas拿到链表第一个节点的锁，然后synchronized插值
+        * put先`initTable`, 如果链表首节点为null则`CAS`写入，否则直接获取首节点，然后synchronized插值
     * 1.8 在 1.7 的数据结构上做了大的改动，采用红黑树之后可以保证查询效率（O(logn)），甚至取消了 ReentrantLock 改为了 synchronized，这样可以看出在新版的 JDK 中对 synchronized 优化是很到位的。
 - TreeMap
-    * 红黑树，必须实现`Comparable<K>`接口 或者传入 `Comparator<K>` 的实现类
+    * 红黑树，必须实现 `Comparable<K>` 接口 或者传入 `Comparator<K>` 的实现类
 - LinkedHashMap
     * 继承自`HashMap`，线程不安全
     * 队首是最老的元素，队尾是最新的元素
@@ -53,12 +53,14 @@
     - `offer`是放元素到队列里面，`pull`是从队列里面拉数据
     - `add`方法调用`offer`方法，如果没法增加元素到队列，会抛异常
     - `remove`方法调用`poll`方法，如果队列为空，会抛异常
+
 - Deque（双端队列）
     * 有`addFirst`, `addLast`, `removeFirst`, `removeLast`
     * ArrayDeque
         * 线程不安全，性能比较拉跨(自我感觉)
     * LinkedList
         * 实现了Deque接口，最好还是用这个
+
 - PriorityQueue
     * 线程不安全
     * 底层实现是Object数组

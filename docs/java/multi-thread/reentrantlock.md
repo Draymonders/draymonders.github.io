@@ -170,7 +170,7 @@ final boolean acquireQueued(final Node node, int arg) {
 
 `waitStatus` 用于记录当前节点的状态，如节点取消、节点等待等。
 
-`shouldParkAfterFailedAcquire(p, node)` 返回当前线程是否需要挂起，如果需要则调用 `parkAndCheckInterrupt()`：
+`shouldParkAfterFailedAcquire(p, node)` 用来将该`node`的`waitStatus`设置为`SIGNAL`，设置成功后调用 `parkAndCheckInterrupt()`将线程挂起：
 
 ```java
 private final boolean parkAndCheckInterrupt() {
@@ -183,13 +183,15 @@ private final boolean parkAndCheckInterrupt() {
 
 
 ### 非公平锁获取锁
+
 公平锁与非公平锁的差异主要在获取锁：
 
 公平锁就相当于买票，后来的人需要排到队尾依次买票，**不能插队**。
 
 而非公平锁则没有这些规则，是**抢占模式**，每来一个人不会去管队列如何，直接尝试获取锁。
 
-非公平锁:
+非公平锁
+
 ```java
 final void lock() {
     //直接尝试获取锁
@@ -268,7 +270,7 @@ protected final boolean tryRelease(int releases) {
 
 首先会判断当前线程是否为获得锁的线程，由于是重入锁所以需要将 `state` 减到 0 才认为完全释放锁。
 
-释放之后需要调用 `unparkSuccessor(h)` 来唤醒被挂起的线程。
+释放之后需要调用 `unparkSuccessor(h)` 来先将`h`后面的`waitStatus <= 0`被挂起的节点唤醒。
 
 
 ## 总结
