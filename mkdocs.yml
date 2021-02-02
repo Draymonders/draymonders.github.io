@@ -9,7 +9,11 @@ nav:
     - Index: index.md
     - Java: 
       - Collection: java/collection.md
+    - Lock:
+      - MultiThread: java/multi-thread/multi-thread.md
+      - Lock: java/multi-thread/lock.md
       - Synchronized: java/multi-thread/synchronized.md
+      - ReentrantLock: java/multi-thread/reentrantlock.md
     #   - Exception: java/exception.md
     #   - MultiThread: java/multi-thread.md
     # - Middlewares:
