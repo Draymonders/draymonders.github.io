@@ -29,6 +29,12 @@ public ReentrantLock(boolean fair) {
 
 ## 获取锁
 
+整体流程
+
+- 如果`state=0`，那么`CAS`更新`state`，更新成功就设置当前线程为独占线程
+- 更新失败，需要将当前线程加入到等待队列
+- 然后再一次判断当前线程是否能更新`state`，不能则`LockSupport.part()`将当前线程阻塞
+
 通常的使用方式如下:
 
 ```java
@@ -234,6 +240,11 @@ final boolean nonfairTryAcquire(int acquires) {
 ```
 
 ## 释放锁
+
+整体流程:
+
+- 先去更新`state`状态
+- 将等待队列里面的第一个`waitStatus < 0`的节点唤醒
 
 公平锁和非公平锁的释放流程都是一样的：
 
