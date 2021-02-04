@@ -52,8 +52,18 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../collection/">Collection</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">MultiThread</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-thread/">MultiThread</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Lock</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../lock/">Lock</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Synchronized</a>
     <ul class="current">
@@ -81,11 +91,15 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">对象头实际存储</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#synchronized-reentrantlock">Synchronized 和 ReentrantLock 比较</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../reentrantlock/">ReentrantLock</a>
                     </li>
                 </ul>
       </div>
@@ -109,7 +123,7 @@
     
       
         
-          <li>Java &raquo;</li>
+          <li>Lock &raquo;</li>
         
       
     
@@ -295,11 +309,18 @@ synchronized int getMethod();
 <blockquote>
 <p>如果某个锁自旋很少成功获得，那么下一次就会减少自旋。</p>
 </blockquote>
-<h2 id="synchronized-reentrantlock">Synchronized 和 ReentrantLock 比较</h2>
-<p><strong>TODO</strong></p>
+<h3 id="_11">对象头实际存储</h3>
 <ul>
-<li><code>ReentrantLock</code> 支持 公平/非公平, Synchronized 非公平</li>
+<li>无锁    对象的hashCode、对象分代年龄、是否是偏向锁（0）</li>
+<li>偏向锁   <strong>偏向线程ID</strong>、偏向时间戳、对象分代年龄、是否是偏向锁（1）</li>
+<li>轻量级锁  指向<strong>栈中锁记录的指针</strong></li>
+<li>重量级锁  指向互斥量（重量级锁）的指针</li>
+</ul>
+<h2 id="synchronized-reentrantlock">Synchronized 和 ReentrantLock 比较</h2>
+<ul>
+<li><code>ReentrantLock</code> 支持 公平/非公平, <code>Synchronized</code> 非公平</li>
 <li><code>ReentrantLock</code> 可以设置超时</li>
+<li><code>ReentrantLock</code> 实现原理为 <code>AQS</code>, <code>Synchronized</code> 实现原理为 <code>汇编指令</code> 和 <code>Monitor</code> 对象</li>
 </ul>
 <h1 id="reference">Reference</h1>
 <ul>
@@ -313,8 +334,10 @@ synchronized int getMethod();
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../reentrantlock/" class="btn btn-neutral float-right" title="ReentrantLock">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../../collection/" class="btn btn-neutral" title="Collection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../lock/" class="btn btn-neutral" title="Lock"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -342,8 +365,10 @@ synchronized int getMethod();
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../collection/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../lock/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../reentrantlock/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/java/multi-thread/reentrantlock/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>ReentrantLock - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ReentrantLock";
+    var mkdocs_page_input_path = "java/multi-thread/reentrantlock.md";
+    var mkdocs_page_url = "/java/multi-thread/reentrantlock/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../collection/">Collection</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">MultiThread</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-thread/">MultiThread</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Lock</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../lock/">Lock</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../synchronized/">Synchronized</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">ReentrantLock</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">锁类型</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">获取锁</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">公平锁获取锁</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">写入队列</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_5">挂起等待线程</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">非公平锁获取锁</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">释放锁</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">总结</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Lock &raquo;</li>
+        
+      
+    
+    <li>ReentrantLock</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="reentrantlock">ReentrantLock 实现原理</h1>
+<p>使用 <code>synchronized</code> 来做同步处理时，锁的获取和释放都是隐式的，实现的原理是通过编译后加上不同的机器指令来实现。</p>
+<p>而 <code>ReentrantLock</code> 就是一个普通的类，它是基于 <code>AQS(AbstractQueuedSynchronizer)</code>来实现的。</p>
+<p>是一个<strong>重入锁</strong>：一个线程获得了锁之后仍然可以<strong>反复</strong>的加锁，不会出现自己阻塞自己的情况。</p>
+<blockquote>
+<p><code>AQS</code> 是 <code>Java</code> 并发包里实现锁、同步的一个重要的基础框架。</p>
+</blockquote>
+<h2 id="_1">锁类型</h2>
+<p>ReentrantLock 分为<strong>公平锁</strong>和<strong>非公平锁</strong>，可以通过构造方法来指定具体类型：</p>
+<pre><code class="language-java">//默认非公平锁
+public ReentrantLock() {
+    sync = new NonfairSync();
+}
+
+//公平锁
+public ReentrantLock(boolean fair) {
+    sync = fair ? new FairSync() : new NonfairSync();
+}
+</code></pre>
+<p>默认一般使用<strong>非公平锁</strong>，它的效率和吞吐量都比公平锁高的多(后面会分析具体原因)。</p>
+<h2 id="_2">获取锁</h2>
+<p>整体流程</p>
+<ul>
+<li>如果<code>state=0</code>，那么<code>CAS</code>更新<code>state</code>，更新成功就设置当前线程为独占线程</li>
+<li>更新失败，需要将当前线程加入到等待队列</li>
+<li>然后再一次判断当前线程是否能更新<code>state</code>，不能则<code>LockSupport.part()</code>将当前线程阻塞</li>
+</ul>
+<p>通常的使用方式如下:</p>
+<pre><code class="language-java">private ReentrantLock lock = new ReentrantLock();
+public void run() {
+    lock.lock();
+    try {
+        //do bussiness
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+<h3 id="_3">公平锁获取锁</h3>
+<p>首先看下获取锁的过程：</p>
+<pre><code class="language-java">public void lock() {
+    sync.lock();
+}
+</code></pre>
+<p>可以看到是使用 <code>sync</code>的方法，而这个方法是一个抽象方法，具体是由其子类(<code>FairSync</code>)来实现的，以下是公平锁的实现:</p>
+<pre><code class="language-java">final void lock() {
+    acquire(1);
+}
+
+//AbstractQueuedSynchronizer 中的 acquire()
+public final void acquire(int arg) {
+if (!tryAcquire(arg) &amp;&amp;
+    acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+    selfInterrupt();
+}
+</code></pre>
+<p>第一步是尝试获取锁(<code>tryAcquire(arg)</code>),这个也是由其子类实现：</p>
+<pre><code class="language-java">protected final boolean tryAcquire(int acquires) {
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) {
+        if (!hasQueuedPredecessors() &amp;&amp;
+            compareAndSetState(0, acquires)) {
+            setExclusiveOwnerThread(current);
+            return true;
+        }
+    }
+    else if (current == getExclusiveOwnerThread()) {
+        int nextc = c + acquires;
+        if (nextc &lt; 0)
+            throw new Error(&quot;Maximum lock count exceeded&quot;);
+        setState(nextc);
+        return true;
+    }
+    return false;
+}   
+</code></pre>
+<p>首先会判断 <code>AQS</code> 中的 <code>state</code> 是否等于 0，0 表示目前没有其他线程获得锁，当前线程就可以尝试获取锁。</p>
+<p><strong>注意</strong>: 尝试之前会利用 <code>hasQueuedPredecessors()</code> 是公平锁加锁时判断等待队列中是否存在<code>有效节点</code>的方法。如果返回False，说明当前线程可以争取共享资源；如果返回True，说明队列中存在有效节点。</p>
+<p>如果队列中没有线程就利用 CAS 来将 AQS 中的 state 修改为1，也就是获取锁，获取成功则将当前线程置为获得锁的独占线程(<code>setExclusiveOwnerThread(current)</code>)。</p>
+<p>如果 <code>state</code> 大于 0 时，说明锁已经被获取了，则需要判断获取锁的线程是否为当前线程(<code>ReentrantLock</code> 支持重入)，是则需要将 <code>state + 1</code>，并将值更新。</p>
+<h4 id="_4">写入队列</h4>
+<p>如果 <code>tryAcquire(arg)</code> 获取锁失败，则需要用 <code>addWaiter(Node.EXCLUSIVE)</code> 将当前线程写入等待队列中。</p>
+<p>写入之前需要将当前线程包装为一个 <code>Node</code> 对象(<code>addWaiter(Node.EXCLUSIVE)</code>)。</p>
+<blockquote>
+<p>AQS 中的队列是由 Node 节点组成的双向链表实现的。双向链表中，第一个节点为虚节点，其实并不存储任何信息，只是占位。</p>
+</blockquote>
+<p>包装代码:</p>
+<pre><code class="language-java">private Node addWaiter(Node mode) {
+    Node node = new Node(mode);
+
+    for (;;) {
+        Node oldTail = tail;
+        if (oldTail != null) {
+            node.setPrevRelaxed(oldTail);
+            if (compareAndSetTail(oldTail, node)) {
+                oldTail.next = node;
+                return node;
+            }
+        } else {
+            initializeSyncQueue();
+        }
+    }
+}
+</code></pre>
+<p>首先判断队列是否为空，为空时初始化，不为空时则将封装好的 <code>Node</code> 利用 <code>CAS</code> 写入队尾。</p>
+<p>这个处理逻辑就相当于<code>自旋</code>加上 <code>CAS</code> 保证一定能写入队列。</p>
+<h4 id="_5">挂起等待线程</h4>
+<p>写入队列之后需要将当前线程挂起(利用<code>acquireQueued(addWaiter(Node.EXCLUSIVE), arg)</code>)：</p>
+<pre><code class="language-java">final boolean acquireQueued(final Node node, int arg) {
+    boolean failed = true;
+    try {
+        boolean interrupted = false;
+        for (;;) {
+            final Node p = node.predecessor();
+            if (p == head &amp;&amp; tryAcquire(arg)) {
+                setHead(node);
+                p.next = null; // help GC
+                failed = false;
+                return interrupted;
+            }
+            if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                parkAndCheckInterrupt())
+                interrupted = true;
+        }
+    } finally {
+        if (failed)
+            cancelAcquire(node);
+    }
+}
+</code></pre>
+<p>首先会根据 <code>node.predecessor()</code> 获取到上一个节点是否为头节点，如果是则尝试获取一次锁，获取成功就万事大吉了。</p>
+<p>如果不是头节点，或者获取锁失败，则会根据上一个节点的 <code>waitStatus</code> 状态来处理(<code>shouldParkAfterFailedAcquire(p, node)</code>)。</p>
+<p><code>waitStatus</code> 用于记录当前节点的状态，如节点取消、节点等待等。</p>
+<p><code>shouldParkAfterFailedAcquire(p, node)</code> 用来将该<code>node</code>的<code>waitStatus</code>设置为<code>SIGNAL</code>，设置成功后调用 <code>parkAndCheckInterrupt()</code>将线程挂起：</p>
+<pre><code class="language-java">private final boolean parkAndCheckInterrupt() {
+    LockSupport.park(this);
+    return Thread.interrupted();
+}
+</code></pre>
+<p>他是利用 <code>LockSupport</code> 的 <code>part</code> 方法来挂起当前线程的，直到被唤醒。</p>
+<h3 id="_6">非公平锁获取锁</h3>
+<p>公平锁与非公平锁的差异主要在获取锁：</p>
+<p>公平锁就相当于买票，后来的人需要排到队尾依次买票，<strong>不能插队</strong>。</p>
+<p>而非公平锁则没有这些规则，是<strong>抢占模式</strong>，每来一个人不会去管队列如何，直接尝试获取锁。</p>
+<p>非公平锁</p>
+<pre><code class="language-java">final void lock() {
+    //直接尝试获取锁
+    if (compareAndSetState(0, 1))
+        setExclusiveOwnerThread(Thread.currentThread());
+    else
+        acquire(1);
+}
+</code></pre>
+<p>公平锁:</p>
+<pre><code class="language-java">final void lock() {
+    acquire(1);
+}
+</code></pre>
+<p>还要一个重要的区别是在尝试获取锁时<code>tryAcquire(arg)</code>，非公平锁是不需要判断队列中是否还有其他线程，也是直接尝试获取锁：</p>
+<pre><code class="language-java">final boolean nonfairTryAcquire(int acquires) {
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) {
+        //没有 !hasQueuedPredecessors() 判断
+        if (compareAndSetState(0, acquires)) {
+            setExclusiveOwnerThread(current);
+            return true;
+        }
+    }
+    else if (current == getExclusiveOwnerThread()) {
+        int nextc = c + acquires;
+        if (nextc &lt; 0) // overflow
+            throw new Error(&quot;Maximum lock count exceeded&quot;);
+        setState(nextc);
+        return true;
+    }
+    return false;
+}
+</code></pre>
+<h2 id="_7">释放锁</h2>
+<p>整体流程:</p>
+<ul>
+<li>先去更新<code>state</code>状态</li>
+<li>将等待队列里面的第一个<code>waitStatus &lt; 0</code>的节点唤醒</li>
+</ul>
+<p>公平锁和非公平锁的释放流程都是一样的：</p>
+<pre><code class="language-java">public void unlock() {
+    sync.release(1);
+}
+
+public final boolean release(int arg) {
+    if (tryRelease(arg)) {
+        Node h = head;
+        if (h != null &amp;&amp; h.waitStatus != 0)
+            //唤醒被挂起的线程
+            unparkSuccessor(h);
+        return true;
+    }
+    return false;
+}
+
+//尝试释放锁
+protected final boolean tryRelease(int releases) {
+    int c = getState() - releases;
+    if (Thread.currentThread() != getExclusiveOwnerThread())
+        throw new IllegalMonitorStateException();
+    boolean free = false;
+    if (c == 0) {
+        free = true;
+        setExclusiveOwnerThread(null);
+    }
+    setState(c);
+    return free;
+}        
+</code></pre>
+<p>首先会判断当前线程是否为获得锁的线程，由于是重入锁所以需要将 <code>state</code> 减到 0 才认为完全释放锁。</p>
+<p>释放之后需要调用 <code>unparkSuccessor(h)</code> 来先将<code>h</code>后面的<code>waitStatus &lt;= 0</code>被挂起的节点唤醒。</p>
+<h2 id="_8">总结</h2>
+<p>由于公平锁需要关心队列的情况，得按照队列里的先后顺序来获取锁(会造成大量的线程上下文切换)，而非公平锁则没有这个限制。</p>
+<p>所以也就能解释非公平锁的效率会被公平锁更高。</p>
+<ul>
+<li><a href="https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html">从ReentrantLock的实现看AQS的原理及应用</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../synchronized/" class="btn btn-neutral" title="Synchronized"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../synchronized/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

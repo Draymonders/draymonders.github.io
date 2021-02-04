@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://draymonders.github.io/</loc>
-     <lastmod>2021-02-01</lastmod>
+     <lastmod>2021-02-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://draymonders.github.io/java/collection/</loc>
-     <lastmod>2021-02-01</lastmod>
+     <lastmod>2021-02-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://draymonders.github.io/java/multi-thread/multi-thread/</loc>
+     <lastmod>2021-02-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://draymonders.github.io/java/multi-thread/lock/</loc>
+     <lastmod>2021-02-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://draymonders.github.io/java/multi-thread/synchronized/</loc>
-     <lastmod>2021-02-01</lastmod>
+     <lastmod>2021-02-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://draymonders.github.io/java/multi-thread/reentrantlock/</loc>
+     <lastmod>2021-02-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
