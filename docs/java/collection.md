@@ -17,6 +17,7 @@
 ### Map
 
 - [HashMap](https://tech.meituan.com/2016/06/24/java-hashmap.html)
+    * 懒加载，等第一次执行`putVal`才会去`initTab`
     * 只允许一条记录的键为null，允许多条记录的值为null。
     * 当链表长度>=8且桶大小>=64时转红黑树
     * 线程不安全(遍历的时候增加新key或者删除已有的key，报错`ConcurrentModificationException`,本质上还是modCount变化)
