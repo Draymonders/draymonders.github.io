@@ -4,7 +4,8 @@
 - 文件的查询和检索: find locate
 - 查看文件内容：cat vi tail more
 - 将标准输出和标准错误重定向到同一文件：2>&1
-
+- 找一个目录下的所有的java文件 `find . -maxdepth 2 -name "*.java"`
+- 将docker log append文件中 `docker logs ${containerId} | less | tee -a service.log`
 
 ## 文本处理
 
