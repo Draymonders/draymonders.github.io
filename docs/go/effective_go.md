@@ -9,20 +9,27 @@ import (
 	"os"
 )
 
-func main() {
-    name := "test.txt"
+func main() 
+	name := "go.mod"
 	f, err := os.Open(name)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		os.Exit(1)
 	}
-	if d, err := f.Stat(); err != nil {
-		f.Close()
-		_ = d
-		fmt.Println(err)
-		os.Exit(1)
-    }
-    // 猜测err打印什么结果
+	defer f.Close()
+	f = nil
+	// time.Sleep(10 * time.Second)
+	if _, err := f.Stat(); err != nil {
+		log.Println(err)
+	}
+	// 猜测err打印什么结果
 	fmt.Println(err)
 }
+```
+
+输出结果
+
+```
+invalid argument
+<nil>
 ```

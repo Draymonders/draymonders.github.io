@@ -18,18 +18,31 @@
 
 - [HashMap](https://tech.meituan.com/2016/06/24/java-hashmap.html)
     * 懒加载，等第一次执行`putVal`才会去`initTab`
-    * 只允许一条记录的键为null，允许多条记录的值为null。
+    * 只允许一条记录的键为null，允许多条记录的值为null
     * 当链表长度>=8且桶大小>=64时转红黑树
+        * 链表长度8 -> 此时正常的概率为`6* 10^-8`, 防止hash冲撞太多
+    * loadFactor为`0.75`
+        * 时空tradeoff, 大了碰撞太多，小了浪费空间
+    * key的hash高位要参与运算
+        * `(key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16)`, hash操作只会和低位相关，所以让高位参与运算hash效果理论更好
     * 线程不安全(遍历的时候增加新key或者删除已有的key，报错`ConcurrentModificationException`,本质上还是modCount变化)
+    * JDK7循环链表
+        * 本来 `tab[i]->A->B` 多线程resize的时候可能会出现 `tab[i]->B->A->B`的情况
+    
+- Hashtable
+    * key和value都不能为null
 - [ConcurrentHashMap](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
     * key和null都不能为null
     * JDK7
-        * 理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量) 的线程并发
-        * 可以理解为JDK7是两层hash，一层segment(`ReentrantLock`)，一层table
+        * 理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量) 的线程并发，是两层hash，一层segment(`ReentrantLock`)，一层table
+        * 弱一致性(没有使用volatile，而是使用`UNSAFE.getObjectVolatile`和`UNSAFE.putObjectVolatile`
+            * 同时get和put，get在put之前，那么put完，get的那个线程是感知不到的
         * 缺点是遍历比较复杂
     * JDK8
         * put先`initTable`, 如果链表首节点为null则`CAS`写入，否则直接获取首节点，然后synchronized插值
     * 1.8 在 1.7 的数据结构上做了大的改动，采用红黑树之后可以保证查询效率（O(logn)），甚至取消了 ReentrantLock 改为了 synchronized，这样可以看出在新版的 JDK 中对 synchronized 优化是很到位的。
+    * 红黑树五个特性
+        * 1. 根是黑的 2. 红的下面必须是黑的 3. 黑的下面可红可黑 4. 叶子节点都为黑 5. 根节点左右方向到叶子节点经历的黑色节点数相等
 - TreeMap
     * 红黑树，必须实现 `Comparable<K>` 接口 或者传入 `Comparator<K>` 的实现类
 - LinkedHashMap
@@ -79,4 +92,4 @@
 - LinkedBlockingQueue
     * 线程安全，使用 `ReentrantLock` 和 `Condition`
     * 实现方式为单链表, `head`节点是一个虚节点，value为null
-    * **有两个锁**，`takeLock` 和 `putLock`，并且存一个`AtomicInteger count`，这样就可以分离`offer`和`poll`操作。
+    * **有两个锁**，`takeLock` 和 `putLock`，并且存一个`AtomicInteger count`，这样就可以分离`offer`和`poll`操作
