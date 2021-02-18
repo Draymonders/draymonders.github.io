@@ -51,6 +51,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Collection</a>
@@ -141,18 +146,44 @@
 </ul>
 <h3 id="map">Map</h3>
 <ul>
-<li><a href="https://tech.meituan.com/2016/06/24/java-hashmap.html">HashMap</a><ul>
+<li>
+<p><a href="https://tech.meituan.com/2016/06/24/java-hashmap.html">HashMap</a></p>
+<ul>
 <li>懒加载，等第一次执行<code>putVal</code>才会去<code>initTab</code></li>
-<li>只允许一条记录的键为null，允许多条记录的值为null。</li>
-<li>当链表长度&gt;=8且桶大小&gt;=64时转红黑树</li>
+<li>只允许一条记录的键为null，允许多条记录的值为null</li>
+<li>当链表长度&gt;=8且桶大小&gt;=64时转红黑树<ul>
+<li>链表长度8 -&gt; 此时正常的概率为<code>6* 10^-8</code>, 防止hash冲撞太多</li>
+</ul>
+</li>
+<li>loadFactor为<code>0.75</code><ul>
+<li>时空tradeoff, 大了碰撞太多，小了浪费空间</li>
+</ul>
+</li>
+<li>key的hash高位要参与运算<ul>
+<li><code>(key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)</code>, hash操作只会和低位相关，所以让高位参与运算hash效果理论更好</li>
+</ul>
+</li>
 <li>线程不安全(遍历的时候增加新key或者删除已有的key，报错<code>ConcurrentModificationException</code>,本质上还是modCount变化)</li>
+<li>JDK7循环链表<ul>
+<li>本来 <code>tab[i]-&gt;A-&gt;B</code> 多线程resize的时候可能会出现 <code>tab[i]-&gt;B-&gt;A-&gt;B</code>的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Hashtable</p>
+<ul>
+<li>key和value都不能为null</li>
 </ul>
 </li>
 <li><a href="https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/">ConcurrentHashMap</a><ul>
 <li>key和null都不能为null</li>
 <li>JDK7<ul>
-<li>理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量) 的线程并发</li>
-<li>可以理解为JDK7是两层hash，一层segment(<code>ReentrantLock</code>)，一层table</li>
+<li>理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量) 的线程并发，是两层hash，一层segment(<code>ReentrantLock</code>)，一层table</li>
+<li>弱一致性(没有使用volatile，而是使用<code>UNSAFE.getObjectVolatile</code>和<code>UNSAFE.putObjectVolatile</code><ul>
+<li>同时get和put，get在put之前，那么put完，get的那个线程是感知不到的</li>
+</ul>
+</li>
 <li>缺点是遍历比较复杂</li>
 </ul>
 </li>
@@ -161,6 +192,14 @@
 </ul>
 </li>
 <li>1.8 在 1.7 的数据结构上做了大的改动，采用红黑树之后可以保证查询效率（O(logn)），甚至取消了 ReentrantLock 改为了 synchronized，这样可以看出在新版的 JDK 中对 synchronized 优化是很到位的。</li>
+<li>红黑树五个特性<ul>
+<li>
+<ol>
+<li>根是黑的 2. 红的下面必须是黑的 3. 黑的下面可红可黑 4. 叶子节点都为黑 5. 根节点左右方向到叶子节点经历的黑色节点数相等</li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>TreeMap<ul>
@@ -240,7 +279,7 @@
 <ul>
 <li>线程安全，使用 <code>ReentrantLock</code> 和 <code>Condition</code></li>
 <li>实现方式为单链表, <code>head</code>节点是一个虚节点，value为null</li>
-<li><strong>有两个锁</strong>，<code>takeLock</code> 和 <code>putLock</code>，并且存一个<code>AtomicInteger count</code>，这样就可以分离<code>offer</code>和<code>poll</code>操作。</li>
+<li><strong>有两个锁</strong>，<code>takeLock</code> 和 <code>putLock</code>，并且存一个<code>AtomicInteger count</code>，这样就可以分离<code>offer</code>和<code>poll</code>操作</li>
 </ul>
 </li>
 </ul>
@@ -254,7 +293,7 @@
         <a href="../multi-thread/multi-thread/" class="btn btn-neutral float-right" title="MultiThread">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../os/os/" class="btn btn-neutral" title="os"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -282,7 +321,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../os/os/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../multi-thread/multi-thread/" style="color: #fcfcfc">Next &raquo;</a></span>

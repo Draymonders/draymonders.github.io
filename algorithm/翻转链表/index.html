@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>翻转链表 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u7ffb\u8f6c\u94fe\u8868";
+    var mkdocs_page_input_path = "algorithm/\u7ffb\u8f6c\u94fe\u8868.md";
+    var mkdocs_page_url = "/algorithm/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>翻转链表</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,20 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+                <pre><code class="language-cpp">class Solution {
+public:
+    ListNode* ReverseList(ListNode* pHead) {
+        ListNode* pre = NULL;
+        ListNode* cur = pHead;
+        while (cur) {
+            ListNode* next = cur-&gt;next;
+            cur-&gt;next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+};
 </code></pre>
               
             </div>

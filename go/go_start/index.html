@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/go/go_start/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>Go start - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "Go start";
+    var mkdocs_page_input_path = "go/go_start.md";
+    var mkdocs_page_url = "/go/go_start/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>Go start</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,36 +107,89 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
+                <h2 id="go">go踩坑</h2>
+<h3 id="go-proxy">go proxy</h3>
+<p>设置 <code>GOPROXY</code> 变量， 详细点击 https://goproxy.io/</p>
+<h3 id="go-mod">go mod</h3>
+<p>创建module <code>go mod init steed</code></p>
+<h3 id="goland-keymap">goland keymap</h3>
+<ul>
+<li><code>Reformat Code</code> <code>ctrl + 1</code></li>
+<li><code>Back</code> <code>ctrl + alt + ,</code></li>
+<li><code>Forward</code> <code>ctrl + alt + .</code></li>
+</ul>
+<h3 id="log">log</h3>
+<pre><code class="language-go">log.SetFlags(log.Ltime + log.Lshortfile)
+</code></pre>
+<h3 id="error">error</h3>
+<pre><code class="language-go">err := errors.New(&quot;empty name&quot;)
+if err != nil {
+    log.Fatal(err)
 }
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+<h3 id="rand">rand</h3>
+<pre><code class="language-go">rand.Seed(time.Now().Unix())
+
+rand.Int()
+rand.Intn(n int32)
 </code></pre>
+<h3 id="struct">struct</h3>
+<p><code>struct</code>是值类型</p>
+<pre><code class="language-go">type A struct {
+    a int
+}
+
+type B struct {
+    a A
+}
+
+func useB(b B) {
+    b.a = A{a: 1}
+}
+
+func useBWithPointer(b *B) {
+    log.Printf(&quot;val: %v\n&quot;, b.a)
+}
+
+func testStruct1() {
+    b := B{
+        a: A{
+            a: 233,
+        },
+    }
+    useB(b)
+    useBWithPointer(&amp;b)
+}
+</code></pre>
+<p>结果</p>
+<pre><code>val: {233}
+</code></pre>
+<h3 id="newmake">new和make</h3>
+<ul>
+<li>new allocates memory, does not initialize the memory, it only <strong>zeros</strong> it.<ul>
+<li><code>new(File)</code> 和 <code>&amp;File{}</code> 等价</li>
+</ul>
+</li>
+<li>make creates slices, maps, and channels only, and it returns an initialized (<strong>not zeroed</strong>) value of type <code>T</code>.</li>
+</ul>
+<h3 id="array">Array</h3>
+<ul>
+<li>Arrays are values. Assigning one array to another copies all the elements.</li>
+<li>In particular, if you pass an array to a function, it will receive a copy of the array, not a pointer to it.</li>
+<li>The size of an array is part of its type. The types <code>[10]int</code> and <code>[20]int</code> are distinct.</li>
+</ul>
+<pre><code class="language-go">func Sum(a *[3]float64) (sum float64) {
+    for _, v := range *a {
+        sum += v
+    }
+    return
+}
+
+array := [...]float64{7.0, 8.5, 9.1}
+x := Sum(&amp;array)  // Note the explicit address-of operator
+</code></pre>
+<h3 id="concurrency">Concurrency</h3>
+<h2 id="-do-not-communicate-by-sharing-memory-instead-share-memory-by-communicating">- Do not communicate by sharing memory; instead, share memory by communicating.</h2>
               
             </div>
           </div>

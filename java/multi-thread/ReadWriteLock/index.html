@@ -7,24 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <link rel="canonical" href="https://draymonders.github.io/java/multi-thread/ReadWriteLock/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>读写锁 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u8bfb\u5199\u9501";
+    var mkdocs_page_input_path = "java/multi-thread/ReadWriteLock.md";
+    var mkdocs_page_url = "/java/multi-thread/ReadWriteLock/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -38,9 +38,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -48,31 +48,31 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">OS</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/os/">os</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/collection/">Collection</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../collection/">Collection</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">MultiThread</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/multi-thread/">MultiThread</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-thread/">MultiThread</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Lock</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/lock/">Lock</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../lock/">Lock</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/synchronized/">Synchronized</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../synchronized/">Synchronized</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/reentrantlock/">ReentrantLock</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../reentrantlock/">ReentrantLock</a>
                     </li>
                 </ul>
       </div>
@@ -84,7 +84,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Draymonder Docs</a>
+        <a href="../../..">Draymonder Docs</a>
       </nav>
 
       
@@ -92,11 +92,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="../../..">Docs</a> &raquo;</li>
     
       
     
-    <li>Effective go</li>
+    <li>读写锁</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,36 +107,35 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
+                <h1 id="_1">读写锁</h1>
+<p>里面其实是一个锁<code>sync</code>继承自<code>aqs</code></p>
+<p>高位是<code>share count</code>,低位是 <code>exclusiveCount</code></p>
+<ul>
+<li>获取写锁 （当前有读锁退出），（当前有写锁，并且占用写锁的不为当前线程）则退出，cas更新<code>state</code>，执行重入操作</li>
+<li>获取读锁，如果（已经有写锁，并且占有写锁的不为当前线程）则退出;</li>
+<li><strong>锁降级</strong>需要遵循先获取写锁、获取读锁再释放写锁的次序</li>
+</ul>
+<h2 id="_2">锁降级</h2>
+<p>共享数据，线程T1，线程T2</p>
+<p>线程T1,想要修改完数据后立即使用数据，并且希望整个操作是原子的</p>
+<pre><code>T1拿写锁
+  |
+更新共享数据
+  |
+T1拿读锁
+  |
+T1释放写锁
+  | 
+读取共享数据
+  |
+T1释放读锁
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
-</code></pre>
+<p>如果是T1单纯拿写锁完成整个流程，效率低
+如果是T1写锁释放再获取读锁，可能会被T2拿到写锁更新了共享数据数据</p>
+<h2 id="reference">reference</h2>
+<ul>
+<li><a href="https://juejin.cn/post/6844903952274685959">read write lock</a></li>
+</ul>
               
             </div>
           </div>
@@ -169,9 +168,9 @@ func main()
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);

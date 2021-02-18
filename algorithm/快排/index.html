@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E5%BF%AB%E6%8E%92/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>快排 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u5feb\u6392";
+    var mkdocs_page_input_path = "algorithm/\u5feb\u6392.md";
+    var mkdocs_page_url = "/algorithm/%E5%BF%AB%E6%8E%92/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>快排</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,35 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
+                <pre><code class="language-cpp">class Solution {
+public:
 
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
+    void quickSort(vector&lt;int&gt;&amp; arr, int l, int r) {
+        if (l &gt;= r) return ;
+        int i = l, j = r;
+        int v = arr[l];
+        while (i &lt; j) {
+            while (i &lt; j &amp;&amp; arr[j] &gt;= v) j--;
+            while (i &lt; j &amp;&amp; arr[i] &lt;= v) i++;
+            if (i &lt; j) {
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[l], arr[i]);
+        quickSort(arr, l, i-1);
+        quickSort(arr, i+1, r);
+    }
 
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+    /**
+     * @param arr int整型vector 待排序的数组
+     * @return int整型vector
+     */
+    vector&lt;int&gt; MySort(vector&lt;int&gt;&amp; arr) {
+        int n = arr.size();
+        quickSort(arr, 0, n-1);
+        return arr;
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+};
 </code></pre>
               
             </div>

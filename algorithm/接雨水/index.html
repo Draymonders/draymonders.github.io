@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%8E%A5%E9%9B%A8%E6%B0%B4/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>接雨水 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u63a5\u96e8\u6c34";
+    var mkdocs_page_input_path = "algorithm/\u63a5\u96e8\u6c34.md";
+    var mkdocs_page_url = "/algorithm/%E6%8E%A5%E9%9B%A8%E6%B0%B4/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>接雨水</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,31 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
+                <h1 id="_1">接雨水</h1>
+<p>使用单调递减的栈，当栈顶的值 &lt; 当前元素的高度，说明 栈顶处于山谷(<code>h[st.top().top()] &gt; h[st.top()] &lt; h[i]</code>)</p>
+<p>因此中间会有雨水</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int trap(vector&lt;int&gt;&amp; h) {
+        // 单调递减的栈
+        stack&lt;int&gt; st;
+        int n = h.size();
+        int res = 0;
 
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+        for (int i=0; i&lt;n; i++) {
+            while (!st.empty() &amp;&amp; h[st.top()] &lt; h[i]) {
+                int f = st.top(); st.pop();
+                if (!st.empty()) {
+                    // printf(&quot;[%d, %d] h: %d\n&quot;, st.top(), i, min(h[i], h[st.top()]));
+                    res += (i - st.top() - 1) * (min(h[i], h[st.top()]) - h[f]);
+                    // printf(&quot;res: %d\n&quot;, res);
+                } 
+            }
+            st.push(i);
+        }
+        return res;
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+};
 </code></pre>
               
             </div>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/LRU%26LFU/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>LRU - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "LRU";
+    var mkdocs_page_input_path = "algorithm/LRU&LFU.md";
+    var mkdocs_page_url = "/algorithm/LRU%26LFU/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/collection/">Collection</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">MultiThread</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/multi-thread/">MultiThread</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Lock</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/lock/">Lock</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/synchronized/">Synchronized</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/reentrantlock/">ReentrantLock</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>LRU</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="lru">LRU</h1>
+<p>需要自己写一个双向链表</p>
+<pre><code class="language-cpp">struct Node {
+    int key;
+    int val;
+    Node* pre;
+    Node* next;
+    Node(int key, int val) {
+        this-&gt;key = key;
+        this-&gt;val = val;
+        this-&gt;pre = NULL;
+        this-&gt;next = NULL;
+    }
+};
+
+class LRUCache {
+public:
+
+    Node* vHead; Node* vLast;
+    int size, cap;
+    unordered_map&lt;int, Node*&gt; mp;
+
+    LRUCache(int capacity) {
+        this-&gt;size = 0;
+        this-&gt;cap = capacity;
+        this-&gt;vHead = new Node(-1, -1);
+        this-&gt;vLast = new Node(-1, -1);
+        vHead-&gt;next = vLast;
+        vLast-&gt;pre = vHead;
+        mp.clear();
+    }
+
+    int get(int key) {
+        if (mp.count(key) == 0) {
+            return -1;
+        } 
+        Node* cur = mp[key];
+        int val = cur-&gt;val;
+        moveToHead(cur);
+        return val;
+    }
+
+    void put(int key, int value) {
+        if (mp.count(key) == 0) {
+            Node* cur = new Node(key, value);
+            mp[key] = cur;
+            addToHead(cur);
+            size ++;
+            if (size &gt; cap) {
+                int key = removeLast();
+                mp.erase(key);
+            }
+            return ;
+        }
+        Node* cur = mp[key];
+        cur-&gt;val = value;
+        moveToHead(cur);
+        return ;
+    }
+
+    void moveToHead(Node* cur) {
+        // delete node cur 
+        cur-&gt;next-&gt;pre = cur-&gt;pre;
+        cur-&gt;pre-&gt;next = cur-&gt;next;
+        // add node cur to head
+        addToHead(cur);
+        return ;
+    }
+
+    // add cur to vHead-&gt;next
+    void addToHead(Node* cur) {
+        vHead-&gt;next-&gt;pre = cur;
+        cur-&gt;next = vHead-&gt;next;
+
+        vHead-&gt;next = cur;
+        cur-&gt;pre = vHead;
+    }
+
+    int removeLast() {
+        Node* last = vLast-&gt;pre;
+        int key = last-&gt;key;
+        last-&gt;pre-&gt;next = vLast;
+        vLast-&gt;pre = last-&gt;pre;
+        delete last;
+        return key;
+    }
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj-&gt;get(key);
+ * obj-&gt;put(key,value);
+ */
+</code></pre>
+<h1 id="lfu">LFU</h1>
+<p>同LRU, 就是多了一个freq的信息的统计</p>
+<p><code>freqToList</code>每个freq都有一个对应的双向链表，然后一个元素被访问，那么将该元素从<code>freq</code>的链表升到<code>freq+1</code>的链表，并且维护<code>minFreq</code>的信息</p>
+<pre><code class="language-cpp">struct Node {
+    int key;
+    int val;
+    int freq;
+    Node* pre;
+    Node* next;
+    Node(int key, int val, int freq) {
+        this-&gt;key = key;
+        this-&gt;val = val;
+        this-&gt;freq = freq;
+        this-&gt;pre = NULL;
+        this-&gt;next = NULL;
+    }
+};
+
+struct LinkedList {
+    int size;
+    Node* vHead;
+    Node* vLast;
+
+    LinkedList() {
+        this-&gt;size = 0;
+        this-&gt;vHead = new Node(-1, -1, -1);
+        this-&gt;vLast = new Node(-1, -1, -1);
+        vHead-&gt;next = vLast;
+        vLast-&gt;pre = vHead;
+    }
+
+    void addToHead(Node* cur) {
+        vHead-&gt;next-&gt;pre = cur;
+        cur-&gt;next = vHead-&gt;next;
+        vHead-&gt;next = cur;
+        cur-&gt;pre = vHead;
+        size ++;
+    }
+
+    /*
+     remove or delete node will cause LinkedList is empty, so need manual remove
+     */
+    int removeLast() {
+        Node* last = vLast-&gt;pre;
+        int key = last-&gt;key;
+        last-&gt;pre-&gt;next = vLast;
+        vLast-&gt;pre = last-&gt;pre;
+        size --;
+        delete last;
+        // printf(&quot;removed key %d\n&quot;, key);
+        return key;
+    }
+
+    void deleteNode(Node* cur) {
+        cur-&gt;next-&gt;pre = cur-&gt;pre;
+        cur-&gt;pre-&gt;next = cur-&gt;next;
+        size --;
+        return ;
+    }
+};
+
+class LFUCache {
+public:
+    int size;
+    int cap;
+    unordered_map&lt;int, Node*&gt; keyToNode;
+    unordered_map&lt;int, LinkedList*&gt; freqToList;
+    int minFreq;
+
+    LFUCache(int capacity) {
+        size = 0;
+        cap = capacity;
+        minFreq = 0;
+        keyToNode.clear();
+        freqToList.clear();
+    }
+
+    int get(int key) {
+        if (cap == 0) {
+            return -1;
+        }
+        if (keyToNode.count(key) == 0) {
+            return -1;
+        } 
+        return getNode(key)-&gt;val;
+    }
+
+    void put(int key, int value) {
+        // printf(&quot;put %d %d\n&quot;, key, value);
+        // debug();
+        if (cap == 0) {
+            return ;
+        }
+        if (keyToNode.count(key) == 0) {
+            // not exist
+            size ++;
+            if (size &gt; cap) {
+                // remove minFreq's linkedlist last
+                size --;
+                int removedKey = freqToList[minFreq]-&gt;removeLast();
+                keyToNode.erase(removedKey);
+                if (freqToList[minFreq]-&gt;size == 0) {
+                    freqToList.erase(minFreq);
+                }
+            }
+            int freq = 1;
+            minFreq = 1;
+            Node* cur = new Node(key, value, freq);
+            keyToNode[key] = cur;
+            addNode(freq, cur);
+            return ;
+        }
+        // exist
+        getNode(key)-&gt;val = value;
+        return ;
+    }
+
+    void debug() {
+        printf(&quot;debug minFreq list\n&quot;);
+        LinkedList* list = freqToList[minFreq];
+        if (NULL == list) {
+            return ;
+        }
+        Node* vHead = list-&gt;vHead;
+        while (vHead != NULL) {
+            printf(&quot;%d &quot;, vHead-&gt;val);
+            vHead = vHead-&gt;next;
+        }
+        printf(&quot;\n&quot;);
+        return ;
+    }
+
+    void addNode(int freq, Node* node) {
+        if (freqToList.count(freq) == 0) {
+            freqToList[freq] = new LinkedList();
+        }
+        freqToList[freq]-&gt;addToHead(node);
+    }
+
+    Node* getNode(int key) {
+        Node* cur = keyToNode[key];
+        // remove this node in freq
+        freqToList[cur-&gt;freq]-&gt;deleteNode(cur);
+        if (freqToList[cur-&gt;freq]-&gt;size == 0) {
+            freqToList.erase(cur-&gt;freq);
+            if (minFreq == cur-&gt;freq) {
+                minFreq ++;
+            }
+        }
+        // add freq + 1
+        cur-&gt;freq ++;
+        addNode(cur-&gt;freq, cur);
+        return cur;
+    }
+};
+
+/**
+ * Your LFUCache object will be instantiated and called as such:
+ * LFUCache* obj = new LFUCache(capacity);
+ * int param_1 = obj-&gt;get(key);
+ * obj-&gt;put(key,value);
+ */
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

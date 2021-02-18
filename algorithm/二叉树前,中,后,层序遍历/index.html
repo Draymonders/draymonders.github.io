@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%89%8D%2C%E4%B8%AD%2C%E5%90%8E%2C%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>二叉树前,中,后,层序遍历 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u4e8c\u53c9\u6811\u524d,\u4e2d,\u540e,\u5c42\u5e8f\u904d\u5386";
+    var mkdocs_page_input_path = "algorithm/\u4e8c\u53c9\u6811\u524d,\u4e2d,\u540e,\u5c42\u5e8f\u904d\u5386.md";
+    var mkdocs_page_url = "/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%89%8D%2C%E4%B8%AD%2C%E5%90%8E%2C%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>二叉树前,中,后,层序遍历</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,145 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
+                <pre><code class="language-cpp">/**
+ * struct TreeNode {
+ *  int val;
+ *  struct TreeNode *left;
+ *  struct TreeNode *right;
+ * };
+ */
 
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
+class Solution {
+public:
 
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+    void preOrder(TreeNode* root, vector&lt;int&gt;&amp; pre) {
+        if (root == NULL) {
+            return ;
+        }
+        TreeNode* cur = root;
+        stack&lt;TreeNode*&gt; st;
+        while (cur || !st.empty()) {
+            if (cur) {
+                pre.push_back(cur-&gt;val);
+                st.push(cur);
+                cur = cur-&gt;left; 
+            } else {
+                cur = st.top();
+                st.pop();
+                cur = cur-&gt;right;
+            }
+        }
+        return ;
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
+
+    void inOrder(TreeNode* root, vector&lt;int&gt;&amp; in) {
+        if (root == NULL) {
+            return ;
+        }
+        TreeNode* cur = root;
+        stack&lt;TreeNode*&gt; st;
+        while (cur || !st.empty()) {
+            if (cur) {
+                st.push(cur);
+                cur = cur-&gt;left; 
+            } else {
+                cur = st.top();
+                in.push_back(cur-&gt;val);
+                st.pop();
+                cur = cur-&gt;right;
+            }
+        }
+        return ;
     }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
+
+    // 后序遍历需要注意
+    void backOrder(TreeNode* root, vector&lt;int&gt;&amp; back) {
+        if (root == NULL) {
+            return ;
+        }
+        TreeNode* cur = root;
+        stack&lt;pair&lt;TreeNode*, int&gt;&gt; st;
+        while (cur || !st.empty()) {
+            if (cur) {
+                st.push({cur, 1});
+                cur = cur-&gt;left; 
+            } else {
+                pair&lt;TreeNode*, int&gt; temp = st.top(); st.pop();
+                if (temp.second == 2) {
+                    back.push_back(temp.first-&gt;val);
+                    cur = NULL;
+                } else {
+                    st.push({temp.first, 2});
+                    cur = temp.first-&gt;right;
+                }
+            }
+        }
+        return ;
+    }
+
+    /**
+     * 
+     * @param root TreeNode类 the root of binary tree
+     * @return int整型vector&lt;vector&lt;&gt;&gt;
+     */
+    vector&lt;vector&lt;int&gt; &gt; threeOrders(TreeNode* root) {
+        // write code here
+        vector&lt;vector&lt;int&gt;&gt; res;
+        vector&lt;int&gt; pre;
+        vector&lt;int&gt; in;
+        vector&lt;int&gt; back;
+        preOrder(root, pre);
+        inOrder(root, in);
+        backOrder(root, back);
+        res.push_back(pre);
+        res.push_back(in);
+        res.push_back(back);
+        return res;
+    }
+};
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+<p>层序遍历</p>
+<pre><code class="language-cpp">/**
+ * struct TreeNode {
+ *  int val;
+ *  struct TreeNode *left;
+ *  struct TreeNode *right;
+ * };
+ */
+
+class Solution {
+public:
+    /**
+     * 
+     * @param root TreeNode类 
+     * @return int整型vector&lt;vector&lt;&gt;&gt;
+     */
+    vector&lt;vector&lt;int&gt; &gt; levelOrder(TreeNode* root) {
+        if (root == NULL) {
+            return {};
+        }
+        vector&lt;vector&lt;int&gt;&gt; res;
+        queue&lt;TreeNode*&gt; que;
+        que.push(root);
+        while (!que.empty()) {
+            vector&lt;int&gt; temp;
+            int sz = que.size();
+            for (int i=0; i&lt;sz; i++) {
+                TreeNode* f = que.front();
+                que.pop();
+                temp.push_back(f-&gt;val);
+                if (f-&gt;left) {
+                    que.push(f-&gt;left);
+                } 
+                if (f-&gt;right) {
+                    que.push(f-&gt;right);
+                }
+            }
+            res.push_back(temp);
+        }
+        return res;
+    }
+};
 </code></pre>
               
             </div>

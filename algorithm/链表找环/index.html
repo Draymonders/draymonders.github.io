@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E9%93%BE%E8%A1%A8%E6%89%BE%E7%8E%AF/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>是否存在环 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u662f\u5426\u5b58\u5728\u73af";
+    var mkdocs_page_input_path = "algorithm/\u94fe\u8868\u627e\u73af.md";
+    var mkdocs_page_url = "/algorithm/%E9%93%BE%E8%A1%A8%E6%89%BE%E7%8E%AF/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>是否存在环</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,28 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+                <h1 id="_1">是否存在环</h1>
+<pre><code class="language-cpp">class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while (fast != NULL) {
+            slow = slow-&gt;next;
+            if (fast -&gt; next) {
+                fast = fast-&gt;next-&gt;next;    
+            } else {
+                return false;
+            }
+            if (fast == slow)
+                return true;
+        }
+        return fast != NULL ? true : false; 
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
+};
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+<h1 id="_2">链表找环</h1>
+<pre><code class="language-cpp">
 </code></pre>
               
             </div>

@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/network/tcp/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>Tcp - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "Tcp";
+    var mkdocs_page_input_path = "network/tcp.md";
+    var mkdocs_page_url = "/network/tcp/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>Tcp</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,36 +107,84 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
-</code></pre>
+                <ul>
+<li>OSI七层模型<ul>
+<li>物理层，传输比特流<code>bit</code></li>
+<li>数据链路层，传输局域网内的帧<code>frame</code>，有差错校验，流量控制</li>
+<li>路由层(ip)，提供网络设备间的路由功能，数据报 <code>Packet</code> or <code>Datagram</code></li>
+<li>传输层(TCP / UDP)，提供通信子网和资源子网的交互，传输段<code>segment</code></li>
+<li>会话层，提供资源间的会话管理和控制</li>
+<li>表示层，数据格式的转换，加解密</li>
+<li>应用层，提供计算机访问网络的接口，供用户使用，消息<code>message</code></li>
+</ul>
+</li>
+<li><a href="https://zhuanlan.zhihu.com/p/266505297">TCP/IP</a><ul>
+<li>TCP是一个<strong>面向连接</strong>的、<strong>可靠</strong>的、基于<strong>字节流</strong>的传输层协议。而 UDP是一个面向无连接的传输层协议。</li>
+</ul>
+</li>
+<li>三次握手<ul>
+<li>首先，server端保持<code>LISTEN</code>状态</li>
+<li>client端 发送 SYN, seq=x的请求后处于<code>SYN-SEND</code></li>
+<li>server端接收到，回传client SYN, ACK，seq=y, ack=x+1的请求后由<code>LISTEN</code>处于<code>SYN-RECEIVED</code></li>
+<li>client端收到后，回传ACK,seq=x+1,ack=y+1请求后进入<code>ESTABLISHED</code></li>
+<li>server端接收到，也进入<code>ESTABLISHED</code></li>
+</ul>
+</li>
+<li>为什么不可以是两次握手<ul>
+<li>根本原因: 无法确认客户端的接收能力。</li>
+<li>防止之前导致丢的链接建立的报文，在client与server已经关闭的情况下，又建立了链接，造成资源浪费</li>
+</ul>
+</li>
+<li>为什么不可以是四次握手<ul>
+<li>三次握手的目的是确认双方 发送和 接收的能力，那四次握手可以嘛？当然可以，100 次都可以。但为了解决问题，三次就足够了，再多用处就不大了。</li>
+</ul>
+</li>
+<li>如何应对 SYN Flood 攻击<ul>
+<li>增加 SYN 连接，也就是增加半连接队列的容量。</li>
+<li>减少 SYN + ACK 重试次数，避免大量的超时重发。</li>
+<li>利用 SYN Cookie 技术，在服务端接收到 SYN后不立即分配连接资源，而是根据这个 SYN计算出一个Cookie，连同第二次握手回复给客户端，在客户端回复 ACK的时候带上这个 Cookie值，服务端验证 Cookie 合法之后才分配连接资源。</li>
+</ul>
+</li>
+<li>四次挥手<ul>
+<li>首先，client和server都是<code>EATABLISHED</code> (在这里，我们称主动关闭的一方叫client)</li>
+<li>client 发送 FIN, client 进入<code>FIN-WAIT1</code></li>
+<li>server 收到后，发送 ACK, server进入<code>CLOSE_WAIT</code> </li>
+<li>client 收到后, 进入<code>FIN-WAIT2</code></li>
+<li>server处理完剩余的数据后，发送 FIN 和 ACK，进入<code>LAST-ACk</code></li>
+<li>client收到后，发送ACK，进入<code>TIME_WAIT</code>，过2MSL进入<code>CLOSED</code></li>
+<li>server收到后，也进入<code>CLOSED</code></li>
+</ul>
+</li>
+<li>大量 CLOSE_WAIT 状态分析<ul>
+<li>大概率是<strong>服务端处理较慢，资源迟迟释放不掉</strong></li>
+<li>如果服务端在处理过程中，耗时较长，（进入死循环、等锁、下游服务响应慢等），假设20s才返回，但是客户端明显不可能等那么久，一般5-10s就超时了。超时了，客户端发起fin，服务器回ack，此时服务器端应该就是close_wait。</li>
+</ul>
+</li>
+<li>大量 TIME_WAIT 状态分析<ul>
+<li>客户端建立链接较多, 短连接 -&gt; 长连接</li>
+</ul>
+</li>
+<li>为什么要2MSL(<code>Maximum Segment Lifetime</code>，报文最大生存时间)<ul>
+<li>1 个 MSL 确保四次挥手中主动关闭方最后的 ACK 报文最终能达到对端</li>
+<li>1 个 MSL 确保对端没有收到 ACK 重传的 FIN 报文可以到达</li>
+</ul>
+</li>
+<li>如何标识唯一标识一个连接<ul>
+<li>四元组 (源ip, 目的ip, 源端口，目的端口)</li>
+</ul>
+</li>
+<li>TCP 的流量控制<ul>
+<li>主要的方式就是接收方返回的 ACK 中会包含自己的接收窗口的大小，并且利用大小来控制发送方的数据发送。</li>
+</ul>
+</li>
+<li>TCP 的拥塞控制<ul>
+<li>慢启动(到阈值前，从1到阈值，翻倍上升)</li>
+<li>拥塞避免(到达阈值后，每次加1)</li>
+<li>快速重传(当收到重复的ACK三次，立马重传数据)</li>
+<li>快恢复</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>

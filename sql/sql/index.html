@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/sql/sql/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>关键字 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u5173\u952e\u5b57";
+    var mkdocs_page_input_path = "sql/sql.md";
+    var mkdocs_page_url = "/sql/sql/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>关键字</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,24 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
+                <h1 id="_1">关键字</h1>
+<p>写 sql语句 <code>distinct</code>, <code>order by</code>, <code>between</code>, <code>union</code>, <code>group by</code>, <code>having</code>, <code>limit</code>, <code>offset</code></p>
+<h1 id="_2"></h1>
+<pre><code>ID Name City Address
+1 包彦钦 北京 北京市东四北大街520号
+2 王洪涛 北京 北京市西单北大街151号
+3 张立涛 大连 大连市西岗区新开路69号
+4 佘高峰 济南 山东省济南市泺文路50号
+5 徐俊 上海 上海市静安区南阳路46号
+6 张忠飞 上海 上海市肇嘉浜路414号
+7 徐俊 上海 上海市乳山路150号
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+<p>返回表中有两名以上学员的城市的所有学员信息</p>
+<pre><code class="language-sql">select * from Table1 where city in (
+    select city from Table1 
+    group by city 
+    having count(*) &gt;= 2
+);
 </code></pre>
               
             </div>

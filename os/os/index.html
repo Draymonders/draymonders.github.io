@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/os/os/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>os - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "os";
+    var mkdocs_page_input_path = "os/os.md";
+    var mkdocs_page_url = "/os/os/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -52,8 +52,10 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">OS</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">os</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
@@ -95,8 +97,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>OS &raquo;</li>
+        
+      
     
-    <li>Effective go</li>
+    <li>os</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,40 +113,98 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
-</code></pre>
+                <h1 id="_1">基础</h1>
+<blockquote>
+<p>进程是资源分配的最小单位，线程是CPU调度的最小单位</p>
+</blockquote>
+<ul>
+<li>进程的状态（逻辑状态和ps指令看到的状态分别回答）<ul>
+<li>created（新建），ready（就绪），running（运行），waiting（阻塞），Terminated（终止）</li>
+<li>ps stat的状态<ol>
+<li>S 处于休眠状态</li>
+<li>Z 僵尸进程</li>
+<li>s 该进程有子进程</li>
+<li>&lt; 优先级高的进程</li>
+<li>N 优先级较低的进程</li>
+<li>l 多进程的</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>什么是死锁？死锁产生的条件<ul>
+<li>资源互斥</li>
+<li>占有并等待</li>
+<li>不可剥夺</li>
+<li>环路等待  </li>
+</ul>
+</li>
+<li>孤儿进程 <ul>
+<li>父进程退出，而子进程还没退出，会被<code>pid=1</code>的<code>init</code>进程托管</li>
+<li>没什么危害</li>
+</ul>
+</li>
+<li><a href="https://www.cnblogs.com/anker/p/3271773.html">僵尸进程</a><ul>
+<li>子进程退出，父进程还未回收子进程的相关资源</li>
+<li>危害, 会占用进程id(进程id有限, 65535个)</li>
+<li>解决方案<ol>
+<li>干掉父进程(子进程变成孤儿进程，被init进程托管)</li>
+<li>父进程调用waitPid</li>
+<li>fork两次,子进程fork完后创建孙进程然后退出，孙进程执行具体的逻辑(这样孙进程就是孤儿进程了)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>虚拟内存是什么用途，如何实现？<ul>
+<li>首先需要知道物理地址和逻辑地址</li>
+<li>虚拟内存使得应用程序认为它拥有连续的可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。</li>
+</ul>
+</li>
+<li>进程的通信方式有哪些<ul>
+<li>匿名管道(亲缘关系)</li>
+<li>具名管道</li>
+<li>消息队列</li>
+<li>信号量</li>
+<li>信号</li>
+<li>共享内存</li>
+<li>socket</li>
+</ul>
+</li>
+<li>页面置换算法<ul>
+<li>最佳(所选择的被换出的页面将是最长时间内不再被访问)</li>
+<li>最近未使用(LRU)</li>
+<li>最少频率未使用(LFU)</li>
+<li>先进先出</li>
+<li>时钟</li>
+</ul>
+</li>
+<li>分页和分段有什么区别<ul>
+<li>分页大小相同 页表</li>
+<li>分段大小不同 段表</li>
+<li>分页主要用于实现虚拟内存，从而获得更大的地址空间；分段主要是为了使程序和数据可以被划分为逻辑上独立的地址空间并且有助于共享和保护</li>
+</ul>
+</li>
+<li>操作系统中进程调度策略有哪几种<ul>
+<li>先来先服务</li>
+<li>最少执行时间</li>
+<li>优先级</li>
+<li>时间片轮转</li>
+</ul>
+</li>
+<li><a href="https://news.51cto.com/art/202006/619197.htm">程序从堆中动态分配内存时，虚拟内存上怎么操作的</a></li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../java/collection/" class="btn btn-neutral float-right" title="Collection">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -166,6 +230,10 @@ func main()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../java/collection/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

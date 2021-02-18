@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>旋转数组 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u65cb\u8f6c\u6570\u7ec4";
+    var mkdocs_page_input_path = "algorithm/\u65cb\u8f6c\u6570\u7ec4.md";
+    var mkdocs_page_url = "/algorithm/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>旋转数组</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,35 +107,126 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
+                <h1 id="_1">旋转数组</h1>
+<h2 id="_2">左旋</h2>
+<pre><code class="language-cpp">class Solution {
+public:
 
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
+    void reverse(string&amp; s, int l, int r) {
+        while (l &lt;= r) {
+            swap(s[l], s[r]);
+            l++, r--;
+        }
+    }
 
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
+    string reverseLeftWords(string s, int k) {
+        int n = s.size();
+        k %= n;
+        reverse(s, 0, k-1);
+        reverse(s, k, n-1);
+        reverse(s, 0, n-1);
+        return s;
     }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
+};
 </code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
+<h2 id="_3">右旋</h2>
+<pre><code class="language-cpp">class Solution {
+public:
+
+    void reverse(string&amp; s, int l, int r) {
+        while (l &lt;= r) {
+            swap(s[l], s[r]);
+            l++, r--;
+        }
+    }
+
+    string reverseLeftWords(string s, int k) {
+        int n = s.size();
+        k %= n;
+        reverse(s, 0, k-1);
+        reverse(s, k, n-1);
+        reverse(s, 0, n-1);
+        return s;
+    }
+};
+</code></pre>
+<h1 id="_4">旋转数组找某一个值</h1>
+<h2 id="_5">最小值</h2>
+<p><code>O(logn)</code>求得旋转数组的最小值，包含重复</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int findMin(vector&lt;int&gt;&amp; nums) {
+        int n = nums.size();
+
+        int l = 0, r = n-1;
+        int tmp = nums[0];
+
+        int ans = -1;
+        while (r &gt;= 0 &amp;&amp; nums[r] == tmp) r--;
+
+        while (l &lt;= r) {
+            int m = (l + r) / 2;
+            int x = nums[m];
+            if (x &lt; tmp) 
+                ans = x, r = m-1;
+            else 
+                l = m + 1;
+        }
+        if (ans == -1)
+            ans = nums[0];
+        return ans;
+    }
+};
+</code></pre>
+<h2 id="_6">找某个值</h2>
+<pre><code class="language-cpp">class Solution {
+public:
+    int search(vector&lt;int&gt;&amp; nums, int target) {
+        if (nums.size() == 0)
+            return -1;
+
+        int n = nums.size();
+
+        int l = 0, r = n-1;
+        int ans = -1;
+        int tmp = nums[0];
+        while (r &gt;= 0 &amp;&amp; nums[r] == tmp) r--;
+
+        while (l &lt;= r) {
+            int m = (l + r) / 2;
+            // nums[m]在右边
+            if (nums[m] &lt; tmp) {
+                // target在左边
+                if (target &gt;= tmp) {
+                    r = m-1;
+                } else {
+                    // 在同一边
+                    if (nums[m] &gt;= target) {
+                        ans =m, r = m-1;
+                    } else {
+                        l = m+1;
+                    }
+                }
+            } else {
+                // nums[m]在左边
+                // target在右边
+                if (target &lt; tmp) {
+                    l = m + 1;
+                } else {
+                    // 在同一边
+                    if (nums[m] &gt;= target) {
+                        ans =m, r = m-1;
+                    } else {
+                        l = m+1;
+                    }
+                }
+            }
+        }
+        if (ans != -1 &amp;&amp; nums[ans] == target)
+            return ans;
+        return -1;
+    }
+};
 </code></pre>
               
             </div>

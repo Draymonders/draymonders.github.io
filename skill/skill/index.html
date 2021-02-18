@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/go/effective_go/">
+  <link rel="canonical" href="https://draymonders.github.io/skill/skill/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Effective go - Draymonder Docs</title>
+  <title>需要复习的点 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Effective go";
-    var mkdocs_page_input_path = "go/effective_go.md";
-    var mkdocs_page_url = "/go/effective_go/";
+    var mkdocs_page_name = "\u9700\u8981\u590d\u4e60\u7684\u70b9";
+    var mkdocs_page_input_path = "skill/skill.md";
+    var mkdocs_page_url = "/skill/skill/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -96,7 +96,7 @@
     
       
     
-    <li>Effective go</li>
+    <li>需要复习的点</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,36 +107,30 @@
           <div role="main">
             <div class="section">
               
-                <p>一个demo，待实践</p>
-<p>抽空运行一下go的结果</p>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;;
-    &quot;os&quot;
-)
-
-func main() 
-    name := &quot;go.mod&quot;
-    f, err := os.Open(name)
-    if err != nil {
-        log.Println(err)
-        os.Exit(1)
-    }
-    defer f.Close()
-    f = nil
-    // time.Sleep(10 * time.Second)
-    if _, err := f.Stat(); err != nil {
-        log.Println(err)
-    }
-    // 猜测err打印什么结果
-    fmt.Println(err)
-}
-</code></pre>
-<p>输出结果</p>
-<pre><code>invalid argument
-&lt;nil&gt;
-</code></pre>
+                <h1 id="_1">需要复习的点</h1>
+<p><del>熟悉 Java 集合类原理 (List, Map, Set, Queue)</del>
+<del>熟悉 Java 锁原理</del>
+<del>掌握多线程原理</del>
+=== 02.08 网络相关 ===
+<del>掌握计算机网络知识</del></p>
+<p>=== 剑指offer === 
+每天都需要刷，尽可能写完</p>
+<p>=== 02.09 - 02.10 JVM，线程池 ===
+掌握 JVM 原理、 GC 机制、类加载机制
+掌握线程池原理</p>
+<p>=== 02.12 - 02.13 === 
+掌握 Redis 基础原理,包括数据结构,持久化策略,慢日志查询,内存淘汰机制，雪崩xxx之类的
+掌握 Kafka 基础原理,利用 MQ 做异步处理,并且缓冲流量,削峰填谷</p>
+<p>=== 02.14 - 02.16 ===
+掌握 MySQL 基础原理,包括事务、索引和 SQL 语句调优</p>
+<p>=== 02.17 - 02.19 ===
+了解 Spring 相关 IOC 和 AOP 原理
+掌握 Spring Boot 和 Spring Cloud 开发</p>
+<p>掌握 Java 反射原理</p>
+<p>=== 02.20 - 02.24 ===
+http client 的配置与调优
+掌握常⻅的设计模式,如单例,工厂,代理,观察者模式等
+掌握常用的 Linux 命令,有性能优化和分析的经历,拥有线上 Docker 和 Kubernetes 排查问题经验</p>
               
             </div>
           </div>

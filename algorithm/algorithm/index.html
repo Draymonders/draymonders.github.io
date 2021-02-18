@@ -51,6 +51,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../java/collection/">Collection</a>
@@ -117,6 +122,229 @@
 </li>
 <li>最长回文子串 (manacher)</li>
 </ul>
+<h1 id="algorithm">Algorithm</h1>
+<h2 id="_2">算法备忘录</h2>
+<h3 id="_3">快排</h3>
+<blockquote>
+<p>必须先j--, 再i++</p>
+<p>最后 swap(arr[l], arr[i])</p>
+<p>i为partion一次的中枢轴</p>
+</blockquote>
+<pre><code class="language-c++">void quickSort(vector&lt;int&gt;&amp; arr, int l, int r) {
+    if (l &gt;= r)
+        return ;
+    int val = arr[l];
+    int i = l, j = r;
+    while (i &lt; j) {
+        while (i &lt; j &amp;&amp; arr[j] &gt;= val) j--;
+        while (i &lt; j &amp;&amp; arr[i] &lt;= val) i++;
+        if (i &lt; j) {
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[l], arr[i]);
+    quickSort(arr, l, i-1);
+    quickSort(arr, i+1, r);
+}
+</code></pre>
+<h3 id="bit-binary-index-tree">树状数组 BIT ( Binary index tree )</h3>
+<p><code>BIT</code> 也叫 <code>树状数组</code></p>
+<p>首先看如下数学式</p>
+<pre><code>e[1] = a[1] 
+e[2] = a[1]+a[2]
+e[3] = a[3]
+e[4] = a[1]+a[2]+a[3]+a[4]
+e[5] = a[5]
+e[6] = a[5]+a[6]
+e[7] = a[7]
+e[8] = a[1]+a[2]+...+a[8] 
+
+数组下标i表示为二进制，i从末尾开始连续0的个数定义为k。
+e[i]=a[i-2^k +1]+a[i-2^k+2]+...+a[i]。
+e[8(1000)] = a[1]+a[2]+...+a[8]
+</code></pre>
+<ul>
+<li>从上面可以知道 数组<code>a[0]</code>是废弃的, 起点从<code>a[1]</code>开始</li>
+<li>至于<strong>区间更新,区间查询</strong>, <strong>区间更新,单点查询</strong>之类的 看一下参考链接吧</li>
+</ul>
+<h4 id="_4">代码</h4>
+<pre><code class="language-c++">int bit(int x) {
+    return (x) &amp; (-x);
+}
+
+vector&lt;int&gt;&amp; BIT;
+
+// 求[1...pos]的和
+int getSum(vector&lt;int&gt;&amp; BIT,int pos) {
+    int sum = 0;
+    while (pos &gt; 0) {
+        sum += BIT[pos];
+        pos -= bit(x);
+    }
+    return sum;
+}
+
+// 给对应pos位 +x
+void updateBit(vector&lt;int&gt;&amp; BIT, int pos, int x) {
+    int n = BIT.size();
+    while (pos &lt; n) {
+        BIT[pos] += x;
+        pos += bit(pos);
+    }
+}
+</code></pre>
+<h4 id="_5">参考链接</h4>
+<ul>
+<li><a href="https://www.cnblogs.com/xenny/p/9739600.html">树状数组详解</a></li>
+</ul>
+<h3 id="_6">约瑟夫环</h3>
+<h4 id="_7">题目</h4>
+<p>0,1,...,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
+<h4 id="_8">解析</h4>
+<p>一步到位就不搞模拟了</p>
+<ul>
+<li><code>f(n,m)</code>代表在<code>连续n个数(从0到n-1)</code>里面删除<code>第m个</code>数组的被删除的那个数</li>
+<li>显然第一个删除的数为 <code>(m-1)%n</code>, 我们假定这个数为k</li>
+<li>删除第一个数后剩余的数为<code>0 1 ... k-1 k+1 k+2 ... n-1</code></li>
+<li>由于下一轮从<code>k-1</code>开始, 因此有如下映射关系</li>
+</ul>
+<p><img alt="约瑟夫" src="./../imgs/yuesefu.png" /></p>
+<ul>
+<li>由于 <code>k = (m-1) % n</code></li>
+<li>我们可以看出来<code>f(n-1, m) = (f(n-1,m) + k+1) %n = (f(n-1)+m) % n</code></li>
+</ul>
+<p>因此有了递推式</p>
+<pre><code class="language-c++">f(1, m) = 0  // 只剩一个数的时候, 删除的第m个数肯定是0
+f(n, m) = (f(n-1)+m) % n
+</code></pre>
+<h3 id="kmp">kmp</h3>
+<p>next数组表示 <strong>前缀与后缀的最长匹配长度-1</strong></p>
+<p>具体有什么意义呢？</p>
+<p>接下来会来解释</p>
+<p>比如 s串<code>abcabcabd</code></p>
+<pre><code>a  b  c  a  b  c  a  b  d
+-1 -1 -1 0  1  2  3  4 -1
+</code></pre>
+<p>你会发现 <code>如果next[i]不等于-1, s[i] == s[next[i]]</code></p>
+<p>这样做的意义是什么呢，是为了<strong>快速回退</strong>(减少不必要的字符匹配)</p>
+<h4 id="_9">举例</h4>
+<pre><code>s串
+ississip
+t串
+issip
+</code></pre>
+<p>先分析出<code>t串</code>的<code>next</code>数组</p>
+<pre><code>i  s  s  i  p
+-1 -1 -1 0  -1
+</code></pre>
+<p>然后去匹配,会发现如下情况不匹配了</p>
+<pre><code>i s s i s s i p 
+i s s i p
+</code></pre>
+<p>由于我前一位<code>i</code>的<code>next[i]</code>为<code>0</code>，那么接下来将做如下匹配, 注意由上面的code到下面的code仅仅需要一步</p>
+<pre><code>i s s i s s i p
+      i s s i p
+</code></pre>
+<h4 id="code">code</h4>
+<pre><code class="language-c++">class Solution {
+public:
+    int strStr(string s, string t) {
+        if (t == &quot;&quot;) return 0;
+        int l1 = s.size(), l2 = t.size();
+
+        int next[l2] = {0};
+        next[0] = -1;
+        for (int i=1; i&lt;l2; i++) {
+            int k = next[i-1];
+            while (k != -1 &amp;&amp; t[k+1] != t[i])  k = next[k];
+            if (t[i] == t[k+1]) {
+                next[i] = k+1;
+            } else {
+                next[i] = -1;
+            }
+        }
+
+        int i = 0, j = 0;
+        while (i &lt; l1) {
+            if (s[i] == t[j]) {
+                i++,j++;
+                if (j == l2) {
+                    return i - l2;
+                }
+            } else {
+                if (j == 0) {
+                    i++;
+                } else {
+                    j = next[j-1] + 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
+</code></pre>
+<h3 id="_10">优先队列比较函数</h3>
+<p>语法如下</p>
+<blockquote>
+<p>需要注意的一点是  比较函数里面写的是 a &lt; b, 实际返回结果<code>que.top()</code>是最大值 对立的..</p>
+</blockquote>
+<pre><code class="language-cpp">auto cmp = [](int a,int b) {
+    return a &lt; b;
+};
+priority&lt;int, vector&lt;int&gt;, decltype(cmp)&gt; que(cmp);
+</code></pre>
+<h3 id="set-map">set &amp; map</h3>
+<p>声明如下</p>
+<pre><code class="language-c++">unordered_map&lt;int, int&gt; mp;
+set&lt;int&gt; st;
+</code></pre>
+<h4 id="_11">删除元素</h4>
+<pre><code class="language-c++">mp.erase(key);
+st.erase(elm);
+</code></pre>
+<h4 id="_12">判断是否存在</h4>
+<pre><code class="language-c++">mp.count(key);
+st.count(elm);
+</code></pre>
+<h3 id="_13">单调栈专题</h3>
+<table>
+<thead>
+<tr>
+<th align="center">number</th>
+<th align="center">title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">84</td>
+<td align="center">柱状图中最大的矩形</td>
+</tr>
+<tr>
+<td align="center">239</td>
+<td align="center">滑动窗口最大值</td>
+</tr>
+<tr>
+<td align="center">739</td>
+<td align="center">每日温度</td>
+</tr>
+<tr>
+<td align="center">862</td>
+<td align="center"><strong>和至少为 K 的最短子数组</strong></td>
+</tr>
+<tr>
+<td align="center">901</td>
+<td align="center">股票价格跨度</td>
+</tr>
+<tr>
+<td align="center">907</td>
+<td align="center">子数组的最小值之和</td>
+</tr>
+<tr>
+<td align="center">5180</td>
+<td align="center">带限制的子序列和</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>

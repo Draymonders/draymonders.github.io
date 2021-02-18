@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/network/network/">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E8%BD%AC%E6%8D%A2/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>http client - Draymonder Docs</title>
+  <title>两个栈实现队列 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "http client";
-    var mkdocs_page_input_path = "network/network.md";
-    var mkdocs_page_url = "/network/network/";
+    var mkdocs_page_name = "\u4e24\u4e2a\u6808\u5b9e\u73b0\u961f\u5217";
+    var mkdocs_page_input_path = "algorithm/\u6808\u548c\u961f\u5217\u7684\u8f6c\u6362.md";
+    var mkdocs_page_url = "/algorithm/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E8%BD%AC%E6%8D%A2/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -49,6 +49,11 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Java</span></p>
@@ -91,7 +96,7 @@
     
       
     
-    <li>http client</li>
+    <li>两个栈实现队列</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -102,17 +107,82 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="http-client">http client</h1>
-<ul>
-<li><a href="https://blog.csdn.net/yi_master/article/details/80595372">http client</a></li>
-</ul>
-<h1 id="_1">问题汇总</h1>
-<ul>
-<li>点击 https://www.baidu.com 经历了哪些过程</li>
-<li>三次握手四次挥手</li>
-<li>TCP 的拥塞控制是如何实现的</li>
-<li>快重传和快恢复是如何配合</li>
-</ul>
+                <h1 id="_1">两个栈实现队列</h1>
+<p>反转两次</p>
+<pre><code class="language-cpp">class Solution
+{
+public:
+    void push(int x) {
+        s1.push(x);
+    }
+
+    int pop() {
+        if (s2.empty()) {
+           while (!s1.empty()) {
+            int x = s1.top(); s2.push(x); s1.pop();
+           }
+        }
+        int x = s2.top(); s2.pop();
+        return x;
+    }
+
+private:
+    stack&lt;int&gt; s1;
+    stack&lt;int&gt; s2;
+};
+</code></pre>
+<h1 id="_2">两个队列实现栈</h1>
+<p>两个队列
+- 新增元素时，放到q1队首, 然后将q2的所有元素依次放入q1，最后所有元素再放到q2
+- 获取栈顶时，直接从q2首部去拿</p>
+<pre><code class="language-cpp">class MyStack {
+public:
+    queue&lt;int&gt; q1, q2;
+    /** Initialize your data structure here. */
+    MyStack() {
+        while (!q1.empty()) 
+            q1.pop();
+        while (!q2.empty()) 
+            q2.pop();
+    }
+
+    /** Push element x onto stack. */
+    void push(int x) {
+        q1.push(x);
+        while (!q2.empty()) {
+            int x = q2.front(); q2.pop();
+            q1.push(x);
+        }
+        while (!q1.empty()) {
+            int x = q1.front(); q1.pop();
+            q2.push(x);
+        }
+    }
+
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+        if (q2.empty()) {
+            return -1;
+        }
+        int x = q2.front(); q2.pop();
+        return x;
+    }
+
+    /** Get the top element. */
+    int top() {
+        if (q2.empty()) {
+            return -1;
+        }
+        return q2.front();
+    }
+
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        return q2.empty();
+    }
+};
+
+</code></pre>
               
             </div>
           </div>
