@@ -4,6 +4,18 @@
 
 数据库四个特性`ACID`, 分别是原子性，一致性，隔离性，持久性。
 
+## 事务隔离级别
+
+- uncommitted 读未提交，会导致脏读，不可重复读，幻读
+- read commited 读已提交，会导致不可重复读，幻读
+- repeat read 可重复读，会导致幻读
+- serialization 串行读
+
+mysql的`InnoDB`引擎实现的`repeat read`，是由`MVCC`+`nextKey lock`组成的
+**不会出现幻读的情况**(`gap lock`间隙锁，在行记录的索引之前和之后也加了锁，不能插入)
+    * MVCC解决事务并发修改和删除
+    * gap lock解决事务并发的新增
+
 ## 两段锁协议
 
 X为独占锁，S为共享锁
