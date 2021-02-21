@@ -1,3 +1,12 @@
+- 限流
+    - 漏桶，请求先进入到漏桶里,漏桶以一定的速度出水，接口有响应速率
+    - 令牌桶，每秒生产固定数量的令牌，处理请求需要先拿到令牌
+    - 差异: 令牌桶能处理峰时流量
+- 动态代理，JDK原生和cglib
+    - 原生JDK是基于接口实现的, 实现`InvocationHandler`接口里的`invoke`方法，接着调用`Proxy.newProxyInstance`方法，传入类加载，接口，以及需要代理的对象
+    - cglib是基于`继承`(字节码增强技术)实现的，实现`MethodInterceptor`接口里的`intercept`方法,接着`new Enhancer()`并且`setSuperclass()`和`setCallback`
+- TCP/IP协议栈
+- IPV4(4个字节), IPV6(16个字节)
+- HTTPS简述
 - TCP,UDP介绍,差别,UDP保证可靠性
 - 红黑树,AVL对比,引申B,B+树(B+中间不存节点)
-
