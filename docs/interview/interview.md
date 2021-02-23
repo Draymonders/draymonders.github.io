@@ -10,3 +10,4 @@
 - HTTPS简述
 - TCP,UDP介绍,差别,UDP保证可靠性
 - 红黑树,AVL对比,引申B,B+树(B+中间不存节点)
+- closing 状态
