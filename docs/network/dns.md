@@ -1,3 +1,19 @@
+# 文章
+
+- [Linux Dns网络解析](https://cloud.tencent.com/developer/article/1083206)
+- [nslookup命令](https://cloud.tencent.com/developer/article/1083201)
+- [dig命令](https://cloud.tencent.com/developer/article/1083192)
+
+命令使用如下
+```shell
+nslookup www.baidu.com
+
+dig -trace sturnus.yitu-inc.com
+dig -x 10.60.24.37
+```
+
+## k8s dns
+
 配置`k8s` pod 看到了`/etc/resolv.conf`
 
 内容如下
