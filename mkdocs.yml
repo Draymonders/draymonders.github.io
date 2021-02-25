@@ -7,16 +7,17 @@ copyright: Copyright © 2021 Draymonder
 
 nav:
     - Index: index.md
-    - OS:
-      - os: os/os.md
-    - Java: 
-      - Collection: java/collection.md
-    - MultiThread:
-      - MultiThread: java/multi-thread/multi-thread.md
-    - Lock:
-      - Lock: java/multi-thread/lock.md
-      - Synchronized: java/multi-thread/synchronized.md
-      - ReentrantLock: java/multi-thread/reentrantlock.md
+    - Interview: social-interview/index.md
+    # - OS:
+    #   - os: os/os.md
+    # - Java: 
+    #   - Collection: java/collection.md
+    # - MultiThread:
+    #   - MultiThread: java/multi-thread/multi-thread.md
+    # - Lock:
+    #   - Lock: java/multi-thread/lock.md
+    #   - Synchronized: java/multi-thread/synchronized.md
+    #   - ReentrantLock: java/multi-thread/reentrantlock.md
     #   - Exception: java/exception.md
     #   - MultiThread: java/multi-thread.md
     # - Middlewares:
