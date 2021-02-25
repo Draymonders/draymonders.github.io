@@ -10,6 +10,7 @@
 - HTTPS简述
 - TCP,UDP介绍,差别,UDP保证可靠性
 - 红黑树,AVL对比,引申B,B+树(B+中间不存节点)
+- closing 状态
 - [dubbo 负载均衡算法](https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/)
     - 加权随机算法
         * 比如权重`[1,2,3]`, 那么分为`[[0,1), [1,3), [3,6)]`, 随机6以内的数，落在哪个区间算哪个

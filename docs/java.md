@@ -1,13 +1,3 @@
-
-## 多线程
-
-### Atomic
-
-### 实战demo
-
-**TODO** 实现按顺序打印1,2...99,100
-
-
 # 问题汇总
 
 - 接口跟抽象类的区别
@@ -16,3 +6,6 @@
 - BIO，[NIO](https://tech.meituan.com/2016/11/04/nio.html)
 - 双亲委派模型
 - java中mysql数据库机器CPU使用过高怎么定位
+- 线程池
+    - corePoolSize, maxPoolSize, keepAliveTime, keepAliveUnit, runnableQueue, ThreadFactory, RejectHandler
+    * 未达到corePoolSize先创建线程，然后塞到runnableQueue里，队列满了，继续创建线程到maxPoolSize，达到后执行rejectHandler
