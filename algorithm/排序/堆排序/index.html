@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>堆排序 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5806\u6392\u5e8f";
+    var mkdocs_page_input_path = "algorithm/\u6392\u5e8f/\u5806\u6392\u5e8f.md";
+    var mkdocs_page_url = "/algorithm/%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../social-interview/">Interview</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>堆排序</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">堆排序</h1>
+<p>初始化时
+    - 首先需要调整每个子树成为堆
+    - 然后将堆顶放到堆尾，并且size--，重复
+添加元素
+    - 加到堆尾，然后堆尾向上递归更新值
+删除堆顶
+    - 交换堆顶和堆尾，堆顶向下递归更新</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+void heapDown(vector&lt;int&gt;&amp; nums, int pos, int lim) {
+    while (pos &lt;= lim) {
+        int next = pos;
+        if (pos*2+1 &lt;= lim) {
+            int&amp; s1 = nums[pos*2+1];
+            if (s1 &lt; nums[pos]) {
+                swap(s1, nums[pos]);
+                next = pos*2+1;
+            }
+        }
+        if (pos*2+2 &lt;= lim) {
+            int&amp; s2 = nums[pos*2+2];
+            if (s2 &lt; nums[pos]) {
+                swap(s2, nums[pos]);
+                next = pos*2+2;
+            }
+        }
+        if (next == pos) 
+            break;
+        pos = next;
+    }
+    return ;
+}
+
+void heapUp(vector&lt;int&gt;&amp; nums, int pos) {
+    while (pos &gt; 0) {
+        int next = pos;
+        if (pos / 2 &gt;= 0) {
+            int&amp; fa = nums[pos/2];
+            if (nums[pos] &lt; fa) {
+                swap(nums[pos], fa);
+                next = pos / 2;
+            }
+        }
+        if (next == pos) 
+            break;
+        pos = next;
+    }
+}
+
+void heapSort(vector&lt;int&gt;&amp; nums) {
+    int n = nums.size();
+    if (n &lt;= 1) {
+        return ;
+    }
+    // 先把内部结构变成堆
+    for (int i=n/2-1; i&gt;=0; i--) {
+        // 每个非叶子节点进行子树内的调整
+        heapDown(nums, i, n-1);
+    }
+
+    while (n &gt; 1) {
+        swap(nums[0], nums[n-1]);
+        n--;
+        heapDown(nums, 0, n-1);
+    }
+}
+
+// 添加元素到堆中
+void addToHeap(vector&lt;int&gt;&amp; nums, int val) {
+    int n = nums.size();
+    nums.push_back(val);
+    heapUp(nums, n);
+}
+
+void print(vector&lt;int&gt;&amp; v) {
+    for (auto x : v) {
+        cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() 
+{
+    vector&lt;int&gt; v = {7,8,3,2,1,7};
+    heapSort(v);
+
+    addToHeap(v, 4);
+    print(v);
+    return 0;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/social-interview/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Interview - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Interview";
+    var mkdocs_page_input_path = "social-interview/index.md";
+    var mkdocs_page_url = "/social-interview/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Interview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">字节电商</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">一面</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Interview</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">社招面经</h1>
+<h2 id="_2">字节电商</h2>
+<h3 id="_3">一面</h3>
+<ul>
+<li><a href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/">剑指 Offer 52. 两个链表的第一个公共节点</a></li>
+<li><a href="https://leetcode-cn.com/problems/next-permutation/">Leetcode 31. 给定一组数字，任意组合，求比给定组合M大的最小值</a></li>
+<li>统计当前目录下（包含子目录）*.java 的文件的代码总行数。(shell)<ul>
+<li>wc -l `find . -name "*.java"` | awk '{ print $1 }' | sum</li>
+</ul>
+</li>
+<li>管道的理解，管道除了存内容还存什么?<ul>
+<li>Linux上的管道就是一个操作方式为文件的内存缓冲区</li>
+<li><code>|</code> 是匿名管道，父子进程间使用，父进程先打开一个管道，然后fork出子进程，子进程通过拷贝父进程的地址空间拿到管道的描述符，从而可以读写</li>
+</ul>
+</li>
+<li>前台跑程序，ctrl-c在做什么<ul>
+<li>ctrl + c，会发送<code>SIGINT</code>的信号，等同于<code>kill -2 (interrupt)</code>，程序那边接收到这个信号后做处理</li>
+<li>ctrl + z，会发送<code>SIGTSTP</code>的信号</li>
+</ul>
+</li>
+<li>用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) <strong>没写出来，多练习</strong><ul>
+<li>select age, count(*) from t_user group by age order by count(*) desc limit 1;</li>
+</ul>
+</li>
+<li>mysql相关<ul>
+<li>innodb 索引结构</li>
+<li>普通索引，唯一索引 之间的性能差异<ul>
+<li>唯一索引需要保证插入前没有数据，普通索引可以在写入磁盘前加 <code>change buffer</code></li>
+</ul>
+</li>
+<li>事务级别，mvcc</li>
+<li>二阶段提交</li>
+</ul>
+</li>
+<li>https://toutiao.com 访问过程中发生了什么</li>
+<li>最近阅读的相关书籍<ul>
+<li>说自己爱看历史书，也看了Dubbo官方文档，美团的技术公众号，大厂的技术公众号，不爱看个人的</li>
+<li>忘记说最近看过 effictive go，Java并发编程实战</li>
+</ul>
+</li>
+</ul>
+<h1 id="todo">TODO</h1>
+<ul>
+<li><a href="https://www.jianshu.com/p/476b52ee4f1b">50道sql题</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

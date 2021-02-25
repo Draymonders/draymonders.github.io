@@ -9,7 +9,7 @@
   <meta name="author" content="Draymonder">
   <link rel="canonical" href="https://draymonders.github.io/java/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Java - Draymonder Docs</title>
+  <title>问题汇总 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Java";
+    var mkdocs_page_name = "\u95ee\u9898\u6c47\u603b";
     var mkdocs_page_input_path = "java.md";
     var mkdocs_page_url = "/java/";
   </script>
@@ -51,28 +51,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">OS</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../os/os/">os</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Java</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="collection/">Collection</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">MultiThread</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="multi-thread/multi-thread/">MultiThread</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Lock</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="multi-thread/lock/">Lock</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="multi-thread/synchronized/">Synchronized</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="multi-thread/reentrantlock/">ReentrantLock</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../social-interview/">Interview</a>
                     </li>
                 </ul>
       </div>
@@ -96,7 +76,7 @@
     
       
     
-    <li>Java</li>
+    <li>问题汇总</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,11 +87,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">多线程</h2>
-<h3 id="atomic">Atomic</h3>
-<h3 id="demo">实战demo</h3>
-<p><strong>TODO</strong> 实现按顺序打印1,2...99,100</p>
-<h1 id="_2">问题汇总</h1>
+                <h1 id="_1">问题汇总</h1>
 <ul>
 <li>接口跟抽象类的区别<ul>
 <li>接口定义行为</li>
@@ -121,6 +97,11 @@
 <li>BIO，<a href="https://tech.meituan.com/2016/11/04/nio.html">NIO</a></li>
 <li>双亲委派模型</li>
 <li>java中mysql数据库机器CPU使用过高怎么定位</li>
+<li>线程池<ul>
+<li>corePoolSize, maxPoolSize, keepAliveTime, keepAliveUnit, runnableQueue, ThreadFactory, RejectHandler</li>
+<li>未达到corePoolSize先创建线程，然后塞到runnableQueue里，队列满了，继续创建线程到maxPoolSize，达到后执行rejectHandler</li>
+</ul>
+</li>
 </ul>
               
             </div>

@@ -9,7 +9,7 @@
   <meta name="author" content="Draymonder">
   <link rel="canonical" href="https://draymonders.github.io/network/dns/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Dns - Draymonder Docs</title>
+  <title>文章 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Dns";
+    var mkdocs_page_name = "\u6587\u7ae0";
     var mkdocs_page_input_path = "network/dns.md";
     var mkdocs_page_url = "/network/dns/";
   </script>
@@ -51,28 +51,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">OS</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">os</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Java</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/collection/">Collection</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">MultiThread</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/multi-thread/">MultiThread</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Lock</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/lock/">Lock</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/synchronized/">Synchronized</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../java/multi-thread/reentrantlock/">ReentrantLock</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
                     </li>
                 </ul>
       </div>
@@ -96,7 +76,7 @@
     
       
     
-    <li>Dns</li>
+    <li>文章</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -107,7 +87,20 @@
           <div role="main">
             <div class="section">
               
-                <p>配置<code>k8s</code> pod 看到了<code>/etc/resolv.conf</code></p>
+                <h1 id="_1">文章</h1>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1083206">Linux Dns网络解析</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1083201">nslookup命令</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1083192">dig命令</a></li>
+</ul>
+<p>命令使用如下</p>
+<pre><code class="language-shell">nslookup www.baidu.com
+
+dig -trace sturnus.yitu-inc.com
+dig -x 10.60.24.37
+</code></pre>
+<h2 id="k8s-dns">k8s dns</h2>
+<p>配置<code>k8s</code> pod 看到了<code>/etc/resolv.conf</code></p>
 <p>内容如下</p>
 <pre><code>nameserver 10.96.0.10
 search default.svc.cluster.local svc.cluster.local cluster.local

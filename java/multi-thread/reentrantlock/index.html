@@ -9,7 +9,7 @@
   <meta name="author" content="Draymonder">
   <link rel="canonical" href="https://draymonders.github.io/java/multi-thread/reentrantlock/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>ReentrantLock - Draymonder Docs</title>
+  <title>ReentrantLock 实现原理 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "ReentrantLock";
+    var mkdocs_page_name = "ReentrantLock \u5b9e\u73b0\u539f\u7406";
     var mkdocs_page_input_path = "java/multi-thread/reentrantlock.md";
     var mkdocs_page_url = "/java/multi-thread/reentrantlock/";
   </script>
@@ -51,50 +51,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">OS</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../os/os/">os</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Java</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../collection/">Collection</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">MultiThread</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../multi-thread/">MultiThread</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Lock</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../lock/">Lock</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../synchronized/">Synchronized</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">ReentrantLock</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">锁类型</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">获取锁</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_3">公平锁获取锁</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#_4">写入队列</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_5">挂起等待线程</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_6">非公平锁获取锁</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_7">释放锁</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_8">总结</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../social-interview/">Interview</a>
                     </li>
                 </ul>
       </div>
@@ -117,12 +75,8 @@
     <li><a href="../../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Lock &raquo;</li>
-        
-      
     
-    <li>ReentrantLock</li>
+    <li>ReentrantLock 实现原理</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -364,13 +318,6 @@ protected final boolean tryRelease(int releases) {
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../synchronized/" class="btn btn-neutral" title="Synchronized"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -394,8 +341,6 @@ protected final boolean tryRelease(int releases) {
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-      
-        <span><a href="../synchronized/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
