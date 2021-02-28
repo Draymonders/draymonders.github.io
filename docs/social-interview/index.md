@@ -36,12 +36,18 @@
 - 两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率
 - http
     * get和post区别(是否可以缓存)
-    * http和https，https抓包**没抓过**
+    * http和https，https抓包(Fiddler)**没抓过**
 - Redis
     * 数据结构
+    * 跳表实现，如果插入节点
     * mget和pipeline区别 **不会**
     * 主从同步的细节
     * 可以试试`memCache`或者多线程的`Redis`
+
+## 复盘
+
+- https抓包学习
+- redis深入理解
 
 # TODO
 
