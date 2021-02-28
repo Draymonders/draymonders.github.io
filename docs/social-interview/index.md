@@ -27,6 +27,24 @@
     * 说自己爱看历史书，也看了Dubbo官方文档，美团的技术公众号，大厂的技术公众号，不爱看个人的
     * 忘记说最近看过 effictive go，Java并发编程实战
 
+### 二面
+
+- 项目介绍(自己说了Redis, 简直自己坑自己啊)
+- 开根运算(误差1e-5)
+- 判断二叉搜索树
+- 讲讲堆排序
+- 两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率
+- http
+    * get和post区别(是否可以缓存)
+    * http和https，https抓包**没抓过**
+- Redis
+    * 数据结构
+    * mget和pipeline区别 **不会**
+    * 主从同步的细节
+    * 可以试试`memCache`或者多线程的`Redis`
+
 # TODO
 
 - [50道sql题](https://www.jianshu.com/p/476b52ee4f1b)
+- kafka事务
+- 自增id用完了怎么办
