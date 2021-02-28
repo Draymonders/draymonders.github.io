@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="文档记录">
+  
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/">
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Draymonder Docs</title>
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84k/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>字典序最小的k - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Index";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
+    var mkdocs_page_name = "\u5b57\u5178\u5e8f\u6700\u5c0f\u7684k";
+    var mkdocs_page_input_path = "algorithm/\u5b57\u5178\u5e8f\u6700\u5c0f\u7684k.md";
+    var mkdocs_page_url = "/algorithm/%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84k/";
   </script>
   
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -38,27 +38,21 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> Draymonder Docs</a>
+        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Index</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="social-interview/">Interview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
                     </li>
                 </ul>
       </div>
@@ -70,7 +64,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">Draymonder Docs</a>
+        <a href="../..">Draymonder Docs</a>
       </nav>
 
       
@@ -78,11 +72,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
       
     
-    <li>Index</li>
+    <li>字典序最小的k</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -93,27 +87,37 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-draymonder-docs">Welcome to Draymonder Docs</h1>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-<li><code>mkdocs gh-deploy</code> - Push github branch gh-deploy and show.</li>
-</ul>
-<h2 id="reference">Reference</h2>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
+                <p>和二个有序数组中找第k大类似</p>
+<p>都是 k == 1时候，直接返回</p>
+<pre><code class="language-cpp">typedef long long ll;
+class Solution {
+public:
+    int findKthNumber(int n, int k) {
+        int cur = 1;
+        while (k &gt; 1) {
+            ll groupSize = 0, first = cur, last = cur + 1;
+            while (first &lt;= n) {
+                groupSize += min((ll)n + 1, last) - first;
+                first *= 10;
+                last *= 10;
+            }
+            printf(&quot;%lld %lld\n&quot;, cur, groupSize);
+            if (groupSize &lt;= k) {
+                k -= groupSize;
+                cur ++;
+            } else {
+                k --;
+                cur *= 10;
+            }
+        }
+        return cur;
+    }
+};
+</code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="social-interview/" class="btn btn-neutral float-right" title="Interview">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
@@ -140,13 +144,11 @@
       
       
       
-        <span style="margin-left: 15px"><a href="social-interview/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
@@ -155,8 +157,3 @@
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-02-28 14:00:14.167451+00:00
--->
