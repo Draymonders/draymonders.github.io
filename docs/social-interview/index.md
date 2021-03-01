@@ -14,7 +14,7 @@
 - 前台跑程序，ctrl-c在做什么
     * ctrl + c，会发送`SIGINT`的信号，等同于`kill -2 (interrupt)`，程序那边接收到这个信号后做处理
     * ctrl + z，会发送`SIGTSTP`的信号
-- 用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) **没写出来，多练习**
+- 用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) **写错了，多练习SQL**
     * select age, count(\*) from t_user group by age order by count(*) desc limit 1;
 - mysql相关
     * innodb 索引结构
@@ -29,26 +29,32 @@
 
 ### 二面
 
-- 项目介绍(自己说了Redis, 简直自己坑自己啊)
+- 毕业1年的成长与经历 (自己说了Redis, 简直自己坑自己啊)
 - 开根运算(误差1e-5)
 - 判断二叉搜索树
 - 讲讲堆排序
 - 两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率
 - http
     * get和post区别(是否可以缓存)
-    * 中间人攻击**不会**
-    * http和https，https抓包(Fiddler)**没抓过**
+    * 中间人攻击 **不会**
+    * http和https，https抓包(Fiddler) **没抓过**
 - Redis
+    * 线程模型 **一脸懵逼，以为问的操作系统的线程模型**
     * 数据结构
     * 跳表实现，如何插入节点
-    * mget和pipeline区别 **不会**
+    * [mget和pipeline区别](https://jzwdsb.github.io/2019/02/redis_pipeline_mget/) **不会**
+        * mget和pipeline都是多命令一起执行，只有一次往返的网络IO
+        * 根据网上搜来的资料，一般mget要比pipeline批量执行效率高，具体需要分析对应的源码实现
     * 主从同步的细节
-    * 可以试试`memCache`或者多线程的`Redis`
+        * 全同步
+        * 增量同步
+    * 可以试试`memCached`或者多线程的`Redis`
 
 ## 复盘
 
 - https抓包学习
 - redis深入理解
+    - [缓存无底洞](https://blog.csdn.net/erica_1230/article/details/50569301)
 
 # TODO
 
