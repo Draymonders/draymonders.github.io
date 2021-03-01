@@ -119,7 +119,7 @@
 <li>ctrl + z，会发送<code>SIGTSTP</code>的信号</li>
 </ul>
 </li>
-<li>用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) <strong>没写出来，多练习</strong><ul>
+<li>用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) <strong>写错了，多练习SQL</strong><ul>
 <li>select age, count(*) from t_user group by age order by count(*) desc limit 1;</li>
 </ul>
 </li>
@@ -142,30 +142,42 @@
 </ul>
 <h3 id="_4">二面</h3>
 <ul>
-<li>项目介绍(自己说了Redis, 简直自己坑自己啊)</li>
+<li>毕业1年的成长与经历 (自己说了Redis, 简直自己坑自己啊)</li>
 <li>开根运算(误差1e-5)</li>
 <li>判断二叉搜索树</li>
 <li>讲讲堆排序</li>
 <li>两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率</li>
 <li>http<ul>
 <li>get和post区别(是否可以缓存)</li>
-<li>中间人攻击<strong>不会</strong></li>
-<li>http和https，https抓包(Fiddler)<strong>没抓过</strong></li>
+<li>中间人攻击 <strong>不会</strong></li>
+<li>http和https，https抓包(Fiddler) <strong>没抓过</strong></li>
 </ul>
 </li>
 <li>Redis<ul>
+<li>线程模型 <strong>一脸懵逼，以为问的操作系统的线程模型</strong></li>
 <li>数据结构</li>
 <li>跳表实现，如何插入节点</li>
-<li>mget和pipeline区别 <strong>不会</strong></li>
-<li>主从同步的细节</li>
-<li>可以试试<code>memCache</code>或者多线程的<code>Redis</code></li>
+<li><a href="https://jzwdsb.github.io/2019/02/redis_pipeline_mget/">mget和pipeline区别</a> <strong>不会</strong><ul>
+<li>mget和pipeline都是多命令一起执行，只有一次往返的网络IO</li>
+<li>根据网上搜来的资料，一般mget要比pipeline批量执行效率高，具体需要分析对应的源码实现</li>
+</ul>
+</li>
+<li>主从同步的细节<ul>
+<li>全同步</li>
+<li>增量同步</li>
+</ul>
+</li>
+<li>可以试试<code>memCached</code>或者多线程的<code>Redis</code></li>
 </ul>
 </li>
 </ul>
 <h2 id="_5">复盘</h2>
 <ul>
 <li>https抓包学习</li>
-<li>redis深入理解</li>
+<li>redis深入理解<ul>
+<li><a href="https://blog.csdn.net/erica_1230/article/details/50569301">缓存无底洞</a></li>
+</ul>
+</li>
 </ul>
 <h1 id="todo">TODO</h1>
 <ul>
