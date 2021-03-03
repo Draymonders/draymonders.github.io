@@ -6,7 +6,7 @@
 
 - [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
 - [Leetcode 31. 给定一组数字，任意组合，求比给定组合M大的最小值](https://leetcode-cn.com/problems/next-permutation/)
-- 统计当前目录下（包含子目录）*.java 的文件的代码总行数。(shell)
+- 统计当前目录下（包含子目录） java 的文件的代码总行数。(shell)
     * wc -l \`find . -name "*.java"\` | awk '{ print $1 }' | sum
 - 管道的理解，管道除了存内容还存什么?
     * Linux上的管道就是一个操作方式为文件的内存缓冲区
@@ -37,10 +37,11 @@
     * 1/2 + 1/(2^3) + 1/(2^5) + ... = 2/3(1-(1/4)^n) => 2/3
 - http
     * get和post区别(是否可以缓存)
+    * http和https区别
     * 中间人攻击 **不会**
-    * http和https，https抓包(Fiddler) **没抓过**
+    * https如何抓包(Fiddler or Charles) **没抓过**
 - Redis
-    * 线程模型 **一脸懵逼，以为问的操作系统的线程模型**
+    * 线程模型
     * 数据结构
     * 跳表实现，如何插入节点
     * [mget和pipeline区别](https://jzwdsb.github.io/2019/02/redis_pipeline_mget/) **不会**
