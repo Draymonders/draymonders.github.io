@@ -34,6 +34,7 @@
 - 判断二叉搜索树
 - 讲讲堆排序
 - 两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率
+    * 1/2 + 1/(2^3) + 1/(2^5) + ... = 2/3(1-(1/4)^n) => 2/3
 - http
     * get和post区别(是否可以缓存)
     * 中间人攻击 **不会**
@@ -55,17 +56,24 @@
 整体上比较发散，就是你会啥讲啥（面试官）
 
 - 求两个字符串的最大相同子串
-- 给定表T (id name salary city)
-    * salary > 10000 && avg city salary > 5000
 - 讲一下`ConcurrentHashMap`
     * 为什么比`HashTable`的效率高
     * CAS操作，有什么问题，解决方案
+- 线程池
+    * 处理流程
+    * 为什么先corePoolSize，再入队列，最后maxPoolSize
 - 类加载机制
+    * 为什么需要双亲委派
 - MySQL
+    * 给定表T (id name salary city)
+        * salary > 10000 && avg city salary > 5000
     * 索引的数据结构实现
     * 默认事务隔离级别(InnoDB)，实现方式(MVCC+间隙锁)
 - Redis
     * 数据结构, 使用场景
+- 一致性hash
+    * 看过dubbo的负载均衡算法里面的一致性hash，虚拟节点，另外强调了不能加权
+
 
 ## 复盘
 
