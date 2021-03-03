@@ -7,24 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E5%BF%AB%E6%8E%92/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>快排 - Draymonder Docs</title>
+  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%8E%92%E5%88%97_%E7%BB%84%E5%90%88_%E5%AD%90%E9%9B%86/%E5%AD%90%E9%9B%86/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>子集 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u5feb\u6392";
-    var mkdocs_page_input_path = "algorithm/\u5feb\u6392.md";
-    var mkdocs_page_url = "/algorithm/%E5%BF%AB%E6%8E%92/";
+    var mkdocs_page_name = "\u5b50\u96c6";
+    var mkdocs_page_input_path = "algorithm/\u6392\u5217_\u7ec4\u5408_\u5b50\u96c6/\u5b50\u96c6.md";
+    var mkdocs_page_url = "/algorithm/%E6%8E%92%E5%88%97_%E7%BB%84%E5%90%88_%E5%AD%90%E9%9B%86/%E5%AD%90%E9%9B%86/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -38,9 +38,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -48,11 +48,11 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Index</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../social-interview/">Interview</a>
                     </li>
                 </ul>
       </div>
@@ -64,7 +64,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Draymonder Docs</a>
+        <a href="../../..">Draymonder Docs</a>
       </nav>
 
       
@@ -72,11 +72,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="../../..">Docs</a> &raquo;</li>
     
       
     
-    <li>快排</li>
+    <li>子集</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -87,33 +87,31 @@
           <div role="main">
             <div class="section">
               
-                <pre><code class="language-cpp">class Solution {
+                <p>leetcode 90</p>
+<pre><code class="language-cpp">class Solution {
 public:
 
-    void quickSort(vector&lt;int&gt;&amp; arr, int l, int r) {
-        if (l &gt;= r) return ;
-        int i = l, j = r;
-        int v = arr[l];
-        while (i &lt; j) {
-            while (i &lt; j &amp;&amp; arr[j] &gt;= v) j--;
-            while (i &lt; j &amp;&amp; arr[i] &lt;= v) i++;
-            if (i &lt; j) {
-                swap(arr[i], arr[j]);
-            }
+    vector&lt;vector&lt;int&gt;&gt; res;
+
+    void dfs(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; temp, int st, int ed) {
+        if (st == ed) {
+            res.push_back(temp);
+            return ;
         }
-        swap(arr[l], arr[i]);
-        quickSort(arr, l, i-1);
-        quickSort(arr, i+1, r);
+        temp.push_back(nums[st]);
+        dfs(nums, temp, st+1, ed);
+        temp.pop_back();
+        int i = st + 1;
+        while (i &lt; ed &amp;&amp; nums[i] == nums[i-1]) i++;
+        dfs(nums, temp, i, ed);
     }
 
-    /**
-     * @param arr int整型vector 待排序的数组
-     * @return int整型vector
-     */
-    vector&lt;int&gt; MySort(vector&lt;int&gt;&amp; arr) {
-        int n = arr.size();
-        quickSort(arr, 0, n-1);
-        return arr;
+    vector&lt;vector&lt;int&gt;&gt; subsetsWithDup(vector&lt;int&gt;&amp; nums) {
+        sort(nums.begin(), nums.end());
+        res.clear();
+        vector&lt;int&gt; temp;
+        dfs(nums, temp, 0, nums.size());
+        return res;
     }
 };
 </code></pre>
@@ -149,9 +147,9 @@ public:
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
