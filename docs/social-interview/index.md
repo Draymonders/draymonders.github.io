@@ -50,6 +50,23 @@
         * 增量同步
     * 可以试试`Memcached`或者多线程的`Redis`
 
+### 三面
+
+整体上比较发散，就是你会啥讲啥（面试官）
+
+- 求两个字符串的最大相同子串
+- 给定表T (id name salary city)
+    * salary > 10000 && avg city salary > 5000
+- 讲一下`ConcurrentHashMap`
+    * 为什么比`HashTable`的效率高
+    * CAS操作，有什么问题，解决方案
+- 类加载机制
+- MySQL
+    * 索引的数据结构实现
+    * 默认事务隔离级别(InnoDB)，实现方式(MVCC+间隙锁)
+- Redis
+    * 数据结构, 使用场景
+
 ## 复盘
 
 - https抓包学习
