@@ -6,7 +6,7 @@
 
 - [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
 - [Leetcode 31. 给定一组数字，任意组合，求比给定组合M大的最小值](https://leetcode-cn.com/problems/next-permutation/)
-- 统计当前目录下（包含子目录）*.java 的文件的代码总行数。(shell)
+- 统计当前目录下（包含子目录） java 的文件的代码总行数。(shell)
     * wc -l \`find . -name "*.java"\` | awk '{ print $1 }' | sum
 - 管道的理解，管道除了存内容还存什么?
     * Linux上的管道就是一个操作方式为文件的内存缓冲区
@@ -34,12 +34,14 @@
 - 判断二叉搜索树
 - 讲讲堆排序
 - 两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率
+    * 1/2 + 1/(2^3) + 1/(2^5) + ... = 2/3(1-(1/4)^n) => 2/3
 - http
     * get和post区别(是否可以缓存)
+    * http和https区别
     * 中间人攻击 **不会**
-    * http和https，https抓包(Fiddler) **没抓过**
+    * https如何抓包(Fiddler or Charles) **没抓过**
 - Redis
-    * 线程模型 **一脸懵逼，以为问的操作系统的线程模型**
+    * 线程模型
     * 数据结构
     * 跳表实现，如何插入节点
     * [mget和pipeline区别](https://jzwdsb.github.io/2019/02/redis_pipeline_mget/) **不会**
@@ -49,6 +51,30 @@
         * 全同步
         * 增量同步
     * 可以试试`Memcached`或者多线程的`Redis`
+
+### 三面
+
+整体上比较发散，就是你会啥讲啥（面试官）
+
+- 求两个字符串的最大相同子串
+- 讲一下`ConcurrentHashMap`
+    * 为什么比`HashTable`的效率高
+    * CAS操作，有什么问题，解决方案
+- 线程池
+    * 处理流程
+    * 为什么先corePoolSize，再入队列，最后maxPoolSize
+- 类加载机制
+    * 为什么需要双亲委派
+- MySQL
+    * 给定表T (id name salary city)
+        * salary > 10000 && avg city salary > 5000
+    * 索引的数据结构实现
+    * 默认事务隔离级别(InnoDB)，实现方式(MVCC+间隙锁)
+- Redis
+    * 数据结构, 使用场景
+- 一致性hash
+    * 看过dubbo的负载均衡算法里面的一致性hash，虚拟节点，另外强调了不能加权
+
 
 ## 复盘
 
