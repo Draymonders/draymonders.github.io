@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/java/exception/">
+  <link rel="canonical" href="https://draymonders.github.io/problem-analysis/redis-timeout/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Exception - Draymonder Docs</title>
+  <title>RedisTimeout - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Exception";
-    var mkdocs_page_input_path = "java/exception.md";
-    var mkdocs_page_url = "/java/exception/";
+    var mkdocs_page_name = "RedisTimeout";
+    var mkdocs_page_input_path = "problem-analysis/redis-timeout.md";
+    var mkdocs_page_url = "/problem-analysis/redis-timeout/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -55,6 +55,15 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Analysis</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../network-analysis/">Network-Analysis</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">RedisTimeout</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -75,8 +84,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Analysis &raquo;</li>
+        
+      
     
-    <li>Exception</li>
+    <li>RedisTimeout</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -87,11 +100,43 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">异常</h2>
+                <h1 id="redis-timeout">redis timeout复盘</h1>
+<p>排查过程如下</p>
+<ul>
+<li>每隔15min会抖动一次<ul>
+<li>怀疑是RDB造成的，关闭RDB(仍然存在问题)</li>
+</ul>
+</li>
+<li>redis client (lettuce)<ul>
+<li>建立链接，然后发送命令，顺带有个超时，用的类似<code>scheduleThreadPool</code></li>
+</ul>
+</li>
+<li>redis server <ul>
+<li>config get timeout 返回值0，永不超时</li>
+<li>慢日志分析<ul>
+<li><code>config get slowlog-log-slower-than</code> 获取阈值</li>
+<li>由于slowlog是一个队列(FIFO)，导致出现redisTimeout的时候，那部分的命令已经从队列里面出去了</li>
+<li>做的不好的一点儿，没有尝试把慢日志进行dump</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>blade模拟故障<ul>
+<li>实验验证在<strong>网络延时较长 or 丢包率较高</strong>的情况会出现timeout的情况，<code>cpu 100%</code>场景下不会</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../network-analysis/" class="btn btn-neutral" title="Network-Analysis"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -116,6 +161,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../network-analysis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

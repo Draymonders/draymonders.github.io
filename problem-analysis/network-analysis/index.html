@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/">
+  <link rel="canonical" href="https://draymonders.github.io/problem-analysis/network-analysis/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>正则表达式匹配 - Draymonder Docs</title>
+  <title>Network-Analysis - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u6b63\u5219\u8868\u8fbe\u5f0f\u5339\u914d";
-    var mkdocs_page_input_path = "algorithm/\u6b63\u5219\u8868\u8fbe\u5f0f\u5339\u914d.md";
-    var mkdocs_page_url = "/algorithm/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/";
+    var mkdocs_page_name = "Network-Analysis";
+    var mkdocs_page_input_path = "problem-analysis/network-analysis.md";
+    var mkdocs_page_url = "/problem-analysis/network-analysis/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -56,10 +56,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Analysis</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/network-analysis/">Network-Analysis</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Network-Analysis</a>
+    <ul class="current">
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/redis-timeout/">RedisTimeout</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../redis-timeout/">RedisTimeout</a>
                     </li>
                 </ul>
       </div>
@@ -82,8 +84,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Analysis &raquo;</li>
+        
+      
     
-    <li>正则表达式匹配</li>
+    <li>Network-Analysis</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -94,47 +100,37 @@
           <div role="main">
             <div class="section">
               
-                <p>遇到<code>*</code>号，有三种情况，即不要，要1个，要多个的情况</p>
-<pre><code class="language-cpp">class Solution {
-public:
-    bool isMatch(string s, string p) {
-        s = &quot; &quot; + s;
-        p = &quot; &quot; + p;
-
-        int n = s.size(), m = p.size();
-        // dp[i][j] s[0...i-1]和s[0...j-1]匹配程度
-        vector&lt;vector&lt;bool&gt;&gt; dp(n+5, vector&lt;bool&gt;(m+5, false));
-
-        dp[0][0] = true;
-        for (int i=1; i&lt;=n; i++) {
-            for (int j=1; j&lt;=m; j++) {
-                if (p[j-1] != '*') {
-                    if (p[j-1] == s[i-1] || p[j-1] == '.') {
-                        dp[i][j] = dp[i-1][j-1];
-                    }
-                } else {
-                    // 不要的情况
-                    dp[i][j] = (dp[i][j] || dp[i][j-2]);
-                    if (s[i-1] == p[j-2] || p[j-2] == '.') {
-                        // 要1个 || 要多个
-                        dp[i][j] = (dp[i][j] || dp[i-1][j-1] || dp[i-1][j]);
-                    }
-                }
-            }
-        }
-        // for (int i=1; i&lt;=n; i++) {
-        //     for (int j=1; j&lt;=m; j++) {
-        //         printf(&quot;%d%c&quot;, (int)(dp[i][j]), j==m?'\n':' ');
-        //     }
-        // }
-        return dp[n][m];
-    }
-};
+                <h1 id="ip-ping">IP ping不通</h1>
+<ol>
+<li>ping 127.0.0.1，如果ping不通说明本机设置的TCP/IP协议有问题。ping该地址不经过网卡，仅仅是软件层面。</li>
+<li>ping 本机IP地址，ping本机IP其实是从驱动到网卡。如果此时ping不通，则表示网卡驱动有问题，或者硬件有问题。</li>
+<li>ping 网关，所谓网关，就是连接到另一个网络的“关卡”，一般为离我们最近的路由器；可以使用<code>ipconfig/ifconfig</code>查看；若ping不通，则为主机到路由器之间的网络故障。</li>
+<li>ping 目的IP，若ping不通，应该就是路由器到目的主机的网络存在问题。</li>
+</ol>
+<h1 id="_1">长/短链接</h1>
+<p>http client中有一个参数是<code>maxPerRoute</code>, 作用是，限制每个<code>Route</code>的最大连接数(<code>Route</code>即server的ip+port)。</p>
+<p>因此，当client到server建立<code>Route</code>的连接数超过默认设置(默认是2)，会发生如下报错:</p>
+<pre><code class="language-java">java.net.NoRouteToHostException: Cannot assign requested address (Address not available)
 </code></pre>
+<p>之前的问题是，调大了 perRoute 参数(10000)后,发现只能发送成功10000个请求，然后用<code>netstat -autpn | grep tcp | grep ${host}</code> 发现有大量的TIME_WAIT状态，推断是客户端都是短连接，发送请求后就关闭了(尽管使用了连接池)。</p>
+<p>接着将 KeepAlive参数改为-1, 重新发请求，仍然有大量的TIME_WAIT状态。</p>
+<p>咨询拓哥，说长连接基本是占用固定的那几个端口，并且都是ESTABLISHED状态，使用<code>watch</code>观察，发现开启了KeepAlive后，ESTABLISHED的端口号仍然不固定。</p>
+<p>后拓哥做了实验, 跑KV场景，链接就是会复用的，跑nginx场景，链接没有复用，因此推断 KeepAlive 服务端也要处理，如果不做处理，客户端单开 KeepAlive 是没有效果的。</p>
+<p>长连接保持处理是通过四元组来判断的 (client_ip, client_port, server_ip, server_port)。</p>
+<p>若不用链接池和长连接，在高并发短连接的TCP服务器上，当服务器处理完请求后立刻主动正常关闭连接。这个场景下会出现大量socket处于TIME_WAIT状态。如果客户端的并发量持续很高，此时部分客户端就会显示连接不上。</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../redis-timeout/" class="btn btn-neutral float-right" title="RedisTimeout">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../social-interview/" class="btn btn-neutral" title="Interview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -160,6 +156,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../../social-interview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../redis-timeout/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -55,6 +55,13 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Analysis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/network-analysis/">Network-Analysis</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/redis-timeout/">RedisTimeout</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -118,7 +125,7 @@
 <li>懒加载，等第一次执行<code>putVal</code>才会去<code>initTab</code></li>
 <li>只允许一条记录的键为null，允许多条记录的值为null</li>
 <li>当链表长度&gt;=8且桶大小&gt;=64时转红黑树<ul>
-<li>链表长度8 -&gt; 此时正常的概率为<code>6* 10^-8</code>, 防止hash冲撞太多</li>
+<li>链表长度8 -&gt; 此时正常的概率为<code>6*10^-8</code>, 防止hash冲撞太多</li>
 </ul>
 </li>
 <li>loadFactor为<code>0.75</code><ul>

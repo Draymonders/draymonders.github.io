@@ -55,6 +55,13 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../social-interview/">Interview</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Analysis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../problem-analysis/network-analysis/">Network-Analysis</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../problem-analysis/redis-timeout/">RedisTimeout</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -142,13 +149,12 @@
 </li>
 </ul>
 </li>
-<li>
-<p>分代回收</p>
+<li>分代回收</li>
+<li>CMS和G1的区别</li>
+<li>双亲委派是用组合方式，不是用继承方式<ul>
+<li>可以想到的是，如果是继承方式，那么相当于会执行多态，从而无法达到预期的双亲委派的目的</li>
+</ul>
 </li>
-<li>
-<p>GC垃圾回收，包括分代，GC算法，收集器、类加载和双亲委派、JVM调优，内存泄漏和内存溢出</p>
-</li>
-<li>从内存划分说到了GC算法、分代思想，CMS和G1 collector，到类加载模型，tomcat的非双亲委派、线程上下文加载器，到JVM调优的策略，gc参数设置策略，如何找死锁，读快照，发现内存泄漏等等吧</li>
 </ul>
               
             </div>

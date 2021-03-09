@@ -7,24 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/linux/">
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Linux - Draymonder Docs</title>
+  <link rel="canonical" href="https://draymonders.github.io/java/java/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>问题汇总 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Linux";
-    var mkdocs_page_input_path = "linux.md";
-    var mkdocs_page_url = "/linux/";
+    var mkdocs_page_name = "\u95ee\u9898\u6c47\u603b";
+    var mkdocs_page_input_path = "java/java.md";
+    var mkdocs_page_url = "/java/java/";
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -38,9 +38,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> Draymonder Docs</a>
+        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -48,11 +48,18 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Index</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../social-interview/">Interview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../social-interview/">Interview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Analysis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/network-analysis/">Network-Analysis</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/redis-timeout/">RedisTimeout</a>
                     </li>
                 </ul>
       </div>
@@ -64,7 +71,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">Draymonder Docs</a>
+        <a href="../..">Draymonder Docs</a>
       </nav>
 
       
@@ -72,11 +79,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
       
     
-    <li>Linux</li>
+    <li>问题汇总</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -87,22 +94,21 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">文件及目录管理</h2>
+                <h1 id="_1">问题汇总</h1>
 <ul>
-<li>目录/文件 的创建、删除、查询、管理: mkdir rm cp mv ln(ln -s软连接，ln硬连接)</li>
-<li>文件的查询和检索: find locate</li>
-<li>查看文件内容：cat vi tail more</li>
-<li>将标准输出和标准错误重定向到同一文件：2&gt;&amp;1</li>
-<li>找一个目录下的所有的java文件 <code>find . -maxdepth 2 -name "*.java"</code></li>
-<li>将docker log append文件中 <code>docker logs ${containerId} | less | tee -a service.log</code></li>
+<li>接口跟抽象类的区别<ul>
+<li>接口定义行为</li>
+<li>抽象类为了复用, 相同的东西抽象类实现，不同的东西子类实现</li>
 </ul>
-<h2 id="_2">文本处理</h2>
-<ul>
-<li>查询socket状态 <code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
+</li>
+<li>BIO，<a href="https://tech.meituan.com/2016/11/04/nio.html">NIO</a></li>
+<li>双亲委派模型</li>
+<li>java中mysql数据库机器CPU使用过高怎么定位</li>
+<li>线程池<ul>
+<li>corePoolSize, maxPoolSize, keepAliveTime, keepAliveUnit, runnableQueue, ThreadFactory, RejectHandler</li>
+<li>未达到corePoolSize先创建线程，然后塞到runnableQueue里，队列满了，继续创建线程到maxPoolSize，达到后执行rejectHandler</li>
 </ul>
-<h2 id="_3">截屏</h2>
-<ul>
-<li>截图 <code>ctrl shift PrtSc</code></li>
+</li>
 </ul>
               
             </div>
@@ -136,9 +142,9 @@
       
     </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
