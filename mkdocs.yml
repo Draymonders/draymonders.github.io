@@ -6,10 +6,11 @@ copyright: Copyright © 2021 Draymonder
 
 
 nav:
-    - Index: index.md
-    - Interview: social-interview/index.md
-    - Analysis: 
-      - Network-Analysis: problem-analysis/network-analysis.md
+    - 主页: index.md
+    - 面试: 
+      - 社招面试: social-interview/index.md
+    - 问题排查: 
+      - 网络故障分析: problem-analysis/network-analysis.md
       - RedisTimeout: problem-analysis/redis-timeout.md
     # - OS:
     #   - os: os/os.md
