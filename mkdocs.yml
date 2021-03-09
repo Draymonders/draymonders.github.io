@@ -12,6 +12,7 @@ nav:
     - 问题排查: 
       - 网络故障分析: problem-analysis/network-analysis.md
       - RedisTimeout: problem-analysis/redis-timeout.md
+      - 多线程循环打印: problem-analysis/multiPrint.md
     # - OS:
     #   - os: os/os.md
     # - Java: 
