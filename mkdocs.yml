@@ -8,6 +8,9 @@ copyright: Copyright © 2021 Draymonder
 nav:
     - Index: index.md
     - Interview: social-interview/index.md
+    - Analysis: 
+      - Network-Analysis: problem-analysis/network-analysis.md
+      - RedisTimeout: problem-analysis/redis-timeout.md
     # - OS:
     #   - os: os/os.md
     # - Java: 
