@@ -241,6 +241,16 @@
 <li>项目兜底机制（说了项目的降级策略）</li>
 </ul>
 </li>
+<li>RPC<ul>
+<li>如果让你设计RPC, 你会考虑哪些问题(我说了如下)<ul>
+<li>rpc本质 <code>remote process call</code></li>
+<li>长/短链接问题 (短连接需要建立连接池，长连接用完需要释放)</li>
+<li>负载均衡问题(面试官还问，生产者可能一直在变，怎么维护，我说了注册中心，也顺带扯了一下<code>service mesh</code>，做类似网关的功能)</li>
+<li>数据压缩(RPC很重要的一点儿是为了降低带宽使用，压缩会占CPU，所以需要做trade off)</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>golang<ul>
 <li>协程死锁的情况...</li>
 <li>内存泄露的情况...</li>
