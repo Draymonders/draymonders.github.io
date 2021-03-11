@@ -11,9 +11,9 @@
 
 - 查询socket状态 
     * `sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'`
-- 取linux文件第4行，有用/t分割的若干个ip地址。统计出来出现次数最多的前四个。
-    * `cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c  | head -5`
-    * `sed -n 4p test "s#\t#\n#g" | sort -n | uniq -c | head -5`
+- 取linux文件第4行，有用\t分割的若干个ip地址。统计出来出现次数最多的前四个。
+    * `cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c | sort -r -k1 | head -4`
+    * `sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4`
 
 ## 截屏
 
