@@ -65,6 +65,28 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../problem-analysis/multiPrint/">多线程循环打印</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/redis/">redis概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">源码分析</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/sds/">简单动态字符串</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/zskiplist/">跳表</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/hashtable/">哈希表</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Linux</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -84,6 +106,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../..">Docs</a> &raquo;</li>
     
+      
+        
+          <li>Linux &raquo;</li>
+        
       
     
     <li>Linux</li>
@@ -108,7 +134,15 @@
 </ul>
 <h2 id="_2">文本处理</h2>
 <ul>
-<li>查询socket状态 <code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
+<li>查询socket状态 <ul>
+<li><code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
+</ul>
+</li>
+<li>取linux文件第4行，有用\t分割的若干个ip地址。统计出来出现次数最多的前四个。<ul>
+<li><code>cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c | sort -r -k1 | head -4</code></li>
+<li><code>sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="_3">截屏</h2>
 <ul>
@@ -118,6 +152,13 @@
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../redis/code-read/hashtable/" class="btn btn-neutral" title="哈希表"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -142,6 +183,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../../redis/code-read/hashtable/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

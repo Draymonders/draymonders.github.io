@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/LCA/">
+  <link rel="canonical" href="https://draymonders.github.io/redis/code-read/sds/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>LCA - Draymonder Docs</title>
+  <title>简单动态字符串 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "LCA";
-    var mkdocs_page_input_path = "algorithm/\u6700\u8fd1\u516c\u5171\u7956\u5148/LCA.md";
-    var mkdocs_page_url = "/algorithm/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/LCA/";
+    var mkdocs_page_name = "\u7b80\u5355\u52a8\u6001\u5b57\u7b26\u4e32";
+    var mkdocs_page_input_path = "redis/code-read/sds.md";
+    var mkdocs_page_url = "/redis/code-read/sds/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -66,16 +66,22 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../redis/redis/">redis概念</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/">redis概念</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">源码分析</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/sds/">简单动态字符串</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">源码分析</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">简单动态字符串</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#_1">数据结构</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">扩容操作</a>
+    </li>
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/zskiplist/">跳表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../zskiplist/">跳表</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/hashtable/">哈希表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../hashtable/">哈希表</a>
                 </li>
     </ul>
                     </li>
@@ -105,8 +111,16 @@
     <li><a href="../../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>源码分析 &raquo;</li>
+        
+      
+        
+          <li>Redis &raquo;</li>
+        
+      
     
-    <li>LCA</li>
+    <li>简单动态字符串</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,42 +131,40 @@
           <div role="main">
             <div class="section">
               
-                <p>普通二叉树</p>
-<pre><code class="language-cpp">class Solution {
-public:
-
-    TreeNode* ans;
-
-    /*
-        dfs(root, p, q) 返回是否包含 p或q
-        (l &amp;&amp; r) 表示分别在两个子树中，此时LCA -&gt; root
-        (root == p || root == q) &amp;&amp; (l || r) 
-            上式说明当前节点是其中一个，且子树里有一个
-    */
-    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (!root)
-            return false;
-        bool l = dfs(root-&gt;left, p, q);
-        bool r = dfs(root-&gt;right, p, q);
-        // printf(&quot;%d %d %d\n&quot;, root-&gt;val, (int)(l), (int)(r));
-        if ((l &amp;&amp; r) || ((l || r) &amp;&amp; (root == p || root == q))) {
-            ans = root;
-            return true;
-        }
-        return (root == p || root == q) || l || r;
-    }
-
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        ans = NULL;
-        dfs(root, p, q);
-        return ans;
-    }
+                <h1 id="sds">sds</h1>
+<p>简单动态字符串</p>
+<h2 id="_1">数据结构</h2>
+<pre><code class="language-cpp">struct __attribute__ ((__packed__)) sdshdr8 {
+    uint8_t len; /* used */
+    uint8_t alloc; /* excluding the header and null terminator */
+    unsigned char flags; /* 3 lsb of type, 5 unused bits */
+    char buf[];
 };
+</code></pre>
+<ul>
+<li><code>__attribute__ ((__packed__))</code>这个是为了字节对齐，不按照默认的元素的最小公倍数对齐，而是按照<code>1</code>字节进行对齐</li>
+<li>sds对外暴露的是<code>buf</code>指针，flags的低三位可以获取当前<code>sds</code>的结构体类型，从而确定结构体的整体大小(hdr8, hdr16, hdr32...)</li>
+</ul>
+<h2 id="_2">扩容操作</h2>
+<p>扩容操作</p>
+<pre><code class="language-cpp">if (newlen &lt; SDS_MAX_PREALLOC)
+    newlen *= 2;
+else
+    newlen += SDS_MAX_PREALLOC;
 </code></pre>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../zskiplist/" class="btn btn-neutral float-right" title="跳表">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../redis/" class="btn btn-neutral" title="redis概念"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -178,6 +190,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../../redis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../zskiplist/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

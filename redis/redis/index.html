@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/java/java/">
+  <link rel="canonical" href="https://draymonders.github.io/redis/redis/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>问题汇总 - Draymonder Docs</title>
+  <title>redis概念 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u95ee\u9898\u6c47\u603b";
-    var mkdocs_page_input_path = "java/java.md";
-    var mkdocs_page_url = "/java/java/";
+    var mkdocs_page_name = "redis\u6982\u5ff5";
+    var mkdocs_page_input_path = "redis/redis.md";
+    var mkdocs_page_url = "/redis/redis/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -66,16 +66,26 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../redis/redis/">redis概念</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">redis概念</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">分布式锁</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">限流</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">事务</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mgetpipeline">mget和pipeline的区别</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">源码分析</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/sds/">简单动态字符串</a>
+                <li class="toctree-l2"><a class="reference internal" href="../code-read/sds/">简单动态字符串</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/zskiplist/">跳表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../code-read/zskiplist/">跳表</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../redis/code-read/hashtable/">哈希表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../code-read/hashtable/">哈希表</a>
                 </li>
     </ul>
                     </li>
@@ -105,8 +115,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Redis &raquo;</li>
+        
+      
     
-    <li>问题汇总</li>
+    <li>redis概念</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,26 +131,60 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">问题汇总</h1>
+                <h1 id="redis">Redis</h1>
+<h2 id="_1">分布式锁</h2>
+<p><code>ex</code>表示<code>expire</code>，<code>nx</code>表示<code>if not exist</code></p>
+<pre><code class="language-shell">set redis-key clientId ex 5 nx
+</code></pre>
+<h2 id="_2">限流</h2>
+<p>使用zset+滑动窗口</p>
+<p>比如每1分钟限制访问1000次,那么<code>period=60</code>, <code>max_count=1000</code></p>
+<ol>
+<li><code>zadd rate_limit_key now_ts now_ts</code>(now_ts为当前的时间戳)</li>
+<li><code>zremrangebyscore rate_limit_key, 0, now_ts - period * 1000</code> (移除时间窗口之前的行为记录,剩下的都是时间窗口内的)</li>
+<li><code>zcard rate_limit_key</code> 获取窗口内的行为数量</li>
+<li><code>expire rate_limit_key period + 1</code></li>
+</ol>
+<p>判断步骤3中的获取的数量是否小于<code>max_count</code></p>
+<h2 id="_3">事务</h2>
+<p>执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)</p>
+<pre><code class="language-shell"># redis-cli
+127.0.0.1:6379&gt; multi
+OK
+127.0.0.1:6379&gt; set a aa
+QUEUED
+127.0.0.1:6379&gt; incr a
+QUEUED
+127.0.0.1:6379&gt; set b bb
+QUEUED
+127.0.0.1:6379&gt; exec
+1) OK
+2) (error) ERR value is not an integer or out of range
+3) OK
+127.0.0.1:6379&gt; get a
+&quot;aa&quot;
+127.0.0.1:6379&gt; get b
+&quot;bb&quot;
+</code></pre>
+<h2 id="mgetpipeline">mget和pipeline的区别</h2>
 <ul>
-<li>接口跟抽象类的区别<ul>
-<li>接口定义行为</li>
-<li>抽象类为了复用, 相同的东西抽象类实现，不同的东西子类实现</li>
-</ul>
-</li>
-<li>BIO，<a href="https://tech.meituan.com/2016/11/04/nio.html">NIO</a></li>
-<li>双亲委派模型</li>
-<li>java中mysql数据库机器CPU使用过高怎么定位</li>
-<li>线程池<ul>
-<li>corePoolSize, maxPoolSize, keepAliveTime, keepAliveUnit, runnableQueue, ThreadFactory, RejectHandler</li>
-<li>未达到corePoolSize先创建线程，然后塞到runnableQueue里，队列满了，继续创建线程到maxPoolSize，达到后执行rejectHandler</li>
-</ul>
-</li>
+<li>mget是官方支持的， pipeline是客户端自己实现的</li>
+<li>mget和pipeline在客户端和服务端交互是一样的，都是多个命令一次网络IO</li>
+<li>mget可以分布式并行去做， 而pipeline只能是一个命令一个命令去做</li>
 </ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../code-read/sds/" class="btn btn-neutral float-right" title="简单动态字符串">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../problem-analysis/multiPrint/" class="btn btn-neutral" title="多线程循环打印"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -162,6 +210,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../../problem-analysis/multiPrint/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../code-read/sds/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

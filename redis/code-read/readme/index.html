@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/LCA/">
+  <link rel="canonical" href="https://draymonders.github.io/redis/code-read/readme/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>LCA - Draymonder Docs</title>
+  <title>整体需要看的部分 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "LCA";
-    var mkdocs_page_input_path = "algorithm/\u6700\u8fd1\u516c\u5171\u7956\u5148/LCA.md";
-    var mkdocs_page_url = "/algorithm/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/LCA/";
+    var mkdocs_page_name = "\u6574\u4f53\u9700\u8981\u770b\u7684\u90e8\u5206";
+    var mkdocs_page_input_path = "redis/code-read/readme.md";
+    var mkdocs_page_url = "/redis/code-read/readme/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -67,15 +67,15 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../redis/redis/">redis概念</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/">redis概念</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">源码分析</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/sds/">简单动态字符串</a>
+                <li class="toctree-l2"><a class="reference internal" href="../sds/">简单动态字符串</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/zskiplist/">跳表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../zskiplist/">跳表</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../redis/code-read/hashtable/">哈希表</a>
+                <li class="toctree-l2"><a class="reference internal" href="../hashtable/">哈希表</a>
                 </li>
     </ul>
                     </li>
@@ -106,7 +106,7 @@
     
       
     
-    <li>LCA</li>
+    <li>整体需要看的部分</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,38 +117,16 @@
           <div role="main">
             <div class="section">
               
-                <p>普通二叉树</p>
-<pre><code class="language-cpp">class Solution {
-public:
-
-    TreeNode* ans;
-
-    /*
-        dfs(root, p, q) 返回是否包含 p或q
-        (l &amp;&amp; r) 表示分别在两个子树中，此时LCA -&gt; root
-        (root == p || root == q) &amp;&amp; (l || r) 
-            上式说明当前节点是其中一个，且子树里有一个
-    */
-    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (!root)
-            return false;
-        bool l = dfs(root-&gt;left, p, q);
-        bool r = dfs(root-&gt;right, p, q);
-        // printf(&quot;%d %d %d\n&quot;, root-&gt;val, (int)(l), (int)(r));
-        if ((l &amp;&amp; r) || ((l || r) &amp;&amp; (root == p || root == q))) {
-            ans = root;
-            return true;
-        }
-        return (root == p || root == q) || l || r;
-    }
-
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        ans = NULL;
-        dfs(root, p, q);
-        return ans;
-    }
-};
-</code></pre>
+                <h1 id="_1">整体需要看的部分</h1>
+<ul>
+<li>sds 简单动态字符串 (done)</li>
+<li>zskiplist 跳表   (done)</li>
+<li>dict 哈希表  (done)</li>
+<li>命令处理声明周期 (5.0, 6.0对比)</li>
+<li>持久化 RDB, AOF</li>
+<li>主从复制</li>
+<li>集群</li>
+</ul>
               
             </div>
           </div>
