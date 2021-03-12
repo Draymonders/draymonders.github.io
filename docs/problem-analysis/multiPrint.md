@@ -186,7 +186,7 @@ golang各自实现channel和锁的打印
 func main() {
     workerNum := 3
     maxCount := 100
-    chTicket := make(chan);
+    chTicket := make(chan int);
     go func() {
         chTicket <- 0
     }()
@@ -195,7 +195,8 @@ func main() {
     for i:=0; i<n; i++ {
         j := i
         go func() {
-            k <- chTicket
+          for {
+            k := <- chTicket
             if (k > maxCount) {
                 return ;
             }
@@ -205,6 +206,7 @@ func main() {
             } else {
                 chTicket <- k
             }
+          }  
         }()
     }
 }
