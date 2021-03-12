@@ -309,7 +309,7 @@ class PrintNumberThread implements Runnable {
 <pre><code class="language-go">func main() {
     workerNum := 3
     maxCount := 100
-    chTicket := make(chan);
+    chTicket := make(chan int);
     go func() {
         chTicket &lt;- 0
     }()
@@ -318,7 +318,8 @@ class PrintNumberThread implements Runnable {
     for i:=0; i&lt;n; i++ {
         j := i
         go func() {
-            k &lt;- chTicket
+          for {
+            k := &lt;- chTicket
             if (k &gt; maxCount) {
                 return ;
             }
@@ -328,6 +329,7 @@ class PrintNumberThread implements Runnable {
             } else {
                 chTicket &lt;- k
             }
+          }  
         }()
     }
 }

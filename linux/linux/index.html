@@ -84,6 +84,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">文本处理</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -125,14 +127,32 @@
               
                 <h2 id="_1">文件及目录管理</h2>
 <ul>
-<li>目录/文件 的创建、删除、查询、管理: mkdir rm cp mv ln(ln -s软连接，ln硬连接)</li>
-<li>文件的查询和检索: find locate</li>
-<li>查看文件内容：cat vi tail more</li>
-<li>将标准输出和标准错误重定向到同一文件：2&gt;&amp;1</li>
-<li>找一个目录下的所有的java文件 <code>find . -maxdepth 2 -name "*.java"</code></li>
-<li>将docker log append文件中 <code>docker logs ${containerId} | less | tee -a service.log</code></li>
+<li>目录/文件 的创建、删除、查询<ul>
+<li>mkdir, rm, cp, mv, <code>ln -s</code>软连接, ln硬连接</li>
 </ul>
-<h2 id="_2">文本处理</h2>
+</li>
+<li>文件的查询和检索<ul>
+<li>find, locate</li>
+</ul>
+</li>
+<li>查看文件内容<ul>
+<li>cat, vi, tail, more</li>
+</ul>
+</li>
+<li>将标准输出和标准错误重定向到同一文件<ul>
+<li>2&gt;&amp;1</li>
+</ul>
+</li>
+<li>找一个目录下的所有的java文件 <ul>
+<li><code>find . -maxdepth 2 -name "*.java"</code></li>
+</ul>
+</li>
+<li>将docker log 追加到文件中 <ul>
+<li><code>docker logs ${containerId} | less | tee -a service.log</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_2">文本处理</h3>
 <ul>
 <li>查询socket状态 <ul>
 <li><code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
@@ -140,13 +160,16 @@
 </li>
 <li>取linux文件第4行，有用\t分割的若干个ip地址。统计出来出现次数最多的前四个。<ul>
 <li><code>cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c | sort -r -k1 | head -4</code></li>
-<li><code>sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4</code></li>
+<li><code>sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4</code> (推荐)</li>
 </ul>
 </li>
 </ul>
 <h2 id="_3">截屏</h2>
 <ul>
-<li>截图 <code>ctrl shift PrtSc</code></li>
+<li>Linux截图快捷键<ul>
+<li><code>ctrl shift PrtSc</code></li>
+</ul>
+</li>
 </ul>
               
             </div>

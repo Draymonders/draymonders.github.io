@@ -131,15 +131,16 @@
 <li>ping 目的IP，若ping不通，应该就是路由器到目的主机的网络存在问题。</li>
 </ol>
 <h1 id="_1">长/短链接</h1>
-<p>http client中有一个参数是<code>maxPerRoute</code>, 作用是，限制每个<code>Route</code>的最大连接数(<code>Route</code>即server的ip+port)。</p>
+<p>http client中有一个参数是<code>maxPerRoute</code>，作用是：限制每个<code>Route</code>(即server的ip+port)的最大连接数。</p>
 <p>因此，当client到server建立<code>Route</code>的连接数超过默认设置(默认是2)，会发生如下报错:</p>
 <pre><code class="language-java">java.net.NoRouteToHostException: Cannot assign requested address (Address not available)
 </code></pre>
-<p>之前的问题是，调大了 perRoute 参数(10000)后,发现只能发送成功10000个请求，然后用<code>netstat -autpn | grep tcp | grep ${host}</code> 发现有大量的TIME_WAIT状态，推断是客户端都是短连接，发送请求后就关闭了(尽管使用了连接池)。</p>
-<p>接着将 KeepAlive参数改为-1, 重新发请求，仍然有大量的TIME_WAIT状态。</p>
+<p>之前的问题是，调大了 perRoute 参数(10000)后，发现只能发送成功10000个请求</p>
+<p>用<code>netstat -autpn | grep tcp | grep ${host}</code> 发现有大量的<code>TIME_WAIT</code>状态，推断是客户端都是短连接，发送请求后就关闭了(尽管使用了连接池)。</p>
+<p>接着将 KeepAlive参数改为-1， 重新发请求，仍然有大量的<code>TIME_WAIT</code>状态。</p>
 <p>咨询拓哥，说长连接基本是占用固定的那几个端口，并且都是ESTABLISHED状态，使用<code>watch</code>观察，发现开启了KeepAlive后，ESTABLISHED的端口号仍然不固定。</p>
-<p>后拓哥做了实验, 跑KV场景，链接就是会复用的，跑nginx场景，链接没有复用，因此推断 KeepAlive 服务端也要处理，如果不做处理，客户端单开 KeepAlive 是没有效果的。</p>
-<p>长连接保持处理是通过四元组来判断的 (client_ip, client_port, server_ip, server_port)。</p>
+<p>后拓哥做了实验， 跑KV场景，链接就是会复用的，跑nginx场景，链接没有复用，因此推断 KeepAlive 服务端也要处理，如果不做处理，客户端单开 KeepAlive 是没有效果的。</p>
+<p>长连接保持处理是通过四元组来判断的 (client_ip，client_port，server_ip，server_port)。</p>
 <p>若不用链接池和长连接，在高并发短连接的TCP服务器上，当服务器处理完请求后立刻主动正常关闭连接。这个场景下会出现大量socket处于TIME_WAIT状态。如果客户端的并发量持续很高，此时部分客户端就会显示连接不上。</p>
               
             </div>
