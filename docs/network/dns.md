@@ -1,6 +1,6 @@
 # 文章
 
-- [Linux Dns网络解析](https://cloud.tencent.com/developer/article/1083206)
+- [Linux DNS网络解析](https://cloud.tencent.com/developer/article/1083206)
 - [nslookup命令](https://cloud.tencent.com/developer/article/1083201)
 - [dig命令](https://cloud.tencent.com/developer/article/1083192)
 

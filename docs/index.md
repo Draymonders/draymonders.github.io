@@ -2,7 +2,7 @@
 
 ## Why Create this
 
-record growth, be better.
+Record growth and for better.
 
 ## Commands
 

@@ -4,50 +4,36 @@ site_description: '文档记录'
 site_url: 'https://draymonders.github.io/'
 copyright: Copyright © 2021 Draymonder
 
-
 nav:
     - 主页: index.md
+    - 操作系统:
+      - Linux: os/linux.md
+    - 数据库:
+      - MySQL: database/db.md
+    - 网络:
+      - DNS: network/dns.md
+      - TCP: network/tcp.md
+      - HTTP: network/http.md
+    - Redis: 
+      - Redis概念: middleware/redis/redis.md
+      - 简单动态字符串: middleware/redis/code-read/sds.md
+      - 跳表: middleware/redis/code-read/zskiplist.md
+      - 哈希表: middleware/redis/code-read/hashtable.md
+      - 命令处理生命周期: middleware/redis/code-read/server-process.md
     - 面试: 
       - 社招面试: social-interview/index.md
-    - 问题排查: 
-      - 网络故障分析: problem-analysis/network-analysis.md
-      - RedisTimeout: problem-analysis/redis-timeout.md
-      - 多线程循环打印: problem-analysis/multiPrint.md
-    - Redis: 
-      - redis概念: redis/redis.md
-      - 源码分析:
-        - 简单动态字符串: redis/code-read/sds.md
-        - 跳表: redis/code-read/zskiplist.md
-        - 哈希表: redis/code-read/hashtable.md
-    - Linux:
-      - Linux: linux/linux.md
-    # - OS:
-    #   - os: os/os.md
-    # - Java: 
-    #   - Collection: java/collection.md
-    # - MultiThread:
-    #   - MultiThread: java/multi-thread/multi-thread.md
-    # - Lock:
-    #   - Lock: java/multi-thread/lock.md
-    #   - Synchronized: java/multi-thread/synchronized.md
-    #   - ReentrantLock: java/multi-thread/reentrantlock.md
-    #   - Exception: java/exception.md
-    #   - MultiThread: java/multi-thread.md
-    # - Middlewares:
-    #   - Kafka: middleware/kafka.md
-    #   - Mysql: middleware/mysql.md
-    #   - Mongo: middleware/mongo.md
-    # - Network:
-    #   - Network: network/network.md
-    # - Linux: linux.md
-    # - Algorithm: 
-    #   - Algorithm: algorithm/algorithm.md
+    - 解决方案: 
+      - 网络故障分析: solution/network-analysis.md
+      - RedisTimeout: solution/redis-timeout.md
+      - 多线程循环打印: solution/multiPrint.md
     
 plugins:
     - search
 
 markdown_extentions:
     - admonition
+    - toc:
+        permalink: true
 
 theme: 
   name: readthedocs
