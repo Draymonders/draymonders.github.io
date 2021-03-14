@@ -17,11 +17,13 @@ dig -x 10.60.24.37
 配置`k8s` pod 看到了`/etc/resolv.conf`
 
 内容如下
+
 ```
 nameserver 10.96.0.10
 search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
+
 关键词解释
 ```
 nameserver    //定义DNS服务器的IP地址

@@ -21,7 +21,8 @@ nav:
       - 哈希表: middleware/redis/code-read/hashtable.md
       - 命令处理生命周期: middleware/redis/code-read/server-process.md
     - 面试: 
-      - 社招面试: social-interview/index.md
+      - 面试题: interview/interview.md
+      - 社招面试: interview/social-interview.md
     - 解决方案: 
       - 网络故障分析: solution/network-analysis.md
       - RedisTimeout: solution/redis-timeout.md
