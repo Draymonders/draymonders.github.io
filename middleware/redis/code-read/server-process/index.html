@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/code-read/server-process/">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>命令处理生命周期 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u547d\u4ee4\u5904\u7406\u751f\u547d\u5468\u671f";
+    var mkdocs_page_input_path = "middleware/redis/code-read/server-process.md";
+    var mkdocs_page_url = "/middleware/redis/code-read/server-process/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">操作系统</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../os/linux/">Linux</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../database/db/">MySQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">网络</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/tcp/">TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/http/">HTTP</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/">Redis概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sds/">简单动态字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../zskiplist/">跳表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../hashtable/">哈希表</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">命令处理生命周期</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">数据结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">对象</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">客户端</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">数据库</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">服务端</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">命令</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">事件</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_9">文件事件</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_10">时间事件</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aeeventloop">事件循环 aeEventLoop</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#epoll">epoll</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">事件分发</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">文件事件处理</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">时间事件处理</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#server">server启动流程</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">命令处理流程</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_15">多线程可优化的点</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_16">小结</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">面试</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/interview/">面试题</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/social-interview/">社招面试</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">解决方案</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/network-analysis/">网络故障分析</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/redis-timeout/">RedisTimeout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/multiPrint/">多线程循环打印</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Redis &raquo;</li>
+        
+      
+    
+    <li>命令处理生命周期</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">命令处理生命周期</h1>
+<h2 id="_2">数据结构</h2>
+<p>以下结构均经过精简（不然参数过多）</p>
+<h3 id="_3">对象</h3>
+<pre><code class="language-cpp">#define LRU_BITS 24
+
+typedef struct redisObject {
+    unsigned type:4;
+    unsigned encoding:4;
+    unsigned lru:LRU_BITS; /* LRU time (relative to global lru_clock) or
+                            * LFU data (least significant 8 bits frequency
+                            * and most significant 16 bits access time). */
+    int refcount;  // 引用计数，refcount=0,执行析构
+    void *ptr;     // 指向具体的数据结构
+} robj;
+</code></pre>
+<h3 id="_4">客户端</h3>
+<pre><code class="language-cpp">/* With multiplexing we need to take per-client state.
+ * Clients are taken in a linked list. */
+typedef struct client {
+    uint64_t id;            /* Client incremental unique ID. */
+    int fd;                 /* Client socket. */
+    redisDb *db;            /* Pointer to currently SELECTed DB. */
+    robj *name;             /* As set by CLIENT SETNAME. */
+    sds querybuf;           /* Buffer we use to accumulate client queries. */
+
+    int argc;               /* Num of arguments of current command. */
+    robj **argv;            /* Arguments of current command. */
+
+    list *reply;            /* List of reply objects to send to the client. */
+    unsigned long long reply_bytes; /* Tot bytes of objects in reply list. */
+    size_t sentlen;         /* Amount of bytes already sent in the current
+                               buffer or object being sent. */
+    /* Response buffer */
+    int bufpos;
+    char buf[PROTO_REPLY_CHUNK_BYTES];
+} client;
+</code></pre>
+<h3 id="_5">数据库</h3>
+<p>默认有16个</p>
+<pre><code class="language-cpp">/* Redis database representation. There are multiple databases identified
+ * by integers from 0 (the default database) up to the max configured
+ * database. The database number is the 'id' field in the structure. */
+typedef struct redisDb {
+    int id;                     /* Database ID */
+    long long avg_ttl;          /* Average TTL, just for stats */
+
+    dict *dict;                 /* The keyspace for this DB */
+    dict *expires;              /* Timeout of keys with a timeout set */
+    dict *blocking_keys;        /* Keys with clients waiting for data (BLPOP)*/
+    dict *ready_keys;           /* Blocked keys that received a PUSH */
+    dict *watched_keys;         /* WATCHED keys for MULTI/EXEC CAS */
+    list *defrag_later;         /* List of key names to attempt to defrag one by one, gradually. */
+} redisDb;
+</code></pre>
+<h3 id="_6">服务端</h3>
+<pre><code class="language-cpp">struct redisServer {
+    /* General */
+    pid_t pid;                  /* Main process pid. */
+    char *configfile;           /* Absolute config file path, or NULL */
+    int hz;                     /* serverCron() calls frequency in hertz */
+
+    redisDb *db;
+    dict *commands;             /* Command table */
+
+    aeEventLoop *el;            /* 事件循环 */
+
+    /* Networking */
+    int port;                   /* TCP listening port */
+    char *bindaddr[CONFIG_BINDADDR_MAX]; /* Addresses we should bind to */
+    int bindaddr_count;         /* Number of addresses in server.bindaddr[] */
+    int ipfd[CONFIG_BINDADDR_MAX]; /* TCP socket file descriptors */
+    int ipfd_count;             /* Used slots in ipfd[] */
+    list *clients;              /* List of active clients */
+    int maxidletime;                /* Client timeout in seconds */
+    int tcpkeepalive;               /* Set SO_KEEPALIVE if non-zero. */
+};
+</code></pre>
+<h3 id="_7">命令</h3>
+<pre><code class="language-cpp">struct redisCommand {
+    char *name;
+    redisCommandProc *proc;
+    int arity;
+    char *sflags; /* Flags as string representation, one char per flag. */
+    int flags;    /* The actual flags, obtained from the 'sflags' field. */
+    /* Use a function to determine keys arguments in a command line.
+     * Used for Redis Cluster redirect. */
+    redisGetKeysProc *getkeys_proc;
+    /* What keys should be loaded in background when calling this command? */
+    int firstkey; /* The first argument that's a key (0 = no keys) */
+    int lastkey;  /* The last argument that's a key */
+    int keystep;  /* The step between first and last key */
+    long long microseconds, calls;
+};
+</code></pre>
+<h3 id="_8">事件</h3>
+<h4 id="_9">文件事件</h4>
+<p>包含了读回调函数和写回调函数</p>
+<pre><code class="language-cpp">/* File event structure */
+typedef struct aeFileEvent {
+    int mask; /* one of AE_(READABLE|WRITABLE|BARRIER) */
+    aeFileProc *rfileProc;
+    aeFileProc *wfileProc;
+    void *clientData;
+} aeFileEvent;
+</code></pre>
+<h4 id="_10">时间事件</h4>
+<pre><code class="language-cpp">/* Time event structure */
+typedef struct aeTimeEvent {
+    long long id; /* time event identifier. */
+    long when_sec; /* seconds */
+    long when_ms; /* milliseconds */
+    aeTimeProc *timeProc;
+    aeEventFinalizerProc *finalizerProc;
+    void *clientData;
+    struct aeTimeEvent *prev;
+    struct aeTimeEvent *next;
+} aeTimeEvent;
+</code></pre>
+<h3 id="aeeventloop">事件循环 aeEventLoop</h3>
+<p><code>events</code>记录文件事件(socket), <code>timeEventHead</code>记录时间时间(按照链表方式存)</p>
+<pre><code class="language-cpp">/* State of an event based program */
+typedef struct aeEventLoop {
+    int maxfd;   /* highest file descriptor currently registered */
+    int setsize; /* max number of file descriptors tracked */
+    long long timeEventNextId;
+    time_t lastTime;     /* Used to detect system clock skew */
+    aeFileEvent *events; /* Registered events */
+    aeFiredEvent *fired; /* Fired events, 即将要触发的事件 */
+    aeTimeEvent *timeEventHead;
+    int stop;
+    void *apidata; /* This is used for polling API specific data */
+    aeBeforeSleepProc *beforesleep;
+    aeBeforeSleepProc *aftersleep;
+} aeEventLoop;
+</code></pre>
+<h2 id="epoll">epoll</h2>
+<ul>
+<li><code>epoll_create</code>函数创建一个epoll专用的文件描述符，用于后续epoll相关API调用；</li>
+<li><code>epoll_ctl</code>函数向epoll注册、修改或删除需要监控的事件；</li>
+<li><code>epoll_wait</code>函数会阻塞进程，直到监控的若干网络连接有事件发生。</li>
+</ul>
+<h2 id="_11">事件分发</h2>
+<p>死循环处理事件</p>
+<pre><code class="language-cpp">void aeMain(aeEventLoop *eventLoop) {
+    eventLoop-&gt;stop = 0;
+    while (!eventLoop-&gt;stop) {
+        if (eventLoop-&gt;beforesleep != NULL)
+            eventLoop-&gt;beforesleep(eventLoop);
+        aeProcessEvents(eventLoop, AE_ALL_EVENTS|AE_CALL_AFTER_SLEEP);
+    }
+}
+</code></pre>
+<p>网上所谓的文件事件分配器，即读取<code>epoll</code>的事件放到<code>aeEventLoop</code>的<code>fired</code>数组里, 然后for循环去处理</p>
+<pre><code class="language-cpp">static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
+    aeApiState *state = eventLoop-&gt;apidata;
+    int retval, numevents = 0;
+    // 这里阻塞读取读写事件
+    retval = epoll_wait(state-&gt;epfd,state-&gt;events,eventLoop-&gt;setsize,
+            tvp ? (tvp-&gt;tv_sec*1000 + tvp-&gt;tv_usec/1000) : -1);
+    // retval是avaliable的读写事件数量
+    if (retval &gt; 0) {
+        int j;
+
+        numevents = retval;
+        // 放入fired数组中
+        for (j = 0; j &lt; numevents; j++) {
+            int mask = 0;
+            struct epoll_event *e = state-&gt;events+j;
+
+            if (e-&gt;events &amp; EPOLLIN) mask |= AE_READABLE;
+            if (e-&gt;events &amp; EPOLLOUT) mask |= AE_WRITABLE;
+            if (e-&gt;events &amp; EPOLLERR) mask |= AE_WRITABLE;
+            if (e-&gt;events &amp; EPOLLHUP) mask |= AE_WRITABLE;
+            eventLoop-&gt;fired[j].fd = e-&gt;data.fd;
+            eventLoop-&gt;fired[j].mask = mask;
+        }
+    }
+    return numevents;
+}
+</code></pre>
+<h3 id="_12">文件事件处理</h3>
+<ol>
+<li>查找最早会发生的时间事件，计算超时时间</li>
+<li>多路复用函数(如epoll, select, kqueue等)阻塞等待文件事件的产生</li>
+<li>处理文件事件</li>
+<li>处理时间事件</li>
+</ol>
+<pre><code class="language-cpp">int aeProcessEvents(aeEventLoop *eventLoop, int flags)
+{
+    int processed = 0, numevents;
+
+    /* Nothing to do? return ASAP */
+    if (!(flags &amp; AE_TIME_EVENTS) &amp;&amp; !(flags &amp; AE_FILE_EVENTS)) return 0;
+
+    /* Note that we want call select() even if there are no
+     * file events to process as long as we want to process time
+     * events, in order to sleep until the next time event is ready
+     * to fire. */
+    if (eventLoop-&gt;maxfd != -1 ||
+        ((flags &amp; AE_TIME_EVENTS) &amp;&amp; !(flags &amp; AE_DONT_WAIT))) {
+        int j;
+        aeTimeEvent *shortest = NULL;
+        struct timeval tv, *tvp;
+
+        if (flags &amp; AE_TIME_EVENTS &amp;&amp; !(flags &amp; AE_DONT_WAIT))
+            shortest = aeSearchNearestTimer(eventLoop);
+        if (shortest) {
+            long now_sec, now_ms;
+
+            aeGetTime(&amp;now_sec, &amp;now_ms);
+            tvp = &amp;tv;
+
+            /* How many milliseconds we need to wait for the next
+             * time event to fire? */
+            long long ms =
+                (shortest-&gt;when_sec - now_sec)*1000 +
+                shortest-&gt;when_ms - now_ms;
+
+            if (ms &gt; 0) {
+                tvp-&gt;tv_sec = ms/1000;
+                tvp-&gt;tv_usec = (ms % 1000)*1000;
+            } else {
+                tvp-&gt;tv_sec = 0;
+                tvp-&gt;tv_usec = 0;
+            }
+        } else {
+            /* If we have to check for events but need to return
+             * ASAP because of AE_DONT_WAIT we need to set the timeout
+             * to zero */
+            if (flags &amp; AE_DONT_WAIT) {
+                tv.tv_sec = tv.tv_usec = 0;
+                tvp = &amp;tv;
+            } else {
+                /* Otherwise we can block */
+                tvp = NULL; /* wait forever */
+            }
+        }
+
+        /* Call the multiplexing API, will return only on timeout or when
+         * some event fires. */
+        numevents = aeApiPoll(eventLoop, tvp);
+
+        /* After sleep callback. */
+        if (eventLoop-&gt;aftersleep != NULL &amp;&amp; flags &amp; AE_CALL_AFTER_SLEEP)
+            eventLoop-&gt;aftersleep(eventLoop);
+
+        for (j = 0; j &lt; numevents; j++) {
+            aeFileEvent *fe = &amp;eventLoop-&gt;events[eventLoop-&gt;fired[j].fd];
+            int mask = eventLoop-&gt;fired[j].mask;
+            int fd = eventLoop-&gt;fired[j].fd;
+            int fired = 0; /* Number of events fired for current fd. */
+
+            /* Normally we execute the readable event first, and the writable
+             * event laster. This is useful as sometimes we may be able
+             * to serve the reply of a query immediately after processing the
+             * query.
+             *
+             * However if AE_BARRIER is set in the mask, our application is
+             * asking us to do the reverse: never fire the writable event
+             * after the readable. In such a case, we invert the calls.
+             * This is useful when, for instance, we want to do things
+             * in the beforeSleep() hook, like fsynching a file to disk,
+             * before replying to a client. */
+            int invert = fe-&gt;mask &amp; AE_BARRIER;
+
+            /* Note the &quot;fe-&gt;mask &amp; mask &amp; ...&quot; code: maybe an already
+             * processed event removed an element that fired and we still
+             * didn't processed, so we check if the event is still valid.
+             *
+             * Fire the readable event if the call sequence is not
+             * inverted. */
+            if (!invert &amp;&amp; fe-&gt;mask &amp; mask &amp; AE_READABLE) {
+                fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask);
+                fired++;
+            }
+
+            /* Fire the writable event. */
+            if (fe-&gt;mask &amp; mask &amp; AE_WRITABLE) {
+                if (!fired || fe-&gt;wfileProc != fe-&gt;rfileProc) {
+                    fe-&gt;wfileProc(eventLoop,fd,fe-&gt;clientData,mask);
+                    fired++;
+                }
+            }
+
+            /* If we have to invert the call, fire the readable event now
+             * after the writable one. */
+            if (invert &amp;&amp; fe-&gt;mask &amp; mask &amp; AE_READABLE) {
+                if (!fired || fe-&gt;wfileProc != fe-&gt;rfileProc) {
+                    fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask);
+                    fired++;
+                }
+            }
+
+            processed++;
+        }
+    }
+    /* Check time events */
+    if (flags &amp; AE_TIME_EVENTS)
+        processed += processTimeEvents(eventLoop);
+
+    return processed; /* return the number of processed file/time events */
+}
+</code></pre>
+<h3 id="_13">时间事件处理</h3>
+<p>依次遍历链表，如果当前节点已经到达执行时间，执行对应回调函数</p>
+<pre><code class="language-cpp">/* Process time events */
+static int processTimeEvents(aeEventLoop *eventLoop) {
+    int processed = 0;
+    aeTimeEvent *te;
+    long long maxId;
+    time_t now = time(NULL);
+
+    /* If the system clock is moved to the future, and then set back to the
+     * right value, time events may be delayed in a random way. Often this
+     * means that scheduled operations will not be performed soon enough.
+     *
+     * Here we try to detect system clock skews, and force all the time
+     * events to be processed ASAP when this happens: the idea is that
+     * processing events earlier is less dangerous than delaying them
+     * indefinitely, and practice suggests it is. */
+    if (now &lt; eventLoop-&gt;lastTime) {
+        te = eventLoop-&gt;timeEventHead;
+        while(te) {
+            te-&gt;when_sec = 0;
+            te = te-&gt;next;
+        }
+    }
+    eventLoop-&gt;lastTime = now;
+
+    te = eventLoop-&gt;timeEventHead;
+    maxId = eventLoop-&gt;timeEventNextId-1;
+    while(te) {
+        long now_sec, now_ms;
+        long long id;
+
+        /* Remove events scheduled for deletion. */
+        if (te-&gt;id == AE_DELETED_EVENT_ID) {
+            aeTimeEvent *next = te-&gt;next;
+            if (te-&gt;prev)
+                te-&gt;prev-&gt;next = te-&gt;next;
+            else
+                eventLoop-&gt;timeEventHead = te-&gt;next;
+            if (te-&gt;next)
+                te-&gt;next-&gt;prev = te-&gt;prev;
+            if (te-&gt;finalizerProc)
+                te-&gt;finalizerProc(eventLoop, te-&gt;clientData);
+            zfree(te);
+            te = next;
+            continue;
+        }
+
+        /* Make sure we don't process time events created by time events in
+         * this iteration. Note that this check is currently useless: we always
+         * add new timers on the head, however if we change the implementation
+         * detail, this check may be useful again: we keep it here for future
+         * defense. */
+        if (te-&gt;id &gt; maxId) {
+            te = te-&gt;next;
+            continue;
+        }
+        aeGetTime(&amp;now_sec, &amp;now_ms);
+        if (now_sec &gt; te-&gt;when_sec ||
+            (now_sec == te-&gt;when_sec &amp;&amp; now_ms &gt;= te-&gt;when_ms))
+        {
+            int retval;
+
+            id = te-&gt;id;
+            retval = te-&gt;timeProc(eventLoop, id, te-&gt;clientData);
+            processed++;
+            if (retval != AE_NOMORE) {
+                aeAddMillisecondsToNow(retval,&amp;te-&gt;when_sec,&amp;te-&gt;when_ms);
+            } else {
+                te-&gt;id = AE_DELETED_EVENT_ID;
+            }
+        }
+        te = te-&gt;next;
+    }
+    return processed;
+}
+</code></pre>
+<h2 id="server">server启动流程</h2>
+<ol>
+<li>初始化配置，包括用户可配置的参数，以及命令表的初始化</li>
+<li>加载并解析配置文件</li>
+<li>初始化服务端内部变量，其中就包括数据库</li>
+<li>创建事件循环eventLoop</li>
+<li>创建socket并启动监听</li>
+<li>创建文件事件与时间事件</li>
+<li>开启事件循环</li>
+</ol>
+<h2 id="_14">命令处理流程</h2>
+<ol>
+<li>解析命令请求</li>
+<li>调用命令（查命令表，校验命令，执行命令，记录慢日志，AOF等）</li>
+<li>返回结果给客户端<ul>
+<li>先写缓冲区，如果失败后，存放命令结果到<code>reply</code>链表中</li>
+</ul>
+</li>
+</ol>
+<h2 id="_15">多线程可优化的点</h2>
+<ul>
+<li>Redis之前是单线程的, 较多的时间花在了：获取socket的数据，将response写入到socket<ul>
+<li>如果socket数据很大的情况，主线程很长一部分时间都是在读写socket，(真正处理命令的时间很短)，并且读写socket都是阻塞的。</li>
+<li>优化目的是使，那些读写socket的操作变成多线程的</li>
+<li>至于命令执行，还是单线程的，因为redis的那些数据结构都不是线程安全的</li>
+</ul>
+</li>
+</ul>
+<h2 id="_16">小结</h2>
+<ul>
+<li>Redis服务器是典型的事件驱动程序，它将事件处理分为两大类：文件事件与时间事件。</li>
+<li>文件事件即socket的可读可写事件，时间事件即需要周期性执行的一些定时任务。</li>
+<li>Redis采用比较成熟的I/O多路复用模型（select/epoll等）处理文件事件，并对这些I/O多路复用模型进行简单封装。</li>
+<li>Redis服务器只维护了一个时间事件，该时间事件处理函数为serverCron，执行了所有需要周期性执行的一些定时任务</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../../interview/interview/" class="btn btn-neutral float-right" title="面试题">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../hashtable/" class="btn btn-neutral" title="哈希表"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../hashtable/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../../../interview/interview/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

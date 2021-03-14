@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/redis/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Redis概念 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Redis\u6982\u5ff5";
+    var mkdocs_page_input_path = "middleware/redis/redis.md";
+    var mkdocs_page_url = "/middleware/redis/redis/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">操作系统</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/linux/">Linux</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../database/db/">MySQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">网络</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../network/dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../network/tcp/">TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../network/http/">HTTP</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Redis概念</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">基础</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">分布式锁</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">限流</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">事务</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mgetpipeline">mget和pipeline的区别</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#big-key">big key</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code-read/sds/">简单动态字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code-read/zskiplist/">跳表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code-read/hashtable/">哈希表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">面试</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../interview/interview/">面试题</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../interview/social-interview/">社招面试</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">解决方案</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../solution/network-analysis/">网络故障分析</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../solution/redis-timeout/">RedisTimeout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../solution/multiPrint/">多线程循环打印</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Redis &raquo;</li>
+        
+      
+    
+    <li>Redis概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="redis">Redis</h1>
+<h2 id="_1">基础</h2>
+<ul>
+<li>aof和rdb优点，区别</li>
+<li>慢日志查询</li>
+<li>缓存一致性，如何避免脏数据？</li>
+<li>缓存雪崩、缓存穿透</li>
+<li>数据淘汰机制</li>
+<li>底层网络模型（Linux，Windows，MacOS）</li>
+</ul>
+<h2 id="_2">分布式锁</h2>
+<p><code>ex</code>表示<code>expire</code>，<code>nx</code>表示<code>if not exist</code></p>
+<pre><code class="language-shell">set redis-key clientId ex 5 nx
+</code></pre>
+<h2 id="_3">限流</h2>
+<p>使用zset+滑动窗口</p>
+<p>比如每1分钟限制访问1000次,那么<code>period=60</code>, <code>max_count=1000</code></p>
+<ol>
+<li><code>zadd rate_limit_key now_ts now_ts</code>(now_ts为当前的时间戳)</li>
+<li><code>zremrangebyscore rate_limit_key, 0, now_ts - period * 1000</code> (移除时间窗口之前的行为记录,剩下的都是时间窗口内的)</li>
+<li><code>zcard rate_limit_key</code> 获取窗口内的行为数量</li>
+<li><code>expire rate_limit_key period + 1</code></li>
+</ol>
+<p>判断步骤3中的获取的数量是否小于<code>max_count</code></p>
+<h2 id="_4">事务</h2>
+<p>执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)</p>
+<pre><code class="language-shell"># redis-cli
+127.0.0.1:6379&gt; multi
+OK
+127.0.0.1:6379&gt; set a aa
+QUEUED
+127.0.0.1:6379&gt; incr a
+QUEUED
+127.0.0.1:6379&gt; set b bb
+QUEUED
+127.0.0.1:6379&gt; exec
+1) OK
+2) (error) ERR value is not an integer or out of range
+3) OK
+127.0.0.1:6379&gt; get a
+&quot;aa&quot;
+127.0.0.1:6379&gt; get b
+&quot;bb&quot;
+</code></pre>
+<h2 id="mgetpipeline">mget和pipeline的区别</h2>
+<ul>
+<li>mget是官方支持的， pipeline是客户端自己实现的</li>
+<li>mget和pipeline在客户端和服务端交互是一样的，都是多个命令一次网络IO</li>
+<li>mget可以分布式并行去做， 而pipeline只能是一个命令一个命令去做</li>
+</ul>
+<h2 id="big-key">big key</h2>
+<ol>
+<li>大key会带来操作时间的上升 即使是<code>O(logn)</code>的操作，n越大，执行时间越长，Redis单线程处理，会block其他命令执行</li>
+<li>大key迁移会很麻烦</li>
+<li>io的开销(将big key传输到client, io会很慢)</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../code-read/sds/" class="btn btn-neutral float-right" title="简单动态字符串">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../../network/http/" class="btn btn-neutral" title="HTTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../../network/http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../code-read/sds/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/interview/social-interview/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>社招面试 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u793e\u62db\u9762\u8bd5";
+    var mkdocs_page_input_path = "interview/social-interview.md";
+    var mkdocs_page_url = "/interview/social-interview/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">操作系统</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../database/db/">MySQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">网络</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">Redis概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">面试</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../interview/">面试题</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">社招面试</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">抖音</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">电商一面</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">电商二面</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">电商三面</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">滴滴</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">交易引擎一面（挂）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">国际化一面</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">快手</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">用户增长一面</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">复盘</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">解决方案</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">RedisTimeout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/multiPrint/">多线程循环打印</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>面试 &raquo;</li>
+        
+      
+    
+    <li>社招面试</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">社招面经</h1>
+<h2 id="_2">抖音</h2>
+<h3 id="_3">电商一面</h3>
+<ul>
+<li><a href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/">剑指 Offer 52. 两个链表的第一个公共节点</a></li>
+<li><a href="https://leetcode-cn.com/problems/next-permutation/">Leetcode 31. 给定一组数字，任意组合，求比给定组合M大的最小值</a></li>
+<li>统计当前目录下（包含子目录） java 的文件的代码总行数。(shell)<ul>
+<li>wc -l `find . -name "*.java"` | awk '{ print $1 }' | sum</li>
+</ul>
+</li>
+<li>管道的理解，管道除了存内容还存什么?<ul>
+<li>Linux上的管道就是一个操作方式为文件的内存缓冲区</li>
+<li><code>|</code> 是匿名管道，父子进程间使用，父进程先打开一个管道，然后fork出子进程，子进程通过拷贝父进程的地址空间拿到管道的描述符，从而可以读写</li>
+</ul>
+</li>
+<li>前台跑程序，ctrl-c在做什么<ul>
+<li>ctrl + c，会发送<code>SIGINT</code>的信号，等同于<code>kill -2 (interrupt)</code>，程序那边接收到这个信号后做处理</li>
+<li>ctrl + z，会发送<code>SIGTSTP</code>的信号</li>
+</ul>
+</li>
+<li>用户表t_user表，年龄age（int类型），求哪个年龄的用户最多。(sql) <strong>写错了，多练习SQL</strong><ul>
+<li>select age, count(1) from t_user group by age order by count(1) desc limit 1;</li>
+</ul>
+</li>
+<li>MySQL相关<ul>
+<li>innodb 索引结构</li>
+<li>普通索引，唯一索引 之间的性能差异<ul>
+<li>唯一索引需要保证插入前没有数据，普通索引可以在写入磁盘前加 <code>change buffer</code></li>
+</ul>
+</li>
+<li>事务级别，MVCC</li>
+<li>二阶段提交</li>
+</ul>
+</li>
+<li>访问 https://toutiao.com 过程中发生了什么<ul>
+<li>dns(nslookup, dig)</li>
+<li>tcp</li>
+<li>http</li>
+<li>https</li>
+<li>网关 -&gt; service -&gt; client</li>
+<li>浏览器渲染</li>
+</ul>
+</li>
+<li>最近阅读的相关书籍<ul>
+<li>说自己爱看历史书，也看了Dubbo官方文档，美团的技术公众号，大厂的技术公众号，不爱看个人的</li>
+<li>忘记说最近看过 effictive go，Java并发编程实战</li>
+</ul>
+</li>
+</ul>
+<h3 id="_4">电商二面</h3>
+<ul>
+<li>毕业1年的成长与经历 (Redis相关经历)</li>
+<li>开根运算 (误差1e-5)</li>
+<li>判断二叉搜索树</li>
+<li>讲讲堆排序</li>
+<li>两枚硬币，甲乙分别扔，然后谁扔正面谁赢，求甲赢的概率<ul>
+<li>1/2 + 1/(2^3) + 1/(2^5) + ... = 2/3(1-(1/4)^n) =&gt; 2/3</li>
+</ul>
+</li>
+<li>http<ul>
+<li>get和post区别(是否可以缓存)</li>
+<li>http和https区别</li>
+<li>中间人攻击 <strong>不会</strong></li>
+<li>https如何抓包(Fiddler or Charles) <strong>没抓过</strong></li>
+</ul>
+</li>
+<li>Redis<ul>
+<li>线程模型</li>
+<li>数据结构</li>
+<li>跳表实现，如何插入节点</li>
+<li><a href="https://jzwdsb.github.io/2019/02/redis_pipeline_mget/">mget和pipeline区别</a><ul>
+<li>mget和pipeline都是多命令一起执行，只有一次往返的网络IO</li>
+<li>mget在集群下可以并行去获取，pipeline还是串行</li>
+</ul>
+</li>
+<li>主从同步的细节<ul>
+<li>全同步</li>
+<li>增量同步</li>
+</ul>
+</li>
+<li>可以试试<code>Memcached</code>或者多线程的<code>Redis</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">电商三面</h3>
+<p>问的基本上都答出来了</p>
+<ul>
+<li>求两个字符串的最大相同子串 (dp)</li>
+<li>讲一下<code>ConcurrentHashMap</code><ul>
+<li>为什么比<code>HashTable</code>的效率高</li>
+<li>CAS操作，有什么问题，解决方案</li>
+</ul>
+</li>
+<li>线程池<ul>
+<li>处理流程</li>
+<li>为什么先corePoolSize，再入队列，最后maxPoolSize</li>
+</ul>
+</li>
+<li>类加载机制<ul>
+<li>为什么需要双亲委派</li>
+</ul>
+</li>
+<li>MySQL<ul>
+<li>给定表T (id name salary city)<ul>
+<li>salary &gt; 10000 &amp;&amp; avg city salary &gt; 5000</li>
+</ul>
+</li>
+<li>索引的数据结构实现</li>
+<li>InnoDB默认事务隔离级别(RR)，实现方式(MVCC+间隙锁)</li>
+</ul>
+</li>
+<li>Redis<ul>
+<li>数据结构，使用场景</li>
+</ul>
+</li>
+<li>一致性hash<ul>
+<li>Dubbo负载均衡算法里面的一致性hash，虚拟节点，另外强调了不能加权</li>
+</ul>
+</li>
+</ul>
+<h2 id="_6">滴滴</h2>
+<h3 id="_7">交易引擎一面（挂）</h3>
+<p>面了1h20min，面试交流的还可，主要是因为个人技术栈和部门不符</p>
+<p>以下<code>...</code>均表示我在瞎答</p>
+<ul>
+<li>先自我介绍+项目介绍15分钟</li>
+<li>项目层面（整体面试官不是很满意）<ul>
+<li>优化过的问题<ul>
+<li>zset+set分片list结构</li>
+</ul>
+</li>
+<li>说自己解决过的问题<ul>
+<li>RedisTimeout的处理流程</li>
+</ul>
+</li>
+<li>大并发下，如何解决问题<ul>
+<li>线上的策略是clone，并发控制的都是从Redis里面（保证线程安全）</li>
+<li>每个线程执行是串行的，线程安全的</li>
+</ul>
+</li>
+<li>项目兜底机制 (降级)</li>
+</ul>
+</li>
+<li>RPC设计<ul>
+<li>rpc本质 <code>remote process call</code></li>
+<li>长/短链接<ul>
+<li>短连接需要建立连接池，长连接用完需要释放</li>
+</ul>
+</li>
+<li>负载均衡<ul>
+<li>面试官还问，生产者可能一直在变，怎么维护，我说了注册中心，也顺带扯了一下<code>service mesh</code>，做类似网关的功能</li>
+</ul>
+</li>
+<li>数据压缩<ul>
+<li>RPC很重要的一点儿是为了降低带宽使用，压缩会占CPU，所以需要做trade off</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>golang<ul>
+<li>协程死锁的情况...</li>
+<li>内存泄露的情况...</li>
+<li>了解Context包嘛...</li>
+</ul>
+</li>
+<li>MySQL<ul>
+<li>数据结构</li>
+<li>一个age，具体怎么存索引的（CPU，内存，磁盘各自做了什么操作...）</li>
+</ul>
+</li>
+<li>Redis<ul>
+<li>线程模型（6.0以后多线程，多线程做了啥...）</li>
+<li>持久化机制<ul>
+<li>RDB会导致服务器的哪些负载变大，为啥<ul>
+<li>开了进程，会占CPU和内存，写快照到磁盘，会使用到IO</li>
+</ul>
+</li>
+<li>AOF流程，什么时候从内存dump到磁盘，缓冲区什么时候读写，每个对应的过程是同步的还是异步的(<code>fsync</code>方法)</li>
+<li>RDB写快照时候，还可以增量写AOF，最后合并</li>
+</ul>
+</li>
+<li>集群用过么(codis or cluster)<ul>
+<li>你了解的集群怎么做（分桶）</li>
+<li>讲一下一个key要存入集群中会经历哪些过程<ul>
+<li>为什么按照<code>key</code>去hash，而不是按照<code>client-ip</code> or <code>client</code>的一些去hash，以及对应的机器down掉怎么办</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>并发编程<ul>
+<li>用java，golang写多线程循环打印<ul>
+<li>golang要写channel和锁的两种方式</li>
+<li>看代码，分析存在的问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法题<ul>
+<li>cpp 存在重复元素的全排列</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">国际化一面</h3>
+<p>TODO</p>
+<h2 id="_9">快手</h2>
+<h3 id="_10">用户增长一面</h3>
+<p>TODO</p>
+<h2 id="_11">复盘</h2>
+<ul>
+<li>Redis源码阅读<ul>
+<li><a href="https://blog.csdn.net/erica_1230/article/details/50569301">缓存无底洞</a></li>
+</ul>
+</li>
+<li>https抓包</li>
+<li><a href="https://www.jianshu.com/p/476b52ee4f1b">50道sql题</a></li>
+<li>kafka相关</li>
+<li>自增id用完了怎么办</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../solution/network-analysis/" class="btn btn-neutral float-right" title="网络故障分析">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../interview/" class="btn btn-neutral" title="面试题"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../interview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../solution/network-analysis/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

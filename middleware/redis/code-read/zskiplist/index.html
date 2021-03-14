@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/code-read/zskiplist/">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>跳表 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u8df3\u8868";
+    var mkdocs_page_input_path = "middleware/redis/code-read/zskiplist.md";
+    var mkdocs_page_url = "/middleware/redis/code-read/zskiplist/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">操作系统</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../os/linux/">Linux</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../database/db/">MySQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">网络</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/tcp/">TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/http/">HTTP</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/">Redis概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sds/">简单动态字符串</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">跳表</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">数据结构</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">方法释义</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">插入元素</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../hashtable/">哈希表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../server-process/">命令处理生命周期</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">面试</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/interview/">面试题</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/social-interview/">社招面试</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">解决方案</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/network-analysis/">网络故障分析</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/redis-timeout/">RedisTimeout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/multiPrint/">多线程循环打印</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Redis &raquo;</li>
+        
+      
+    
+    <li>跳表</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="zskiplist">zskiplist</h1>
+<h2 id="_1">数据结构</h2>
+<p>forward指向 右边元素的地址（比当前大）, backward指向 左边元素的地址（比当前小）</p>
+<pre><code class="language-cpp">/* Should be enough for 2^64 elements */
+#define ZSKIPLIST_MAXLEVEL 64 
+/* Skiplist P = 1/4 */
+#define ZSKIPLIST_P 0.25      
+
+typedef struct zskiplistNode {
+    // 用于存储字符串类型的数据
+    sds ele;
+    // 用于存储排序的分值
+    double score;
+    // 后退指针，只能指向当前节点最底层的前一个节点，从后向前遍历跳跃表时使用
+    struct zskiplistNode *backward;
+    // 为柔性数组。每个节点的数组长度不一样，在生成跳跃表节点时，随机生成一个1～64的值，值越大出现的概率越低
+    struct zskiplistLevel {
+        // 指向本层下一个节点
+        struct zskiplistNode *forward;
+        // 指向的节点与本节点之间的元素个数
+        unsigned long span;
+    } level[];
+} zskiplistNode;
+
+typedef struct zskiplist {
+    // 指向跳跃表头节点。头节点是跳跃表的一个特殊节点，它的level数组元素个数为64。头节点在有序集合中不存储任何member和score值，ele值为NULL, score值为0；也不计入跳跃表的总长度。头节点在初始化时，64个元素的forward都指向NULL, span值都为0
+    struct zskiplistNode *header, *tail;
+    // 长度
+    unsigned long length;
+    // 高度
+    int level;
+} zskiplist;
+</code></pre>
+<h2 id="_2">方法释义</h2>
+<ul>
+<li><code>zslCreate</code> 创建跳表，创建64层的链表</li>
+</ul>
+<h3 id="_3">插入元素</h3>
+<ol>
+<li>从高层到低层，依次有序遍历 <code>&lt; curNode.score</code>的指针，并且记录每层的最后一个 <code>&lt; curNode.score</code>的指针<code>update[i]</code></li>
+<li>随机<code>curNode</code>的层高，并更新跳表的<code>maxLevel</code>信息</li>
+<li>每层往<code>update[i]</code>后面插入<code>curNode</code></li>
+<li>更新<code>backward</code>指针</li>
+</ol>
+<pre><code class="language-cpp">/* Returns a random level for the new skiplist node we are going to create.
+ * The return value of this function is between 1 and ZSKIPLIST_MAXLEVEL
+ * (both inclusive), with a powerlaw-alike distribution where higher
+ * levels are less likely to be returned. */
+int zslRandomLevel(void) {
+    int level = 1;
+    while ((random()&amp;0xFFFF) &lt; (ZSKIPLIST_P * 0xFFFF))
+        level += 1;
+    return (level&lt;ZSKIPLIST_MAXLEVEL) ? level : ZSKIPLIST_MAXLEVEL;
+}
+
+/* Insert a new node in the skiplist. Assumes the element does not already
+ * exist (up to the caller to enforce that). The skiplist takes ownership
+ * of the passed SDS string 'ele'. */
+
+zskiplistNode *zslInsert(zskiplist *zsl, double score, sds ele) {
+    // update记录每层 &lt; curNode的node
+    zskiplistNode *update[ZSKIPLIST_MAXLEVEL], *x;
+    // rank 记录每层 &lt; curNode的数量
+    unsigned int rank[ZSKIPLIST_MAXLEVEL];
+    int i, level;
+
+    serverAssert(!isnan(score));
+    x = zsl-&gt;header;
+    for (i = zsl-&gt;level-1; i &gt;= 0; i--) {
+        /* store rank that is crossed to reach the insert position */
+        rank[i] = i == (zsl-&gt;level-1) ? 0 : rank[i+1];
+        while (x-&gt;level[i].forward &amp;&amp;
+                (x-&gt;level[i].forward-&gt;score &lt; score ||
+                    (x-&gt;level[i].forward-&gt;score == score &amp;&amp;
+                    sdscmp(x-&gt;level[i].forward-&gt;ele,ele) &lt; 0)))
+        {
+            rank[i] += x-&gt;level[i].span;
+            x = x-&gt;level[i].forward;
+        }
+        update[i] = x;
+    }
+    /* we assume the element is not already inside, since we allow duplicated
+     * scores, reinserting the same element should never happen since the
+     * caller of zslInsert() should test in the hash table if the element is
+     * already inside or not. */
+    level = zslRandomLevel();
+    if (level &gt; zsl-&gt;level) {
+        for (i = zsl-&gt;level; i &lt; level; i++) {
+            rank[i] = 0;
+            update[i] = zsl-&gt;header;
+            update[i]-&gt;level[i].span = zsl-&gt;length;
+        }
+        zsl-&gt;level = level;
+    }
+    x = zslCreateNode(level,score,ele);
+    for (i = 0; i &lt; level; i++) {
+        x-&gt;level[i].forward = update[i]-&gt;level[i].forward;
+        update[i]-&gt;level[i].forward = x;
+
+        /* update span covered by update[i] as x is inserted here */
+        x-&gt;level[i].span = update[i]-&gt;level[i].span - (rank[0] - rank[i]);
+        update[i]-&gt;level[i].span = (rank[0] - rank[i]) + 1;
+    }
+
+    /* increment span for untouched levels */
+    for (i = level; i &lt; zsl-&gt;level; i++) {
+        update[i]-&gt;level[i].span++;
+    }
+
+    x-&gt;backward = (update[0] == zsl-&gt;header) ? NULL : update[0];
+    if (x-&gt;level[0].forward)
+        x-&gt;level[0].forward-&gt;backward = x;
+    else
+        zsl-&gt;tail = x;
+    zsl-&gt;length++;
+    return x;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../hashtable/" class="btn btn-neutral float-right" title="哈希表">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../sds/" class="btn btn-neutral" title="简单动态字符串"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../sds/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../hashtable/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
