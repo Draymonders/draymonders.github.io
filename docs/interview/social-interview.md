@@ -134,7 +134,29 @@
 
 ### 国际化一面
 
-TODO
+这次也是面了1h20min，面试交流的还可
+
+- 自我介绍以及项目介绍
+    * 由项目引申出来Redis的使用
+- Redis(这次准备了源码，不怕问)
+    * 五种数据结构，以及对应的场景(这里又引到项目里面了，该说一些通用的场景的)
+    * 单线程(6.0 多线程)
+    * 跳表
+    * 渐进式rehash
+    * 持久化
+- MySQL
+    * 事务的特性
+    * 事务隔离级别及实现
+    * SQL调优(**好久没看了，需要复习**)
+- Linux命令
+    * io模型(select, poll, epoll**需要复习**)
+    * 日志里面第一列是ip, 查询出现次数前10的ip
+        * cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10
+    * 负载很高的时候，怎么查(我是从cpu, memory, disk, socket方面去分析的)
+- 算法题
+    * 一个用加法实现减法，乘法，除法(加法已经内置好，然后注意判断符号就好)
+    * [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
+
 
 ## 快手
 
