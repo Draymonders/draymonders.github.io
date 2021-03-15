@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Draymonder">
+  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/code-read/persistent/">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>持久化 - Draymonder Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6301\u4e45\u5316";
+    var mkdocs_page_input_path = "middleware/redis/code-read/persistent.md";
+    var mkdocs_page_url = "/middleware/redis/code-read/persistent/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Draymonder Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">操作系统</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../os/linux/">Linux</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../database/db/">MySQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">网络</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/tcp/">TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../network/http/">HTTP</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Redis</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../redis/">Redis概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sds/">简单动态字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../zskiplist/">跳表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../hashtable/">哈希表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../server-process/">命令处理生命周期</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">面试</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/interview/">面试题</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../interview/social-interview/">社招面试</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">解决方案</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/network-analysis/">网络故障分析</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/redis-timeout/">RedisTimeout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../solution/multiPrint/">多线程循环打印</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Draymonder Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>持久化</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">持久化</h1>
+<p><code>rdb</code>和<code>aof</code>执行过程中，不可以<code>resize</code></p>
+<h2 id="rdb">rdb</h2>
+<ul>
+<li>整体流程先<code>rdbPopulateSaveInfo</code>, 后<code>rdbSaveBackground</code><ul>
+<li><code>rdbSaveInfo</code>记录的有当前选择的db<code>repl_stream_db</code></li>
+</ul>
+</li>
+<li>如果是<code>master</code>发送到<code>slave</code>的话，有多余的处理，详见<code>rdbSaveToSlavesSockets</code>函数</li>
+</ul>
+<h3 id="bgsavecommand">bgsaveCommand执行逻辑</h3>
+<pre><code class="language-cpp">/* BGSAVE [SCHEDULE] */
+void bgsaveCommand(client *c) {
+    int schedule = 0;
+
+    /* The SCHEDULE option changes the behavior of BGSAVE when an AOF rewrite
+     * is in progress. Instead of returning an error a BGSAVE gets scheduled. */
+    if (c-&gt;argc &gt; 1) {
+        if (c-&gt;argc == 2 &amp;&amp; !strcasecmp(c-&gt;argv[1]-&gt;ptr,&quot;schedule&quot;)) {
+            schedule = 1;
+        } else {
+            addReply(c,shared.syntaxerr);
+            return;
+        }
+    }
+
+    rdbSaveInfo rsi, *rsiptr;
+    rsiptr = rdbPopulateSaveInfo(&amp;rsi);
+
+    if (server.rdb_child_pid != -1) {
+        addReplyError(c,&quot;Background save already in progress&quot;);
+    } else if (server.aof_child_pid != -1) {
+        if (schedule) {
+            server.rdb_bgsave_scheduled = 1;
+            addReplyStatus(c,&quot;Background saving scheduled&quot;);
+        } else {
+            addReplyError(c,
+                &quot;An AOF log rewriting in progress: can't BGSAVE right now. &quot;
+                &quot;Use BGSAVE SCHEDULE in order to schedule a BGSAVE whenever &quot;
+                &quot;possible.&quot;);
+        }
+    } else if (rdbSaveBackground(server.rdb_filename,rsiptr) == C_OK) {
+        addReplyStatus(c,&quot;Background saving started&quot;);
+    } else {
+        addReply(c,shared.err);
+    }
+}
+</code></pre>
+<h3 id="rdbsavebackground">rdbSaveBackground执行逻辑</h3>
+<p>主进程开管道，fork子进程，关闭子进程的socket，执行dump逻辑</p>
+<p><strong>rdb过程中不可resize</strong>, 因为是CopyOnWrite, 会及其占用内存</p>
+<pre><code class="language-cpp">int rdbSaveBackground(char *filename, rdbSaveInfo *rsi) {
+    pid_t childpid;
+    long long start;
+
+    if (server.aof_child_pid != -1 || server.rdb_child_pid != -1) return C_ERR;
+
+    server.dirty_before_bgsave = server.dirty;
+    server.lastbgsave_try = time(NULL);
+    openChildInfoPipe();
+
+    start = ustime();
+    if ((childpid = fork()) == 0) {
+        int retval;
+
+        /* Child */
+        closeListeningSockets(0);
+        redisSetProcTitle(&quot;redis-rdb-bgsave&quot;);
+        /* important: rdb dump */
+        retval = rdbSave(filename,rsi);
+        if (retval == C_OK) {
+            size_t private_dirty = zmalloc_get_private_dirty(-1);
+
+            if (private_dirty) {
+                serverLog(LL_NOTICE,
+                    &quot;RDB: %zu MB of memory used by copy-on-write&quot;,
+                    private_dirty/(1024*1024));
+            }
+
+            server.child_info_data.cow_size = private_dirty;
+            sendChildInfo(CHILD_INFO_TYPE_RDB);
+        }
+        exitFromChild((retval == C_OK) ? 0 : 1);
+    } else {
+        /* Parent */
+        server.stat_fork_time = ustime()-start;
+        server.stat_fork_rate = (double) zmalloc_used_memory() * 1000000 / server.stat_fork_time / (1024*1024*1024); /* GB per second. */
+        latencyAddSampleIfNeeded(&quot;fork&quot;,server.stat_fork_time/1000);
+        if (childpid == -1) {
+            closeChildInfoPipe();
+            server.lastbgsave_status = C_ERR;
+            serverLog(LL_WARNING,&quot;Can't save in background: fork: %s&quot;,
+                strerror(errno));
+            return C_ERR;
+        }
+        serverLog(LL_NOTICE,&quot;Background saving started by pid %d&quot;,childpid);
+        server.rdb_save_time_start = time(NULL);
+        server.rdb_child_pid = childpid;
+        server.rdb_child_type = RDB_CHILD_TYPE_DISK;
+        updateDictResizePolicy();
+        return C_OK;
+    }
+    return C_OK; /* unreached */
+}
+</code></pre>
+<h3 id="rdbsave">rdbSave 执行逻辑</h3>
+<p>真实的dump逻辑</p>
+<pre><code class="language-cpp">/* Save the DB on disk. Return C_ERR on error, C_OK on success. */
+int rdbSave(char *filename, rdbSaveInfo *rsi) {
+    char tmpfile[256];
+    char cwd[MAXPATHLEN]; /* Current working dir path for error messages. */
+    FILE *fp;
+    rio rdb;
+    int error = 0;
+
+    snprintf(tmpfile,256,&quot;temp-%d.rdb&quot;, (int) getpid());
+    fp = fopen(tmpfile,&quot;w&quot;);
+    if (!fp) {
+        char *cwdp = getcwd(cwd,MAXPATHLEN);
+        serverLog(LL_WARNING,
+            &quot;Failed opening the RDB file %s (in server root dir %s) &quot;
+            &quot;for saving: %s&quot;,
+            filename,
+            cwdp ? cwdp : &quot;unknown&quot;,
+            strerror(errno));
+        return C_ERR;
+    }
+
+    rioInitWithFile(&amp;rdb,fp);
+
+    if (server.rdb_save_incremental_fsync)
+        rioSetAutoSync(&amp;rdb,REDIS_AUTOSYNC_BYTES);
+
+    if (rdbSaveRio(&amp;rdb,&amp;error,RDB_SAVE_NONE,rsi) == C_ERR) {
+        errno = error;
+        goto werr;
+    }
+
+    /* Make sure data will not remain on the OS's output buffers */
+    if (fflush(fp) == EOF) goto werr;
+    if (fsync(fileno(fp)) == -1) goto werr;
+    if (fclose(fp) == EOF) goto werr;
+
+    /* Use RENAME to make sure the DB file is changed atomically only
+     * if the generate DB file is ok. */
+    if (rename(tmpfile,filename) == -1) {
+        char *cwdp = getcwd(cwd,MAXPATHLEN);
+        serverLog(LL_WARNING,
+            &quot;Error moving temp DB file %s on the final &quot;
+            &quot;destination %s (in server root dir %s): %s&quot;,
+            tmpfile,
+            filename,
+            cwdp ? cwdp : &quot;unknown&quot;,
+            strerror(errno));
+        unlink(tmpfile);
+        return C_ERR;
+    }
+
+    serverLog(LL_NOTICE,&quot;DB saved on disk&quot;);
+    server.dirty = 0;
+    server.lastsave = time(NULL);
+    server.lastbgsave_status = C_OK;
+    return C_OK;
+
+werr:
+    serverLog(LL_WARNING,&quot;Write error saving DB on disk: %s&quot;, strerror(errno));
+    fclose(fp);
+    unlink(tmpfile);
+    return C_ERR;
+}
+</code></pre>
+<h2 id="aof">aof</h2>
+<p>TODO</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2021 Draymonder</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
