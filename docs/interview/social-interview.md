@@ -147,14 +147,18 @@
 - MySQL
     * 事务的特性
     * 事务隔离级别及实现
-    * SQL调优(**好久没看了，需要复习**)
-- Linux命令
-    * io模型(select, poll, epoll**需要复习**)
+    * SQL调优（**好久没看了，需要复习**）
+- Linux
+    * io模型（select, poll, epoll**需要复习**）
     * 日志里面第一列是ip, 查询出现次数前10的ip
-        * cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10
-    * 负载很高的时候，怎么查(我是从cpu, memory, disk, socket方面去分析的)
-- 算法题
-    * 一个用加法实现减法，乘法，除法(加法已经内置好，然后注意判断符号就好)
+        * `cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10`
+    * 负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）
+        * cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈
+        * memory怎么查看，OOM解决思路，分析对象占用，修改gc参数
+        * 磁盘利用率和性能如何查看 `iostat`
+        * socket状态？ `time_wait`和`close_wait`
+- 算法题（秒了）
+    * 用加法实现减法，乘法，除法（加法已经内置好）
     * [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 
 

@@ -1,3 +1,13 @@
+## 负载高的分析思路
+
+- cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈
+- memory怎么查看，OOM解决思路，分析对象占用，修改gc参数
+- 磁盘利用率和性能如何查看 `iostat`
+- socket状态？ `time_wait`和`close_wait`
+
+[![6rWJPK.png](https://s3.ax1x.com/2021/03/16/6rWJPK.png)](https://imgtu.com/i/6rWJPK)
+
+
 ## 文件及目录管理
 
 - 目录/文件 的创建、删除、查询
@@ -18,8 +28,11 @@
 - 查询socket状态 
     * `sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'`
 - 取linux文件第4行，有用\t分割的若干个ip地址。统计出来出现次数最多的前四个。
-    * `cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c | sort -r -k1 | head -4`
-    * `sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4` (推荐)
+    * 获取ip地址有两种思路
+        * `cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {}`
+        * `sed -n 4p test | sed "s#\t#\n#g"` (推荐)
+    * 排序获取topK
+        * `sort -n | uniq -c | sort -r -k1 | head -4`
 
 ## 截屏
 
