@@ -385,20 +385,26 @@
 <li>MySQL<ul>
 <li>事务的特性</li>
 <li>事务隔离级别及实现</li>
-<li>SQL调优(<strong>好久没看了，需要复习</strong>)</li>
+<li>SQL调优（<strong>好久没看了，需要复习</strong>）</li>
 </ul>
 </li>
-<li>Linux命令<ul>
-<li>io模型(select, poll, epoll<strong>需要复习</strong>)</li>
+<li>Linux<ul>
+<li>io模型（select, poll, epoll<strong>需要复习</strong>）</li>
 <li>日志里面第一列是ip, 查询出现次数前10的ip<ul>
-<li>cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10</li>
+<li><code>cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10</code></li>
 </ul>
 </li>
-<li>负载很高的时候，怎么查(我是从cpu, memory, disk, socket方面去分析的)</li>
+<li>负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）<ul>
+<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈</li>
+<li>memory怎么查看，OOM解决思路，分析对象占用，修改gc参数</li>
+<li>磁盘利用率和性能如何查看 <code>iostat</code></li>
+<li>socket状态？ <code>time_wait</code>和<code>close_wait</code></li>
 </ul>
 </li>
-<li>算法题<ul>
-<li>一个用加法实现减法，乘法，除法(加法已经内置好，然后注意判断符号就好)</li>
+</ul>
+</li>
+<li>算法题（秒了）<ul>
+<li>用加法实现减法，乘法，除法（加法已经内置好）</li>
 <li><a href="https://leetcode-cn.com/problems/restore-ip-addresses/">复原 IP 地址</a></li>
 </ul>
 </li>

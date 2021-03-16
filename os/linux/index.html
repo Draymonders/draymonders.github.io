@@ -55,8 +55,6 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">文本处理</a>
-    </li>
     </ul>
                     </li>
                 </ul>
@@ -139,7 +137,15 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">文件及目录管理</h2>
+                <h2 id="_1">负载高的分析思路</h2>
+<ul>
+<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈</li>
+<li>memory怎么查看，OOM解决思路，分析对象占用，修改gc参数</li>
+<li>磁盘利用率和性能如何查看 <code>iostat</code></li>
+<li>socket状态？ <code>time_wait</code>和<code>close_wait</code></li>
+</ul>
+<p><a href="https://imgtu.com/i/6rWJPK"><img alt="6rWJPK.png" src="https://s3.ax1x.com/2021/03/16/6rWJPK.png" /></a></p>
+<h2 id="_2">文件及目录管理</h2>
 <ul>
 <li>目录/文件 的创建、删除、查询<ul>
 <li>mkdir, rm, cp, mv, <code>ln -s</code>软连接, ln硬连接</li>
@@ -166,19 +172,26 @@
 </ul>
 </li>
 </ul>
-<h3 id="_2">文本处理</h3>
+<h3 id="_3">文本处理</h3>
 <ul>
 <li>查询socket状态 <ul>
 <li><code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
 </ul>
 </li>
 <li>取linux文件第4行，有用\t分割的若干个ip地址。统计出来出现次数最多的前四个。<ul>
-<li><code>cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {} | sort -n | uniq -c | sort -r -k1 | head -4</code></li>
-<li><code>sed -n 4p test | sed "s#\t#\n#g" | sort -n | uniq -c | sort -r -k1 | head -4</code> (推荐)</li>
+<li>获取ip地址有两种思路<ul>
+<li><code>cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {}</code></li>
+<li><code>sed -n 4p test | sed "s#\t#\n#g"</code> (推荐)</li>
+</ul>
+</li>
+<li>排序获取topK<ul>
+<li><code>sort -n | uniq -c | sort -r -k1 | head -4</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="_3">截屏</h2>
+</li>
+</ul>
+<h2 id="_4">截屏</h2>
 <ul>
 <li>Linux截图快捷键<ul>
 <li><code>ctrl shift PrtSc</code></li>
