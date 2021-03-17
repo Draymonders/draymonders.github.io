@@ -153,10 +153,7 @@
     * 日志里面第一列是ip, 查询出现次数前10的ip
         * `cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10`
     * 负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）
-        * cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈
-        * memory怎么查看，OOM解决思路，分析对象占用，修改gc参数
-        * 磁盘利用率和性能如何查看 `iostat`
-        * socket状态？ `time_wait`和`close_wait`
+        
 - 算法题（秒了）
     * 用加法实现减法，乘法，除法（加法已经内置好）
     * [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
