@@ -139,7 +139,7 @@ public:
         ListNode* slow = head;
         while (fast != NULL) {
             slow = slow-&gt;next;
-            if (fast -&gt; next) {
+            if (fast-&gt;next) {
                 fast = fast-&gt;next-&gt;next;    
             } else {
                 return false;
@@ -150,9 +150,6 @@ public:
         return fast != NULL ? true : false; 
     }
 };
-</code></pre>
-<h1 id="_2">链表找环</h1>
-<pre><code class="language-cpp">
 </code></pre>
               
             </div>

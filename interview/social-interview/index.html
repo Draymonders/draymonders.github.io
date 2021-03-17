@@ -388,22 +388,20 @@
 <li>SQL调优（<strong>好久没看了，需要复习</strong>）</li>
 </ul>
 </li>
-<li>Linux<ul>
+<li>
+<p>Linux</p>
+<ul>
 <li>io模型（select, poll, epoll<strong>需要复习</strong>）</li>
 <li>日志里面第一列是ip, 查询出现次数前10的ip<ul>
 <li><code>cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10</code></li>
 </ul>
 </li>
-<li>负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）<ul>
-<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈</li>
-<li>memory怎么查看，OOM解决思路，分析对象占用，修改gc参数</li>
-<li>磁盘利用率和性能如何查看 <code>iostat</code></li>
-<li>socket状态？ <code>time_wait</code>和<code>close_wait</code></li>
+<li>负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>算法题（秒了）<ul>
+<li>
+<p>算法题（秒了）</p>
+<ul>
 <li>用加法实现减法，乘法，除法（加法已经内置好）</li>
 <li><a href="https://leetcode-cn.com/problems/restore-ip-addresses/">复原 IP 地址</a></li>
 </ul>
@@ -411,7 +409,54 @@
 </ul>
 <h2 id="_9">快手</h2>
 <h3 id="_10">用户增长一面</h3>
-<p>TODO</p>
+<p>估计是挂了hhh</p>
+<p>中间面试官网络不好，各种换网络（15min一次吧）</p>
+<ul>
+<li>多线程<ul>
+<li>线程创建的方式</li>
+<li>线程池机制，为什么corePoolSize, 队列，maxPoolSize这样子?</li>
+<li>线程池的线程怎么做到不回收的</li>
+<li>线程同步的方式</li>
+<li>知道的锁优化（不说synchronized，我说了readwriteLock的锁降级过程）</li>
+<li>AQS原理，（CLH了解么，不了解啊）</li>
+<li>自旋锁的unsafe怎么实现的</li>
+</ul>
+</li>
+<li>JVM<ul>
+<li>java内存分布</li>
+<li>堆的区分</li>
+<li>什么时候gc会影响应用的可用性</li>
+<li>强，软，弱，虚引用<ul>
+<li><code>weakReference</code>提到了<code>ThreadLocal</code></li>
+<li>讲了具体ThreadLocal的实现，以及防止内存泄露</li>
+<li>在应用侧，线程池用<code>ThreadLocal</code>的时候，如何一个任务执行完清除，（有框架可以实现嘛，还是必须业务去做）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Spring<ul>
+<li>IOC和AOP</li>
+<li>不加注解就能对所有的方法做一些事前log和事后的log（不能用AOP），怎么实现（我说要么代码重写，要么字节码增强）<ul>
+<li>面试官说我不了解源码就没继续追问了</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设计题（这个题典型的差评了）<ul>
+<li>邀请好友给自己涨钱的实现（数据量30E），并且用户A给用户B涨完钱，用户B不能给用户A涨钱<ul>
+<li>怎么设计</li>
+<li>数据库怎么设计</li>
+<li>缓存怎么设计</li>
+<li>如何保证几次查库的一致性（说了唯一key，或者布隆过滤器）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法题<ul>
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">leetcode 92. 反转链表 II</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="_11">复盘</h2>
 <ul>
 <li>Redis源码阅读<ul>

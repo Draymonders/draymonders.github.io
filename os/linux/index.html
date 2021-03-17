@@ -139,7 +139,13 @@
               
                 <h2 id="_1">负载高的分析思路</h2>
 <ul>
-<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈</li>
+<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈<ol>
+<li>死循环</li>
+<li>自旋锁竞争较大，一直在自旋</li>
+<li>加解密</li>
+<li>hashMap7 链表循环</li>
+</ol>
+</li>
 <li>memory怎么查看，OOM解决思路，分析对象占用，修改gc参数</li>
 <li>磁盘利用率和性能如何查看 <code>iostat</code></li>
 <li>socket状态？ <code>time_wait</code>和<code>close_wait</code></li>
