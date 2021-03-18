@@ -62,7 +62,7 @@
 
 问的基本上都答出来了
 
-- 求两个字符串的最大相同子串 (dp)
+- [类Leetcode 718. 最长重复子数组，求两个字符串的最大相同子串](https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/)
 - 讲一下`ConcurrentHashMap`
     * 为什么比`HashTable`的效率高
     * CAS操作，有什么问题，解决方案
@@ -159,11 +159,43 @@
     * [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 
 
+### 国际化二面 
+
+整体偏`MySQL`和`Kafka`, 然后面试官说还想和我交流操作系统和Linux的，限于时间
+
+面试官说他弟弟也是矿大的hhh
+
+- `ChaosBlade`分析线上`RedisTimeout`流程
+    * 对`ChaosBlade`理解，cpu100%, mem100%, `full disk`, 弱网，网络不可达
+- 数据库
+    * 有哪些log, binlog, slowlog, undolog, redolog
+        * 既然提到了redo/undo, 那么redis事务如何实现的（原理）
+    * 索引的理解
+    * 组合索引的索引存储是怎么样的
+    * 为什么数据库最开始就选择用B+树，而不是数组，队列这样的结构
+        * 我理解更多的是瓶颈在io
+    * 理想情况下，内存足够，b+ tree和数组检索的区别（假设只读的情况下）
+        * 这明显数组索引更快，并且可以cache到寄存器层面；b+ tree是基于堆的，不会比数组快
+- Kafka
+    * 理解（看过kafka的paper，整体讲了一下）
+    * Kafka官方介绍不是用来做消息队列的，是用来做流处理平台
+    * 语义的保证
+        * 至少一次
+        * 最多一次
+        * 刚好一次（这里就引申到了：如何用UDP实现可靠性传输，转向下面）
+- TCP
+    * 如何可靠（流量控制，拥塞控制...）
+    * 为什么不能两次握手，三次挥手（前者是服务端socket资源浪费，后者是客户端socket资源浪费）
+- 算法题
+    * [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/) （面试官让我看到了题库，我说这里面题我都会做，这个题字节也问过我，然后面试官让我用不同的方法去解吧）
+        * 本题写的太快，面试官有点儿吃惊
+    * LRU Cache
+        * 实现
+        * 用在哪里（内存置换，页面置换）
+
 ## 快手
 
 ### 用户增长一面 
-
-估计是挂了hhh
 
 中间面试官网络不好，各种换网络（15min一次吧）
 
@@ -196,6 +228,9 @@
 - 算法题
     * [leetcode 92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 
+### 用户增长二面
+
+TODO
 
 ## 复盘
 
@@ -203,5 +238,6 @@
     - [缓存无底洞](https://blog.csdn.net/erica_1230/article/details/50569301)
 - https抓包
 - [50道sql题](https://www.jianshu.com/p/476b52ee4f1b)
-- kafka相关
-- 自增id用完了怎么办
+- kafka
+- 去看B+ tree的实现
+- Redis事务的实现
