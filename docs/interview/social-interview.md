@@ -161,7 +161,9 @@
 
 ### 国际化二面 
 
-整体偏`MySQL`和`Kafka`, 然后面试官说还想和我交流操作系统和Linux的，限于时间
+一面问了很多`Redis`源码，所以二面就基本没问了
+
+整体偏`MySQL`和`Kafka`, 然后面试官说限于时间，本来还想和我交流操作系统和Linux的
 
 面试官说他弟弟也是矿大的hhh
 
@@ -187,7 +189,8 @@
     * 如何可靠（流量控制，拥塞控制...）
     * 为什么不能两次握手，三次挥手（前者是服务端socket资源浪费，后者是客户端socket资源浪费）
 - 算法题
-    * [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/) （面试官让我看到了题库，我说这里面题我都会做，这个题字节也问过我，然后面试官让我用不同的方法去解吧）
+    * 面试官让我看到了题库，我说这里面题我都会做
+    * [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
         * 本题写的太快，面试官有点儿吃惊
     * LRU Cache
         * 实现
