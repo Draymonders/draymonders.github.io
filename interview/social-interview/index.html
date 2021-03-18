@@ -105,15 +105,19 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#_8">国际化一面</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">国际化二面</a>
+    </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_9">快手</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">快手</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_10">用户增长一面</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">用户增长一面</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">用户增长二面</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_11">复盘</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_13">复盘</a>
     </li>
     </ul>
                     </li>
@@ -250,7 +254,7 @@
 <h3 id="_5">电商三面</h3>
 <p>问的基本上都答出来了</p>
 <ul>
-<li>求两个字符串的最大相同子串 (dp)</li>
+<li><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/">类Leetcode 718. 最长重复子数组，求两个字符串的最大相同子串</a></li>
 <li>讲一下<code>ConcurrentHashMap</code><ul>
 <li>为什么比<code>HashTable</code>的效率高</li>
 <li>CAS操作，有什么问题，解决方案</li>
@@ -407,9 +411,64 @@
 </ul>
 </li>
 </ul>
-<h2 id="_9">快手</h2>
-<h3 id="_10">用户增长一面</h3>
-<p>估计是挂了hhh</p>
+<h3 id="_9">国际化二面</h3>
+<p>一面问了很多<code>Redis</code>源码，所以二面就基本没问了</p>
+<p>整体偏<code>MySQL</code>和<code>Kafka</code>, 然后面试官说限于时间，本来还想和我交流操作系统和Linux的</p>
+<p>面试官说他弟弟也是矿大的hhh</p>
+<ul>
+<li><code>ChaosBlade</code>分析线上<code>RedisTimeout</code>流程<ul>
+<li>对<code>ChaosBlade</code>理解，cpu100%, mem100%, <code>full disk</code>, 弱网，网络不可达</li>
+</ul>
+</li>
+<li>数据库<ul>
+<li>有哪些log, binlog, slowlog, undolog, redolog<ul>
+<li>既然提到了redo/undo, 那么redis事务如何实现的（原理）</li>
+</ul>
+</li>
+<li>索引的理解</li>
+<li>组合索引的索引存储是怎么样的</li>
+<li>为什么数据库最开始就选择用B+树，而不是数组，队列这样的结构<ul>
+<li>我理解更多的是瓶颈在io</li>
+</ul>
+</li>
+<li>理想情况下，内存足够，b+ tree和数组检索的区别（假设只读的情况下）<ul>
+<li>这明显数组索引更快，并且可以cache到寄存器层面；b+ tree是基于堆的，不会比数组快</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Kafka<ul>
+<li>理解（看过kafka的paper，整体讲了一下）</li>
+<li>Kafka官方介绍不是用来做消息队列的，是用来做流处理平台</li>
+<li>语义的保证<ul>
+<li>至少一次</li>
+<li>最多一次</li>
+<li>刚好一次（这里就引申到了：如何用UDP实现可靠性传输，转向下面）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP<ul>
+<li>如何可靠（流量控制，拥塞控制...）</li>
+<li>为什么不能两次握手，三次挥手（前者是服务端socket资源浪费，后者是客户端socket资源浪费）</li>
+</ul>
+</li>
+<li>算法题<ul>
+<li>面试官让我看到了题库，我说这里面题我都会做</li>
+<li><a href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/">剑指 Offer 52. 两个链表的第一个公共节点</a><ul>
+<li>本题写的太快，面试官有点儿吃惊</li>
+</ul>
+</li>
+<li>LRU Cache<ul>
+<li>实现</li>
+<li>用在哪里（内存置换，页面置换）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_10">快手</h2>
+<h3 id="_11">用户增长一面</h3>
 <p>中间面试官网络不好，各种换网络（15min一次吧）</p>
 <ul>
 <li>多线程<ul>
@@ -457,7 +516,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="_11">复盘</h2>
+<h3 id="_12">用户增长二面</h3>
+<p>TODO</p>
+<h2 id="_13">复盘</h2>
 <ul>
 <li>Redis源码阅读<ul>
 <li><a href="https://blog.csdn.net/erica_1230/article/details/50569301">缓存无底洞</a></li>
@@ -465,8 +526,9 @@
 </li>
 <li>https抓包</li>
 <li><a href="https://www.jianshu.com/p/476b52ee4f1b">50道sql题</a></li>
-<li>kafka相关</li>
-<li>自增id用完了怎么办</li>
+<li>kafka</li>
+<li>去看B+ tree的实现</li>
+<li>Redis事务的实现</li>
 </ul>
               
             </div>
