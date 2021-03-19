@@ -1,6 +1,7 @@
 # 事务
 
-命令有`multi / exec / watch / discard`
+- 命令有`multi / exec / watch / discard`
+- 只能保证`隔离性`（就是一堆命令，串行执行），不能保证原子性（要么都执行，要么都不执行，具体看下面的实现）
 
 ## 实验
 
