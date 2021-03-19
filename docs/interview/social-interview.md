@@ -170,14 +170,16 @@
 - `ChaosBlade`分析线上`RedisTimeout`流程
     * 对`ChaosBlade`理解，cpu100%, mem100%, `full disk`, 弱网，网络不可达
 - 数据库
-    * 有哪些log, binlog, slowlog, undolog, redolog
-        * 既然提到了redo/undo, 那么redis事务如何实现的（原理）
+    * 有哪些log（binlog, slowlog, undolog, redolog）
+        * redo/undo log,
+        * redis事务实现原理
     * 索引的理解
     * 组合索引的索引存储是怎么样的
     * 为什么数据库最开始就选择用B+树，而不是数组，队列这样的结构
         * 我理解更多的是瓶颈在io
     * 理想情况下，内存足够，b+ tree和数组检索的区别（假设只读的情况下）
-        * 这明显数组索引更快，并且可以cache到寄存器层面；b+ tree是基于堆的，不会比数组快
+        * 数组索引明显更快，并且可以cache到寄存器层面
+        * b+ tree是基于堆的，不会比数组快
 - Kafka
     * 理解（看过kafka的paper，整体讲了一下）
     * Kafka官方介绍不是用来做消息队列的，是用来做流处理平台
