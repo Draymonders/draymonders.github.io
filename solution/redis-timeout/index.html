@@ -9,7 +9,7 @@
   <meta name="author" content="Draymonder">
   <link rel="canonical" href="https://draymonders.github.io/solution/redis-timeout/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>RedisTimeout - Draymonder Docs</title>
+  <title>Redis Timeout - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "RedisTimeout";
+    var mkdocs_page_name = "Redis Timeout";
     var mkdocs_page_input_path = "solution/redis-timeout.md";
     var mkdocs_page_url = "/solution/redis-timeout/";
   </script>
@@ -72,7 +72,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">Redis概念</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
                     </li>
@@ -85,8 +87,6 @@
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../interview/interview/">面试题</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../interview/social-interview/">社招面试</a>
                     </li>
                 </ul>
@@ -94,11 +94,11 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../network-analysis/">网络故障分析</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">RedisTimeout</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Redis Timeout</a>
     <ul class="current">
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../multiPrint/">多线程循环打印</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-print/">多线程循环打印</a>
                     </li>
                 </ul>
       </div>
@@ -126,7 +126,7 @@
         
       
     
-    <li>RedisTimeout</li>
+    <li>Redis Timeout</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -137,29 +137,29 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="redis-timeout">redis timeout复盘</h1>
+                <h1 id="redis-timeout">Redis Timeout</h1>
 <p>排查过程如下</p>
 <ul>
 <li>每隔15min会抖动一次<ul>
-<li>怀疑是RDB造成的，关闭RDB(仍然存在问题)</li>
+<li>怀疑是 RDB 造成的，关闭 RDB (仍然存在问题)</li>
 </ul>
 </li>
-<li>redis client (lettuce)<ul>
+<li>Redis client (lettuce)<ul>
 <li>建立链接，然后发送命令，顺带有个超时，用的类似<code>scheduleThreadPool</code></li>
 </ul>
 </li>
-<li>redis server <ul>
-<li>config get timeout 返回值0，永不超时</li>
+<li>Redis server <ul>
+<li><code>config get timeout</code> 返回值0，永不超时</li>
 <li>慢日志分析<ul>
 <li><code>config get slowlog-log-slower-than</code> 获取阈值</li>
-<li>由于slowlog是一个队列(FIFO)，导致出现redisTimeout的时候，那部分的命令已经从队列里面出去了</li>
+<li>由于slowlog是一个队列(FIFO)，导致出现<code>RedisTimeout</code>的时候，那部分的命令已经从队列里面出去了</li>
 <li>做的不好的一点儿，没有尝试把慢日志进行dump</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>blade模拟故障<ul>
-<li>实验验证在<strong>网络延时较长 or 丢包率较高</strong>的情况会出现timeout的情况，<code>cpu 100%</code>场景下不会</li>
+<li>实验验证在<strong>网络延时较长</strong> or <strong>丢包率较高</strong>的情况会出现timeout的情况，<code>cpu</code> 100%场景下不会</li>
 </ul>
 </li>
 </ul>
@@ -170,7 +170,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../multiPrint/" class="btn btn-neutral float-right" title="多线程循环打印">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../multi-print/" class="btn btn-neutral float-right" title="多线程循环打印">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../network-analysis/" class="btn btn-neutral" title="网络故障分析"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -204,7 +204,7 @@
         <span><a href="../network-analysis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../multiPrint/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../multi-print/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

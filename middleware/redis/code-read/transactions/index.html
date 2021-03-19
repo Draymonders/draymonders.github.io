@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/code-read/sds/">
+  <link rel="canonical" href="https://draymonders.github.io/middleware/redis/code-read/transactions/">
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>简单动态字符串 - Draymonder Docs</title>
+  <title>Redis 事务 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7b80\u5355\u52a8\u6001\u5b57\u7b26\u4e32";
-    var mkdocs_page_input_path = "middleware/redis/code-read/sds.md";
-    var mkdocs_page_url = "/middleware/redis/code-read/sds/";
+    var mkdocs_page_name = "Redis \u4e8b\u52a1";
+    var mkdocs_page_input_path = "middleware/redis/code-read/transactions.md";
+    var mkdocs_page_url = "/middleware/redis/code-read/transactions/";
   </script>
   
   <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
@@ -74,15 +74,17 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../../redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../transactions/">Redis 事务</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">简单动态字符串</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Redis 事务</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">数据结构</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">实验</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">扩容操作</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">数据结构和方法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">实现原理</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sds/">简单动态字符串</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../zskiplist/">跳表</a>
                     </li>
@@ -130,7 +132,7 @@
         
       
     
-    <li>简单动态字符串</li>
+    <li>Redis 事务</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -141,26 +143,135 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="sds">sds</h1>
-<p>简单动态字符串</p>
-<h2 id="_1">数据结构</h2>
-<pre><code class="language-cpp">struct __attribute__ ((__packed__)) sdshdr8 {
-    uint8_t len; /* used */
-    uint8_t alloc; /* excluding the header and null terminator */
-    unsigned char flags; /* 3 lsb of type, 5 unused bits */
-    char buf[];
-};
+                <h1 id="_1">事务</h1>
+<p>命令有<code>multi / exec / watch / discard</code></p>
+<h2 id="_2">实验</h2>
+<p>执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)</p>
+<pre><code class="language-shell"># redis-cli
+127.0.0.1:6379&gt; multi
+OK
+127.0.0.1:6379&gt; set a aa
+QUEUED
+127.0.0.1:6379&gt; incr a
+QUEUED
+127.0.0.1:6379&gt; set b bb
+QUEUED
+127.0.0.1:6379&gt; exec
+1) OK
+2) (error) ERR value is not an integer or out of range
+3) OK
+127.0.0.1:6379&gt; get a
+&quot;aa&quot;
+127.0.0.1:6379&gt; get b
+&quot;bb&quot;
 </code></pre>
+<h2 id="_3">数据结构和方法</h2>
 <ul>
-<li><code>__attribute__ ((__packed__))</code>这个是为了字节对齐，不按照默认的元素的最小公倍数对齐，而是按照<code>1</code>字节进行对齐</li>
-<li>sds对外暴露的是<code>buf</code>指针，flags的低三位可以获取当前<code>sds</code>的结构体类型，从而确定结构体的整体大小(hdr8, hdr16, hdr32...)</li>
+<li>flag表示当前client的状态，是否在执行事务</li>
+<li>commands是一个数组，每次新来一个命令，就会扩容数组+1</li>
 </ul>
-<h2 id="_2">扩容操作</h2>
-<p>扩容操作</p>
-<pre><code class="language-cpp">if (newlen &lt; SDS_MAX_PREALLOC)
-    newlen *= 2;
-else
-    newlen += SDS_MAX_PREALLOC;
+<pre><code class="language-cpp">typedef struct client {
+    ...
+    int flags;              /* Client flags: CLIENT_* macros. */
+    multiState mstate;      /* MULTI/EXEC state */
+    ...
+} client;
+
+typedef struct multiState {
+    multiCmd *commands;     /* Array of MULTI commands */
+    int count;              /* Total number of MULTI commands */
+    int minreplicas;        /* MINREPLICAS for synchronous replication */
+    time_t minreplicas_timeout; /* MINREPLICAS timeout as unixtime. */
+} multiState;
+
+/* Client MULTI/EXEC state */
+typedef struct multiCmd {
+    robj **argv;
+    int argc;
+    struct redisCommand *cmd;
+} multiCmd;
+
+/* MULTI/EXEC/WATCH... */
+void unwatchAllKeys(client *c);
+void initClientMultiState(client *c);
+void freeClientMultiState(client *c);
+void queueMultiCommand(client *c);
+void touchWatchedKey(redisDb *db, robj *key);
+void touchWatchedKeysOnFlush(int dbid);
+void discardTransaction(client *c);
+void flagTransaction(client *c);
+void execCommandPropagateMulti(client *c);
+</code></pre>
+<h2 id="_4">实现原理</h2>
+<ul>
+<li>redis事务<strong>不是</strong>来一个命令就执行，然后最后回滚<ul>
+<li>来一个命令，会加入到客户端的命令队列里<ul>
+<li>收到<code>discard</code>命令，会将命令队列清空</li>
+<li>收到<code>exec</code>命令，会将命令队列里面的命令执行，并且塞到client的响应缓冲区，再清空命令队列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>watch</code>是实现了 <code>key -&gt; clients</code> 和 <code>client -&gt; watched_keys</code> 的双向引用 （clients是双向链表）<ul>
+<li>当key发生改变，会遍历 <code>clients</code> 设置 client 的 <code>flag</code> 状态为 <code>CLIENT_DIRTY_CAS</code></li>
+<li>再执行的时候，会判断是否flag是否含有<code>CLIENT_DIRTY_CAS</code>， 不为才能执行命令</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">/* Watch for the specified key */
+void watchForKey(client *c, robj *key) {
+    list *clients = NULL;
+    listIter li;
+    listNode *ln;
+    watchedKey *wk;
+
+    /* Check if we are already watching for this key */
+    listRewind(c-&gt;watched_keys,&amp;li);
+    while((ln = listNext(&amp;li))) {
+        wk = listNodeValue(ln);
+        if (wk-&gt;db == c-&gt;db &amp;&amp; equalStringObjects(key,wk-&gt;key))
+            return; /* Key already watched */
+    }
+    /* This key is not already watched in this DB. Let's add it */
+    clients = dictFetchValue(c-&gt;db-&gt;watched_keys,key);
+    if (!clients) {
+        clients = listCreate();
+        dictAdd(c-&gt;db-&gt;watched_keys,key,clients);
+        incrRefCount(key);
+    }
+    // 将当前client加入到key的监听clients
+    listAddNodeTail(clients,c);
+
+    /* Add the new key to the list of keys watched by this client */
+    wk = zmalloc(sizeof(*wk));
+    wk-&gt;key = key;
+    wk-&gt;db = c-&gt;db;
+    incrRefCount(key);
+
+    // 将当前key加入到client的watched_keys里面
+    listAddNodeTail(c-&gt;watched_keys,wk);
+}
+
+/* &quot;Touch&quot; a key, so that if this key is being WATCHed by some client the
+ * next EXEC will fail. */
+void touchWatchedKey(redisDb *db, robj *key) {
+    list *clients;
+    listIter li;
+    listNode *ln;
+
+    if (dictSize(db-&gt;watched_keys) == 0) return;
+    clients = dictFetchValue(db-&gt;watched_keys, key);
+    if (!clients) return;
+
+    /* Mark all the clients watching this key as CLIENT_DIRTY_CAS */
+    /* Check if we are already watching for this key */
+    listRewind(clients,&amp;li);
+    while((ln = listNext(&amp;li))) {
+        client *c = listNodeValue(ln);
+
+        c-&gt;flags |= CLIENT_DIRTY_CAS;
+    }
+}
 </code></pre>
               
             </div>
@@ -169,10 +280,10 @@ else
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../zskiplist/" class="btn btn-neutral float-right" title="跳表">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sds/" class="btn btn-neutral float-right" title="简单动态字符串">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../transactions/" class="btn btn-neutral" title="Redis 事务"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../redis/" class="btn btn-neutral" title="使用场景"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -200,10 +311,10 @@ else
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../transactions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../redis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../zskiplist/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sds/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

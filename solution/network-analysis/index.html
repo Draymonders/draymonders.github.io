@@ -72,7 +72,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">Redis概念</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
                     </li>
@@ -85,8 +87,6 @@
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../interview/interview/">面试题</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../interview/social-interview/">社招面试</a>
                     </li>
                 </ul>
@@ -94,11 +94,27 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">网络故障分析</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ip-ping">IP ping不通</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">长/短链接</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">总结</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timewait-closewait">TimeWait / CloseWait</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#timewait">TimeWait</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#closewait">CloseWait</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../redis-timeout/">RedisTimeout</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../redis-timeout/">Redis Timeout</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../multiPrint/">多线程循环打印</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-print/">多线程循环打印</a>
                     </li>
                 </ul>
       </div>
@@ -137,25 +153,41 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="ip-ping">IP ping不通</h1>
+                <h1 id="_1">网络故障分析</h1>
+<h2 id="ip-ping">IP ping不通</h2>
 <ol>
 <li>ping 127.0.0.1，如果ping不通说明本机设置的TCP/IP协议有问题。ping该地址不经过网卡，仅仅是软件层面。</li>
 <li>ping 本机IP地址，ping本机IP其实是从驱动到网卡。如果此时ping不通，则表示网卡驱动有问题，或者硬件有问题。</li>
-<li>ping 网关，所谓网关，就是连接到另一个网络的“关卡”，一般为离我们最近的路由器；可以使用<code>ipconfig/ifconfig</code>查看；若ping不通，则为主机到路由器之间的网络故障。</li>
+<li>ping 网关（所谓网关，就是连接到另一个网络的“关卡”，一般为离我们最近的路由器）；可以使用<code>ipconfig/ifconfig</code>查看；若ping不通，则为主机到路由器之间的网络故障。</li>
 <li>ping 目的IP，若ping不通，应该就是路由器到目的主机的网络存在问题。</li>
 </ol>
-<h1 id="_1">长/短链接</h1>
+<h2 id="_2">长/短链接</h2>
 <p>http client中有一个参数是<code>maxPerRoute</code>，作用是：限制每个<code>Route</code>(即server的ip+port)的最大连接数。</p>
 <p>因此，当client到server建立<code>Route</code>的连接数超过默认设置(默认是2)，会发生如下报错:</p>
 <pre><code class="language-java">java.net.NoRouteToHostException: Cannot assign requested address (Address not available)
 </code></pre>
-<p>之前的问题是，调大了 perRoute 参数(10000)后，发现只能发送成功10000个请求</p>
-<p>用<code>netstat -autpn | grep tcp | grep ${host}</code> 发现有大量的<code>TIME_WAIT</code>状态，推断是客户端都是短连接，发送请求后就关闭了(尽管使用了连接池)。</p>
-<p>接着将 KeepAlive参数改为-1， 重新发请求，仍然有大量的<code>TIME_WAIT</code>状态。</p>
-<p>咨询拓哥，说长连接基本是占用固定的那几个端口，并且都是ESTABLISHED状态，使用<code>watch</code>观察，发现开启了KeepAlive后，ESTABLISHED的端口号仍然不固定。</p>
-<p>后拓哥做了实验， 跑KV场景，链接就是会复用的，跑nginx场景，链接没有复用，因此推断 KeepAlive 服务端也要处理，如果不做处理，客户端单开 KeepAlive 是没有效果的。</p>
-<p>长连接保持处理是通过四元组来判断的 (client_ip，client_port，server_ip，server_port)。</p>
-<p>若不用链接池和长连接，在高并发短连接的TCP服务器上，当服务器处理完请求后立刻主动正常关闭连接。这个场景下会出现大量socket处于TIME_WAIT状态。如果客户端的并发量持续很高，此时部分客户端就会显示连接不上。</p>
+<ul>
+<li>调大了 perRoute 参数(10000)后，发现只能发送成功10000个请求</li>
+<li>用<code>netstat -autpn | grep tcp | grep ${host}</code> 发现有大量的<code>TIME_WAIT</code>状态，推断是客户端都是短连接，发送请求后就关闭了(尽管使用了连接池)。</li>
+<li>将 KeepAlive参数改为-1， 重新发请求，仍然有大量的<code>TIME_WAIT</code>状态。</li>
+<li>咨询拓哥，说长连接基本是占用固定的那几个端口，并且都是<code>ESTABLISHED</code>状态，使用<code>watch</code>观察，发现开启了<code>KeepAlive</code>后，<code>ESTABLISHED</code>的端口号仍然不固定。</li>
+<li>后拓哥做了实验，跑KV场景，链接就是会复用的，跑nginx场景，链接没有复用，因此推断 KeepAlive 服务端也要处理，如果不做处理，客户端单开 KeepAlive 是没有效果的。</li>
+</ul>
+<h3 id="_3">总结</h3>
+<ol>
+<li>长连接保持处理是通过四元组来判断的 (client_ip，client_port，server_ip，server_port)。</li>
+<li>若不用链接池和长连接，在高并发短连接的TCP服务器上，当服务器处理完请求后立刻主动正常关闭连接。<ul>
+<li>这个场景下会出现大量socket处于TIME_WAIT状态。如果客户端的并发量持续很高，此时部分客户端就会显示连接不上。</li>
+</ul>
+</li>
+</ol>
+<h2 id="timewait-closewait">TimeWait / CloseWait</h2>
+<h3 id="timewait">TimeWait</h3>
+<p>一般是客户端一方，短时间发送了大量的短连接（建立了链接又释放掉）</p>
+<p>解决方法: 调参 or 连接池</p>
+<h3 id="closewait">CloseWait</h3>
+<p>一般是服务端一方，没有主动关闭链接 or 服务处理的确很慢</p>
+<p>解决方法: 先黑盒审查后白盒审查</p>
               
             </div>
           </div>
@@ -163,7 +195,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../redis-timeout/" class="btn btn-neutral float-right" title="RedisTimeout">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../redis-timeout/" class="btn btn-neutral float-right" title="Redis Timeout">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../interview/social-interview/" class="btn btn-neutral" title="社招面试"><span class="icon icon-circle-arrow-left"></span> Previous</a>

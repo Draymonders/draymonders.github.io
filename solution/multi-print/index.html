@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/solution/multiPrint/">
+  <link rel="canonical" href="https://draymonders.github.io/solution/multi-print/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>多线程循环打印 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -19,8 +19,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "\u591a\u7ebf\u7a0b\u5faa\u73af\u6253\u5370";
-    var mkdocs_page_input_path = "solution/multiPrint.md";
-    var mkdocs_page_url = "/solution/multiPrint/";
+    var mkdocs_page_input_path = "solution/multi-print.md";
+    var mkdocs_page_url = "/solution/multi-print/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -72,7 +72,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">Redis概念</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
                     </li>
@@ -85,8 +87,6 @@
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../interview/interview/">面试题</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../interview/social-interview/">社招面试</a>
                     </li>
                 </ul>
@@ -94,7 +94,7 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../network-analysis/">网络故障分析</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../redis-timeout/">RedisTimeout</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../redis-timeout/">Redis Timeout</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">多线程循环打印</a>
     <ul class="current">
@@ -107,6 +107,8 @@
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#golang">golang实现</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">复盘</a>
     </li>
     </ul>
                     </li>
@@ -150,7 +152,7 @@
                 <p>(以下是滴滴的一面中所写的</p>
 <h1 id="1234">多线程循环打印1234</h1>
 <h2 id="java">java实现</h2>
-<p>深入的问题，如果<code>count.i</code>每次不是自增，而是加<code>1w</code>，怎么办?</p>
+<p>深入的问题，如果<code>count.i</code>每次不是自增，而是加<code>10000</code>，怎么办?</p>
 <ul>
 <li>解决方案: 每个线程都要有一个状态变量来控制是否打印，然后第i个线程去改变第i+1个线程的状态变量</li>
 </ul>
@@ -375,10 +377,10 @@ class PrintNumberThread implements Runnable {
    } 
 } 
 </code></pre>
-<h1 id="_3">复盘</h1>
+<h2 id="_3">复盘</h2>
 <ul>
 <li>无论流程多简单的事儿，都需要认真的去做，去分析<code>corner case</code>，而不是马大哈</li>
-<li>一定要开动脑经去想，去做，而不是扯皮  </li>
+<li>一定要开动脑经去想，去做，而不是口嗨</li>
 </ul>
               
             </div>
@@ -388,7 +390,7 @@ class PrintNumberThread implements Runnable {
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../redis-timeout/" class="btn btn-neutral" title="RedisTimeout"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../redis-timeout/" class="btn btn-neutral" title="Redis Timeout"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
