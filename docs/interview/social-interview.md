@@ -243,4 +243,3 @@ TODO
 - [50道sql题](https://www.jianshu.com/p/476b52ee4f1b)
 - kafka
 - 去看B+ tree的实现
-- Redis事务的实现

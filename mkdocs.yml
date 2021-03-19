@@ -15,7 +15,8 @@ nav:
       - TCP: network/tcp.md
       - HTTP: network/http.md
     - Redis: 
-      - Redis概念: middleware/redis/redis.md
+      - 使用场景: middleware/redis/redis.md
+      - Redis 事务: middleware/redis/code-read/transactions.md
       - 简单动态字符串: middleware/redis/code-read/sds.md
       - 跳表: middleware/redis/code-read/zskiplist.md
       - 哈希表: middleware/redis/code-read/hashtable.md

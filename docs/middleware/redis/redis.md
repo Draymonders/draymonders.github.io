@@ -30,30 +30,6 @@ set redis-key clientId ex 5 nx
 
 判断步骤3中的获取的数量是否小于`max_count`
 
-## 事务
-
-执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)
-
-```shell
-# redis-cli
-127.0.0.1:6379> multi
-OK
-127.0.0.1:6379> set a aa
-QUEUED
-127.0.0.1:6379> incr a
-QUEUED
-127.0.0.1:6379> set b bb
-QUEUED
-127.0.0.1:6379> exec
-1) OK
-2) (error) ERR value is not an integer or out of range
-3) OK
-127.0.0.1:6379> get a
-"aa"
-127.0.0.1:6379> get b
-"bb"
-```
-
 ## mget和pipeline的区别
 
 - mget是官方支持的， pipeline是客户端自己实现的
