@@ -5,7 +5,9 @@
 
 ## 实验
 
-执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)
+### 实验一: 事务没有原子性
+
+执行结果如下
 
 ```shell
 # redis-cli
@@ -25,6 +27,39 @@ QUEUED
 "aa"
 127.0.0.1:6379> get b
 "bb"
+```
+
+### 实验二: 监听key，如果key改变，则不执行事务
+
+场景:
+- 两个client A和B，然后A去watch一个key `a`，A`multi`开启事务，B修改key`a`的value，接着A也修改key`a`的value，然后获取key`a`的value，然后`exec`执行
+    * 最终返回结果是`nil`
+
+客户端A操作
+
+```shell
+127.0.0.1:6379> set a 111
+OK
+127.0.0.1:6379> watch a
+OK
+127.0.0.1:6379> multi
+OK
+```
+
+客户端B操作
+```shell
+127.0.0.1:6379> set a 2333
+OK
+```
+
+客户端A接着操作
+```shell
+127.0.0.1:6379> set a 123
+QUEUED
+127.0.0.1:6379> get a
+QUEUED
+127.0.0.1:6379> exec
+(nil)
 ```
 
 ## 数据结构和方法
