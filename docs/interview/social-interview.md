@@ -149,12 +149,12 @@
     * 事务隔离级别及实现
     * SQL调优（**好久没看了，需要复习**）
 - Linux
-    * io模型（select, poll, epoll**需要复习**）
+    * socket io模型（select, poll, epoll**需要复习**）
     * 日志里面第一列是ip, 查询出现次数前10的ip
         * `cat xxx.log | awk '{ print $1 }' | sort -n | uniq -c | sort -r -k1 | head 10`
     * 负载很高的时候，怎么查（我是从cpu, memory, disk, socket方面去分析的）
         
-- 算法题（秒了）
+- 算法题
     * 用加法实现减法，乘法，除法（加法已经内置好）
     * [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 
@@ -163,7 +163,7 @@
 
 一面问了很多`Redis`源码，所以二面就基本没问了
 
-整体偏`MySQL`和`Kafka`, 然后面试官说限于时间，本来还想和我交流操作系统和Linux的
+整体偏`MySQL`和`Kafka`, 最后面试官说限于时间，本来还想和我交流操作系统和Linux的
 
 面试官说他弟弟也是矿大的hhh
 
@@ -191,9 +191,8 @@
     * 如何可靠（流量控制，拥塞控制...）
     * 为什么不能两次握手，三次挥手（前者是服务端socket资源浪费，后者是客户端socket资源浪费）
 - 算法题
-    * 面试官让我看到了题库，我说这里面题我都会做
+    * 面试官让我看到了题库，都是leetcode原题
     * [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
-        * 本题写的太快，面试官有点儿吃惊
     * LRU Cache
         * 实现
         * 用在哪里（内存置换，页面置换）
@@ -224,9 +223,8 @@
     * IOC和AOP
     * 不加注解就能对所有的方法做一些事前log和事后的log（不能用AOP），怎么实现（我说要么代码重写，要么字节码增强）
         * 面试官说我不了解源码就没继续追问了
-- 设计题（这个题典型的差评了）
-    * 邀请好友给自己涨钱的实现（数据量30E），并且用户A给用户B涨完钱，用户B不能给用户A涨钱
-        * 怎么设计
+- 设计题（我设计不太行，而且这个题确实很难）
+    * 邀请好友给自己涨钱的实现（数据量30E），并且用户A给用户B涨完钱，用户B不能给用户A涨钱，每个人每天有5次助力（一天有限期）
         * 数据库怎么设计
         * 缓存怎么设计
         * 如何保证几次查库的一致性（说了唯一key，或者布隆过滤器）
@@ -240,8 +238,8 @@ TODO
 ## 复盘
 
 - Redis源码阅读
-    - [缓存无底洞](https://blog.csdn.net/erica_1230/article/details/50569301)
+- [缓存无底洞](https://blog.csdn.net/erica_1230/article/details/50569301)
 - https抓包
 - [50道sql题](https://www.jianshu.com/p/476b52ee4f1b)
 - kafka
-- 去看B+ tree的实现
+- MySQL索引具体实现，B+ tree的实现
