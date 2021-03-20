@@ -77,10 +77,16 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Redis 事务</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#_2">实验</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">实验一: 事务没有原子性</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">数据结构和方法</a>
+    <li class="toctree-l3"><a class="reference internal" href="#keykey">实验二: 监听key，如果key改变，则不执行事务</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_4">实现原理</a>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">数据结构和方法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">实现原理</a>
     </li>
     </ul>
                     </li>
@@ -144,9 +150,13 @@
             <div class="section">
               
                 <h1 id="_1">事务</h1>
-<p>命令有<code>multi / exec / watch / discard</code></p>
+<ul>
+<li>命令有<code>multi / exec / watch / discard</code></li>
+<li>只能保证<code>隔离性</code>（就是一堆命令，串行执行），不能保证原子性（要么都执行，要么都不执行，具体看下面的实现）</li>
+</ul>
 <h2 id="_2">实验</h2>
-<p>执行结果如下，发现redis事务没有原子性(同时执行 or 同时不执行)</p>
+<h3 id="_3">实验一: 事务没有原子性</h3>
+<p>执行结果如下</p>
 <pre><code class="language-shell"># redis-cli
 127.0.0.1:6379&gt; multi
 OK
@@ -165,7 +175,31 @@ QUEUED
 127.0.0.1:6379&gt; get b
 &quot;bb&quot;
 </code></pre>
-<h2 id="_3">数据结构和方法</h2>
+<h3 id="keykey">实验二: 监听key，如果key改变，则不执行事务</h3>
+<p>场景:
+- 两个client A和B，然后A去watch一个key <code>a</code>，A<code>multi</code>开启事务，B修改key<code>a</code>的value，接着A也修改key<code>a</code>的value，然后获取key<code>a</code>的value，然后<code>exec</code>执行
+    * 最终返回结果是<code>nil</code></p>
+<p>客户端A操作</p>
+<pre><code class="language-shell">127.0.0.1:6379&gt; set a 111
+OK
+127.0.0.1:6379&gt; watch a
+OK
+127.0.0.1:6379&gt; multi
+OK
+</code></pre>
+<p>客户端B操作</p>
+<pre><code class="language-shell">127.0.0.1:6379&gt; set a 2333
+OK
+</code></pre>
+<p>客户端A接着操作</p>
+<pre><code class="language-shell">127.0.0.1:6379&gt; set a 123
+QUEUED
+127.0.0.1:6379&gt; get a
+QUEUED
+127.0.0.1:6379&gt; exec
+(nil)
+</code></pre>
+<h2 id="_4">数据结构和方法</h2>
 <ul>
 <li>flag表示当前client的状态，是否在执行事务</li>
 <li>commands是一个数组，每次新来一个命令，就会扩容数组+1</li>
@@ -202,7 +236,7 @@ void discardTransaction(client *c);
 void flagTransaction(client *c);
 void execCommandPropagateMulti(client *c);
 </code></pre>
-<h2 id="_4">实现原理</h2>
+<h2 id="_5">实现原理</h2>
 <ul>
 <li>redis事务<strong>不是</strong>来一个命令就执行，然后最后回滚<ul>
 <li>来一个命令，会加入到客户端的命令队列里<ul>
