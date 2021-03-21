@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E8%BD%AC%E6%8D%A2/">
+  <link rel="canonical" href="https://draymonders.github.io/network/net-program/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>两个栈实现队列 - Draymonder Docs</title>
+  <title>高性能网络编程 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u4e24\u4e2a\u6808\u5b9e\u73b0\u961f\u5217";
-    var mkdocs_page_input_path = "algorithm/\u6808\u548c\u961f\u5217\u7684\u8f6c\u6362.md";
-    var mkdocs_page_url = "/algorithm/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E8%BD%AC%E6%8D%A2/";
+    var mkdocs_page_name = "\u9ad8\u6027\u80fd\u7f51\u7edc\u7f16\u7a0b";
+    var mkdocs_page_input_path = "network/net-program.md";
+    var mkdocs_page_url = "/network/net-program/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,14 +62,18 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../dns/">DNS</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">TCP</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/net-program/">高性能网络编程</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">高性能网络编程</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">单机支撑百万连接设计</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
@@ -121,8 +125,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>网络 &raquo;</li>
+        
+      
     
-    <li>两个栈实现队列</li>
+    <li>高性能网络编程</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -133,86 +141,33 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">两个栈实现队列</h1>
-<p>反转两次</p>
-<pre><code class="language-cpp">class Solution
-{
-public:
-    void push(int x) {
-        s1.push(x);
-    }
-
-    int pop() {
-        if (s2.empty()) {
-           while (!s1.empty()) {
-            int x = s1.top(); s2.push(x); s1.pop();
-           }
-        }
-        int x = s2.top(); s2.pop();
-        return x;
-    }
-
-private:
-    stack&lt;int&gt; s1;
-    stack&lt;int&gt; s2;
-};
-</code></pre>
-<h1 id="_2">两个队列实现栈</h1>
-<p>两个队列
-- 新增元素时，放到q1队首, 然后将q2的所有元素依次放入q1，最后所有元素再放到q2
-- 获取栈顶时，直接从q2首部去拿</p>
-<pre><code class="language-cpp">class MyStack {
-public:
-    queue&lt;int&gt; q1, q2;
-    /** Initialize your data structure here. */
-    MyStack() {
-        while (!q1.empty()) 
-            q1.pop();
-        while (!q2.empty()) 
-            q2.pop();
-    }
-
-    /** Push element x onto stack. */
-    void push(int x) {
-        q1.push(x);
-        while (!q2.empty()) {
-            int x = q2.front(); q2.pop();
-            q1.push(x);
-        }
-        while (!q1.empty()) {
-            int x = q1.front(); q1.pop();
-            q2.push(x);
-        }
-    }
-
-    /** Removes the element on top of the stack and returns that element. */
-    int pop() {
-        if (q2.empty()) {
-            return -1;
-        }
-        int x = q2.front(); q2.pop();
-        return x;
-    }
-
-    /** Get the top element. */
-    int top() {
-        if (q2.empty()) {
-            return -1;
-        }
-        return q2.front();
-    }
-
-    /** Returns whether the stack is empty. */
-    bool empty() {
-        return q2.empty();
-    }
-};
-
-</code></pre>
+                <h1 id="_1">高性能网络编程</h1>
+<ol>
+<li><a href="https://www.taohui.org.cn/2016/01/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-accept%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/">accept建立连接</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B2-tcp%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%91%E9%80%81/">TCP消息的发送</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/26/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B3-tcp%E6%B6%88%E6%81%AF%E7%9A%84%E6%8E%A5%E6%94%B6/">TCP消息的接收</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/27/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B4-tcp%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%85%B3%E9%97%AD/">TCP连接的关闭</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/27/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B5-io%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">IO复用与并发编程</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/27/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B6-reactor%E5%8F%8D%E5%BA%94%E5%A0%86%E4%B8%8E%E5%AE%9A%E6%97%B6%E5%99%A8%E7%AE%A1%E7%90%86/">reactor反应堆与定时器管理</a></li>
+<li><a href="https://www.taohui.org.cn/2016/01/27/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B7-tcp%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8/">tcp连接的内存使用</a></li>
+</ol>
+<h2 id="_2">单机支撑百万连接设计</h2>
+<ul>
+<li><a href="https://github.com/xiaojiaqi/C1000kPracticeGuide">C1000k Practice Guide</a></li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../middleware/redis/redis/" class="btn btn-neutral float-right" title="使用场景">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../http/" class="btn btn-neutral" title="HTTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -238,6 +193,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../middleware/redis/redis/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
