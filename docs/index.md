@@ -2,6 +2,11 @@
 
 Welcome
 
+## About Me
+
+- A Test Developer, and want to be Backend Developer.
+- Contact me: Draymonders#gmail.com
+
 ## Why Create this
 
 Record growth and for better.
