@@ -122,3 +122,9 @@ zskiplistNode *zslInsert(zskiplist *zsl, double score, sds ele) {
     return x;
 }
 ```
+
+## 为什么zset使用dict和zskiplist
+
+- dict可以O(1)检索单个元素
+- zskiplist可以O(logn)检索范围
+    * 可以看代码zskiplist没有做插入的去重（会存在同一个key，插入两次）

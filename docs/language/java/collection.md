@@ -28,7 +28,6 @@
     * 线程不安全(遍历的时候增加新key或者删除已有的key，报错`ConcurrentModificationException`,本质上还是modCount变化)
     * JDK7循环链表
         * 本来 `tab[i]->A->B` 多线程resize的时候可能会出现 `tab[i]->B->A->B`的情况
-    
 - Hashtable
     * key和value都不能为null
 - [ConcurrentHashMap](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)

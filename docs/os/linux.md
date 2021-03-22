@@ -1,16 +1,4 @@
-## 负载高的分析思路
-
-- cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈
-    1. 死循环
-    2. 自旋锁竞争较大，一直在自旋
-    3. 加解密
-    4. hashMap7 链表循环
-- memory怎么查看，OOM解决思路，分析对象占用，修改gc参数
-- 磁盘利用率和性能如何查看 `iostat`
-- socket状态？ `time_wait`和`close_wait`
-
-[![6rWJPK.png](https://s3.ax1x.com/2021/03/16/6rWJPK.png)](https://imgtu.com/i/6rWJPK)
-
+# Linux基础使用
 
 ## 文件及目录管理
 
@@ -27,7 +15,7 @@
 - 将docker log 追加到文件中 
     * `docker logs ${containerId} | less | tee -a service.log`
 
-### 文本处理
+## 文本处理
 
 - 查询socket状态 
     * `sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'`
@@ -36,7 +24,7 @@
         * `cat test | head -4 | tail -1 | xargs -d'\t' -r -i echo {}`
         * `sed -n 4p test | sed "s#\t#\n#g"` (推荐)
     * 排序获取topK
-        * `sort -n | uniq -c | sort -r -k1 | head -4`
+        * `sort -n | uniq -c | sort -r -n -k1 | head -4`
 
 ## 截屏
 

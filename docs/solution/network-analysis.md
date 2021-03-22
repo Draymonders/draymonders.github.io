@@ -47,7 +47,8 @@ java.net.NoRouteToHostException: Cannot assign requested address (Address not av
 
 - 短时间高并发发出tcp syn包的源ip地址被强制随机造假
     * 服务端接收到syn后，迅速为每个syn包分配一个incomplete队列，其中的socket都是暂时没有完成连接的syn_rcvd状态socket, 这个队列迅速满了，消耗了服务器的资源，但又无法正确建立tcp三次握手连接（服务端的syn/ack根据之前的syn包找到的是错误的客户端IP地址，所以也就无法收到客户端的第三次握手ack包），资源耗尽，从而导致服务器无法响应正常的syn包。
-- 从syn flood攻击可以得出讨论 --> tcp两次握手是万万不行的。 （轻易相信syn包就建立连接的两次握手， 很容易让服务端因资源耗尽而无法提供服务。）
+- 从syn flood攻击可以得出讨论 --> tcp两次握手是万万不行的。
+    * 轻易相信syn包就建立连接的两次握手，很容易让服务端因资源耗尽而无法提供服务。
 - 预防syn flood攻击
     * 在RFC4987中给出了答案。 在syn到来的时候，服务端并不会为这个syn包分配资源，免得受骗上当。只有当服务端自己的syn/ack收到客户端的ack后，才会真正分配资源，此时才完成正常的连接。 由此可见，此时syn flood失效。
     * `cat  /proc/sys/net/ipv4/tcp_syncookies`，如果为1，表示开启，如果为0，表示关闭。

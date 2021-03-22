@@ -76,8 +76,10 @@ private int expungeStaleEntry(int staleSlot) {
 ```
 
 ## 需要注意的点
+
 1. 每次使用完ThreadLocal，都调用它的remove()方法，清除数据。
 2. 在使用线程池的情况下，没有及时清理ThreadLocal，不仅是内存泄漏的问题，更严重的是可能导致业务逻辑出现问题。所以，使用ThreadLocal就跟加锁完要解锁一样，用完就清理。
 
 ## reference
+
 - [threadLocal源码解析](https://blog.csdn.net/ThinkWon/article/details/102508721)

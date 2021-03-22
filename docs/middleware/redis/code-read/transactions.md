@@ -32,6 +32,7 @@ QUEUED
 ### 实验二: 监听key，如果key改变，则不执行事务
 
 场景:
+
 - 两个client A和B，然后A去watch一个key `a`，A`multi`开启事务，B修改key`a`的value，接着A也修改key`a`的value，然后获取key`a`的value，然后`exec`执行
     * 最终返回结果是`nil`
 
@@ -64,7 +65,7 @@ QUEUED
 
 ## 数据结构和方法
 
-- flag表示当前client的状态，是否在执行事务
+- flag表示当前client的状态，里面含有状态，当前客户端是否在执行事务
 - commands是一个数组，每次新来一个命令，就会扩容数组+1
 
 ```cpp
@@ -103,10 +104,10 @@ void execCommandPropagateMulti(client *c);
 
 ## 实现原理
 
-- redis事务**不是**来一个命令就执行，然后最后回滚
-    * 来一个命令，会加入到客户端的命令队列里
+- redis事务执行逻辑
+    * 来一个命令，会加入到客户端对象的命令队列里
         * 收到`discard`命令，会将命令队列清空
-        * 收到`exec`命令，会将命令队列里面的命令执行，并且塞到client的响应缓冲区，再清空命令队列
+        * 收到`exec`命令，会将命令队列里面的命令执行，并将结果存放到client的响应缓冲区，再清空命令队列
 - `watch`是实现了 `key -> clients` 和 `client -> watched_keys` 的双向引用 （clients是双向链表）
     * 当key发生改变，会遍历 `clients` 设置 client 的 `flag` 状态为 `CLIENT_DIRTY_CAS`
     * 再执行的时候，会判断是否flag是否含有`CLIENT_DIRTY_CAS`， 不为才能执行命令

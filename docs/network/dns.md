@@ -35,4 +35,6 @@ sortlist        //对返回的域名进行排序
 domian:声明主机在那个域 search
 表示如果没有给FQDN(完整域名:port)的情况下，比如只给主机名`redis-server`, resolver要去那个域查询主机
 
+## 查找顺序
+
 一般查询的顺序是先看自己的hosts文件，如果查不到就像所连接的DNS服务器去查，也就是nameserver,DNS会根据你所提供的域名来查对应的服务器IP，如果查到了就会返回结果。
