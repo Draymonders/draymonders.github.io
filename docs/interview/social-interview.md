@@ -199,7 +199,30 @@
 
 ### 国际化三面
 
-TODO
+- 成长
+    - 为什么做测开，以后的发展规划
+    - 小团队和大团队的感受
+    - 什么情况下会去滴滴（氛围好！）
+    - 对全栈的理解，T字型人才
+- Java
+    - JUC源码理解
+    - 主线程等从线程执行完，再执行
+        * join实现机制 **这个可以去了解**
+        * 共享内存，改变状态
+    - ArrayList删除里面所有的偶数
+        * 用`iterator`，iterator**原理**
+- MySQL
+    - 写一个SQL，找出语文排名第二的学生姓名
+        * 三张表 Student(id,name), Course(id,name), Score(sid、cid、score)
+        * 这里用了max(score) < max(score), 应该用order by limit更好的
+- TCP
+    - TIME_CLOSE理解
+- 算法
+    - 队列实现栈
+        * 两个队列实现
+        * 一个队列实现（获取原来的size，插入值，然后将size个数从队列头插入到尾部）
+    - 无序数组，三个数找和为target的情况 (hashMap去做)
+
 
 ## 快手
 
