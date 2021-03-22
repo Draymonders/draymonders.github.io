@@ -1,4 +1,8 @@
-# LRU
+# LRU & LFU
+
+都是内存淘汰机制（页面置换）的算法
+
+## LRU
 
 需要自己写一个双向链表
 
@@ -45,14 +49,15 @@ public:
     
     void put(int key, int value) {
         if (mp.count(key) == 0) {
-            Node* cur = new Node(key, value);
-            mp[key] = cur;
-            addToHead(cur);
             size ++;
             if (size > cap) {
+                // 双删
                 int key = removeLast();
                 mp.erase(key);
             }
+            Node* cur = new Node(key, value);
+            mp[key] = cur;
+            addToHead(cur);
             return ;
         }
         Node* cur = mp[key];
@@ -97,9 +102,9 @@ public:
  */
 ```
 
-# LFU
+## LFU
 
-同LRU, 就是多了一个freq的信息的统计
+同LRU, 多了一个freq的信息的统计
 
 `freqToList`每个freq都有一个对应的双向链表，然后一个元素被访问，那么将该元素从`freq`的链表升到`freq+1`的链表，并且维护`minFreq`的信息
 

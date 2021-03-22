@@ -1,17 +1,9 @@
-# 问题汇总
-
-- 快排，寻找第k大
-- 二叉树先序，中序，后序遍历(递归，迭代)
-- LRU, LFU
-- 动态规划
-
-
-
 # Algorithm
 
 ## 算法备忘录
 
 ### 快排
+
 > 必须先j--, 再i++
 
 > 最后 swap(arr[l], arr[i])
@@ -38,6 +30,7 @@ void quickSort(vector<int>& arr, int l, int r) {
 ```
 
 ### 树状数组 BIT ( Binary index tree )
+
 `BIT` 也叫 `树状数组`
 
 首先看如下数学式
@@ -88,32 +81,8 @@ void updateBit(vector<int>& BIT, int pos, int x) {
 ```
 
 ####  参考链接
+
 - [树状数组详解](https://www.cnblogs.com/xenny/p/9739600.html)
-
-### 约瑟夫环
-#### 题目
-0,1,...,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。
-
-#### 解析
-
-一步到位就不搞模拟了
-
-- `f(n,m)`代表在`连续n个数(从0到n-1)`里面删除`第m个`数组的被删除的那个数
-- 显然第一个删除的数为 `(m-1)%n`, 我们假定这个数为k
-- 删除第一个数后剩余的数为`0 1 ... k-1 k+1 k+2 ... n-1`
-- 由于下一轮从`k-1`开始, 因此有如下映射关系
-
-![约瑟夫](./../imgs/yuesefu.png)
-
-- 由于 `k = (m-1) % n`
-- 我们可以看出来`f(n-1, m) = (f(n-1,m) + k+1) %n = (f(n-1)+m) % n`
-
-因此有了递推式
-
-```c++
-f(1, m) = 0  // 只剩一个数的时候, 删除的第m个数肯定是0
-f(n, m) = (f(n-1)+m) % n
-```
 
 ### kmp
 
@@ -135,6 +104,7 @@ a  b  c  a  b  c  a  b  d
 
 
 #### 举例
+
 ```
 s串
 ississip
@@ -161,6 +131,7 @@ i s s i s s i p
 
 
 #### code
+
 ```c++
 class Solution {
 public:
@@ -199,7 +170,9 @@ public:
     }
 };
 ```
+
 ### 优先队列比较函数
+
 语法如下
 > 需要注意的一点是  比较函数里面写的是 a < b, 实际返回结果`que.top()`是最大值 对立的..
 ```cpp
@@ -210,24 +183,28 @@ priority<int, vector<int>, decltype(cmp)> que(cmp);
 ```
 
 ### set & map
+
 声明如下
 ```c++
 unordered_map<int, int> mp;
 set<int> st;
 ```
 #### 删除元素
+
 ```c++
 mp.erase(key);
 st.erase(elm);
 ```
 
 #### 判断是否存在
+
 ```c++
 mp.count(key);
 st.count(elm);
 ```
 
 ### 单调栈专题
+
 |  number   | title | 
 |  :----:  | :----:  |
 | 84 | 柱状图中最大的矩形 |
