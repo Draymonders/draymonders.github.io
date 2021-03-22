@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,61 +65,63 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../dns/">DNS</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">TCP</a>
-                    </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">HTTP</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#http_1">常用http方法</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#http-10">http 1.0</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#http11">http1.1</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_1">多部分对象集合</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">状态码</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#header">header部分字段</a>
+    <li class="toctree-l2"><a class="reference internal" href="#https">https简单流程</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#cache-control">cache-control</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">数字证书</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#connection">connection</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">数字证书和数字签名的区别</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#accept">accept</a>
+        </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#host">host</a>
+    <li class="toctree-l2"><a class="reference internal" href="#http_1">http</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#http_2">http常用方法</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#if-match">if-match</a>
+    <li class="toctree-l3"><a class="reference internal" href="#http-10">http 1.0</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#if-range">if-range</a>
+    <li class="toctree-l3"><a class="reference internal" href="#http11">http1.1</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#accept-ranges">accept-ranges</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">多部分对象集合</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#server">server</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">状态码</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#location">location</a>
+    <li class="toctree-l3"><a class="reference internal" href="#header">header部分字段</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cache-control">cache-control</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#connection">connection</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#accept">accept</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#host">host</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#if-match">if-match</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#if-range">if-range</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#accept-ranges">accept-ranges</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#server">server</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#location">location</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#cookie">cookie</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">安全</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#https">https简单流程</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">单纯非对称和对称混合的问题</a>
-    </li>
-        </ul>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#websocket">websocket</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#web">web攻击</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_5">面试</a>
+    <li class="toctree-l2"><a class="reference internal" href="#http-client">http client</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">TCP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../net-program/">高性能网络编程</a>
                     </li>
@@ -126,15 +130,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -144,6 +148,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">Redis Timeout</a>
@@ -189,26 +195,49 @@
               
                 <h1 id="http">图解http</h1>
 <p>粗略读了一下 &lt;&lt;图解http&gt;&gt;这本书  摘抄了部分内容</p>
-<h2 id="http_1">常用http方法</h2>
+<h2 id="https">https简单流程</h2>
+<ol>
+<li>client先请求server</li>
+<li>server返回数字证书</li>
+<li>client使用CA机构的颁发的公钥对数字证书进行解密，然后通过摘要算法计算出的值和数字签名进行验证，相等则通过</li>
+<li>client生成session_key, 并且用上一步解出来的公钥进行加密传送给server</li>
+<li>server根据私钥去解 session_key, 然后就可以对要发送的内容使用session_key进行加解密了</li>
+</ol>
+<h3 id="_1">数字证书</h3>
+<ul>
+<li>数字证书我的理解是有四个重要的组成，公钥，非对称加密算法etc...摘要算法，摘要值<ul>
+<li>客户端公钥进行解密一个东西，然后利用摘要算法计算出摘要值和数字证书里面的摘要值进行比对</li>
+</ul>
+</li>
+<li><a href="https://www.zhihu.com/question/52493697/answer/130903797">数字签名、数字证书与HTTPS是什么关系</a></li>
+</ul>
+<h3 id="_2">数字证书和数字签名的区别</h3>
+<ul>
+<li>首先要知道https是一个三方（client, server, CA机构）加解密的过程</li>
+<li>server对公钥申请证书, 先对公钥进行<code>摘要</code>算法(hash算法)，生成<code>数字签名</code>(如果公钥被篡改，那么hash值会变)</li>
+<li>CA机构使用私钥对server申请的公钥和数字签名进行加密即生成<code>数字证书</code></li>
+</ul>
+<h2 id="http_1">http</h2>
+<h3 id="http_2">http常用方法</h3>
 <p>常用的http方法有 <code>get</code> <code>post</code> <code>put</code> <code>delete</code> <code>head</code> <code>options</code>
  - post 传输实体(参数)
  - put 传输文件
  - options 获取服务端接受的方法</p>
-<h2 id="http-10">http 1.0</h2>
+<h3 id="http-10">http 1.0</h3>
 <p>http1.0是<strong>建立一个http就用一个tcp连接</strong></p>
-<h2 id="http11">http1.1</h2>
+<h3 id="http11">http1.1</h3>
 <ul>
 <li>持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态</li>
 <li>管道化技术，就是发送请求不用等响应回来，就可以继续发送请求，异步的体现</li>
 </ul>
-<h2 id="_1">多部分对象集合</h2>
+<h3 id="_3">多部分对象集合</h3>
 <p>有两种形式
  - multipart/form-data
  - multipart/byteranges
 报文起始是 <code>--filekey</code>  终止是<code>--filekey--</code>
 部分内容请求头
  - Range 0-1000</p>
-<h2 id="_2">状态码</h2>
+<h3 id="_4">状态码</h3>
 <ul>
 <li>200  ok</li>
 <li>201  created</li>
@@ -225,54 +254,40 @@
 <li>500  internal server error</li>
 <li>503  service unavailable</li>
 </ul>
-<h2 id="header">header部分字段</h2>
+<h3 id="header">header部分字段</h3>
 <p>header有四种，通用header，请求header，响应header，实体header</p>
-<h3 id="cache-control">cache-control</h3>
+<h4 id="cache-control">cache-control</h4>
 <ul>
 <li>no cache 客户端不要过期数据，但是代理服务器可以缓存，只是每次请求时候，代理服务器去检验一下自身缓存是否需要更新</li>
 </ul>
-<h3 id="connection">connection</h3>
+<h4 id="connection">connection</h4>
 <ul>
 <li>控制不在转发给代理的字段，减少传输数据</li>
 <li>管理持久连接</li>
 </ul>
-<h3 id="accept">accept</h3>
+<h4 id="accept">accept</h4>
 <ul>
 <li>客户端能接收的文件类型</li>
 </ul>
-<h3 id="host">host</h3>
+<h4 id="host">host</h4>
 <p>确定是一台物理机中确定的那个虚拟服务器</p>
-<h3 id="if-match">if-match</h3>
+<h4 id="if-match">if-match</h4>
 <p>比较客户端和服务端的etag值(猜测是文件更新需要用到</p>
-<h3 id="if-range">if-range</h3>
+<h4 id="if-range">if-range</h4>
 <p>如果成功，返回分片，不成功，返回全部内容。</p>
-<h3 id="accept-ranges">accept-ranges</h3>
+<h4 id="accept-ranges">accept-ranges</h4>
 <p>如果value 为bytes服务端可以接受分片</p>
-<h3 id="server">server</h3>
+<h4 id="server">server</h4>
 <p>服务端信息。</p>
-<h3 id="location">location</h3>
+<h4 id="location">location</h4>
 <p>跳转到value(url更新 状态码为30X redirect</p>
 <h2 id="cookie">cookie</h2>
+<p>服务端向客户端的响应报文的头部有set_cookie字段，客户端拿到后，存起来，下次发送的时候，就带上cookie字段</p>
 <ul>
-<li>服务端向客户端的响应报文的头部有set_cookie字段，客户端拿到后，存起来，下次发送的时候，就带上cookie字段</li>
+<li>服务端set-cookie</li>
+<li>客户端cookie</li>
+<li>httponly是指，js不能去读取cookie</li>
 </ul>
-<p>cookie 
- - 服务端set-cookie
- - 客户端cookie
- - httponly是指，js不能去读取cookie</p>
-<h2 id="_3">安全</h2>
-<p>http双方没法确定对方身份，报文公开，存在篡改和泄漏的风险。</p>
-<h3 id="https">https简单流程</h3>
-<ol>
-<li>服务端向第三方注册数字证书(证书对服务端的公钥做了加密)</li>
-<li>非对称加密传送对称加密密钥</li>
-<li>用对称加密密钥加密的内容传送。</li>
-<li>因为每次非对称加密耗时，不能过多使用。</li>
-<li>对称密钥直接发送存在泄漏的风险。</li>
-</ol>
-<h3 id="_4">单纯非对称和对称混合的问题</h3>
-<p>存在的问题就是，服务器传送的非对称加密的公钥存在被篡改的情况，如何解决？
-- 数字证书，里面携带有经过第三方认证的公钥。</p>
 <h2 id="websocket">websocket</h2>
 <p>全双工，服务端不用等客户端就可以推送</p>
 <h2 id="web">web攻击</h2>
@@ -284,28 +299,7 @@
 <li>header改写</li>
 <li>重定向</li>
 </ul>
-<h2 id="_5">面试</h2>
-<ul>
-<li>
-<p>点击 https://www.baidu.com 经历了哪些过程</p>
-<ul>
-<li>DNS解析IP</li>
-<li>TCP建立链接（三次握手）</li>
-<li>https认证</li>
-</ul>
-</li>
-<li>
-<p>https的数字证书</p>
-<ul>
-<li>数字证书我的理解是有四个重要的组成，公钥，非对称加密算法etc...摘要算法，摘要值<ul>
-<li>客户端公钥进行解密一个东西，然后利用摘要算法计算出摘要值和数字证书里面的摘要值进行比对</li>
-</ul>
-</li>
-<li><a href="https://www.zhihu.com/question/52493697/answer/130903797">数字签名、数字证书与HTTPS是什么关系</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="http-client">http client</h1>
+<h2 id="http-client">http client</h2>
 <ul>
 <li><a href="https://blog.csdn.net/yi_master/article/details/80595372">http client</a></li>
 </ul>
@@ -316,10 +310,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../net-program/" class="btn btn-neutral float-right" title="高性能网络编程">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tcp/" class="btn btn-neutral float-right" title="TCP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tcp/" class="btn btn-neutral" title="TCP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../database/db/" class="btn btn-neutral" title="MySQL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -347,10 +341,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tcp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../database/db/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../net-program/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../tcp/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

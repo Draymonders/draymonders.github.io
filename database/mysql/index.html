@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/os/memory/">
+  <link rel="canonical" href="https://draymonders.github.io/database/mysql/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>内存 - Draymonder Docs</title>
+  <title>Mysql - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u5185\u5b58";
-    var mkdocs_page_input_path = "os/memory.md";
-    var mkdocs_page_url = "/os/memory/";
+    var mkdocs_page_name = "Mysql";
+    var mkdocs_page_input_path = "database/mysql.md";
+    var mkdocs_page_url = "/database/mysql/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -53,14 +53,14 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../os/">基础</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../linux/">Linux</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">数据库</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../database/db/">MySQL</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../db/">MySQL</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
@@ -124,7 +124,7 @@
     
       
     
-    <li>内存</li>
+    <li>Mysql</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -135,13 +135,64 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">内存</h1>
-<p>使用<code>free -m</code>, <code>available</code>包含了<code>free</code>, <code>available</code>里面除了<code>free</code>的还有磁盘的页缓存。</p>
-<p><code>The "available" memory accounts for that. It sums up all memory that is unused or can be freed immediately.</code></p>
-<pre><code class="language-shell">              total        used        free      shared  buff/cache   available
-Mem:          15903        3288        7868         878        4747       11442
-Swap:             0           0           0
-</code></pre>
+                <h2 id="_1">名词</h2>
+<ul>
+<li>
+<p>两阶段提交 </p>
+<ul>
+<li><code>redolog</code> 存物理记录(某数据页data从x变为y)</li>
+<li><code>binlog</code> 存逻辑记录(某table某row，col从x变为y)</li>
+</ul>
+</li>
+<li>
+<p>事务隔离实现</p>
+<ul>
+<li>未提交读</li>
+<li>已提交读 -&gt; 每句SQL执行时创建视图</li>
+<li>可重复读 -&gt; 事务开始时创建视图</li>
+<li>串行读</li>
+</ul>
+</li>
+<li>
+<p>索引</p>
+<ul>
+<li>主键索引(聚簇索引) -&gt; 叶子存所有数据<ul>
+<li>使用自增主键更好 (业务主键的话，写树操作成本高)</li>
+</ul>
+</li>
+<li>非主键索引 -&gt; 叶子存主键值(查询所有数据需要回表到主键索引去查)</li>
+<li>覆盖索引 (尽可能走索引，增加查询效率)</li>
+</ul>
+</li>
+<li>
+<p>最左前缀原则</p>
+</li>
+<li>
+<p>锁</p>
+<ul>
+<li>全局锁</li>
+<li>表锁 (lock read/write)</li>
+<li>行级锁<ul>
+<li>需要时才加上，<strong>事务结束后</strong>释放</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>事务</p>
+<ul>
+<li>依赖MVCC实现，每个事务开始会分配一个id，搭配<code>undolog</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="_2">实践</h2>
+<ul>
+<li><a href="https://tech.meituan.com/2014/06/30/mysql-index.html">MySQL索引原理及慢查询优化</a></li>
+</ul>
+<h2 id="_3">优化操作</h2>
+<ul>
+<li>适当重建索引(索引可能因为删除或者分裂，导致数据页空洞，重建会提升利用率)</li>
+</ul>
               
             </div>
           </div>

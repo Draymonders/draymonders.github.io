@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,19 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">三次握手</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">四次挥手</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">可靠性保证</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">粘包和拆包</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +86,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +104,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">Redis Timeout</a>
@@ -137,7 +149,8 @@
           <div role="main">
             <div class="section">
               
-                <ul>
+                <h1 id="tcp">TCP</h1>
+<ul>
 <li>OSI七层模型<ul>
 <li>物理层，传输比特流<code>bit</code></li>
 <li>数据链路层，传输局域网内的帧<code>frame</code>，有差错校验，流量控制</li>
@@ -152,6 +165,19 @@
 <li>TCP是一个<strong>面向连接</strong>的、<strong>可靠</strong>的、基于<strong>字节流</strong>的传输层协议。而 UDP是一个面向无连接的传输层协议。</li>
 </ul>
 </li>
+<li>IPV4(4个字节), IPV6(16个字节)</li>
+<li>唯一标识一个连接<ul>
+<li>四元组（源ip, 目的ip, 源端口，目的端口）</li>
+</ul>
+</li>
+<li>分片大小<ul>
+<li>MTU 以太网最大支持的单帧 1500</li>
+<li>MSS TCP支持的单分组 512</li>
+</ul>
+</li>
+</ul>
+<h2 id="_1">三次握手</h2>
+<ul>
 <li>三次握手<ul>
 <li>首先，server端保持<code>LISTEN</code>状态</li>
 <li>client端 发送 SYN, seq=x的请求后处于<code>SYN-SEND</code></li>
@@ -175,6 +201,9 @@
 <li>利用 SYN Cookie 技术，在服务端接收到 SYN后不立即分配连接资源，而是根据这个 SYN计算出一个Cookie，连同第二次握手回复给客户端，在客户端回复 ACK的时候带上这个 Cookie值，服务端验证 Cookie 合法之后才分配连接资源。</li>
 </ul>
 </li>
+</ul>
+<h2 id="_2">四次挥手</h2>
+<ul>
 <li>四次挥手<ul>
 <li>首先，client和server都是<code>EATABLISHED</code> (在这里，我们称主动关闭的一方叫client)</li>
 <li>client 发送 FIN, client 进入<code>FIN-WAIT1</code></li>
@@ -183,6 +212,14 @@
 <li>server处理完剩余的数据后，发送 FIN 和 ACK，进入<code>LAST-ACk</code></li>
 <li>client收到后，发送ACK，进入<code>TIME_WAIT</code>，过2MSL进入<code>CLOSED</code></li>
 <li>server收到后，也进入<code>CLOSED</code></li>
+</ul>
+</li>
+<li>为什么不能三次挥手<ul>
+<li><strong>是可以存在三次挥手</strong>的情况的（即客户端和服务端同时发来了fin, 由fin-wait1转换到closing状态）</li>
+<li>正常情况下，三次挥手，会使得客户端这里的socket可能存在没有安全释放的情况<ul>
+<li>如果第三次挥手丢包了，服务端已经关闭了socket，但是客户端的socket其实还没有关</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>大量 CLOSE_WAIT 状态分析<ul>
@@ -199,8 +236,17 @@
 <li>1 个 MSL 确保对端没有收到 ACK 重传的 FIN 报文可以到达</li>
 </ul>
 </li>
-<li>如何标识唯一标识一个连接<ul>
-<li>四元组 (源ip, 目的ip, 源端口，目的端口)</li>
+</ul>
+<h2 id="_3">可靠性保证</h2>
+<p>TCP保证消息不重复，不丢失，不乱序，并且按序到达</p>
+<ul>
+<li>保证可靠性<ul>
+<li>序列号和确认应答信号</li>
+<li>超时重发控制</li>
+<li>连接管理</li>
+<li>滑动窗口控制</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
 </ul>
 </li>
 <li>TCP 的流量控制<ul>
@@ -208,13 +254,31 @@
 </ul>
 </li>
 <li>TCP 的拥塞控制<ul>
-<li>慢启动(到阈值前，从1到阈值，翻倍上升)</li>
-<li>拥塞避免(到达阈值后，每次加1)</li>
-<li>快速重传(当收到重复的ACK三次，立马重传数据)</li>
-<li>快恢复</li>
-<li>Nagle算法 <strong>TODO</strong></li>
+<li>慢启动<ul>
+<li>到阈值前，从1到阈值，翻倍上升</li>
 </ul>
 </li>
+<li>拥塞避免<ul>
+<li>到达阈值后，每次加1</li>
+</ul>
+</li>
+<li>快速重传<ul>
+<li>当收到重复的ACK三次，立马重传数据</li>
+</ul>
+</li>
+<li>快恢复</li>
+<li>Nagle算法<ul>
+<li>最多只有一个小报文的包在发送</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">粘包和拆包</h2>
+<p>处理可以等同于 csv变量</p>
+<ul>
+<li>报文的前多少字节表示当前http包的长度</li>
+<li>尾部增加分隔符</li>
 </ul>
               
             </div>
@@ -223,10 +287,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../http/" class="btn btn-neutral float-right" title="HTTP">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../net-program/" class="btn btn-neutral float-right" title="高性能网络编程">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../dns/" class="btn btn-neutral" title="DNS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../http/" class="btn btn-neutral" title="HTTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -254,10 +318,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../dns/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../http/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../net-program/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

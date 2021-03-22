@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +76,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +94,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../solution/redis-timeout/">Redis Timeout</a>
@@ -141,8 +143,6 @@
 </ul>
 </li>
 <li>BIO，<a href="https://tech.meituan.com/2016/11/04/nio.html">NIO</a></li>
-<li>双亲委派模型</li>
-<li>java中mysql数据库机器CPU使用过高怎么定位</li>
 <li>线程池<ul>
 <li>corePoolSize, maxPoolSize, keepAliveTime, keepAliveUnit, runnableQueue, ThreadFactory, RejectHandler</li>
 <li>未达到corePoolSize先创建线程，然后塞到runnableQueue里，队列满了，继续创建线程到maxPoolSize，达到后执行rejectHandler</li>

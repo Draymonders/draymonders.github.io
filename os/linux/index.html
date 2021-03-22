@@ -53,8 +53,16 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../os/">基础</a>
+                    </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">文件及目录管理</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">文本处理</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">截屏</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -65,11 +73,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -78,15 +84,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -96,6 +102,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">Redis Timeout</a>
@@ -139,21 +147,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">负载高的分析思路</h2>
-<ul>
-<li>cpu利用率怎么查看，找到占用cpu最多的进程，分析堆栈<ol>
-<li>死循环</li>
-<li>自旋锁竞争较大，一直在自旋</li>
-<li>加解密</li>
-<li>hashMap7 链表循环</li>
-</ol>
-</li>
-<li>memory怎么查看，OOM解决思路，分析对象占用，修改gc参数</li>
-<li>磁盘利用率和性能如何查看 <code>iostat</code></li>
-<li>socket状态？ <code>time_wait</code>和<code>close_wait</code></li>
-</ul>
-<p><a href="https://imgtu.com/i/6rWJPK"><img alt="6rWJPK.png" src="https://s3.ax1x.com/2021/03/16/6rWJPK.png" /></a></p>
-<h2 id="_2">文件及目录管理</h2>
+                <h1 id="linux">Linux基础使用</h1>
+<h2 id="_1">文件及目录管理</h2>
 <ul>
 <li>目录/文件 的创建、删除、查询<ul>
 <li>mkdir, rm, cp, mv, <code>ln -s</code>软连接, ln硬连接</li>
@@ -180,7 +175,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="_3">文本处理</h3>
+<h2 id="_2">文本处理</h2>
 <ul>
 <li>查询socket状态 <ul>
 <li><code>sudo netstat -autpn | awk '/^tcp/ { ++S[$6] } END { for(a in S) print a,S[a] }'</code></li>
@@ -193,13 +188,13 @@
 </ul>
 </li>
 <li>排序获取topK<ul>
-<li><code>sort -n | uniq -c | sort -r -k1 | head -4</code></li>
+<li><code>sort -n | uniq -c | sort -r -n -k1 | head -4</code></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="_4">截屏</h2>
+<h2 id="_3">截屏</h2>
 <ul>
 <li>Linux截图快捷键<ul>
 <li><code>ctrl shift PrtSc</code></li>
@@ -216,7 +211,7 @@
         <a href="../../database/db/" class="btn btn-neutral float-right" title="MySQL">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="主页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../os/" class="btn btn-neutral" title="基础"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -244,7 +239,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../os/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../../database/db/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +76,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +94,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">Redis Timeout</a>
@@ -134,23 +136,24 @@
             <div class="section">
               
                 <ul>
-<li>限流<ul>
+<li>
+<p>限流</p>
+<ul>
 <li>漏桶，请求先进入到漏桶里,漏桶以一定的速度出水，接口有响应速率</li>
 <li>令牌桶，每秒生产固定数量的令牌，处理请求需要先拿到令牌</li>
 <li>差异: 令牌桶能处理峰时流量</li>
 </ul>
 </li>
-<li>动态代理，JDK原生和cglib<ul>
+<li>
+<p>动态代理，JDK原生和cglib</p>
+<ul>
 <li>原生JDK是基于接口实现的, 实现<code>InvocationHandler</code>接口里的<code>invoke</code>方法，接着调用<code>Proxy.newProxyInstance</code>方法，传入类加载，接口，以及需要代理的对象</li>
 <li>cglib是基于<code>继承</code>(字节码增强技术)实现的，实现<code>MethodInterceptor</code>接口里的<code>intercept</code>方法,接着<code>new Enhancer()</code>并且<code>setSuperclass()</code>和<code>setCallback</code></li>
 </ul>
 </li>
-<li>TCP/IP协议栈</li>
-<li>IPV4(4个字节), IPV6(16个字节)</li>
-<li>HTTPS简述</li>
-<li>TCP,UDP介绍,差别,UDP保证可靠性</li>
-<li>红黑树,AVL对比,引申B,B+树(B+中间不存节点)</li>
-<li>closing 状态</li>
+<li>
+<p>红黑树,AVL对比,引申B,B+树(B+中间不存节点)</p>
+</li>
 <li>
 <p><a href="https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/">dubbo 负载均衡算法</a></p>
 <ul>
@@ -164,7 +167,10 @@
 </ul>
 </li>
 <li>一致性hash算法<ul>
-<li>将服务提供者映射到圆环上，并且引入虚拟节点(一个物理节点充当多个虚拟节点，目的是为了防止由于节点不够分散，导致大量请求落到了同一个节点上，而其他节点只会接收到了少量请求的情况)</li>
+<li>将服务提供者映射到圆环上，并且引入虚拟节点<ul>
+<li>一个物理节点充当多个虚拟节点，目的是为了防止由于节点不够分散，导致大量请求落到了同一个节点上，而其他节点只会接收到了少量请求的情况</li>
+</ul>
+</li>
 <li>ConsistentHashLoadBalance <strong>不关心权重</strong></li>
 </ul>
 </li>
@@ -172,46 +178,6 @@
 <li>初版的代码: 求加权的和，每次调用产生一个序号(从0开始)，对加权的和取余，余数一直递减，捡到0对应的<code>invoker</code>即为将要调用的节点(问题在于如果加权的和很大，每次减一，效率过低)</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>
-<p>https流程</p>
-<ul>
-<li>client先请求server</li>
-<li>server返回数字证书</li>
-<li>client使用CA机构的颁发的公钥对数字证书进行解密，然后通过摘要算法计算出的值和数字签名进行验证，相等则通过</li>
-<li>client生成session_key, 并且用上一步解出来的公钥进行加密传送给server</li>
-<li>server根据私钥去解 session_key, 然后就可以对要发送的内容使用session_key进行加解密了</li>
-</ul>
-</li>
-<li>
-<p>数字签名，数字证书的区别</p>
-<ul>
-<li>首先要知道https是一个三方（client, server, CA机构）加解密的过程</li>
-<li>server对公钥申请证书, 先对公钥进行<code>摘要</code>算法(hash算法)，生成<code>数字签名</code>(如果公钥被篡改，那么hash值会变)</li>
-<li>CA机构使用私钥对server申请的公钥和数字签名进行加密即生成<code>数字证书</code></li>
-</ul>
-</li>
-<li>分片大小<ul>
-<li>MTU 以太网最大支持的单帧 1500</li>
-<li>MSS TCP支持的单分组 512</li>
-</ul>
-</li>
-<li>TCP拆包和粘包<ul>
-<li>csv变量举例</li>
-</ul>
-</li>
-<li>http response code<ul>
-<li>200 成功</li>
-<li>206 部分内容</li>
-<li>301 永久移动</li>
-<li>302 临时移动</li>
-<li>400 请求错误</li>
-<li>401 未认证</li>
-<li>403 没权限</li>
-<li>404 没找到</li>
-<li>500 server处理异常</li>
-<li>503 网关暂时不可用</li>
 </ul>
 </li>
 </ul>

@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +76,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +94,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../solution/redis-timeout/">Redis Timeout</a>
@@ -133,7 +135,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">逆序对</h2>
+                <h1 id="_1">归并排序</h1>
+<h2 id="_2">逆序对</h2>
 <p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
 输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007</p>
 <pre><code class="language-cpp">int mod = 1000000007;

@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +76,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +94,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">网络故障分析</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#ip-ping">IP ping不通</a>
@@ -204,7 +206,10 @@
 <li>服务端接收到syn后，迅速为每个syn包分配一个incomplete队列，其中的socket都是暂时没有完成连接的syn_rcvd状态socket, 这个队列迅速满了，消耗了服务器的资源，但又无法正确建立tcp三次握手连接（服务端的syn/ack根据之前的syn包找到的是错误的客户端IP地址，所以也就无法收到客户端的第三次握手ack包），资源耗尽，从而导致服务器无法响应正常的syn包。</li>
 </ul>
 </li>
-<li>从syn flood攻击可以得出讨论 --&gt; tcp两次握手是万万不行的。 （轻易相信syn包就建立连接的两次握手， 很容易让服务端因资源耗尽而无法提供服务。）</li>
+<li>从syn flood攻击可以得出讨论 --&gt; tcp两次握手是万万不行的。<ul>
+<li>轻易相信syn包就建立连接的两次握手，很容易让服务端因资源耗尽而无法提供服务。</li>
+</ul>
+</li>
 <li>预防syn flood攻击<ul>
 <li>在RFC4987中给出了答案。 在syn到来的时候，服务端并不会为这个syn包分配资源，免得受骗上当。只有当服务端自己的syn/ack收到客户端的ack后，才会真正分配资源，此时才完成正常的连接。 由此可见，此时syn flood失效。</li>
 <li><code>cat  /proc/sys/net/ipv4/tcp_syncookies</code>，如果为1，表示开启，如果为0，表示关闭。</li>
@@ -221,7 +226,7 @@
         <a href="../redis-timeout/" class="btn btn-neutral float-right" title="Redis Timeout">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../interview/social-interview/" class="btn btn-neutral" title="社招面试"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../high-load-analysis/" class="btn btn-neutral" title="负载高分析"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -249,7 +254,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../interview/social-interview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../high-load-analysis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../redis-timeout/" style="color: #fcfcfc">Next &raquo;</a></span>

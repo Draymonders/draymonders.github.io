@@ -9,7 +9,7 @@
   <meta name="author" content="Draymonder">
   <link rel="canonical" href="https://draymonders.github.io/algorithm/LRU%26LFU/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>LRU - Draymonder Docs</title>
+  <title>LRU & LFU - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "LRU";
+    var mkdocs_page_name = "LRU & LFU";
     var mkdocs_page_input_path = "algorithm/LRU&LFU.md";
     var mkdocs_page_url = "/algorithm/LRU%26LFU/";
   </script>
@@ -53,6 +53,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">操作系统</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/os/">基础</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../os/linux/">Linux</a>
                     </li>
                 </ul>
@@ -63,11 +65,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">网络</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/dns/">DNS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/tcp/">TCP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../network/http/">HTTP</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../network/net-program/">高性能网络编程</a>
                     </li>
@@ -76,15 +76,15 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/redis/">使用场景</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/sds/">简单动态字符串</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/hashtable/">哈希表</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/zskiplist/">跳表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/server-process/">命令处理生命周期</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../middleware/redis/code-read/transactions/">Redis 事务</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">面试</span></p>
@@ -94,6 +94,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">解决方案</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../solution/high-load-analysis/">负载高分析</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/network-analysis/">网络故障分析</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../solution/redis-timeout/">Redis Timeout</a>
@@ -122,7 +124,7 @@
     
       
     
-    <li>LRU</li>
+    <li>LRU & LFU</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -133,7 +135,9 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="lru">LRU</h1>
+                <h1 id="lru-lfu">LRU &amp; LFU</h1>
+<p>都是内存淘汰机制（页面置换）的算法</p>
+<h2 id="lru">LRU</h2>
 <p>需要自己写一个双向链表</p>
 <pre><code class="language-cpp">struct Node {
     int key;
@@ -177,14 +181,15 @@ public:
 
     void put(int key, int value) {
         if (mp.count(key) == 0) {
-            Node* cur = new Node(key, value);
-            mp[key] = cur;
-            addToHead(cur);
             size ++;
             if (size &gt; cap) {
+                // 双删
                 int key = removeLast();
                 mp.erase(key);
             }
+            Node* cur = new Node(key, value);
+            mp[key] = cur;
+            addToHead(cur);
             return ;
         }
         Node* cur = mp[key];
@@ -228,8 +233,8 @@ public:
  * obj-&gt;put(key,value);
  */
 </code></pre>
-<h1 id="lfu">LFU</h1>
-<p>同LRU, 就是多了一个freq的信息的统计</p>
+<h2 id="lfu">LFU</h2>
+<p>同LRU, 多了一个freq的信息的统计</p>
 <p><code>freqToList</code>每个freq都有一个对应的双向链表，然后一个元素被访问，那么将该元素从<code>freq</code>的链表升到<code>freq+1</code>的链表，并且维护<code>minFreq</code>的信息</p>
 <pre><code class="language-cpp">struct Node {
     int key;
