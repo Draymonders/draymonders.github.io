@@ -309,12 +309,5 @@
 
 ## 复盘
 
-- RDB和AOF实现细节
 - https抓包
 - SQL调优
-- 自旋锁的unsafe怎么实现的
-- AQS原理，（CLH了解么，不了解）
-- [缓存无底洞](https://blog.csdn.net/erica_1230/article/details/50569301)
-- [50道sql题](https://www.jianshu.com/p/476b52ee4f1b)
-- kafka 了解
-- MySQL索引具体实现，B+ tree的实现
