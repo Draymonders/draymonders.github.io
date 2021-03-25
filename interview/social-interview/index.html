@@ -121,9 +121,9 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#_14">用户增长三面</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_15">用户增长四面</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_15">复盘</a>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -548,7 +548,7 @@
 </li>
 </ul>
 <h2 id="_11">快手</h2>
-<p>用户增长，即拉新用户</p>
+<p>用户增长，通俗讲就是拉新用户</p>
 <h3 id="_12">用户增长一面</h3>
 <ul>
 <li>多线程<ul>
@@ -567,8 +567,12 @@
 <li>什么时候gc会影响应用的可用性</li>
 <li>强，软，弱，虚引用<ul>
 <li><code>weakReference</code>提到了<code>ThreadLocal</code></li>
-<li>讲了具体ThreadLocal的实现，以及防止内存泄露</li>
+<li>讲了具体ThreadLocal的实现，以及防止内存泄露<ul>
+<li>ThreadLocal是采用开放寻址法</li>
+</ul>
+</li>
 <li>在应用侧，线程池用<code>ThreadLocal</code>的时候，如何一个任务执行完清除<ul>
+<li>是不是可以实现线程池的钩子函数<code>afterExecute</code> ?</li>
 <li>有框架可以实现嘛，还是必须业务去做</li>
 </ul>
 </li>
@@ -660,7 +664,7 @@
 </li>
 <li>场景<ul>
 <li>抢红包设计<ul>
-<li>超发如何解决（不会，明天找点儿资料看一下）</li>
+<li>超发如何解决</li>
 </ul>
 </li>
 </ul>
@@ -670,10 +674,53 @@
 </ul>
 </li>
 </ul>
-<h2 id="_15">复盘</h2>
+<h3 id="_15">用户增长四面</h3>
+<p>不知道为啥换了个组，分析用户画像的（就是做数据处理的，以及数据查询，OLAP多一些）</p>
 <ul>
-<li>https抓包</li>
-<li>SQL调优</li>
+<li>之前面到的遇到的问题<ul>
+<li>有没有去再学习（当然要复盘的了）</li>
+</ul>
+</li>
+<li>项目<ul>
+<li>遇到的问题</li>
+<li>压测过https, rpc么</li>
+<li>rpc压测解决方案</li>
+</ul>
+</li>
+<li>SpringCloud<ul>
+<li>让你去设计注册中心，配置中心，网关</li>
+<li>注册中心如果使用zk, 大量实例的同步会变慢，解决方案<ul>
+<li>分区域去用注册中心（分片策略）</li>
+<li><code>service mesh</code> 交给sidecar容器去处理rpc的路由情况</li>
+</ul>
+</li>
+<li>配置中心<ul>
+<li>配置刷新怎么去做<ul>
+<li>队列存增量的配置修改信息，服务实例定时去拉队列</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设计消息队列<ul>
+<li>看过kafka的paper，按照paper的思路去说了</li>
+</ul>
+</li>
+<li>一致性hash<ul>
+<li>一个机器down掉，数据会怎么分布<ul>
+<li>考虑虚拟节点的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>k个有序数组合并 <ul>
+<li>两种实现，分析算法复杂度</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
               
             </div>
