@@ -10,7 +10,8 @@ nav:
       - 基础: os/os.md
       - Linux: os/linux.md
     - 数据库:
-      - MySQL: database/db.md
+      # - MySQL: database/db.md
+      - MySQL读书笔记: database/mysql-notes.md
     - 网络:
       # - DNS: network/dns.md
       - HTTP: network/http.md
