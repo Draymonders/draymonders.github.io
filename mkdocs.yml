@@ -6,17 +6,8 @@ copyright: Copyright © 2021 Draymonder
 
 nav:
     - 主页: index.md
-    - 操作系统:
-      - 基础: os/os.md
-      - Linux: os/linux.md
-    - 数据库:
-      # - MySQL: database/db.md
-      - MySQL读书笔记: database/mysql-notes.md
-    - 网络:
-      # - DNS: network/dns.md
-      - HTTP: network/http.md
-      - TCP: network/tcp.md
-      - 高性能网络编程: network/net-program.md
+    - 大数据:
+      - 大数据读书笔记: bigdata/notes.md
     - Redis: 
       - 使用场景: middleware/redis/redis.md
       - 简单动态字符串: middleware/redis/code-read/sds.md
@@ -32,6 +23,17 @@ nav:
       - 网络故障分析: solution/network-analysis.md
       - Redis Timeout: solution/redis-timeout.md
       - 多线程循环打印: solution/multi-print.md
+    - 操作系统:
+      - 基础: os/os.md
+      - Linux: os/linux.md
+    - 数据库:
+      # - MySQL: database/db.md
+      - MySQL读书笔记: database/mysql-notes.md
+    - 网络:
+      # - DNS: network/dns.md
+      - HTTP: network/http.md
+      - TCP: network/tcp.md
+      - 高性能网络编程: network/net-program.md
     
 plugins:
     - search
