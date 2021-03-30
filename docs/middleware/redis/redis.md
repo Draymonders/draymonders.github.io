@@ -41,3 +41,7 @@ set redis-key clientId ex 5 nx
 1. 大key会带来操作时间的上升 即使是`O(logn)`的操作，n越大，执行时间越长，Redis单线程处理，会block其他命令执行
 2. 大key迁移会很麻烦
 3. io的开销(将big key传输到client, io会很慢)
+
+## 性能优化
+
+- [Redis 性能优化思路，写的非常好！](https://www.easemob.com/news/6409)
