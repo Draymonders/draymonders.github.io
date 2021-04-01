@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Draymonder">
-  <link rel="canonical" href="https://draymonders.github.io/algorithm/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+  <link rel="canonical" href="https://draymonders.github.io/bigdata/grow-up/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>翻转链表 - Draymonder Docs</title>
+  <title>成长路线 - Draymonder Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7ffb\u8f6c\u94fe\u8868";
-    var mkdocs_page_input_path = "algorithm/\u7ffb\u8f6c\u94fe\u8868.md";
-    var mkdocs_page_url = "/algorithm/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/";
+    var mkdocs_page_name = "\u6210\u957f\u8def\u7ebf";
+    var mkdocs_page_input_path = "bigdata/grow-up.md";
+    var mkdocs_page_url = "/bigdata/grow-up/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,10 +62,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">大数据</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../bigdata/grow-up/">成长路线</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">成长路线</a>
+    <ul class="current">
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../bigdata/notes/">大数据读书笔记</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../notes/">大数据读书笔记</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Redis</span></p>
@@ -140,8 +142,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>大数据 &raquo;</li>
+        
+      
     
-    <li>翻转链表</li>
+    <li>成长路线</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -152,25 +158,30 @@
           <div role="main">
             <div class="section">
               
-                <pre><code class="language-cpp">class Solution {
-public:
-    ListNode* ReverseList(ListNode* pHead) {
-        ListNode* pre = NULL;
-        ListNode* cur = pHead;
-        while (cur) {
-            ListNode* next = cur-&gt;next;
-            cur-&gt;next = pre;
-            pre = cur;
-            cur = next;
-        }
-        return pre;
-    }
-};
-</code></pre>
+                <h1 id="goal">Goal</h1>
+<ul>
+<li>Google API Design, 培养一下工程素养，包括命名，向前兼容性，文档等科学做法</li>
+<li>CUDA是什么？ https://www.youtube.com/watch?v=nRSxp5ZKwhQ</li>
+<li>了解一下深度学习，看一下元老级别的Alexnet</li>
+<li>go https://golang.org/doc/effective_go.html</li>
+<li>了解etcd, 入门使用HDFS / HBase / MapReduce / Spark / Storm</li>
+<li>MIT 6.824 熟悉Go使用、熟悉CSP编程模型</li>
+<li>Paper: <code>Facebook HayStack</code> 和 <code>Ceph</code></li>
+<li>基本技能 python / bash / html + css + js</li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../notes/" class="btn btn-neutral float-right" title="大数据读书笔记">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../effective/readme/" class="btn btn-neutral" title="效率提升"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -196,6 +207,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../../effective/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
