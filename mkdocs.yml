@@ -6,7 +6,12 @@ copyright: Copyright © 2021 Draymonder
 
 nav:
     - 主页: index.md
+    - 碎碎念:
+      - 2021: grow-up/2021.md
+    - 工程相关: 
+      - 效率提升: effective/readme.md
     - 大数据:
+      - 成长路线: bigdata/grow-up.md
       - 大数据读书笔记: bigdata/notes.md
     - Redis: 
       - 使用场景: middleware/redis/redis.md
