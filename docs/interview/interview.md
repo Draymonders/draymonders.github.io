@@ -7,8 +7,6 @@
     - 原生JDK是基于接口实现的, 实现`InvocationHandler`接口里的`invoke`方法，接着调用`Proxy.newProxyInstance`方法，传入类加载，接口，以及需要代理的对象
     - cglib是基于`继承`(字节码增强技术)实现的，实现`MethodInterceptor`接口里的`intercept`方法,接着`new Enhancer()`并且`setSuperclass()`和`setCallback`
 
-- 红黑树,AVL对比,引申B,B+树(B+中间不存节点)
-
 - [dubbo 负载均衡算法](https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/)
     - 加权随机算法
         * 比如权重`[1,2,3]`, 那么分为`[[0,1), [1,3), [3,6)]`, 随机6以内的数，落在哪个区间算哪个

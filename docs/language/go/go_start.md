@@ -2,7 +2,7 @@
 
 ### go proxy
 
-设置 `GOPROXY` 变量， 详细点击 https://goproxy.io/
+设置 `GOPROXY` 变量， 详细点击 https://goproxy.cn/
 
 ### go mod
 
@@ -102,4 +102,3 @@ x := Sum(&array)  // Note the explicit address-of operator
 ### Concurrency
 
 - Do not communicate by sharing memory; instead, share memory by communicating.
-- 
