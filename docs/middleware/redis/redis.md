@@ -42,6 +42,7 @@ set redis-key clientId ex 5 nx
 2. 大key迁移会很麻烦
 3. io的开销(将big key传输到client, io会很慢)
 
-## 性能优化
+## 推荐文章
 
 - [Redis 性能优化思路，写的非常好！](https://www.easemob.com/news/6409)
+- [火山引擎 Redis 云原生实践](https://mp.weixin.qq.com/s/VCpuZ0lvgSgfvG7voBl9fw)
