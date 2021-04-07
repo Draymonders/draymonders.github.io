@@ -1,15 +1,14 @@
 # Draymonder Docs
 
-Welcome
+## About
 
-## About Me
+- 1998年生，退役Acmer，即将在字节跳动工作
+- 梦想将来某一天可以成为某一工程领域的Master
 
-- A Test Developer, and want to be Backend Developer.
-- Contact me: Draymonders#gmail.com
+## Contact
 
-## Why Create This
-
-Record growth and for better.
+- 微信: Draymonders
+- 邮箱: Draymonders@gmail.com
 
 ## Commands
 

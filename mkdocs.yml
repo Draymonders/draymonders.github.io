@@ -10,20 +10,8 @@ nav:
       - 2021: grow-up/2021.md
     - 工程相关: 
       - 效率提升: effective/readme.md
-    - 大数据:
-      - 成长路线: bigdata/grow-up.md
-      - 大数据读书笔记: bigdata/notes.md
-    - Redis: 
-      - 使用场景: middleware/redis/redis.md
-      - 简单动态字符串: middleware/redis/code-read/sds.md
-      - 哈希表: middleware/redis/code-read/hashtable.md
-      - 跳表: middleware/redis/code-read/zskiplist.md
-      - 命令处理生命周期: middleware/redis/code-read/server-process.md
-      - Redis 事务: middleware/redis/code-read/transactions.md
-    - 面试: 
-      # - 面试题: interview/interview.md
-      - 社招面试: interview/social-interview.md
     - 解决方案: 
+      - 数据迁移: solution/db-transfer.md
       - 负载高分析: solution/high-load-analysis.md
       - 网络故障分析: solution/network-analysis.md
       - Redis Timeout: solution/redis-timeout.md
@@ -31,6 +19,13 @@ nav:
     - 操作系统:
       - 基础: os/os.md
       - Linux: os/linux.md
+    - Redis: 
+      - 使用场景: middleware/redis/redis.md
+      - 简单动态字符串: middleware/redis/code-read/sds.md
+      - 哈希表: middleware/redis/code-read/hashtable.md
+      - 跳表: middleware/redis/code-read/zskiplist.md
+      - 命令处理生命周期: middleware/redis/code-read/server-process.md
+      - Redis 事务: middleware/redis/code-read/transactions.md
     - 数据库:
       # - MySQL: database/db.md
       - MySQL读书笔记: database/mysql-notes.md
@@ -39,6 +34,12 @@ nav:
       - HTTP: network/http.md
       - TCP: network/tcp.md
       - 高性能网络编程: network/net-program.md
+    - 大数据:
+      - 成长路线: bigdata/grow-up.md
+      - 大数据读书笔记: bigdata/notes.md
+    - 面试: 
+      # - 面试题: interview/interview.md
+      - 社招面试: interview/social-interview.md
     
 plugins:
     - search
