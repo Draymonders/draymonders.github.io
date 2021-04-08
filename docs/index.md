@@ -2,7 +2,7 @@
 
 ## About
 
-- 1998年生，退役Acmer，即将在字节跳动工作
+- 1998年生，退役Acmer，在 Bytedance 工作
 - 梦想将来某一天可以成为某一工程领域的Master
 
 ## Contact
