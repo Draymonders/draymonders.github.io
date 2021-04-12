@@ -22,15 +22,13 @@ typedef struct dictht {
 } dictht;
 
 typedef struct dict {
-    dictType *type;
+    dictType *type; /* 记录 dictEntry的key和value的信息 */
     void *privdata;
     dictht ht[2];
     long rehashidx; /* rehashing not in progress if rehashidx == -1 */
     unsigned long iterators; /* number of iterators currently running */
 } dict;
 ```
-
-## 函数
 
 ### 插入
 
@@ -112,13 +110,67 @@ dictEntry *dictFind(dict *d, const void *key)
 #### 时机
 
 - add，find，delete，replace都会触发单个bucket的扩容
-- 当服务空闲时，如果当前字典也需要进行rehsh操作，则会调用`incrementallyRehash`函数进行批量rehash操作（每次对100个节点进行rehash操作，共执行1毫秒
+- 当服务空闲时，如果当前字典也需要进行rehsh操作，则会调用`incrementallyRehash`函数进行批量rehash操作
+    * 每次对100个节点进行rehash操作，共执行1毫秒
 
-#### 扩容源码分析
+#### 判断扩展HashTable
+
+```cpp
+/* Expand the hash table if needed */
+static int _dictExpandIfNeeded(dict *d)
+{
+    /* Incremental rehashing already in progress. Return. */
+    if (dictIsRehashing(d)) return DICT_OK;
+
+    /* If the hash table is empty expand it to the initial size. */
+    if (d->ht[0].size == 0) return dictExpand(d, DICT_HT_INITIAL_SIZE);
+
+    /* If we reached the 1:1 ratio, and we are allowed to resize the hash
+     * table (global setting) or we should avoid it but the ratio between
+     * elements/buckets is over the "safe" threshold, we resize doubling
+     * the number of buckets. */
+    if (d->ht[0].used >= d->ht[0].size &&
+        (dict_can_resize ||
+         d->ht[0].used/d->ht[0].size > dict_force_resize_ratio))
+    {
+        return dictExpand(d, d->ht[0].used*2);
+    }
+    return DICT_OK;
+}
+```
+
+#### 判断收缩HashTable
+
+```cpp
+int htNeedsResize(dict *dict) {
+    long long size, used;
+
+    size = dictSlots(dict);
+    used = dictSize(dict);
+    return (size > DICT_HT_INITIAL_SIZE &&
+            (used*100/size < HASHTABLE_MIN_FILL));
+}
+
+/* Resize the table to the minimal size that contains all the elements,
+ * but with the invariant of a USED/BUCKETS ratio near to <= 1 */
+int dictResize(dict *d)
+{
+    int minimal;
+
+    if (!dict_can_resize || dictIsRehashing(d)) return DICT_ERR;
+    minimal = d->ht[0].used;
+    if (minimal < DICT_HT_INITIAL_SIZE)
+        minimal = DICT_HT_INITIAL_SIZE;
+    return dictExpand(d, minimal);
+}
+```
+
+#### 扩/缩容源码分析
 
 - bucket数组初始容量为4
 - `dictExpand`函数很简单，就是创建了 `ht`,大小为`>= size的最近的2次幂数`，然后创建对应`realsize`的bucket数组
 - 设置`rehashidx = 0`
+- 分配内存使用`zcalloc`方法
 
 ```cpp
 /* Expand or create the hash table */
@@ -228,3 +280,8 @@ static void _dictRehashStep(dict *d) {
 #### scan遍历
 
 高低位遍历
+
+## Reference
+
+- Redis 5设计与源码分析
+- [Redis的Dict](https://axlgrep.github.io/tech/redis-dict.html)
