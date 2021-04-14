@@ -47,6 +47,8 @@
     * df -h
 - lsof
     * sudo lsof -i:3306
+- Linux 程序后台运行的方法
+    * set pid, nohup, &
 
 ### 场景
 
