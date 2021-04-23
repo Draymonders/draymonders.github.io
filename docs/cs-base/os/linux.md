@@ -72,6 +72,8 @@
         * `sed -n 4p test | sed "s#\t#\n#g"` (推荐)
     * 排序获取topK
         * `sort -n | uniq -c | sort -r -n -k1 | head -4`
+- 形如“a=xx||b=yy||c=zz”的log，求b>5
+    * `sed 's/||/\ /g' temp1.log | awk '{ split($2,a,"="); if (a[2]>5) print $0 }'`
 
 ## 截屏
 
