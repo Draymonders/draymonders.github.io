@@ -1,18 +1,4 @@
-## go踩坑
-
-### go proxy
-
-设置 `GOPROXY` 变量， 详细点击 https://goproxy.cn/
-
-### go mod
-
-创建module `go mod init steed`
-
-### goland keymap
-
-- `Reformat Code` `ctrl + 1`
-- `Back` `ctrl + alt + ,`
-- `Forward` `ctrl + alt + .`
+# go
 
 ### log
 
@@ -27,15 +13,6 @@ err := errors.New("empty name")
 if err != nil {
     log.Fatal(err)
 }
-```
-
-### rand
-
-```go
-rand.Seed(time.Now().Unix())
-
-rand.Int()
-rand.Intn(n int32)
 ```
 
 ### struct
