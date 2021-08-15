@@ -1,4 +1,4 @@
-# 工程效率提升
+# 常用工具
 
 ## Jetbrains软件试用
 
@@ -13,4 +13,7 @@
 - [Mongo client: Robo3t](https://robomongo.org/download)
 - [Redis client: Another.Redis](https://github.com/qishibo/AnotherRedisDesktopManager)
 - [Kafka client: Kafka Tool 2](https://www.kafkatool.com/) 
-- [MySQL client: dbeaver](https://github.com/dbeaver/dbeaver) 
+- Mysql Client
+    - MyCli
+    - [MySQL client: dbeaver](https://github.com/dbeaver/dbeaver) 
+    - [DataGrip](https://www.jetbrains.com/datagrip/) 
