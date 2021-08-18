@@ -14,7 +14,8 @@
     * `find . -maxdepth 2 -name "*.java"`
 - 将docker log 追加到文件中 
     * `docker logs ${containerId} | less | tee -a service.log`
-
+- 软连接目录时，需要指定源目录为绝对路径 `ln -s {sourceAbsolutePath} {destPath}`
+ 
 ## 工作相关
 
 - echo 
