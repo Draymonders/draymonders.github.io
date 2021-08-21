@@ -377,3 +377,48 @@ add_executable( main main.cpp )
 # 链接 libswap.so
 target_link_libraries( main swap )
 ```
+
+## VSCode
+
+### tasks.json
+
+用来做任务编排使用
+
+```json
+{   
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}/build"
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "cmake",
+            "command": "cmake",
+            "args": [
+                ".."
+            ]
+        },
+        {
+            "label": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "make",
+            "args": [
+
+            ]
+        },
+        {
+            "label": "Build",
+			"dependsOrder": "sequence", // 按列出的顺序执行任务依赖项
+            "dependsOn":[
+                "cmake",
+                "make"
+            ]
+        }
+    ]
+
+}
+```
