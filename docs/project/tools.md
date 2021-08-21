@@ -8,7 +8,7 @@
 ## 常用软件or工具
 
 - zsh, tmux
-- sdkman(linux)
+- sdkman (linux)
 - docker, docker compose, kubernetes
 - [Mongo client: Robo3t](https://robomongo.org/download)
 - [Redis client: Another.Redis](https://github.com/qishibo/AnotherRedisDesktopManager)

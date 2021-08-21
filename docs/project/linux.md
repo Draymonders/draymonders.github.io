@@ -62,6 +62,8 @@
     * ps -aux | grep python3 | awk '{ print $2 }' | xargs kill -9
 - 查看cpu信息
     * cat /proc/cpuinfo | grep name | cut -d: -f 2 | uniq -c  
+- vim文件，多列选中
+    * 使用 `ctrl + v`进行列选择
 
 ## 文本处理
 
