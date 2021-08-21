@@ -794,6 +794,7 @@
 <li><code>docker logs ${containerId} | less | tee -a service.log</code></li>
 </ul>
 </li>
+<li>软连接目录时，需要指定源目录为绝对路径 <code>ln -s {sourceAbsolutePath} {destPath}</code></li>
 </ul>
 <h2 id="_2">工作相关</h2>
 <ul>
@@ -873,6 +874,10 @@
 </li>
 <li>查看cpu信息<ul>
 <li>cat /proc/cpuinfo | grep name | cut -d: -f 2 | uniq -c  </li>
+</ul>
+</li>
+<li>vim文件，多列选中<ul>
+<li>使用 <code>ctrl + v</code>进行列选择</li>
 </ul>
 </li>
 </ul>
