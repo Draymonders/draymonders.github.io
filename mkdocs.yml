@@ -68,18 +68,18 @@ nav:
     # - 碎碎念:
     #   - 2021: grow-up/2021.md
     - 工程相关: 
-      - 常用工具: project/tools.md
-      - Linux下C/C++开发: project/cpp_with_linux.md
+      - 提效工具: project/tools.md
       - Linux命令: project/linux.md 
-    - Redis: 
-      - 简单动态字符串: middleware/redis/code-read/sds.md
-      - 哈希表: middleware/redis/code-read/hashtable.md
-      - 跳表: middleware/redis/code-read/zskiplist.md
-      - 命令处理生命周期: middleware/redis/code-read/server-process.md
-      - Redis 事务: middleware/redis/code-read/transactions.md
-      - 使用场景: middleware/redis/redis.md
-      - Redis 集群: middleware/redis/cluster.md
-    - 解决方案: 
+      - Linux下C/C++开发: project/cpp_with_linux.md
+    # - Redis: 
+    #   - 简单动态字符串: middleware/redis/code-read/sds.md
+    #   - 哈希表: middleware/redis/code-read/hashtable.md
+    #   - 跳表: middleware/redis/code-read/zskiplist.md
+    #   - 命令处理生命周期: middleware/redis/code-read/server-process.md
+    #   - Redis 事务: middleware/redis/code-read/transactions.md
+    #   - 使用场景: middleware/redis/redis.md
+    #   - Redis 集群: middleware/redis/cluster.md
+    - 踩坑之路: 
       - 数据迁移: solution/db-transfer.md
       - 负载高分析: solution/high-load-analysis.md
       - 网络故障分析: solution/network-analysis.md
@@ -87,7 +87,6 @@ nav:
       - 多线程循环打印: solution/multi-print.md
     - 操作系统:
       - 基础: cs-base/os/os.md
-      
     # - 数据库:
       # - MySQL: database/db.md
       # - MySQL读书笔记: database/mysql-notes.md
@@ -96,9 +95,9 @@ nav:
       - HTTP: cs-base/network/http.md
       - TCP: cs-base/network/tcp.md
       - 高性能网络编程: cs-base/network/net-program.md
-    - 面试: 
+    # - 面试: 
       # - 面试题: interview/interview.md
-      - 社招面试: interview/social-interview.md
+      # - 社招面试: interview/social-interview.md
     # - 大数据:
     #   - 成长路线: cs-base/bigdata/grow-up.md
     #   - 大数据读书笔记: cs-base/bigdata/notes.md
