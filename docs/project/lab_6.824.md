@@ -5,13 +5,12 @@
 目标: 实现一个`Map Reduce`程序，有很多测试，对我来说很友好
 
 
-- 实现 `mapper/reducer`，用于接收到
+- 实现 `mapper/reducer`
 - 考虑RPC请求，我设计了两个RPC请求
     - `AssignRpc` worker向coordinator申领任务
     - `CompleteRpc` worker完成任务后，告知coordinator
 - 这里还涉及到了**分配任务**的状态
 - `coordiantor`实现，重点就在于**判断map/reduce任务的状态**
-- 做了一些特殊判断，影响到了测试，注释后通过了全部测试
 
 ### 状态设计
 ```go
@@ -100,3 +99,7 @@ type CompleteResponse struct {
 ### 感受
 
 - `log`写的标准，耐心测试，很容易看到代码存在的漏洞
+
+## Lab 2. Raft KV
+
+TODO 

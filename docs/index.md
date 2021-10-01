@@ -2,7 +2,7 @@
 
 ## About
 
-- 1998年生，/\*退役Acmer\*/，目前任职于 Bytedance 
+- 绰号大饼，目前工作于 Bytedance 
 - 梦想将来某一天可以成为某一工程领域的 Master
 - 一直很喜欢的一句话
 

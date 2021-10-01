@@ -53,8 +53,6 @@ markdown_extentions:
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_png
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -65,12 +63,16 @@ markdown_extentions:
 
 nav:
     - 主页: index.md
-    # - 碎碎念:
-    #   - 2021: grow-up/2021.md
     - 工程相关: 
       - 提效工具: project/tools.md
-      - Linux命令: project/linux.md 
-      - Linux下C/C++开发: project/cpp_with_linux.md
+      - linux命令: project/linux.md 
+      - vim使用: project/vim.md
+      - lab 6.824 doing: project/lab_6.824.md
+      - linux下c/c++开发: project/cpp_with_linux.md
+    - 数据库:
+      - boltdb: middleware/boltdb/boltdb.md
+    # - 消息队列:
+    #   - 
     # - Redis: 
     #   - 简单动态字符串: middleware/redis/code-read/sds.md
     #   - 哈希表: middleware/redis/code-read/hashtable.md

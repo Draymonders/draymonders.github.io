@@ -168,7 +168,7 @@ int dictResize(dict *d)
 #### 扩/缩容源码分析
 
 - bucket数组初始容量为4
-- `dictExpand`函数很简单，就是创建了 `ht`,大小为`>= size的最近的2次幂数`，然后创建对应`realsize`的bucket数组
+- `dictExpand` 创建了 `ht`,大小为`>= size的最近的2次幂数`，然后创建对应`realsize`的bucket数组
 - 设置`rehashidx = 0`
 - 分配内存使用`zcalloc`方法
 

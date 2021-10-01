@@ -31,6 +31,7 @@
     * -i 是 ignore case
     * -A after
     * -B before
+    * grep -Eo 'inspect_sub_type":[0-9]{1,2}' 送审数据.txt
 - date
     * date "+%Y%m%d-%H%M%S"
 - cut
@@ -43,6 +44,14 @@
 - set
     * set -x （用于 shell debug）
 - envsubst
+```
+linux:~/test$ cat temp
+echo $var
+linux:~/test$ export var=draymonder
+linux:~/test$ envsubst < temp > temp_var
+linux:~/test$ cat temp_var
+echo draymonder
+```
 - ethtool
 - df 
     * df -h
@@ -62,8 +71,7 @@
     * ps -aux | grep python3 | awk '{ print $2 }' | xargs kill -9
 - 查看cpu信息
     * cat /proc/cpuinfo | grep name | cut -d: -f 2 | uniq -c  
-- vim文件，多列选中
-    * 使用 `ctrl + v`进行列选择
+
 
 ## 文本处理
 
@@ -75,10 +83,10 @@
         * `sed -n 4p test | sed "s#\t#\n#g"` (推荐)
     * 排序获取topK
         * `sort -n | uniq -c | sort -r -n -k1 | head -4`
-- 形如“a=xx||b=yy||c=zz”的log，求b>5
+- 形如“a=xx||b=yy||c=zz”的log，求b>5的行
     * `sed 's/||/\ /g' temp1.log | awk '{ split($2,a,"="); if (a[2]>5) print $0 }'`
 
 ## 截屏
 
-- Linux截图快捷键
+- Linux 截图快捷键
     * `ctrl shift PrtSc`
