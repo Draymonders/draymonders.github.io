@@ -1,5 +1,9 @@
 # 数据迁移
 
+## binlog同步
+
+TODO 调研binlog同步组件
+
 ## MySQL迁移
 
 - `${host}`为主机

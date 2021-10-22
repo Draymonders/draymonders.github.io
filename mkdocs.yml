@@ -69,8 +69,12 @@ nav:
       - vim使用: project/vim.md
       - lab 6.824 doing: project/lab_6.824.md
       - linux下c/c++开发: project/cpp_with_linux.md
-    - 数据库:
-      - boltdb: middleware/boltdb/boltdb.md
+    - 优雅实践:
+      - 灰度控制: design/gray_control.md
+      - diff脚本: design/diff_script.md
+      - boltdb: middleware/db/boltdb.md
+      - bitcask: middleware/db/bitcask.md
+      - kafka: middleware/mq/kafka.md
     # - 消息队列:
     #   - 
     # - Redis: 
