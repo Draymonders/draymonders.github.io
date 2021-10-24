@@ -34,14 +34,14 @@ markdown_extentions:
     - toc:
         permalink: true
     - codehilite:
-        guess_lang: false
-        linenums: false
+        guess_lang: true
+        linenums: true
 
 markdown_extentions:
   - admonition
   - codehilite:
-      guess_lang: false
-      linenums: false
+      guess_lang: true
+      linenums: true
   - toc:
       permalink: true
   - footnotes
@@ -69,6 +69,8 @@ nav:
       - vim使用: project/vim.md
       - lab 6.824 doing: project/lab_6.824.md
       - linux下c/c++开发: project/cpp_with_linux.md
+    - 数据结构:
+      - radix tree: algorithm/datastruct/radix_tree.md
     - 优雅实践:
       - 灰度控制: design/gray_control.md
       - diff脚本: design/diff_script.md

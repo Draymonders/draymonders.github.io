@@ -10,7 +10,6 @@
 
 ## Contact
 
-- 微信: Draymonders
 - 邮箱: Draymonders@gmail.com
 
 ## Commands
