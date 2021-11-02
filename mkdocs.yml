@@ -73,6 +73,7 @@ nav:
       - radix tree: algorithm/datastruct/radix_tree.md
     - 优雅实践:
       - 灰度控制: design/gray_control.md
+      - 结构diff: design/struct_diff.md
       - diff脚本: design/diff_script.md
       - boltdb: middleware/db/boltdb.md
       - bitcask: middleware/db/bitcask.md
