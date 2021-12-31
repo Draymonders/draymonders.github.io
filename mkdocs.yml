@@ -63,23 +63,25 @@ markdown_extentions:
 
 nav:
     - 主页: index.md
+    - 数据结构:
+      - 一致性hash: algorithm/datastruct/consistent_hash.md
+      - 基数树: algorithm/datastruct/radix_tree.md
     - 工程相关: 
       - 提效工具: project/tools.md
       - linux命令: project/linux.md 
       - vim使用: project/vim.md
       - lab 6.824 doing: project/lab_6.824.md
       - linux下c/c++开发: project/cpp_with_linux.md
-    - 数据结构:
-      - radix tree: algorithm/datastruct/radix_tree.md
     - 优雅实践:
       - 灰度控制: design/gray_control.md
-      - 结构diff: design/struct_diff.md
-      - diff脚本: design/diff_script.md
+      - go结构 diff: design/struct_diff.md
+      - 数据diff脚本: design/diff_script.md
+    - 数据库:
       - boltdb: middleware/db/boltdb.md
       - bitcask: middleware/db/bitcask.md
+    - 消息队列:
       - kafka: middleware/mq/kafka.md
-    # - 消息队列:
-    #   - 
+    # - 缓存:
     # - Redis: 
     #   - 简单动态字符串: middleware/redis/code-read/sds.md
     #   - 哈希表: middleware/redis/code-read/hashtable.md

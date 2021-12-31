@@ -46,7 +46,7 @@ func (m *Map) IsEmpty() bool {
 // Adds some keys to the hash.
 func (m *Map) Add(keys ...string) {
 	for _, key := range keys {
-		for i := 0; i < m.replicas; i++ {
+		for i := 0; i < m.replicas; i++ { // 一个 server 分成 replicas 个虚拟 server
 			hash := int(m.hash([]byte(strconv.Itoa(i) + key)))
 			m.keys = append(m.keys, hash)
 			m.hashMap[hash] = key

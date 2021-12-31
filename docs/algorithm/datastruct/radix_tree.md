@@ -15,9 +15,8 @@ radix tree, 基数树，trie树（前缀树）的一种空间上的优化
 
 ## 深入理解
 
-- radix
-- leaf不为nil，说明是叶子节点，leaf不为nil, edges就为nil
-- 从root到leaf节点的prefiex组合等于leaf节点的key值
+- 叶子节点，leaf不为nil，edges就为nil
+- 从 root 到 leaf 节点的 prefiex 拼接 等于leaf节点的key值
 - edges数组是按照 label 排序的，label 为单个字符
 
 ## Reference
