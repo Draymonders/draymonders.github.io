@@ -112,3 +112,5 @@ nav:
     # - 大数据:
     #   - 成长路线: cs-base/bigdata/grow-up.md
     #   - 大数据读书笔记: cs-base/bigdata/notes.md
+    - 随想:
+      - 2022: idea/2022.md
