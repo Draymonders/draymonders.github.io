@@ -66,21 +66,37 @@ nav:
     - 数据结构:
       - 一致性hash: algorithm/datastruct/consistent_hash.md
       - 基数树: algorithm/datastruct/radix_tree.md
-    - 工程相关: 
+    - 基础工具: 
       - 提效工具: project/tools.md
       - linux命令: project/linux.md 
       - vim使用: project/vim.md
       - lab 6.824 doing: project/lab_6.824.md
       - linux下c/c++开发: project/cpp_with_linux.md
-    - 优雅实践:
+    - 工程实践:
       - 灰度控制: design/gray_control.md
-      - go结构 diff: design/struct_diff.md
-      - 数据diff脚本: design/diff_script.md
-    - 数据库:
-      - boltdb: middleware/db/boltdb.md
-      - bitcask: middleware/db/bitcask.md
-    - 消息队列:
-      - kafka: middleware/mq/kafka.md
+      - python diff数据脚本: design/diff_script.md
+    - 中间件:
+      - Boltdb: middleware/db/boltdb.md
+      - Bitcask: middleware/db/bitcask.md
+      - Kafka: middleware/mq/kafka.md
+      - RocketMQ: middleware/mq/rocketMQ.md
+      - Tcc: middleware/config_center/tcc.md
+    - 踩坑之路: 
+      - 数据迁移: solution/db-transfer.md
+      - 负载高分析: solution/high-load-analysis.md
+      - 网络故障分析: solution/network-analysis.md
+      - Redis Timeout: solution/redis-timeout.md
+      - 多线程循环打印: solution/multi-print.md
+    - 操作系统:
+      - 基础: cs-base/os/os.md
+    - 网络:
+      # - DNS: network/dns.md
+      - HTTP: cs-base/network/http.md
+      - TCP: cs-base/network/tcp.md
+      - 高性能网络编程: cs-base/network/net-program.md
+    # - 面试: 
+      # - 面试题: interview/interview.md
+      # - 社招面试: interview/social-interview.md
     # - 缓存:
     # - Redis: 
     #   - 简单动态字符串: middleware/redis/code-read/sds.md
@@ -90,27 +106,7 @@ nav:
     #   - Redis 事务: middleware/redis/code-read/transactions.md
     #   - 使用场景: middleware/redis/redis.md
     #   - Redis 集群: middleware/redis/cluster.md
-    - 踩坑之路: 
-      - 数据迁移: solution/db-transfer.md
-      - 负载高分析: solution/high-load-analysis.md
-      - 网络故障分析: solution/network-analysis.md
-      - Redis Timeout: solution/redis-timeout.md
-      - 多线程循环打印: solution/multi-print.md
-    - 操作系统:
-      - 基础: cs-base/os/os.md
-    # - 数据库:
-      # - MySQL: database/db.md
-      # - MySQL读书笔记: database/mysql-notes.md
-    - 网络:
-      # - DNS: network/dns.md
-      - HTTP: cs-base/network/http.md
-      - TCP: cs-base/network/tcp.md
-      - 高性能网络编程: cs-base/network/net-program.md
-    # - 面试: 
-      # - 面试题: interview/interview.md
-      # - 社招面试: interview/social-interview.md
-    # - 大数据:
-    #   - 成长路线: cs-base/bigdata/grow-up.md
-    #   - 大数据读书笔记: cs-base/bigdata/notes.md
     - 随想:
       - 2022: idea/2022.md
+      - 2021: idea/2021.md
+      - Video: idea/video.md

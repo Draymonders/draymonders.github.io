@@ -29,9 +29,6 @@ func IsGray(ctx context.Context, grayKey string, id int64) bool {
 		logs.CtxError(ctx, "[%s] tccClient.Get fail, err: %v", key, err)
 		return false
 	}
-	if env.IsBoe() || env.IsPPE() {
-		logs.CtxNotice(ctx, "[%s] val %s", key, val)
-	}
 	grayConfig := &GrayConfig{}
 	if err = json.Unmarshal([]byte(val), &grayConfig); err != nil {
 		logs.CtxError(ctx, "[%s] json.Unmarshal fail, err: %v", key, err)

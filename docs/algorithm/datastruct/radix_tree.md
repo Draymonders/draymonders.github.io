@@ -8,7 +8,6 @@ radix tree, 基数树，trie树（前缀树）的一种空间上的优化
 
 [![5WDXrQ.png](https://z3.ax1x.com/2021/10/24/5WDXrQ.png)](https://imgtu.com/i/5WDXrQ)
 
-
 2. 再插入 key="fotbar", value=2
 
 [![5WDjbj.png](https://z3.ax1x.com/2021/10/24/5WDjbj.png)](https://imgtu.com/i/5WDjbj)
