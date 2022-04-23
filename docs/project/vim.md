@@ -1,5 +1,11 @@
 # Vim
 
+## 执行命令
+
+```vim
+:! gcc demo.c && ./a.out # 在vim里面运行编译
+```
+
 ## 移动光标
 
 - h j k l  左 下 上 右
@@ -37,3 +43,5 @@
 
 - 内网环境下安装 https://github.com/junegunn/vim-plug
 - 自己找插件学习使用 https://vimawesome.com/
+
+

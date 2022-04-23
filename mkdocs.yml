@@ -75,6 +75,8 @@ nav:
     - 工程实践:
       - 灰度控制: design/gray_control.md
       - python diff数据脚本: design/diff_script.md
+      - 设计原则: design/about.md 
+      - grafana监控: design/grafana.md
     - 中间件:
       - Boltdb: middleware/db/boltdb.md
       - Bitcask: middleware/db/bitcask.md
@@ -94,19 +96,9 @@ nav:
       - HTTP: cs-base/network/http.md
       - TCP: cs-base/network/tcp.md
       - 高性能网络编程: cs-base/network/net-program.md
-    # - 面试: 
-      # - 面试题: interview/interview.md
-      # - 社招面试: interview/social-interview.md
-    # - 缓存:
-    # - Redis: 
-    #   - 简单动态字符串: middleware/redis/code-read/sds.md
-    #   - 哈希表: middleware/redis/code-read/hashtable.md
-    #   - 跳表: middleware/redis/code-read/zskiplist.md
-    #   - 命令处理生命周期: middleware/redis/code-read/server-process.md
-    #   - Redis 事务: middleware/redis/code-read/transactions.md
-    #   - 使用场景: middleware/redis/redis.md
-    #   - Redis 集群: middleware/redis/cluster.md
     - 随想:
       - 2022: idea/2022.md
       - 2021: idea/2021.md
       - Video: idea/video.md
+    - 读书摘抄:
+      - 人间告白: book/人间告白.md

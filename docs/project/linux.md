@@ -71,6 +71,8 @@ echo draymonder
     * ps -aux | grep python3 | awk '{ print $2 }' | xargs kill -9
 - 查看cpu信息
     * cat /proc/cpuinfo | grep name | cut -d: -f 2 | uniq -c  
+- 定时查看日志
+    * watch "grep '内容' xxx.log"
 
 
 ## 文本处理
