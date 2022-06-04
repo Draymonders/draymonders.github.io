@@ -68,8 +68,8 @@ nav:
       - 基数树: algorithm/datastruct/radix_tree.md
     - 基础工具: 
       - 提效工具: project/tools.md
-      - linux命令: project/linux.md 
       - vim使用: project/vim.md
+      - linux命令: project/linux.md 
       - lab 6.824 doing: project/lab_6.824.md
       - linux下c/c++开发: project/cpp_with_linux.md
     - 工程实践:

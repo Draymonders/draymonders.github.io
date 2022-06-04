@@ -30,11 +30,6 @@ set redis-key clientId ex 5 nx
 
 判断步骤3中的获取的数量是否小于`max_count`
 
-## mget和pipeline的区别
-
-- mget是官方支持的， pipeline是客户端自己实现的
-- mget和pipeline在客户端和服务端交互是一样的，都是多个命令一次网络IO
-- mget可以分布式并行去做， 而pipeline只能是一个命令一个命令去做
 
 ## big key
 
