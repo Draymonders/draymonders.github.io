@@ -10,7 +10,7 @@
 
 使用技术：
 
-GO，KiteX，MySQL分库分表，本地缓存，Redis/Abase缓存，RocketMQ，ES，小时级数据对账
+GO，Kitex，MySQL分库分表，本地缓存FreeCache，Redis/Abase缓存，RocketMQ，ES，重试状态机，小时级数据对账
 
 工作经历：
 
@@ -32,7 +32,7 @@ Sturnus 性能测试平台：采用微服务架构，支撑公司各产品线的
 
 使用技术: 
 
-Spring Cloud，MongoDB，Kafka，InfluxDB，Redis
+Java，Spring Cloud，MongoDB，Kafka，InfluxDB，Redis
 
 工作经历：
 
