@@ -12,7 +12,7 @@
 
 ### 架构图
 
-![discovery arch](discovery_arch.png)
+<!-- ![discovery arch](discovery_arch.png) -->
 
 ### 重要步骤
 
