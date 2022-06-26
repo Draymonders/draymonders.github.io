@@ -120,3 +120,12 @@ find . -name "*mysql*" | grep "log"
 mysqlCli> show variables like '%datadir%'\G
 ```
 查询得知，mysql容器相关的文件存放在 `/var/lib/mysql`
+
+
+## 待读
+
+- InnoDB undo log 漫游 http://mysql.taobao.org/monthly/2015/04/
+- InnoDB redo log漫游 http://mysql.taobao.org/monthly/2015/05/
+- Innodb change buffer介绍 http://mysql.taobao.org/monthly/2015/07/
+- InnoDB 事务子系统介绍 http://mysql.taobao.org/monthly/2015/12/
+- InnoDB index lock前世今生 http://mysql.taobao.org/monthly/2015/07/05/

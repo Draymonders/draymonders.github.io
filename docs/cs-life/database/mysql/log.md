@@ -210,3 +210,12 @@ InnoDB中通过min-transaction实现，简称mtr，需要原子操作时，调�
 
 1. 逻辑日志，记录事务执行过程中的相反操作（insert 变为 delete），（update 变为反向update）
 2. 实现MVCC的非锁定读。读快照的能力
+
+
+## 引用
+
+待阅读
+
+- InnoDB undo log 漫游 http://mysql.taobao.org/monthly/2015/04/
+- InnoDB redo log漫游 http://mysql.taobao.org/monthly/2015/05/
+- InnoDB 崩溃恢复过程 http://mysql.taobao.org/monthly/2015/06/
