@@ -88,6 +88,9 @@ nav:
         - 踩坑: cs-life/database/mysql/practice.md
     - 网络:
       - Web/RPC 框架: cs-life/network/framework.md
+      - go im: cs-life/network/go_im.md
+    - 微服务:
+      - 微服务: cs-life/micro_services/micro_services.md
           
     #     - 缓存:
     #     - 消息队列:
