@@ -25,9 +25,11 @@ logic：逻辑处理层，接受用户传来的消息，通过 job 进行削峰�
 
 job：接收logic下发的消息（Message），然后分发给对应的comet节点。
 
-![go im架构图](./arch.png)
+![go im架构图](./im_arch.png)
 
-## comet
+## 设计分析
+
+### comet
 
 - 和 logic 交互的rpc
     - Connect / DisConnect / Heartbeat
@@ -39,7 +41,7 @@ job：接收logic下发的消息（Message），然后分发给对应的comet节
     - BroadcastRoom  直播间广播
     - Rooms  活跃直播间
 
-## logic
+### logic
 
 - 消息使用
     - PushMsg，分片key为私聊memberId所在的server
@@ -50,7 +52,7 @@ job：接收logic下发的消息（Message），然后分发给对应的comet节
     - PushRoom 群聊
     - PushAll 全员广播
 
-## job
+### job
 
 开固定数量的goroutine去处理
 
@@ -60,3 +62,10 @@ job：接收logic下发的消息（Message），然后分发给对应的comet节
     - pushKeys(pushMsg.Operation, pushMsg.Server, pushMsg.Keys, pushMsg.Msg)
 - 消费群聊消息
     - getRoom(pushMsg.Room).Push(pushMsg.Operation, pushMsg.Msg)
+
+## 疑问
+
+### 1. 广播全员、群组消息的话，是发送到单个partition，还是多个partition。
+
+    - 每个job节点通过注册中心获取了全量的 comet 节点
+    - so 发送到单个partition，交由job节点同步调用所有的 comet 节点
