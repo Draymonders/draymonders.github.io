@@ -12,7 +12,7 @@ RPC + message queue：轻量级通讯
 
 每个服务独享自身的数据存储设施（缓存，数据库等），不像传统应用共享一个缓存和数据库，这样有利于服务的独立性，隔离相关干扰。
 
-### 可用性 & 兼容性设计
+## 可用性 & 兼容性设计
 
 - 隔离
 - 超时控制
@@ -24,6 +24,8 @@ RPC + message queue：轻量级通讯
 
 
 ## 微服务设计
+
+### 链路交互
 
 移动端 / 前端 -> Load Balancer -> API Gateway -> HTTP Server -> Microservices
 
@@ -95,6 +97,8 @@ RPC + message queue：轻量级通讯
 
 - https://microservices.io/index.html
 - https://blog.csdn.net/mindfloating/article/details/51221780
+
+
 - https://www.cnblogs.com/dadadechengzi/p/9373069.html
 - https://www.cnblogs.com/viaiu/archive/2018/11/24/10011376.html
 - https://www.cnblogs.com/lfs2640666960/p/9543096.html
