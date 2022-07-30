@@ -11,6 +11,7 @@ pyenv install ${version}                      # 如 pyenv install 3.6
 pyenv versions                                      # 列出所有的本地的python版本
 pyenv global 3.6.3                                 # 设置全局 python环境
 ```
+
 ## virtualenv
 
 ```shell

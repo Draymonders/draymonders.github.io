@@ -51,7 +51,10 @@ nav:
   - 主页: index.md
   - 编码人生: 
     - 系统设计:
-      - 微服务: cs-life/system_design/micro_services/micro_services.md
+      - 微服务:
+        - 微服务设计: cs-life/system_design/micro_services/micro_services.md
+        - DNS & CDN & 异地多活: cs-life/system_design/micro_services/disaster_tolerance.md
+        - 日志 & 链路追踪 & 监控: cs-life/system_design/micro_services/service_governance.md
       - 设计原则: cs-life/system_design/principle.md
       - 性能测试平台: cs-life/system_design/sturnus/sturnus.md
       - go im: cs-life/system_design/goim/go_im.md
