@@ -59,6 +59,10 @@ echo draymonder
     * sudo lsof -i:3306
 - Linux 程序后台运行的方法
     * set pid, nohup, &
+- 数据同步
+    * rsync -av --delete ./ dev:/home/zhangyubing.amor/go/src/github.com/draymonders/gmem
+- 命令提示
+    * tldr 
 
 ### 场景
 

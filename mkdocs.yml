@@ -80,6 +80,8 @@ nav:
         - 索引: cs-life/database/mysql/index.md
         - 事务: cs-life/database/mysql/transcation.md
         - 踩坑: cs-life/database/mysql/practice.md
+    - 缓存:
+      - 踩坑: cs-life/middleware/cache/practice.md
    
   - 生活:
     - 年度总结:
