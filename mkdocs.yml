@@ -17,10 +17,10 @@ theme:
       # primary: 'Blue'
       # accent: 'Pink'
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.expand
-    - navigation.sections
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    # - navigation.expand
+    # - navigation.sections
   # font:
   #     text: 'Ubuntu'
   #     code: 'Ubuntu Mono'
@@ -50,6 +50,25 @@ extra_javascript:
 nav:
   - 主页: index.md
   - 编码人生: 
+    - 中间件: 
+      - mysql: 
+        - 概览: cs-life/middleware/database/mysql/guide_read.md
+        - 日志文件: cs-life/middleware/database/mysql/log.md
+        - buffer pool: cs-life/middleware/database/mysql/buffer_pool.md
+        - 锁: cs-life/middleware/database/mysql/lock.md
+        - 索引: cs-life/middleware/database/mysql/index.md
+        - 事务: cs-life/middleware/database/mysql/transcation.md
+        - 踩坑: cs-life/middleware/database/mysql/practice.md
+      - 缓存:
+        - 踩坑: cs-life/middleware/cache/practice.md
+    - 基础:
+      - 网络:
+        - Web/RPC 框架: cs-life/network/framework.md
+      - 操作系统:
+        - Linux命令: cs-life/os/linux.md 
+        - Linux下c/c++开发: cs-life/os/cpp_with_linux.md
+      - 经典书籍:
+        - 设计数据密集型应用: cs-life/ddia/ddia.md
     - 系统设计:
       - 微服务:
         - 微服务设计: cs-life/system_design/micro_services/micro_services.md
@@ -61,30 +80,16 @@ nav:
       - 视频进度设计: cs-life/system_design/history/history.md
       - 评论中台设计: cs-life/system_design/comment/comment.md
       # - lab 6.824 doing: cs-life/design/lab_6.824.md
-    - 网络:
-      - Web/RPC 框架: cs-life/network/framework.md
-    - 操作系统:
-      - Linux命令: cs-life/os/linux.md 
-      - Linux下c/c++开发: cs-life/os/cpp_with_linux.md
+   
     - 其他: 
       - 开发常用: cs-life/other/tools.md
       - Goland: cs-life/other/goland.md
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
-    - 数据库: 
-      - mysql: 
-        - 概览: cs-life/database/mysql/guide_read.md
-        - 日志文件: cs-life/database/mysql/log.md
-        - buffer pool: cs-life/database/mysql/buffer_pool.md
-        - 锁: cs-life/database/mysql/lock.md
-        - 索引: cs-life/database/mysql/index.md
-        - 事务: cs-life/database/mysql/transcation.md
-        - 踩坑: cs-life/database/mysql/practice.md
-    - 缓存:
-      - 踩坑: cs-life/middleware/cache/practice.md
    
   - 生活:
     - 年度总结:
+      - 2023: enjoy/2023.md
       - 2022: enjoy/2022.md
       - 2021: enjoy/2021.md
     - 视频: 
