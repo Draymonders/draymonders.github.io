@@ -8,8 +8,8 @@
 
 1. Log
     * slow log，<b>二进制文件</b>，记录查询较慢的sql，借助 `mysqldumpslow` 分析，MySQL本身的文件
-    * binlog，<b>逻辑日志</b>，记录数据库执行 更新的sql，供salve复制数据，MySQL本身的文件
-    * redolog，<b>物理日志</b>，WAL日志，保证持久性，InnoDB特有
+    * bin log，<b>逻辑日志</b>，记录数据库执行 更新的sql，供salve复制数据，MySQL本身的文件
+    * redo log，<b>物理日志</b>，WAL日志，保证持久性，InnoDB特有
     * undo log，<b>逻辑日志</b>，记录事务执行过程中的相反操作（insert 变为 delete），（update 变为反向update）
 2. buffer pool
     * insert buffer & change buffer
@@ -20,7 +20,8 @@
 6. MVCC 多版本并发控制
     - 提升了并发性能，可以认为是 行级锁的一种变种，但在很多情况下避免了加锁，因此开销更低。
 7. 数据库踩坑
-8. 查询优化，提升下sql能力
+8. 查询优化
+9. 特性应用
 
 ## 小试牛刀
 

@@ -1,15 +1,18 @@
 # Mysql存储引擎-InnoDB
 
-## 踩坑 & 处理
+## 踩坑
 
 ### 上游无限重试，重复执行update语句，锁等待严重，最终链接过多导致数据库OOM
 
-场景是 
+场景
+
 ```
 faas -> 请求算法服务返回相似商品 -> 相似商品召回送审
 ```
+
 触发背景
-1.  faas执行失败会无限重试，直到成功
+
+1. faas执行失败会无限重试，直到成功
 2. 算法服务返回相似商品过多，1000个，<b>请求算法服务的时间+相似召回送审的时间</b>超过faas的设置时间，<b>稳定超时</b>，因此触发了无限重试
 3. 在送审阶段，有一个更新语句如下，有<b>热点行</b>的<b>异步更新</b>，该表有不到1000条数据，因为一直异步更新，一直在申请连接池的连接，开事务进行更新，最终导致DB OOM
 
@@ -24,6 +27,7 @@ count(1) = 942
 ```
 
 报错从 1205 变成了 1105
+
 ```
 Error 1205: Lock wait timeout exceeded; try restarting transcation
 
@@ -113,7 +117,7 @@ set status=3 where submit_serial=? and qualification_id not in (?)
 改为小事务，分批更新状态，如果中间出错，直接抛出，交给重试
 
 ```sql 
-groupSize := 300
+groupSize := 100
 for i := 0; i < len(audits); i += groupSize {
     auditGroup := audtis[i:math.Min(i+groupSize, len(audits))]
 
