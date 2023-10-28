@@ -2,28 +2,20 @@ site_name: Draymonder Docs
 site_author: 'Draymonder'
 site_description: '文档记录'
 site_url: 'https://draymonders.github.io/'
-copyright: Copyright © 2021 Draymonder
+copyright: Copyright © 2020-2023 Draymonder
  
 plugins:
-    - search
+  - search
+  # - tags
 
 theme: 
-  # name: readthedocs
   name: material
-
-  # 安装命令 pip install mkdocs-rtd-dropdown
-  # name: rtd-dropdown
-  # palette:
-      # primary: 'Blue'
-      # accent: 'Pink'
   features:
     # - navigation.tabs
     # - navigation.tabs.sticky
     # - navigation.expand
     # - navigation.sections
-  # font:
-  #     text: 'Ubuntu'
-  #     code: 'Ubuntu Mono'
+    - navigation.instant # 
   language: 'zh'
 
 extra:
@@ -43,6 +35,30 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_div_format
+  - admonition  # 提示块
+  - footnotes  # 脚注
+  - meta  # 定义元数据，通过文章上下文控制，如disqus
+  - pymdownx.caret  # 下划线上标
+  - pymdownx.tilde  # 删除线下标
+  - pymdownx.critic  # 增加删除修改高亮注释，可修饰行内或段落
+  - pymdownx.details  # 提示块可折叠
+  - pymdownx.inlinehilite  # 行内代码高亮
+  - pymdownx.mark  # 文本高亮
+  - pymdownx.smartsymbols  # 符号转换
+  - pymdownx.superfences  # 代码嵌套在列表里
+  - codehilite:    # 代码高亮，显示行号
+      guess_lang: false
+      linenums: true
+  - toc:  # 锚点
+      permalink: true
+#  - pymdownx.arithmatex  # 数学公式
+  - pymdownx.betterem:  # 对加粗和斜体更好的检测
+      smart_enable: all
+#  - pymdownx.emoji:  # 表情
+#      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+#  - pymdownx.magiclink  # 自动识别超链接
+  - pymdownx.tasklist:  # 复选框checklist
+      custom_checkbox: true
 
 extra_javascript:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
@@ -89,11 +105,14 @@ nav:
    
   - 生活:
     - 年度总结:
-      - 2023: enjoy/2023.md
-      - 2022: enjoy/2022.md
-      - 2021: enjoy/2021.md
+      - 2023: enjoy/year/2023.md
+      - 2022: enjoy/year/2022.md
+      - 2021: enjoy/year//2021.md
     - 视频: 
-      - 追剧: enjoy/video.md
+      - 追剧: enjoy/video/video.md
     - 书籍:
+      - 文化苦旅: enjoy/book/文化苦旅.md
+      - 明朝那些事儿: enjoy/book/明朝那些事儿.md
       - 人间告白: enjoy/book/人间告白.md
-      
+    - 旅行:
+      - 2023国庆: enjoy/travel/2023-national/index.md
