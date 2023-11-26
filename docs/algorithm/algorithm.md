@@ -34,7 +34,8 @@ void quickSort(vector<int>& arr, int l, int r) {
 `BIT` 也叫 `树状数组`
 
 首先看如下数学式
-```
+
+```c++
 e[1] = a[1] 
 e[2] = a[1]+a[2]
 e[3] = a[3]
@@ -94,7 +95,7 @@ next数组表示 **前缀与后缀的最长匹配长度-1**
 
 比如 s串`abcabcabd`
 
-```
+```c++
 a  b  c  a  b  c  a  b  d
 -1 -1 -1 0  1  2  3  4 -1
 ```
@@ -105,26 +106,30 @@ a  b  c  a  b  c  a  b  d
 
 #### 举例
 
-```
+```c++
 s串
 ississip
 t串
 issip
 ```
+
 先分析出`t串`的`next`数组
-```
+
+```c++
 i  s  s  i  p
 -1 -1 -1 0  -1
 ```
 
 然后去匹配,会发现如下情况不匹配了
-```
+
+```c++
 i s s i s s i p 
 i s s i p
 ```
 
 由于我前一位`i`的`next[i]`为`0`，那么接下来将做如下匹配, 注意由上面的code到下面的code仅仅需要一步
-```
+
+```c++
 i s s i s s i p
       i s s i p
 ```

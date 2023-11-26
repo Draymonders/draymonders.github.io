@@ -11,7 +11,7 @@ plugins:
 theme: 
   name: material
   features:
-    # - navigation.tabs
+    - navigation.tabs
     # - navigation.tabs.sticky
     # - navigation.expand
     # - navigation.sections
@@ -29,36 +29,9 @@ extra:
         link: mailto:draymonders@gmail.com
 
 markdown_extensions:
-  - codehilite
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
-  - admonition  # 提示块
-  - footnotes  # 脚注
-  - meta  # 定义元数据，通过文章上下文控制，如disqus
-  - pymdownx.caret  # 下划线上标
-  - pymdownx.tilde  # 删除线下标
-  - pymdownx.critic  # 增加删除修改高亮注释，可修饰行内或段落
-  - pymdownx.details  # 提示块可折叠
-  - pymdownx.inlinehilite  # 行内代码高亮
-  - pymdownx.mark  # 文本高亮
-  - pymdownx.smartsymbols  # 符号转换
-  - pymdownx.superfences  # 代码嵌套在列表里
-  - codehilite:    # 代码高亮，显示行号
+  - codehilite:
       guess_lang: false
-      linenums: true
-  - toc:  # 锚点
-      permalink: true
-#  - pymdownx.arithmatex  # 数学公式
-  - pymdownx.betterem:  # 对加粗和斜体更好的检测
-      smart_enable: all
-#  - pymdownx.emoji:  # 表情
-#      emoji_generator: !!python/name:pymdownx.emoji.to_svg
-#  - pymdownx.magiclink  # 自动识别超链接
-  - pymdownx.tasklist:  # 复选框checklist
-      custom_checkbox: true
+      linenums: false
 
 extra_javascript:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
@@ -66,6 +39,9 @@ extra_javascript:
 nav:
   - 主页: index.md
   - 编码人生: 
+    - 机器学习:
+      - 动手学深度学习:
+        - 线性回归: cs-life/machine-learn/d2l/linear_regression.md
     - 中间件: 
       - mysql: 
         - 概览: cs-life/middleware/database/mysql/guide_read.md
@@ -102,7 +78,10 @@ nav:
       - Goland: cs-life/other/goland.md
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
-   
+  - 探索:
+    - 逆向:
+      - CE找游戏基址: explore/reverse/ce_find_game_pointer.md
+    # - 机器学习:
   - 生活:
     - 年度总结:
       - 2023: enjoy/year/2023.md
@@ -118,4 +97,5 @@ nav:
     - 旅行:
       - 2023国庆: enjoy/travel/2023-national/index.md
       - 2023团建: enjoy/travel/2023-tb/index.md
+      - 2023石家庄: enjoy/travel/2023-sjz/index.md
     
