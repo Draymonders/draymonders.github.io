@@ -37,3 +37,6 @@
     * 方便安装各种开发软件sdk
 - Docker / DockerCompose/ K8S
     * 容器管理
+- 常用命令
+    * ripgrep
+    * fdfind
