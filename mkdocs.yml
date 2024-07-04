@@ -40,8 +40,15 @@ nav:
   - 主页: index.md
   - 编码人生: 
     - 机器学习:
-      - 动手学深度学习:
-        - 线性回归: cs-life/machine-learn/d2l/linear_regression.md
+      - 深度学习入门: cs-life/machine-learn/dl-startup.md
+    - 计算机基础:
+      - 操作系统:
+        - Linux命令: cs-life/os/linux_cmd.md 
+        - Linux下c/c++开发: cs-life/os/cpp_with_linux.md
+      - 网络:
+        - Web/RPC 框架: cs-life/network/framework.md
+      - 经典书籍:
+        - 设计数据密集型应用: cs-life/ddia/ddia.md
     - 中间件: 
       - mysql: 
         - 概览: cs-life/middleware/database/mysql/guide_read.md
@@ -53,14 +60,7 @@ nav:
         - 踩坑: cs-life/middleware/database/mysql/practice.md
       - 缓存:
         - 踩坑: cs-life/middleware/cache/practice.md
-    - 基础:
-      - 网络:
-        - Web/RPC 框架: cs-life/network/framework.md
-      - 操作系统:
-        - Linux命令: cs-life/os/linux.md 
-        - Linux下c/c++开发: cs-life/os/cpp_with_linux.md
-      - 经典书籍:
-        - 设计数据密集型应用: cs-life/ddia/ddia.md
+    
     - 系统设计:
       - 微服务:
         - 微服务设计: cs-life/system_design/micro_services/micro_services.md
@@ -80,7 +80,7 @@ nav:
       - Git 使用: cs-life/other/git.md
   - 探索:
     - 逆向:
-      - CE找游戏基址: explore/reverse/ce_find_game_pointer.md
+      - 游戏外挂调研: explore/reverse/game_hacks.md
     # - 机器学习:
   - 生活:
     - 年度总结:

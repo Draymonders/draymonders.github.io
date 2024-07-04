@@ -2,7 +2,7 @@
 
 ## About
 
-- 大饼，邮箱：Draymonders@gmail.com
+- 大饼，邮箱：Draymonders#gmail.com
 
     > 三年一梦，梦如花开。花开烂漫，一梦三年。
 
