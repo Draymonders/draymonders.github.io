@@ -93,7 +93,9 @@ nav:
       - 文化苦旅: enjoy/book/文化苦旅.md
       - 明朝那些事儿: enjoy/book/明朝那些事儿.md
       - 人间告白: enjoy/book/人间告白.md
-    - 骑行: enjoy/bike/index.md
+    - 骑行: 
+      - 2024 渐入佳境: enjoy/bike/2024/index.md
+      - 2023 初试: enjoy/bike/2023/index.md
     - 旅行:
       - 2024清明: enjoy/travel/2024-qm/index.md
       - 2023国庆: enjoy/travel/2023-national/index.md
