@@ -78,11 +78,9 @@ nav:
       - Goland: cs-life/other/goland.md
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
-  - 探索:
     - 逆向:
       - 游戏外挂调研: explore/reverse/game_hacks.md
-    # - 机器学习:
-  - 生活:
+  - 体验生活:
     - 年度总结:
       - 2024: enjoy/year/2024.md
       - 2023: enjoy/year/2023.md
@@ -110,4 +108,5 @@ nav:
       - 2023石家庄: enjoy/travel/2023-sjz/index.md
       - 2023团建: enjoy/travel/2023-tb/index.md
       - 2023国庆: enjoy/travel/2023-national/index.md
-    
+    - 开车:
+      - 考驾照: enjoy/driver/license.md
