@@ -41,6 +41,8 @@ nav:
   - 编码人生: 
     - 机器学习:
       - 深度学习入门: cs-life/machine-learn/dl-startup.md
+      - Agent:
+        - 深入理解LangManus: cs-life/machine-learn/agent/langmanus.md
     - 计算机基础:
       - 操作系统:
         - Linux命令: cs-life/os/linux_cmd.md 
