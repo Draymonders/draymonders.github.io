@@ -163,6 +163,17 @@ class State(MessagesState):
     search_before_planning: bool
 ```
 
+在下一步需要`Supervisor`决策下一步要执行的Agent时，给LLM的输入是
+
+```
+Response from {agent}:
+<response>
+{agent_response}
+</response>
+
+*Please execute the next step.*
+```
+
 ### Agent
 
 #### config
