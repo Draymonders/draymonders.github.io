@@ -40,29 +40,47 @@ nav:
   - 主页: index.md
   - 编码人生: 
     - 机器学习:
-      - Agent:
-        - 深入理解LangManus: cs-life/machine-learn/agent/langmanus.md
-      - 深度学习入门: cs-life/machine-learn/dl-startup.md
-    - 计算机基础:
+      - 数据分析: 
+        - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
+      - 大模型:
+        # Todo @yubing RNN、Attention、Transformer
+        - 深入理解LangManus: cs-life/machine-learn/llm/agent/langmanus.md
+      - 深度学习:
+        - PyTorch教程: cs-life/machine-learn/deep-learning/pytorch-tutorial.md
+        - 线性回归: cs-life/machine-learn/deep-learning/linear_regression.md
+        - 多层感知机: cs-life/machine-learn/deep-learning/multi_perceptron.md
+        - SoftMax: cs-life/machine-learn/deep-learning/softmax.md
+        # Todo @yubing CNN
+    - 计算机科学:
       - 操作系统:
-        - Linux命令: cs-life/os/linux_cmd.md 
-        - Linux下c/c++开发: cs-life/os/cpp_with_linux.md
-      - 网络:
-        - Web/RPC 框架: cs-life/network/framework.md
+        - Linux常用命令: cs-life/computer-science/os/linux_cmd.md
+        - Linux C++开发: cs-life/computer-science/os/linux_cpp_develop.md
+        - 简易系统xv6: cs-life/computer-science/os/xv6.md
+        - Linux IO: cs-life/computer-science/os/linux_io.md 
+        - Linux Memory: cs-life/computer-science/os/linux_memory.md
+        - 面试常考题: cs-life/computer-science/os/os_interview.md
+      - 网络: 
+        - Web/RPC 框架: cs-life/computer-science/network/framework.md
+        - 图解Http: cs-life/computer-science/network/http.md
+        - 正/反向代理: cs-life/computer-science/network/proxy.md
+        - DNS应用: cs-life/computer-science/network/dns.md
       - 经典书籍:
-        - 设计数据密集型应用: cs-life/ddia/ddia.md
+        - 设计数据密集型应用: cs-life/computer-science/classic-book/ddia/ddia.md
     - 中间件: 
-      - mysql: 
-        - 概览: cs-life/middleware/database/mysql/guide_read.md
-        - 日志文件: cs-life/middleware/database/mysql/log.md
-        - buffer pool: cs-life/middleware/database/mysql/buffer_pool.md
-        - 锁: cs-life/middleware/database/mysql/lock.md
-        - 索引: cs-life/middleware/database/mysql/index.md
-        - 事务: cs-life/middleware/database/mysql/transcation.md
-        - 踩坑: cs-life/middleware/database/mysql/practice.md
+      - 关系数据库:
+        - MySQL-InnoDB引擎: cs-life/middleware/database/mysql/mysql_innodb.md
+        - MySQL-踩坑: cs-life/middleware/database/mysql/practice.md
+        - BoltDB: cs-life/middleware/database/boltdb.md
+
+      - 非关系数据库:
+        - Bitcask: cs-life/middleware/database/bitcask.md
+        # Todo @yubing ES
       - 缓存:
-        - 踩坑: cs-life/middleware/cache/practice.md
-    
+        - Redis: cs-life/middleware/cache/redis.md
+        - 缓存-踩坑: cs-life/middleware/cache/practice.md
+      - 消息队列:
+        - Kafka: cs-life/middleware/mq/Kafka.md
+        - RocketMQ: cs-life/middleware/mq/RocketMQ.md
     - 系统设计:
       - 微服务:
         - 微服务设计: cs-life/system_design/micro_services/micro_services.md
@@ -74,14 +92,15 @@ nav:
       - 视频进度设计: cs-life/system_design/history/history.md
       - 评论中台设计: cs-life/system_design/comment/comment.md
       # - lab 6.824 doing: cs-life/design/lab_6.824.md
-   
+    # Todo @yubing 编程语言
+    - 信息安全:
+      - 游戏外挂调研: cs-life/reverse/game_hacks.md
     - 其他: 
       - 开发常用: cs-life/other/tools.md
       - Goland: cs-life/other/goland.md
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
-    - 逆向:
-      - 游戏外挂调研: explore/reverse/game_hacks.md
+      - Tmux 使用: cs-life/other/tmux.md
   - 体验生活:
     - 年度总结:
       - 2024: enjoy/year/2024.md
@@ -98,6 +117,7 @@ nav:
       - 2024 渐入佳境: enjoy/bike/2024/index.md
       - 2023 初试: enjoy/bike/2023/index.md
     - 游玩:
+      - 2025清明: enjoy/travel/2025-0404/index.md
       - 2024冬季: enjoy/travel/2024-1216/index.md
       - 2024国庆: enjoy/travel/2024-1001/index.md
       - 2024中秋: enjoy/travel/2024-0914/index.md
