@@ -51,6 +51,8 @@ nav:
         - 多层感知机: cs-life/machine-learn/deep-learning/multi_perceptron.md
         - SoftMax: cs-life/machine-learn/deep-learning/softmax.md
         # Todo @yubing CNN
+      - 自然语言处理:
+        - NLP简介: cs-life/machine-learn/nlp/index.md
     - 计算机科学:
       - 操作系统:
         - Linux常用命令: cs-life/computer-science/os/linux_cmd.md
