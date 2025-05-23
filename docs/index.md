@@ -2,28 +2,19 @@
 
 ## About
 
-- 大饼，邮箱：Draymonders#gmail.com
+大饼，邮箱：Draymonders#gmail.com
 
-    > 三年一梦，梦如花开。花开烂漫，一梦三年。
+> 十年一梦，梦如花开。花开烂漫，一梦十年。
 
-## 开坑
+## What I'm Doing
 
-- 系统设计，多看些文档，多思考总结
-- 数据库，事务、锁、索引、查询优化、提升sql能力
-- 缓存，本地缓存/Redis 、深入了解实现
-- 消息队列，RocketMQ & Kafka 区别，存储，扩容
-- 分布式理论，事务，缓存
-- 操作系统，继续看下 绿导师 的课程
-- 搜索，针对现有的es查询深入了解下
-- 刷题能力，每周刷 5 道medium保持手感
-
-## Commands
-
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-* `mkdocs gh-deploy` - Push github branch gh-deploy and show.
+- 保持健康：周度骑车和跑步，保持充足睡眠。
+- 增强专注：持续不断学习，提升知识深度和广度，定期归纳总结。
+- 珍惜时间：梳理核心问题，分析其中矛盾并攻坚主要矛盾。
+- 相信复利：一切进步需要长期持续的行动。
 
 ## Reference
+
+* `mkdocs serve` - Start the live-reloading docs server.
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).

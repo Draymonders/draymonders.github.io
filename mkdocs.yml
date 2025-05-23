@@ -1,8 +1,8 @@
 site_name: Draymonder Docs
 site_author: 'Draymonder'
-site_description: '文档记录'
+site_description: 'Draymonder 个人文档记录'
 site_url: 'https://draymonders.github.io/'
-copyright: Copyright © 2020-2023 Draymonder
+copyright: Copyright © 2020-2025 Draymonder
  
 plugins:
   - search
@@ -109,12 +109,18 @@ nav:
       - 2023: enjoy/year/2023.md
       - 2022: enjoy/year/2022.md
       - 2021: enjoy/year/2021.md
+    - 理财:
+      - 理财思考与实践: enjoy/finance/investment_thought_practice.md
+    - 书籍:
+      - 历史:
+        - 明朝那些事儿: enjoy/book/明朝那些事儿.md
+      - 人文:
+        - 文化苦旅: enjoy/book/文化苦旅.md  
+      - 情感:
+        - 人间告白: enjoy/book/人间告白.md
     - 视频: 
       - 追剧: enjoy/video/video.md
-    - 书籍:
-      - 文化苦旅: enjoy/book/文化苦旅.md
-      - 明朝那些事儿: enjoy/book/明朝那些事儿.md
-      - 人间告白: enjoy/book/人间告白.md
+    
     - 骑行: 
       - 2024 渐入佳境: enjoy/bike/2024/index.md
       - 2023 初试: enjoy/bike/2023/index.md
