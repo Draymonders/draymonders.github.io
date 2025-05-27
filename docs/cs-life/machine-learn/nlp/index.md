@@ -121,3 +121,9 @@
 
 ![RHLF奖励分数](reward.png)
 
+
+## 附录
+
+- 《GPT图解 大模型是怎样构建的》
+- [插图解释Transformer](https://jalammar.github.io/illustrated-transformer/)
+- [插图解释GPT-2](http://jalammar.github.io/illustrated-gpt2/)
