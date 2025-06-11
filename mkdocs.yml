@@ -114,7 +114,8 @@ nav:
       - 理财理念与试错: enjoy/finance/investment_thought_practice.md
     - 书籍:
       - 传记:
-        - 马斯克传: enjoy/book/马斯克传.md
+        - 马斯克传: enjoy/book/biography/马斯克传.md
+        - 乔布斯传: enjoy/book/biography/乔布斯传.md
       - 历史:
         - 明朝那些事儿: enjoy/book/明朝那些事儿.md
       - 人文:
@@ -122,8 +123,8 @@ nav:
       - 情感:
         - 人间告白: enjoy/book/人间告白.md
     - 视频: 
-      - 追剧: enjoy/video/video.md
-    
+      - 科技发展: enjoy/video/science_video.md
+      - 生活向追剧: enjoy/video/life_video.md
     - 骑行: 
       - 2024 渐入佳境: enjoy/bike/2024/index.md
       - 2023 初试: enjoy/bike/2023/index.md
