@@ -129,3 +129,34 @@ reviews[pd.isnull(reviews.price)]
 reviews.region_1.fillna("Unknown")
 ```
 
+## 数据预处理
+
+```
+import pandas as pd
+
+a = [1,2,3,1,2]
+b = [20,30,40,20,None]
+c = [1749956606, 1749956605, 1749956604, 1749956606, 1749956602]
+d = ["F", "M", "F", "F", "M"]
+df = pd.DataFrame({"uid": a, "age": b, "ts": c, "gender": d}, columns=["uid", "age", "ts", "gender"])
+
+# 去缺失值
+df = df.dropna()
+# 去重
+df = df.drop_duplicates()
+
+# 挑选数值列
+cols = df.select_dtypes(include=['number']).columns
+for col in cols:
+    col_name = str(col)
+    if col_name in ["uid", "ts"]:
+        continue
+    df[f"{col_name}_mean"] = df[col].mean()
+
+# 时间戳
+df['time'] = pd.to_datetime(df['ts'], unit='s')
+
+# 类别处理
+cols = df.select_dtypes(include=['object']).columns
+df = pd.get_dummies(df, columns=cols, drop_first=True) # drop_first 是否删除第一个类别
+```
