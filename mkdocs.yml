@@ -111,7 +111,7 @@ nav:
       - 2022: enjoy/year/2022.md
       - 2021: enjoy/year/2021.md
     - 理财:
-      - 理财理念与试错: enjoy/finance/investment_thought_practice.md
+      - 理财总结: enjoy/finance/investment_summary.md
     - 书籍:
       - 传记:
         - 马斯克传: enjoy/book/biography/马斯克传.md
@@ -125,9 +125,12 @@ nav:
     - 视频: 
       - 科技发展: enjoy/video/science_video.md
       - 生活向追剧: enjoy/video/life_video.md
-    - 骑行: 
-      - 2024 渐入佳境: enjoy/bike/2024/index.md
-      - 2023 初试: enjoy/bike/2023/index.md
+      - 纪录片:
+        - 人生海海: enjoy/video/record/人生海海.md
+    - 运动:
+      - 骑行: 
+        - 2024 渐入佳境: enjoy/bike/2024/index.md
+        - 2023 初试: enjoy/bike/2023/index.md
     - 游玩:
       - 2025: 
         - 2025端午: enjoy/travel/2025/2025-0531/index.md
