@@ -1,17 +1,22 @@
 site_name: Draymonder Docs
 site_author: 'Draymonder'
-site_description: 'Draymonder 个人文档记录'
+site_description: 'Draymonder 文档记录'
 site_url: 'https://draymonders.github.io/'
 copyright: Copyright © 2020-2025 Draymonder
  
 plugins:
   - search
+  - glightbox
   # - tags
 
 theme: 
   name: material
+  custom_dir: docs/overrides
+  palette:
+    primary: default
   features:
     - navigation.tabs
+    - content.code.copy
     # - navigation.tabs.sticky
     # - navigation.expand
     # - navigation.sections
@@ -20,21 +25,29 @@ theme:
 
 extra:
   search:
-      language: 'zh'
+    language: 'jp'
   generator: false
   social:
-      - icon: fontawesome/brands/github
-        link: https://github.com/draymonders
-      - icon: fontawesome/solid/paper-plane
-        link: mailto:draymonders@gmail.com
+    - icon: fontawesome/brands/github
+      link: https://github.com/draymonders
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:draymonders@gmail.com
+  template:
+    comments: true
 
 markdown_extensions:
-  - codehilite:
-      guess_lang: false
-      linenums: false
+  - pymdownx.highlight:  # 代码高亮核心扩展
+      linenums: true  # 显示行号（默认true，可设为false关闭）
+      linenums_style: table  # 行号样式（table：行号独立列；inline：行号与代码同一行）
+      pygments_style: monokai  # 高亮主题（可选：monokai、solarized-dark、github等，见下方列表）
+  - pymdownx.superfences:  # 支持代码块嵌套、语法高亮增强
+      custom_fences:
+        - name: mermaid  # 可选：支持流程图渲染（如需可保留）
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
-extra_javascript:
-  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
+# extra_javascript:
+#   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
 
 nav:
   - 主页: index.md
@@ -84,6 +97,7 @@ nav:
         - Kafka: cs-life/middleware/mq/Kafka.md
         - RocketMQ: cs-life/middleware/mq/RocketMQ.md
     - 系统设计:
+      - 感知研判总结: cs-life/system_design/perception_judge/perception_summary.md
       - 微服务:
         - 微服务设计: cs-life/system_design/micro_services/micro_services.md
         - DNS & CDN & 异地多活: cs-life/system_design/micro_services/disaster_tolerance.md
@@ -103,7 +117,7 @@ nav:
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
       - Tmux 使用: cs-life/other/tmux.md
-  - 认真生活:
+  - 点滴生活:
     - 年度总结:
       - 工作5年感念: enjoy/year/work_5_year.md
       - 2024: enjoy/year/2024.md
@@ -131,8 +145,8 @@ nav:
         - 人生海海: enjoy/video/record/人生海海.md
     - 运动:
       - 骑行: 
-        - 2024 渐入佳境: enjoy/bike/2024/index.md
-        - 2023 初试: enjoy/bike/2023/index.md
+        - 2024 渐入佳境: enjoy/sport/bike/2024/index.md
+        - 2023 初试: enjoy/sport/bike/2023/index.md
     - 游玩:
       - 2025: 
         - 2025端午: enjoy/travel/2025/2025-0531/index.md

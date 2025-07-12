@@ -131,7 +131,7 @@ reviews.region_1.fillna("Unknown")
 
 ## 数据预处理
 
-```
+```python3
 import pandas as pd
 
 a = [1,2,3,1,2]
