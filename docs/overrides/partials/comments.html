@@ -17,7 +17,7 @@
             title: document.title,
             distractionFreeMode: false  // Facebook-like distraction free mode
         })
-        gitalk.render('gitalk-container')
+        window.gitalk = gitalk
     }
-    
+    gitalk.render('gitalk-container')
 </script>
