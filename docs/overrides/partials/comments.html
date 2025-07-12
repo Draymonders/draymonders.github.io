@@ -8,7 +8,7 @@
 <script>
     // 1. 若存在旧实例，先销毁（避免DOM残留）
     if (window.gitalk) {
-        window.gitalk.destroy(); // Gitalk内置销毁方法，清理旧实例
+        window.gitalk = undefined; // Gitalk内置销毁方法，清理旧实例
     }
 
     // 2. 直接赋值给window.gitalk，避免let重复声明
