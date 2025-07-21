@@ -56,8 +56,8 @@ nav:
       - 数据分析: 
         - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
       - 大模型:
-        # Todo @yubing RNN、Attention、Transformer
         - 深入理解LangManus: cs-life/machine-learn/llm/agent/langmanus.md
+        - Trae Agent: cs-life/machine-learn/llm/trae-agent/trae.md
       - 深度学习:
         - PyTorch教程: cs-life/machine-learn/deep-learning/pytorch-tutorial.md
         - 线性回归: cs-life/machine-learn/deep-learning/linear_regression.md
