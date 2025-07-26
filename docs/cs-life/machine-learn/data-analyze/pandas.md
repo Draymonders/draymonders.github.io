@@ -129,7 +129,7 @@ reviews[pd.isnull(reviews.price)]
 reviews.region_1.fillna("Unknown")
 ```
 
-## 数据预处理
+## Data Preprocess
 
 ```python3
 import pandas as pd

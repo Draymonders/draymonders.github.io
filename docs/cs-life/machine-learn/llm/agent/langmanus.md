@@ -102,7 +102,7 @@ INFO     [src.workflow] Workflow completed successfully
 
 ### Workflow
 
-#### Service
+**Service**
 
 1. 通过LangGraph构建Agent 调度图 `build_graph()`
 2. 传入用户的输入，执行LangGraph事件流 `astream_events`
@@ -133,7 +133,7 @@ elif kind == "on_chain_end" and name in streaming_llm_agents:
 ....
 ```
 
-#### Graph
+**Graph**
 
 重点是构建了对应的节点，节点之间通过执行「Agent决策」 来调用
 
@@ -176,12 +176,12 @@ Response from {agent}:
 
 ### Agent
 
-#### config
+**config**
 
 - 定义了LLMType: 包含 basic，reasoning，vision 三类
 - 定义不同Agent的LLMType
 
-#### agents
+**agents**
 
 - 使用langchain包对LLMType建立了 reasoning_llm, basic_llm, vl_llm
 - 创建了多Agent
@@ -192,12 +192,12 @@ Response from {agent}:
     * browser_agent
         - Tool：browser_tool
 
-#### api
+**api**
 
 - 提供后端api接口，支持流式的数据返回，核心是调用run_agent_workflow
 - 设计了 Chat -> Message -> Content 的三层结构
 
-#### Tool
+**Tool**
 
 - bash：通过subprocess执行shell命令
 - browser：使用BrowserAgent执行用户请求
@@ -207,7 +207,7 @@ Response from {agent}:
     * python_repl：PythonREPL
     * search：TavilySearchResults
 
-#### crawler
+**crawler**
 
 - 使用jina client进行爬虫，用readabilipy提取请求
     * 转成markdown格式（for debug）
@@ -217,41 +217,41 @@ Response from {agent}:
 
 按图1所示的Agent，Prompt里描述了各自的职责
 
-#### coordinator
+**coordinator**
 
 输出 `handoff_to_planner()` 移交planner
 
-#### planner
+**planner**
 
 - 理解用户需求，整理成 Thought
 - 设计 step-by-step 计划
 - 明确Agent的职责和输出（交由Agent的连续步骤合并为一个步骤分发给一个Agent）
 
-#### supervisor
+**supervisor**
 
 分析问题 -> 分发Agent -> 检查输出并继续分发
 
 - 分发输出：{"next": "researcher"}
 - 结束输出： {"next": "FINISH"}
 
-#### researcher
+**researcher**
 
 - 理解问题 -> 设计方案 -> 执行方案 -> 总结结果
 - 搜索：tavily_tool；爬虫：crawl_tool
 
-#### reporter
+**reporter**
 
 报告包括：摘要、关键点、详细描述、总结和建议
 
-#### browser
+**browser**
 
 访问网页 -> 执行操作（点击、输入、滚动）-> 提取信息
 
-#### coder
+**coder**
 
 分析需求 -> 设计解决方案 -> 实现方案 -> 测试方案 -> 记录方法论 -> 呈现结果
 
-#### file_manager
+**file_manager**
 
 保存文件：WriteFileTool，读取文件：ReadFileTool
 

@@ -9,7 +9,7 @@ Manus的发布让人眼前一亮，突出的点在于
 
 Manus官方的[Context Engineer的经验分享](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
 
-核心点
+亮点
 
 - 利用 KV Cache，降低模型调用成本
 - 利用 响应预填充，引导模型强制使用对应的工具

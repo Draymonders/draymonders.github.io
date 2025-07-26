@@ -70,40 +70,40 @@ http1.0是**建立一个http就用一个tcp连接**
 
 header有四种，通用header，请求header，响应header，实体header
 
-#### cache-control 
+**cache-control**
 
 - no cache 客户端不要过期数据，但是代理服务器可以缓存，只是每次请求时候，代理服务器去检验一下自身缓存是否需要更新
 
-#### connection
+**connection**
 
 - 控制不在转发给代理的字段，减少传输数据
 - 管理持久连接
 
-#### accept
+**accept**
 
 - 客户端能接收的文件类型
 
-#### host
+**host**
 
 确定是一台物理机中确定的那个虚拟服务器
 
-#### if-match
+**if-match**
 
 比较客户端和服务端的etag值(猜测是文件更新需要用到
 
-#### if-range
+**if-range**
 
 如果成功，返回分片，不成功，返回全部内容。
 
-#### accept-ranges
+**accept-ranges**
 
 如果value 为bytes服务端可以接受分片
 
-#### server
+**server**
 
 服务端信息。
 
-#### location
+**location**
 
 跳转到value(url更新 状态码为30X redirect
 

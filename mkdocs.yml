@@ -53,24 +53,24 @@ nav:
   - 主页: index.md
   - 编码人生: 
     - 机器学习:
-      - 数据分析: 
-        - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
       - 大模型:
         - Agent: cs-life/machine-learn/llm/agent/agent.md
         - 深入理解LangManus: cs-life/machine-learn/llm/agent/langmanus.md
+      - 数据分析: 
+        - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
+      - 自然语言处理:
+        - NLP简介: cs-life/machine-learn/nlp/index.md
       - 深度学习:
         - PyTorch教程: cs-life/machine-learn/deep-learning/pytorch-tutorial.md
         - 线性回归: cs-life/machine-learn/deep-learning/linear_regression.md
         - 多层感知机: cs-life/machine-learn/deep-learning/multi_perceptron.md
         - SoftMax: cs-life/machine-learn/deep-learning/softmax.md
         # Todo @yubing CNN
-      - 自然语言处理:
-        - NLP简介: cs-life/machine-learn/nlp/index.md
     - 计算机科学:
       - 操作系统:
-        - Linux常用命令: cs-life/computer-science/os/linux_cmd.md
+        - MiniOS-xv6: cs-life/computer-science/os/xv6.md
         - Linux C++开发: cs-life/computer-science/os/linux_cpp_develop.md
-        - 简易系统xv6: cs-life/computer-science/os/xv6.md
+        - Linux常用命令: cs-life/computer-science/os/linux_cmd.md
         - Linux IO: cs-life/computer-science/os/linux_io.md 
         - Linux Memory: cs-life/computer-science/os/linux_memory.md
         - 面试常考题: cs-life/computer-science/os/os_interview.md
@@ -86,7 +86,6 @@ nav:
         - MySQL-InnoDB引擎: cs-life/middleware/database/mysql/mysql_innodb.md
         - MySQL-踩坑: cs-life/middleware/database/mysql/practice.md
         - BoltDB: cs-life/middleware/database/boltdb.md
-
       - 非关系数据库:
         - Bitcask: cs-life/middleware/database/bitcask.md
         # Todo @yubing ES
@@ -94,16 +93,16 @@ nav:
         - Redis: cs-life/middleware/cache/redis.md
         - 缓存-踩坑: cs-life/middleware/cache/practice.md
       - 消息队列:
-        - Kafka: cs-life/middleware/mq/Kafka.md
-        - RocketMQ: cs-life/middleware/mq/RocketMQ.md
+        - Kafka: cs-life/middleware/message_queue/kafka.md
+        - RocketMQ: cs-life/middleware/message_queue/rocket_mq.md
     - 系统设计:
-      - 感知研判总结: cs-life/system_design/perception_judge/perception_summary.md
+      #- 感知研判总结: cs-life/system_design/perception_judge/perception_summary.md
+      - 性能测试平台: cs-life/system_design/sturnus/sturnus.md
+      - 设计原则: cs-life/system_design/principle.md
       - 微服务:
         - 微服务设计: cs-life/system_design/micro_services/micro_services.md
         - DNS & CDN & 异地多活: cs-life/system_design/micro_services/disaster_tolerance.md
         - 日志 & 链路追踪 & 监控: cs-life/system_design/micro_services/service_governance.md
-      - 设计原则: cs-life/system_design/principle.md
-      - 性能测试平台: cs-life/system_design/sturnus/sturnus.md
       - go im: cs-life/system_design/goim/go_im.md
       - 视频进度设计: cs-life/system_design/history/history.md
       - 评论中台设计: cs-life/system_design/comment/comment.md
