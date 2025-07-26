@@ -56,10 +56,10 @@ nav:
       - 大模型:
         - Agent: cs-life/machine-learn/llm/agent/agent.md
         - 深入理解LangManus: cs-life/machine-learn/llm/agent/langmanus.md
-      - 数据分析: 
-        - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
       - 自然语言处理:
         - NLP简介: cs-life/machine-learn/nlp/index.md
+      - 数据分析: 
+        - Pandas教程: cs-life/machine-learn/data-analyze/pandas.md
       - 深度学习:
         - PyTorch教程: cs-life/machine-learn/deep-learning/pytorch-tutorial.md
         - 线性回归: cs-life/machine-learn/deep-learning/linear_regression.md
