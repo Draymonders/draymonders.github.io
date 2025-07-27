@@ -20,7 +20,7 @@ Manus官方的[Context Engineer的经验分享](https://manus.im/blog/Context-En
 
 ### Trae Agent
 
-本人用的公司的Trae，简单看了下现有[开源引擎的代码](https://github.com/bytedance/trae-agent)
+[Trae Agent Code Repo](https://github.com/bytedance/trae-agent)
 
 文章解读：https://www.cnblogs.com/xiaoqi/p/18971235/Trae-Agent
 

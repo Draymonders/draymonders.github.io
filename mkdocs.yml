@@ -56,6 +56,7 @@ nav:
       - 大模型:
         - Agent: cs-life/machine-learn/llm/agent/agent.md
         - 深入理解LangManus: cs-life/machine-learn/llm/agent/langmanus.md
+        - IMO Agent: cs-life/machine-learn/llm/agent/imo_agent/imo_agent.md
       - 自然语言处理:
         - NLP简介: cs-life/machine-learn/nlp/index.md
       - 数据分析: 
