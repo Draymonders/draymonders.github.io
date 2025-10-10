@@ -126,12 +126,13 @@ nav:
       - 2021: enjoy/year/2021.md
     - 书籍:
       - 传记:
-        - 马斯克传: enjoy/book/biography/马斯克传.md
-        - 乔布斯传: enjoy/book/biography/乔布斯传.md
+        - 邓小平传: enjoy/book/biography/xiaoping/index.md
+        - 马斯克传: enjoy/book/biography/musk/index.md
+        - 乔布斯传: enjoy/book/biography/jobs/index.md
       - 投资:
         - 金钱心理学: enjoy/book/finance/金钱心理学.md
         - 聪明的投资者: enjoy/book/finance/聪明的投资者.md
-        - 财富的真相: enjoy/book/finance/财富的真相.md
+        - 财富的真相: enjoy/book/finance/caifu_zhenxiang/index.md
         - 纳瓦尔宝典: enjoy/book/finance/纳瓦尔宝典.md
       - 社交:
         - 人性的弱点: enjoy/book/relationship/人性的弱点.md
@@ -150,6 +151,7 @@ nav:
         - 2023 初试: enjoy/sport/bike/2023/index.md
     - 游玩:
       - 2025: 
+        - 2025国庆: enjoy/travel/2025/2025-1001/index.md
         - 2025七夕: enjoy/travel/2025/2025-0830/index.md
         - 2025端午: enjoy/travel/2025/2025-0531/index.md
         - 2025五一: enjoy/travel/2025/2025-0501/index.md
