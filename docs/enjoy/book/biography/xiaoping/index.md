@@ -4,7 +4,6 @@
 
 <img src="./dengxiaoping.png" alt="邓小平时代" width="200px" height="200px" >
 
-
 ## 事迹
 
 > 实践是检验真理的唯一标准
