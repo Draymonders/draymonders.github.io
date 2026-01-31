@@ -86,6 +86,7 @@ nav:
       - 关系数据库:
         - MySQL-InnoDB引擎: cs-life/middleware/database/mysql/mysql_innodb.md
         - MySQL-踩坑: cs-life/middleware/database/mysql/practice.md
+        - ClickHouse: cs-life/middleware/database/clickhouse/clickhouse.md
         - BoltDB: cs-life/middleware/database/boltdb.md
       - 非关系数据库:
         - Bitcask: cs-life/middleware/database/bitcask.md

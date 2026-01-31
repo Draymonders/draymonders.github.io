@@ -28,6 +28,42 @@
 [![6rodsS.png](https://s3.ax1x.com/2021/03/16/6rodsS.png)](https://imgtu.com/i/6rodsS)
 
 
+## mmap 与 read/write 的区别
+
+`mmap` (Memory Mapped Files) 和传统的 `read/write` 系统调用是 Linux 下两种主要的文件访问方式，它们在原理、性能和适用场景上有显著区别。
+
+### 1. 调用机制与开销
+
+- **read/write**:
+    - **系统调用**: 每次读写都需要发起系统调用（`read()`/`write()`），涉及用户态和内核态的上下文切换。
+    - **数据拷贝**: 此时数据通常需要经过两次拷贝：磁盘 -> 内核 Page Cache -> 用户缓冲区（User Buffer）。
+- **mmap**:
+    - **系统调用**: 只需一次 `mmap()` 系统调用将文件映射到进程的虚拟地址空间。后续访问就像访问内存一样，没有系统调用开销（但在发生缺页中断时会有内核介入）。
+    - **数据拷贝**: 减少了一次拷贝。文件数据直接存在于内核的 Page Cache 中，用户进程通过映射直接访问 Page Cache，避免了内核空间到用户空间的拷贝（Zero Copy 的一种体现）。
+
+### 2. 内存与缺页中断
+
+- **read/write**: 数据被显式读入用户指定的 buffer。
+- **mmap**: 建立映射后，并未立即加载数据。当进程真正访问这块地址时，触发**缺页中断 (Page Fault)**，内核将数据从磁盘加载到 Page Cache。
+
+### 3. 性能对比
+
+- **小文件/顺序读写**: `read/write` 可能略优或持平。因为 `mmap` 的 setup 开销（建立页表、VMA维护）和缺页中断（Page Fault）的开销在小数据量下可能超过直接系统调用的开销。
+- **大文件/随机读写**: `mmap` 优势明显。
+    - 减少了数据拷贝。
+    - 减少了系统调用次数。
+    - 适合跨进程共享内存（多个进程 map 同一个文件，共享 Page Cache）。
+
+### 4. 总结
+
+| 特性 | read / write | mmap |
+| :--- | :--- | :--- |
+| **访问方式** | 系统调用，显式拷贝 | 内存地址直接访问 (Load/Store) |
+| **数据拷贝次数** | 2次 (Disk -> Kernel -> User) | 1次 (Disk -> Kernel/User Shared) |
+| **上下文切换** | 频繁 (每次 IO) | 少 (Setup + Page Fault) |
+| **优势场景** | 简单的顺序读写，流式处理 | 频繁随机访问，大文件，进程间共享 |
+| **缺点** | 拷贝开销大 | 缺页中断开销，对大文件可能占用大量虚拟内存空间 |
+
 ## reference
 
 - [Linux I/O 原理和 Zero-copy 技术全面揭秘](https://strikefreedom.top/linux-io-and-zero-copy)
