@@ -1,108 +1,188 @@
-# IMO-Agent
+# IMO-Agent: 架构分析
 
-> google gemini 在IMO 2025获得金牌 (solved 5/6)
+**背景**：Google Gemini 在 IMO 2025 中获得了金牌（解决了 6 道题中的 5 道）。
 
-## 设计
+本文分析该 Agent 为实现高精度数学推理而设计的核心工作流。
 
-### Workflow
+## 1. 系统设计 (System Design)
 
-At a high level, our pipeline proceeds as follows (illustrated in 1):
+IMO-Agent 利用迭代式的“生成-验证-优化”循环来确保数学上的严谨性。
 
-- Step 1: Initial solution generation with the prompt
-- Step 2: Self-improvement
-- Step 3: Verifying the solution with the prompt and generating a bug report; go to Step 4 or Step 6 (see below for explanations)
-- Step 4: Review of the bug report
-- Step 5: Correcting or improving the solution based on the bug report; go to Step 3
-- Step 6: Accept or Reject
+与标准的思维链 (Chain-of-Thought, CoT) 提示不同，该架构明确分离了 **证明者 (Solver)** 和 **验证者 (Verifier/Critic)** 的角色，以减轻模型幻觉并填补逻辑漏洞。
 
-![IMO Agent 流程图](./main_arch.png)
+### 1.1 工作流管道 (Workflow Pipeline)
 
-### Agent
+该管道实施了**拒绝采样 (Rejection Sampling)** 和**迭代优化 (Iterative Refinement)** 策略：
 
-核心代码流程
+1.  **初始推理 (Chain-of-Thought)**：模型使用结构化的 CoT 生成基准数学证明。
+2.  **自我纠正 (Self-Correction)**：在外部验证之前，模型会审查自己的输出以修复明显的错误（类似于“草稿”阶段）。
+3.  **对抗性验证 (Adversarial Verification)**：一个专门的“Resolver”实例（被设定为严厉的 IMO 阅卷人）仔细审查解决方案，寻找逻辑谬误或漏洞。
+4.  **反馈循环 (Feedback Loop)**：
+    *   如果 Resolver 拒绝了解决方案，系统会生成一份结构化的**错误报告 (Bug Report)**。
+    *   求解器 (Solver) 利用这份报告来修补解决方案。
+    *   此循环重复进行，直到解决方案通过验证或达到最大重试次数。
+5.  **一致性检查 (Consistency Check / Majority Voting)**：系统执行多次独立运行（最多 30 次），并要求达到共识阈值（例如 5 次有效验证）才接受最终答案，从而降低误报概率。
+
+![IMO Agent Architecture](./main_arch.png)
+
+## 2. 核心实现 (Core Implementation)
+
+以下参考实现展示了编排逻辑。为了反映生产级标准，我们强调了类型安全 (Type Safety) 和模块化。
 
 ```python
-# 具体Prompt在下一节
-step1_prompt = "" # 求解思路
-self_improvement_prompt = "" # 自改进
-check_complete_prompt = "response yes or no if the solution is complete" # 判断是否完成
-correction_prompt = "" # 修正Prompt
-verification_system_prompt = "" # 验证结果是否正确
-verification_reminder = "" # 指引一步步验证论证结果，如有不对，给出错误点
+from typing import List, Optional, Tuple, Dict, Any
 
-def verify_result(problem_s, solution):
-    # 验证结果是否正确
-    check_correctness_resp = llm_client.request({
-        "system_prompt": [verification_system_prompt],
-        "user_prompt": [problem_s, solution, verification_reminder],
+# --- 配置与提示词 (Prompts) ---
+# 系统提示词旨在强制执行特定角色（求解器 vs 验证者）
+PROMPTS = {
+    "step1_solver": "...", # 用于生成严谨证明的指令
+    "self_improvement": "...", # 自我审查指令
+    "completeness_check": "response yes or no if the solution is complete",
+    "correction": "...", # 基于错误报告修复问题的指令
+    "verification_system": "...", # 角色设定：IMO 阅卷人
+    "verification_reminder": "..." # 逐步验证指引
+}
+
+class LLMClient:
+    """模拟 LLM 交互的客户端接口。"""
+    def request(self, payload: Dict[str, Any]) -> Dict[str, str]:
+        # 具体实现细节省略
+        pass
+
+llm_client = LLMClient()
+
+def extract_detail(content: str) -> Tuple[str, str]:
+    """解析 LLM 输出，将错误报告与最终判决分离开来。"""
+    # 具体解析逻辑
+    pass
+
+def verify_result(problem_statement: str, solution: str) -> Tuple[str, str]:
+    """
+    调用验证者 (Verifier) Agent 来审计解决方案。
+    
+    Args:
+        problem_statement: 数学问题描述。
+        solution: 提议的证明/解决方案。
+        
+    Returns:
+        Tuple[str, str]: (Bug 详情, 验证结果 'yes'/'no')
+    """
+    resp = llm_client.request({
+        "system_prompt": [PROMPTS["verification_system"]],
+        "user_prompt": [problem_statement, solution, PROMPTS["verification_reminder"]],
     })
-    check_correctness = check_correctness_resp["content"]
-    # 提取验证结果
-    bug_detail, check_res = extract_detail(check_correctness)
-    return bug_detail, check_res 
+    
+    raw_content = resp["content"]
+    bug_detail, check_res = extract_detail(raw_content) 
+    return bug_detail, check_res
 
-def init_explorations(problem_s, other_prompts=[]):
-    # 初始化解题思路
+def init_explorations(problem_statement: str, context: List[str] = []) -> Tuple[Optional[Dict], Optional[str], Optional[str], Optional[str]]:
+    """
+    生成初始解决方案候选，并执行一次自我纠正 (Self-Correction)。
+    """
+    # 阶段 1: 初始生成
     init_req = {
-        "system_prompt": [step1_prompt],
-        "user_prompt": [problem_s, other_prompts...]
+        "system_prompt": [PROMPTS["step1_solver"]],
+        "user_prompt": [problem_statement] + context
     }
     resp1 = llm_client.request(init_req)
-    step1_out = resp1["content"]
+    initial_draft = resp1["content"]
 
-    # 自改进
+    # 阶段 2: 自我纠正 (优化)
     resp2 = llm_client.request({
         "system_prompt": [],
-        "user_prompt": [step1_out, self_improvement_prompt]
+        "user_prompt": [initial_draft, PROMPTS["self_improvement"]]
     })
-    solution = resp2["content"]
-    # 判断是否完成
-    is_complete_resp = llm_client.request({
+    refined_solution = resp2["content"]
+
+    # 阶段 3: 完整性检查
+    completeness_resp = llm_client.request({
         "system_prompt": [],
-        "user_prompt": [solution, check_complete_prompt]
+        "user_prompt": [refined_solution, PROMPTS["completeness_check"]]
     })
-    is_complete = is_complete_resp["content"]
-    if not is_complete:
+    
+    if "yes" not in completeness_resp["content"].lower():
         return None, None, None, None
-    # 验证结果是否正确，不正确给出错误点
-    bug_detail, check_res = verify_result(problem_s, solution)
-    return init_req, solution, bug_detail, check_res
 
-def agent(problem_s, other_prompts=[]):
-    init_req, solution, bug_detail, check_res = init_explorations(problem_s, other_prompts)
-    max_try = 30
-    correct_cnt, err_cnt = 0, 0
-    for i in range(max_try):
+    # 阶段 4: 初始验证
+    bug_detail, check_res = verify_result(problem_statement, refined_solution)
+    return init_req, refined_solution, bug_detail, check_res
+
+def agent_workflow(problem_statement: str, context: List[str] = []) -> Optional[str]:
+    """
+    Agent 主入口，实现了重试 (Retry) 与共识 (Consensus) 逻辑。
+    """
+    # 初始化基础解决方案
+    init_req, solution, bug_detail, check_res = init_explorations(problem_statement, context)
+    if not solution:
+        return None
+
+    MAX_ITERATIONS = 30
+    SUCCESS_THRESHOLD = 5  # 需要 5 次成功验证来确认有效性
+    FAILURE_THRESHOLD = 10 # 如果失败次数过多，则提前退出
+    
+    correct_cnt = 0
+    err_cnt = 0
+
+    for i in range(MAX_ITERATIONS):
+        # 如果验证失败，尝试修正
         if "yes" not in check_res:
-            # 结合solution和bug_detail修正solution
-            update_req = init_req.clone()
-            update_req.user_prompt += [solution, bug_detail, correction_prompt]
-
+            update_req = init_req.copy() 
+            # 将 Bug 报告反馈给求解器
+            update_req["user_prompt"] += [solution, bug_detail, PROMPTS["correction"]]
+            
             resp = llm_client.request(update_req)
             solution = resp["content"]
         
-        # 验证结果
-        bug_detail, check_res = verify_result(problem_s, solution)
+        # 重新验证（可能已更新的）解决方案
+        bug_detail, check_res = verify_result(problem_statement, solution)
+        
         if "yes" in check_res:
             correct_cnt += 1
-            err_cnt = 0
+            err_cnt = 0 # 成功时重置错误计数
         else:
             err_cnt += 1
-        if correct_cnt >= 5: # 有5次正确，认为求解成功
+            
+        # 共识与终止条件
+        if correct_cnt >= SUCCESS_THRESHOLD:
+            # 我们对该解决方案有高置信度
             return solution
-        elif err_cnt >= 10:
-            return None
+        elif err_cnt >= FAILURE_THRESHOLD:
+            # 解决方案不稳定或不正确
+            return None 
 
-def main():
-    max_runs = 10
-    for i in range(max_runs): # 多次尝试求解
-        solution = agent(problem_s, other_prompt)
-        if solution is not None:
-            print("correct solution", solution)
-            break
+    return None
 ```
 
-### Prompt
+## 3. 提示词工程策略 (Prompt Engineering Strategy)
+
+系统的性能在很大程度上依赖于**角色扮演 (Role-Playing)** 和**约束强制 (Constraint Enforcement)**。
+
+### 3.1 求解器提示词 (`step1_solver`)
+*   **目标**：强制严谨性并防止幻觉。
+*   **关键指令**：“如果你找不到完整的解决方案，你**绝对不能**去猜测。”（优先考虑精确率 Precision 而非召回率 Recall）。
+*   **结构**：要求结构化输出：
+    1.  **概述**：结论 + 方法。
+    2.  **详细解决方案**：带有逻辑依据的逐步证明。
+
+### 3.2 优化提示词 (`self_improvement`)
+*   **机制**：它强制模型在提交之前重新阅读自己的输出，作为针对常见计算或推理错误的自查机制。
+
+### 3.3 验证者人设 (`verification_system`)
+
+*   **角色**：“专业数学家 / IMO 阅卷人”。
+*   **行为**：对抗性。明确指示*不要*修复错误，而只是报告错误。这防止验证者受到求解器逻辑的偏差影响。
+*   **错误分类**：
+    *   **严重错误 (Critical Error)**：破坏逻辑链的错误（例如，逻辑谬误、计算错误）。
+    *   **对齐/缺口 (Alignment/Gap)**：结论正确但证明不充分或存在歧义。
+
+## 4. 评估与指标 (Evaluation & Metrics)
+
+该 Agent 定义成功不仅仅是生成*一个*正确答案，而是生成一个经得起**重复验证**的解决方案 (`correct_cnt >= 5`)。这模仿了科学同行评审过程，即结果只有在可复现和可验证后才被接受。
+
+---
+
+### 提示词 (原始)
 
 **step1_prompt**
 
@@ -171,8 +251,8 @@ def main():
 ```
 - 你的任务是担任国际数学奥林匹克（IMO）的评分员。现在，为上述解答生成**总结**和**逐步验证记录** 。在你的记录中，要按照上述说明对每一个正确步骤进行论证，并详细解释你发现的任何错误或论证漏洞。
 ```
-## 附录
 
-- [Gemini 2.5 Pro Capable of Winning Gold at IMO 2025](https://arxiv.org/pdf/2507.15855)
-- [IMO25 Agent Code](https://github.com/lyang36/IMO25/blob/main/code/agent.py)
+## 附录 (Appendix)
+- [论文: Gemini 2.5 Pro at IMO 2025](https://arxiv.org/pdf/2507.15855)
+- [源代码](https://github.com/lyang36/IMO25/blob/main/code/agent.py)
 - [视频讲解](https://www.bilibili.com/video/BV1Aq8bz1Emj/)

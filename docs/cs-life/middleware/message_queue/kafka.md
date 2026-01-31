@@ -1,173 +1,157 @@
-# Kafka 调研
-
-## kafka概念
-
-- 分布式流处理平台
-    - 发布订阅及Topic支持
-    - 吞吐量高但不保证消费有序 (partition中才有序)
-- 常见应用场景
-    - 日志收集或流式处理
-    - 消息系统(不太care有序性)
-    - 用户活动跟踪或运营指标监控
-
-### use case
-
-- 日志分类
-    1. 用户活动事件收集
-    2. 系统监控数据收集
-- 日志作用
-    1. 搜索
-    2. 推荐
-    3. 广告
+# Apache Kafka
 
 
-## 名词解释
+## 1. 背景与挑战
 
-- client
-    - `Producer` 生产者
-    - `Consumer` 消费者
-- kafka server
-    - `Record`消息 Kafka 处理的主要对象。
-    - `Topic` 主题 主题是承载消息的逻辑容器，在实际使用中多用来区分具体的业务。生产者生产`Topic`, 消费者消费`Topic`
-    - `Offset` 表示分区中每条消息的位置信息，是一个单调递增且不变的值。
-    - `Broker` Kafka 的服务器端由被称为 `Broker` 的服务进程构成，即一个 `Kafka` 集群由多个 `Broker` 组成，`Broker` 负责接收和处理客户端发送过来的请求，以及对消息进行持久化。
-    
-    - `Partition` 分区, `Kafka` 中的分区机制指的是将每个主题划分成多个分区（`Partition`），每个分区是一组有序的消息日志。生产者生产的每条消息只会被发送到一个分区中，也就是说如果向一个双分区的主题发送一条消息，这条消息要么在分区 0 中，要么在分区 1 中。如你所见，Kafka的分区编号是从 0 开始的，如果 Topic 有 100 个分区，那么它们的分区号就是从 0 到99。
-    - 副本, 副本是在分区概念下的，每个分区下可以配置若干个副本。
-        - `Leader`， 提供 `client` 读写
-        - `Follower`, 只用于高可用, `client`不可读写。
-    - 点对点模型 `p2p`
-        - `Consumer Group` 在 Kafka 中实现这种 P2P 模型的方法就是引入了消费者组（Consumer Group）。所谓的消费者组，指的是多个消费者实例共同组成一个组来消费一组主题。这组主题中的每个分区都只会被组内的一个消费者实例消费，其他消费者实例不能消费它。
-    - `Consumer Offset` 每个消费者在消费消息的过程中必然需要有个字段记录它当前消费到了分区的哪个位置上，这个字段就是消费者位移（`Consumer Offset`）
+在 Kafka 诞生之前（LinkedIn 早期），传统的消息队列系统（如 ActiveMQ, RabbitMQ, IBM Websphere MQ）主要关注于：
 
-## Paper 阅读
+*   **企业级特性**：如事务支持、复杂的路由逻辑、消息确认机制。
+*   **低延迟**：单条消息的快速传递。
 
-- 人生读完的第一篇paper
-link: https://github.com/Draymonders/Code-Life/blob/master/middleware/kafka/Kafka.pdf
+然而，面对互联网级别的海量数据（日志、点击流、监控指标），传统 MQ 暴露出了明显的短板：
 
+1.  **吞吐量瓶颈**：难以支撑每秒百万级的消息写入。
+2.  **堆积能力弱**：设计上通常假设消息会被立即消费，一旦消息积压，性能会急剧下降。
+3.  **分布式支持不足**：水平扩展复杂。
 
-### traditional message system
+**Kafka 的诞生正是为了解决以下挑战：**
 
-1. IBM Websphere MQ has transactional supports that allow an application to insert messages into multiple queues atomically. (保证消息插入的事务性, 原子性?)
-2. The JMS specification allows each individual message to be acknowledged after consumption.(消费每条消息都要ack)
-3. Those systems are weak in distributed support.(很少支持分布式)
-4. Finally, many messaging systems assume near immediate consumption of messages, so the queue of unconsumed messages is always fairly small. Their performance degrades significantly if messages are allowed to accumulate.(不允许堆积)
-5. Additionally, most of them use a “push” model in which the broker forwards data to consumers.At LinkedIn, we
-find the “pull” model more suitable for our applications since each consumer can retrieve the messages at the maximum rate it can sustain and avoid being flooded by messages pushed faster than it can handle. (大多数用的推模式, 但kafka是拉模式, 拉可以根据consumer控制速率，防止推送太快导致consumer扛不住).
+*   **高吞吐量 (High Throughput)**：支持海量数据流的实时发布和订阅。
+*   **持久化 (Persistence)**：支持大量消息的磁盘存储，允许数据被保存较长时间（如 7 天），以支持批量处理和历史数据回溯。
+*   **分布式 (Distributed)**：天生支持集群扩展、容错和高可用。
 
-### the architecture of Kafka and its key design principles
+## 2. 核心应用场景
 
-1. Unlike traditional iterators, the message stream iterator never terminates. If there are currently no more messages to consume, the iterator blocks until new messages are published to the topic.(消息迭代器不会终止, 不用重新建立tcp/ip链接)
-2. We support both the point-to-point delivery model in which multiple consumers jointly consume a single copy of all messages in a topic, as well as the publish/subscribe model in which multiple consumers each retrieve its own copy of a topic. (支持发布订阅 & 点对点)
-3. To balance load, a topic is divided into multiple partitions and each broker stores one or more of those partitions. (为了负载均衡，分成多个partition)
+Kafka 不仅仅是一个消息队列，更是一个**分布式流处理平台**。
 
-### Efficiency on a Single Partition
+1.  **日志收集 (Log Aggregation)**
+    *   这是 Kafka 最早也是最典型的场景。将分散在各个服务器上的应用日志、系统日志统一收集到 Kafka，供下游系统（Elasticsearch, HDFS, Hadoop）进行搜索或离线分析。
+2.  **流式处理 (Stream Processing)**
+    *   结合 Kafka Streams, Flink, Spark Streaming 等计算引擎，对实时数据进行过滤、聚合、转换。
+3.  **用户活动跟踪 (Activity Tracking)**
+    *   记录用户在网站/APP 上的点击、浏览、搜索等行为，用于实时推荐、广告投放或用户画像构建。
+4.  **运营指标监控 (Metrics)**
+    *   收集分布式系统的运行指标（CPU, IO, 请求耗时），用于报警和监控大盘。
+5.  **消息解耦 (Messaging)**
+    *   作为微服务架构中的缓冲层，解耦生产者和消费者，削峰填谷。
 
-#### Simple storage
+## 3. 核心概念
 
-1. Kafka has a very simple storage layout. Each partition of a topic corresponds to a logical log.(消息就是存的日志)
-2. Physically, a log is implemented as a set of segment files of approximately the same size (e.g., 1GB). Every time a producer publishes a message to a partition, the broker simply appends the message to the last segment file. (日志会分段, 每段存到一个文件上)
-3. For better performance, we flush the segment files to disk only after a configurable number of messages have been published or a certain amount of time has elapsed. A message is only exposed to the consumers after it is flushed.(有一个缓冲队列，等队列数量满足 配置的数量 才会写入到log文件中)
-4. This avoids the overhead of maintaining auxiliary, seek-intensive random-access index structures that map the message ids to the actual message locations. (消息没有id, 不需要建索引，减少了随机访问的overhead)
-5. If the consumer acknowledges a particular message offset, it implies that the consumer has received all messages prior to that offset in the partition.(consumer提交offset,代表已经接收了offset之前的所有数据)
-6. Each pull request contains the offset of the message from which the consumption begins and an acceptable number of bytes to fetch. Each broker keeps in memory a sorted list of offsets, including the offset of the first message in every segment file. The broker locates the segment file where the requested message resides by searching the offset list, and sends the data back to the consumer. (consumer拉取消息，包含了offset, broker保存了一个有序的offset, 表示每个段文件的首offset, 然后根据consumer的offset去定位段文件并且找到消息集合)
-![wbkMfU.png](https://s1.ax1x.com/2020/09/21/wbkMfU.png)
+理解 Kafka 的架构，首先要明确以下核心名词：
 
-#### Efficient transfer
+*   **Broker**: Kafka 服务节点。一个 Kafka 集群由多个 Broker 组成。Broker 负责接收消息、存储消息和提供消息读取服务。
+*   **Topic (主题)**: 消息的逻辑归类。生产者向 Topic 发送消息，消费者订阅 Topic。
+*   **Partition (分区)**: Topic 的物理分片。
+    *   **并行度的基石**：一个 Topic 可以分为多个 Partition，分布在不同的 Broker 上，从而支持多消费者并行消费。
+    *   **有序性**：Kafka **仅保证 Partition 内的消息有序**，不保证 Topic 级别的全局有序。
+*   **Record (消息)**: Kafka 处理的基本单位，包含 Key, Value, Timestamp 等。
+*   **Offset (位移)**:
+    *   **Log Offset**: 消息在 Partition 中的唯一标识，单调递增。
+    *   **Consumer Offset**: 消费者组当前消费到的位置，用于断点续传。
+*   **Replica (副本)**: 为了保证高可用，每个 Partition 可以有多个副本。
+    *   **Leader**: 负责处理所有的读写请求。
+    *   **Follower**: 仅从 Leader 同步数据，不直接对外提供服务（注：Kafka 2.4+ 引入了 Follower Fetching，但主要用于跨机房同步场景，主流仍读写 Leader）。
+*   **Producer (生产者)**: 发送消息的客户端。
+*   **Consumer (消费者)**: 读取消息的客户端。
+*   **Consumer Group (消费者组)**: Kafka 实现单播和广播的关键机制（详见下文）。
 
-1. the producer can submit a set of messages in a single send request. Although the end consumer API iterates one message at a time, under the covers, each pull request from a consumer also retrieves multiple messages up to a certain size, typically hundreds of kilobytes.(producer批量写入，consumer批量读取)
-2. rely on the underlying file system page cache, avoiding double buffering messages are only cached in the page cache.. (依赖文件系统页缓存, 不存内存，避免了两层缓冲).Kafka doesn’t cache messages in process at all, it has very little overhead in garbage collecting its memory, making efficient implementation in a VM-based language feasible. (没有用很多内存，导致不需要gc).
-3. Zero copy
-    - A typical approach to sending bytes from a local file to a remote socket involves the following steps.
-        1. read data from the storage media to the page cache in an OS
-        2. copy data in the page cache to an application buffer
-        3. copy application buffer to another kernel buffer
-        4. send the kernel buffer to the socket.
-     - (零拷贝原理 **todo**) 
-#### stateless broker
-1. the information about how much each consumer has consumed is not maintained by the broker, but by the consumer itself. (consumer掌管offset信息)
-    - (由于不知道message被消费的信息, 所以删除消息是个麻烦事)
-    - A message is automatically deleted if it has been retained in the broker longer than a certain period, typically 7 days.
-2. A consumer can deliberately rewind back to an old offset and reconsume data. We note that rewinding a consumer is much easier to support in the pull model than the push model.(offset可以回退，因为是pull模型，push模型的话实现会比较麻烦)
+## 4. 架构设计原则
 
+### 4.1 通信模型：Pull vs Push 的权衡
 
-### Distributed Coordination
+消息系统主要有两种数据分发模式：**Push (推)** 和 **Pull (拉)**。Kafka 坚定地选择了 **Pull 模式**。
 
-1. each message is delivered to only one of the consumers within the group (在一个consumer group中，一条message只能被一个consumer消费)
-2. Make a partition within a topic the smallest unit of parallelism. (partition 是最小的并行单位)
-3. not have a central “master” node, but instead let consumers coordinate among themselves in a decentralized fashion
-    - use zookeeper (zk介绍)
-        1. file system like api, crud, and list the children of a path
-        2. one can register a watcher on a path and get notified when the children of a path or the value of a path has changed
-        3. a path can be created as ephemeral (as oppose to persistent), which means that if the creating client is gone, the path is automatically removed by the Zookeeper server; 
-        4.  zookeeper replicates its data to multiple servers, which makes the data highly reliable and available
-4. kafka use zookeeper for the following tasks
-     - detect the addition and the removal of brokers and consumers (检测consumer * broker 增加/删除)
-     - trigger a rebalance process when the above events happen (当上面事件发生，发生rebalance)
-     - maintain the consumption relationship <del>and keep track of the consumed offset of each partition</del>
-     - Each consumer registers a Zookeeper watcher on both the broker registry and the consumer registry, and will be notified whenever a change in the broker set or the consumer group occurs. (broker set / consumer group 状态发生改变，会通知)
+*   **Push 模式 (传统 MQ 常用)**:
+    *   **优点**：低延迟，Broker 收到消息立即推送给 Consumer。
+    *   **缺点**：**速率不匹配问题**。当 Broker 推送速率远大于 Consumer 处理速率时，Consumer 会被压垮（Denial of Service）。虽然可以通过流控（Backpressure）缓解，但实现复杂。
+*   **Pull 模式 (Kafka 采用)**:
+    *   *优点*：
+        1.  **自主控制速率**：Consumer 可以根据自己的处理能力按需拉取数据，避免被压垮。
+        2.  **易于批量处理 (Batching)**：Consumer 可以一次性拉取一批消息进行聚合处理，极大提高了吞吐量。
+    *   **缺点**：如果 Broker 没有新消息，Consumer 可能会陷入忙轮询（Busy Waiting）。
+    *   **Kafka 的优化**：Kafka 支持 `long polling`（长轮询）。Consumer 发起 Fetch 请求时，如果数据不足，请求会阻塞在 Broker 端，直到有足够数据或超时，既避免了忙轮询，又保证了响应的及时性。
 
+### 4.2 Partition 的考虑：并行与负载均衡
 
-### Delivery Guarantees
+Partition 是 Kafka 架构中最核心的设计之一。
 
-1. Kafka only guarantees at-least-once delivery. Exactly once delivery typically requires two-phase commits and is not necessary for our applications. (kafka保证至少一次消费, 正好一次需要两段提交, 但大多数系统不需要).
-2. in the case when a consumer process crashes without a clean shutdown, the consumer process that takes over those partitions owned by the failed consumer may get some duplicate messages that are after the last offset successfully committed to zookeeper. (consumer突然宕机，会导致可能最后的offset更新没有推送到zk or kafka里)
-    - If an application cares about duplicates, it must add its own de-
-duplication logic, either using the offsets that we return to the consumer or some unique key within the message.(不想要重复，需要自行实现去重逻辑，如用offset or unique key).
-3. To avoid log corruption, Kafka stores a CRC for each message in
-the log.(防止log损坏，CRC校验)
+*   **水平扩展**：通过 Partition，一个 Topic 的数据可以分散存储在集群的多个 Broker 上，突破了单机的存储和 I/O 限制。
+*   **并行消费**：在 Consumer Group 中，**一个 Partition 只能被组内的一个 Consumer 消费**。这意味着 Partition 的数量决定了该 Topic 在单消费者组内的最大并行度。
+*   **路由策略**：Producer 发送消息时，可以根据 Key 进行 Hash，确保具有相同 Key 的消息进入同一个 Partition（从而保证局部有序）。
 
+### 4.3 高效数据存储与索引
 
+Kafka 能够支撑海量吞吐的关键在于其极致的存储设计。
 
-## 常见问题
+#### 4.3.1 顺序写磁盘
+Kafka 摒弃了基于 B+ 树的随机索引存储（如数据库），直接使用**追加写日志（Append-only Log）**。
 
-###  Kafka为什么客户端不可读写Follower副本
+*   机械硬盘的顺序写速度（~600MB/s）远高于随机写（~100KB/s），甚至可以媲美内存随机写。
+*   这使得 Kafka 即使在磁盘上也能获得极高的写入性能。
 
-- https://www.zhihu.com/question/327925275/answer/705690755
-1. 一方面，由于副本是基于分区的，已经做了数据的负载均衡。
-2. `Leader-Follower` 同步 `Consumer Offset`存在一致性问题, 实现复杂。
+#### 4.3.2 Log Segment 与 稀疏索引
+为了便于管理和检索，Partition 的 Log 被切分为多个 **Segment** 文件（默认 1GB）。
 
+每个 Segment 包含：
 
-### kafka吞吐量大
+*   `.log`: 实际的消息数据。
+*   `.index`: **稀疏索引 (Sparse Index)**，存储 `相对Offset -> 物理位置` 的映射。
+*   `.timeindex`: 基于时间戳的索引。
 
-- 日志顺序读写和快速检索
-- partition机制 (并行但不保证全topic有序)
-- 批量发送接收和数据压缩机制
-- 通过sendfile实现零拷贝原则
+**查找过程**： Kafka 不会为每条消息建立索引（那是密集索引），而是每隔一定字节（默认 4KB）建立一条索引项。查找时：
 
-### 日志检索底层
+1.  二分查找定位到 `.index` 文件。
+2.  找到目标 Offset 小于等于的最大索引项。
+3.  从该索引项指向的物理位置开始，顺序扫描 `.log` 文件，直到找到目标消息。
 
-- 每个partion作为一个文件夹
-```
-message length: 4 bytes (value: 1+4+n) // 消息长度, 不算自身, 可以理解为header
-"magic" value: 1 byte         //版本号
-crc: 4 bytes                        //CRC校验码
-payload:  n bytes               // 具体的消息 
-```
-- 每个partition的日志会分为N个大小相等的segment, 虽然大小相等，但是消息数量不一定相等
-- 每个partition只支持顺序读写
-- partition会添加到最后一个segment上
-- 所以通过建立 `segement_index -> real_offset -> real_record` 的映射，并利用顺序append，提高了效率
+这种设计极大地节省了索引占用的内存空间，利用了空间换时间（少量顺序扫描）的权衡。
 
-### 零拷贝
+#### 4.3.3 页缓存 (Page Cache)
 
-- 原始  `文件->用户缓冲区->内核->socket->消费者进程`
-- 调用linux系统函数,  `文件->内核->socket->消费者进程`  
+Kafka 自身不在进程内存中缓存大量消息，而是完全依赖操作系统的 **Page Cache**。
 
-### 消费者组
+*   **Write**: 数据写入 Page Cache 后即返回（由 OS 负责 flush 到磁盘），极大降低延迟。
+*   **Read**: 优先从 Page Cache 读取。如果生产消费速率相当，数据几乎都在内存中流转，完全不涉及磁盘 I/O。
+*   **优势**: 即使 Kafka 进程重启，Page Cache 依然存在，缓存依然热乎。JVM GC 也不会因为缓存大量对象而变慢。
 
-- 在消息不被回收的情况下，不同group会消费同一topic的同一条消息
-- 单个partition只能由消费者组中某个消费者消费
-- 消费者组中的单个消费者可以消费多个partition
+### 4.4 Broker 设计：零拷贝 (Zero Copy)
 
-### topic 删除
+在数据传输层面，Kafka 利用 Linux 的 `sendfile` 系统调用实现**零拷贝**，极大提升了网络传输效率。
 
-- kafka的topic删除存在的问题会比较多
-- 建议设置`auto.create.topics.enable = false`
-- 建议设置`delete.topic.enable=true`
-- 停掉kafka的流量，再删topic
+**传统读取流程 (4次拷贝, 4次上下文切换)**:
+磁盘 -> 内核 Buffer -> 用户 Buffer (Application) -> 内核 Socket Buffer -> 网卡
 
+**零拷贝流程 (2次 DMA 拷贝, 2次上下文切换)**:
+磁盘 -> 内核 Buffer (Page Cache) --(sendfile)--> 网卡
+*   数据直接在内核态流转，不需要拷贝到用户态应用程序内存。
+*   结合 Page Cache，如果数据在内存中，则变为纯内存操作，效率极高。
 
-## 参考
+### 4.5 协调机制 (Coordination)
 
-- [Kafka存储模型](https://cloud.tencent.com/developer/article/1057763)
+#### 4.5.1 Consumer Group 机制
+
+Kafka 通过 Consumer Group 巧妙地统一了两种传统消息模型：
+
+*   **队列模型 (Point-to-Point)**: 所有消费者在同一个 Group。消息在组内负载均衡，每条消息只被处理一次。
+*   **发布/订阅模型 (Pub/Sub)**: 每个消费者在不同的 Group。每条消息会被广播给所有 Group。
+
+**限制**：同一 Group 内，一个 Partition 只能由一个 Consumer 消费。这保证了 Partition 内消费的一致性和无锁设计。
+
+#### 4.5.2 Rebalance (重平衡)
+
+当 Consumer 加入/退出 Group，或者 Topic 分区数发生变化时，会触发 Rebalance。
+
+*   **目的**：重新分配 Partition 的所有权。
+*   **代价**：Rebalance 期间（Stop-the-world），整个 Group 无法消费消息。因此需要尽量避免不必要的 Rebalance（如心跳超时设置不合理）。
+
+#### 4.5.3 状态管理
+
+*   **Broker 注册**: 早期依赖 Zookeeper 存储 Broker、Topic、Partition 等元数据。
+*   **Offset 存储**:
+    *   早期：存在 Zookeeper 中（性能差，ZK 不适合高频写）。
+    *   现在：存在内部 Topic `__consumer_offsets` 中。Broker 本身成为了 Offset 的存储系统。
+*   **KRaft 模式 (未来趋势)**: Kafka 2.8+ 开始尝试移除 Zookeeper，使用自带的 Raft 共识协议管理元数据，使架构更加扁平、运维更简单。
+
+## 5. 总结
+
+Kafka 的成功在于其对**顺序 I/O**、**Page Cache** 和 **零拷贝** 等底层技术的极致利用，以及 **Partition** 和 **Consumer Group** 带来的优秀水平扩展能力。它不仅是一个消息队列，更是现代数据架构中流处理的基石。

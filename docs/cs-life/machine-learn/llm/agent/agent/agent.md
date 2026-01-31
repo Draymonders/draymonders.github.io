@@ -1,28 +1,75 @@
-# Agent调研
+# LLM Agent 调研：以 Aime 和 Trae 为例进行分析
 
-## 背景
+## 1. 背景与演进
 
-背景：Manus的发布让人眼前一亮，突出的点在于
+随着 LLM 能力的飞跃，AI 应用范式正从单纯的 **Chatbot (对话式)** 向 **Agent (智能体)** 演进。
 
-- 处理任务会先生成TodoList，过程中不断更新TodoList
-- 能较好的利用工具、包括浏览器、搜索引擎、生成文档
+Manus 的发布引发了业界广泛关注，其核心突破在于将 LLM 从“知识引擎”转变为“任务执行引擎”，有以下亮点：
 
-## 通用 Agent
+- **TodoList 维护**：自主生成并动态维护 TodoList。
+- **Tool Use**：无缝集成浏览器、搜索引擎、文件系统及代码解释器，形成闭环能力。
 
-### 架构分析
+## 2. 通用 Agent 架构解析：Aime
 
-针对体验较好的通用Agent进行简要分析，[论文:Aime: Towards Fully-Autonomous Multi-Agent Framework](https://arxiv.org/pdf/2507.11988)
+以  为例，一个成熟的通用 Agent 架构通常包含以下核心组件。
+
+### 2.1 核心架构设计
 
 ![Aimev1.5核心架构](./aime-1.png)
 
-- Dynamic Planner（动态规划者）：将目标分解为可执行子任务的层次结构、并维护一个全局任务列表
-- Actor Factory（执行器工厂）：根据特定任务实例化执行器、包含 `Person`，`Task`，`Knowledge`，`ToolSet`
-- Actor（执行器）：采用`ReAct`模式
-- Progress Updater（进度更新器）：根据执行器的输出、更新全局任务列表
+[Aime 的架构设计](https://arxiv.org/pdf/2507.11988)体现了 **分层控制 (Hierarchical Control)** 的思想：
 
-以下是一次任务执行的详情debug，略有删减：
+1.  **Dynamic Planner (动态规划器)**：
+    *   **职责**：充当“大脑”，负责将 High-level Goal 分解为可执行的 Sub-tasks 树。
+    *   **特点**：维护全局状态（Global State），根据环境反馈动态调整后续计划，而非一次性生成死板的流程。
+2.  **Actor Factory (执行器工厂)**：
+    *   **职责**：根据子任务的性质（如检索、编码、写作），动态实例化最适合的 Agent 角色（Persona）。
+    *   **组件**：包含 `Knowledge` (领域知识库) 和 `ToolSet` (工具箱)。
+3.  **Actor (执行单元)**：
+    *   **模式**：采用标准的 `ReAct` (Reasoning + Acting) 循环，确保每一步操作都有据可依。
+4.  **Progress Updater (状态同步器)**：
+    *   **职责**：闭环反馈机制，将 Actor 的执行结果回传给 Planner，触发任务列表的更新。
 
-### 执行示例
+### 2.2 执行流分析
+
+通过分析 Aime 的实际运行日志（Debug Trace），我们可以看到其核心优势在于 **"动态编排" (Dynamic Orchestration)** 能力。Planner 不仅拆分任务，还为每个子任务实时定义最合适的执行者和工具箱。
+```
+**任务目标**：基于论文 URL 生成深度中文研报
+
+**Step 1: 全局规划与动态定义**
+
+Planner 接收请求，生成初始 Todo List，并为当前最高优先级的子任务生成详细的执行描述（Profile）：
+
+- **Persona Definition**：动态生成角色描述。例如
+    * 对于“论文阅读”任务，定义为“资深AI研究员，擅长快速阅读英文文献”；
+    * 对于“文献检索”任务，定义为“顶尖文献研究员，拥有强大信息检索能力”。
+- **Tool Selection**：基于任务需求，从工具池中圈定最小可用集。例如
+    * 阅读阶段仅授予 `arxiv, files` 权限，屏蔽 `search, browser` 以减少干扰。
+
+**Step 2: 角色实例化与执行**
+
+- **Phase 1 (Reader Persona)**：
+    * Actor 被注入“资深AI研究员”的系统提示词，调用 `arxiv` 工具下载论文 -> 提炼核心观点 -> 生成 Draft 1。
+- **Phase 2 (Researcher Persona)**：
+    * 任务切换后，Actor 变身为“文献研究员”，工具箱切换为 `search, arxiv`。
+    * 基于 Draft 1 中的实体，执行 `search` 检索相关工作，补充背景知识。
+
+**Step 3: 自我反思与迭代**
+
+系统检测到单一来源可能存在偏差，Planner 主动插入“查找不同/相反观点”的新子任务，并更新后续计划，体现了 Critical Thinking 能力。
+
+**Step 4: 终态收敛**
+
+Actor 再次变身为“学术编辑”，调用 `files` 工具将所有碎片化信息整合为最终 Markdown，并更新全局状态为 Completed。
+```
+
+**关键洞察** ：Aime 的强大不在于预设了多少个 Agent，而在于其 **SOP 的动态生成能力**：
+
+- **Just-in-Time Persona**：角色不是预定义的死板模板，而是根据当前微任务的目标实时生成的。
+- **Context-Aware Tooling**：工具权限随任务流转而动态收缩，最大程度降低了模型幻觉和误操作的概率。
+
+
+### 2.3 执行示例
 
 Step1：接收用户需求
 ```markdown
@@ -332,51 +379,68 @@ Step11: 任务完成
 我已成功对您指定的论文《AIME: 迈向完全自主的多智能体框架》进行了深入分析，并根据您的要求生成了一份清晰、有深度的文档。这份文档详细总结了 AIME 框架的核心创新点，包括其自主规划与执行、动态工具使用、分层多智能体协作以及混合架构设计，旨在解决大型语言模型在复杂任务中自主性不足的问题。我确保了报告内容详实、逻辑清晰，并结合了相关文献分析，完全符合您对深度和信息量的要求。
 ```
 
-## 代码 Agent
+## 3. 代码 Agent 工程实践：Trae
 
-当前市场上比较较为火的是 Cursor、Claude Code、Trae
+在垂直领域，代码 Agent（如 Cursor, Claude Code, Trae）代表了 Agent 落地的最前沿。
 
-### Trae 系统架构
+### 3.1 Trae 系统架构深度解构
 
 [Trae Agent Code Repo](https://github.com/bytedance/trae-agent)
 
-系统架构
-
+**系统架构图**：
 ![Trae 系统架构](./trae_system_architecture.png)
 
-数据流图
-
+**数据流图**：
 ![Trae 数据流图](./trae_data_flow.png)
 
-新奇的点
+### 3.2 核心技术创新点
 
-- [Prompt](https://github.com/bytedance/trae-agent/blob/main/trae_agent/prompt/agent_prompt.py)
-- [Ckg（Code Knowledge Grpah）](https://github.com/bytedance/trae-agent/blob/main/trae_agent/tools/ckg/ckg_database.py): 维护代码的函数和类的原信息到本地数据库，
-- [sequential thinking](https://github.com/bytedance/trae-agent/blob/main/trae_agent/tools/sequential_thinking_tool.py)：对之前想法进行质疑和修改，
+Trae 在解决“代码工程化”难题上，引入了几个关键设计：
 
-代码入口
+#### 1. CKG (Code Knowledge Graph)
+[源码参考: ckg_database.py](https://github.com/bytedance/trae-agent/blob/main/trae_agent/tools/ckg/ckg_database.py)
 
+*   **痛点**：传统的 RAG 基于文本切片（Chunking），容易割裂代码的语义结构（如类继承关系、函数调用链）。
+*   **方案**：构建本地代码知识图谱，存储类、函数、变量的元数据（Metadata）及其拓扑关系。
+*   **价值**：Agent 可以进行“结构化检索”，例如“查找所有继承自 `BaseAgent` 的类”，而非仅依靠模糊的语义匹配。
+
+#### 2. Sequential Thinking (链式思维工具)
+[源码参考: sequential_thinking_tool.py](https://github.com/bytedance/trae-agent/blob/main/trae_agent/tools/sequential_thinking_tool.py)
+
+*   **机制**：强制 Agent 在输出最终代码前，经历 `Thought` -> `Critique` -> `Refinement` 的过程。
+*   **价值**：显著降低了“幻觉代码”的生成率，类似于人类开发者的 Code Review 思维。
+
+#### 3. 异步事件驱动模型
 ```python
+# 任务入口示例
 task_args = {
     "project_path": working_dir,
     "issue": task,
+    # 强制打补丁模式，体现了对确定性输出的控制
     "must_patch": "true" if must_patch else "false",
     "patch_path": patch_path,
 }
 agent.new_task(task, task_args)
+# 异步执行，支持流式反馈
 _ = asyncio.run(agent.execute_task())
 ```
 
-## 感想
+## 4. 总结与展望
 
-现有的Agent的使用体验
+### 4.1 现有 Agent 的体验边界
 
-- 对于从0到1的项目的构建提效是很大的
-- 对于维护很久的代码仓需要更大的上下文才能使Agent理解，这是未来的突破点
+*   **从 0 到 1 (Greenfield)**：体验极佳。Agent 能够快速搭建脚手架，生成 Boilerplate 代码，大幅提升启动效率。
+*   **从 1 到 N (Brownfield)**：挑战巨大。面对数百万行的遗留代码库（Legacy Code），Agent 仍受限于 **Context Window** 和 **语义理解深度**。它是未来的主要突破点。
+
+### 4.2 Context Engineering (上下文工程)
+
+参考 [Manus 官方分享](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)，应用层的优化：
+
+1.  **KV Cache 优化**：降低长上下文的推理成本和延迟。
+2.  **Response Prefilling (响应预填充)**：通过预设 JSON Schema 或部分前缀，强制模型输出结构化数据，解决工具调用的稳定性问题。
+
+---
 
 ## 附录
-
-- [Manus官方的Context Engineer的经验分享](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
-    * 利用 KV Cache，降低模型调用成本
-    * 利用 响应预填充，引导模型强制使用对应的工具
-- [Trae 文章解读](https://www.cnblogs.com/xiaoqi/p/18971235/Trae-Agent)
+- [Manus Blog: Context Engineering Lessons](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+- [Trae Agent 架构深度解读](https://www.cnblogs.com/xiaoqi/p/18971235/Trae-Agent)

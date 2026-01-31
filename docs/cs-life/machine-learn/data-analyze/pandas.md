@@ -1,162 +1,148 @@
-# pandas从入门到放弃
+# Pandas 进阶：工程实践与性能优化
 
-## Create/Read/Write
+本文档旨在从资深研发角度出发，探讨 Pandas 在数据处理中的最佳实践、性能优化及底层原理，帮助开发者从“会用”进阶到“高效工程化”。
 
-Create 
+## 1. 高效 I/O (Efficient I/O)
 
-```python3
-data = pd.DataFrame({"v1": [1,2,3], "v2": [4,5,6]})
-```
+在生产环境中，I/O 往往是瓶颈。CSV 虽通用但效率低下且丢失类型信息。
 
-Read
-
-```python
-data = pd.read_csv("xxx.csv")
-```
-
-Write 
+### 推荐实践
+*   **优先使用二进制格式**：`Parquet` 或 `Feather`。它们支持列式存储、压缩和类型保留，读写速度比 CSV 快 10x 以上。
+*   **大文件处理**：使用 `chunksize` 分块读取，避免 OOM (Out Of Memory)。
 
 ```python
-data.to_csv("xxx.csv")
+# 写入 Parquet (推荐 snappy 或 zstd 压缩)
+df.to_parquet("data.parquet", compression="zstd")
+
+# 读取 Parquet
+df = pd.read_parquet("data.parquet", columns=["col1", "col2"]) # 只读所需列
+
+# 分块读取 CSV
+chunk_iter = pd.read_csv("large_file.csv", chunksize=10000)
+for chunk in chunk_iter:
+    process(chunk)
 ```
 
+## 2. 索引与切片：View vs Copy
 
-## Index/Select/Assign
+理解 Pandas 的 `View` (视图) 和 `Copy` (副本) 是避免 `SettingWithCopyWarning` 和隐式 Bug 的关键。
 
-Index
-
-- iloc: 基于整数位置进行数据选择
-- loc: 基于标签（Label）索引进行数据选择
-
-
-Select
+### 核心原则
+*   **严禁链式索引 (Chained Indexing)**：`df[mask]['col'] = val` 是不安全的。
+*   **使用显式访问器**：始终使用 `.loc` (标签) 或 `.iloc` (位置)。
 
 ```python
-top_oceania_wines = reviews.loc[
-    (reviews.country.isin(['Australia', 'New Zealand'])) & 
-    (reviews.country.isin(['Australia', 'New Zealand'])) & (reviews.points >= 95) (reviews.points >= 95) 
-]
+# ❌ Bad: 链式索引，Pandas 无法保证返回的是 View 还是 Copy
+df[df['A'] > 5]['B'] = 10 
+
+# ✅ Good: 原子操作，明确修改原 DataFrame
+df.loc[df['A'] > 5, 'B'] = 10
 ```
 
-Assign
+## 3. 向量化运算 (Vectorization)
+
+Pandas 建立在 NumPy 之上，核心优势是向量化。
+
+### 性能阶梯 (由快到慢)
+1.  **NumPy Core / Pandas Vectorized Ops**: `df['a'] + df['b']` (利用 SIMD 指令)
+2.  **Cython Routines**: `df['a'].isin(...)`
+3.  **Apply (Cython-optimized)**: `df['a'].apply(...)` (部分内置函数如 sum 经过优化)
+4.  **Apply (Python lambda)**: `df.apply(lambda x: ...)` (Python 循环，慢)
+5.  **Itertuples / Iterrows**: 显式 Python 循环 (极慢)
+
+### 优化案例
 
 ```python
-reviews['critic'] = 'everyone'
-reviews['index_backwards'] = range(len(reviews), 0, -1)
+# ❌ Bad: 使用 apply 进行行级运算 (Python Loop)
+def calculate(row):
+    return row['A'] + row['B'] if row['C'] > 0 else 0
+df['D'] = df.apply(calculate, axis=1)
+
+# ✅ Good: 向量化操作 (C Level Speed)
+import numpy as np
+df['D'] = np.where(df['C'] > 0, df['A'] + df['B'], 0)
 ```
 
-## Summary/Map
+## 4. 高级分组 (Advanced GroupBy)
 
-Summary
+`groupby` 不仅仅是 `split-apply-combine`，更应灵活运用 `transform` 和 `filter`。
+
+*   **Aggregation**: 降维 (多行 -> 一行)。
+*   **Transform**: 保持维度 (多行 -> 多行)，常用于组内标准化、填充缺失值。
+*   **Filter**: 过滤组。
 
 ```python
-reviews.points.mean()   # 平均值
-reviews.points.median() # 中位数
-reviews.taster_name.unique() # 去重后的数据 set<tasker_name>
-reviews.taster_name.value_counts() # 去重数据 以及出现的次数 map<tasker_name, int>
-df.loc['A'].idxmax() # A列最大值的索引idx  (lambda df : min(df['A'].idx) => idx)
+# 组内标准化 (Z-Score)
+# 无需手动 merge 回原表，transform 直接返回与原表对齐的 Series
+df['val_norm'] = df.groupby('category')['val'].transform(lambda x: (x - x.mean()) / x.std())
+
+# 过滤掉记录数少于 10 的组
+df_filtered = df.groupby('category').filter(lambda x: len(x) >= 10)
 ```
 
-Map
+## 5. 内存优化 (Memory Optimization)
 
-- map：主要用于Series对象，可以方便地进行元素级别的转换，特别是基于映射关系（如字典）。
-- apply：更为灵活，可用于DataFrame和Series对象，既能进行元素级别的转换，也能对整行或整列进行操作。
+处理千万级数据时，内存管理至关重要。
+
+### 技巧
+*   **Category 类型**：对于低基数（Low Cardinality）的字符串列（如国家、状态），转换为 `category` 类型可节省 90% 内存并加速 GroupBy。
+*   **Downcasting**：将 `float64` / `int64` 降级为 `float32` / `int16`。
 
 ```python
-n_trop = reviews.description.map(lambda desc: "tropical" in desc).sum()
-df['A'] = df['A'].apply(lambda row: row['A'] + 5, axis=1)
+# 查看内存占用
+print(df.info(memory_usage='deep'))
+
+# 转换 Category
+df['country'] = df['country'].astype('category')
+
+# 自动降级数值类型
+for col in df.select_dtypes(include=['float', 'int']):
+    df[col] = pd.to_numeric(df[col], downcast='float')
 ```
 
-需要注意的是，apply函数有个重要的参数 `axis`
+## 6. 代码整洁之道：链式调用 (Method Chaining)
 
-- axis=0：默认值，表示对每列（列）应用函数。
-- axis=1：表示对每行（行）应用函数。较为常用
+避免创建大量中间临时变量 (`df1`, `df2`, `df_tmp`)，使用链式调用让逻辑流线性化。配合 `assign` 和 `pipe` 使用。
 
 ```python
-df = pd.DataFrame({
-    'A': [1, 2, 3],
-    'B': [10, 20, 30],
-    'C': [100, 200, 300]
-})
-col_sum = df.apply(sum, axis=0) 
-print(col_sum)
-# 输出:
-# A      6
-# B     60
-# C    600
-# dtype: int64
-
-row_sum = df.apply(sum, axis=1)
-print(row_sum)
-# 输出:
-# 0    111
-# 1    222
-# 2    333
-# dtype: int64
-```
-
-
-## Group/Sort
-
-Group
-
-```python
-reviews.groupby('taster').size() # group by taster count(1)
-reviews.groupby(["variety"]).price.agg([min, max]) # group by variety min(price), max(price)
-```
-
-
-Sort
-
-```python
-reviews.groupby('price').points.max().sort_index(ascending=True)
-reviews.groupby(["variety"]).price.agg([min, max]).sort_values(by=["min", "max"], ascending=False)
-```
-
-## DataType/Missing Value
-
-DataType
-
-```python
-reviews.points.dtype
-reviews.points.astype('str')
-```
-
-MissingValue
-
-```python
-reviews[pd.isnull(reviews.price)]
-reviews.region_1.fillna("Unknown")
-```
-
-## Data Preprocess
-
-```python3
-import pandas as pd
-
-a = [1,2,3,1,2]
-b = [20,30,40,20,None]
-c = [1749956606, 1749956605, 1749956604, 1749956606, 1749956602]
-d = ["F", "M", "F", "F", "M"]
-df = pd.DataFrame({"uid": a, "age": b, "ts": c, "gender": d}, columns=["uid", "age", "ts", "gender"])
-
-# 去缺失值
+# ❌ Bad: 过程式代码，充斥中间变量
+df = pd.read_csv('data.csv')
 df = df.dropna()
-# 去重
-df = df.drop_duplicates()
+df = df.loc[df['val'] > 0]
+df['log_val'] = np.log(df['val'])
+res = df.groupby('cat')['log_val'].mean()
 
-# 挑选数值列
-cols = df.select_dtypes(include=['number']).columns
-for col in cols:
-    col_name = str(col)
-    if col_name in ["uid", "ts"]:
-        continue
-    df[f"{col_name}_mean"] = df[col].mean()
+# ✅ Good: 声明式风格，逻辑清晰
+res = (
+    pd.read_csv('data.csv')
+    .dropna()
+    .loc[lambda x: x['val'] > 0]  # 使用 lambda 引用当前流中的 DataFrame
+    .assign(log_val=lambda x: np.log(x['val']))
+    .groupby('cat')['log_val']
+    .mean()
+)
+```
 
-# 时间戳
-df['time'] = pd.to_datetime(df['ts'], unit='s')
+## 7. 实用代码片段 (Snippets)
 
-# 类别处理
-cols = df.select_dtypes(include=['object']).columns
-df = pd.get_dummies(df, columns=cols, drop_first=True) # drop_first 是否删除第一个类别
+### 时间序列重采样与窗口
+```python
+# 设置时间索引
+df = df.set_index('timestamp')
+
+# 降采样：每 5 分钟求均值
+df_5min = df.resample('5T').mean()
+
+# 滚动窗口：计算 7 天移动平均
+df['ma7'] = df['price'].rolling(window='7D').mean()
+```
+
+### 调试与合并
+```python
+# Merge 并检查数据来源
+# indicator=True 会增加 '_merge' 列，显示 left_only, right_only, both
+merged = pd.merge(df1, df2, on='key', how='outer', indicator=True)
+
+# 校验合并结果 (如确保是一对一合并)
+pd.merge(df1, df2, on='key', validate='1:1')
 ```

@@ -1,308 +1,164 @@
-## 目标
+# LangManus 技术架构分析
 
-阅读[LangManus](https://github.com/Darwin-lfl/langmanus)代码，学习`ReAct Agent`的设计
+## 1. 系统概述
 
-![图1. Manus调度设计](./LangManus_01.png)
+LangManus 是一个基于 [LangGraph](https://langchain-ai.github.io/langgraph/) 构建的**多智能体协同系统**。
 
-- coordinator：自行处理简单问题，复杂问题移交planner
-- planner：协调多Agent，设计计划->明确步骤->具体执行
-- supervisor：team组长，用来派活儿
-- researcher：使用搜索和爬虫来解决问题
-- reporter：根据输入总结成报告
-- browser：理解自然语言指令并将其转化为浏览器操作
-- coder：用Python和Bash解决问题
+通过 **Multi Agent** 和 **单个AgentReAct** (Reasoning + Acting) 范式实现复杂任务的自动化处理。
 
-## Demo演示
+该系统的核心设计理念是将复杂的用户指令解耦为：`理解 -> 规划 -> 分发 -> 执行 -> 汇报` 的标准化流水线，通过专门角色的 Agent 协作来提升任务完成的准确率和鲁棒性。
 
-用一个demo的日志来看当前LangManus如何执行的
+![LangManus Architecture](./LangManus_01.png)
 
-```
-Enter your query: 1+3=?
+## 2. 核心架构设计
 
-INFO     [src.workflow] Starting workflow with user input: 1+3=?
-== Coordinator == 
-INFO     [src.graph.nodes] Coordinator talking.
-INFO     [src.graph.nodes] coordinator response: handoff_to_planner()
+### 2.1 调度模式：分层与总线
 
-== Planner ==
-INFO     [src.graph.nodes] Planner generating full plan
-INFO     [src.graph.nodes] Planner Current state messages: [HumanMessage(content='1+3=?', additional_kwargs={}, response_metadata={}, id='bf92f5ce-81ac-4521-94d9-8f89fad6b0b9')]
-INFO     [src.graph.nodes] Planner response: 
-{
-  "thought": "用户需要计算1加3的结果。这是一个简单的数学问题，需要用到coder代理进行计算。",
-  "title": "计算1+3",
-  "steps": [
-    {
-      "agent_name": "coder",
-      "title": "执行数学计算",
-      "description": "使用Python代码计算1+3的数值结果"
-    },
-    {
-      "agent_name": "reporter",
-      "title": "生成最终报告",
-      "description": "将计算结果以Markdown格式整理成最终报告"
-    }
-  ]
-}
+LangManus 采用了 **Supervisor-Worker** 与 **Plan-and-Execute** 相结合的混合调度模式：
 
-== Supervisor ==
-INFO     [src.graph.nodes] Supervisor evaluating next action
-INFO     [src.graph.nodes] Current state messages: [HumanMessage(content='1+3=?', additional_kwargs={}, response_metadata={}, id='bf92f5ce-81ac-4521-94d9-8f89fad6b0b9'), HumanMessage(content='\n\n{\n  "thought": "用户需要计算1加3的结果。这是一个简单的数学问题，需要用到coder代理进行计算。",\n  "title": "计算1+3",\n  "steps": [\n    {\n      "agent_name": "coder",\n      "title": "执行数学计算",\n      "description": "使用Python代码计算1+3的数值结果"\n    },\n    {\n      "agent_name": "reporter",\n      "title": "生成最终报告",\n      "description": "将计算结果以Markdown格式整理成最终报告"\n    }\n  ]\n}', additional_kwargs={}, response_metadata={}, name='planner', id='8577f517-bf44-41d0-848c-2772c549c6eb')]
-INFO     [src.graph.nodes] Supervisor response: {'next': 'coder'}
+*   **Coordinator**: 作为入口网关，负责初步意图识别。简单任务直接处理，复杂任务下发。
+*   **Planner**: 负责“大脑”的工作。它不直接执行任务，而是将自然语言需求转化为结构化的 **DAG (有向无环图)** 或 **Step-by-Step** 的执行计划。
+*   **Supervisor**: 作为“工头”，维护执行状态。它依据 Planner 的计划，动态决策下一个调用的 Worker Agent，并负责上下文的传递与聚合。
+*   **Workers**: 具体的执行单元（Coder, Researcher, Browser 等），专注于特定领域的任务执行。
 
-== Coder == 
-INFO     [src.graph.nodes] Supervisor delegating to: coder
-INFO     [src.graph.nodes] Code agent starting task
-INFO     [src.tools.python_repl] Executing Python code
-WARNING  [langchain_experimental.utilities.python] Python REPL can execute arbitrary code. Use with caution.
-INFO     [src.tools.python_repl] Code execution successful
-INFO     [src.graph.nodes] Code agent response: ### 1 + 3 的计算结果
+### 2.2 状态管理 (State Management)
 
-通过Python代码计算，1 + 3 的结果为 4。具体代码如下：
-\`\`\`python
-print(1 + 3)
-\`\`\`
-该代码直接执行加法运算 `1 + 3`，并使用 `print` 函数将结果输出，输出结果为 4。
-
-综上所述，1 + 3 的结果是 4。  
-INFO     [src.graph.nodes] Code agent completed task
-
-== Supervisor == 
-INFO     [src.graph.nodes] Supervisor evaluating next action
-INFO     [src.graph.nodes] Current state messages: [HumanMessage(content='1+3=?', additional_kwargs={}, response_metadata={}, id='bf92f5ce-81ac-4521-94d9-8f89fad6b0b9'), HumanMessage(content='\n\n{\n  "thought": "用户需要计算1加3的结果。这是一个简单的数学问题，需要用到coder代理进行计算。",\n  "title": "计算1+3",\n  "steps": [\n    {\n      "agent_name": "coder",\n      "title": "执行数学计算",\n      "description": "使用Python代码计算1+3的数值结果"\n    },\n    {\n      "agent_name": "reporter",\n      "title": "生成最终报告",\n      "description": "将计算结果以Markdown格式整理成最终报告"\n    }\n  ]\n}', additional_kwargs={}, response_metadata={}, name='planner', id='8577f517-bf44-41d0-848c-2772c549c6eb'), HumanMessage(content='Response from coder:\n\n<response>\n### 1 + 3 的计算结果\n\n通过Python代码计算，1 + 3 的结果为 4。具体代码如下：\n```python\nprint(1 + 3)\n```\n该代码直接执行加法运算 `1 + 3`，并使用 `print` 函数将结果输出，输出结果为 4。\n\n综上所述，1 + 3 的结果是 4。  \n</response>\n\n*Please execute the next step.*', additional_kwargs={}, response_metadata={}, name='coder', id='9fd08d12-abfa-4f1a-806b-c37ab8a11a6c')]
-INFO     [src.graph.nodes] Supervisor response: {'next': 'reporter'}
-
-== Reporter == 
-INFO     [src.graph.nodes] Supervisor delegating to: reporter
-INFO     [src.graph.nodes] Reporter write final report
-INFO     [src.graph.nodes] Reporter Current state messages: [HumanMessage(content='1+3=?', additional_kwargs={}, response_metadata={}, id='bf92f5ce-81ac-4521-94d9-8f89fad6b0b9'), HumanMessage(content='\n\n{\n  "thought": "用户需要计算1加3的结果。这是一个简单的数学问题，需要用到coder代理进行计算。",\n  "title": "计算1+3",\n  "steps": [\n    {\n      "agent_name": "coder",\n      "title": "执行数学计算",\n      "description": "使用Python代码计算1+3的数值结果"\n    },\n    {\n      "agent_name": "reporter",\n      "title": "生成最终报告",\n      "description": "将计算结果以Markdown格式整理成最终报告"\n    }\n  ]\n}', additional_kwargs={}, response_metadata={}, name='planner', id='8577f517-bf44-41d0-848c-2772c549c6eb'), HumanMessage(content='Response from coder:\n\n<response>\n### 1 + 3 的计算结果\n\n通过Python代码计算，1 + 3 的结果为 4。具体代码如下：\n```python\nprint(1 + 3)\n```\n该代码直接执行加法运算 `1 + 3`，并使用 `print` 函数将结果输出，输出结果为 4。\n\n综上所述，1 + 3 的结果是 4。  \n</response>\n\n*Please execute the next step.*', additional_kwargs={}, response_metadata={}, name='coder', id='9fd08d12-abfa-4f1a-806b-c37ab8a11a6c')]
-INFO     [src.graph.nodes] Reporter response:
-<执行数学计算结果报告>
-<执行摘要>
-本次任务旨在计算1 + 3的结果。通过Python代码实现了该计算，最终得出结果为4。
-<关键发现>
-- 利用Python代码 `print(1 + 3)` 可准确计算出1 + 3的和为4。
-
-<详细分析>
-代码 `print(1 + 3)` 中，`1 + 3` 执行了加法运算，将两个数值相加，`print` 函数则负责将运算结果展示出来，展示的结果为4。
-
-<结论和建议>
-- **结论**：1 + 3 的计算结果为4。
-- **建议**：对于类似简单数学计算，可继续采用Python等编程语言进行快速准确的运算。信息来源为coder执行计算后提供的内容。  
-INFO     [src.graph.nodes] Supervisor evaluating next action
-INFO     [src.graph.nodes] Current state messages: [HumanMessage(content='1+3=?', additional_kwargs={}, response_metadata={}, id='bf92f5ce-81ac-4521-94d9-8f89fad6b0b9'), HumanMessage(content='\n\n{\n  "thought": "用户需要计算1加3的结果。这是一个简单的数学问题，需要用到coder代理进行计算。",\n  "title": "计算1+3",\n  "steps": [\n    {\n      "agent_name": "coder",\n      "title": "执行数学计算",\n      "description": "使用Python代码计算1+3的数值结果"\n    },\n    {\n      "agent_name": "reporter",\n      "title": "生成最终报告",\n      "description": "将计算结果以Markdown格式整理成最终报告"\n    }\n  ]\n}', additional_kwargs={}, response_metadata={}, name='planner', id='8577f517-bf44-41d0-848c-2772c549c6eb'), HumanMessage(content='Response from coder:\n\n<response>\n### 1 + 3 的计算结果\n\n通过Python代码计算，1 + 3 的结果为 4。具体代码如下：\n```python\nprint(1 + 3)\n```\n该代码直接执行加法运算 `1 + 3`，并使用 `print` 函数将结果输出，输出结果为 4。\n\n综上所述，1 + 3 的结果是 4。  \n</response>\n\n*Please execute the next step.*', additional_kwargs={}, response_metadata={}, name='coder', id='9fd08d12-abfa-4f1a-806b-c37ab8a11a6c'), HumanMessage(content='Response from reporter:\n\n<response>\n### 执行数学计算结果报告\n#### 执行摘要\n本次任务旨在计算1 + 3的结果。通过Python代码实现了该计算，最终得出结果为4。\n\n#### 关键发现\n- 利用Python代码 `print(1 + 3)` 可准确计算出1 + 3的和为4。\n\n#### 详细分析\n代码 `print(1 + 3)` 中，`1 + 3` 执行了加法运算，将两个数值相加，`print` 函数则负责将运算结果展示出来，展示的结果为4。\n\n#### 结论和建议\n- **结论**：1 + 3 的计算结果为4。\n- **建议**：对于类似简单数学计算，可继续采用Python等编程语言进行快速准确的运算。信息来源为coder执行计算后提供的内容。  \n</response>\n\n*Please execute the next step.*', additional_kwargs={}, response_metadata={}, name='reporter', id='047db3f5-00bb-42ad-95b5-d2ea3639ada2')]
-INFO     [src.graph.nodes] Supervisor response: {'next': 'FINISH'}
-INFO     [src.graph.nodes] Workflow completed
-INFO     [src.workflow] Workflow completed successfully
-```
-
-## 设计
-
-整体分为 Workflow -> Agent -> Prompt三层
-
-### Workflow
-
-**Service**
-
-1. 通过LangGraph构建Agent 调度图 `build_graph()`
-2. 传入用户的输入，执行LangGraph事件流 `astream_events`
-
-代码片段
-```python
-if kind == "on_chain_start" and name in streaming_llm_agents:
-    if name == "planner":
-        yield {
-            "event": "start_of_workflow",
-            "data": {"workflow_id": workflow_id, "input": user_input_messages},
-        }
-    ydata = {
-        "event": "start_of_agent",
-        "data": {
-            "agent_name": name,
-            "agent_id": f"{workflow_id}_{name}_{langgraph_step}",
-        },
-    }
-elif kind == "on_chain_end" and name in streaming_llm_agents:
-    ydata = {
-        "event": "end_of_agent",
-        "data": {
-            "agent_name": name,
-            "agent_id": f"{workflow_id}_{name}_{langgraph_step}",
-        },
-    }
-....
-```
-
-**Graph**
-
-重点是构建了对应的节点，节点之间通过执行「Agent决策」 来调用
-
-- Coordinator：执行用户请求，goto planner/end
-- Planner：生成计划，goto supervisor/end
-    * 深度思考：使用推理模型推理
-    * 联网搜索：通过搜索工具检索标题和内容补充到用户的输入中
-- Supervisor：根据Planner决策哪个Agent来执行，go TeamMembers/end
-- Researcher：检索和爬虫相关信息，goto Supervisor
-- Coder：运算代码，goto Supervisor
-- Browser：操作浏览器，goto Supervisor
-- Reporter：生成报告
-
-上下文数据
+系统利用 LangGraph 的 `StateGraph` 进行状态流转，核心状态对象 `State` 继承自 `MessagesState`：
 
 ```python
 class State(MessagesState):
-    """State for the agent system, extends MessagesState with next field."""
+    """
+    全局上下文状态，贯穿整个 Workflow 生命周期
+    """
+    # 配置常量
+    TEAM_MEMBERS: list[str]  # 可用的 Worker 列表
 
-    # Constants
-    TEAM_MEMBERS: list[str]
-
-    # Runtime Variables
-    next: str
-    full_plan: str
-    deep_thinking_mode: bool
-    search_before_planning: bool
+    # 运行时状态
+    next: str                # 下一步路由的目标节点
+    full_plan: str           # Planner 生成的全局计划
+    deep_thinking_mode: bool # 是否开启深度推理模式 (e.g. o1/r1)
+    search_before_planning: bool # 规划前是否需要先检索上下文
 ```
 
-在下一步需要`Supervisor`决策下一步要执行的Agent时，给LLM的输入是
+这种设计确保了所有 Agent 都能访问到全局的历史对话（`messages`）和当前的执行计划（`full_plan`），实现了**上下文共享**。
 
-```
-Response from {agent}:
-<response>
-{agent_response}
-</response>
+## 3. 组件深度解析
 
-*Please execute the next step.*
-```
+### 3.1 核心编排层 (Orchestration Layer)
 
-### Agent
+#### Coordinator (协调者)
+*   **职责**: 流量入口与路由。
+*   **机制**: 快速判断用户意图。如果是闲聊或简单问答，直接回复；如果是复杂任务，触发 `handoff_to_planner()`。
+*   **技术点**: 降低了昂贵的 Planner/Reasoning 模型的调用频率，优化响应延迟和成本。
 
-**config**
+#### Planner (规划者)
+*   **职责**: 任务拆解与路径规划。
+*   **输出结构**:
+    ```ts
+    interface Plan {
+      thought: string;      // 思考过程 (CoT)
+      title: string;        // 任务标题
+      steps: Step[];        // 具体的执行步骤
+    }
+    ```
+*   **深度**: 支持 `Deep Thinking` 模式，可接入推理能力更强的模型（如 o1-preview 或 deepseek-reasoner）来处理复杂的逻辑拆解。
 
-- 定义了LLMType: 包含 basic，reasoning，vision 三类
-- 定义不同Agent的LLMType
+#### Supervisor (监督者)
+*   **职责**: 动态路由与结果验收。
+*   **Prompt 策略**:
+    ```text
+    Given the conversation below, who should act next?
+    Or should we FINISH?
+    Response from {agent}: ...
+    ```
+*   **路由机制**: 基于 LLM 的 Function Calling 或 Structured Output，输出 `{'next': 'coder'}` 或 `{'next': 'FINISH'}`。它构成了一个**循环反馈回路 (Loop)**，直到任务结束。
 
-**agents**
+### 3.2 执行层 (Execution Layer)
 
-- 使用langchain包对LLMType建立了 reasoning_llm, basic_llm, vl_llm
-- 创建了多Agent
-    * research_agent
-        - Tool：tavily_tool, crawl_tool
-    * coder_agent
-        - Tool：python_repl_tool, bash_tool
-    * browser_agent
-        - Tool：browser_tool
+#### Researcher (研究员)
+*   **能力**: 信息检索与聚合。
+*   **工具栈**: `Tavily` (搜索), `Crawl4AI` / `Jina` (爬虫)。
+*   **流程**: 搜索 -> 获取内容 -> 清洗(Readability/Markdownify) -> 总结。
 
-**api**
+#### Coder (工程师)
+*   **能力**: 代码生成与执行。
+*   **沙箱**: 使用 `PythonREPL` 执行生成的 Python 代码。
+*   **安全**: 这是一个高风险组件，通常需要配合 Docker 容器或受限环境运行（注：Demo 中使用了本地 REPL，生产环境需加固）。
 
-- 提供后端api接口，支持流式的数据返回，核心是调用run_agent_workflow
-- 设计了 Chat -> Message -> Content 的三层结构
+#### Browser (浏览者)
+*   **能力**: 模拟人类浏览器操作。
+*   **技术栈**: `browser-use` + `Playwright`。
+*   **场景**: 处理动态网页、需要登录的站点或复杂的 UI 交互任务。
 
-**Tool**
+#### Reporter (汇报者)
+*   **职责**: 最终产物生成。
+*   **输出**: 将所有 Worker 的执行结果聚合成结构清晰的 Markdown 报告（摘要、发现、结论）。
 
-- bash：通过subprocess执行shell命令
-- browser：使用BrowserAgent执行用户请求
-- crawl：使用Crawler爬虫
-- langchain内置的Tool
-    * file_management：WriteFileTool
-    * python_repl：PythonREPL
-    * search：TavilySearchResults
+## 4. Workflow 生命周期分析
 
-**crawler**
+以 `1+3=?` 为例，分析其在 DAG 中的流转：
 
-- 使用jina client进行爬虫，用readabilipy提取请求
-    * 转成markdown格式（for debug）
-    * 转成 大模型需要的message格式（for 运行）
+1.  **Start**: 用户输入进入系统。
+2.  **Coordinator**: 识别为需要计算的任务 -> `handoff_to_planner`。
+3.  **Planner**:
+    *   生成 Plan: `[Coder: 计算1+3, Reporter: 生成报告]`。
+    *   State 更新: `full_plan` 写入上下文。
+4.  **Supervisor (Loop Start)**:
+    *   读取 Plan 和 History。
+    *   决策: 下一步给 `Coder`。
+5.  **Coder**:
+    *   接收指令。
+    *   执行: `print(1+3)` -> Output: `4`。
+    *   State 更新: Coder 的输出追加到 `messages`。
+6.  **Supervisor (Loop Continue)**:
+    *   看到 Coder 完成，检查 Plan。
+    *   决策: 下一步给 `Reporter`。
+7.  **Reporter**:
+    *   读取所有历史（包括 Coder 的结果）。
+    *   生成最终报告。
+8.  **Supervisor (Loop End)**:
+    *   决策: 任务完成 -> `FINISH`。
+9.  **End**: 输出流结束。
 
-### Prompt
+## 5. 关键技术实现细节
 
-按图1所示的Agent，Prompt里描述了各自的职责
-
-**coordinator**
-
-输出 `handoff_to_planner()` 移交planner
-
-**planner**
-
-- 理解用户需求，整理成 Thought
-- 设计 step-by-step 计划
-- 明确Agent的职责和输出（交由Agent的连续步骤合并为一个步骤分发给一个Agent）
-
-**supervisor**
-
-分析问题 -> 分发Agent -> 检查输出并继续分发
-
-- 分发输出：{"next": "researcher"}
-- 结束输出： {"next": "FINISH"}
-
-**researcher**
-
-- 理解问题 -> 设计方案 -> 执行方案 -> 总结结果
-- 搜索：tavily_tool；爬虫：crawl_tool
-
-**reporter**
-
-报告包括：摘要、关键点、详细描述、总结和建议
-
-**browser**
-
-访问网页 -> 执行操作（点击、输入、滚动）-> 提取信息
-
-**coder**
-
-分析需求 -> 设计解决方案 -> 实现方案 -> 测试方案 -> 记录方法论 -> 呈现结果
-
-**file_manager**
-
-保存文件：WriteFileTool，读取文件：ReadFileTool
-
-## 附录
-
-### planner 输出结构
-
-```ts
-interface Step {
-  agent_name: string;
-  title: string;
-  description: string;
-  note?: string;
-}
-
-interface Plan {
-  thought: string;
-  title: string;
-  steps: Step[];
-}
-```
-
-### 依赖包
+### 5.1 流式事件驱动 (Streaming Architecture)
+系统利用 `astream_events` 实现了细粒度的实时反馈，这对于长耗时的 Agent 任务至关重要。
 
 ```python
-== langchain、graph组件
-"langchain-community>=0.3.19",
-"langchain-experimental>=0.3.4",
-"langchain-openai>=0.3.8",
-"langchain-deepseek>=0.1.2",
-"langgraph>=0.3.5",
-
-== 网页中提取主要内容和元数据，转换
-"httpx>=0.28.1",
-"readabilipy>=0.3.0",
-"markdownify>=1.1.0",
-
-== 环境配置读取
-"python-dotenv>=1.0.1",
-"socksio>=1.0.0",
-
-== AI浏览器
-"browser-use>=0.1.0",
-
-== 数据分析
-"pandas>=2.2.3",
-"numpy>=2.2.3",
-"yfinance>=0.2.54", （金融市场数据，股票数据）
-
-== server端
-"fastapi>=0.110.0",
-"uvicorn>=0.27.1",
-"sse-starlette>=1.6.5",
+# 后端通过 SSE (Server-Sent Events) 推送细粒度状态
+if kind == "on_chain_start" and name == "planner":
+    yield {"event": "start_of_workflow", ...}
+elif kind == "on_tool_start":
+    yield {"event": "tool_execution", ...}
 ```
+前端可以据此渲染详细的“思考过程”和“工具调用”动效。
+
+### 5.2 动态工具与依赖注入
+Agent 的工具集是动态配置的，支持：
+
+*   **PythonREPL**: 任意代码执行。
+*   **Bash**: 系统级操作。
+*   **File I/O**: 文件系统持久化。
+
+### 5.3 异构模型混合调度
+
+系统配置允许不同 Agent 使用不同能力的模型：
+
+*   **Reasoning LLM (o1/r1)**: 用于 Planner，处理复杂逻辑。
+*   **Basic LLM (GPT-4o/Sonnet)**: 用于 Supervisor/Reporter，平衡速度与质量。
+*   **Vision LLM**: 用于 Browser Agent，理解网页 UI。
+
+## 6. 技术栈清单
+
+| 类别 | 库/工具 | 用途 |
+| :--- | :--- | :--- |
+| **Framework** | `langgraph`, `langchain` | 核心编排与 Agent 抽象 |
+| **Model** | `langchain-openai`, `langchain-deepseek` | 模型接入层 |
+| **Web/Search** | `tavily-python`, `jina` | 搜索与内容提取 |
+| **Browser** | `browser-use`, `playwright` | 浏览器自动化 |
+| **Data** | `pandas`, `yfinance` | 数据处理与金融工具 |
+| **Server** | `fastapi`, `uvicorn` | REST API 与 SSE 流式服务 |
+| **Utils** | `readabilipy`, `markdownify` | 网页内容清洗 |
+
+---
