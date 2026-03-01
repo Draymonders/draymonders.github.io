@@ -120,6 +120,7 @@ nav:
       - Vim 使用: cs-life/other/vim.md
       - Git 使用: cs-life/other/git.md
       - Tmux 使用: cs-life/other/tmux.md
+      - 关于成长: cs-life/other/grow.md
   - 点滴生活:
     - 年度总结:
       - 2026: enjoy/year/2026.md
@@ -140,6 +141,7 @@ nav:
         - 财富的真相: enjoy/book/finance/caifu_zhenxiang/index.md
         - 纳瓦尔宝典: enjoy/book/finance/纳瓦尔宝典.md
       - 社交:
+        - 原则: enjoy/book/relationship/原则.md
         - 人性的弱点: enjoy/book/relationship/人性的弱点.md
       - 历史:
         - 明朝那些事儿: enjoy/book/明朝那些事儿.md
@@ -155,31 +157,32 @@ nav:
       - 骑行: 
         - 2024 渐入佳境: enjoy/sport/bike/2024/index.md
         - 2023 初试: enjoy/sport/bike/2023/index.md
-    - 游玩:
+    - 记录:
       - 2026:
-        - 2026元旦: enjoy/travel/2026/2026-0101/index.md
+        - 2026春节: enjoy/record/2026/2026-0214/index.md
+        - 2026元旦: enjoy/record/2026/2026-0101/index.md
       - 2025: 
-        - 2025年底: enjoy/travel/2025/2025-1213/index.md
-        - 2025初冬: enjoy/travel/2025/2025-1115/index.md
-        - 2025国庆: enjoy/travel/2025/2025-1001/index.md
-        - 2025七夕: enjoy/travel/2025/2025-0830/index.md
-        - 2025端午: enjoy/travel/2025/2025-0531/index.md
-        - 2025五一: enjoy/travel/2025/2025-0501/index.md
-        - 2025清明: enjoy/travel/2025/2025-0404/index.md
+        - 2025年底: enjoy/record/2025/2025-1213/index.md
+        - 2025初冬: enjoy/record/2025/2025-1115/index.md
+        - 2025国庆: enjoy/record/2025/2025-1001/index.md
+        - 2025七夕: enjoy/record/2025/2025-0830/index.md
+        - 2025端午: enjoy/record/2025/2025-0531/index.md
+        - 2025五一: enjoy/record/2025/2025-0501/index.md
+        - 2025清明: enjoy/record/2025/2025-0404/index.md
       - 2024:
-        - 2024冬季: enjoy/travel/2024/2024-1216/index.md
-        - 2024国庆: enjoy/travel/2024/2024-1001/index.md
-        - 2024中秋: enjoy/travel/2024/2024-0914/index.md
-        - 2024暑假: enjoy/travel/2024/2024-0727/index.md
-        - 2024端午: enjoy/travel/2024/2024-0608/index.md
-        - 2024女友见家长: enjoy/travel/2024/2024-0525/index.md
-        - 2024五一: enjoy/travel/2024/2024-0501/index.md
-        - 2024清明: enjoy/travel/2024/2024-0403/index.md
-        - 2024元旦: enjoy/travel/2024/2024-0101/index.md
+        - 2024冬季: enjoy/record/2024/2024-1216/index.md
+        - 2024国庆: enjoy/record/2024/2024-1001/index.md
+        - 2024中秋: enjoy/record/2024/2024-0914/index.md
+        - 2024暑假: enjoy/record/2024/2024-0727/index.md
+        - 2024端午: enjoy/record/2024/2024-0608/index.md
+        - 2024女友见家长: enjoy/record/2024/2024-0525/index.md
+        - 2024五一: enjoy/record/2024/2024-0501/index.md
+        - 2024清明: enjoy/record/2024/2024-0403/index.md
+        - 2024元旦: enjoy/record/2024/2024-0101/index.md
       - 2023:
-        - 2023石家庄: enjoy/travel/2023/2023-sjz/index.md
-        - 2023团建: enjoy/travel/2023/2023-tb/index.md
-        - 2023国庆: enjoy/travel/2023/2023-national/index.md
+        - 2023石家庄: enjoy/record/2023/2023-sjz/index.md
+        - 2023团建: enjoy/record/2023/2023-tb/index.md
+        - 2023国庆: enjoy/record/2023/2023-national/index.md
     - 考试:
       - 教师招聘记录: enjoy/grow/teacher/index.md
     - 视频: 
