@@ -63,6 +63,8 @@ nav:
   - 编码人生: 
     - 机器学习:
       - 大模型:
+        - AI Agent探索: cs-life/machine-learn/llm/agent/explore/explore.md
+        - Claude Code Builder观点: cs-life/machine-learn/llm/agent/claude/claude_code_builder_keypoint.md
         - Aime、Trae Agent调研: cs-life/machine-learn/llm/agent/agent/agent.md
         - LangManus架构分析: cs-life/machine-learn/llm/agent/langmanus/langmanus.md
         - IMO Agent架构分析: cs-life/machine-learn/llm/agent/imo_agent/imo_agent.md
