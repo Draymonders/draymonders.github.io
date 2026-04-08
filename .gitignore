@@ -3,4 +3,9 @@ site/
 .DS_Store
 .vercel
 venv/
-.claude/
+
+!.claude/skills
+!.claude/skills/*.md
+!.claude/agents
+
+output/
