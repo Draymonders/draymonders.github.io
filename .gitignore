@@ -3,3 +3,4 @@ site/
 .DS_Store
 .vercel
 venv/
+.claude/
