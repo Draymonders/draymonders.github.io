@@ -132,7 +132,7 @@ nav:
       - 2022: enjoy/year/2022.md
       - 2021: enjoy/year/2021.md
     - 书籍:
-      - 书籍汇总: enjoy/book/the_book_read.md
+      - 书籍汇总: enjoy/book/读书汇总.md
       - 传记:
         - 邓小平传: enjoy/book/biography/xiaoping/index.md
         - 江泽民传: enjoy/book/biography/jiangzemin/index.md
@@ -141,18 +141,18 @@ nav:
       - 投资:
         - 金钱心理学: enjoy/book/finance/金钱心理学.md
         - 聪明的投资者: enjoy/book/finance/聪明的投资者.md
-        - 财富的真相: enjoy/book/finance/caifu_zhenxiang/index.md
+        - 财富的真相: enjoy/book/finance/财富的真相.md
         - 纳瓦尔宝典: enjoy/book/finance/纳瓦尔宝典.md
       - 成长:
         - 原则: enjoy/book/grow/原则.md
         - 人性的弱点: enjoy/book/grow/人性的弱点.md
         - 黑天鹅·如何应对不可预知的未来: enjoy/book/grow/黑天鹅.md
       - 历史:
-        - 明朝那些事儿: enjoy/book/明朝那些事儿.md
+        - 明朝那些事儿: enjoy/book/history/明朝那些事儿.md
       - 人文:
-        - 文化苦旅: enjoy/book/文化苦旅.md  
+        - 文化苦旅: enjoy/book/culture/文化苦旅.md  
       - 情感:
-        - 人间告白: enjoy/book/人间告白.md
+        - 人间告白: enjoy/book/relationship/人间告白.md
     - 理财:
       - 理财实践: enjoy/finance/investment_practice.md
       - 诈骗总结: enjoy/finance/fraud.md
