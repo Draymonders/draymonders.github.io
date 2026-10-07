@@ -1,0 +1,4 @@
+/* Increase the content width to reduce whitespace on the sides */
+.md-grid {
+  max-width: 90%;
+}
