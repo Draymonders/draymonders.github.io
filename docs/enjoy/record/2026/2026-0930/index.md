@@ -10,3 +10,10 @@
 | 10.5 | - 买的鲜切牛羊肉，用麻辣烫底料煮的牛羊肉，很嫩 <br/> - 国家图书馆、紫竹院公园<br/> - 回来接着吃的牛羊肉，买的湿面条 | <img src="./day6_1.jpg" width="75px" height="80px" > <img src="./day6_2.jpg" width="75px" height="80px" > <img src="./day6_3.jpg" width="75px" height="80px" > <img src="./day6_4.jpg" width="75px" height="80px" > <img src="./day6_5.jpg" width="75px" height="80px" > <img src="./day6_6.jpg" width="75px" height="80px" > |
 | 10.6 | - 里脊饼 <br/> - 颐和园，对象早上太困，走10分钟，歇20分钟 <br/> - 贵州烧椒牛肉 | <img src="./day7_1.jpg" width="75px" height="80px" > <img src="./day7_2.jpg" width="75px" height="80px" > <img src="./day7_3.jpg" width="75px" height="80px" > |
 | 10.7 | - 早上里脊饼和包子（准备去西四包子铺买，人太多，去seven eleven 买的） <br/> - 奥森北园看花 <br/> - 麻辣香锅、驴肉卷饼 | <img src="./day8_1.jpg" width="75px" height="80px" > |
+
+备注：
+
+- 基本用1天的时间，看完了《认知觉醒》，很开心作者提了很多次李笑来，其实和读过的很多书是类似的。
+    * 改变量﹥行动量﹥思考量﹥学习量
+- 看了2/3[《水浒传》解说](https://www.bilibili.com/video/BV1uG4y1Y7B2)，前期更多展示了梁山壮士被逼无奈的情况，中期更多是各路英雄由于梁山名气大/好 自愿/被计谋上梁山的情况，凑齐了36天罡和72地煞共108星
+- 看完了[《黑神话悟空》的解说](https://www.bilibili.com/video/BV19LFazaEoy)，很有趣。
